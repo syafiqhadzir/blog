@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # Local Bundle
 .bundle/
+
+# Local Site Cache
+_site/
