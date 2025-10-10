@@ -396,3 +396,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Local Bundle
+.bundle/
+
+# Local Site Cache
+_site/
