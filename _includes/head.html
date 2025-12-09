@@ -1,13 +1,11 @@
 <head>
   <link rel=preconnect href=https://cdn.ampproject.org/ crossorigin />
   <link rel=dns-prefetch href=https://cdn.ampproject.org/ crossorigin />
-  <link rel=preload as=script href="https://cdn.ampproject.org/v0.js?optin=nightly" />
-  <meta http-equiv=Content-Type content="text/html; charset=UTF-8" />
+  <link rel=preload as=script href="https://cdn.ampproject.org/v0.js" />
   <meta charset=UTF-8 />
   <meta http-equiv=X-UA-Compatible content="IE=Edge" />
-  <title>{{ site.title - page.title }}</title>
-  <meta name=description
-    content="{{ site.description }} Copyright &#169; 2017 - 2023 Syafiq Hadzir. All rights reserved." />
+  <title>{{ page.title | default: site.title }} | {{ site.title }}</title>
+  <meta name=description content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}" />
   <meta name=keywords content="Syafiq Hadzir" />
   <meta name=robots content="index, follow" />
   <link rel=canonical href={{ site.url }} />
@@ -15,12 +13,231 @@
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}" />
   <meta name=theme-color content=#000000 />
   <meta name=viewport content="width=device-width, initial-scale=1.0" />
-  <script async src="https://cdn.ampproject.org/v0.js?optin=nightly"></script>
-  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><style amp-custom>blockquote,table,td,th{border:thin solid #000}blockquote p,body{margin:0}.w,img{margin:0 auto}body[class=dark],body[class=dark] img{filter:invert(1)}body[class=dark] img.ioda{filter:invert(0)}@media(prefers-color-scheme:dark){body[class=auto],body[class=auto] img{filter:invert(1)}body[class=auto] img.ioda{filter:invert(0)}}body,html{background:#fff}html{height:100%}body{color:#000;min-height:100%;overflow-wrap:break-word;font:16px/1.4 monospace}.post-meta{text-align:right}h2,h3,h4,h5,h6{margin-top:3rem}hr{margin:2rem 0;text-align:center;border:0}hr:before{content:"/////"}hr:after{content:attr(data-content) "/////"}p{margin:1rem 0}li{margin:.4rem 0}:target{background:#ff0}.w{max-width:640px;padding:4rem 2rem}table{width:100%}table,td,th{border-collapse:collapse;padding:.4rem}code{color:#fff;background:#000}div.highlighter-rouge code{display:block;overflow-x:auto;white-space:pre-wrap;padding:1rem}blockquote{font-style:italic;padding:1rem}img{max-width:100%;display:block}</style>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <style amp-boilerplate>
+    body {
+      -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      animation: -amp-start 8s steps(1, end) 0s 1 normal both
+    }
+
+    @-webkit-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @-moz-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @-ms-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @-o-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+  </style><noscript>
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: none;
+        -moz-animation: none;
+        -ms-animation: none;
+        animation: none
+      }
+    </style>
+  </noscript>
+  <style amp-custom>
+    blockquote,
+    table,
+    td,
+    th {
+      border: thin solid #000
+    }
+
+    blockquote p,
+    body {
+      margin: 0
+    }
+
+    .w,
+    img {
+      margin: 0 auto
+    }
+
+    body[class=dark],
+    body[class=dark] img {
+      filter: invert(1)
+    }
+
+    body[class=dark] img.ioda {
+      filter: invert(0)
+    }
+
+    @media(prefers-color-scheme:dark) {
+
+      body[class=auto],
+      body[class=auto] img {
+        filter: invert(1)
+      }
+
+      body[class=auto] img.ioda {
+        filter: invert(0)
+      }
+    }
+
+    body,
+    html {
+      background: #fff
+    }
+
+    html {
+      height: 100%
+    }
+
+    body {
+      color: #000;
+      min-height: 100%;
+      overflow-wrap: break-word;
+      font: 16px/1.4 monospace
+    }
+
+    .post-meta {
+      text-align: right
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 3rem
+    }
+
+    hr {
+      margin: 2rem 0;
+      text-align: center;
+      border: 0
+    }
+
+    hr:before {
+      content: "/////"
+    }
+
+    hr:after {
+      content: attr(data-content) "/////"
+    }
+
+    p {
+      margin: 1rem 0
+    }
+
+    li {
+      margin: .4rem 0
+    }
+
+    :target {
+      background: #ff0
+    }
+
+    .w {
+      max-width: 640px;
+      padding: 4rem 2rem
+    }
+
+    table {
+      width: 100%
+    }
+
+    table,
+    td,
+    th {
+      border-collapse: collapse;
+      padding: .4rem
+    }
+
+    code {
+      color: #fff;
+      background: #000
+    }
+
+    div.highlighter-rouge code {
+      display: block;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      padding: 1rem
+    }
+
+    blockquote {
+      font-style: italic;
+      padding: 1rem
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+  </style>
   {% if page.gist == true %}
-  <script async custom-element="amp-gist" src="https://cdn.ampproject.org/v0/amp-gist-0.1.js?optin=nightly"></script>
+  <script async custom-element="amp-gist" src="https://cdn.ampproject.org/v0/amp-gist-0.1.js"></script>
   {% endif %}
   {% if page.mathml == true %}
-  <script async custom-element="amp-mathml" src="https://cdn.ampproject.org/v0/amp-mathml-0.1.js?optin=nightly"></script>
+  <script async custom-element="amp-mathml" src="https://cdn.ampproject.org/v0/amp-mathml-0.1.js"></script>
   {% endif %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "{{ site.url }}#website",
+        "url": "{{ site.url }}",
+        "name": "{{ site.title }}",
+        "description": "{{ site.description | strip_html | strip_newlines }}",
+        "publisher": { "@id": "{{ site.url }}#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "{{ site.url }}#person",
+        "name": "{{ site.author.name }}",
+        "url": "{{ site.author.url }}",
+        "sameAs": ["https://twitter.com/{{ site.author.twitter }}", "https://github.com/SyafiqHadzir/"]
+      }
+    ]
+  }
+  </script>
 </head>
