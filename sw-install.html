@@ -1,0 +1,21 @@
+---
+layout: null
+permalink: /sw-install.html
+---
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Service Worker Install</title>
+</head>
+
+<body>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/blog/sw.js');
+        }
+    </script>
+</body>
+
+</html>

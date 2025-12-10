@@ -21,7 +21,10 @@ layout: default
   "@type": "BlogPosting",
   "headline": "{{ page.title | escape }}",
   "datePublished": "{{ page.date | date_to_xmlschema }}",
-  "dateModified": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "inLanguage": "en-GB",
+  "wordCount": "{{ content | number_of_words }}",
+  "image": "{{ '/logo.png' | absolute_url }}",
   "author": {
     "@type": "Person",
     "name": "{{ site.author.name }}",

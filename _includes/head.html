@@ -1,19 +1,25 @@
 <head>
-  <link rel=preconnect href=https://cdn.ampproject.org/ crossorigin />
-  <link rel=dns-prefetch href=https://cdn.ampproject.org/ crossorigin />
-  <link rel=preload as=script href="https://cdn.ampproject.org/v0.js" />
-  <meta charset=UTF-8 />
-  <meta http-equiv=X-UA-Compatible content="IE=Edge" />
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://cdn.ampproject.org/" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.ampproject.org/">
+  <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <title>{{ page.title | default: site.title }} | {{ site.title }}</title>
-  <meta name=description content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}" />
-  <meta name=keywords content="Syafiq Hadzir" />
-  <meta name=robots content="index, follow" />
-  <link rel=canonical href={{ site.url }} />
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+  <meta name="keywords" content="Syafiq Hadzir">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
   {%- feed_meta -%}
-  <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}" />
-  <meta name=theme-color content=#000000 />
-  <meta name=viewport content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}">
+  <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="{{ '/icons/icon-192.png' | relative_url }}">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-install-serviceworker"
+    src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>
   <style amp-boilerplate>
     body {
       -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;

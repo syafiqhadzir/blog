@@ -2,6 +2,8 @@
 
 source "https://rubygems.org"
 
+ruby ">= 3.4.0"
+
 gem 'jekyll'
 gem 'jekyll-feed'
 gem 'jekyll-github-metadata'
@@ -13,3 +15,4 @@ gem "csv"
 gem "bigdecimal"
 gem "base64"
 gem "logger"
+gem "ostruct"
