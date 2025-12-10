@@ -1,12 +1,16 @@
-const CACHE_NAME = 'sh-blog-v1';
-const OFFLINE_URL = '/blog/offline.html';
+---
+    layout: null
+permalink: /sw.js
+---
+const CACHE_NAME = 'sh-blog-v2';
+const OFFLINE_URL = '{{ "offline.html" | relative_url }}';
 
 const PRECACHE_ASSETS = [
-    '/blog/',
-    '/blog/offline.html',
-    '/blog/logo.png',
-    '/blog/icons/icon-192.png',
-    '/blog/icons/icon-512.png'
+    '{{ "/" | relative_url }}',
+    '{{ "offline.html" | relative_url }}',
+    '{{ "logo.png" | relative_url }}',
+    '{{ "icons/icon-192.png" | relative_url }}',
+    '{{ "icons/icon-512.png" | relative_url }}'
 ];
 
 self.addEventListener('install', event => {

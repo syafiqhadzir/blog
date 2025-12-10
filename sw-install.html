@@ -13,7 +13,7 @@ permalink: /sw-install.html
 <body>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/blog/sw.js');
+            navigator.serviceWorker.register('{{ "sw.js" | relative_url }}');
         }
     </script>
 </body>

@@ -8,8 +8,8 @@
       {{ content }}
     </div>
   </main>
-  <amp-install-serviceworker src="{{ '/sw.js' | absolute_url }}"
-    data-iframe-src="{{ '/sw-install.html' | absolute_url }}" layout="nodisplay">
+  <amp-install-serviceworker src="{{ 'sw.js' | relative_url }}" data-iframe-src="{{ 'sw-install.html' | relative_url }}"
+    layout="nodisplay">
   </amp-install-serviceworker>
 </body>
 
