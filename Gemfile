@@ -23,6 +23,7 @@ gem 'webrick'
 group :test do
   gem 'html-proofer', '~> 5.0'
   gem 'rspec', '~> 3.13'
+  gem 'rspec_junit_formatter', '~> 0.6', require: false
   gem 'rubocop', '~> 1.69', require: false
   gem 'rubocop-rspec', '~> 3.2', require: false
 end

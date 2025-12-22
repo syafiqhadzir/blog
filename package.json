@@ -17,7 +17,13 @@
         "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules' '#vendor' '#_site'",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "sonar": "npm run report && sonar-scanner",
+        "report": "npm run lint:report && npm run test:report",
+        "lint:report": "npm run lint:ts:report && npm run lint:css:report",
+        "lint:ts:report": "eslint . --format json --output-file eslint-report.json || exit 0",
+        "lint:css:report": "stylelint \"**/*.{css,scss}\" --formatter json --output-file stylelint-report.json || exit 0",
+        "test:report": "bundle exec rspec spec/unit --format RspecJunitFormatter --out sonar-report.xml || exit 0"
     },
     "devDependencies": {
         "@lhci/cli": "^0.14.0",
@@ -31,6 +37,10 @@
         "prettier": "^3.4.2",
         "eslint-config-prettier": "^9.1.0",
         "markdownlint-cli2": "^0.17.0",
-        "globals": "^15.14.0"
+        "globals": "^15.14.0",
+        "sonarqube-scanner": "^4.2.5",
+        "stylelint": "^16.11.0",
+        "stylelint-config-standard": "^36.0.1",
+        "stylelint-config-standard-scss": "^14.0.0"
     }
 }

@@ -117,3 +117,8 @@ out/
 *.seed
 *.pid.lock
 .cache/
+ 
+# SonarQube Reports
+*-report.json
+sonar-report.xml
+.scannerwork/
