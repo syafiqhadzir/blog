@@ -29,7 +29,7 @@ playwright/.cache/
 
 # Node.js (if using npm for tooling)
 node_modules/
-package-lock.json
+
 yarn.lock
 .npm/
 .yarn/
@@ -121,4 +121,5 @@ out/
 # SonarQube Reports
 *-report.json
 sonar-report.xml
+sonar-generic-report.xml
 .scannerwork/

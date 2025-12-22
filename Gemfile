@@ -17,6 +17,7 @@ gem 'jekyll-sitemap'
 gem 'kramdown-parser-gfm'
 gem 'logger'
 gem 'ostruct'
+gem 'rexml'
 gem 'webrick'
 
 # Testing gems for pyramid testing
