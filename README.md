@@ -63,7 +63,7 @@ npm run test:e2e
 
 ## 📁 Project Structure
 
-```
+```text
 blog/
 ├── _data/           # Site data (menu.yml)
 ├── _includes/       # Reusable components
@@ -96,6 +96,7 @@ npm run test:e2e              # E2E tests
 ## 🔍 Schema.org
 
 All pages include rich structured data:
+
 - **WebSite** with SearchAction (home)
 - **ProfilePage** with Person (about)
 - **BlogPosting** with BreadcrumbList (posts)
