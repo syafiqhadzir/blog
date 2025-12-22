@@ -9,7 +9,7 @@ RSpec.describe 'Data Files' do
 
     it 'exists' do
       expect(File.exist?(menu_file)).to be(true),
-        'menu.yml not found in _data directory'
+                                        'menu.yml not found in _data directory'
     end
 
     it 'has valid YAML syntax' do
@@ -18,21 +18,21 @@ RSpec.describe 'Data Files' do
 
     it 'has entries key' do
       expect(menu_data).to have_key('entries'),
-        'menu.yml must have an "entries" key'
+                           'menu.yml must have an "entries" key'
     end
 
     it 'has at least one entry' do
       expect(menu_data['entries']).to be_an(Array),
-        'entries must be an array'
+                                      'entries must be an array'
       expect(menu_data['entries']).not_to be_empty,
-        'entries array cannot be empty'
+                                          'entries array cannot be empty'
     end
 
     describe 'menu entries' do
       it 'each entry has a title' do
         menu_data['entries'].each_with_index do |entry, index|
           expect(entry).to have_key('title'),
-            "Entry #{index + 1}: Missing 'title' key"
+                           "Entry #{index + 1}: Missing 'title' key"
         end
       end
 
@@ -43,7 +43,7 @@ RSpec.describe 'Data Files' do
           url = entry['url']
           # Valid: relative paths, absolute paths, or external URLs
           expect(url).to match(%r{^(https?://|/|[a-zA-Z0-9])}),
-            "Invalid URL format: #{url}"
+                         "Invalid URL format: #{url}"
         end
       end
 
@@ -55,14 +55,14 @@ RSpec.describe 'Data Files' do
 
           if post_list['limit']
             expect(post_list['limit']).to be_a(Integer),
-              'post_list.limit must be an integer'
+                                          'post_list.limit must be an integer'
             expect(post_list['limit']).to be > 0,
-              'post_list.limit must be positive'
+                                          'post_list.limit must be positive'
           end
 
           if post_list['show_more']
             expect(post_list['show_more']).to be(true).or(be(false)),
-              'post_list.show_more must be a boolean'
+                                              'post_list.show_more must be a boolean'
           end
         end
       end
@@ -75,7 +75,7 @@ RSpec.describe 'Data Files' do
     it 'have valid YAML syntax' do
       data_files.each do |file|
         expect { load_yaml(file) }.not_to raise_error,
-          "Invalid YAML in #{File.basename(file)}"
+                                          "Invalid YAML in #{File.basename(file)}"
       end
     end
   end

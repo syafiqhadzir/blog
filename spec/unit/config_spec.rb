@@ -10,7 +10,7 @@ RSpec.describe 'Site Configuration' do
   describe '_config.yml' do
     it 'exists' do
       expect(File.exist?(config_file)).to be(true),
-        '_config.yml not found in project root'
+                                          '_config.yml not found in project root'
     end
 
     it 'has valid YAML syntax' do
@@ -21,33 +21,33 @@ RSpec.describe 'Site Configuration' do
     %w[title author url].each do |key|
       it "has required key: #{key}" do
         expect(config).to have_key(key),
-          "_config.yml: Missing required key '#{key}'"
+                          "_config.yml: Missing required key '#{key}'"
       end
     end
 
     describe 'author configuration' do
       it 'has author name' do
         expect(config['author']).to have_key('name'),
-          'author.name is required'
+                                    'author.name is required'
       end
 
       it 'has author url' do
         expect(config['author']).to have_key('url'),
-          'author.url is required'
+                                    'author.url is required'
       end
     end
 
     describe 'site URL' do
       it 'is a valid URL format' do
         expect(config['url']).to match(%r{^https?://}),
-          'url must start with http:// or https://'
+                                 'url must start with http:// or https://'
       end
     end
 
     describe 'plugins' do
       it 'has plugins array' do
         expect(config).to have_key('plugins'),
-          '_config.yml should define plugins'
+                          '_config.yml should define plugins'
       end
 
       it 'includes essential plugins' do
@@ -56,7 +56,7 @@ RSpec.describe 'Site Configuration' do
 
         essential.each do |plugin|
           expect(plugins).to include(plugin),
-            "Missing essential plugin: #{plugin}"
+                             "Missing essential plugin: #{plugin}"
         end
       end
     end
@@ -64,12 +64,12 @@ RSpec.describe 'Site Configuration' do
     describe 'theme configuration' do
       it 'has theme_config' do
         expect(config).to have_key('theme_config'),
-          '_config.yml should have theme_config'
+                          '_config.yml should have theme_config'
       end
 
       it 'has appearance setting' do
         expect(config['theme_config']).to have_key('appearance'),
-          'theme_config.appearance is required'
+                                          'theme_config.appearance is required'
       end
     end
   end
@@ -88,7 +88,7 @@ RSpec.describe 'Essential Files' do
   ESSENTIAL_FILES.each do |file|
     it "has #{file}" do
       expect(File.exist?(File.join(Dir.pwd, file))).to be(true),
-        "Essential file '#{file}' not found"
+                                                       "Essential file '#{file}' not found"
     end
   end
 
@@ -97,7 +97,7 @@ RSpec.describe 'Essential Files' do
 
     it 'has User-agent directive' do
       expect(content).to include('User-agent'),
-        'robots.txt should have User-agent directive'
+                         'robots.txt should have User-agent directive'
     end
   end
 
@@ -111,12 +111,12 @@ RSpec.describe 'Essential Files' do
 
     it 'has name' do
       expect(manifest).to have_key('name'),
-        'webmanifest should have name'
+                          'webmanifest should have name'
     end
 
     it 'has icons' do
       expect(manifest).to have_key('icons'),
-        'webmanifest should have icons'
+                          'webmanifest should have icons'
     end
   end
 end

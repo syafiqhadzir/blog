@@ -1,74 +1,73 @@
 title: Syafiq Hadzir # name of the site
 author:
-  name: Syafiq Hadzir # name of site's author
-  url: https://syafiqhadzir.dev # URL of site's author
-  twitter: syafiqhadzir_ # twitter username
+    name: Syafiq Hadzir # name of site's author
+    url: https://syafiqhadzir.dev # URL of site's author
+    twitter: syafiqhadzir_ # twitter username
 email: syafiqhadzir@live.com.my # email of site's author
 url: https://syafiqhadzir.dev/blog/ # root address of the site
-baseurl: "" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
+baseurl: '' # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
-  Just another QA engineer who codes and writes.
+    Just another QA engineer who codes and writes.
 
 permalink: /posts/:year/:month/:day/:slug.html
 
-favicon: "logo.png" # name+extension of favicon (which must be put on the root folder)
+favicon: 'logo.png' # name+extension of favicon (which must be put on the root folder)
 
 remote_theme: riggraz/no-style-please
 
 theme_config:
-  appearance: "auto" # can be "light", "dark" or "auto"
-  back_home_text: ".." # customize text for homepage link in post layout
-  date_format: "%Y-%m-%d" # customize how date is formatted
-  show_description: true # show blog description in home page
+    appearance: 'auto' # can be "light", "dark" or "auto"
+    back_home_text: '..' # customize text for homepage link in post layout
+    date_format: '%Y-%m-%d' # customize how date is formatted
+    show_description: true # show blog description in home page
 
 plugins:
-  - jekyll-feed
-  - jekyll-github-metadata
-  - jekyll-seo-tag
-  - jekyll-sitemap
+    - jekyll-feed
+    - jekyll-github-metadata
+    - jekyll-seo-tag
+    - jekyll-sitemap
 
 # SEO and Social Sharing Defaults
 twitter:
-  username: syafiqhadzir_
-  card: summary
+    username: syafiqhadzir_
+    card: summary
 
 social:
-  name: Syafiq Hadzir
-  links:
-    - https://twitter.com/syafiqhadzir_
-    - https://github.com/SyafiqHadzir
+    name: Syafiq Hadzir
+    links:
+        - https://twitter.com/syafiqhadzir_
+        - https://github.com/SyafiqHadzir
 
 # Default values for posts
 defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: post
-      image: /logo.png
-      keywords: "QA, software testing, quality assurance, automation"
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: page
+    - scope:
+          path: ''
+          type: 'posts'
+      values:
+          layout: post
+          image: /logo.png
+          keywords: 'QA, software testing, quality assurance, automation'
+    - scope:
+          path: ''
+          type: 'pages'
+      values:
+          layout: page
 
 # Exclude from build
 exclude:
-  - Gemfile
-  - Gemfile.lock
-  - Rakefile
-  - vendor
-  - spec
-  - node_modules
-  - .bundle
-  - .git
-  - "*.gemspec"
-  - README.md
-  - CHANGELOG.md
-  - SECURITY.md
-  - e2e
-  - playwright.config.ts
-  - package.json
-  - package-lock.json
-
+    - Gemfile
+    - Gemfile.lock
+    - Rakefile
+    - vendor
+    - spec
+    - node_modules
+    - .bundle
+    - .git
+    - '*.gemspec'
+    - README.md
+    - CHANGELOG.md
+    - SECURITY.md
+    - e2e
+    - playwright.config.ts
+    - package.json
+    - package-lock.json

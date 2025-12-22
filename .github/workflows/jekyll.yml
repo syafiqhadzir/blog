@@ -4,222 +4,247 @@
 name: CI/CD Pipeline
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - '**.md'
-      - 'LICENSE'
-      - '.gitignore'
-      - 'humans.txt'
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
-  schedule:
-    # Weekly security check on Sundays at 00:00 UTC
-    - cron: '0 0 * * 0'
+    push:
+        branches: [main]
+        paths-ignore:
+            - '**.md'
+            - 'LICENSE'
+            - '.gitignore'
+            - 'humans.txt'
+    pull_request:
+        branches: [main]
+    workflow_dispatch:
+    schedule:
+        # Weekly security check on Sundays at 00:00 UTC
+        - cron: '0 0 * * 0'
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-  security-events: write
+    contents: read
+    pages: write
+    id-token: write
+    security-events: write
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 env:
-  RUBY_VERSION: '3.4.1'
-  NODE_VERSION: '22'
-  JEKYLL_ENV: production
+    RUBY_VERSION: '3.4.1'
+    NODE_VERSION: '22'
+    JEKYLL_ENV: production
 
 jobs:
-  # Lint and validate configuration
-  lint:
-    name: Lint & Validate
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+    # Lint and validate configuration
+    # Lint and validate configuration
+    lint:
+        name: Lint & Validate
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+                  cache: 'npm'
 
-      - name: Validate YAML
-        run: |
-          echo "Validating _config.yml..."
-          ruby -ryaml -e "YAML.safe_load(File.read('_config.yml'))"
-          echo "Validating _data/menu.yml..."
-          ruby -ryaml -e "YAML.safe_load(File.read('_data/menu.yml'))"
-          echo "✅ YAML validation passed"
+            - name: Install Node dependencies
+              run: npm ci
 
-      - name: Validate JSON
-        run: |
-          echo "Validating site.webmanifest..."
-          ruby -rjson -e "JSON.parse(File.read('site.webmanifest'))"
-          echo "✅ JSON validation passed"
+            - name: TypeScript check
+              run: npm run typecheck
 
-  # Unit tests with RSpec
-  test:
-    name: Unit Tests
-    runs-on: ubuntu-latest
-    needs: lint
-    timeout-minutes: 10
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+            - name: ESLint check
+              run: npm run lint:ts
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
+            - name: Prettier check
+              run: npm run format:check
 
-      - name: Run RSpec
-        run: bundle exec rspec spec/unit --format documentation --format json --out test-results.json
+            - name: Markdown lint
+              run: npm run lint:md
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: rspec-results
-          path: test-results.json
-          retention-days: 7
+            - name: Setup Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: ${{ env.RUBY_VERSION }}
+                  bundler-cache: true
 
-  # Build and validate
-  build:
-    name: Build & Validate
-    runs-on: ubuntu-latest
-    needs: test
-    timeout-minutes: 15
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+            - name: RuboCop check
+              run: bundle exec rubocop --parallel
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
+            - name: Validate YAML
+              run: |
+                  echo "Validating _config.yml..."
+                  ruby -ryaml -e "YAML.safe_load(File.read('_config.yml'))"
+                  echo "Validating _data/menu.yml..."
+                  ruby -ryaml -e "YAML.safe_load(File.read('_data/menu.yml'))"
+                  echo "✅ YAML validation passed"
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
+            - name: Validate JSON
+              run: |
+                  echo "Validating site.webmanifest..."
+                  ruby -rjson -e "JSON.parse(File.read('site.webmanifest'))"
+                  echo "✅ JSON validation passed"
 
-      - name: Cache Jekyll build
-        uses: actions/cache@v4
-        with:
-          path: |
-            .jekyll-cache
-            _site
-          key: jekyll-${{ hashFiles('**/*.md', '**/*.html', '_config.yml') }}
-          restore-keys: |
-            jekyll-
+    # Unit tests with RSpec
+    test:
+        name: Unit Tests
+        runs-on: ubuntu-latest
+        needs: lint
+        timeout-minutes: 10
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Build Jekyll
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+            - name: Setup Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: ${{ env.RUBY_VERSION }}
+                  bundler-cache: true
 
-      - name: Run HTMLProofer
-        run: |
-          bundle exec htmlproofer ./_site \
-            --disable-external \
-            --allow-missing-href \
-            --ignore-urls "/^#/,/^mailto:/,/^javascript:/" \
-            --checks Links,Images,Scripts
+            - name: Run RSpec
+              run: bundle exec rspec spec/unit --format documentation --format json --out test-results.json
 
-      - name: Validate AMP
-        run: |
-          echo "Checking AMP attribute..."
-          grep -q "⚡\|amp" ./_site/index.html && echo "✅ Homepage is AMP valid"
+            - name: Upload test results
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: rspec-results
+                  path: test-results.json
+                  retention-days: 7
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+    # Build and validate
+    build:
+        name: Build & Validate
+        runs-on: ubuntu-latest
+        needs: test
+        timeout-minutes: 15
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-  # E2E tests with Playwright (optional, runs on main only)
-  e2e:
-    name: E2E Tests
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    timeout-minutes: 20
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+            - name: Setup Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: ${{ env.RUBY_VERSION }}
+                  bundler-cache: true
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
+            - name: Setup Pages
+              id: pages
+              uses: actions/configure-pages@v5
 
-      - name: Install dependencies
-        run: npm install
+            - name: Cache Jekyll build
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      .jekyll-cache
+                      _site
+                  key: jekyll-${{ hashFiles('**/*.md', '**/*.html', '_config.yml') }}
+                  restore-keys: |
+                      jekyll-
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+            - name: Build Jekyll
+              run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
+            - name: Run HTMLProofer
+              run: |
+                  bundle exec htmlproofer ./_site \
+                    --disable-external \
+                    --allow-missing-href \
+                    --ignore-urls "/^#/,/^mailto:/,/^javascript:/" \
+                    --checks Links,Images,Scripts
 
-      - name: Run Playwright tests
-        run: npx playwright test --project=chromium
-        env:
-          BASE_URL: http://localhost:4000/
+            - name: Validate AMP
+              run: |
+                  echo "Checking AMP attribute..."
+                  grep -q "⚡\|amp" ./_site/index.html && echo "✅ Homepage is AMP valid"
 
-      - name: Upload test report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 7
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
 
-  # Security audit
-  security:
-    name: Security Audit
-    runs-on: ubuntu-latest
-    needs: lint
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    timeout-minutes: 10
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    # E2E tests with Playwright (optional, runs on main only)
+    e2e:
+        name: E2E Tests
+        runs-on: ubuntu-latest
+        needs: build
+        if: github.ref == 'refs/heads/main'
+        timeout-minutes: 20
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
 
-      - name: Run bundle audit
-        run: |
-          gem install bundler-audit
-          bundle audit check --update
+            - name: Install dependencies
+              run: npm install
 
-  # Deploy to GitHub Pages
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    needs: [build, e2e]
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    timeout-minutes: 10
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+            - name: Install Playwright browsers
+              run: npx playwright install --with-deps chromium
 
-      - name: Deployment summary
-        run: |
-          echo "🚀 Deployed to: ${{ steps.deployment.outputs.page_url }}"
-          echo "📅 Time: $(date -u)"
+            - name: Setup Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: ${{ env.RUBY_VERSION }}
+                  bundler-cache: true
+
+            - name: Run Playwright tests
+              run: npx playwright test --project=chromium
+              env:
+                  BASE_URL: http://localhost:4000/
+
+            - name: Upload test report
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: playwright-report
+                  path: playwright-report/
+                  retention-days: 7
+
+    # Security audit
+    security:
+        name: Security Audit
+        runs-on: ubuntu-latest
+        needs: lint
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        timeout-minutes: 10
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: ${{ env.RUBY_VERSION }}
+                  bundler-cache: true
+
+            - name: Run bundle audit
+              run: |
+                  gem install bundler-audit
+                  bundle audit check --update
+
+    # Deploy to GitHub Pages
+    deploy:
+        name: Deploy
+        runs-on: ubuntu-latest
+        needs: [build, e2e]
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        timeout-minutes: 10
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
+
+            - name: Deployment summary
+              run: |
+                  echo "🚀 Deployed to: ${{ steps.deployment.outputs.page_url }}"
+                  echo "📅 Time: $(date -u)"

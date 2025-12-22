@@ -4,95 +4,95 @@
 name: Lighthouse CI
 
 on:
-  pull_request:
-    branches: [main]
-  schedule:
-    # Weekly on Mondays at 00:00 UTC
-    - cron: '0 0 * * 1'
-  workflow_dispatch:
+    pull_request:
+        branches: [main]
+    schedule:
+        # Weekly on Mondays at 00:00 UTC
+        - cron: '0 0 * * 1'
+    workflow_dispatch:
 
 permissions:
-  contents: read
-  pull-requests: write
+    contents: read
+    pull-requests: write
 
 env:
-  RUBY_VERSION: '3.4.1'
-  NODE_VERSION: '22'
+    RUBY_VERSION: '3.4.1'
+    NODE_VERSION: '22'
 
 jobs:
-  lighthouse:
-    name: Lighthouse Audit
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    lighthouse:
+        name: Lighthouse Audit
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
+            - name: Setup Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: ${{ env.RUBY_VERSION }}
+                  bundler-cache: true
 
-      - name: Build Jekyll site
-        run: bundle exec jekyll build
-        env:
-          JEKYLL_ENV: production
+            - name: Build Jekyll site
+              run: bundle exec jekyll build
+              env:
+                  JEKYLL_ENV: production
 
-      - name: Install Lighthouse CI
-        run: npm install -g @lhci/cli
+            - name: Install Lighthouse CI
+              run: npm install -g @lhci/cli
 
-      - name: Run Lighthouse CI
-        run: lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+            - name: Run Lighthouse CI
+              run: lhci autorun
+              env:
+                  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
-      - name: Upload Lighthouse report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: lighthouse-report
-          path: .lighthouseci/
-          retention-days: 14
+            - name: Upload Lighthouse report
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: lighthouse-report
+                  path: .lighthouseci/
+                  retention-days: 14
 
-      - name: Comment on PR
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            const path = '.lighthouseci/manifest.json';
-            
-            if (!fs.existsSync(path)) return;
-            
-            const manifest = JSON.parse(fs.readFileSync(path, 'utf8'));
-            const results = manifest[0].summary;
-            
-            const formatScore = (score) => {
-              const percent = Math.round(score * 100);
-              const emoji = percent >= 90 ? '🟢' : percent >= 50 ? '🟡' : '🔴';
-              return `${emoji} ${percent}`;
-            };
-            
-            const body = `## 🔦 Lighthouse Report
-            
-            | Category | Score |
-            |----------|-------|
-            | Performance | ${formatScore(results.performance)} |
-            | Accessibility | ${formatScore(results.accessibility)} |
-            | Best Practices | ${formatScore(results['best-practices'])} |
-            | SEO | ${formatScore(results.seo)} |
-            
-            [View full report](${manifest[0].url})`;
-            
-            github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body
-            });
+            - name: Comment on PR
+              if: github.event_name == 'pull_request'
+              uses: actions/github-script@v7
+              with:
+                  script: |
+                      const fs = require('fs');
+                      const path = '.lighthouseci/manifest.json';
+
+                      if (!fs.existsSync(path)) return;
+
+                      const manifest = JSON.parse(fs.readFileSync(path, 'utf8'));
+                      const results = manifest[0].summary;
+
+                      const formatScore = (score) => {
+                        const percent = Math.round(score * 100);
+                        const emoji = percent >= 90 ? '🟢' : percent >= 50 ? '🟡' : '🔴';
+                        return `${emoji} ${percent}`;
+                      };
+
+                      const body = `## 🔦 Lighthouse Report
+
+                      | Category | Score |
+                      |----------|-------|
+                      | Performance | ${formatScore(results.performance)} |
+                      | Accessibility | ${formatScore(results.accessibility)} |
+                      | Best Practices | ${formatScore(results['best-practices'])} |
+                      | SEO | ${formatScore(results.seo)} |
+
+                      [View full report](${manifest[0].url})`;
+
+                      github.rest.issues.createComment({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        issue_number: context.issue.number,
+                        body
+                      });

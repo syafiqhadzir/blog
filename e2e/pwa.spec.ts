@@ -9,7 +9,7 @@ test.describe('PWA Features', () => {
         await expect(manifest).toHaveCount(1);
     });
 
-    test('manifest is valid JSON', async ({ page, request }) => {
+    test('manifest is valid JSON', async ({ request }) => {
         const response = await request.get('/site.webmanifest');
         expect(response.ok()).toBeTruthy();
 

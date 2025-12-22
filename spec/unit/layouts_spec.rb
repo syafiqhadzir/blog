@@ -4,14 +4,14 @@ require_relative '../spec_helper'
 
 RSpec.describe 'Layouts' do
   # Required layouts for the site
-  REQUIRED_LAYOUTS = %w[default.html post.html page.html home.html archive.html].freeze
+  let(:required_layouts) { %w[default.html post.html page.html home.html archive.html] }
 
   describe 'Required layouts' do
     it 'all required layouts exist' do
-      REQUIRED_LAYOUTS.each do |layout|
+      required_layouts.each do |layout|
         layout_path = File.join(layouts_dir, layout)
         expect(File.exist?(layout_path)).to be(true),
-          "Required layout '#{layout}' not found"
+                                            "Required layout '#{layout}' not found"
       end
     end
   end
@@ -26,7 +26,7 @@ RSpec.describe 'Layouts' do
 
         content = File.read(layout_file)
         expect(content).to match(/\A---\s*\n.*?\n---/m),
-          "#{layout_name}: Missing front matter"
+                           "#{layout_name}: Missing front matter"
       end
     end
   end
@@ -35,13 +35,13 @@ RSpec.describe 'Layouts' do
     it 'default.html includes head.html' do
       content = File.read(File.join(layouts_dir, 'default.html'))
       expect(content).to include('include head.html'),
-        'default.html should include head.html'
+                         'default.html should include head.html'
     end
 
     it 'post.html extends default layout' do
       content = File.read(File.join(layouts_dir, 'post.html'))
       expect(content).to include('layout: default'),
-        'post.html should extend default layout'
+                         'post.html should extend default layout'
     end
 
     it 'layouts contain content placeholder or extend default' do
@@ -53,7 +53,7 @@ RSpec.describe 'Layouts' do
         content = File.read(layout_file)
         has_content = content.include?('{{ content }}') || content.include?('layout: default')
         expect(has_content).to be(true),
-          "#{File.basename(layout_file)}: Should have {{ content }} or extend default layout"
+                               "#{File.basename(layout_file)}: Should have {{ content }} or extend default layout"
       end
     end
   end
@@ -61,14 +61,14 @@ end
 
 RSpec.describe 'Includes' do
   # Required includes for the site
-  REQUIRED_INCLUDES = %w[head.html back_link.html menu_item.html post_list.html].freeze
+  let(:required_includes) { %w[head.html back_link.html menu_item.html post_list.html] }
 
   describe 'Required includes' do
     it 'all required includes exist' do
-      REQUIRED_INCLUDES.each do |include_file|
+      required_includes.each do |include_file|
         include_path = File.join(includes_dir, include_file)
         expect(File.exist?(include_path)).to be(true),
-          "Required include '#{include_file}' not found"
+                                             "Required include '#{include_file}' not found"
       end
     end
   end
@@ -77,19 +77,19 @@ RSpec.describe 'Includes' do
     it 'head.html has meta charset' do
       content = File.read(File.join(includes_dir, 'head.html'))
       expect(content).to include('charset'),
-        'head.html should define character encoding'
+                         'head.html should define character encoding'
     end
 
     it 'head.html has viewport meta' do
       content = File.read(File.join(includes_dir, 'head.html'))
       expect(content).to include('viewport'),
-        'head.html should define viewport for responsive design'
+                         'head.html should define viewport for responsive design'
     end
 
     it 'head.html includes AMP script' do
       content = File.read(File.join(includes_dir, 'head.html'))
       expect(content).to include('cdn.ampproject.org'),
-        'head.html should include AMP JavaScript'
+                         'head.html should include AMP JavaScript'
     end
   end
 end

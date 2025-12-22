@@ -6,7 +6,8 @@ test.describe('AMP Validation', () => {
 
         // Check for AMP attribute on html tag
         const html = page.locator('html');
-        const ampAttr = await html.getAttribute('⚡') ?? await html.getAttribute('amp');
+        // eslint-disable-next-line playwright/no-conditional-in-test
+        const ampAttr = (await html.getAttribute('⚡')) ?? (await html.getAttribute('amp'));
         expect(ampAttr !== null).toBeTruthy();
     });
 
@@ -50,7 +51,8 @@ test.describe('AMP Validation', () => {
 
         // Check for AMP attribute
         const html = page.locator('html');
-        const ampAttr = await html.getAttribute('⚡') ?? await html.getAttribute('amp');
+        // eslint-disable-next-line playwright/no-conditional-in-test
+        const ampAttr = (await html.getAttribute('⚡')) ?? (await html.getAttribute('amp'));
         expect(ampAttr !== null).toBeTruthy();
     });
 

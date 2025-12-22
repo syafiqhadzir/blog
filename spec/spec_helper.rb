@@ -62,7 +62,7 @@ module JekyllTestHelpers
   end
 
   def load_yaml(file_path)
-    YAML.safe_load(File.read(file_path), permitted_classes: [Date, Time])
+    YAML.safe_load_file(file_path, permitted_classes: [Date, Time])
   end
 end
 

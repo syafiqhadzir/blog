@@ -1,0 +1,10 @@
+_site/
+vendor/
+node_modules/
+Gemfile.lock
+package-lock.json
+playwright-report/
+_includes/
+_layouts/
+*.md
+sw.js

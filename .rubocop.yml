@@ -1,0 +1,27 @@
+inherit_from: .rubocop_todo.yml
+
+plugins:
+    - rubocop-rspec
+
+AllCops:
+    NewCops: enable
+    Exclude:
+        - 'vendor/**/*'
+        - '_site/**/*'
+        - 'node_modules/**/*'
+        - 'bin/**/*'
+        - 'Gemfile.lock'
+
+Style/Documentation:
+    Enabled: false
+
+Style/FrozenStringLiteralComment:
+    Enabled: true
+
+Metrics/BlockLength:
+    Exclude:
+        - 'spec/**/*'
+        - 'Rakefile'
+
+Layout/LineLength:
+    Max: 120

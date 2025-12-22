@@ -3,7 +3,7 @@
 require 'rake'
 
 # Default task
-task default: ['test:unit']
+task default: ['lint:all', 'test:unit']
 
 namespace :build do
   desc 'Build Jekyll site'
@@ -23,7 +23,7 @@ end
 
 namespace :test do
   desc 'Run all tests'
-  task all: ['build:site', :unit, :integration]
+  task all: ['lint:all', 'build:site', :unit, :integration]
 
   desc 'Run unit tests (RSpec)'
   task :unit do
@@ -35,7 +35,15 @@ namespace :test do
   desc 'Run integration tests (HTMLProofer)'
   task integration: ['build:site'] do
     puts '🔍 Running HTMLProofer integration tests...'
-    sh 'bundle exec ruby -e "require \"html-proofer\"; HTMLProofer.check_directory(\"./_site\", { assume_extension: \".html\", disable_external: true, enforce_https: false, checks: [\"Links\", \"Images\", \"Scripts\"], allow_missing_href: true, ignore_urls: [/^#/, /^mailto:/, /^javascript:/] }).run"'
+    options = {
+      assume_extension: '.html',
+      disable_external: true,
+      enforce_https: false,
+      checks: %w[Links Images Scripts],
+      allow_missing_href: true,
+      ignore_urls: [/^#/, /^mailto:/, /^javascript:/]
+    }
+    sh "bundle exec ruby -e \"require 'html-proofer'; HTMLProofer.check_directory('./_site', #{options}).run\""
     puts '✅ Integration tests passed!'
   end
 
@@ -49,9 +57,7 @@ namespace :test do
       doc = Nokogiri::HTML(File.read(file))
       html = doc.at_css('html')
 
-      unless html && (html['⚡'] || html['amp'])
-        errors << "#{file}: Missing AMP attribute"
-      end
+      errors << "#{file}: Missing AMP attribute" unless html && (html['⚡'] || html['amp'])
     end
 
     if errors.empty?
@@ -69,4 +75,38 @@ task test: ['test:unit']
 desc 'Serve Jekyll site locally'
 task :serve do
   sh 'bundle exec jekyll serve --livereload'
+end
+
+namespace :lint do
+  desc 'Run all linters'
+  task all: %i[ruby yaml json]
+
+  desc 'Run RuboCop'
+  task :ruby do
+    puts '🔍 Running RuboCop...'
+    sh 'bundle exec rubocop --parallel'
+    puts '✅ RuboCop passed!'
+  end
+
+  desc 'Validate YAML files'
+  task :yaml do
+    puts '🔍 Validating YAML files...'
+    require 'yaml'
+    %w[_config.yml _data/menu.yml].each do |file|
+      YAML.safe_load_file(file)
+      puts "  ✅ #{file}"
+    end
+    puts '✅ YAML validation passed!'
+  end
+
+  desc 'Validate JSON files'
+  task :json do
+    puts '🔍 Validating JSON files...'
+    require 'json'
+    %w[site.webmanifest].each do |file|
+      JSON.parse(File.read(file))
+      puts "  ✅ #{file}"
+    end
+    puts '✅ JSON validation passed!'
+  end
 end
