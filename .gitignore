@@ -24,6 +24,9 @@ test-results/
 playwright-report/
 playwright/.cache/
 
+# Lighthouse CI
+.lighthouseci/
+
 # Node.js (if using npm for tooling)
 node_modules/
 package-lock.json
