@@ -2,13 +2,15 @@
 layout: default
 title: Home
 ---
-<header>
+<header role="banner" aria-label="Site header">
   <h1>{{ site.title }}</h1>
   {%-if site.theme_config.show_description-%}
   <p>{{ site.description }}</p>
   {%-endif-%}
 </header>
 
-{%-include menu_item.html collection=site.data.menu.entries-%}
+<nav role="navigation" aria-label="Site navigation">
+  {%-include menu_item.html collection=site.data.menu.entries-%}
+</nav>
 
 {{ content }}

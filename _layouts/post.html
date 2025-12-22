@@ -4,15 +4,21 @@ layout: default
 
 {%-include back_link.html-%}
 
-<article>
-  <p class="post-meta">
-    <time datetime="{{ page.date }}">{{ page.date | date: site.theme_config.date_format }}</time>
-  </p>
+<article role="article" aria-labelledby="post-title">
+  <header class="post-header">
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}"
+        aria-label="Published on {{ page.date | date: site.theme_config.date_format }}">
+        {{ page.date | date: site.theme_config.date_format }}
+      </time>
+    </p>
+    <h1 id="post-title">{{ page.title }}</h1>
+    <p>Author: {{ site.author.name }}<br />Email: {{ site.email }}<br />GPG Key: {{ page.gpgkey }}</p>
+  </header>
 
-  <h1>{{ page.title }}</h1>
-  <p>Author: {{ site.author.name }}<br />Email: {{ site.email }}<br />GPG Key: {{ page.gpgkey }}</p>
-
-  {{ content }}
+  <div class="post-content">
+    {{ content }}
+  </div>
 </article>
 
 <script type="application/ld+json">

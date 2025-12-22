@@ -1,8 +1,8 @@
-<ul>
+<ul role="list">
   {%-for item in include.collection-%}
-  <li>
+  <li role="listitem">
     {%- if item.url -%}
-    <a href="{{ item.url }}">{{ item.title }}</a>
+    <a href="{{ item.url }}" aria-label="{{ item.title }}">{{ item.title }}</a>
     {%- else -%}
     {{ item.title }}
     {%- endif -%}

@@ -27,16 +27,42 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
-  build:
+  # Test job - runs unit and integration tests
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4' # Matches .ruby-version
+          ruby-version: '3.4.1'
+          bundler-cache: true
+      - name: Run Unit Tests
+        run: bundle exec rspec spec/unit --format documentation
+      - name: Build for Integration Tests
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+      - name: Run HTMLProofer
+        run: |
+          bundle exec htmlproofer ./_site \
+            --disable-external \
+            --allow-missing-href \
+            --ignore-urls "/^#/,/^mailto:/,/^javascript:/" \
+            --checks Links,Images,Scripts
+
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.1' # Matches .ruby-version
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
       - name: Setup Pages
@@ -63,3 +89,4 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
