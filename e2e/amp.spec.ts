@@ -59,8 +59,8 @@ test.describe('AMP Validation', () => {
     test('has Schema.org structured data', async ({ page }) => {
         await page.goto('/');
 
-        // Check for JSON-LD script
+        // Check for JSON-LD script (page may have multiple structured data blocks)
         const jsonLd = page.locator('script[type="application/ld+json"]');
-        await expect(jsonLd).toHaveCount(1);
+        expect(await jsonLd.count()).toBeGreaterThanOrEqual(1);
     });
 });

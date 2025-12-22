@@ -17,8 +17,8 @@ test.describe('Navigation', () => {
     test('can navigate to archive', async ({ page }) => {
         await page.goto('/');
 
-        // Click archive link
-        await page.click('text=Archive');
+        // Click archive link (actual text is "See archive...")
+        await page.click('text=See archive...');
 
         // Verify archive page
         await expect(page).toHaveURL(/archive/);
@@ -28,8 +28,8 @@ test.describe('Navigation', () => {
     test('can navigate to about', async ({ page }) => {
         await page.goto('/');
 
-        // Click about link
-        await page.click('text=About');
+        // Click about link (actual text is "Read more..." under About section)
+        await page.click('a[href="about.html"]');
 
         // Verify about page
         await expect(page).toHaveURL(/about/);

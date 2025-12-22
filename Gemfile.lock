@@ -218,6 +218,7 @@ DEPENDENCIES
   kramdown-parser-gfm
   logger
   ostruct
+  rexml
   rspec (~> 3.13)
   rspec_junit_formatter (~> 0.6)
   rubocop (~> 1.69)
