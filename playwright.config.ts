@@ -9,7 +9,7 @@ export default defineConfig({
     reporter: 'html',
 
     use: {
-        baseURL: process.env.BASE_URL || 'http://localhost:4000/blog/',
+        baseURL: process.env.BASE_URL || 'http://localhost:4000/',
         trace: 'on-first-retry',
         screenshot: 'only-on-failure',
     },
@@ -31,8 +31,10 @@ export default defineConfig({
 
     webServer: {
         command: 'bundle exec jekyll serve --port 4000',
-        url: 'http://localhost:4000/blog/',
+        url: 'http://localhost:4000/',
         reuseExistingServer: !process.env.CI,
-        timeout: 120000,
+        timeout: 180000,
+        stdout: 'pipe',
+        stderr: 'pipe',
     },
 });
