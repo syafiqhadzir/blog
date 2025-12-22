@@ -1,0 +1,11 @@
+---
+layout: null
+permalink: /.well-known/security.txt
+---
+# Security Policy for Syafiq Hadzir Blog
+# https://securitytxt.org/
+
+Contact: mailto:syafiqhadzir@live.com.my
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://syafiqhadzir.dev/blog/.well-known/security.txt

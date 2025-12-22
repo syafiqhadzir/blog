@@ -11,15 +11,19 @@ layout: default
         aria-label="Published on {{ page.date | date: site.theme_config.date_format }}">
         {{ page.date | date: site.theme_config.date_format }}
       </time>
+      · {%- include reading_time.html content=content -%}
     </p>
     <h1 id="post-title">{{ page.title }}</h1>
-    <p>Author: {{ site.author.name }}<br />Email: {{ site.email }}<br />GPG Key: {{ page.gpgkey }}</p>
+    <p>Author: {{ site.author.name }}<br />Email: {{ site.email }}{%- if page.gpgkey -%}<br />GPG Key: {{ page.gpgkey
+      }}{%- endif -%}</p>
   </header>
 
   <div class="post-content">
     {{ content }}
   </div>
 </article>
+
+{%- include related_posts.html limit=3 -%}
 
 <script type="application/ld+json">
 {
