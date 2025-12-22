@@ -15,7 +15,7 @@ export default tseslint.config(
 
     // Node.js config files
     {
-        files: ['lighthouserc.js', '*.config.js'],
+        files: ['lighthouserc.js', 'lighthouserc.cjs', '*.config.js', '**/*.cjs'],
         languageOptions: {
             globals: {
                 module: 'readonly',
