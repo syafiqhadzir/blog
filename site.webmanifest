@@ -4,23 +4,92 @@
   "description": "Just another QA engineer who codes and writes.",
   "start_url": "/blog/",
   "id": "/blog/",
+  "scope": "/blog/",
   "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "browser"
+  ],
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "orientation": "any",
   "icons": [
     {
-      "src": "/blog/icons/icon-192.png",
+      "src": "/blog/favicons/android-chrome-36x36.png",
+      "sizes": "36x36",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/blog/favicons/android-chrome-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/blog/favicons/android-chrome-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/blog/favicons/android-chrome-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/blog/favicons/android-chrome-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/blog/favicons/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/blog/icons/icon-512.png",
+      "src": "/blog/favicons/android-chrome-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/blog/favicons/android-chrome-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/blog/favicons/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
-  "categories": ["blog", "technology"]
+  "shortcuts": [
+    {
+      "name": "All Posts",
+      "short_name": "Archive",
+      "url": "/blog/archive.html",
+      "description": "View all blog posts"
+    },
+    {
+      "name": "About",
+      "short_name": "About",
+      "url": "/blog/about.html",
+      "description": "About the author"
+    }
+  ],
+  "categories": [
+    "blog",
+    "technology",
+    "software",
+    "testing"
+  ],
+  "lang": "en-GB",
+  "dir": "ltr"
 }

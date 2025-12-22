@@ -9,3 +9,21 @@ permalink: /404.html
     <p>Page not found. The page you're looking for doesn't exist or has been moved.</p>
     <p><a href="{{ '/' | relative_url }}" aria-label="Return to homepage">← Return to homepage</a></p>
 </article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Page Not Found",
+  "description": "The requested page could not be found.",
+  "url": "{{ page.url | absolute_url }}",
+  "isAccessibleForFree": true,
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ '/' | absolute_url }}"},
+      {"@type": "ListItem", "position": 2, "name": "404 Error"}
+    ]
+  }
+}
+</script>

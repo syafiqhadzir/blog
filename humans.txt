@@ -1,0 +1,25 @@
+---
+layout: null
+permalink: /humans.txt
+---
+/* TEAM */
+Author: {{ site.author.name }}
+Site: {{ site.author.url }}
+Twitter: @{{ site.author.twitter }}
+Location: Malaysia
+
+/* SITE */
+Last update: {{ 'now' | date: '%Y-%m-%d' }}
+Language: English (British)
+Doctype: HTML5 AMP
+Standards: WCAG 2.1 AA, Schema.org
+
+/* TECHNOLOGY */
+Platform: Jekyll {{ jekyll.version }}
+Hosting: GitHub Pages, Cloudflare
+Framework: AMP (Accelerated Mobile Pages)
+Testing: RSpec, HTMLProofer
+
+/* THANKS */
+Theme: no-style-please by riggraz
+Icons: Generated with modern design tools

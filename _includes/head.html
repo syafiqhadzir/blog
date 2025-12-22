@@ -6,10 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <title>{{ page.title | default: site.title }} | {{ site.title }}</title>
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
-  <meta name="keywords" content="Syafiq Hadzir">
-  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="{{ page.keywords | default: 'QA, software testing, quality assurance, automation' }}">
+  <meta name="author" content="{{ site.author.name }}">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   {%- feed_meta -%}
+  <link rel="author" href="{{ '/humans.txt' | relative_url }}" type="text/plain">
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}">
   <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
   <meta name="theme-color" content="#000000">

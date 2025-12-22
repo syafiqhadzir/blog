@@ -67,4 +67,8 @@ exclude:
   - README.md
   - CHANGELOG.md
   - SECURITY.md
+  - e2e
+  - playwright.config.ts
+  - package.json
+  - package-lock.json
 

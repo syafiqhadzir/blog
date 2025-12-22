@@ -19,6 +19,11 @@ spec/test_results.json
 coverage/
 .rspec_failures
 
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
 # Node.js (if using npm for tooling)
 node_modules/
 package-lock.json
