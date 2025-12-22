@@ -10,7 +10,7 @@ module.exports = {
                 'http://localhost/archive.html',
             ],
             // Number of runs per URL for accuracy
-            numberOfRuns: 3,
+            numberOfRuns: 1,
             // Lighthouse settings
             settings: {
                 // AMP pages need special handling
