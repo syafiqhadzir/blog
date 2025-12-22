@@ -10,40 +10,40 @@
 # Configuration parameters: AllowedMethods.
 # AllowedMethods: enums
 Lint/ConstantDefinitionInBlock:
-  Exclude:
-    - 'spec/unit/config_spec.rb'
-    - 'spec/unit/front_matter_spec.rb'
+    Exclude:
+        - 'spec/unit/config_spec.rb'
+        - 'spec/unit/front_matter_spec.rb'
 
 # Offense count: 4
 # Configuration parameters: IgnoredMetadata.
 RSpec/DescribeClass:
-  Exclude:
-    - '**/spec/features/**/*'
-    - '**/spec/requests/**/*'
-    - '**/spec/routing/**/*'
-    - '**/spec/system/**/*'
-    - '**/spec/views/**/*'
-    - 'spec/unit/config_spec.rb'
-    - 'spec/unit/data_files_spec.rb'
-    - 'spec/unit/front_matter_spec.rb'
+    Exclude:
+        - '**/spec/features/**/*'
+        - '**/spec/requests/**/*'
+        - '**/spec/routing/**/*'
+        - '**/spec/system/**/*'
+        - '**/spec/views/**/*'
+        - 'spec/unit/config_spec.rb'
+        - 'spec/unit/data_files_spec.rb'
+        - 'spec/unit/front_matter_spec.rb'
 
 # Offense count: 10
 # Configuration parameters: CountAsOne.
 RSpec/ExampleLength:
-  Max: 14
+    Max: 14
 
 # Offense count: 3
 RSpec/LeakyConstantDeclaration:
-  Exclude:
-    - 'spec/unit/config_spec.rb'
-    - 'spec/unit/front_matter_spec.rb'
+    Exclude:
+        - 'spec/unit/config_spec.rb'
+        - 'spec/unit/front_matter_spec.rb'
 
 # Offense count: 2
 RSpec/MultipleDescribes:
-  Exclude:
-    - 'spec/unit/config_spec.rb'
-    - 'spec/unit/layouts_spec.rb'
+    Exclude:
+        - 'spec/unit/config_spec.rb'
+        - 'spec/unit/layouts_spec.rb'
 
 # Offense count: 4
 RSpec/MultipleExpectations:
-  Max: 3
+    Max: 3
