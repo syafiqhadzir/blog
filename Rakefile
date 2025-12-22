@@ -84,7 +84,7 @@ namespace :lint do
   desc 'Run RuboCop'
   task :ruby do
     puts '🔍 Running RuboCop...'
-    sh 'bundle exec rubocop --parallel'
+    sh 'bundle exec rubocop'
     puts '✅ RuboCop passed!'
   end
 

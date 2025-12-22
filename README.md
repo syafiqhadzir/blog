@@ -16,7 +16,7 @@
 ## ✨ Features
 
 | Feature | Description |
-|---------|-------------|
+| --------- | ------------- |
 | ⚡ **AMP-First** | All pages are valid AMP for instant loading |
 | 📱 **PWA** | Service worker v3 with offline support |
 | ♿ **WCAG 2.1 AA** | Full accessibility compliance |
@@ -28,7 +28,7 @@
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
-|-------|------------|
+| ------- | ------------ |
 | Runtime | Ruby 3.4.1, Node.js 20 |
 | Generator | Jekyll 4.4.1 |
 | Framework | AMP HTML |
@@ -81,7 +81,7 @@ blog/
 ## 🧪 Testing
 
 | Level | Tool | Tests |
-|-------|------|-------|
+| ------- | ------ | ------- |
 | Unit | RSpec | 58 |
 | Integration | HTMLProofer | Links, images |
 | E2E | Playwright | 19 |

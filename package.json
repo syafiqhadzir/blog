@@ -14,7 +14,7 @@
         "lighthouse:collect": "lhci collect --staticDistDir=./_site",
         "lint": "npm run lint:ts && npm run lint:md",
         "lint:ts": "eslint .",
-        "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules' '#vendor' '#_site'",
+        "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#vendor\" \"#_site\"",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "typecheck": "tsc --noEmit",
