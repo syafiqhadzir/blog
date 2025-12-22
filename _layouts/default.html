@@ -2,7 +2,9 @@
 <html ⚡ lang=en-GB>
 {%- include head.html -%}
 
-<body class="{{ site.theme_config.appearance | default: " auto" }}">
+<body class="{{ site.theme_config.appearance | default: " auto" }}"
+  [class]="uiMode ? (uiMode == 'dark' ? 'dark-theme' : 'light-theme') : '{{ site.theme_config.appearance | default: "
+  auto" }}'">
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <main id="main-content" class="page-content" role="main" aria-label="Main content">
     <div class="w">
