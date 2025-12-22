@@ -169,11 +169,6 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
 
-      - name: Start Jekyll server
-        run: |
-          bundle exec jekyll serve --port 4000 &
-          sleep 10
-
       - name: Run Playwright tests
         run: npx playwright test --project=chromium
         env:
