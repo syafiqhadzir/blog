@@ -6,35 +6,35 @@ test.describe('Dark Mode', () => {
     });
 
     test('theme toggle is visible', async ({ page }) => {
-        const toggle = page.locator('button.theme-toggle.icon-moon');
-        // It might be icon-sun if system is dark, so let's just check for the wrapper
+        // Check for the wrapper regardless of current theme
         const wrapper = page.locator('.theme-toggle-wrapper');
         await expect(wrapper).toBeVisible();
     });
 
-    test('switching theme updates body class', async ({ page }) => {
-        // Initial state: ensure we are in a known state (e.g. forced light or defaults)
-        // Since we use CSS media queries for visibility, playwright might need to click the visible one.
+    test('switching from light to dark theme', async ({ page }) => {
+        // Ensure we start in light mode
+        await page.emulateMedia({ colorScheme: 'light' });
+        await page.goto('/');
 
-        // This test assumes default light mode (icon-moon visible)
+        const body = page.locator('body');
+
+        // Click moon icon to switch to dark theme
         const moonIcon = page.locator('button.theme-toggle.icon-moon');
-        if (await moonIcon.isVisible()) {
-            await moonIcon.click();
-            await expect(page.locator('body')).toHaveClass(/dark-theme/);
+        await moonIcon.click();
+        await expect(body).toHaveClass(/dark-theme/);
+    });
 
-            // Now sun icon should be visible (conceptually, though our CSS makes it block/none based on body class too)
-            // But wait, AMP bind updates the class.
+    test('switching from dark to light theme', async ({ page }) => {
+        // Ensure we start in dark mode
+        await page.emulateMedia({ colorScheme: 'dark' });
+        await page.goto('/');
 
-            // Switch back
-            const sunIcon = page.locator('button.theme-toggle.icon-sun');
-            await sunIcon.click();
-            await expect(page.locator('body')).toHaveClass(/light-theme/);
-        } else {
-            // Started in dark mode
-            const sunIcon = page.locator('button.theme-toggle.icon-sun');
-            await sunIcon.click();
-            await expect(page.locator('body')).toHaveClass(/light-theme/);
-        }
+        const body = page.locator('body');
+
+        // Click sun icon to switch to light theme
+        const sunIcon = page.locator('button.theme-toggle.icon-sun');
+        await sunIcon.click();
+        await expect(body).toHaveClass(/light-theme/);
     });
 
     test('has valid accessibility attributes', async ({ page }) => {
