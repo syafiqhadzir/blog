@@ -182,7 +182,7 @@ jobs:
                   fi
 
             - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
+              uses: actions/upload-pages-artifact@v4
 
     # E2E Tests with Playwright
     e2e:
