@@ -67,7 +67,21 @@ exclude:
     - README.md
     - CHANGELOG.md
     - SECURITY.md
+    - CONTRIBUTING.md
     - e2e
     - playwright.config.ts
     - package.json
     - package-lock.json
+    - tsconfig.json
+    - eslint.config.js
+    - stylelint.config.js
+    - lighthouserc.cjs
+    - .prettierrc
+    - .prettierignore
+    - .markdownlint.json
+    - .rubocop.yml
+    - .rubocop_todo.yml
+    - .nvmrc
+    - sonar-project.properties
+    - playwright-report
+    - test-results

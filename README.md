@@ -1,11 +1,14 @@
 # Syafiq Hadzir's Blog
 
 [![CI/CD Pipeline](https://github.com/syafiqhadzir/blog/actions/workflows/jekyll.yml/badge.svg)](https://github.com/syafiqhadzir/blog/actions/workflows/jekyll.yml)
+[![Lighthouse CI](https://github.com/syafiqhadzir/blog/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/syafiqhadzir/blog/actions/workflows/lighthouse.yml)
+[![Nightly Quality](https://github.com/syafiqhadzir/blog/actions/workflows/nightly-quality.yml/badge.svg)](https://github.com/syafiqhadzir/blog/actions/workflows/nightly-quality.yml)
 [![Ruby](https://img.shields.io/badge/Ruby-3.4.1-CC342D?logo=ruby&logoColor=white)](https://www.ruby-lang.org/)
 [![Jekyll](https://img.shields.io/badge/Jekyll-4.4.1-CC0000?logo=jekyll&logoColor=white)](https://jekyllrb.com/)
 [![AMP](https://img.shields.io/badge/AMP-Valid-005AF0?logo=amp&logoColor=white)](https://amp.dev/)
 [![Playwright](https://img.shields.io/badge/Playwright-E2E-45ba4b?logo=playwright&logoColor=white)](https://playwright.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/syafiqhadzir/blog)](https://github.com/syafiqhadzir/blog/commits/main)
 
 > Just another QA engineer who codes and writes.
 

@@ -34,10 +34,9 @@ env:
     JEKYLL_ENV: production
 
 jobs:
-    # Lint and validate configuration
-    # Lint and validate configuration
-    lint:
-        name: Lint & Validate
+    # Node.js Linting & Validation (Parallel)
+    lint-node:
+        name: Lint (Node)
         runs-on: ubuntu-latest
         timeout-minutes: 10
         steps:
@@ -52,7 +51,7 @@ jobs:
                   node-version: ${{ env.NODE_VERSION }}
                   cache: 'npm'
 
-            - name: Install Node dependencies
+            - name: Install dependencies
               run: npm ci
 
             - name: TypeScript check
@@ -66,6 +65,15 @@ jobs:
 
             - name: Markdown lint
               run: npm run lint:md
+
+    # Ruby Linting & Validation (Parallel)
+    lint-ruby:
+        name: Lint (Ruby)
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
             - name: Setup Ruby
               uses: ruby/setup-ruby@v1
@@ -90,11 +98,11 @@ jobs:
                   ruby -rjson -e "JSON.parse(File.read('site.webmanifest'))"
                   echo "✅ JSON validation passed"
 
-    # Unit tests with RSpec
+    # Unit Tests with RSpec
     test:
         name: Unit Tests
         runs-on: ubuntu-latest
-        needs: lint
+        needs: lint-ruby
         timeout-minutes: 10
         steps:
             - name: Checkout
@@ -117,11 +125,11 @@ jobs:
                   path: test-results.json
                   retention-days: 7
 
-    # Build and validate
+    # Build and Validate
     build:
         name: Build & Validate
         runs-on: ubuntu-latest
-        needs: test
+        needs: [test, lint-node]
         timeout-minutes: 15
         steps:
             - name: Checkout
@@ -163,15 +171,25 @@ jobs:
                   echo "Checking AMP attribute..."
                   grep -q "⚡\|amp" ./_site/index.html && echo "✅ Homepage is AMP valid"
 
+            - name: Build size report
+              run: |
+                  echo "## 📊 Build Size" >> $GITHUB_STEP_SUMMARY
+                  TOTAL_SIZE=$(du -sh _site | cut -f1)
+                  echo "**Total:** $TOTAL_SIZE" >> $GITHUB_STEP_SUMMARY
+                  SIZE_BYTES=$(du -sb _site | cut -f1)
+                  if [ "$SIZE_BYTES" -gt 5242880 ]; then
+                    echo "⚠️ Exceeds 5MB budget" >> $GITHUB_STEP_SUMMARY
+                  fi
+
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
 
-    # E2E tests with Playwright (optional, runs on main only)
+    # E2E Tests with Playwright
     e2e:
         name: E2E Tests
         runs-on: ubuntu-latest
         needs: build
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' || github.event_name == 'pull_request'
         timeout-minutes: 20
         steps:
             - name: Checkout
@@ -181,12 +199,13 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: ${{ env.NODE_VERSION }}
+                  cache: 'npm'
 
             - name: Install dependencies
-              run: npm install
+              run: npm ci
 
             - name: Install Playwright browsers
-              run: npx playwright install --with-deps chromium
+              run: npx playwright install --with-deps chromium webkit
 
             - name: Setup Ruby
               uses: ruby/setup-ruby@v1
@@ -195,7 +214,7 @@ jobs:
                   bundler-cache: true
 
             - name: Run Playwright tests
-              run: npx playwright test --project=chromium
+              run: npx playwright test --project=chromium --project=webkit
               env:
                   BASE_URL: http://localhost:4000/
 
@@ -207,11 +226,11 @@ jobs:
                   path: playwright-report/
                   retention-days: 7
 
-    # Security audit
+    # Security Audit
     security:
         name: Security Audit
         runs-on: ubuntu-latest
-        needs: lint
+        needs: lint-ruby
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         timeout-minutes: 10
         steps:

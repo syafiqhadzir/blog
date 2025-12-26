@@ -1,0 +1,53 @@
+# Dependabot Configuration
+# Automated dependency updates for security and maintenance
+
+version: 2
+updates:
+    # Ruby/Bundler dependencies
+    - package-ecosystem: 'bundler'
+      directory: '/'
+      schedule:
+          interval: 'weekly'
+          day: 'monday'
+          time: '09:00'
+          timezone: 'Asia/Kuala_Lumpur'
+      open-pull-requests-limit: 5
+      commit-message:
+          prefix: 'deps(ruby)'
+      labels:
+          - 'dependencies'
+          - 'ruby'
+
+    # npm dependencies
+    - package-ecosystem: 'npm'
+      directory: '/'
+      schedule:
+          interval: 'weekly'
+          day: 'monday'
+          time: '09:00'
+          timezone: 'Asia/Kuala_Lumpur'
+      open-pull-requests-limit: 5
+      commit-message:
+          prefix: 'deps(npm)'
+      labels:
+          - 'dependencies'
+          - 'javascript'
+      ignore:
+          # Ignore major version updates for stability
+          - dependency-name: '*'
+            update-types: ['version-update:semver-major']
+
+    # GitHub Actions
+    - package-ecosystem: 'github-actions'
+      directory: '/'
+      schedule:
+          interval: 'weekly'
+          day: 'monday'
+          time: '09:00'
+          timezone: 'Asia/Kuala_Lumpur'
+      open-pull-requests-limit: 3
+      commit-message:
+          prefix: 'ci(actions)'
+      labels:
+          - 'dependencies'
+          - 'github-actions'

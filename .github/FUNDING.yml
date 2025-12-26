@@ -1,0 +1,7 @@
+# GitHub Funding Configuration
+# Enables the "Sponsor" button on the repository
+
+github: syafiqhadzir
+# ko_fi: syafiqhadzir
+# buy_me_a_coffee: syafiqhadzir
+# custom: ['https://example.com/sponsor']

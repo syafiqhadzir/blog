@@ -1,0 +1,27 @@
+# Code Owners
+# Defines who is responsible for code review and ownership
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything
+* @syafiqhadzir
+
+# CI/CD and GitHub configuration
+/.github/ @syafiqhadzir
+
+# Core Jekyll configuration
+/_config.yml @syafiqhadzir
+/Gemfile @syafiqhadzir
+
+# Layouts and includes (critical for site structure)
+/_layouts/ @syafiqhadzir
+/_includes/ @syafiqhadzir
+
+# Testing infrastructure
+/spec/ @syafiqhadzir
+/e2e/ @syafiqhadzir
+/playwright.config.ts @syafiqhadzir
+
+# Security-sensitive files
+/SECURITY.md @syafiqhadzir
+/robots.txt @syafiqhadzir
+/security.txt @syafiqhadzir

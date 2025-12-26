@@ -10,11 +10,11 @@ module.exports = {
                 'http://localhost/archive.html',
             ],
             // Number of runs per URL for accuracy
-            numberOfRuns: 1,
+            numberOfRuns: 3,
             // Lighthouse settings
             settings: {
                 // AMP pages need special handling
-                emulatedFormFactor: 'mobile',
+                formFactor: 'mobile',
                 throttlingMethod: 'simulate',
                 // Skip tests that don't apply to AMP
                 onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
