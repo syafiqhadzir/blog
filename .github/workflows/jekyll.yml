@@ -30,7 +30,7 @@ concurrency:
 
 env:
     RUBY_VERSION: '3.4.1'
-    NODE_VERSION: '22'
+    NODE_VERSION: '24'
     JEKYLL_ENV: production
 
 jobs:
