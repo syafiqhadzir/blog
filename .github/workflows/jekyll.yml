@@ -186,6 +186,15 @@ jobs:
                   gem install cyclonedx-ruby
                   cyclonedx-ruby -p . -o sbom-ruby.json
 
+            - name: Setup Node.js for SBOM
+              uses: actions/setup-node@v6
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+                  cache: 'npm'
+
+            - name: Install Node.js dependencies for SBOM
+              run: npm ci
+
             - name: Generate SBOM (Node.js)
               run: npx --yes @cyclonedx/cyclonedx-npm --output-file sbom-node.json
 
