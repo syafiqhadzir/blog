@@ -5,5 +5,10 @@
     "trailingComma": "all",
     "printWidth": 100,
     "endOfLine": "lf",
-    "bracketSpacing": true
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "quoteProps": "consistent",
+    "htmlWhitespaceSensitivity": "strict",
+    "proseWrap": "preserve",
+    "embeddedLanguageFormatting": "auto"
 }

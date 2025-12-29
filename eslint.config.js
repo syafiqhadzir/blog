@@ -30,15 +30,22 @@ export default tseslint.config(
         },
     },
 
-    // Playwright specific config
+    // Playwright specific config - Strict testing rules
     {
         ...playwright.configs['flat/recommended'],
         files: ['e2e/**/*.{ts,js}'],
         rules: {
             ...playwright.configs['flat/recommended'].rules,
             'playwright/no-wait-for-timeout': 'error',
-            'playwright/no-skipped-test': 'warn',
+            'playwright/no-skipped-test': 'error',
             'playwright/no-focused-test': 'error',
+            'playwright/no-conditional-in-test': 'error',
+            'playwright/expect-expect': 'error',
+            'playwright/no-force-option': 'warn',
+            'playwright/no-page-pause': 'error',
+            'playwright/prefer-to-be': 'error',
+            'playwright/prefer-to-have-count': 'error',
+            'playwright/prefer-to-have-length': 'error',
         },
     },
 
@@ -47,7 +54,8 @@ export default tseslint.config(
         rules: {
             'no-console': ['warn', { allow: ['warn', 'error'] }],
             '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-            '@typescript-eslint/no-explicit-any': 'warn',
+            '@typescript-eslint/no-explicit-any': 'error',
+            '@typescript-eslint/consistent-type-imports': 'error',
         },
     },
 

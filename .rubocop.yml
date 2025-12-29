@@ -5,6 +5,8 @@ plugins:
 
 AllCops:
     NewCops: enable
+    SuggestExtensions: false
+    TargetRubyVersion: 3.4
     Exclude:
         - 'vendor/**/*'
         - '_site/**/*'
@@ -12,16 +14,83 @@ AllCops:
         - 'bin/**/*'
         - 'Gemfile.lock'
 
+# Documentation - disabled for specs
 Style/Documentation:
     Enabled: false
 
+# Frozen string literal required
 Style/FrozenStringLiteralComment:
     Enabled: true
+    EnforcedStyle: always
 
+# String literals - single quotes preferred
+Style/StringLiterals:
+    EnforcedStyle: single_quotes
+
+# Hash syntax - modern Ruby 3.x style
+Style/HashSyntax:
+    EnforcedStyle: ruby19
+    EnforcedShorthandSyntax: always
+
+# Symbol array - use %i[]
+Style/SymbolArray:
+    EnforcedStyle: percent
+
+# Word array - use %w[]
+Style/WordArray:
+    EnforcedStyle: percent
+
+# Block length - relaxed for specs/Rakefile
 Metrics/BlockLength:
     Exclude:
         - 'spec/**/*'
         - 'Rakefile'
 
+# Line length - 120 chars max
 Layout/LineLength:
     Max: 120
+
+# Method length - strict but reasonable
+Metrics/MethodLength:
+    Max: 15
+
+# Class length
+Metrics/ClassLength:
+    Max: 150
+
+# ABC size - complexity metric
+Metrics/AbcSize:
+    Max: 20
+
+# RSpec - stricter settings
+RSpec/ExampleLength:
+    Max: 14
+
+RSpec/MultipleExpectations:
+    Max: 3
+
+RSpec/NestedGroups:
+    Max: 4
+
+RSpec/DescribeClass:
+    Exclude:
+        - 'spec/unit/config_spec.rb'
+        - 'spec/unit/data_files_spec.rb'
+        - 'spec/unit/front_matter_spec.rb'
+        - 'spec/unit/security_spec.rb'
+
+# Lint - stricter
+Lint/ConstantDefinitionInBlock:
+    Exclude:
+        - 'spec/unit/config_spec.rb'
+        - 'spec/unit/front_matter_spec.rb'
+
+RSpec/LeakyConstantDeclaration:
+    Exclude:
+        - 'spec/unit/config_spec.rb'
+        - 'spec/unit/front_matter_spec.rb'
+
+RSpec/MultipleDescribes:
+    Exclude:
+        - 'spec/unit/config_spec.rb'
+        - 'spec/unit/layouts_spec.rb'

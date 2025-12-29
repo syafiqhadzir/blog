@@ -4,7 +4,7 @@ require_relative '../spec_helper'
 
 RSpec.describe 'Layouts' do
   # Required layouts for the site
-  let(:required_layouts) { %w[default.html post.html page.html home.html archive.html] }
+  let(:required_layouts) { ['default.html', 'post.html', 'page.html', 'home.html', 'archive.html'] }
 
   describe 'Required layouts' do
     it 'all required layouts exist' do
@@ -61,7 +61,7 @@ end
 
 RSpec.describe 'Includes' do
   # Required includes for the site
-  let(:required_includes) { %w[head.html back_link.html menu_item.html post_list.html] }
+  let(:required_includes) { ['head.html', 'back_link.html', 'menu_item.html', 'post_list.html'] }
 
   describe 'Required includes' do
     it 'all required includes exist' do

@@ -92,7 +92,7 @@ namespace :lint do
   task :yaml do
     puts '🔍 Validating YAML files...'
     require 'yaml'
-    %w[_config.yml _data/menu.yml].each do |file|
+    ['_config.yml', '_data/menu.yml'].each do |file|
       YAML.safe_load_file(file)
       puts "  ✅ #{file}"
     end
@@ -103,7 +103,7 @@ namespace :lint do
   task :json do
     puts '🔍 Validating JSON files...'
     require 'json'
-    %w[site.webmanifest].each do |file|
+    ['site.webmanifest'].each do |file|
       JSON.parse(File.read(file))
       puts "  ✅ #{file}"
     end

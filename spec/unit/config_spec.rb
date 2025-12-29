@@ -76,13 +76,13 @@ RSpec.describe 'Site Configuration' do
 end
 
 RSpec.describe 'Essential Files' do
-  ESSENTIAL_FILES = %w[
-    robots.txt
-    site.webmanifest
-    404.html
-    offline.html
-    sw.js
-    CNAME
+  ESSENTIAL_FILES = [
+    'robots.txt',
+    'site.webmanifest',
+    '404.html',
+    'offline.html',
+    'sw.js',
+    'CNAME'
   ].freeze
 
   ESSENTIAL_FILES.each do |file|
