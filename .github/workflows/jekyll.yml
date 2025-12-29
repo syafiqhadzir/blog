@@ -184,7 +184,7 @@ jobs:
             - name: Generate SBOM (Ruby)
               run: |
                   gem install cyclonedx-ruby
-                  cyclonedx-ruby -o sbom-ruby.json
+                  cyclonedx-ruby -p . -o sbom-ruby.json
 
             - name: Generate SBOM (Node.js)
               run: npx --yes @cyclonedx/cyclonedx-npm --output-file sbom-node.json
