@@ -41,12 +41,12 @@ jobs:
         timeout-minutes: 10
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
               with:
                   fetch-depth: 0
 
             - name: Setup Node.js
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v6
               with:
                   node-version: ${{ env.NODE_VERSION }}
                   cache: 'npm'
@@ -73,7 +73,7 @@ jobs:
         timeout-minutes: 10
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
             - name: Setup Ruby
               uses: ruby/setup-ruby@v1
@@ -106,7 +106,7 @@ jobs:
         timeout-minutes: 10
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
             - name: Setup Ruby
               uses: ruby/setup-ruby@v1
@@ -118,7 +118,7 @@ jobs:
               run: bundle exec rspec spec/unit --format documentation --format json --out test-results.json
 
             - name: Upload test results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               if: always()
               with:
                   name: rspec-results
@@ -133,7 +133,7 @@ jobs:
         timeout-minutes: 15
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
             - name: Setup Ruby
               uses: ruby/setup-ruby@v1
@@ -146,7 +146,7 @@ jobs:
               uses: actions/configure-pages@v5
 
             - name: Cache Jekyll build
-              uses: actions/cache@v4
+              uses: actions/cache@v5
               with:
                   path: |
                       .jekyll-cache
@@ -181,8 +181,25 @@ jobs:
                     echo "⚠️ Exceeds 5MB budget" >> $GITHUB_STEP_SUMMARY
                   fi
 
+            - name: Generate SBOM (Ruby)
+              run: |
+                  gem install cyclonedx-ruby
+                  cyclonedx-ruby -o sbom-ruby.json
+
+            - name: Generate SBOM (Node.js)
+              run: npx --yes @cyclonedx/cyclonedx-npm --output-file sbom-node.json
+
+            - name: Upload SBOMs
+              uses: actions/upload-artifact@v6
+              with:
+                  name: sbom
+                  path: |
+                      sbom-ruby.json
+                      sbom-node.json
+                  retention-days: 90
+
             - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
+              uses: actions/upload-pages-artifact@v4
 
     # E2E Tests with Playwright
     e2e:
@@ -193,10 +210,10 @@ jobs:
         timeout-minutes: 20
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
             - name: Setup Node.js
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v6
               with:
                   node-version: ${{ env.NODE_VERSION }}
                   cache: 'npm'
@@ -219,7 +236,7 @@ jobs:
                   BASE_URL: http://localhost:4000/
 
             - name: Upload test report
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               if: always()
               with:
                   name: playwright-report
@@ -235,7 +252,7 @@ jobs:
         timeout-minutes: 10
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
             - name: Setup Ruby
               uses: ruby/setup-ruby@v1

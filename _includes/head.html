@@ -19,6 +19,19 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="{{ '/icons/icon-192.png' | relative_url }}">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <!-- View Transitions API for smooth cross-document navigation -->
+  <meta name="view-transition" content="same-origin">
+  <!-- Speculation Rules API for intelligent prefetching/prerendering -->
+  <script type="speculationrules">
+  {
+    "prerender": [
+      { "where": { "href_matches": "/posts/*" }, "eagerness": "moderate" }
+    ],
+    "prefetch": [
+      { "where": { "selector_matches": "a[href^='/']" }, "eagerness": "conservative" }
+    ]
+  }
+  </script>
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <script async custom-element="amp-install-serviceworker"
     src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>
@@ -138,6 +151,35 @@
       :root {
         --theme-transition: none;
       }
+    }
+
+    /* View Transitions API Animations */
+    @view-transition {
+      navigation: auto;
+    }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.25s;
+      animation-timing-function: ease-in-out;
+    }
+
+    ::view-transition-old(root) {
+      animation-name: fade-out;
+    }
+
+    ::view-transition-new(root) {
+      animation-name: fade-in;
+    }
+
+    @keyframes fade-out {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     blockquote,

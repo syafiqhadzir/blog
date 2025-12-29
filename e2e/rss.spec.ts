@@ -39,8 +39,9 @@ test.describe('RSS Feed', () => {
         const content = await response.text();
 
         // Each entry should have title and link
-        const hasTitle = content.includes('<title>') && content.split('<entry>').length > 1;
-        expect(hasTitle).toBeTruthy();
+        expect(content).toContain('<title>');
+        // Should have multiple entries (split creates array with length > 1)
+        expect(content.split('<entry>').length).toBeGreaterThan(1);
     });
 
     test('feed has correct author information', async ({ request }) => {

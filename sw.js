@@ -2,86 +2,141 @@
     layout: null
 permalink: /sw.js
 ---
-// Service Worker v3 - Stale-While-Revalidate Strategy
-// Generated: {{ 'now' | date: '%Y-%m-%d' }}
+/**
+ * Service Worker v4 - Workbox 7 Implementation
+ * Production-grade caching with Google Workbox
+ * Generated: {{ 'now' | date: '%Y-%m-%d' }}
+ */
 
-const CACHE_VERSION = 'sh-blog-v3';
+// Import Workbox from CDN
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.3.0/workbox-sw.js');
+
+// Configure Workbox
+workbox.setConfig({ debug: false });
+
+const { precacheAndRoute, cleanupOutdatedCaches } = workbox.precaching;
+const { registerRoute, NavigationRoute, Route } = workbox.routing;
+const { CacheFirst, StaleWhileRevalidate, NetworkFirst } = workbox.strategies;
+const { ExpirationPlugin } = workbox.expiration;
+const { CacheableResponsePlugin } = workbox.cacheableResponse;
+
+// Cache names
+const CACHE_PREFIX = 'sh-blog';
+const CACHE_VERSION = 'v4';
 const OFFLINE_URL = '{{ "offline.html" | relative_url }}';
 
-// Assets to precache on install
-const PRECACHE_ASSETS = [
-    '{{ "/" | relative_url }}',
-    '{{ "offline.html" | relative_url }}',
-    '{{ "archive.html" | relative_url }}',
-    '{{ "about.html" | relative_url }}',
-    '{{ "logo.png" | relative_url }}',
-    '{{ "icons/icon-192.png" | relative_url }}',
-    '{{ "icons/icon-512.png" | relative_url }}'
-];
+// Precache core assets
+precacheAndRoute([
+    { url: '{{ "/" | relative_url }}', revision: '{{ site.time | date: "%s" }}' },
+    { url: '{{ "offline.html" | relative_url }}', revision: '{{ site.time | date: "%s" }}' },
+    { url: '{{ "archive.html" | relative_url }}', revision: '{{ site.time | date: "%s" }}' },
+    { url: '{{ "about.html" | relative_url }}', revision: '{{ site.time | date: "%s" }}' },
+    { url: '{{ "logo.png" | relative_url }}', revision: '1' },
+    { url: '{{ "icons/icon-192.png" | relative_url }}', revision: '1' },
+    { url: '{{ "icons/icon-512.png" | relative_url }}', revision: '1' }
+]);
 
-// Install: Precache core assets
-self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_VERSION)
-            .then(cache => cache.addAll(PRECACHE_ASSETS))
-            .then(() => self.skipWaiting())
-    );
+// Clean up old caches
+cleanupOutdatedCaches();
+
+// Navigation requests: NetworkFirst with offline fallback
+const navigationHandler = new NetworkFirst({
+    cacheName: `${CACHE_PREFIX}-pages-${CACHE_VERSION}`,
+    plugins: [
+        new CacheableResponsePlugin({ statuses: [200] }),
+        new ExpirationPlugin({
+            maxEntries: 50,
+            maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        }),
+    ],
 });
 
-// Activate: Clean old caches
-self.addEventListener('activate', event => {
-    event.waitUntil(
-        caches.keys()
-            .then(keys => Promise.all(
-                keys.filter(key => key !== CACHE_VERSION)
-                    .map(key => caches.delete(key))
-            ))
-            .then(() => self.clients.claim())
-    );
+// Offline fallback for navigation
+const navigationRoute = new NavigationRoute(navigationHandler, {
+    denylist: [/\/sw\.js$/, /\/feed\.xml$/],
 });
+registerRoute(navigationRoute);
 
-// Fetch: Stale-while-revalidate for HTML, cache-first for assets
-self.addEventListener('fetch', event => {
-    const { request } = event;
-    const url = new URL(request.url);
+// Images: CacheFirst with long expiration
+registerRoute(
+    ({ request }) => request.destination === 'image',
+    new CacheFirst({
+        cacheName: `${CACHE_PREFIX}-images-${CACHE_VERSION}`,
+        plugins: [
+            new CacheableResponsePlugin({ statuses: [200] }),
+            new ExpirationPlugin({
+                maxEntries: 100,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+            }),
+        ],
+    })
+);
 
-    // Skip non-GET requests
-    if (request.method !== 'GET') return;
+// CSS/JS: StaleWhileRevalidate for fast loads with updates
+registerRoute(
+    ({ request }) =>
+        request.destination === 'style' || request.destination === 'script',
+    new StaleWhileRevalidate({
+        cacheName: `${CACHE_PREFIX}-assets-${CACHE_VERSION}`,
+        plugins: [
+            new CacheableResponsePlugin({ statuses: [200] }),
+            new ExpirationPlugin({
+                maxEntries: 50,
+                maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
+            }),
+        ],
+    })
+);
 
-    // Skip cross-origin requests
-    if (url.origin !== location.origin) return;
+// Fonts: CacheFirst for performance
+registerRoute(
+    ({ request }) => request.destination === 'font',
+    new CacheFirst({
+        cacheName: `${CACHE_PREFIX}-fonts-${CACHE_VERSION}`,
+        plugins: [
+            new CacheableResponsePlugin({ statuses: [200] }),
+            new ExpirationPlugin({
+                maxEntries: 20,
+                maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
+            }),
+        ],
+    })
+);
 
-    // Navigation requests: Network-first with offline fallback
-    if (request.mode === 'navigate') {
+// AMP CDN: StaleWhileRevalidate for third-party scripts
+registerRoute(
+    ({ url }) => url.origin === 'https://cdn.ampproject.org',
+    new StaleWhileRevalidate({
+        cacheName: `${CACHE_PREFIX}-amp-${CACHE_VERSION}`,
+        plugins: [
+            new CacheableResponsePlugin({ statuses: [200] }),
+            new ExpirationPlugin({
+                maxEntries: 30,
+                maxAgeSeconds: 24 * 60 * 60, // 24 hours
+            }),
+        ],
+    })
+);
+
+// Offline fallback
+self.addEventListener('fetch', (event) => {
+    if (event.request.mode === 'navigate') {
         event.respondWith(
-            fetch(request)
-                .then(response => {
-                    // Cache successful responses
-                    if (response.status === 200) {
-                        const clone = response.clone();
-                        caches.open(CACHE_VERSION)
-                            .then(cache => cache.put(request, clone));
-                    }
-                    return response;
-                })
-                .catch(() => caches.match(OFFLINE_URL))
+            (async () => {
+                try {
+                    return await navigationHandler.handle({ event, request: event.request });
+                } catch (error) {
+                    const cache = await caches.open(`${CACHE_PREFIX}-pages-${CACHE_VERSION}`);
+                    return await cache.match(OFFLINE_URL);
+                }
+            })()
         );
-        return;
     }
-
-    // Static assets: Stale-while-revalidate
-    event.respondWith(
-        caches.open(CACHE_VERSION).then(cache =>
-            cache.match(request).then(cached => {
-                const fetched = fetch(request).then(response => {
-                    if (response.status === 200 && response.type === 'basic') {
-                        cache.put(request, response.clone());
-                    }
-                    return response;
-                }).catch(() => cached);
-
-                return cached || fetched;
-            })
-        )
-    );
 });
+
+// Skip waiting on install
+self.addEventListener('install', () => self.skipWaiting());
+
+// Claim clients on activate
+self.addEventListener('activate', () => self.clients.claim());
+

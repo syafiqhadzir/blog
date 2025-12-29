@@ -9,7 +9,7 @@ updates:
       schedule:
           interval: 'weekly'
           day: 'monday'
-          time: '09:00'
+          time: '06:00'
           timezone: 'Asia/Kuala_Lumpur'
       open-pull-requests-limit: 5
       commit-message:
@@ -17,6 +17,13 @@ updates:
       labels:
           - 'dependencies'
           - 'ruby'
+      groups:
+          ruby-minor-patch:
+              patterns:
+                  - '*'
+              update-types:
+                  - 'minor'
+                  - 'patch'
 
     # npm dependencies
     - package-ecosystem: 'npm'
@@ -24,7 +31,7 @@ updates:
       schedule:
           interval: 'weekly'
           day: 'monday'
-          time: '09:00'
+          time: '06:00'
           timezone: 'Asia/Kuala_Lumpur'
       open-pull-requests-limit: 5
       commit-message:
@@ -32,10 +39,13 @@ updates:
       labels:
           - 'dependencies'
           - 'javascript'
-      ignore:
-          # Ignore major version updates for stability
-          - dependency-name: '*'
-            update-types: ['version-update:semver-major']
+      groups:
+          npm-minor-patch:
+              patterns:
+                  - '*'
+              update-types:
+                  - 'minor'
+                  - 'patch'
 
     # GitHub Actions
     - package-ecosystem: 'github-actions'
@@ -43,7 +53,7 @@ updates:
       schedule:
           interval: 'weekly'
           day: 'monday'
-          time: '09:00'
+          time: '06:00'
           timezone: 'Asia/Kuala_Lumpur'
       open-pull-requests-limit: 3
       commit-message:
@@ -51,3 +61,7 @@ updates:
       labels:
           - 'dependencies'
           - 'github-actions'
+      groups:
+          actions-all:
+              patterns:
+                  - '*'

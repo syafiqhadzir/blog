@@ -14,6 +14,23 @@ export default defineConfig({
         screenshot: 'only-on-failure',
     },
 
+    // Visual Regression Testing Configuration
+    snapshotDir: './e2e/snapshots',
+    snapshotPathTemplate: '{snapshotDir}/{testFileDir}/{testFileName}-{projectName}/{arg}{ext}',
+    expect: {
+        toHaveScreenshot: {
+            // Allow 0.5% pixel difference for anti-aliasing variations
+            maxDiffPixelRatio: 0.005,
+            // Animation stabilization timeout
+            animations: 'disabled',
+            // Scale to consistent size
+            scale: 'css',
+        },
+        toMatchSnapshot: {
+            maxDiffPixelRatio: 0.005,
+        },
+    },
+
     projects: [
         {
             name: 'chromium',

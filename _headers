@@ -1,0 +1,26 @@
+# Content Security Policy and Security Headers
+# Applied to all pages on GitHub Pages / Cloudflare
+
+/*
+  # Content Security Policy (CSP Level 3)
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.ampproject.org 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://cdn.ampproject.org; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
+
+  # Prevent MIME type sniffing
+  X-Content-Type-Options: nosniff
+
+  # Prevent clickjacking
+  X-Frame-Options: DENY
+
+  # Strict referrer policy
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Permissions Policy (formerly Feature-Policy)
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
+
+  # HTTP Strict Transport Security (HSTS)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Cross-Origin policies for isolation
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Resource-Policy: same-origin
