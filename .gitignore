@@ -1,47 +1,103 @@
-# Jekyll / Ruby Project .gitignore
+# =============================================================================
+# .gitignore - Expert-Level Git Best Practices
+# Jekyll + Ruby + Node.js + Playwright Blog Project
+# =============================================================================
 
-# Jekyll Build Output
+# -----------------------------------------------------------------------------
+# Jekyll / Ruby Build Output
+# -----------------------------------------------------------------------------
 _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
 
+# -----------------------------------------------------------------------------
 # Ruby / Bundler
+# -----------------------------------------------------------------------------
 .bundle/
 vendor/
 *.gem
 *.rbc
 .ruby-lsp/
+Gemfile.lock.bak
 
-# Testing
+# -----------------------------------------------------------------------------
+# Testing & Coverage
+# -----------------------------------------------------------------------------
+# RSpec
 spec/.rspec_status
 spec/test_results.json
-coverage/
 .rspec_failures
+test-results.json
+
+# Coverage reports
+coverage/
+.nyc_output/
 
 # Playwright
 test-results/
 playwright-report/
 playwright/.cache/
+blob-report/
+e2e/snapshots/*-snapshots/
 
 # Lighthouse CI
 .lighthouseci/
 
-# Node.js (if using npm for tooling)
+# -----------------------------------------------------------------------------
+# Node.js / Package Managers
+# -----------------------------------------------------------------------------
 node_modules/
-
-yarn.lock
 .npm/
 .yarn/
+.pnpm-store/
+yarn.lock
+pnpm-lock.yaml
+*.tsbuildinfo
 
-# Environment & Secrets
+# -----------------------------------------------------------------------------
+# SBOM & Security Scanning
+# -----------------------------------------------------------------------------
+sbom-*.json
+sbom-*.xml
+*.sarif
+.snyk
+
+# SonarQube
+*-report.json
+sonar-report.xml
+sonar-generic-report.xml
+.scannerwork/
+
+# Dependency audit
+npm-audit.json
+yarn-audit.json
+
+# -----------------------------------------------------------------------------
+# Environment & Secrets (CRITICAL)
+# -----------------------------------------------------------------------------
 .env
 .env.*
 !.env.example
+!.env.template
 *.pem
 *.key
+*.p12
+*.pfx
+*.crt
+*.cer
+secrets/
+.secrets
+*.secret
 
+# API keys and tokens
+.credentials
+.token
+*_credentials.json
+
+# -----------------------------------------------------------------------------
 # OS Generated Files
+# -----------------------------------------------------------------------------
 # macOS
 .DS_Store
 .AppleDouble
@@ -49,6 +105,7 @@ yarn.lock
 ._*
 .Spotlight-V100
 .Trashes
+Icon?
 
 # Windows
 Thumbs.db
@@ -67,59 +124,128 @@ $RECYCLE.BIN/
 .Trash-*
 .nfs*
 
+# -----------------------------------------------------------------------------
 # IDE & Editors
-# VS Code
-.vscode/
+# -----------------------------------------------------------------------------
+# VS Code (keep settings shared, ignore personal)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 *.code-workspace
 
-# JetBrains (RubyMine, WebStorm, etc.)
+# JetBrains (RubyMine, WebStorm, IntelliJ)
 .idea/
 *.iml
 *.iws
 *.ipr
+cmake-build-*/
 
-# Vim
+# Vim / Neovim
 *.swp
 *.swo
 *.swn
-*~
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+Sessionx.vim
+.netrwhist
 tags
+tags.lock
+tags.temp
 
 # Emacs
 *~
 \#*\#
 .#*
 *.elc
+auto-save-list
+tramp
+.\#*
 
 # Sublime Text
 *.sublime-workspace
 *.sublime-project
 
+# Zed
+.zed/
+
+# Fleet
+.fleet/
+
+# -----------------------------------------------------------------------------
 # Logs & Temp Files
+# -----------------------------------------------------------------------------
 *.log
 logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 tmp/
 temp/
 *.tmp
 *.temp
 *.bak
 *.backup
+*.orig
 
+# -----------------------------------------------------------------------------
 # Build Artifacts
+# -----------------------------------------------------------------------------
 dist/
 build/
 out/
 *.min.js
 *.min.css
+*.map
+.turbo/
+.next/
+.nuxt/
+.output/
+.vercel/
+.netlify/
 
-# Miscellaneous
+# -----------------------------------------------------------------------------
+# Docker
+# -----------------------------------------------------------------------------
 *.pid
+docker-compose.override.yml
+.docker/
+
+# -----------------------------------------------------------------------------
+# Miscellaneous
+# -----------------------------------------------------------------------------
 *.seed
 *.pid.lock
 .cache/
- 
-# SonarQube Reports
-*-report.json
-sonar-report.xml
-sonar-generic-report.xml
-.scannerwork/
+.parcel-cache/
+.vite/
+*.local
+
+# Local development overrides
+*.local.yml
+*.local.yaml
+*.local.json
+
+# Backup files
+*.bak
+*~
+\#*#
+.#*
+
+# Compressed files (usually generated)
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
