@@ -36,7 +36,7 @@
         "eslint-plugin-playwright": "^2.4.0",
         "globals": "^16.5.0",
         "husky": "^9.1.7",
-        "lint-staged": "^15.5.0",
+        "lint-staged": "^16.2.7",
         "markdownlint-cli2": "^0.20.0",
         "prettier": "^3.7.4",
         "sonarqube-scanner": "^4.3.2",
