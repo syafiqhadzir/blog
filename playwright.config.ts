@@ -9,26 +9,9 @@ export default defineConfig({
     reporter: 'html',
 
     use: {
-        baseURL: process.env['BASE_URL'] || 'http://localhost:4000/',
+        baseURL: process.env['BASE_URL'] || 'http://127.0.0.1:4000/',
         trace: 'on-first-retry',
         screenshot: 'only-on-failure',
-    },
-
-    // Visual Regression Testing Configuration
-    snapshotDir: './e2e/snapshots',
-    snapshotPathTemplate: '{snapshotDir}/{testFileDir}/{testFileName}-{projectName}/{arg}{ext}',
-    expect: {
-        toHaveScreenshot: {
-            // Allow 0.5% pixel difference for anti-aliasing variations
-            maxDiffPixelRatio: 0.005,
-            // Animation stabilization timeout
-            animations: 'disabled',
-            // Scale to consistent size
-            scale: 'css',
-        },
-        toMatchSnapshot: {
-            maxDiffPixelRatio: 0.005,
-        },
     },
 
     projects: [
@@ -56,7 +39,7 @@ export default defineConfig({
 
     webServer: {
         command: 'bundle exec jekyll serve --port 4000',
-        url: 'http://localhost:4000/',
+        url: 'http://127.0.0.1:4000/',
         reuseExistingServer: !process.env['CI'],
         timeout: 180000,
         stdout: 'pipe',
