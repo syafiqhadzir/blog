@@ -2,9 +2,8 @@ title: Syafiq Hadzir # name of the site
 author:
     name: Syafiq Hadzir # name of site's author
     url: https://syafiqhadzir.dev # URL of site's author
-    twitter: syafiqhadzir_ # twitter username
 email: syafiqhadzir@live.com.my # email of site's author
-url: https://syafiqhadzir.dev/blog/ # root address of the site
+url: https://blog.syafiqhadzir.dev # root address of the site
 baseurl: '' # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
     Just another QA engineer who codes and writes.
@@ -27,15 +26,9 @@ plugins:
     - jekyll-seo-tag
     - jekyll-sitemap
 
-# SEO and Social Sharing Defaults
-twitter:
-    username: syafiqhadzir_
-    card: summary_large_image
-
 social:
     name: Syafiq Hadzir
     links:
-        - https://twitter.com/syafiqhadzir_
         - https://github.com/SyafiqHadzir
 
 # Default values for posts
@@ -45,7 +38,7 @@ defaults:
           type: 'posts'
       values:
           layout: post
-          image: https://syafiqhadzir.dev/blog/logo.png
+          image: https://blog.syafiqhadzir.dev/logo.png
           keywords: 'QA, software testing, quality assurance, automation'
     - scope:
           path: ''
