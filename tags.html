@@ -9,17 +9,7 @@ robots: noindex, follow
     <h1>Tags</h1>
     <p>Browse articles by topic. Size indicates frequency.</p>
 
-    <div
-        class="tag-cloud"
-        style="
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: baseline;
-            justify-content: center;
-            margin: 2rem 0;
-        "
-    >
+    <div class="tag-cloud" aria-label="Tag cloud">
         {%- assign sorted_tags = site.tags | sort -%} {%- assign max_count = 0 -%} {%- for tag in
         sorted_tags -%} {%- if tag[1].size > max_count -%} {%- assign max_count = tag[1].size -%}
         {%- endif -%} {%- endfor -%} {%- for tag in sorted_tags -%} {%- assign count = tag[1].size
@@ -28,7 +18,8 @@ robots: noindex, follow
         <a
             href="#{{ tag[0] | slugify }}"
             class="tag-item"
-            style="font-size: {{ weight }}rem; padding: 0.2rem 0.5rem; text-decoration: none; border-radius: 4px; background: var(--bg-color-secondary);"
+            style="font-size: {{ weight }}rem;"
+            aria-label="{{ tag[0] }} tag with {{ count }} posts"
         >
             {{ tag[0] }}
         </a>
@@ -42,7 +33,7 @@ robots: noindex, follow
         <div class="tag-header">
             <h2>{{ site.data.tags[tag[0]].name | default: tag[0] | capitalize }}</h2>
             {%- if site.data.tags[tag[0]].description -%}
-            <p class="tag-description" style="font-style: italic; color: var(--text-color-light)">
+            <p class="tag-description" style="font-style: italic; color: var(--text-secondary)">
                 {{ site.data.tags[tag[0]].description }}
             </p>
             {%- endif -%}

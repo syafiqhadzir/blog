@@ -2,7 +2,7 @@
 {%- assign current_tags = page.tags -%}
 {%- assign related_posts = "" | split: "" -%}
 
-<!-- 1. Score posts by tag intersection -->
+<!-- 1. Score posts by tag intersection (with date as tie-breaker) -->
 {%- for post in site.posts -%}
   {%- if post.url != page.url -%}
     {%- assign score = 0 -%}
@@ -11,16 +11,17 @@
         {%- assign score = score | plus: 1 -%}
       {%- endif -%}
     {%- endfor -%}
-    
+
     {%- if score > 0 -%}
-      <!-- Stupid Liquid Hack: Prepend score to sort -->
-      {%- capture scored_post -%}{{ score }}#{{ post.url }}{%- endcapture -%}
+      <!-- Sort key: Score (Padded) + Date + URL -->
+      {%- capture score_padded -%}{{ score | prepend: '00' | slice: -2, 2 }}{%- endcapture -%}
+      {%- capture scored_post -%}{{ score_padded }}{{ post.date | date: "%Y%m%d" }}#{{ post.url }}{%- endcapture -%}
       {%- assign related_posts = related_posts | push: scored_post -%}
     {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
 
-<!-- 2. Sort decscending (Hack: standard sort is ascending strings) -->
+<!-- 2. Sort descending -->
 {%- assign sorted_related = related_posts | sort | reverse -%}
 
 {%- if sorted_related.size > 0 -%}
@@ -32,21 +33,18 @@
         {%- if count < RELATED_POSTS_LIMIT -%}
           {%- assign parts = entry | split: "#" -%}
           {%- assign url = parts[1] -%}
-          <!-- Find the actual post object -->
           {%- for p in site.posts -%}
             {%- if p.url == url -%}
               <li>
                 <a href="{{ p.url | relative_url }}">
                   <span class="related-title">{{ p.title }}</span>
-                  <br>
-                  <small class="related-meta">
-                    Match: 
+                  <div class="related-meta">
                     {%- for t in p.tags -%}
                       {%- if current_tags contains t -%}
                         <span class="tag-match">{{ t }}</span>
                       {%- endif -%}
                     {%- endfor -%}
-                  </small>
+                  </div>
                 </a>
               </li>
               {%- assign count = count | plus: 1 -%}
@@ -56,32 +54,4 @@
       {%- endfor -%}
     </ul>
   </aside>
-
-  <style>
-    .related-posts {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border-color);
-    }
-    .related-list {
-      list-style: none;
-      padding: 0;
-    }
-    .related-list li {
-      margin-bottom: 1rem;
-    }
-    .tag-match {
-      background: var(--accent-color);
-      color: white;
-      font-size: 0.7em;
-      padding: 2px 6px;
-      border-radius: 4px;
-      opacity: 0.8;
-      display: inline-block;
-      margin-right: 4px;
-    }
-    .related-meta {
-      color: var(--text-color-light);
-    }
-  </style>
 {%- endif -%}

@@ -37,14 +37,9 @@
   </div>
 </footer>
 
-<script>
-  // WCAG 2.1 - 2.1.1: Ensure scrollable code blocks are keyboard accessible
-  document.addEventListener('DOMContentLoaded', function() {
-    const codeBlocks = document.querySelectorAll('div.highlight, pre.highlight');
-    codeBlocks.forEach(function(block, index) {
-      block.setAttribute('tabindex', '0');
-      block.setAttribute('role', 'region');
-      block.setAttribute('aria-label', 'Code snippet ' + (index + 1));
-    });
-  });
-</script>
+<button class="back-to-top" id="backToTop" on="tap:top-target.scrollTo(duration=500)" aria-label="Back to top">
+  <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+

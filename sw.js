@@ -30,7 +30,6 @@ precacheAndRoute([
     { url: '{{ "/" | relative_url }}', revision: '{{ site.time | date: "%s" }}' },
     { url: '{{ "offline.html" | relative_url }}', revision: '{{ site.time | date: "%s" }}' },
     { url: '{{ "archive.html" | relative_url }}', revision: '{{ site.time | date: "%s" }}' },
-    { url: '{{ "about.html" | relative_url }}', revision: '{{ site.time | date: "%s" }}' },
     { url: '{{ "logo.png" | relative_url }}', revision: '1' },
     { url: '{{ "icons/icon-192.png" | relative_url }}', revision: '1' },
     { url: '{{ "icons/icon-512.png" | relative_url }}', revision: '1' }

@@ -2,7 +2,9 @@
 # Applied to all pages on GitHub Pages / Cloudflare
 
 /*
-  # Content Security Policy (CSP Level 3)
+# Content Security Policy (CSP Level 3)
+# Explicitly allows AMP CDN, social share, and internal resources
+/*
   Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.ampproject.org 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://cdn.ampproject.org; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
 
   # Prevent MIME type sniffing

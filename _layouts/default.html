@@ -3,19 +3,56 @@
 {%- include head.html -%}
 
 <body class="{{ site.theme_config.appearance | default: 'auto' }}"
-  [class]="uiMode ? (uiMode == 'dark' ? 'dark-theme' : 'light-theme') : '{{ site.theme_config.appearance | default: 'auto' }}'">
+  [class]="uiMode == 'dark' ? 'dark-theme' : (uiMode == 'light' ? 'light-theme' : '{{ site.theme_config.appearance | default: 'auto' }}')">
+  <div id="top-target"></div>
+  <amp-animation id="showBackToTop" layout="nodisplay">
+    <script type="application/json">
+      {
+        "duration": "200ms",
+        "fill": "both",
+        "animations": [
+          {
+            "selector": "#backToTop",
+            "keyframes": {
+              "opacity": 1,
+              "visibility": "visible"
+            }
+          }
+        ]
+      }
+    </script>
+  </amp-animation>
+  <amp-animation id="hideBackToTop" layout="nodisplay">
+    <script type="application/json">
+      {
+        "duration": "200ms",
+        "fill": "both",
+        "animations": [
+          {
+            "selector": "#backToTop",
+            "keyframes": {
+              "opacity": 0,
+              "visibility": "hidden"
+            }
+          }
+        ]
+      }
+    </script>
+  </amp-animation>
+  <amp-position-observer on="enter:hideBackToTop.start; exit:showBackToTop.start" layout="nodisplay">
+  </amp-position-observer>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  
+
   <div class="wrapper">
     {%- include navbar.html -%}
-    
+
     <main id="main-content" class="page-content" role="main" aria-label="Main content">
       {{ content }}
     </main>
-    
+
     {%- include footer.html -%}
   </div>
-  
+
   <amp-install-serviceworker src="{{ 'sw.js' | relative_url }}" data-iframe-src="{{ 'sw-install.html' | relative_url }}"
     layout="nodisplay">
   </amp-install-serviceworker>

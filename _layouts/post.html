@@ -2,8 +2,40 @@
 layout: default
 ---
 
+<div class="progress-container">
+  <div id="progress-bar"></div>
+</div>
+
+<amp-animation id="progressAnim" layout="nodisplay">
+  <script type="application/json">
+    {
+      "duration": "1s",
+      "fill": "both",
+      "animations": [
+        {
+          "selector": "#progress-bar",
+          "keyframes": {
+            "transform": "scaleX(1)"
+          }
+        }
+      ]
+    }
+  </script>
+</amp-animation>
+
+<amp-position-observer on="scroll:progressAnim.seekTo(percent=event.percent)" layout="nodisplay">
+</amp-position-observer>
+
 <article role="article" aria-labelledby="post-title">
   <header class="post-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <span>/</span>
+      <a href="{{ '/archive.html' | relative_url }}">Archive</a>
+      <span>/</span>
+      {{ page.title }}
+    </nav>
+
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}"
         aria-label="Published on {{ page.date | date: site.theme_config.date_format }}">
@@ -19,15 +51,53 @@ layout: default
     </div>
     {%- endif -%}
     <h1 id="post-title">{{ page.title }}</h1>
-    <p>Author: {{ site.author.name }}<br />Email: {{ site.email }}{%- if page.gpgkey -%}<br />GPG Key: {{ page.gpgkey
-      }}{%- endif -%}</p>
   </header>
 
-  <div class="post-content">
+  <div class="post-content" itemprop="articleBody">
     {{ content }}
   </div>
+
+  <div class="social-share">
+    <amp-social-share type="twitter" width="32" height="32"></amp-social-share>
+    <amp-social-share type="linkedin" width="32" height="32"></amp-social-share>
+    <amp-social-share type="email" width="44" height="32"></amp-social-share>
+    <amp-social-share type="whatsapp" width="44" height="32"></amp-social-share>
+  </div>
+
+  <section class="author-bio">
+    <img src="{{ '/logo.png' | relative_url }}" alt="{{ site.author.name }}" class="author-img">
+    <div class="author-info">
+      <h3>About {{ site.author.name }}</h3>
+      <p>{{ site.description }}</p>
+      <p><a href="https://syafiqhadzir.dev">View Portfolio</a></p>
+    </div>
+  </section>
 </article>
 
+<amp-image-lightbox id="lightbox" layout="nodisplay"></amp-image-lightbox>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "{{ '/' | absolute_url }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Archive",
+    "item": "{{ '/archive.html' | absolute_url }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "{{ page.title }}",
+    "item": "{{ page.url | absolute_url }}"
+  }]
+}
+</script>
 
 {%- include smart_related_posts.html -%}
 {%- include post_navigation.html -%}
