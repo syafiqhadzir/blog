@@ -2,7 +2,6 @@
 layout: page
 title: Accessibility
 description: Accessibility statement for this blog, detailing our commitment to WCAG 2.2 conformance.
-robots: noindex, follow
 ---
 
 ## Accessibility Statement

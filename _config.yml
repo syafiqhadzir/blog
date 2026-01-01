@@ -68,6 +68,7 @@ exclude:
     - CHANGELOG.md
     - SECURITY.md
     - CONTRIBUTING.md
+    - docs
     - e2e
     - playwright.config.ts
     - package.json
