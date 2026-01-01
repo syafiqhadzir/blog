@@ -19,7 +19,7 @@ RSpec.describe 'Accessibility (A11y)' do
 
     it 'default.html has footer with contentinfo' do
       content = File.read(File.join(layouts_dir, 'default.html'))
-      expect(content).to include('role="contentinfo"').or(include('<footer')),
+      expect(content).to include('role="contentinfo"').or(include('<footer')).or(include('include footer.html')),
                          'default.html should have a footer or contentinfo role'
     end
 

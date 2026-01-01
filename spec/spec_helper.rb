@@ -53,8 +53,8 @@ module JekyllTestHelpers
   end
 
   def parse_front_matter(file_path)
-    content = File.read(file_path)
-    if content =~ /\A---\s*\n(.*?)\n---\s*\n/m
+    content = File.read(file_path).sub("\uFEFF", '')
+    if content =~ /\A---\s*[\r\n]+(.*?)[\r\n]+---\s*[\r\n]+/m
       YAML.safe_load(::Regexp.last_match(1), permitted_classes: [Date, Time])
     else
       {}

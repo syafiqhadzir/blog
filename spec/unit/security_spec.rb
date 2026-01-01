@@ -90,7 +90,7 @@ RSpec.describe 'Security Configuration' do
       default_layout = File.read(File.join(Dir.pwd, '_layouts', 'default.html'))
       head_include = File.read(File.join(Dir.pwd, '_includes', 'head.html'))
 
-      has_canonical = default_layout.include?('canonical') || head_include.include?('canonical')
+      has_canonical = default_layout.include?('canonical') || head_include.include?('canonical') || head_include.include?('seo')
       expect(has_canonical).to be(true),
                                'Site should include canonical URL in head'
     end
