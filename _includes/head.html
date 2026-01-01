@@ -369,6 +369,22 @@
       color: var(--text-secondary);
     }
 
+    .footer-row {
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer-icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      fill: currentColor;
+    }
+
     .footer-content p {
       margin: 0.5rem 0;
     }
@@ -847,26 +863,5 @@
   {% if page.mathml == true %}
   <script async custom-element="amp-mathml" src="https://cdn.ampproject.org/v0/amp-mathml-0.1.js"></script>
   {% endif %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "{{ site.url }}#website",
-        "url": "{{ site.url }}",
-        "name": "{{ site.title }}",
-        "description": "{{ site.description | strip_html | strip_newlines }}",
-        "publisher": { "@id": "{{ site.url }}#person" }
-      },
-      {
-        "@type": "Person",
-        "@id": "{{ site.url }}#person",
-        "name": "{{ site.author.name }}",
-        "url": "{{ site.author.url }}",
-        "sameAs": ["https://twitter.com/{{ site.author.twitter }}", "https://github.com/SyafiqHadzir/"]
-      }
-    ]
-  }
-  </script>
+
 </head>
