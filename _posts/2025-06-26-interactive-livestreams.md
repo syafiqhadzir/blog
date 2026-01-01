@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Interactive Livestreams: Testing the \"Now\""
+title: 'Interactive Livestreams: Testing the "Now"'
 date: 2025-06-26
 category: QA
 slug: interactive-livestreams
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

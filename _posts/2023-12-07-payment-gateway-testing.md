@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Payment Gateway Testing: Show Me The Money (Or The 402 Error)"
+title: 'Payment Gateway Testing: Show Me The Money (Or The 402 Error)'
 date: 2023-12-07
 category: QA
 slug: payment-gateway-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

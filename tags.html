@@ -7,11 +7,30 @@ robots: noindex, follow
 
 <section class="tags-page">
     <h1>Tags</h1>
+    <p>Browse articles by topic. Size indicates frequency.</p>
 
-    <div class="tag-cloud">
-        {%- assign sorted_tags = site.tags | sort -%} {%- for tag in sorted_tags -%}
-        <a href="#{{ tag[0] | slugify }}" class="tag-item">
-            {{ tag[0] }} <span class="tag-count">({{ tag[1].size }})</span>
+    <div
+        class="tag-cloud"
+        style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: baseline;
+            justify-content: center;
+            margin: 2rem 0;
+        "
+    >
+        {%- assign sorted_tags = site.tags | sort -%} {%- assign max_count = 0 -%} {%- for tag in
+        sorted_tags -%} {%- if tag[1].size > max_count -%} {%- assign max_count = tag[1].size -%}
+        {%- endif -%} {%- endfor -%} {%- for tag in sorted_tags -%} {%- assign count = tag[1].size
+        -%} {%- assign weight = count | times: 1.0 | divided_by: max_count | times: 1.5 | plus: 0.8
+        -%}
+        <a
+            href="#{{ tag[0] | slugify }}"
+            class="tag-item"
+            style="font-size: {{ weight }}rem; padding: 0.2rem 0.5rem; text-decoration: none; border-radius: 4px; background: var(--bg-color-secondary);"
+        >
+            {{ tag[0] }}
         </a>
         {%- endfor -%}
     </div>
@@ -19,8 +38,15 @@ robots: noindex, follow
     <hr />
 
     {%- for tag in sorted_tags -%}
-    <section class="tag-section" id="{{ tag[0] | slugify }}">
-        <h2>{{ tag[0] }}</h2>
+    <section class="tag-section" id="{{ tag[0] | slugify }}" style="margin-bottom: 3rem">
+        <div class="tag-header">
+            <h2>{{ site.data.tags[tag[0]].name | default: tag[0] | capitalize }}</h2>
+            {%- if site.data.tags[tag[0]].description -%}
+            <p class="tag-description" style="font-style: italic; color: var(--text-color-light)">
+                {{ site.data.tags[tag[0]].description }}
+            </p>
+            {%- endif -%}
+        </div>
         <ul class="post-list" role="list">
             {%- for post in tag[1] -%}
             <li role="listitem">

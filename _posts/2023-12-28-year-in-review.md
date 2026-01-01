@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "2023 Year in Review: The Good, The Bad, and The Flaky"
+title: '2023 Year in Review: The Good, The Bad, and The Flaky'
 date: 2023-12-28
 category: QA
 slug: year-in-review
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

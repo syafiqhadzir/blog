@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Digital Immortality Testing: Will Your Data Outlive You?"
+title: 'Digital Immortality Testing: Will Your Data Outlive You?'
 date: 2025-11-06
 category: QA
 slug: digital-immortality-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

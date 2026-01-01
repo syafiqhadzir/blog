@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Hardening CI/CD: The Factory Must Be Secure"
+title: 'Hardening CI/CD: The Factory Must Be Secure'
 date: 2025-07-24
 category: QA
 slug: hardening-ci-cd-pipeline
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

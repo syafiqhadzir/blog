@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Protobuf Schema Validation Testing: Don't Break the Client"
+title: 'Protobuf Schema Validation Testing: Don''t Break the Client'
 date: 2024-03-07
 category: QA
 slug: protobuf-schema-validation
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

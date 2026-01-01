@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Post-Quantum Security for QA: The Apocalypse is Scheduled"
+title: 'Post-Quantum Security for QA: The Apocalypse is Scheduled'
 date: 2025-11-20
 category: QA
 slug: post-quantum-security-qa
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- security
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

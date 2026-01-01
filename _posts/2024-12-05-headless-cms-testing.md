@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Headless CMS Testing: When Editors Attack"
+title: 'Headless CMS Testing: When Editors Attack'
 date: 2024-12-05
 category: QA
 slug: headless-cms-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

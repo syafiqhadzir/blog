@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Visual Regression Testing Mastery: Spotting the 1px Offence"
+title: 'Visual Regression Testing Mastery: Spotting the 1px Offence'
 date: 2023-02-02
 category: QA
 slug: visual-regression-testing-mastery
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

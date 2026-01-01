@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "SSO Testing Patterns: One Password to Rule Them All"
+title: 'SSO Testing Patterns: One Password to Rule Them All'
 date: 2024-09-12
 category: QA
 slug: sso-testing-patterns
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

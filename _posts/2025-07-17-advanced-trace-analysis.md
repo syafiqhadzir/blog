@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Advanced Trace Analysis: Reading the Tea Leaves"
+title: 'Advanced Trace Analysis: Reading the Tea Leaves'
 date: 2025-07-17
 category: QA
 slug: advanced-trace-analysis
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

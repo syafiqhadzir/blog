@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Resilience Testing with Kube-Invaders: Gamifying Your Own Destruction"
+title: 'Resilience Testing with Kube-Invaders: Gamifying Your Own Destruction'
 date: 2023-05-18
 category: QA
 slug: resilience-testing-kubeinvaders
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

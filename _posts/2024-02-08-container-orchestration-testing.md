@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "Container Orchestration Testing: Because \"It Restarted Automatically\" Isn't a Strategy"
+title: 'Container Orchestration Testing: Because "It Restarted Automatically" Isn''t
+  a Strategy'
 date: 2024-02-08
 category: QA
 slug: container-orchestration-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

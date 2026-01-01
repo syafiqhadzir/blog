@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Race Condition Testing: The Ghosts in Your CI Pipeline"
+title: 'Race Condition Testing: The Ghosts in Your CI Pipeline'
 date: 2023-03-16
 category: QA
 slug: race-condition-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

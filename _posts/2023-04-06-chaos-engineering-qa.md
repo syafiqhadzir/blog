@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Chaos Engineering for QA: Breaking Production on Purpose"
+title: 'Chaos Engineering for QA: Breaking Production on Purpose'
 date: 2023-04-06
 category: QA
 slug: chaos-engineering-qa
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

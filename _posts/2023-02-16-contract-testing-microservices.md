@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Contract Testing for Microservices: Stop Breaking Your Neighbours"
+title: 'Contract Testing for Microservices: Stop Breaking Your Neighbours'
 date: 2023-02-16
 category: QA
 slug: contract-testing-microservices
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

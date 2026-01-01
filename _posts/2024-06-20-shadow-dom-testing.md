@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Shadow DOM Testing: Piercing the Veil"
+title: 'Shadow DOM Testing: Piercing the Veil'
 date: 2024-06-20
 category: QA
 slug: shadow-dom-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

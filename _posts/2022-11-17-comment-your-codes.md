@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Comment Your Code (So I Don't Have to Guess What 'Magic' Does)"
+title: Comment Your Code (So I Don't Have to Guess What 'Magic' Does)
 date: 2022-11-17
 category: QA
 slug: comment-your-codes
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

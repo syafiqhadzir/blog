@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Disaster Recovery Testing: The Datacentre is on Fire"
+title: 'Disaster Recovery Testing: The Datacentre is on Fire'
 date: 2024-10-24
 category: QA
 slug: disaster-recovery-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

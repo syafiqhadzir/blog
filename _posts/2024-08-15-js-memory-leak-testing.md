@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "JavaScript Memory Leak Testing: The RAM Vampire"
+title: 'JavaScript Memory Leak Testing: The RAM Vampire'
 date: 2024-08-15
 category: QA
 slug: js-memory-leak-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

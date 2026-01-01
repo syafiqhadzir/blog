@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "SRS, FRS & BRS: The Alphabet Soup of Requirements"
+title: 'SRS, FRS & BRS: The Alphabet Soup of Requirements'
 date: 2022-11-24
 category: QA
 slug: srs-frs-brs
-gpgkey: "D25D D0AD 3FDB F7C6"
----
+gpgkey: D25D D0AD 3FDB F7C6
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

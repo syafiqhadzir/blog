@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "Performance Budget Testing: Putting Your JavaScript on a Diet"
+title: 'Performance Budget Testing: Putting Your JavaScript on a Diet'
 date: 2024-05-09
 category: QA
 slug: performance-budgets-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- performance
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

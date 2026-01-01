@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "QA Engineers for SEO: Guarding the Invisible Door"
+title: 'QA Engineers for SEO: Guarding the Invisible Door'
 date: 2022-11-10
 category: QA
 slug: qa-engineers-for-seo
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

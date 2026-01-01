@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Technical Debt in Testing: The Credit Card You Cannot Pay Off"
+title: 'Technical Debt in Testing: The Credit Card You Cannot Pay Off'
 date: 2022-12-29
 category: QA
 slug: technical-debt-in-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

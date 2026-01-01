@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Mobile Emulation vs Real Devices: The Great Lie"
+title: 'Mobile Emulation vs Real Devices: The Great Lie'
 date: 2023-07-27
 category: QA
 slug: mobile-emulation-real-devices
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- mobile
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

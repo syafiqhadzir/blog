@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "Differential Privacy Testing: The Art of Structured Noise"
+title: 'Differential Privacy Testing: The Art of Structured Noise'
 date: 2025-06-05
 category: QA
 slug: differential-privacy-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- privacy
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

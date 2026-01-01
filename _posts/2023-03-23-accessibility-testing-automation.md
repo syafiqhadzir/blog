@@ -1,13 +1,17 @@
-﻿---
+---
 layout: post
-title: "Accessibility Testing Automation: It's Not Just for Lawyers"
+title: 'Accessibility Testing Automation: It''s Not Just for Lawyers'
 date: 2023-03-23
 category: QA
 slug: accessibility-testing-automation
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- accessibility
+- automation
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

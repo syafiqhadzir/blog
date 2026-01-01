@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Machine Learning Model Validation: When \"It Works on My Machine\" Means Nothing"
+title: 'Machine Learning Model Validation: When "It Works on My Machine" Means Nothing'
 date: 2024-01-25
 category: QA
 slug: machine-learning-model-validation
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

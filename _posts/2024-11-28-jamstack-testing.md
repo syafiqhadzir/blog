@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Jamstack Testing: It's Just Static Files... Until It Isn't"
+title: 'Jamstack Testing: It''s Just Static Files... Until It Isn''t'
 date: 2024-11-28
 category: QA
 slug: jamstack-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

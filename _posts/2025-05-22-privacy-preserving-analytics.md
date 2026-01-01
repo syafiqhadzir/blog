@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Privacy-Preserving Analytics: I Know What You Did Last Summer (Mathematically)"
+title: 'Privacy-Preserving Analytics: I Know What You Did Last Summer (Mathematically)'
 date: 2025-05-22
 category: QA
 slug: privacy-preserving-analytics
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- privacy
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

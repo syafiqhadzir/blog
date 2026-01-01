@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Database Migration Testing: Don't Drop the Table"
+title: 'Database Migration Testing: Don''t Drop the Table'
 date: 2023-06-22
 category: QA
 slug: database-migration-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

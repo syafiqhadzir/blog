@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "OAuth2 Testing: The Dance of the Tokens"
+title: 'OAuth2 Testing: The Dance of the Tokens'
 date: 2024-09-05
 category: QA
 slug: oauth2-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

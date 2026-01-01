@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Shift Left Testing: Or How to Avoid Working Weekends"
+title: 'Shift Left Testing: Or How to Avoid Working Weekends'
 date: 2023-01-05
 category: QA
 slug: shift-left-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

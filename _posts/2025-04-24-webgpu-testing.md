@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "WebGPU Testing: The Browser is now a Supercomputer"
+title: 'WebGPU Testing: The Browser is now a Supercomputer'
 date: 2025-04-24
 category: QA
 slug: webgpu-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

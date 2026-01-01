@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "WebAssembly Testing Strategies: When JavaScript Just Isn't Fast Enough"
+title: 'WebAssembly Testing Strategies: When JavaScript Just Isn''t Fast Enough'
 date: 2024-04-04
 category: QA
 slug: webassembly-testing-strategies
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- strategies
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

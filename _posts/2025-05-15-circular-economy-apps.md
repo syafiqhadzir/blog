@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Circular Economy Apps: Testing the Second Life"
+title: 'Circular Economy Apps: Testing the Second Life'
 date: 2025-05-15
 category: QA
 slug: circular-economy-apps
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

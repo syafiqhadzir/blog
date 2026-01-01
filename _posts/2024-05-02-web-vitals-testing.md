@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Web Vitals Testing: Why Google Hates Your Website"
+title: 'Web Vitals Testing: Why Google Hates Your Website'
 date: 2024-05-02
 category: QA
 slug: web-vitals-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

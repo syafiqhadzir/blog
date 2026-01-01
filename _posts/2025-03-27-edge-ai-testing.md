@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "Edge AI Testing: Bringing the Brain to the Browser"
+title: 'Edge AI Testing: Bringing the Brain to the Browser'
 date: 2025-03-27
 category: QA
 slug: edge-ai-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- ai
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

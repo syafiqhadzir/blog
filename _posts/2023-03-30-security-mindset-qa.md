@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Security Mindset for QA: Thinking Like a Villain"
+title: 'Security Mindset for QA: Thinking Like a Villain'
 date: 2023-03-30
 category: QA
 slug: security-mindset-qa
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- security
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

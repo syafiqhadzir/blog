@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "AI Bias Testing: Preventing Your Robot from Being a Jerk"
+title: 'AI Bias Testing: Preventing Your Robot from Being a Jerk'
 date: 2024-02-01
 category: QA
 slug: ai-bias-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- ai
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

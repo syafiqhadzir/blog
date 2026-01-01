@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Sustainable Software: Is Your Code Killing the Polar Bears?"
+title: 'Sustainable Software: Is Your Code Killing the Polar Bears?'
 date: 2025-05-01
 category: QA
 slug: sustainable-software
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

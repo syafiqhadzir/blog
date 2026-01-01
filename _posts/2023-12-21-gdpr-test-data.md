@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "GDPR and Test Data: Don't Clone Production (You Idiot)"
+title: 'GDPR and Test Data: Don''t Clone Production (You Idiot)'
 date: 2023-12-21
 category: QA
 slug: gdpr-test-data
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

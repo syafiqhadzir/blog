@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "RTL Layout Testing: Flipping the World Upside Down (Sideways)"
+title: 'RTL Layout Testing: Flipping the World Upside Down (Sideways)'
 date: 2024-07-18
 category: QA
 slug: rtl-layout-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

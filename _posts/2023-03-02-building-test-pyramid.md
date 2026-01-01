@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Building the Test Pyramid: Why Your Build Takes 4 Hours"
+title: 'Building the Test Pyramid: Why Your Build Takes 4 Hours'
 date: 2023-03-02
 category: QA
 slug: building-test-pyramid
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

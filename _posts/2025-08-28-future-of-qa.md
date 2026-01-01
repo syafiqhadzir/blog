@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "The Future of QA: Predictive Testing (Minority Report Style)"
+title: 'The Future of QA: Predictive Testing (Minority Report Style)'
 date: 2025-08-28
 category: QA
 slug: future-of-qa
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

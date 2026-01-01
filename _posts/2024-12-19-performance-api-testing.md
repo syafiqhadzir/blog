@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "Performance API Testing: Stop Counting Seconds"
+title: 'Performance API Testing: Stop Counting Seconds'
 date: 2024-12-19
 category: QA
 slug: performance-api-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- performance
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

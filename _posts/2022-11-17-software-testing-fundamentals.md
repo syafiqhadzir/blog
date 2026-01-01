@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Software Testing Fundamentals: All Code Is Guilty"
+title: 'Software Testing Fundamentals: All Code Is Guilty'
 date: 2022-11-17
 category: QA
 slug: software-testing-fundamentals
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

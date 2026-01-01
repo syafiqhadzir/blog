@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "CSP Testing: The Browser Bouncer"
+title: 'CSP Testing: The Browser Bouncer'
 date: 2024-08-29
 category: QA
 slug: csp-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

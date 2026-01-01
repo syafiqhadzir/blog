@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "Micro-Frontend Testing: Integration Testing Frankenstein's Monster"
+title: 'Micro-Frontend Testing: Integration Testing Frankenstein''s Monster'
 date: 2024-06-13
 category: QA
 slug: micro-frontend-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- frontend
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

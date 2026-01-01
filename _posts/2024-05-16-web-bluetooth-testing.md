@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Web Bluetooth Testing: Or How I Learned to Stop Worrying and Love the Dongle"
+title: 'Web Bluetooth Testing: Or How I Learned to Stop Worrying and Love the Dongle'
 date: 2024-05-16
 category: QA
 slug: web-bluetooth-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

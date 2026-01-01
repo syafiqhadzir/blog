@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Schema Drift Detection: When Your API Ghosts You"
+title: 'Schema Drift Detection: When Your API Ghosts You'
 date: 2023-08-17
 category: QA
 slug: schema-drift-detection
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

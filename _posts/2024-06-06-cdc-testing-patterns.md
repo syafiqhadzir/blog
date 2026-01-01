@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "CDC Testing Patterns: Spying on Your Database"
+title: 'CDC Testing Patterns: Spying on Your Database'
 date: 2024-06-06
 category: QA
 slug: cdc-testing-patterns
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

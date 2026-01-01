@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "Ethical AI Testing: Why Your Algorithm Is Probably Racist"
+title: 'Ethical AI Testing: Why Your Algorithm Is Probably Racist'
 date: 2025-10-02
 category: QA
 slug: ethical-ai-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- ai
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

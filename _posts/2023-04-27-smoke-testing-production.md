@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Smoke Testing in Production: Living Dangerously"
+title: 'Smoke Testing in Production: Living Dangerously'
 date: 2023-04-27
 category: QA
 slug: smoke-testing-production
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

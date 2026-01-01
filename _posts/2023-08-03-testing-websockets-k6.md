@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "WebSocket Testing with K6: Marriage Counselling for your Server"
+title: 'WebSocket Testing with K6: Marriage Counselling for your Server'
 date: 2023-08-03
 category: QA
 slug: testing-websockets-k6
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

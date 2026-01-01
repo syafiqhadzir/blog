@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Mocking External Dependencies: The Lie We Tell Ourselves"
+title: 'Mocking External Dependencies: The Lie We Tell Ourselves'
 date: 2023-02-09
 category: QA
 slug: mocking-external-dependencies
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

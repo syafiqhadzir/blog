@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "End-to-End Testing: Why 'Works on My Machine' Means Nothing"
+title: 'End-to-End Testing: Why ''Works on My Machine'' Means Nothing'
 date: 2022-12-22
 category: QA
 slug: end-to-end-testing
-gpgkey: "4AEE 18F8 3AFD EB23"
----
+gpgkey: 4AEE 18F8 3AFD EB23
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

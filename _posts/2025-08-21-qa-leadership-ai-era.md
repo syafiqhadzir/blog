@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "QA Leadership in the AI Era: Architecting Quality"
+title: 'QA Leadership in the AI Era: Architecting Quality'
 date: 2025-08-21
 category: QA
 slug: qa-leadership-ai-era
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- ai
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

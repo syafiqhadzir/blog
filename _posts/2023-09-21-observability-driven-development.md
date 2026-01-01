@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Observability-Driven Development: Coding for 3 AM"
+title: 'Observability-Driven Development: Coding for 3 AM'
 date: 2023-09-21
 category: QA
 slug: observability-driven-development
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

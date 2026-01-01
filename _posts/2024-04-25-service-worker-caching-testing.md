@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Service Worker Caching Testing: How to Break Your Site for 50% of Users"
+title: 'Service Worker Caching Testing: How to Break Your Site for 50% of Users'
 date: 2024-04-25
 category: QA
 slug: service-worker-caching-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

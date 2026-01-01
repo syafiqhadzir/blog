@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Sidecar Pattern Testing: When Your Container Needs a Buddy"
+title: 'Sidecar Pattern Testing: When Your Container Needs a Buddy'
 date: 2024-02-15
 category: QA
 slug: sidecar-pattern-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

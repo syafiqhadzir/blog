@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "Event-Driven Architecture Testing: Chaos in the Queue"
+title: 'Event-Driven Architecture Testing: Chaos in the Queue'
 date: 2023-06-29
 category: QA
 slug: event-driven-architecture-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- architecture
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

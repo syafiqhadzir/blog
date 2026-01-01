@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Ambient Computing for QA: When the Room Is the Computer"
+title: 'Ambient Computing for QA: When the Room Is the Computer'
 date: 2025-10-23
 category: QA
 slug: ambient-computing-qa
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

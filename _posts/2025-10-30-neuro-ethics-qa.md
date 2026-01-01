@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Neuro-Ethics for QA: Defending the User's Mind"
+title: 'Neuro-Ethics for QA: Defending the User''s Mind'
 date: 2025-10-30
 category: QA
 slug: neuro-ethics-qa
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- ethics
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

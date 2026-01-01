@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Testing Legacy Code: Or How I Learned to Stop Worrying and Love the Mock"
+title: 'Testing Legacy Code: Or How I Learned to Stop Worrying and Love the Mock'
 date: 2023-01-19
 category: QA
 slug: testing-legacy-code
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

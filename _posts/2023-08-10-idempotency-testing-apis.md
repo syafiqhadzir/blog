@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Idempotency Testing for APIs: The Art of Hitting Retry Safely"
+title: 'Idempotency Testing for APIs: The Art of Hitting Retry Safely'
 date: 2023-08-10
 category: QA
 slug: idempotency-testing-apis
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

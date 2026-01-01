@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Web3 Smart Contract: Code is Law (and Lawsuits)"
+title: 'Web3 Smart Contract: Code is Law (and Lawsuits)'
 date: 2025-01-02
 category: QA
 slug: web3-smart-contract
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- web3
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

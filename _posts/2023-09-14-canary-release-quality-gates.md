@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Canary Release Quality Gates: Testing on Humans (Ethically)"
+title: 'Canary Release Quality Gates: Testing on Humans (Ethically)'
 date: 2023-09-14
 category: QA
 slug: canary-release-quality-gates
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Network Partition Simulation Testing: Splitting the Brain"
+title: 'Network Partition Simulation Testing: Splitting the Brain'
 date: 2024-02-22
 category: QA
 slug: network-partition-simulation
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

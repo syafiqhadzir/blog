@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Edge Computing Testing: Latency is the Mind-Killer"
+title: 'Edge Computing Testing: Latency is the Mind-Killer'
 date: 2024-03-28
 category: QA
 slug: edge-computing-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Rate Limiting Testing: How to Tell Users to 'Calm Down'"
+title: 'Rate Limiting Testing: How to Tell Users to ''Calm Down'''
 date: 2023-11-23
 category: QA
 slug: rate-limiting-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Dynamic Image Optimisation Testing: Pixels are Heavy"
+title: 'Dynamic Image Optimisation Testing: Pixels are Heavy'
 date: 2024-12-12
 category: QA
 slug: dynamic-image-optimisation-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

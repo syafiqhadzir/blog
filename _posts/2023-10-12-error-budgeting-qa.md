@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Error Budgeting for QA: The Art of Allowed Screw-Ups"
+title: 'Error Budgeting for QA: The Art of Allowed Screw-Ups'
 date: 2023-10-12
 category: QA
 slug: error-budgeting-qa
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

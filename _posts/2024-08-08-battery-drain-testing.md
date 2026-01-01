@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Battery Drain Testing: Don't Burn My Thigh"
+title: 'Battery Drain Testing: Don''t Burn My Thigh'
 date: 2024-08-08
 category: QA
 slug: battery-drain-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

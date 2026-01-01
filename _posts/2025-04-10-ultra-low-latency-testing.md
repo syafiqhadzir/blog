@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Ultra-Low Latency Testing: When Milliseconds Feel Like Hours"
+title: 'Ultra-Low Latency Testing: When Milliseconds Feel Like Hours'
 date: 2025-04-10
 category: QA
 slug: ultra-low-latency-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

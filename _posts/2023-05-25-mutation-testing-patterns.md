@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Mutation Testing Patterns: Who Tests the Tests?"
+title: 'Mutation Testing Patterns: Who Tests the Tests?'
 date: 2023-05-25
 category: QA
 slug: mutation-testing-patterns
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

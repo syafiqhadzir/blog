@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "User Persona Testing: QA Roleplay for Geeks"
+title: 'User Persona Testing: QA Roleplay for Geeks'
 date: 2024-07-25
 category: QA
 slug: user-persona-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

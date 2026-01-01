@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Optimistic Locking Testing: The 'Shotgun' Rule"
+title: 'Optimistic Locking Testing: The ''Shotgun'' Rule'
 date: 2023-07-13
 category: QA
 slug: optimistic-locking-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

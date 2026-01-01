@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Hydration Bug Testing: React vs. The User"
+title: 'Hydration Bug Testing: React vs. The User'
 date: 2024-11-21
 category: QA
 slug: hydration-bug-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "The End of Bugs: Why You Should Be Scared of Perfection"
+title: 'The End of Bugs: Why You Should Be Scared of Perfection'
 date: 2025-11-13
 category: QA
 slug: end-of-bugs
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

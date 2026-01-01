@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "WebRTC Testing: Can You Hear Me Now?"
+title: 'WebRTC Testing: Can You Hear Me Now?'
 date: 2024-09-19
 category: QA
 slug: webrtc-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

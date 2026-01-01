@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "Load Balancing Test Strategies: The Traffic Cop from Hell"
+title: 'Load Balancing Test Strategies: The Traffic Cop from Hell'
 date: 2023-06-15
 category: QA
 slug: load-balancing-test-strategies
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- performance
+- qa
+- strategies
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

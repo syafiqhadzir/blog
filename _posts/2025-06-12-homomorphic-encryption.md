@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Homomorphic Encryption: Computing in a Black Box"
+title: 'Homomorphic Encryption: Computing in a Black Box'
 date: 2025-06-12
 category: QA
 slug: homomorphic-encryption
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "PCI Compliance Testing: How to Not Get Sued"
+title: 'PCI Compliance Testing: How to Not Get Sued'
 date: 2023-12-14
 category: QA
 slug: pci-compliance
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

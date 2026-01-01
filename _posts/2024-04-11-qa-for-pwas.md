@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "PWA Testing: Is it an App? Is it a Site? No, it's a Nightmare."
+title: 'PWA Testing: Is it an App? Is it a Site? No, it''s a Nightmare.'
 date: 2024-04-11
 category: QA
 slug: qa-for-pwas
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

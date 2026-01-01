@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "Synthetic Monitoring Strategies: The Bots Are Testing (So You Don't Have To)"
+title: 'Synthetic Monitoring Strategies: The Bots Are Testing (So You Don''t Have
+  To)'
 date: 2023-10-26
 category: QA
 slug: synthetic-monitoring-strategies
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- strategies
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

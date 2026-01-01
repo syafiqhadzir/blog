@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Shadow Traffic Testing: Testing in Production Without Getting Fired"
+title: 'Shadow Traffic Testing: Testing in Production Without Getting Fired'
 date: 2023-05-11
 category: QA
 slug: shadow-traffic-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "5G App Testing: QA at the Speed of Light"
+title: '5G App Testing: QA at the Speed of Light'
 date: 2025-04-03
 category: QA
 slug: 5g-app-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Service Mesh Policy Testing: The Traffic Cop Says NO"
+title: 'Service Mesh Policy Testing: The Traffic Cop Says NO'
 date: 2024-11-07
 category: QA
 slug: service-mesh-policy-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

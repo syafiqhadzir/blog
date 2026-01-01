@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Multi-Cloud Failover: Surviving the Apocalypse"
+title: 'Multi-Cloud Failover: Surviving the Apocalypse'
 date: 2025-08-07
 category: QA
 slug: multi-cloud-failover
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- cloud
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Identity Federation Testing: Digital Diplomacy"
+title: 'Identity Federation Testing: Digital Diplomacy'
 date: 2025-01-23
 category: QA
 slug: identity-federation-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

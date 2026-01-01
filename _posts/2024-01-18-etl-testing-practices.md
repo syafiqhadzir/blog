@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "ETL Testing Practices: Extract, Transform, and... Lose Half the Rows?"
+title: 'ETL Testing Practices: Extract, Transform, and... Lose Half the Rows?'
 date: 2024-01-18
 category: QA
 slug: etl-testing-practices
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

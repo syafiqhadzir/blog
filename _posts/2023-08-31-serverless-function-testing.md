@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Serverless Function Testing: There Is No Cloud, Only Other People's Computers"
+title: 'Serverless Function Testing: There Is No Cloud, Only Other People''s Computers'
 date: 2023-08-31
 category: QA
 slug: serverless-function-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

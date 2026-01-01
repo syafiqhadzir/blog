@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Video Streaming Testing: Buffering is the Mind-Killer"
+title: 'Video Streaming Testing: Buffering is the Mind-Killer'
 date: 2024-09-26
 category: QA
 slug: video-streaming-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

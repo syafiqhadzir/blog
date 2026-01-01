@@ -1,0 +1,87 @@
+{%- assign RELATED_POSTS_LIMIT = 3 -%}
+{%- assign current_tags = page.tags -%}
+{%- assign related_posts = "" | split: "" -%}
+
+<!-- 1. Score posts by tag intersection -->
+{%- for post in site.posts -%}
+  {%- if post.url != page.url -%}
+    {%- assign score = 0 -%}
+    {%- for tag in post.tags -%}
+      {%- if current_tags contains tag -%}
+        {%- assign score = score | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+    
+    {%- if score > 0 -%}
+      <!-- Stupid Liquid Hack: Prepend score to sort -->
+      {%- capture scored_post -%}{{ score }}#{{ post.url }}{%- endcapture -%}
+      {%- assign related_posts = related_posts | push: scored_post -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<!-- 2. Sort decscending (Hack: standard sort is ascending strings) -->
+{%- assign sorted_related = related_posts | sort | reverse -%}
+
+{%- if sorted_related.size > 0 -%}
+  <aside class="related-posts">
+    <h3>Recommended for You</h3>
+    <ul class="related-list">
+      {%- assign count = 0 -%}
+      {%- for entry in sorted_related -%}
+        {%- if count < RELATED_POSTS_LIMIT -%}
+          {%- assign parts = entry | split: "#" -%}
+          {%- assign url = parts[1] -%}
+          <!-- Find the actual post object -->
+          {%- for p in site.posts -%}
+            {%- if p.url == url -%}
+              <li>
+                <a href="{{ p.url | relative_url }}">
+                  <span class="related-title">{{ p.title }}</span>
+                  <br>
+                  <small class="related-meta">
+                    Match: 
+                    {%- for t in p.tags -%}
+                      {%- if current_tags contains t -%}
+                        <span class="tag-match">{{ t }}</span>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </small>
+                </a>
+              </li>
+              {%- assign count = count | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </aside>
+
+  <style>
+    .related-posts {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .related-list {
+      list-style: none;
+      padding: 0;
+    }
+    .related-list li {
+      margin-bottom: 1rem;
+    }
+    .tag-match {
+      background: var(--accent-color);
+      color: white;
+      font-size: 0.7em;
+      padding: 2px 6px;
+      border-radius: 4px;
+      opacity: 0.8;
+      display: inline-block;
+      margin-right: 4px;
+    }
+    .related-meta {
+      color: var(--text-color-light);
+    }
+  </style>
+{%- endif -%}

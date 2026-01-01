@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Root Cause Analysis: Sherlock Holmes Mode"
+title: 'Root Cause Analysis: Sherlock Holmes Mode'
 date: 2024-10-03
 category: QA
 slug: root-cause-analysis
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

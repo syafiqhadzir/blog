@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Personalised Quality: The Death of the 'Average User'"
+title: 'Personalised Quality: The Death of the ''Average User'''
 date: 2025-10-16
 category: QA
 slug: personalized-quality
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

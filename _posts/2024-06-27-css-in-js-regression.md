@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "CSS-in-JS Regression Testing: Regressing in Style"
+title: 'CSS-in-JS Regression Testing: Regressing in Style'
 date: 2024-06-27
 category: QA
 slug: css-in-js-regression
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

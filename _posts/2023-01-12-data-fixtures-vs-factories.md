@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Data Fixtures vs Factories: Stop Hardcoding Your Database"
+title: 'Data Fixtures vs Factories: Stop Hardcoding Your Database'
 date: 2023-01-12
 category: QA
 slug: data-fixtures-vs-factories
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

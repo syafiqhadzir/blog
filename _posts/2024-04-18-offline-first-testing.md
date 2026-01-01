@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Offline-First Testing: When the WiFi Dies in the Tunnel"
+title: 'Offline-First Testing: When the WiFi Dies in the Tunnel'
 date: 2024-04-18
 category: QA
 slug: offline-first-testing
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "The QA Role in FinOps: Saving Money is Also Quality"
+title: 'The QA Role in FinOps: Saving Money is Also Quality'
 date: 2024-03-14
 category: QA
 slug: qa-role-finops
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

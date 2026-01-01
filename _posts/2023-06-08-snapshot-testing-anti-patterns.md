@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Snapshot Testing Anti-Patterns: Stop Pressing 'u'"
+title: 'Snapshot Testing Anti-Patterns: Stop Pressing ''u'''
 date: 2023-06-08
 category: QA
 slug: snapshot-testing-anti-patterns
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

@@ -1,13 +1,14 @@
-﻿---
+---
 layout: post
-title: "Cost-Optimised Test Environments: How to Not Bankrupt Your Startup"
+title: 'Cost-Optimised Test Environments: How to Not Bankrupt Your Startup'
 date: 2024-03-21
 category: QA
 slug: cost-optimised-test-envs
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

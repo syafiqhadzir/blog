@@ -1,0 +1,31 @@
+qa:
+    name: Quality Assurance
+    description: 'Strategies, methodologies, and tools for ensuring software quality, from manual testing to advanced automation.'
+
+testing:
+    name: Software Testing
+    description: 'In-depth guides on unit, integration, and end-to-end testing practices.'
+
+security:
+    name: Security
+    description: 'Cybersecurity insights, penetration testing tips, and guarding against digital threats.'
+
+automation:
+    name: Automation
+    description: 'Automating workflows, tests, and deployments to increase velocity and reliability.'
+
+performance:
+    name: Performance
+    description: 'Optimization techniques, benchmarking, and ensuring your software runs at speed.'
+
+accessibility:
+    name: Accessibility (A11y)
+    description: 'Building inclusive digital experiences for all users, regardless of ability.'
+
+ai:
+    name: Artificial Intelligence
+    description: 'The impact of AI on software development, testing, and society.'
+
+career:
+    name: Career Growth
+    description: 'Navigating the tech industry, soft skills, and leadership advice for engineers.'

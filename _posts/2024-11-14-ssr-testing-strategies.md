@@ -1,13 +1,16 @@
-﻿---
+---
 layout: post
-title: "SSR Testing Strategies: The Uncanny Valley of React"
+title: 'SSR Testing Strategies: The Uncanny Valley of React'
 date: 2024-11-14
 category: QA
 slug: ssr-testing-strategies
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- strategies
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)

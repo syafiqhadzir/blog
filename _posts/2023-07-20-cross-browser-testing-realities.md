@@ -1,13 +1,15 @@
-﻿---
+---
 layout: post
-title: "Cross-Browser Testing Realities: Safari is the New IE"
+title: 'Cross-Browser Testing Realities: Safari is the New IE'
 date: 2023-07-20
 category: QA
 slug: cross-browser-testing-realities
-gpgkey: "EBE8 BD81 6838 1BAF"
----
+gpgkey: EBE8 BD81 6838 1BAF
+tags:
 
-## Table of Contents
+- qa
+- testing
+---## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
