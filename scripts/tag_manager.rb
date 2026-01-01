@@ -1,90 +1,100 @@
+# frozen_string_literal: true
+
 require 'yaml'
 require 'date'
 
-POSTS_DIR = '_posts'
+# Manages tagging of blog posts
+class TagManager
+  POSTS_DIR = '_posts'
 
-# Canonical Tag Dictionary
-CANONICAL_TAGS = %w[
-  qa testing automation security performance accessibility ai web3 pwa
-  devops mobile frontend backend career soft-skills sustainability
-  blockchain crypto machine-learning cloud architecture
-  strategies management tools privacy ethics
-].freeze
+  CANONICAL_TAGS = %w[
+    qa testing automation security performance accessibility ai web3 pwa
+    devops mobile frontend backend career soft-skills sustainability
+    blockchain crypto machine-learning cloud architecture
+    strategies management tools privacy ethics
+  ].freeze
 
-# Synonym Mapping
-SYNONYMS = {
-  'quality' => 'qa',
-  'speed' => 'performance',
-  'load' => 'performance',
-  'hacking' => 'security',
-  'a11y' => 'accessibility',
-  'gpt' => 'ai',
-  'llm' => 'ai',
-  'iot' => 'hardware',
-  '5g' => 'networking',
-  '6g' => 'networking',
-  'data' => 'data',
-  'etl' => 'data',
-  'sql' => 'data'
-}.freeze
+  SYNONYMS = {
+    'quality' => 'qa',
+    'speed' => 'performance',
+    'load' => 'performance',
+    'hacking' => 'security',
+    'a11y' => 'accessibility',
+    'gpt' => 'ai',
+    'llm' => 'ai',
+    'iot' => 'hardware',
+    '5g' => 'networking',
+    '6g' => 'networking',
+    'data' => 'data',
+    'etl' => 'data',
+    'sql' => 'data'
+  }.freeze
 
-def normalize_tags(list)
-  list.map { |t| t.to_s.downcase.strip }
-      .map { |t| SYNONYMS[t] || t }
-      .uniq
-      .select { |t| CANONICAL_TAGS.include?(t) || t == 'qa' }
-end
-
-puts 'Starting Bulk Tagging...'
-count = 0
-
-Dir.glob("#{POSTS_DIR}/*.md").each do |file|
-  # STRIP BOM for Windows compatibility
-  content = File.read(file).sub("\uFEFF", '')
-
-  if content =~ /\A(---\s*[\r\n]+)(.*?)([\r\n]+---\s*[\r\n]+)(.*)/m
-    head = Regexp.last_match(1)
-    fm_text = Regexp.last_match(2)
-    tail = Regexp.last_match(3)
-    body = Regexp.last_match(4)
-
-    begin
-      fm = YAML.safe_load(fm_text, permitted_classes: [Date, Time])
-
-      tags = fm['tags'] || []
-      tags = [tags] if tags.is_a?(String)
-
-      if fm['category']
-        cat = fm['category'].to_s.downcase
-        tags << cat
-        tags << 'qa' if cat == 'qa'
-      end
-
-      slug = fm['slug'] || File.basename(file, '.md')[11..]
-      slug_words = slug.to_s.split('-')
-      slug_words.each do |w|
-        tags << w if CANONICAL_TAGS.include?(w) || SYNONYMS.key?(w)
-      end
-
-      final_tags = normalize_tags(tags)
-      final_tags << 'qa' if final_tags.empty?
-
-      fm['tags'] = final_tags.sort
-
-      yaml_out = YAML.dump(fm).strip
-      yaml_out = yaml_out.sub(/\A---\s*[\r\n]+/, '')
-
-      new_content = "---\n#{yaml_out}\n---#{body}"
-
-      File.write(file, new_content)
-      count += 1
-      # puts "Tagged #{File.basename(file)}: #{final_tags.join(', ')}"
-    rescue StandardError => e
-      puts "FAILED: #{file} - #{e.message}"
+  def self.run
+    puts 'Starting Bulk Tagging...'
+    count = 0
+    Dir.glob("#{POSTS_DIR}/*.md").each do |file|
+      count += 1 if process_file(file)
     end
-  else
-    puts "NO MATCH: #{file}"
+    puts "Bulk Tagging Complete. Updated #{count} files."
+  end
+
+  def self.process_file(file)
+    content = File.read(file).sub("\uFEFF", '') # STRIP BOM
+    return false unless content =~ /\A(---\s*[\r\n]+)(.*?)([\r\n]+---\s*[\r\n]+)(.*)/m
+
+    process_content(file, Regexp.last_match(2), Regexp.last_match(4))
+    true
+  rescue StandardError => e
+    puts "FAILED: #{file} - #{e.message}"
+    false
+  end
+
+  def self.process_content(file, fm_text, body)
+    fm = YAML.safe_load(fm_text, permitted_classes: [Date, Time])
+    tags = extract_initial_tags(fm)
+    add_category_tags(fm, tags)
+    add_slug_tags(file, fm, tags)
+
+    final_tags = normalize_tags(tags)
+    final_tags << 'qa' if final_tags.empty?
+    fm['tags'] = final_tags.sort
+
+    write_file(file, fm, body)
+  end
+
+  def self.extract_initial_tags(front_matter)
+    tags = front_matter['tags'] || []
+    tags.is_a?(String) ? [tags] : tags
+  end
+
+  def self.add_category_tags(front_matter, tags)
+    return unless front_matter['category']
+
+    cat = front_matter['category'].to_s.downcase
+    tags << cat
+    tags << 'qa' if cat == 'qa'
+  end
+
+  def self.add_slug_tags(file, front_matter, tags)
+    slug = front_matter['slug'] || File.basename(file, '.md')[11..]
+    slug.to_s.split('-').each do |w|
+      tags << w if CANONICAL_TAGS.include?(w) || SYNONYMS.key?(w)
+    end
+  end
+
+  def self.normalize_tags(list)
+    list.map { |t| t.to_s.downcase.strip }
+        .map { |t| SYNONYMS[t] || t }
+        .uniq
+        .select { |t| CANONICAL_TAGS.include?(t) || t == 'qa' }
+  end
+
+  def self.write_file(file, front_matter, body)
+    yaml_out = YAML.dump(front_matter).strip.sub(/\A---\s*[\r\n]+/, '')
+    new_content = "---\n#{yaml_out}\n---#{body}"
+    File.write(file, new_content)
   end
 end
 
-puts "Bulk Tagging Complete. Updated #{count} files."
+TagManager.run if __FILE__ == $PROGRAM_NAME

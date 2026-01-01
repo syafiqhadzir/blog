@@ -16,8 +16,8 @@ test.describe('PWA & Service Worker', () => {
     test('should have valid manifest linked', async ({ page }) => {
         const manifestLink = page.locator('link[rel="manifest"]');
         await expect(manifestLink).toHaveCount(1);
-        const href = manifestLink;
-        await expect(href).toHaveAttribute('href');
+        const href = await manifestLink.getAttribute('href');
+        expect(href).not.toBeNull();
         const response = await page.request.get(href as string);
         expect(response.status()).toBe(200);
         const json = await response.json();

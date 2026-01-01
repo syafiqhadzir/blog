@@ -29,4 +29,4 @@ group :test do
   gem 'rubocop-rspec', '~> 3.2', require: false
 end
 
-gem "jekyll-minifier", "~> 0.2.2"
+gem 'jekyll-minifier', '~> 0.2.2'

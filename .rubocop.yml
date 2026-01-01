@@ -94,3 +94,7 @@ RSpec/MultipleDescribes:
     Exclude:
         - 'spec/unit/config_spec.rb'
         - 'spec/unit/layouts_spec.rb'
+
+# Line endings - ignore for Windows compatibility
+Layout/EndOfLine:
+    Enabled: false
