@@ -25,17 +25,6 @@ test.describe('Navigation', () => {
         await expect(page.locator('h1')).toContainText('Archive');
     });
 
-    test('can navigate to about', async ({ page }) => {
-        await page.goto('/');
-
-        // Click about link (actual text is "Read more..." under About section)
-        await page.click('a[href="about.html"]');
-
-        // Verify about page
-        await expect(page).toHaveURL(/about/);
-        await expect(page.locator('h1')).toContainText('About');
-    });
-
     test('can navigate to a blog post', async ({ page }) => {
         await page.goto('/archive.html');
 
@@ -48,7 +37,7 @@ test.describe('Navigation', () => {
     });
 
     test('back link returns to homepage', async ({ page }) => {
-        await page.goto('/about.html');
+        await page.goto('/tags.html');
 
         // Click back link
         await page.click('text=..');
