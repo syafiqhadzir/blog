@@ -2,16 +2,16 @@
     <div class="nav-content">
         <div class="nav-left">
             <!-- Klisé-style dark mode toggle (icon only, on the left) -->
-            <span class="mode-toggle" aria-label="Toggle dark mode">
+            <span class="mode-toggle">
                 <!-- Moon Icon: Visible in Light Mode -->
                 <span class="icon-moon" on="tap:AMP.setState({ uiMode: 'dark' })" role="button" tabindex="0" aria-label="Enable Dark Mode">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                 </span>
                 <!-- Sun Icon: Visible in Dark Mode -->
                 <span class="icon-sun" on="tap:AMP.setState({ uiMode: 'light' })" role="button" tabindex="0" aria-label="Enable Light Mode">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -24,12 +24,14 @@
                     </svg>
                 </span>
             </span>
+            <a href="{{ '/' | relative_url }}" class="nav-brand">{{ site.title }}</a>
         </div>
-        <div class="nav-links">
-            <a href="{{ '/' | relative_url }}">Home</a>
-            <a href="{{ '/archive.html' | relative_url }}">Archive</a>
-            <a href="{{ '/tags.html' | relative_url }}">Tags</a>
-            <a href="{{ '/about.html' | relative_url }}">About</a>
+        <div class="nav-links" role="list">
+            <a href="{{ '/' | relative_url }}" role="listitem">Home</a>
+            <a href="{{ '/archive.html' | relative_url }}" role="listitem">Archive</a>
+            <a href="{{ '/tags.html' | relative_url }}" role="listitem">Tags</a>
+            <a href="{{ '/about.html' | relative_url }}" role="listitem">About</a>
         </div>
     </div>
 </nav>
+

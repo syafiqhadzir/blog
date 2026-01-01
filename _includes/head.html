@@ -341,7 +341,7 @@
     .nav-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 0.5rem;
       align-items: center;
     }
 
@@ -350,10 +350,21 @@
       color: var(--text-secondary);
       font-size: 0.9rem;
       transition: color 0.2s ease;
+      /* WCAG 2.5.8: Minimum 24×24px touch target */
+      padding: 0.5rem 0.75rem;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
     }
 
     .nav-links a:hover {
       color: var(--text-color);
+    }
+
+    .nav-links a:focus-visible {
+      outline: 2px solid var(--link-color);
+      outline-offset: 2px;
+      border-radius: 4px;
     }
 
     /* Klisé-style Footer */
