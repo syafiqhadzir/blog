@@ -25,11 +25,42 @@ plugins:
     - jekyll-github-metadata
     - jekyll-seo-tag
     - jekyll-sitemap
+    - jekyll-minifier
 
 social:
     name: Syafiq Hadzir
     links:
         - https://github.com/SyafiqHadzir
+
+# Default values for posts
+# ------------------------------------
+# Expert Enhancements
+# ------------------------------------
+markdown: kramdown
+kramdown:
+    input: GFM
+    syntax_highlighter: rouge
+    hard_wrap: false
+
+sass:
+    style: compressed
+
+strict_front_matter: true
+
+jekyll-minifier:
+    preserve_php: false
+    remove_spaces_inside_tags: true
+    remove_multi_spaces: true
+    remove_comments: true
+    remove_intertag_spaces: false
+    remove_quotes: false
+    compress_css: true
+    compress_javascript: true
+    compress_json: true
+    ignore:
+        - '*.xml'
+        - '*.txt'
+        - 'assets/*.js'
 
 # Default values for posts
 defaults:

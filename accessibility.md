@@ -27,7 +27,7 @@ This website is committed to ensuring digital accessibility for everyone, includ
 If you encounter accessibility issues on this site, please contact me:
 
 - **Email**: [{{ site.email }}](mailto:{{ site.email }})
-- **Twitter**: [@{{ site.author.twitter }}](<https://twitter.com/{{> site.author.twitter }})
+- **Twitter**: [@{{ site.author.twitter }}](<https://twitter.com/{{ site.author.twitter }}>)
 
 We aim to respond within 5 business days.
 

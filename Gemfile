@@ -12,6 +12,7 @@ gem 'fiddle' # Future-proofing: will not be default gem in Ruby 3.5+
 gem 'jekyll'
 gem 'jekyll-feed'
 gem 'jekyll-github-metadata'
+gem 'jekyll-minifier'
 gem 'jekyll-seo-tag'
 gem 'jekyll-sitemap'
 gem 'kramdown-parser-gfm'
