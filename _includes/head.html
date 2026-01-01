@@ -4,18 +4,7 @@
   <link rel="dns-prefetch" href="https://cdn.ampproject.org/">
   <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="keywords" content="{{ page.keywords | default: 'QA, software testing, quality assurance, automation' }}">
-  <meta name="author" content="{{ site.author.name }}">
-  <meta name="robots" content="{{ page.robots | default: 'index, follow, max-image-preview:large' }}">
   {%- seo -%}
-  {%- if page.layout == 'post' -%}
-  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
-  {%- if page.last_modified_at -%}
-  <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">
-  {%- endif -%}
-  <meta property="article:author" content="{{ site.author.url }}">
-  <meta property="article:section" content="{{ page.category | default: 'Blog' }}">
-  {%- endif -%}
   {%- feed_meta -%}
   <link rel="author" href="{{ '/humans.txt' | relative_url }}" type="text/plain">
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}">
