@@ -2,7 +2,6 @@
 {%- assign current_tags = page.tags -%}
 {%- assign related_posts = "" | split: "" -%}
 
-<!-- 1. Score posts by tag intersection (with date as tie-breaker) -->
 {%- for post in site.posts -%}
   {%- if post.url != page.url -%}
     {%- assign score = 0 -%}
@@ -11,9 +10,7 @@
         {%- assign score = score | plus: 1 -%}
       {%- endif -%}
     {%- endfor -%}
-
     {%- if score > 0 -%}
-      <!-- Sort key: Score (Padded) + Date + URL -->
       {%- capture score_padded -%}{{ score | prepend: '00' | slice: -2, 2 }}{%- endcapture -%}
       {%- capture scored_post -%}{{ score_padded }}{{ post.date | date: "%Y%m%d" }}#{{ post.url }}{%- endcapture -%}
       {%- assign related_posts = related_posts | push: scored_post -%}
@@ -21,49 +18,28 @@
   {%- endif -%}
 {%- endfor -%}
 
-<!-- 2. Sort descending -->
 {%- assign sorted_related = related_posts | sort | reverse -%}
 
 {%- if sorted_related.size > 0 -%}
-  <aside class="related-posts">
-    <h3>Recommended for You</h3>
-    <ul class="related-list">
-      {%- assign count = 0 -%}
-      {%- for entry in sorted_related -%}
-        {%- if count < RELATED_POSTS_LIMIT -%}
-          {%- assign parts = entry | split: "#" -%}
-          {%- assign url = parts[1] -%}
-          {%- for p in site.posts -%}
-            {%- if p.url == url -%}
-              <li>
-                <a href="{{ p.url | relative_url }}">
-                  {%- assign shared_tags = "" | split: "" -%}
-                  {%- for tag in p.tags -%}
-                    {%- if current_tags contains tag -%}
-                      {%- assign shared_tags = shared_tags | push: tag -%}
-                    {%- endif -%}
-                  {%- endfor -%}
-                  {%- if shared_tags.size > 0 -%}
-                  <div class="related-tags">
-                    {%- for tag in shared_tags limit: 2 -%}
-                    <span class="related-tag">{{ tag }}</span>
-                    {%- endfor -%}
-                  </div>
-                  {%- endif -%}
-                  <span class="related-title">{{ p.title }} <span class="read-more-hint">→</span></span>
-                  <div class="related-meta">
-                    <time datetime="{{ p.date | date_to_xmlschema }}">
-                      {{ p.date | date: site.theme_config.date_format }}
-                    </time>
-                    · {%- include reading_time.html content=p.content -%}
-                  </div>
+<nav class="related-posts" aria-label="Recommended posts">
+    <h3 class="related-heading">Recommended for You</h3>
+    <div class="related-nav">
+        {%- assign count = 0 -%}
+        {%- for entry in sorted_related -%}
+          {%- if count < RELATED_POSTS_LIMIT -%}
+            {%- assign parts = entry | split: "#" -%}
+            {%- assign url = parts[1] -%}
+            {%- for p in site.posts -%}
+              {%- if p.url == url -%}
+                <a class="related-link" href="{{ p.url | relative_url }}">
+                    <span class="nav-label">{{ p.date | date: "%d %b %Y" }}</span>
+                    <span class="nav-title">{{ p.title | truncate: 60 }}</span>
                 </a>
-              </li>
-              {%- assign count = count | plus: 1 -%}
-            {%- endif -%}
-          {%- endfor -%}
-        {%- endif -%}
-      {%- endfor -%}
-    </ul>
-  </aside>
+                {%- assign count = count | plus: 1 -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+    </div>
+</nav>
 {%- endif -%}

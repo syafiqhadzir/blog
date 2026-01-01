@@ -408,160 +408,63 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
-    /* Related Posts Styles: Enhanced */
+    /* Related Posts - Minimal Nav Style */
     .related-posts {
-      margin-top: 4rem;
-      padding-top: 3rem;
-      border-top: 2px solid var(--border-color);
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
     }
 
-    .related-posts h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-top: 0;
-      margin-bottom: 2rem;
-      letter-spacing: -0.02em;
+    .related-heading {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 1rem 0;
+      color: var(--text-secondary);
+    }
+
+    .related-nav {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 0.75rem;
     }
 
-    .related-posts h3::before {
-      content: '✨';
-      font-size: 1.25rem;
-    }
-
-    .related-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .related-list li {
-      position: relative;
-    }
-
-    .related-list li a {
+    .related-link {
       display: flex;
       flex-direction: column;
-      padding: 1.75rem;
-      background: var(--code-bg);
+      gap: 0.25rem;
+      padding: 1rem;
       border: 1px solid var(--border-color);
-      border-radius: 16px;
+      border-radius: 8px;
       text-decoration: none;
-      height: 100%;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
+      background: var(--code-bg);
     }
 
-    .related-list li a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent-color), var(--link-color));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .related-list li a:hover {
+    .related-link:hover {
       border-color: var(--accent-color);
-      transform: translateY(-8px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-      background: var(--bg-color);
     }
 
-    .related-list li a:hover::before {
-      opacity: 1;
-    }
-
-    .related-list li a:focus-visible {
-      outline: none;
-      box-shadow: var(--focus-ring), 0 12px 30px rgba(0, 0, 0, 0.12);
-    }
-
-    .related-title {
-      font-weight: 700;
-      font-size: 1.15rem;
-      line-height: 1.4;
-      color: var(--text-color);
-      display: block;
-      margin-bottom: 1rem;
-      flex: 1;
-    }
-
-    .read-more-hint {
-      opacity: 0;
-      transform: translateX(-8px);
-      display: inline-block;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      color: var(--accent-color);
-      margin-left: 0.25rem;
-    }
-
-    .related-list li a:hover .read-more-hint {
-      opacity: 1;
-      transform: translateX(2px);
-    }
-
-    .related-meta {
-      font-size: 0.85rem;
+    .related-link .nav-label {
+      font-size: 0.8rem;
       color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: auto;
+      font-family: ui-monospace, monospace;
     }
 
-    /* Shared tags indicator */
-    .related-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .related-tag {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.5rem;
-      background: var(--accent-color);
-      color: #fff;
-      border-radius: 99px;
+    .related-link .nav-title {
       font-weight: 600;
+      color: var(--text-color);
+      line-height: 1.4;
     }
 
-    /* Mobile responsive */
+    .related-link:hover .nav-title {
+      color: var(--accent-color);
+    }
+
     @media (max-width: 600px) {
-      .related-list {
-        grid-template-columns: 1fr;
+      .related-nav {
+        gap: 0.5rem;
       }
-
-      .related-list li a {
-        padding: 1.25rem;
-      }
-
-      .related-list li a:hover {
-        transform: none;
-      }
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .related-list li a {
-        transition: none;
-      }
-      .related-list li a:hover {
-        transform: none;
-      }
-      .read-more-hint {
-        opacity: 1;
-        transform: none;
+      .related-link {
+        padding: 0.875rem;
       }
     }
 

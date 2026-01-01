@@ -4,54 +4,419 @@ title: Tags
 description: Browse all blog posts by tag.
 ---
 
-<section class="tags-page">
-    <h1>Tags</h1>
-    <p>Browse articles by topic. Size indicates frequency.</p>
+<section class="tags-page" aria-label="Tags">
+    <header class="tags-header">
+        <h1 id="tags-title">Explore by Topic</h1>
+        <p class="tags-description">{{ page.description }}</p>
+        <p class="tags-stats">
+            <span class="stat-total">{{ site.tags | size }}</span> topics across
+            <span class="stat-total">{{ site.posts | size }}</span> articles
+        </p>
+    </header>
 
-    <div class="tag-cloud" aria-label="Tag cloud">
+    <!-- Search Box -->
+    <div class="tags-search" role="search">
+        <label for="tag-search-input" class="sr-only">Search tags</label>
+        <input
+            type="search"
+            id="tag-search-input"
+            class="tags-search-input"
+            placeholder="🔍 Search tags..."
+            aria-label="Search tags"
+            autocomplete="off"
+        />
+    </div>
+
+    <!-- Tag Cloud -->
+    <nav class="tag-cloud-section" aria-label="Tag cloud">
         {%- assign sorted_tags = site.tags | sort -%} {%- assign max_count = 0 -%} {%- for tag in
         sorted_tags -%} {%- if tag[1].size > max_count -%} {%- assign max_count = tag[1].size -%}
-        {%- endif -%} {%- endfor -%} {%- for tag in sorted_tags -%} {%- assign count = tag[1].size
-        -%} {%- assign ratio = count | times: 100 | divided_by: max_count -%} {%- if ratio < 20
-        -%}{%- assign w_class = 'tag-w1' -%} {%- elsif ratio < 40 -%}{%- assign w_class = 'tag-w2'
-        -%} {%- elsif ratio < 60 -%}{%- assign w_class = 'tag-w3' -%} {%- elsif ratio < 80 -%}{%-
-        assign w_class = 'tag-w4' -%} {%- else -%}{%- assign w_class = 'tag-w5' -%}{%- endif -%}
-        <a
-            href="#{{ tag[0] | slugify }}"
-            class="tag-item {{ w_class }}"
-            aria-label="{{ tag[0] }} tag with {{ count }} posts"
-        >
-            {{ tag[0] }}
-        </a>
+        {%- endif -%} {%- endfor -%}
+
+        <div class="tag-cloud" role="list">
+            {%- for tag in sorted_tags -%} {%- assign count = tag[1].size -%} {%- assign ratio =
+            count | times: 100 | divided_by: max_count -%} {%- if ratio < 20 -%} {%- assign w_class
+            = 'tag-w1' -%} {%- elsif ratio < 40 -%} {%- assign w_class = 'tag-w2' -%} {%- elsif
+            ratio < 60 -%} {%- assign w_class = 'tag-w3' -%} {%- elsif ratio < 80 -%} {%- assign
+            w_class = 'tag-w4' -%} {%- else -%} {%- assign w_class = 'tag-w5' -%} {%- endif -%}
+            <a
+                href="#{{ tag[0] | slugify }}"
+                class="tag-chip {{ w_class }}"
+                data-tag="{{ tag[0] }}"
+                role="listitem"
+            >
+                {{ site.data.tags[tag[0]].name | default: tag[0] }}
+                <span class="tag-chip-count">{{ count }}</span>
+            </a>
+            {%- endfor -%}
+        </div>
+    </nav>
+
+    <!-- Tag Sections -->
+    <div class="tag-sections" id="tag-list">
+        {%- for tag in sorted_tags -%}
+        <details class="tag-group" open id="{{ tag[0] | slugify }}" data-tag="{{ tag[0] }}">
+            <summary class="tag-group-header">
+                <span class="tag-chevron" aria-hidden="true"></span>
+                <span class="tag-label"
+                    >{{ site.data.tags[tag[0]].name | default: tag[0] | capitalize }}</span
+                >
+                <span class="tag-count">{{ tag[1].size }} articles</span>
+            </summary>
+            {%- if site.data.tags[tag[0]].description -%}
+            <p class="tag-group-description">{{ site.data.tags[tag[0]].description }}</p>
+            {%- endif -%}
+            <ul class="tag-posts" role="list">
+                {%- for post in tag[1] -%}
+                <li class="tag-post-item" role="listitem">
+                    <time class="tag-post-date" datetime="{{ post.date | date_to_xmlschema }}">
+                        {{ post.date | date: "%d %b %Y" }}
+                    </time>
+                    <a class="tag-post-link" href="{{ post.url | relative_url }}"
+                        >{{ post.title }}</a
+                    >
+                    <span class="tag-post-meta"
+                        >{%- include reading_time.html content=post.content -%}</span
+                    >
+                </li>
+                {%- endfor -%}
+            </ul>
+        </details>
         {%- endfor -%}
     </div>
 
-    <hr />
-
-    {%- for tag in sorted_tags -%}
-    <section class="tag-section" id="{{ tag[0] | slugify }}">
-        <div class="tag-header">
-            <h2>{{ site.data.tags[tag[0]].name | default: tag[0] | capitalize }}</h2>
-            {%- if site.data.tags[tag[0]].description -%}
-            <p class="tag-description"> {{ site.data.tags[tag[0]].description }} </p>
-            {%- endif -%}
-        </div>
-        <ul class="post-list" role="list">
-            {%- for post in tag[1] -%}
-            <li role="listitem">
-                <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
-                    {{ post.date | date: site.theme_config.date_format }}
-                </time>
-                <a class="post-list-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                <span class="post-list-meta">
-                    {%- include reading_time.html content=post.content -%}
-                </span>
-            </li>
-            {%- endfor -%}
-        </ul>
-    </section>
-    {%- endfor -%}
+    <!-- Empty State -->
+    <div class="tags-empty" id="no-results" hidden>
+        <p>No tags found matching "<strong id="search-term"></strong>"</p>
+    </div>
 </section>
+
+<style>
+    /* Tags Page - Consistent with Archive Design */
+    .tags-page {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .tags-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border-color, #e5e7eb);
+    }
+    .tags-header h1 {
+        margin-bottom: 0.5rem;
+        font-size: 2rem;
+    }
+    .tags-description {
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        margin-bottom: 0.5rem;
+    }
+    .tags-stats {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+    .stat-total {
+        font-weight: 700;
+        color: var(--link-color);
+        font-size: 1.1em;
+    }
+
+    /* Search */
+    .tags-search {
+        margin-bottom: 1.5rem;
+    }
+    .tags-search-input {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+        border: 2px solid var(--border-color, #e5e7eb);
+        border-radius: 12px;
+        background: var(--bg-color);
+        color: var(--text-color);
+        transition:
+            border-color 0.2s,
+            box-shadow 0.2s;
+    }
+    .tags-search-input:focus {
+        outline: none;
+        border-color: var(--link-color);
+        box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.12);
+    }
+
+    /* Tag Cloud */
+    .tag-cloud-section {
+        margin-bottom: 2rem;
+    }
+    .tag-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+    .tag-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.5rem 0.875rem;
+        border-radius: 2rem;
+        text-decoration: none;
+        font-weight: 500;
+        border: 1px solid var(--border-color);
+        background: var(--code-bg);
+        color: var(--text-color);
+    }
+    .tag-chip:hover {
+        border-color: var(--accent-color);
+    }
+    .tag-chip.hidden {
+        display: none;
+    }
+    .tag-chip-count {
+        font-size: 0.75rem;
+        padding: 0.1rem 0.4rem;
+        border-radius: 1rem;
+        background: var(--bg-color);
+        color: var(--text-secondary);
+    }
+
+    /* Tag Weight Classes */
+    .tag-w1 {
+        font-size: 0.85rem;
+    }
+    .tag-w2 {
+        font-size: 0.9rem;
+    }
+    .tag-w3 {
+        font-size: 0.95rem;
+        background: var(--accent-color);
+        color: #fff;
+        border-color: var(--accent-color);
+    }
+    .tag-w3 .tag-chip-count {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+    .tag-w4 {
+        font-size: 1rem;
+        background: var(--accent-color);
+        color: #fff;
+        border-color: var(--accent-color);
+    }
+    .tag-w4 .tag-chip-count {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+    .tag-w5 {
+        font-size: 1.05rem;
+        background: linear-gradient(135deg, var(--accent-color), var(--link-color));
+        color: #fff;
+        border-color: transparent;
+    }
+    .tag-w5 .tag-chip-count {
+        background: rgba(255, 255, 255, 0.25);
+        color: #fff;
+    }
+
+    /* Tag Groups */
+    .tag-sections {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .tag-group {
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        overflow: hidden;
+        scroll-margin-top: 2rem;
+    }
+    .tag-group[hidden] {
+        display: none;
+    }
+    .tag-group-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 1.25rem;
+        background: linear-gradient(to right, var(--code-bg), transparent);
+        cursor: pointer;
+        font-weight: 600;
+        list-style: none;
+    }
+    .tag-group-header::-webkit-details-marker {
+        display: none;
+    }
+    .tag-group-header:hover {
+        background: var(--code-bg);
+    }
+    .tag-chevron {
+        width: 0;
+        height: 0;
+        border-left: 5px solid var(--text-secondary);
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        transition: transform 0.2s ease;
+    }
+    details[open] .tag-chevron {
+        transform: rotate(90deg);
+    }
+    .tag-label {
+        font-size: 1.15rem;
+        color: var(--text-color);
+        flex: 1;
+    }
+    .tag-count {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        background: var(--bg-color);
+        padding: 0.3rem 0.75rem;
+        border-radius: 2rem;
+        border: 1px solid var(--border-color);
+    }
+    .tag-group-description {
+        padding: 0 1.25rem 0.75rem;
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+
+    /* Posts List */
+    .tag-posts {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .tag-post-item {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        padding: 0.875rem 1.25rem;
+        border-top: 1px solid var(--border-color);
+        transition: background-color 0.15s;
+    }
+    .tag-post-item:hover {
+        background: rgba(0, 102, 204, 0.03);
+    }
+    .tag-post-date {
+        flex-shrink: 0;
+        min-width: 5rem;
+        font-size: 0.8rem;
+        font-family: ui-monospace, monospace;
+        color: var(--text-secondary);
+    }
+    .tag-post-link {
+        flex: 1;
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+        line-height: 1.4;
+    }
+    .tag-post-link:hover {
+        color: var(--link-color);
+    }
+    .tag-post-meta {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        white-space: nowrap;
+    }
+
+    /* Empty State */
+    .tags-empty {
+        text-align: center;
+        padding: 3rem;
+        color: var(--text-secondary);
+    }
+    .tags-empty[hidden] {
+        display: none;
+    }
+
+    /* Dark Mode */
+    .dark-theme .tag-chip {
+        background: var(--code-bg);
+    }
+    .dark-theme .tag-group-header {
+        background: linear-gradient(to right, var(--code-bg), transparent);
+    }
+    .dark-theme .tag-post-item:hover {
+        background: rgba(88, 166, 255, 0.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+        .tags-header h1 {
+            font-size: 1.5rem;
+        }
+        .tag-post-item {
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        .tag-post-date {
+            width: 100%;
+        }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+        .tag-chip,
+        .tag-chevron,
+        .tag-post-item {
+            transition: none;
+        }
+        .tag-chip:hover {
+            transform: none;
+        }
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const search = document.getElementById('tag-search-input');
+        const chips = document.querySelectorAll('.tag-chip');
+        const groups = document.querySelectorAll('.tag-group');
+        const noResults = document.getElementById('no-results');
+        const searchTerm = document.getElementById('search-term');
+
+        function filter() {
+            const q = search.value.toLowerCase().trim();
+            let visible = 0;
+
+            chips.forEach((c) => {
+                const match = !q || c.dataset.tag.toLowerCase().includes(q);
+                c.classList.toggle('hidden', !match);
+            });
+
+            groups.forEach((g) => {
+                const match = !q || g.dataset.tag.toLowerCase().includes(q);
+                g.hidden = !match;
+                if (match) visible++;
+            });
+
+            noResults.hidden = visible > 0 || !q;
+            if (searchTerm) searchTerm.textContent = q;
+        }
+
+        search.addEventListener('input', filter);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                e.preventDefault();
+                search.focus();
+            }
+        });
+    });
+</script>
 
 <script type="application/ld+json">
     {
@@ -60,15 +425,11 @@ description: Browse all blog posts by tag.
         "name": "Tags",
         "description": "Browse all blog posts by tag",
         "url": "{{ page.url | absolute_url }}",
+        "numberOfItems": {{ site.tags | size }},
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "{{ '/' | absolute_url }}"
-                },
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ '/' | absolute_url }}" },
                 { "@type": "ListItem", "position": 2, "name": "Tags" }
             ]
         }
