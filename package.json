@@ -10,6 +10,7 @@
         "test:e2e": "playwright test",
         "test:e2e:headed": "playwright test --headed",
         "test:e2e:ui": "playwright test --ui",
+        "test:amp": "npx amphtml-validator _site/index.html _site/tags.html _site/404.html",
         "build": "bundle exec jekyll build",
         "optimize:img": "imagemin \"img/**/*.{jpg,png}\" \"logo.png\" --out-dir img",
         "lighthouse": "lhci autorun",
@@ -29,6 +30,7 @@
         "prepare": "husky"
     },
     "devDependencies": {
+        "amphtml-validator": "^1.0.35",
         "@axe-core/playwright": "^4.11.0",
         "@commitlint/cli": "^20.2.0",
         "@commitlint/config-conventional": "^20.2.0",

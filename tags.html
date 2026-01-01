@@ -2,7 +2,6 @@
 layout: default
 title: Tags
 description: Browse all blog posts by tag.
-robots: noindex, follow
 ---
 
 <section class="tags-page">
@@ -13,12 +12,13 @@ robots: noindex, follow
         {%- assign sorted_tags = site.tags | sort -%} {%- assign max_count = 0 -%} {%- for tag in
         sorted_tags -%} {%- if tag[1].size > max_count -%} {%- assign max_count = tag[1].size -%}
         {%- endif -%} {%- endfor -%} {%- for tag in sorted_tags -%} {%- assign count = tag[1].size
-        -%} {%- assign weight = count | times: 1.0 | divided_by: max_count | times: 1.5 | plus: 0.8
-        -%}
+        -%} {%- assign ratio = count | times: 100 | divided_by: max_count -%} {%- if ratio < 20
+        -%}{%- assign w_class = 'tag-w1' -%} {%- elsif ratio < 40 -%}{%- assign w_class = 'tag-w2'
+        -%} {%- elsif ratio < 60 -%}{%- assign w_class = 'tag-w3' -%} {%- elsif ratio < 80 -%}{%-
+        assign w_class = 'tag-w4' -%} {%- else -%}{%- assign w_class = 'tag-w5' -%}{%- endif -%}
         <a
             href="#{{ tag[0] | slugify }}"
-            class="tag-item"
-            style="font-size: {{ weight }}rem;"
+            class="tag-item {{ w_class }}"
             aria-label="{{ tag[0] }} tag with {{ count }} posts"
         >
             {{ tag[0] }}
@@ -29,20 +29,23 @@ robots: noindex, follow
     <hr />
 
     {%- for tag in sorted_tags -%}
-    <section class="tag-section" id="{{ tag[0] | slugify }}" style="margin-bottom: 3rem">
+    <section class="tag-section" id="{{ tag[0] | slugify }}">
         <div class="tag-header">
             <h2>{{ site.data.tags[tag[0]].name | default: tag[0] | capitalize }}</h2>
             {%- if site.data.tags[tag[0]].description -%}
-            <p class="tag-description" style="font-style: italic; color: var(--text-secondary)">
-                {{ site.data.tags[tag[0]].description }}
-            </p>
+            <p class="tag-description"> {{ site.data.tags[tag[0]].description }} </p>
             {%- endif -%}
         </div>
         <ul class="post-list" role="list">
             {%- for post in tag[1] -%}
             <li role="listitem">
-                <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
+                    {{ post.date | date: site.theme_config.date_format }}
+                </time>
+                <a class="post-list-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                <span class="post-list-meta">
+                    {%- include reading_time.html content=post.content -%}
+                </span>
             </li>
             {%- endfor -%}
         </ul>

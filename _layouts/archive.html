@@ -8,7 +8,40 @@ title: Archive
     {%- if page.description -%}
     <p>{{ page.description }}</p>
     {%- endif -%}
-    {%-include post_list.html category=page.which_category-%}
+
+    <!-- Search Input: vanilla JS filter, no AMP dependencies -->
+    <div class="search-container">
+        <span class="search-icon-overlay">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+        </span>
+        <input type="text"
+               class="search-input"
+               placeholder="Filter by title, date, or tags..."
+               aria-label="Filter blog posts"
+               id="archive-filter">
+    </div>
+
+    <!-- Post List: Jekyll-rendered, always visible -->
+    <ul role="list" aria-label="Blog posts" id="archive-list">
+      {%- for post in site.posts -%}
+      <li role="listitem" data-title="{{ post.title | downcase | replace: '&quot;', '' | replace: '"', '' }}" data-date="{{ post.date | date: '%Y-%m-%d' }}" data-tags="{{ post.tags | join: ' ' | downcase }}">
+        <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}"
+          aria-label="{{ post.date | date: site.theme_config.date_format }}">
+          {{- post.date | date: site.theme_config.date_format -}}
+        </time>
+        <a class="post-list-title" href="{{ post.url | relative_url }}" aria-label="Read {{ post.title | xml_escape }}">{{ post.title }}</a>
+        <span class="post-list-meta">
+          {%- include reading_time.html content=post.content -%}
+        </span>
+      </li>
+      {%- endfor -%}
+    </ul>
+
+    <!-- No Results Message -->
+    <p id="no-results" class="no-results" hidden>No articles match your search.</p>
 </section>
 
 <script type="application/ld+json">
@@ -40,4 +73,51 @@ title: Archive
     ]
   }
 }
+</script>
+
+<!-- Minimal vanilla JS filter (no AMP dependencies, no libraries) -->
+<script>
+(function() {
+  'use strict';
+  var input = document.getElementById('archive-filter');
+  var list = document.getElementById('archive-list');
+  var noResults = document.getElementById('no-results');
+  if (!input || !list) return;
+  var items = list.querySelectorAll('li');
+
+  // Filter function
+  function filter() {
+    var q = (input.value || '').trim().toLowerCase();
+    var visible = 0;
+    items.forEach(function(li) {
+      var match = !q ||
+        (li.dataset.title || '').includes(q) ||
+        (li.dataset.date || '').includes(q) ||
+        (li.dataset.tags || '').includes(q);
+      li.hidden = !match;
+      if (match) visible++;
+    });
+    if (noResults) noResults.hidden = visible > 0;
+  }
+
+  input.addEventListener('input', filter);
+
+  // Focus search input if ?focus=search in URL
+  if (window.location.search.includes('focus=search')) {
+    input.focus();
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Global keyboard shortcut: "/" to focus search (common UX pattern)
+  document.addEventListener('keydown', function(e) {
+    // Ignore if user is typing in an input, textarea, or contenteditable
+    var tag = document.activeElement.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement.isContentEditable) return;
+    if (e.key === '/') {
+      e.preventDefault();
+      input.focus();
+      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+})();
 </script>

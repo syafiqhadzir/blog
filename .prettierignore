@@ -8,3 +8,4 @@ _includes/
 _layouts/
 *.md
 sw.js
+search.json

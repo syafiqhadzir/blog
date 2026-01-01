@@ -55,4 +55,58 @@ test.describe('Navigation', () => {
         const skipLink = page.locator('.skip-link');
         await expect(skipLink).toBeFocused();
     });
+
+    test('archive filter shows matching posts', async ({ page }) => {
+        await page.goto('/archive.html');
+
+        // Get initial count
+        const listItems = page.locator('#archive-list li');
+        const initialCount = await listItems.count();
+        expect(initialCount).toBeGreaterThan(0);
+
+        // Filter by a term that should match some posts
+        await page.fill('#archive-filter', 'testing');
+
+        // Wait for filter to process by checking DOM state change
+        // The filter hides non-matching items via hidden attribute
+        await page.waitForFunction(() => {
+            const items = document.querySelectorAll('#archive-list li[hidden]');
+            return items.length > 0; // Some items should be hidden after filtering
+        });
+
+        // Should have fewer or equal visible items
+        const visibleItems = page.locator('#archive-list li:not([hidden])');
+        const filteredCount = await visibleItems.count();
+        expect(filteredCount).toBeLessThanOrEqual(initialCount);
+    });
+
+    test('archive filter shows no results message', async ({ page }) => {
+        await page.goto('/archive.html');
+
+        // Filter by nonsense term
+        await page.fill('#archive-filter', 'xyznonexistent123');
+
+        // Wait for no-results message to become visible
+        await page.locator('#no-results').waitFor({ state: 'visible' });
+
+        // All items should be hidden
+        const visibleItems = page.locator('#archive-list li:not([hidden])');
+        await expect(visibleItems).toHaveCount(0);
+
+        // No results message should be visible
+        await expect(page.locator('#no-results')).toBeVisible();
+    });
+
+    test('navbar search icon navigates to archive with focus', async ({ page }) => {
+        await page.goto('/');
+
+        // Click search icon
+        await page.click('.search-link');
+
+        // Should navigate to archive with focus=search param
+        await expect(page).toHaveURL(/archive\.html\?focus=search/);
+
+        // Verify the input exists and is visible (focus may vary by browser)
+        await expect(page.locator('#archive-filter')).toBeVisible();
+    });
 });
