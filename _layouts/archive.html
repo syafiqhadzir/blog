@@ -1,6 +1,5 @@
 ---
 layout: default
-title: Archive
 ---
 
 {%- comment -%}
@@ -45,6 +44,8 @@ title: Archive
     <div class="archive-results" aria-live="polite" aria-atomic="true">
         <span id="results-count">Showing all {{ site.posts | size }} articles</span>
     </div>
+
+    {{ content }}
 
     <!-- Posts by Year -->
     <div class="archive-years" id="archive-list">

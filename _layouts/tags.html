@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Tags
-description: Browse all blog posts by tag.
 ---
 
 <section class="tags-page" aria-label="Tags">
     <header class="tags-header">
-        <h1 id="tags-title">Explore by Topic</h1>
+        <h1 id="tags-title">{{ page.title | default: "Explore by Topic" }}</h1>
+        {% if page.description %}
         <p class="tags-description">{{ page.description }}</p>
+        {% endif %}
         <p class="tags-stats">
             <span class="stat-total">{{ site.tags | size }}</span> topics across
             <span class="stat-total">{{ site.posts | size }}</span> articles
@@ -90,6 +90,8 @@ description: Browse all blog posts by tag.
         <p>No tags found matching "<strong id="search-term"></strong>"</p>
     </div>
 </section>
+
+{{ content }}
 
 <style>
     /* Tags Page - Consistent with Archive Design */
@@ -342,6 +344,9 @@ description: Browse all blog posts by tag.
     .dark-theme .tag-post-item:hover {
         background: rgba(88, 166, 255, 0.05);
     }
+    .dark-theme .tag-chip-count {
+        background: var(--bg-color);
+    }
 
     /* Responsive */
     @media (max-width: 640px) {
@@ -364,20 +369,6 @@ description: Browse all blog posts by tag.
         .tag-post-item {
             transition: none;
         }
-        .tag-chip:hover {
-            transform: none;
-        }
-    }
-
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
     }
 </style>
 

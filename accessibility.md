@@ -2,6 +2,7 @@
 layout: page
 title: Accessibility
 description: Accessibility statement for this blog, detailing our commitment to WCAG 2.2 conformance.
+permalink: /accessibility
 ---
 
 ## Accessibility Statement

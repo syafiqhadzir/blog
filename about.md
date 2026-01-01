@@ -2,7 +2,7 @@
 layout: page
 title: About
 description: A little bit about me and this blog.
-permalink: /about/
+permalink: /about
 ---
 
 I am **Syafiq Hadzir**, a Software Engineer in Test (SDET) with 12 years of experience in breaking software so you don’t have to.
