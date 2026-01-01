@@ -226,7 +226,7 @@ DEPENDENCIES
   jekyll
   jekyll-feed
   jekyll-github-metadata
-  jekyll-minifier
+  jekyll-minifier (~> 0.2.2)
   jekyll-seo-tag
   jekyll-sitemap
   kramdown-parser-gfm

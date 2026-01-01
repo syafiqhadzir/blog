@@ -1,0 +1,5 @@
+error: pathspec 'feat:' did not match any file(s) known to git
+error: pathspec 'stable' did not match any file(s) known to git
+error: pathspec 'enhanced' did not match any file(s) known to git
+error: pathspec 'build' did not match any file(s) known to git
+error: pathspec 'pipeline\ ' did not match any file(s) known to git
