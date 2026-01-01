@@ -3,7 +3,7 @@ layout: post
 title: "Disaster Recovery Testing: The Datacentre is on Fire"
 date: 2024-10-24
 category: QA
-slug: qa-disaster-recovery
+slug: disaster-recovery-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

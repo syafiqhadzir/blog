@@ -3,7 +3,7 @@ layout: post
 title: "Localisation Testing: Why Your App is Illegal in Germany"
 date: 2024-07-11
 category: QA
-slug: localization-testing-qa
+slug: localization-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

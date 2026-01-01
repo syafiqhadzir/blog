@@ -3,7 +3,7 @@ layout: post
 title: "Serverless Function Testing: There Is No Cloud, Only Other People's Computers"
 date: 2023-08-31
 category: QA
-slug: testing-serverless-functions
+slug: serverless-function-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

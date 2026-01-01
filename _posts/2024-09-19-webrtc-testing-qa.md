@@ -3,7 +3,7 @@ layout: post
 title: "WebRTC Testing: Can You Hear Me Now?"
 date: 2024-09-19
 category: QA
-slug: webrtc-testing-qa
+slug: webrtc-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

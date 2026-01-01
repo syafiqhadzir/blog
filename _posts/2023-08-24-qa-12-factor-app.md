@@ -1,9 +1,9 @@
 ﻿---
 layout: post
-title: "The 12-Factor App for QA: Testing Cloud-Native Apps"
+title: "The 12-Factor App: Testing Cloud-Native Apps"
 date: 2023-08-24
 category: QA
-slug: qa-12-factor-app
+slug: 12-factor-app
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

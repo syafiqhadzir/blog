@@ -3,7 +3,7 @@ layout: post
 title: "Incident Post-Mortems: Who Killed the Server?"
 date: 2023-10-19
 category: QA
-slug: incident-postmortems-qa
+slug: incident-post-mortems
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

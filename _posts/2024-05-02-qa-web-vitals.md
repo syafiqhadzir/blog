@@ -3,7 +3,7 @@ layout: post
 title: "Web Vitals Testing: Why Google Hates Your Website"
 date: 2024-05-02
 category: QA
-slug: qa-web-vitals
+slug: web-vitals-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

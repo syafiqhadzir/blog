@@ -3,7 +3,7 @@ layout: post
 title: "WebSocket Scale Testing: Melting the Server"
 date: 2024-10-17
 category: QA
-slug: websockets-at-scale-testing
+slug: websocket-scale-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

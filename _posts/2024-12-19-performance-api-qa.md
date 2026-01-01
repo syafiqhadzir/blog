@@ -3,7 +3,7 @@ layout: post
 title: "Performance API Testing: Stop Counting Seconds"
 date: 2024-12-19
 category: QA
-slug: performance-api-qa
+slug: performance-api-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 
@@ -13,7 +13,7 @@ gpgkey: "EBE8 BD81 6838 1BAF"
 - [Introduction](#introduction)
 - [TL;DR](#tldr)
 - [Navigation Timing Level 2](#navigation-timing-level-2)
-- [User Timing (Marks & Measures)](#user-timing-marks--measures)
+- [User Timing (Marks \& Measures)](#user-timing-marks--measures)
 - [Code Snippet: Real-Time Metric Extraction](#code-snippet-real-time-metric-extraction)
 - [Summary](#summary)
 - [Key Takeaways](#key-takeaways)

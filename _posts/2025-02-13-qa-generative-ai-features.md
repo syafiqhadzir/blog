@@ -3,7 +3,7 @@ layout: post
 title: "Generative AI Testing: Testing God"
 date: 2025-02-13
 category: QA
-slug: qa-generative-ai-features
+slug: generative-ai-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

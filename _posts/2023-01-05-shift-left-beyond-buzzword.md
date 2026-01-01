@@ -3,7 +3,7 @@ layout: post
 title: "Shift Left Testing: Or How to Avoid Working Weekends"
 date: 2023-01-05
 category: QA
-slug: shift-left-beyond-buzzword
+slug: shift-left-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "Personalised Quality: The Death of the 'Average User'"
 date: 2025-10-16
 category: QA
-slug: personalized-quality-testing
+slug: personalized-quality
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

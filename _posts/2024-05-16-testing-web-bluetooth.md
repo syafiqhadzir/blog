@@ -3,7 +3,7 @@ layout: post
 title: "Web Bluetooth Testing: Or How I Learned to Stop Worrying and Love the Dongle"
 date: 2024-05-16
 category: QA
-slug: testing-web-bluetooth
+slug: web-bluetooth-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 
@@ -14,6 +14,7 @@ gpgkey: "EBE8 BD81 6838 1BAF"
 - [TL;DR](#tldr)
 - [The "Pairing" Friction](#the-pairing-friction)
 - [The "Range" Anxiety](#the-range-anxiety)
+  - [QA Scenario: "The Walkaway"](#qa-scenario-the-walkaway)
 - [Code Snippet: Mocking Bluetooth in Tests](#code-snippet-mocking-bluetooth-in-tests)
 - [Summary](#summary)
 - [Key Takeaways](#key-takeaways)

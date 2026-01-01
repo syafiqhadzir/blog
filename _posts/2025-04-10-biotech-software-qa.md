@@ -3,7 +3,7 @@ layout: post
 title: "Biotech Software Testing: Don't Kill Grandma"
 date: 2025-04-10
 category: QA
-slug: biotech-software-qa
+slug: biotech-software-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

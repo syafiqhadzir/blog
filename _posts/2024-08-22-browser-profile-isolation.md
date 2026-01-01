@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: "Browser Profile Isolation Testing: The Fresh Start"
+title: "Browser Profile Isolation: The Fresh Start"
 date: 2024-08-22
 category: QA
 slug: browser-profile-isolation

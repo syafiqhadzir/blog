@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: "Post-Quantum Security QA: The Apocalypse is Scheduled"
+title: "Post-Quantum Security for QA: The Apocalypse is Scheduled"
 date: 2025-11-20
 category: QA
 slug: post-quantum-security-qa

@@ -3,7 +3,7 @@ layout: post
 title: "AR/VR Web Testing: Don't Throw Up"
 date: 2025-01-30
 category: QA
-slug: qa-ar-vr-web
+slug: ar-vr-web-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

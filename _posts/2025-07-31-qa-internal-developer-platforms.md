@@ -3,7 +3,7 @@ layout: post
 title: "Internal Developer Platforms: The Golden Path"
 date: 2025-07-31
 category: QA
-slug: qa-internal-developer-platforms
+slug: internal-developer-platforms
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

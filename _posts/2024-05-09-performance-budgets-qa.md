@@ -3,7 +3,7 @@ layout: post
 title: "Performance Budget Testing: Putting Your JavaScript on a Diet"
 date: 2024-05-09
 category: QA
-slug: performance-budgets-qa
+slug: performance-budgets-testingqa
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

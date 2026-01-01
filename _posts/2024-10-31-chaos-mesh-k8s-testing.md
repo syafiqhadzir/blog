@@ -3,7 +3,7 @@ layout: post
 title: "Chaos Mesh Testing: Injecting Pain for Profit"
 date: 2024-10-31
 category: QA
-slug: chaos-mesh-k8s-testing
+slug: chaos-mesh-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

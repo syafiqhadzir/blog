@@ -3,7 +3,7 @@ layout: post
 title: "Final Mission: The 2025 Retrospective"
 date: 2025-12-25
 category: QA
-slug: final-2025-retrospective
+slug: final-mission
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

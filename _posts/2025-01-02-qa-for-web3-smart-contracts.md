@@ -1,9 +1,9 @@
 ﻿---
 layout: post
-title: "Web3 Smart Contract Testing: Code is Law (and Lawsuits)"
+title: "Web3 Smart Contract: Code is Law (and Lawsuits)"
 date: 2025-01-02
 category: QA
-slug: qa-for-web3-smart-contracts
+slug: web3-smart-contract
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

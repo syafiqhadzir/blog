@@ -3,7 +3,7 @@ layout: post
 title: "Autonomous Agent Testing: Preventing the Infinite Loop of Doom"
 date: 2025-03-20
 category: QA
-slug: qa-autonomous-agent-loops
+slug: autonomous-agent-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

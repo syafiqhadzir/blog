@@ -3,7 +3,7 @@ layout: post
 title: "Pact Contract Testing: Stop Breaking Promises (and APIs)"
 date: 2023-11-02
 category: QA
-slug: api-contract-testing-pact
+slug: pact-contract-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "Data Warehouse Testing: Reducing the Swamp Factor"
 date: 2024-01-11
 category: QA
-slug: qa-for-data-warehouses
+slug: data-warehouses-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

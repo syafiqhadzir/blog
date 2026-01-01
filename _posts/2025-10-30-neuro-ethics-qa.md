@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: "Testing Neuro-Ethics: Defending the User's Mind"
+title: "Neuro-Ethics for QA: Defending the User's Mind"
 date: 2025-10-30
 category: QA
 slug: neuro-ethics-qa

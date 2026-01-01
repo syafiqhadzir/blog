@@ -3,7 +3,7 @@ layout: post
 title: "CSP Testing: The Browser Bouncer"
 date: 2024-08-29
 category: QA
-slug: csp-testing-qa
+slug: csp-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

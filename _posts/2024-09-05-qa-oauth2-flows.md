@@ -3,7 +3,7 @@ layout: post
 title: "OAuth2 Testing: The Dance of the Tokens"
 date: 2024-09-05
 category: QA
-slug: qa-oauth2-flows
+slug: oauth2-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "6G Vision: The Reactive Web of 2030"
 date: 2025-12-04
 category: QA
-slug: 6g-vision-reactive-web
+slug: 6g-vision
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

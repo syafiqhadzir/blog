@@ -3,7 +3,7 @@ layout: post
 title: "Jamstack Testing: It's Just Static Files... Until It Isn't"
 date: 2024-11-28
 category: QA
-slug: jamstack-testing-qa
+slug: jamstack-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

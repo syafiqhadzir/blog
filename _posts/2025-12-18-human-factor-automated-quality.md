@@ -3,7 +3,7 @@ layout: post
 title: "The Human Factor: Why AI Needs a Babysitter"
 date: 2025-12-18
 category: QA
-slug: human-factor-automated-quality
+slug: human-factor
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "WebNN API Testing: Burning User Batteries"
 date: 2025-04-17
 category: QA
-slug: web-nn-api-qa
+slug: webnn-api-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

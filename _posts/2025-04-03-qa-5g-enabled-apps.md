@@ -3,7 +3,7 @@ layout: post
 title: "5G App Testing: QA at the Speed of Light"
 date: 2025-04-03
 category: QA
-slug: qa-5g-enabled-apps
+slug: 5g-app-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

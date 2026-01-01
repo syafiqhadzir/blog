@@ -3,7 +3,7 @@ layout: post
 title: "Race Condition Testing: The Ghosts in Your CI Pipeline"
 date: 2023-03-16
 category: QA
-slug: concurrency-race-conditions
+slug: race-condition-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

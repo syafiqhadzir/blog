@@ -3,7 +3,7 @@ layout: post
 title: "Blue-Green Deployment Validation: Don't Cross The Streams"
 date: 2023-09-07
 category: QA
-slug: blue-green-validation
+slug: blue-green-deployment-validation
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

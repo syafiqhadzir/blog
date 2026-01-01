@@ -1,9 +1,9 @@
 ﻿---
 layout: post
-title: "Zero Trust Testing: My Thermostat is Hacking Me"
+title: "Zero Trust: My Thermostat is Hacking Me"
 date: 2025-01-16
 category: QA
-slug: qa-zero-trust-security
+slug: zero-trust
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

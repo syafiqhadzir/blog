@@ -3,7 +3,7 @@ layout: post
 title: "AI Bias Testing: Preventing Your Robot from Being a Jerk"
 date: 2024-02-01
 category: QA
-slug: bias-testing-ai-qa
+slug: ai-bias-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

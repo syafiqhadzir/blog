@@ -3,7 +3,7 @@ layout: post
 title: "Machine Learning Model Validation: When \"It Works on My Machine\" Means Nothing"
 date: 2024-01-25
 category: QA
-slug: machine-learning-validation
+slug: machine-learning-model-validation
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

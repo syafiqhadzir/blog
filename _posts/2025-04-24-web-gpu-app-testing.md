@@ -3,7 +3,7 @@ layout: post
 title: "WebGPU Testing: The Browser is now a Supercomputer"
 date: 2025-04-24
 category: QA
-slug: web-gpu-app-testing
+slug: webgpu-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

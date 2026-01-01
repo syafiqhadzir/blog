@@ -3,7 +3,7 @@ layout: post
 title: "Zero-Code Quality: When Everyone Is a Developer"
 date: 2025-12-11
 category: QA
-slug: zero-code-quality-human-factor
+slug: zero-code-quality
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

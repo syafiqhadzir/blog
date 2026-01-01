@@ -3,7 +3,7 @@ layout: post
 title: "PCI Compliance Testing: How to Not Get Sued"
 date: 2023-12-14
 category: QA
-slug: pci-compliance-qa
+slug: pci-compliance
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

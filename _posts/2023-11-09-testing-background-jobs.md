@@ -3,7 +3,7 @@ layout: post
 title: "Background Job Testing: The Invisible Workhorses"
 date: 2023-11-09
 category: QA
-slug: testing-background-jobs
+slug: background-job-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

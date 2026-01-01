@@ -3,7 +3,7 @@ layout: post
 title: "Snapshot Testing Anti-Patterns: Stop Pressing 'u'"
 date: 2023-06-08
 category: QA
-slug: snapshot-testing-antipatterns
+slug: snapshot-testing-anti-patterns
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

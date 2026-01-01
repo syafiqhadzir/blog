@@ -3,7 +3,7 @@ layout: post
 title: "Internationalisation Testing: Finding the 'Ok' Button in German"
 date: 2024-07-04
 category: QA
-slug: i18n-testing-strategies
+slug: i18n-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

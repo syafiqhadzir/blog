@@ -1,9 +1,9 @@
 ﻿---
 layout: post
-title: "Decentralised Storage Testing: The Link That Never Rots"
+title: "Decentralised Storage: The Link That Never Rots"
 date: 2025-01-09
 category: QA
-slug: testing-decentralized-storage
+slug: decentralised-storage
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

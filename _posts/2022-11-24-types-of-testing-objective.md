@@ -3,7 +3,7 @@ layout: post
 title: "Functional vs Non-Functional Testing: Does it Work, or Does it Suck?"
 date: 2022-11-24
 category: QA
-slug: types-of-testing-objective
+slug: functional-vs-non-functional-testing
 gpgkey: "D25D D0AD 3FDB F7C6"
 ---
 

@@ -1,9 +1,9 @@
 ﻿---
 layout: post
-title: "High-Frequency Trading API Testing: When the Speed of Light is a Bug"
+title: "High-Frequency Trading API: When the Speed of Light is a Bug"
 date: 2025-09-18
 category: QA
-slug: hft-api-testing
+slug: hft-api
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

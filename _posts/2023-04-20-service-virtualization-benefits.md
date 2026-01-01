@@ -3,7 +3,7 @@ layout: post
 title: "Service Virtualisation: The Fake It Till You Make It Strategy"
 date: 2023-04-20
 category: QA
-slug: service-virtualization-benefits
+slug: service-virtualization
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

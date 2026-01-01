@@ -3,7 +3,7 @@ layout: post
 title: "Root Cause Analysis: Sherlock Holmes Mode"
 date: 2024-10-03
 category: QA
-slug: qa-root-cause-analysis
+slug: root-cause-analysis
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

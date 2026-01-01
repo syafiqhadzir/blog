@@ -1,9 +1,9 @@
 ﻿---
 layout: post
-title: "Testing Quantum Simulators: When 'Maybe' is the Correct Answer"
+title: "Quantum Simulators: When 'Maybe' is the Correct Answer"
 date: 2025-09-11
 category: QA
-slug: qa-quantum-simulators
+slug: quantum-simulators
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

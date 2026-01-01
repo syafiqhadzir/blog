@@ -3,7 +3,7 @@ layout: post
 title: "Ethical AI Testing: Why Your Algorithm Is Probably Racist"
 date: 2025-10-02
 category: QA
-slug: ethical-ai-testing-public-good
+slug: ethical-ai-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

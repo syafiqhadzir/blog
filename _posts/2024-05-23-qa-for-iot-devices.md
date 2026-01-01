@@ -3,7 +3,7 @@ layout: post
 title: "IoT Device Testing: When the Backend is a Lightbulb"
 date: 2024-05-23
 category: QA
-slug: qa-for-iot-devices
+slug: iot-device-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

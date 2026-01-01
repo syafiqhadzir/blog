@@ -3,7 +3,7 @@ layout: post
 title: "Payment Gateway Testing: Show Me The Money (Or The 402 Error)"
 date: 2023-12-07
 category: QA
-slug: testing-payment-gateways
+slug: payment-gateway-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

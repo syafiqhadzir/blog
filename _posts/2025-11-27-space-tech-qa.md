@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: "QA for Space Tech: Coding in a Vacuum (Literally)"
+title: "Space Tech for QA: Coding in a Vacuum (Literally)"
 date: 2025-11-27
 category: QA
 slug: space-tech-qa

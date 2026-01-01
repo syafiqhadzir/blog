@@ -3,7 +3,7 @@ layout: post
 title: "Boundary Value Analysis: Living on the Edge"
 date: 2023-01-26
 category: QA
-slug: boundary-value-analysis-art
+slug: boundary-value-analysis
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "Vector Database Testing: Finding Needles in Hyper-Space"
 date: 2025-02-27
 category: QA
-slug: vector-db-retrieval-testing
+slug: vector-db-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

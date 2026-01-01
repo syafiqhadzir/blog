@@ -3,7 +3,7 @@ layout: post
 title: "Cryptography for QA: Don't Roll Your Own Crypto"
 date: 2022-12-15
 category: QA
-slug: rijndael-block-cypher
+slug: cryptography-for-qa
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "GraphQL Schema Testing: How to Test Infinity"
 date: 2023-04-13
 category: QA
-slug: testing-graphql-schemas
+slug: graphql-schema-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

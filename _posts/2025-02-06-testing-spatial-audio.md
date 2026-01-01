@@ -3,7 +3,7 @@ layout: post
 title: "Spatial Audio Testing: The Zombie Behind You"
 date: 2025-02-06
 category: QA
-slug: testing-spatial-audio
+slug: spatial-audio-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

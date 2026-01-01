@@ -3,7 +3,7 @@ layout: post
 title: "Digital Sovereignty: QA in the Age of Borders"
 date: 2025-10-09
 category: QA
-slug: digital-sovereignty-qa
+slug: digital-sovereignty
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

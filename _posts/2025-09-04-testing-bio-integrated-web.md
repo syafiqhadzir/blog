@@ -1,9 +1,9 @@
 ﻿---
 layout: post
-title: "Testing Bio-Integrated Web Interfaces: Don't Kill the User"
+title: "Bio-Integrated Web Interfaces: Don't Kill the User"
 date: 2025-09-04
 category: QA
-slug: testing-bio-integrated-web
+slug: bio-integrated-web-interfaces
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

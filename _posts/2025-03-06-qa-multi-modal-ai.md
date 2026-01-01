@@ -3,7 +3,7 @@ layout: post
 title: "Multi-Modal AI Testing: Hot Dog or Not?"
 date: 2025-03-06
 category: QA
-slug: qa-multi-modal-ai
+slug: multi-modal-ai-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

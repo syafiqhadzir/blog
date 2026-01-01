@@ -3,7 +3,7 @@ layout: post
 title: "Video Streaming Testing: Buffering is the Mind-Killer"
 date: 2024-09-26
 category: QA
-slug: video-streaming-quality-testing
+slug: video-streaming-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

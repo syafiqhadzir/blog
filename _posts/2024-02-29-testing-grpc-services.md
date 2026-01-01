@@ -3,7 +3,7 @@ layout: post
 title: "gRPC Services Testing: Stop Using JSON, You Cowards"
 date: 2024-02-29
 category: QA
-slug: testing-grpc-services
+slug: grpc-services-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

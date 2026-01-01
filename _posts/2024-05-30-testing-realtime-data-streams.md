@@ -3,7 +3,7 @@ layout: post
 title: "Real-Time Data Stream Testing: Catching Water with a Sieve"
 date: 2024-05-30
 category: QA
-slug: testing-realtime-data-streams
+slug: realtime-data-stream-testing
 gpgkey: "EBE8 BD81 6838 1BAF"
 ---
 

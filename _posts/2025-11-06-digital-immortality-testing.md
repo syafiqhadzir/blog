@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: "Testing Digital Immortality: Will Your Data Outlive You?"
+title: "Digital Immortality Testing: Will Your Data Outlive You?"
 date: 2025-11-06
 category: QA
 slug: digital-immortality-testing
