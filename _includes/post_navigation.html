@@ -1,0 +1,21 @@
+{%- if page.previous.url or page.next.url -%}
+<nav class="post-navigation" aria-label="Post navigation">
+    {%- if page.previous.url -%}
+    <a class="nav-prev" href="{{ page.previous.url | relative_url }}" rel="prev" aria-label="Previous post: {{ page.previous.title }}">
+        <span class="nav-label">← Previous</span>
+        <span class="nav-title">{{ page.previous.title | truncate: 50 }}</span>
+    </a>
+    {%- else -%}
+    <span class="nav-prev disabled"></span>
+    {%- endif -%}
+
+    {%- if page.next.url -%}
+    <a class="nav-next" href="{{ page.next.url | relative_url }}" rel="next" aria-label="Next post: {{ page.next.title }}">
+        <span class="nav-label">Next →</span>
+        <span class="nav-title">{{ page.next.title | truncate: 50 }}</span>
+    </a>
+    {%- else -%}
+    <span class="nav-next disabled"></span>
+    {%- endif -%}
+</nav>
+{%- endif -%}
