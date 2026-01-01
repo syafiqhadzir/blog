@@ -155,6 +155,9 @@ jobs:
                   restore-keys: |
                       jekyll-
 
+            - name: Optimize Images
+              run: npm run optimize:img || echo "Image optimization skipped (no changes or tools missing)"
+
             - name: Build Jekyll
               run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
 
