@@ -17,7 +17,7 @@
 {%- if matching_posts.size > 0 -%}
 <aside aria-label="Related posts">
     <h2>Related Posts</h2>
-    <ul role="list" aria-label="Related articles">
+    <ul class="related-posts-list" role="list" aria-label="Related articles">
         {%- for post in matching_posts -%}
         <li role="listitem">
             <a href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}">{{ post.title }}</a>
