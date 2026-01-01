@@ -24,7 +24,6 @@ test.describe('Navigation', () => {
         await expect(page).toHaveURL(/archive/);
         await expect(page.locator('h1')).toContainText('Archive');
     });
-
     test('can navigate to a blog post', async ({ page }) => {
         await page.goto('/archive.html');
 

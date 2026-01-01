@@ -11,6 +11,13 @@ layout: default
       </time>
       · {%- include reading_time.html content=content -%}
     </p>
+    {%- if page.tags.size > 0 -%}
+    <div class="post-tags">
+      {%- for tag in page.tags -%}
+      <a href="{{ '/tags.html' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
     <h1 id="post-title">{{ page.title }}</h1>
     <p>Author: {{ site.author.name }}<br />Email: {{ site.email }}{%- if page.gpgkey -%}<br />GPG Key: {{ page.gpgkey
       }}{%- endif -%}</p>

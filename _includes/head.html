@@ -856,6 +856,31 @@
     body.dark-theme .icon-sun {
       display: block !important;
     }
+    /* Post Tags */
+    .post-tags {
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: var(--code-bg);
+      color: var(--text-color);
+      padding: 0.2rem 0.6rem;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      border: 1px solid var(--border-color);
+    }
+
+    .tag:hover {
+      background: var(--accent-color);
+      color: #fff;
+      border-color: var(--accent-color);
+    }
   </style>
   {% if page.gist == true %}
   <script async custom-element="amp-gist" src="https://cdn.ampproject.org/v0/amp-gist-0.1.js"></script>
