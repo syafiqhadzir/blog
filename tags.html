@@ -1,0 +1,56 @@
+---
+layout: default
+title: Tags
+description: Browse all blog posts by tag.
+robots: noindex, follow
+---
+
+<section class="tags-page">
+    <h1>Tags</h1>
+
+    <div class="tag-cloud">
+        {%- assign sorted_tags = site.tags | sort -%} {%- for tag in sorted_tags -%}
+        <a href="#{{ tag[0] | slugify }}" class="tag-item">
+            {{ tag[0] }} <span class="tag-count">({{ tag[1].size }})</span>
+        </a>
+        {%- endfor -%}
+    </div>
+
+    <hr />
+
+    {%- for tag in sorted_tags -%}
+    <section class="tag-section" id="{{ tag[0] | slugify }}">
+        <h2>{{ tag[0] }}</h2>
+        <ul class="post-list" role="list">
+            {%- for post in tag[1] -%}
+            <li role="listitem">
+                <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </li>
+            {%- endfor -%}
+        </ul>
+    </section>
+    {%- endfor -%}
+</section>
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Tags",
+        "description": "Browse all blog posts by tag",
+        "url": "{{ page.url | absolute_url }}",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "{{ '/' | absolute_url }}"
+                },
+                { "@type": "ListItem", "position": 2, "name": "Tags" }
+            ]
+        }
+    }
+</script>

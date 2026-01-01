@@ -2,23 +2,24 @@
 <html ⚡ lang=en-GB>
 {%- include head.html -%}
 
-<body class="{{ site.theme_config.appearance | default: " auto" }}"
-  [class]="uiMode ? (uiMode == 'dark' ? 'dark-theme' : 'light-theme') : '{{ site.theme_config.appearance | default: "
-  auto" }}'">
-  <div class="w">
+<body class="{{ site.theme_config.appearance | default: 'auto' }}"
+  [class]="uiMode ? (uiMode == 'dark' ? 'dark-theme' : 'light-theme') : '{{ site.theme_config.appearance | default: 'auto' }}'">
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  <main id="main-content" class="page-content" role="main" aria-label="Main content">
-
+  
+  <div class="wrapper">
+    {%- include navbar.html -%}
+    
+    <main id="main-content" class="page-content" role="main" aria-label="Main content">
       {{ content }}
-
-  </main>
-  <footer role="contentinfo" aria-label="Site information">
-    <p class="sr-only">© {{ site.author.name }}</p>
-  </footer>
+    </main>
+    
+    {%- include footer.html -%}
+  </div>
+  
   <amp-install-serviceworker src="{{ 'sw.js' | relative_url }}" data-iframe-src="{{ 'sw-install.html' | relative_url }}"
     layout="nodisplay">
   </amp-install-serviceworker>
-  </div>
 </body>
 
 </html>
+

@@ -4,12 +4,18 @@
   <link rel="dns-prefetch" href="https://cdn.ampproject.org/">
   <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <title>{{ page.title | default: site.title }} | {{ site.title }}</title>
-  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
   <meta name="keywords" content="{{ page.keywords | default: 'QA, software testing, quality assurance, automation' }}">
   <meta name="author" content="{{ site.author.name }}">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta name="robots" content="{{ page.robots | default: 'index, follow, max-image-preview:large' }}">
+  {%- seo -%}
+  {%- if page.layout == 'post' -%}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  {%- if page.last_modified_at -%}
+  <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">
+  {%- endif -%}
+  <meta property="article:author" content="{{ site.author.url }}">
+  <meta property="article:section" content="{{ page.category | default: 'Blog' }}">
+  {%- endif -%}
   {%- feed_meta -%}
   <link rel="author" href="{{ '/humans.txt' | relative_url }}" type="text/plain">
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}">
@@ -270,9 +276,107 @@
       color: #000;
     }
 
-    .w {
-      max-width: 680px;
-      padding: 4rem 2rem;
+    .wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Klisé-style Navigation */
+    .klise-nav {
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Klisé-style Mode Toggle */
+    .mode-toggle {
+      display: flex;
+      align-items: center;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    .mode-toggle span[role="button"] {
+      display: flex;
+      align-items: center;
+      padding: 0.25rem;
+      transition: color 0.075s ease-in;
+    }
+
+    .mode-toggle span[role="button"]:hover {
+      color: var(--text-color);
+    }
+
+    .mode-toggle svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+
+    .nav-brand:hover {
+      color: var(--link-color);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-color);
+    }
+
+    /* Klisé-style Footer */
+    .klise-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-content p {
+      margin: 0.5rem 0;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-color);
     }
 
     table {
@@ -306,6 +410,75 @@
       padding: 1rem;
       border-left: 4px solid var(--border-color);
       background: var(--code-bg);
+    }
+
+    /* Tags Page Styling */
+    .tags-page h1 {
+      margin-bottom: 2rem;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .tag-item {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      background: var(--code-bg);
+      border-radius: 3px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 0.9rem;
+      transition: background-color 0.2s ease;
+    }
+
+    .tag-item:hover {
+      background: var(--border-color);
+      text-decoration: none;
+    }
+
+    .tag-count {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      margin-left: 0.25rem;
+    }
+
+    .tag-section {
+      margin-bottom: 2rem;
+    }
+
+    .tag-section h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .post-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .post-list li {
+      margin: 0.4rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .post-list li::before {
+      content: none;
+    }
+
+    .post-date {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      min-width: 6rem;
     }
 
     img {

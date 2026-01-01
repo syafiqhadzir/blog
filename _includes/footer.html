@@ -1,0 +1,13 @@
+<footer class="klise-footer" role="contentinfo" aria-label="Site footer">
+    <div class="footer-content">
+        <p>© {{ 'now' | date: '%Y' }} <a href="{{ site.author.url }}">{{ site.author.name }}</a></p>
+        <p class="footer-links">
+            <a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS Feed">RSS</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://github.com/SyafiqHadzir" aria-label="GitHub Profile">GitHub</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://twitter.com/{{ site.author.twitter }}" aria-label="Twitter Profile">Twitter</a>
+        </p>
+        <p class="sr-only">Powered by Jekyll</p>
+    </div>
+</footer>
