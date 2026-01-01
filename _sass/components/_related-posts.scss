@@ -1,0 +1,104 @@
+/* Related Posts - Minimal Nav Style */
+.related-posts {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.related-heading {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: var(--text-secondary);
+}
+
+.related-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.related-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    background: var(--code-bg);
+}
+
+.related-link:hover {
+    border-color: var(--accent-color);
+}
+
+.related-link .nav-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-family: ui-monospace, monospace;
+}
+
+.related-link .nav-title {
+    font-weight: 600;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.related-link:hover .nav-title {
+    color: var(--accent-color);
+}
+
+@media (width <= 600px) {
+    .related-nav {
+        gap: 0.5rem;
+    }
+
+    .related-link {
+        padding: 0.875rem;
+    }
+}
+
+/* WCAG: Related Posts Touch Targets */
+.related-posts-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.related-posts-list li {
+    margin-bottom: 0.5rem;
+}
+
+.related-posts-list a {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    text-decoration: none;
+    color: var(--link-color);
+    background: var(--code-bg);
+    border-radius: 4px;
+    min-height: 44px;
+    transition: background-color 0.2s ease;
+}
+
+.related-posts-list a:hover {
+    background: var(--border-color);
+}
+
+.related-posts-list a:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+}
+
+/* Related posts section */
+aside[aria-label='Related posts'] {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+aside[aria-label='Related posts'] h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}

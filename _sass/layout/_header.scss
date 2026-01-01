@@ -1,0 +1,26 @@
+.post-header {
+    margin-bottom: 4rem;
+    text-align: center;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-content {
+    font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+    font-size: 1.15rem;
+    line-height: 1.85;
+    letter-spacing: -0.003em;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-meta {
+    text-align: right;
+    color: var(--text-secondary);
+}

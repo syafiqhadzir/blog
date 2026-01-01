@@ -1,0 +1,66 @@
+/* Tags Page Styling */
+.tags-page h1 {
+    margin-bottom: 2rem;
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.tag-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    background: var(--code-bg);
+    border-radius: 3px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.tag-item:hover {
+    background: var(--border-color);
+    text-decoration: none;
+}
+
+.tag-count {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-left: 0.25rem;
+}
+
+.tag-section {
+    margin-bottom: 3rem;
+
+    h2 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.1rem;
+    }
+}
+
+.tag-description {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+/* Static Tag Cloud Weights (resolves inline-style violations) */
+.tag-w1 {
+    font-size: 0.8rem;
+}
+.tag-w2 {
+    font-size: 1rem;
+}
+.tag-w3 {
+    font-size: 1.2rem;
+}
+.tag-w4 {
+    font-size: 1.4rem;
+}
+.tag-w5 {
+    font-size: 1.6rem;
+}

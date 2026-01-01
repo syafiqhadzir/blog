@@ -1,0 +1,19 @@
+/* Breadcrumbs */
+.breadcrumbs {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.breadcrumbs a {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    color: var(--link-color);
+}
+
+.breadcrumbs span {
+    margin: 0 0.5rem;
+}

@@ -1,0 +1,181 @@
+/* Post Content */
+.post-content {
+    max-width: 680px;
+    margin: 0 auto;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.125rem;
+    line-height: 1.8;
+
+    p {
+        margin-bottom: 1.5rem;
+        text-align: left;
+        hyphens: auto;
+    }
+
+    h2 {
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            'Segoe UI',
+            sans-serif;
+    }
+
+    h3 {
+        margin-top: 2.5rem;
+        margin-bottom: 0.75rem;
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            'Segoe UI',
+            sans-serif;
+    }
+
+    ul,
+    ol {
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+    }
+
+    li {
+        margin-bottom: 0.75rem;
+        line-height: 1.7;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 2rem auto;
+        border-radius: 8px;
+    }
+
+    a {
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+
+        &:hover {
+            text-decoration-thickness: 2px;
+        }
+    }
+}
+
+/* Blockquotes: Visual Quote Marks */
+blockquote {
+    position: relative;
+    font-style: italic;
+    padding: 1.5rem 2rem 1.5rem 3rem;
+    border-left: 4px solid var(--accent-color);
+    background: var(--code-bg);
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+
+    &::before {
+        content: '"';
+        position: absolute;
+        left: 0.75rem;
+        top: 0.5rem;
+        font-size: 3rem;
+        font-family: Georgia, serif;
+        color: var(--accent-color);
+        opacity: 30%;
+        line-height: 1;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    cite {
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        font-style: normal;
+    }
+}
+
+/* Figures & Captions */
+figure {
+    margin: 2.5rem 0;
+    text-align: center;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
+    }
+}
+
+figcaption {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* Post List */
+.post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        margin: 0;
+        padding: 1rem 0;
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
+        transition: padding-left 0.2s ease;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            padding-left: 0.5rem;
+        }
+
+        &::before {
+            content: none;
+        }
+    }
+}
+
+.post-date {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    min-width: 6.5rem;
+    white-space: nowrap;
+}
+
+.post-list-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: var(--text-color);
+    flex: 1;
+
+    &:hover {
+        color: var(--link-color);
+    }
+}
+
+.post-list-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+/* Standard Wrap */
+.standard-post-list-wrap {
+    margin: 4rem 0;
+    text-align: left;
+}

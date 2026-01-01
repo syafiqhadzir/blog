@@ -1,0 +1,65 @@
+/* Klisé-style Post Navigation */
+.post-navigation {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 3rem;
+}
+
+.post-navigation a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 1.5rem;
+    border-radius: 16px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 44px; /* WCAG Target Size */
+}
+
+.post-navigation a:hover {
+    background: var(--border-color);
+    border-color: var(--accent-color);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgb(0 0 0 / 10%);
+}
+
+.post-navigation a:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+}
+
+.nav-prev {
+    text-align: left;
+}
+
+.nav-next {
+    text-align: right;
+    margin-left: auto;
+}
+
+.nav-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.nav-title {
+    font-weight: 800;
+    color: var(--text-color);
+    line-height: 1.4;
+    font-size: 1.1rem;
+}
+
+@media (width <= 600px) {
+    .post-navigation {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}

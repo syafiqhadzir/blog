@@ -1,0 +1,56 @@
+<amp-lightbox id="search-lightbox" layout="nodisplay">
+  <div class="search-modal">
+    <div class="search-modal-inner">
+      <div class="search-header">
+        <div class="search-container">
+           <input type="text"
+                 class="search-input"
+                 placeholder="Search posts..."
+                 on="input-debounced:AMP.setState({ searchQuery: event.value })"
+                 autoFocus
+                 aria-label="Search posts">
+          <div class="search-icon-overlay">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+        </div>
+        <button on="tap:search-lightbox.close" class="close-search" aria-label="Close search">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="search-results-wrapper">
+        <div [hidden]="!searchQuery" hidden class="search-results-info">
+          Results for <span class="search-query-display" [text]="searchQuery"></span>
+        </div>
+
+        <amp-list layout="fixed-height"
+                  height="70vh"
+                  src="{{ '/search.json' | relative_url }}"
+                  id="search-results"
+                  single-item
+                  key="items">
+          <template type="amp-mustache">
+            <div class="search-hit-list">
+              {% raw %}
+              {{#.}}
+              <div class="search-hit" [hidden]="searchQuery && !title.toLowerCase().includes(searchQuery.toLowerCase())">
+                <a href="{{url}}" class="search-hit-link">
+                  <span class="search-hit-date">{{date}}</span>
+                  <span class="search-hit-title">{{title}}</span>
+                </a>
+              </div>
+              {{/.}}
+              {% endraw %}
+            </div>
+          </template>
+        </amp-list>
+      </div>
+    </div>
+  </div>
+</amp-lightbox>
