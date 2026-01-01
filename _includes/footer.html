@@ -11,3 +11,15 @@
         <p class="sr-only">Powered by Jekyll</p>
     </div>
 </footer>
+
+<script>
+  // WCAG 2.1 - 2.1.1: Ensure scrollable code blocks are keyboard accessible
+  document.addEventListener('DOMContentLoaded', function() {
+    const codeBlocks = document.querySelectorAll('div.highlight, pre.highlight');
+    codeBlocks.forEach(function(block, index) {
+      block.setAttribute('tabindex', '0');
+      block.setAttribute('role', 'region');
+      block.setAttribute('aria-label', 'Code snippet ' + (index + 1));
+    });
+  });
+</script>

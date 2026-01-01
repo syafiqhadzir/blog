@@ -1,0 +1,44 @@
+[1A[2K[2m[WebServer] [22mConfiguration file: C:/Users/tt7419/Downloads/GitHub/blog/_config.yml
+
+[1A[2K[2m[WebServer] [22m            Source: C:/Users/tt7419/Downloads/GitHub/blog
+[2m[WebServer] [22m       Destination: C:/Users/tt7419/Downloads/GitHub/blog/_site
+[2m[WebServer] [22m Incremental build: disabled. Enable with --incremental
+[2m[WebServer] [22m      Generating... 
+
+[1A[2K[2m[WebServer] [22m       Jekyll Feed: Generating feed for posts
+
+[1A[2K[2m[WebServer] [22m                    done in 11.635 seconds.
+
+[1A[2K[2m[WebServer] [22m  Please add the following to your Gemfile to avoid polling for changes:
+[2m[WebServer] [22m    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
+[1A[2K[2m[WebServer] [22m Auto-regeneration: enabled for 'C:/Users/tt7419/Downloads/GitHub/blog'
+
+[1A[2K[2m[WebServer] [22m    Server address: http://127.0.0.1:4000/
+
+[1A[2K[2m[WebServer] [22m  Server running... press ctrl-c to stop.
+
+[1A[2K[2m[WebServer] [22m      Regenerating: 1 file(s) changed at 2026-01-01 09:49:20
+[2m[WebServer] [22m                    output2.txt
+
+
+Running 9 tests using 8 workers
+
+[1A[2K[2m[WebServer] [22m       Jekyll Feed: Generating feed for posts
+
+[1A[2K[1/9] [mobile-chrome] › e2e\accessibility.spec.ts:59:5 › Accessibility (WCAG 2.2) › focus is visible on all interactive elements
+[1A[2K[2/9] [mobile-chrome] › e2e\accessibility.spec.ts:29:5 › Accessibility (WCAG 2.2) › archive page has no critical accessibility violations
+[1A[2K[3/9] [mobile-chrome] › e2e\accessibility.spec.ts:49:5 › Accessibility (WCAG 2.2) › about page has no critical accessibility violations
+[1A[2K[4/9] [mobile-chrome] › e2e\accessibility.spec.ts:15:5 › Accessibility (WCAG 2.2) › blog post has no critical accessibility violations
+[1A[2K[5/9] [mobile-chrome] › e2e\accessibility.spec.ts:105:5 › Accessibility (WCAG 2.2) › page has proper heading hierarchy
+[1A[2K[6/9] [mobile-chrome] › e2e\accessibility.spec.ts:5:5 › Accessibility (WCAG 2.2) › homepage has no critical accessibility violations
+[1A[2K[7/9] [mobile-chrome] › e2e\accessibility.spec.ts:39:5 › Accessibility (WCAG 2.2) › tags page has no critical accessibility violations
+[1A[2K[8/9] [mobile-chrome] › e2e\accessibility.spec.ts:89:5 › Accessibility (WCAG 2.2) › all images have alt text
+[1A[2K[9/9] [mobile-chrome] › e2e\accessibility.spec.ts:112:5 › Accessibility (WCAG 2.2) › respects prefers-reduced-motion
+[1A[2K  1 skipped
+  8 passed (28.7s)
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report[39m
+[36m[39m
