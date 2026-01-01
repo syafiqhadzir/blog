@@ -1,3 +1,4 @@
+/* eslint-disable */
 ---
     layout: null
 permalink: /sw.js
