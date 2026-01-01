@@ -13,7 +13,11 @@ permalink: /sw-install.html
     <body>
         <script>
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('{{ "sw.js" | relative_url }}');
+                window.addEventListener('load', function () {
+                    setTimeout(function () {
+                        navigator.serviceWorker.register('{{ "sw.js" | relative_url }}');
+                    }, 500);
+                });
             }
         </script>
     </body>
