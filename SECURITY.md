@@ -19,7 +19,7 @@ If you discover a security vulnerability in this project, please report it respo
 
 This security policy applies to:
 
-- The blog website ([syafiqhadzir.dev/blog](https://syafiqhadzir.dev/blog))
+- The blog website ([blog.syafiqhadzir.dev](https://blog.syafiqhadzir.dev))
 - This GitHub repository
 
 ### Acknowledgments

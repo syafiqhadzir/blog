@@ -14,16 +14,16 @@
 
 ## 🌐 Live Site
 
-**[syafiqhadzir.dev/blog](https://syafiqhadzir.dev/blog)**
+**[blog.syafiqhadzir.dev](https://blog.syafiqhadzir.dev)** • [Sitemap](https://blog.syafiqhadzir.dev/sitemap.xml) • [RSS Feed](https://blog.syafiqhadzir.dev/feed.xml)
 
 ## ✨ Features
 
 | Feature | Description |
 | --------- | ------------- |
 | ⚡ **AMP-First** | All pages are valid AMP for instant loading |
-| 📱 **PWA** | Service worker v3 with offline support |
+| 📱 **PWA** | Service worker v4 (Workbox 7) with offline support |
 | ♿ **WCAG 2.1 AA** | Full accessibility compliance |
-| 🧪 **77 Tests** | 58 unit (RSpec) + 19 E2E (Playwright) |
+| 🧪 **80+ Tests** | 58 unit (RSpec) + 22+ E2E (Playwright) |
 | 📖 **Reading Time** | Estimated read time per post |
 | 🔗 **Related Posts** | Category-based recommendations |
 | 🔒 **Security** | AI bot blocks, security.txt, weekly audits |
@@ -32,7 +32,7 @@
 
 | Layer | Technology |
 | ------- | ------------ |
-| Runtime | Ruby 3.4.1, Node.js 20 |
+| Runtime | Ruby 3.4.1, Node.js 24 |
 | Generator | Jekyll 4.4.1 |
 | Framework | AMP HTML |
 | Unit Tests | RSpec + HTMLProofer |

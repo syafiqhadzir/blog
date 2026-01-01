@@ -8,4 +8,4 @@ permalink: /.well-known/security.txt
 Contact: mailto:syafiqhadzir@live.com.my
 Expires: 2026-12-31T23:59:59.000Z
 Preferred-Languages: en
-Canonical: https://syafiqhadzir.dev/blog/.well-known/security.txt
+Canonical: https://blog.syafiqhadzir.dev/.well-known/security.txt
