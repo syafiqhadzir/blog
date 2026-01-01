@@ -4,39 +4,17 @@ title: Page Not Found
 permalink: /404.html
 ---
 
-<article role="alert" aria-labelledby="error-title">
+<article role="alert" aria-labelledby="error-title" class="error-article">
     <h1 id="error-title">404</h1>
     <p>Page not found. The content you're looking for might have been moved or deleted.</p>
 
-    <div style="margin: 3rem 0; text-align: left">
-        <h3>Latest Articles</h3>
-        <ul class="post-list">
-            {%- for post in site.posts limit:5 -%}
-            <li>
-                <span class="post-date text-secondary" style="font-size: 0.9rem; margin-right: 1rem"
-                    >{{ post.date | date: "%Y-%m-%d" }}</span
-                >
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            </li>
-            {%- endfor -%}
-        </ul>
+    <div class="standard-post-list-wrap">
+        <h2>Latest Articles</h2>
+        {%- include post_list.html limit=5 -%}
     </div>
 
-    <div style="margin-top: 2rem">
-        <a
-            href="{{ '/' | relative_url }}"
-            class="btn"
-            style="
-                text-decoration: none;
-                display: inline-block;
-                padding: 0.6rem 1.2rem;
-                background: var(--link-color);
-                color: var(--bg-color);
-                border-radius: 4px;
-                font-weight: 600;
-            "
-            >← Return Home</a
-        >
+    <div class="error-action">
+        <a href="{{ '/' | relative_url }}" class="btn">← Return Home</a>
     </div>
 </article>
 

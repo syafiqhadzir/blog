@@ -26,20 +26,20 @@
             </span>
             <a href="{{ '/' | relative_url }}" class="nav-brand">{{ site.title }}</a>
         </div>
-        <div class="nav-links" role="list">
-            <a href="{{ '/' | relative_url }}" role="listitem">Home</a>
-            <a href="{{ '/archive.html' | relative_url }}" role="listitem">Archive</a>
-            <a href="{{ '/tags.html' | relative_url }}" role="listitem">Tags</a>
-            <a href="https://syafiqhadzir.dev/" role="listitem">About</a>
-            <div class="nav-search">
+        <ul class="nav-links">
+            <li><a href="{{ '/' | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">Home</a></li>
+            <li><a href="{{ '/archive.html' | relative_url }}" class="{% if page.url contains '/archive' %}active{% endif %}">Archive</a></li>
+            <li><a href="{{ '/tags.html' | relative_url }}" class="{% if page.url contains '/tags' %}active{% endif %}">Tags</a></li>
+            <li><a href="https://syafiqhadzir.dev/">About</a></li>
+            <li class="nav-search">
                 <a href="{{ '/archive.html' | relative_url }}?focus=search" class="search-link" aria-label="Search posts">
                     <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </a>
-            </div>
-        </div>
+            </li>
+        </ul>
     </div>
 </nav>
 

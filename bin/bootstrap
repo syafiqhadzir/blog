@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+echo "🚀 Bootstrapping Syafiq Hadzir Blog Development Environment..."
+
+# Check requirements
+command -v ruby >/dev/null 2>&1 || { echo >&2 "❌ Ruby is required but not installed. Aborting."; exit 1; }
+command -v node >/dev/null 2>&1 || { echo >&2 "❌ Node.js is required but not installed. Aborting."; exit 1; }
+command -v npm >/dev/null 2>&1 || { echo >&2 "❌ npm is required but not installed. Aborting."; exit 1; }
+
+echo "📦 Installing Ruby gems..."
+bundle install
+
+echo "📦 Installing Node dependencies..."
+npm install
+
+echo "🛡️ Setting up git hooks..."
+npm run prepare
+
+echo "✅ Environment ready! Run 'bundle exec jekyll serve' to start."

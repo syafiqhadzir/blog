@@ -1,4 +1,4 @@
-{%- assign RELATED_POSTS_LIMIT = 3 -%}
+{%- assign RELATED_POSTS_LIMIT = 2 -%}
 {%- assign current_tags = page.tags -%}
 {%- assign related_posts = "" | split: "" -%}
 
@@ -37,13 +37,25 @@
             {%- if p.url == url -%}
               <li>
                 <a href="{{ p.url | relative_url }}">
-                  <span class="related-title">{{ p.title }}</span>
-                  <div class="related-meta">
-                    {%- for t in p.tags -%}
-                      {%- if current_tags contains t -%}
-                        <span class="tag-match">{{ t }}</span>
-                      {%- endif -%}
+                  {%- assign shared_tags = "" | split: "" -%}
+                  {%- for tag in p.tags -%}
+                    {%- if current_tags contains tag -%}
+                      {%- assign shared_tags = shared_tags | push: tag -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {%- if shared_tags.size > 0 -%}
+                  <div class="related-tags">
+                    {%- for tag in shared_tags limit: 2 -%}
+                    <span class="related-tag">{{ tag }}</span>
                     {%- endfor -%}
+                  </div>
+                  {%- endif -%}
+                  <span class="related-title">{{ p.title }} <span class="read-more-hint">→</span></span>
+                  <div class="related-meta">
+                    <time datetime="{{ p.date | date_to_xmlschema }}">
+                      {{ p.date | date: site.theme_config.date_format }}
+                    </time>
+                    · {%- include reading_time.html content=p.content -%}
                   </div>
                 </a>
               </li>

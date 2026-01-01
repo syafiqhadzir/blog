@@ -61,7 +61,7 @@ Types include:
 ## The Cage Match (Comparison)
 
 | Feature | Functional Testing | Non-Functional Testing |
-| :--- | :--- | :--- |
+| --- | --- | --- |
 | **Question** | "Does it work?" | "Does it work *well*?" |
 | **Focus** | User Requirements | User Expectations |
 | **Example** | Testing login verification | Testing login speed |

@@ -14,11 +14,14 @@
 <ul role="list" aria-label="Blog posts">
   {%- for post in posts limit: include.limit -%}
   <li role="listitem">
-    <time datetime="{{ post.date | date_to_xmlschema }}"
+    <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}"
       aria-label="{{ post.date | date: site.theme_config.date_format }}">
       {{- post.date | date: site.theme_config.date_format -}}
     </time>
-    <a href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}">{{ post.title }}</a>
+    <a class="post-list-title" href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}">{{ post.title }}</a>
+    <span class="post-list-meta">
+      {%- include reading_time.html content=post.content -%}
+    </span>
   </li>
   {%- endfor -%}
   {%- if include.show_more and limit_exceeded -%}
