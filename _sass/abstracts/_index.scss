@@ -1,0 +1,10 @@
+// ============================================
+// ABSTRACTS INDEX
+// Central @forward file for all abstracts
+// ============================================
+
+// Note: Variables use CSS custom properties (no @forward needed)
+// They're defined in :root and available globally
+
+@forward 'functions';
+@forward 'mixins';

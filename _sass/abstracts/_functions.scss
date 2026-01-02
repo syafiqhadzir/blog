@@ -1,0 +1,113 @@
+// ============================================
+// SASS FUNCTIONS
+// Helper functions for consistent styling
+// ============================================
+
+@use 'sass:math';
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:map';
+
+// ============================================
+// UNIT CONVERSION
+// ============================================
+
+/// Convert px to rem (base 16px)
+/// @param {Number} $px - Pixel value
+/// @return {Number} - Rem value
+@function rem($px) {
+    @if math.is-unitless($px) {
+        @return math.div($px, 16) * 1rem;
+    } @else {
+        @error 'rem() expects a unitless number, got #{$px}';
+    }
+}
+
+/// Convert px to em
+/// @param {Number} $px - Pixel value
+/// @param {Number} $base - Base font size (default 16)
+/// @return {Number} - Em value
+@function em($px, $base: 16) {
+    @return math.div($px, $base) * 1em;
+}
+
+// ============================================
+// SPACING SCALE
+// ============================================
+
+/// Get spacing value from scale
+/// @param {Number} $step - Scale step (1-8)
+/// @return {Number} - Spacing value in rem
+@function spacing($step) {
+    $scale: (
+        1: 0.25rem,
+        // 4px
+        2: 0.5rem,
+        // 8px
+        3: 0.75rem,
+        // 12px
+        4: 1rem,
+        // 16px
+        5: 1.5rem,
+        // 24px
+        6: 2rem,
+        // 32px
+        7: 3rem,
+        // 48px
+        8: 4rem, // 64px
+    );
+
+    @if map.has-key($scale, $step) {
+        @return map.get($scale, $step);
+    } @else {
+        @error 'Invalid spacing step: #{$step}. Use 1-8.';
+    }
+}
+
+// ============================================
+// Z-INDEX MANAGEMENT
+// ============================================
+
+/// Get z-index from named layers
+/// @param {String} $layer - Layer name
+/// @return {Number} - Z-index value
+@function z($layer) {
+    $layers: (
+        'base': 0,
+        'dropdown': 10,
+        'sticky': 50,
+        'fixed': 100,
+        'modal-backdrop': 500,
+        'modal': 600,
+        'popover': 700,
+        'tooltip': 800,
+        'toast': 900,
+        'max': 9999,
+    );
+
+    @if map.has-key($layers, $layer) {
+        @return map.get($layers, $layer);
+    } @else {
+        @error 'Unknown z-index layer: #{$layer}';
+    }
+}
+
+// ============================================
+// COLOUR UTILITIES
+// ============================================
+
+/// Slightly darken a colour
+/// @param {Color} $colour - Base colour
+/// @param {Number} $amount - Percentage (default 10%)
+/// @return {Color} - Darkened colour
+@function darken-colour($colour, $amount: 10%) {
+    @return color.scale($colour, $lightness: $amount * -1);
+}
+
+/// Slightly lighten a colour
+/// @param {Color} $colour - Base colour
+/// @param {Number} $amount - Percentage (default 10%)
+/// @return {Color} - Lightened colour
+@function lighten-colour($colour, $amount: 10%) {
+    @return color.scale($colour, $lightness: $amount);
+}
