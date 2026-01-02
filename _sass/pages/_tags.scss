@@ -1,6 +1,6 @@
 /* ============================================
    TAGS PAGE STYLES
-   Migrated from inline styles for AMP compliance
+   Specific layout for the tags archive page
    ============================================ */
 
 /* Page Layout */
@@ -63,45 +63,9 @@
     }
 }
 
-/* Tag Cloud */
+/* Tag Cloud (Component Usage) */
 .tag-cloud-section {
     margin-bottom: 2rem;
-}
-
-.tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-}
-
-.tag-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.5rem 0.875rem;
-    border-radius: 2rem;
-    text-decoration: none;
-    font-weight: 500;
-    border: 1px solid var(--border-color);
-    background: var(--code-bg);
-    color: var(--text-color);
-
-    &:hover {
-        border-color: var(--accent-color);
-    }
-
-    &.hidden {
-        display: none;
-    }
-}
-
-.tag-chip-count {
-    font-size: 0.75rem;
-    padding: 0.1rem 0.4rem;
-    border-radius: 1rem;
-    background: var(--bg-color);
-    color: var(--text-secondary);
 }
 
 /* Tag Weight Classes */
@@ -288,10 +252,6 @@ details[open] .tag-chevron {
 
 /* Dark Mode */
 .dark-theme {
-    .tag-chip {
-        background: var(--code-bg);
-    }
-
     .tag-group-header {
         background: linear-gradient(to right, var(--code-bg), transparent);
     }

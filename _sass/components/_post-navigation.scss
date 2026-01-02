@@ -6,6 +6,8 @@
     gap: 2rem;
     border-top: 1px solid var(--border-color);
     padding-top: 3rem;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 200px;
 }
 
 .post-navigation a {

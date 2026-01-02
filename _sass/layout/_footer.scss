@@ -3,6 +3,8 @@
     margin-top: 4rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border-color);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 150px;
     text-align: center;
     font-size: 0.875rem;
     color: var(--text-secondary);
