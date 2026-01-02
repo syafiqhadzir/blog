@@ -2,7 +2,8 @@
     layout: null
 permalink: /sw.js
 ---
-/* eslint-disable */
+/* eslint-env worker */
+/* eslint-disable no-undef, sonarjs/no-duplicate-string -- Service Worker globals and repetitive cache strings are intentional for PWA reliability */
 /**
  * Service Worker v4 - Workbox 7 Implementation
  * Production-grade caching with Google Workbox

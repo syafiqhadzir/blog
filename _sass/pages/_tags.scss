@@ -59,7 +59,7 @@
     &:focus {
         outline: none;
         border-color: var(--link-color);
-        box-shadow: 0 0 0 4px rgb(0 102 204 / 12%);
+        box-shadow: 0 0 0 4px var(--accent-shadow);
     }
 }
 
@@ -79,36 +79,36 @@
 
 .tag-w3 {
     font-size: 0.95rem;
-    color: #fff;
+    color: var(--bg-color);
     background: var(--accent-color);
     border-color: var(--accent-color);
 
     .tag-chip-count {
-        color: #fff;
+        color: var(--bg-color);
         background: rgb(255 255 255 / 20%);
     }
 }
 
 .tag-w4 {
     font-size: 1rem;
-    color: #fff;
+    color: var(--bg-color);
     background: var(--accent-color);
     border-color: var(--accent-color);
 
     .tag-chip-count {
-        color: #fff;
+        color: var(--bg-color);
         background: rgb(255 255 255 / 20%);
     }
 }
 
 .tag-w5 {
     font-size: 1.05rem;
-    color: #fff;
+    color: var(--bg-color);
     background: linear-gradient(135deg, var(--accent-color), var(--link-color));
     border-color: transparent;
 
     .tag-chip-count {
-        color: #fff;
+        color: var(--bg-color);
         background: rgb(255 255 255 / 25%);
     }
 }
@@ -210,14 +210,14 @@ details[open] .tag-chevron {
     transition: background-color 0.15s;
 
     &:hover {
-        background: rgb(0 102 204 / 3%);
+        background: var(--accent-shadow);
     }
 }
 
 .tag-post-date {
     flex-shrink: 0;
     min-width: 5rem;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.8rem;
     color: var(--text-secondary);
 }
@@ -258,7 +258,7 @@ details[open] .tag-chevron {
     }
 
     .tag-post-item:hover {
-        background: rgb(88 166 255 / 5%);
+        background: var(--accent-shadow);
     }
 
     .tag-chip-count {

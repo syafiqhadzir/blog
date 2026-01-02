@@ -22,7 +22,7 @@
 .post-content {
     max-width: 680px;
     margin: 0 auto;
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-serif);
     font-size: 1.125rem;
     line-height: 1.8;
 
@@ -35,23 +35,13 @@
     h2 {
         margin-top: 3rem;
         margin-bottom: 1rem;
-        font-family:
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            'Segoe UI',
-            sans-serif;
+        font-family: var(--font-heading);
     }
 
     h3 {
         margin-top: 2.5rem;
         margin-bottom: 0.75rem;
-        font-family:
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            'Segoe UI',
-            sans-serif;
+        font-family: var(--font-heading);
     }
 
     ul,
@@ -97,7 +87,7 @@ blockquote {
         position: absolute;
         top: 0.5rem;
         left: 0.75rem;
-        font-family: Georgia, serif;
+        font-family: var(--font-serif);
         font-size: 3rem;
         line-height: 1;
         color: var(--accent-color);
@@ -127,7 +117,7 @@ figure {
         max-width: 100%;
         height: auto;
         border-radius: 8px;
-        box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
+        box-shadow: var(--shadow-base);
     }
 }
 
@@ -170,7 +160,7 @@ figcaption {
 
 .post-date {
     min-width: 6.5rem;
-    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--text-secondary);
     white-space: nowrap;

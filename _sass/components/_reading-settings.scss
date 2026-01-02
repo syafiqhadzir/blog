@@ -18,7 +18,7 @@
     position: absolute;
     top: 100%;
     right: 0;
-    z-index: 1000;
+    z-index: var(--z-overlay);
     display: none;
     width: 300px;
     padding: 1.5rem;
@@ -70,7 +70,7 @@
 }
 
 .settings-btn[aria-pressed='true'] {
-    color: #fff;
+    color: var(--bg-color);
     background: var(--accent-color);
     border-color: var(--accent-color);
 }

@@ -1,7 +1,14 @@
-/** @type {import('stylelint').Config} */
 export default {
     extends: ['stylelint-config-standard', 'stylelint-config-standard-scss', 'stylelint-config-recess-order'],
     ignoreFiles: ['_site/**', 'vendor/**', 'coverage/**', 'node_modules/**'],
+    overrides: [
+        {
+            files: ['_sass/abstracts/_variables.scss'],
+            rules: {
+                'scale-unlimited/declaration-strict-value': undefined,
+            },
+        },
+    ],
     plugins: ['stylelint-declaration-strict-value'],
     reportDescriptionlessDisables: true,
     reportInvalidScopeDisables: true,
@@ -40,8 +47,9 @@ export default {
         // Prevent vendor prefixes (use autoprefixer instead)
         'property-no-vendor-prefix': true,
         'scale-unlimited/declaration-strict-value': [
-            ['/color/', 'font-family'],
+            ['/color/', 'font-family', 'z-index'],
             {
+                disableFix: true,
                 ignoreValues: [
                     'inherit',
                     'transparent',
@@ -51,34 +59,34 @@ export default {
                     'currentColor',
                     'system-ui',
                     '-apple-system',
-                    'BlinkMacSystemFont',
-                    'Segoe UI',
-                    'Roboto',
-                    'Helvetica Neue',
-                    'Arial',
+                    'blinkmacsystemfont',
+                    'segoe ui',
+                    'roboto',
+                    'helvetica neue',
+                    'arial',
                     'sans-serif',
                     'monospace',
                     'ui-monospace',
-                    'SFMono-Regular',
-                    'Consolas',
-                    'Liberation Mono',
-                    'Courier New',
+                    'sfmono-regular',
+                    'consolas',
+                    'liberation mono',
+                    'courier new',
+                    'charter',
+                    'bitstream charter',
+                    'sitka text',
+                    'cambria',
                 ],
             },
         ],
         'scss/at-rule-no-unknown': true,
-        // Strict naming patterns
         'selector-class-pattern': [
             '^[a-z][a-z0-9]*(-[a-z0-9]+)*$',
             {
                 message: 'Expected class selector to be kebab-case',
             },
         ],
-
         'selector-max-compound-selectors': 3,
-        // Strict selector rules
         'selector-max-id': 0, // No IDs allows
-
         'selector-max-specificity': '0,4,0',
         'selector-max-universal': 0, // No universal selector
         'selector-no-qualifying-type': true,

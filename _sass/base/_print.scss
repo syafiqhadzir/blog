@@ -1,4 +1,5 @@
-/* stylelint-disable -- Print styles require !important and qualifying types for media overrides */
+/* stylelint-disable selector-no-qualifying-type, declaration-no-important, scale-unlimited/declaration-strict-value -- Print styles require !important, qualifying types, and primitive colors for ink-saving paper optimization */
+
 /* Expert Print Stylesheet */
 @media print {
     /* Hide non-essential elements */
@@ -21,10 +22,10 @@
     .wrapper,
     article {
         width: 100% !important;
-        margin: 0 !important;
         padding: 0 !important;
-        box-shadow: none !important;
+        margin: 0 !important;
         overflow: visible !important;
+        box-shadow: none !important;
     }
 
     /* Typography optimization */
@@ -38,15 +39,15 @@
     h1,
     h2,
     h3 {
-        break-after: avoid;
         color: #000;
+        break-after: avoid;
     }
 
     /* Link expansion (optional, acceptable for tech blogs) */
     a[href^='http']::after {
-        content: ' (' attr(href) ')';
         font-size: 0.8em;
         color: #666;
+        content: ' (' attr(href) ')';
     }
 
     /* Don't show link addresses for internal anchors or javascript */

@@ -70,8 +70,8 @@ li {
 }
 
 :target {
-    color: #000;
-    background: #ff0;
+    color: var(--ctp-text);
+    background: var(--ctp-peach);
 }
 
 .wrapper {
