@@ -1,0 +1,1027 @@
+[
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_includes\\styles.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\main.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\base\\_a11y.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\base\\_print.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\base\\_reset.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\base\\_typography.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\abstracts\\_functions.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\abstracts\\_index.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\abstracts\\_mixins.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\abstracts\\_variables.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\layout\\_footer.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\layout\\_grid.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\layout\\_header.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\layout\\_post.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_author-bio.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_back-to-top.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_breadcrumbs.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_buttons.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_navbar.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_post-navigation.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_progress-bar.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_reading-settings.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_related-posts.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_search.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_social-share.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_syntax-highlighting.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": true,
+        "warnings": [
+            {
+                "line": 193,
+                "column": 5,
+                "endLine": 193,
+                "endColumn": 105,
+                "rule": "scale-unlimited/declaration-strict-value",
+                "severity": "error",
+                "text": "Expected variable, function or keyword for \"ui-monospace,\" of \"font-family\" (scale-unlimited/declaration-strict-value)"
+            }
+        ]
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\components\\_tags.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\pages\\_404.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\pages\\_archive.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": true,
+        "warnings": [
+            {
+                "line": 84,
+                "column": 9,
+                "endLine": 84,
+                "endColumn": 46,
+                "rule": "scale-unlimited/declaration-strict-value",
+                "severity": "error",
+                "text": "Expected variable, function or keyword for \"ui-monospace,\" of \"font-family\" (scale-unlimited/declaration-strict-value)"
+            },
+            {
+                "line": 244,
+                "column": 5,
+                "endLine": 244,
+                "endColumn": 42,
+                "rule": "scale-unlimited/declaration-strict-value",
+                "severity": "error",
+                "text": "Expected variable, function or keyword for \"ui-monospace,\" of \"font-family\" (scale-unlimited/declaration-strict-value)"
+            }
+        ]
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\pages\\_tags.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": true,
+        "warnings": [
+            {
+                "line": 82,
+                "column": 5,
+                "endLine": 82,
+                "endColumn": 17,
+                "rule": "scale-unlimited/declaration-strict-value",
+                "severity": "error",
+                "text": "Expected variable, function or keyword for \"#fff\" of \"color\" (scale-unlimited/declaration-strict-value)"
+            },
+            {
+                "line": 87,
+                "column": 9,
+                "endLine": 87,
+                "endColumn": 21,
+                "rule": "scale-unlimited/declaration-strict-value",
+                "severity": "error",
+                "text": "Expected variable, function or keyword for \"#fff\" of \"color\" (scale-unlimited/declaration-strict-value)"
+            },
+            {
+                "line": 94,
+                "column": 5,
+                "endLine": 94,
+                "endColumn": 17,
+                "rule": "scale-unlimited/declaration-strict-value",
+                "severity": "error",
+                "text": "Expected variable, function or keyword for \"#fff\" of \"color\" (scale-unlimited/declaration-strict-value)"
+            },
+            {
+                "line": 99,
+                "column": 9,
+                "endLine": 99,
+                "endColumn": 21,
+                "rule": "scale-unlimited/declaration-strict-value",
+                "severity": "error",
+                "text": "Expected variable, function or keyword for \"#fff\" of \"color\" (scale-unlimited/declaration-strict-value)"
+            },
+            {
+                "line": 106,
+                "column": 5,
+                "endLine": 106,
+                "endColumn": 17,
+                "rule": "scale-unlimited/declaration-strict-value",
+                "severity": "error",
+                "text": "Expected variable, function or keyword for \"#fff\" of \"color\" (scale-unlimited/declaration-strict-value)"
+            },
+            {
+                "line": 220,
+                "column": 5,
+                "endLine": 220,
+                "endColumn": 42,
+                "rule": "scale-unlimited/declaration-strict-value",
+                "severity": "error",
+                "text": "Expected variable, function or keyword for \"ui-monospace,\" of \"font-family\" (scale-unlimited/declaration-strict-value)"
+            }
+        ]
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\_sass\\themes\\_dark.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": []
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\sample.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\background-position.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\border-none.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\box-model-hack.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\bug-flex.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\bug-nested-pseudoclass.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\bug-preservetoken-calc.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\bug2527974.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\bug2527991.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\bug2527998.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\bug2528034.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\charset-media.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\color-keyword.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\color-simple.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\color.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\comment.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\concat-charset.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-base64-doublequotes.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-base64-eof.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-base64-linebreakindata.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-base64-noquotes.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-base64-singlequotes.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-base64-twourls.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-dbquote-font.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-nonbase64-doublequotes.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-nonbase64-noquotes.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-nonbase64-singlequotes.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-noquote-multiline-font.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-realdata-doublequotes.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-realdata-noquotes.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-realdata-singlequotes.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-realdata-yuiapp.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dataurl-singlequote-font.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\decimals.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\dollar-header.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\font-face.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\ie-backslash9-hack.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\ie5mac.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\issue-59.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\issue151.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\issue180.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\issue205.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\issue221.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\issue222.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\lowercasing.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\media-empty-class.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\media-multi.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\media-test.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\old-ie-filter-matrix.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\opacity-filter.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\opera-pixel-ratio.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\pointzeros.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\preserve-case.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\preserve-important.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\preserve-new-line.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\preserve-strings.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\pseudo-first.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\pseudo.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\special-comments.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\star-underscore-hacks.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\string-in-comment.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\webkit-transform.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\cssminify2-2.1.0\\spec\\tests\\zeros.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\jekyll-4.4.1\\lib\\blank_template\\_sass\\base.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\jekyll-4.4.1\\lib\\theme_template\\example\\style.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\jekyll-minifier-0.2.2\\issue48-basic\\assets\\css\\style.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\jekyll-4.4.1\\lib\\blank_template\\assets\\css\\main.scss",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\jekyll-minifier-0.2.2\\spec\\fixtures\\assets\\css\\style.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\rdoc-7.0.1\\lib\\rdoc\\generator\\template\\aliki\\css\\rdoc.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\rdoc-7.0.1\\lib\\rdoc\\generator\\template\\darkfish\\css\\fonts.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\rdoc-7.0.1\\lib\\rdoc\\generator\\template\\darkfish\\css\\rdoc.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\rdoc-7.0.2\\lib\\rdoc\\generator\\template\\aliki\\css\\rdoc.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\rdoc-7.0.2\\lib\\rdoc\\generator\\template\\darkfish\\css\\fonts.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\rdoc-7.0.2\\lib\\rdoc\\generator\\template\\darkfish\\css\\rdoc.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\rdoc-7.0.3\\lib\\rdoc\\generator\\template\\aliki\\css\\rdoc.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\rdoc-7.0.3\\lib\\rdoc\\generator\\template\\darkfish\\css\\fonts.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    },
+    {
+        "source": "C:\\Users\\tt7419\\Downloads\\GitHub\\blog\\vendor\\bundle\\ruby\\3.4.0\\gems\\rdoc-7.0.3\\lib\\rdoc\\generator\\template\\darkfish\\css\\rdoc.css",
+        "deprecations": [],
+        "invalidOptionWarnings": [],
+        "parseErrors": [],
+        "errored": false,
+        "warnings": [],
+        "ignored": true
+    }
+]
