@@ -17,12 +17,12 @@ test.describe('PWA & Service Worker', () => {
         const manifestLink = page.locator('link[rel="manifest"]');
         await expect(manifestLink).toHaveCount(1);
         const href = await manifestLink.getAttribute('href');
-        expect(href).not.toBeNull();
-        const response = await page.request.get(href as string);
+        await expect(manifestLink).toHaveAttribute('href', /.+/);
+        const response = await page.request.get(href ?? '');
         expect(response.status()).toBe(200);
-        const json = await response.json();
-        expect(json.name).toBeTruthy();
-        expect(json.icons.length).toBeGreaterThan(0);
+        const json = (await response.json()) as Record<string, unknown>;
+        expect(json['name']).toBeTruthy();
+        expect((json['icons'] as unknown[]).length).toBeGreaterThan(0);
     });
 
     test('should register service worker (simulated)', async ({ page }) => {

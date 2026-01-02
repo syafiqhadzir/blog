@@ -1,3 +1,4 @@
+// @ts-check
 import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import perfectionist from 'eslint-plugin-perfectionist';
@@ -7,18 +8,30 @@ import unicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
+/** @type {import('typescript-eslint').ConfigArray} */
+/** @type {import('typescript-eslint').ConfigArray} */
+export default [
     // Global ignores
-    { ignores: ['_site/**', 'vendor/**', 'coverage/**', 'playwright-report/**', 'sw.js'] },
+    { ignores: ['_site/**', 'vendor/**', 'coverage/**', 'playwright-report/**', 'sw.js', 'test-results/**'] },
 
-    // Base JS/TS configs
+    // Base configs
     js.configs.recommended,
-    ...tseslint.configs.recommended,
-    ...tseslint.configs.strict,
-    ...tseslint.configs.stylistic,
-    sonarjs.configs.recommended,
-    unicorn.configs['flat/recommended'],
-    perfectionist.configs['recommended-natural'],
+    ...tseslint.configs.strictTypeChecked,
+    ...tseslint.configs.stylisticTypeChecked,
+
+    // Plugin configs
+    /** @type {any} */ (sonarjs.configs.recommended),
+    /** @type {any} */ (unicorn.configs.recommended),
+    /** @type {any} */ (perfectionist.configs['recommended-natural']),
+
+    {
+        languageOptions: {
+            parserOptions: {
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
+            },
+        },
+    },
 
     // Node.js config files
     {
@@ -30,24 +43,35 @@ export default tseslint.config(
         },
         rules: {
             '@typescript-eslint/no-require-imports': 'off',
-            '@typescript-eslint/no-var-requires': 'off',
         },
     },
 
-    // Browser files
+    // Browser files - disable type-checked for legacy assets
     {
         files: ['assets/js/**/*.js'],
+        ...tseslint.configs.disableTypeChecked,
         languageOptions: {
             globals: globals.browser,
         },
     },
 
-    // Playwright specific config - Strict testing rules
+    // Scripts - disable type-checked due to missing library types
     {
+        files: ['scripts/**/*.js'],
+        ...tseslint.configs.disableTypeChecked,
+        languageOptions: {
+            globals: globals.node,
+        },
+    },
+
+    // Playwright specific config
+    {
+        files: ['e2e/**/*.{ts,js}'],
         ...playwright.configs['flat/recommended'],
+    },
+    {
         files: ['e2e/**/*.{ts,js}'],
         rules: {
-            ...playwright.configs['flat/recommended'].rules,
             'playwright/expect-expect': 'error',
             'playwright/no-conditional-in-test': 'error',
             'playwright/no-focused-test': 'error',
@@ -61,7 +85,7 @@ export default tseslint.config(
         },
     },
 
-    // General rules customization
+    // General rule overrides
     {
         rules: {
             '@typescript-eslint/consistent-type-imports': 'error',
@@ -75,6 +99,6 @@ export default tseslint.config(
         },
     },
 
-    // Prettier must be last to override conflicting rules
-    eslintConfigPrettier,
-);
+    // Prettier
+    /** @type {any} */ (eslintConfigPrettier),
+];

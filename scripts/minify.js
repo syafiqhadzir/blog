@@ -23,6 +23,7 @@ const minifyFiles = async () => {
     await Promise.allSettled(
         files.map(async (file) => {
             const content = await fs.readFile(file, 'utf8');
+            /** @type {string} */
             const minified = await minify(content, minifyOptions);
             await fs.writeFile(file, minified);
         }),

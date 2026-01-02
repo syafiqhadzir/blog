@@ -9,16 +9,18 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
-        "noUncheckedIndexedAccess": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-        "exactOptionalPropertyTypes": true,
-        "noPropertyAccessFromIndexSignature": true,
+        "allowJs": true,
+        "isolatedModules": true,
+        "verbatimModuleSyntax": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "isolatedModules": true,
-        "verbatimModuleSyntax": true
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "exactOptionalPropertyTypes": true
     },
-    "include": ["e2e/**/*.ts", "*.config.ts", "lighthouserc.js"],
+    "include": ["e2e/**/*.ts", "*.config.js", "*.config.ts", "lighthouserc.cjs", "scripts/*.js", "assets/js/**/*.js"],
     "exclude": ["node_modules"]
 }

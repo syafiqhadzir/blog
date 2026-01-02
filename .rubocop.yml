@@ -60,17 +60,25 @@ Metrics/ClassLength:
 
 # ABC size - complexity metric
 Metrics/AbcSize:
-    Max: 20
+    Max: 15
+
+# Cyclomatic Complexity
+Metrics/CyclomaticComplexity:
+    Max: 6
+
+# Perceived Complexity
+Metrics/PerceivedComplexity:
+    Max: 7
 
 # RSpec - stricter settings
 RSpec/ExampleLength:
-    Max: 14
+    Max: 10
 
 RSpec/MultipleExpectations:
-    Max: 3
+    Max: 2
 
 RSpec/NestedGroups:
-    Max: 4
+    Max: 3
 
 RSpec/DescribeClass:
     Exclude:

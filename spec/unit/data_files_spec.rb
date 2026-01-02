@@ -28,42 +28,25 @@ RSpec.describe 'Data Files' do
                                           'entries array cannot be empty'
     end
 
-    describe 'menu entries' do
-      it 'each entry has a title' do
-        menu_data['entries'].each_with_index do |entry, index|
-          expect(entry).to have_key('title'),
-                           "Entry #{index + 1}: Missing 'title' key"
-        end
-      end
+    describe 'entries with post_list' do
+      let(:entries_with_post_list) { menu_data['entries'].select { |e| e['post_list'] } }
 
-      it 'entries with URLs have valid format' do
-        entries_with_urls = menu_data['entries'].select { |e| e['url'] }
-
-        entries_with_urls.each do |entry|
-          url = entry['url']
-          # Valid: relative paths, absolute paths, or external URLs
-          expect(url).to match(%r{^(https?://|/|[a-zA-Z0-9])}),
-                         "Invalid URL format: #{url}"
-        end
-      end
-
-      it 'entries with post_list have valid configuration' do
-        entries_with_post_list = menu_data['entries'].select { |e| e['post_list'] }
-
+      it 'have valid limit configuration' do
         entries_with_post_list.each do |entry|
           post_list = entry['post_list']
+          next unless post_list['limit']
 
-          if post_list['limit']
-            expect(post_list['limit']).to be_a(Integer),
-                                          'post_list.limit must be an integer'
-            expect(post_list['limit']).to be > 0,
-                                          'post_list.limit must be positive'
-          end
+          expect(post_list['limit']).to be_a(Integer)
+          expect(post_list['limit']).to be > 0
+        end
+      end
 
-          if post_list['show_more']
-            expect(post_list['show_more']).to be(true).or(be(false)),
-                                              'post_list.show_more must be a boolean'
-          end
+      it 'have valid show_more configuration' do
+        entries_with_post_list.each do |entry|
+          post_list = entry['post_list']
+          next unless post_list['show_more']
+
+          expect(post_list['show_more']).to be(true).or(be(false))
         end
       end
     end

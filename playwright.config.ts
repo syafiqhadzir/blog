@@ -32,7 +32,7 @@ export default defineConfig({
     reporter: 'html',
 
     use: {
-        baseURL: process.env['BASE_URL'] || 'http://127.0.0.1:4000/',
+        baseURL: process.env['BASE_URL'] ?? 'http://127.0.0.1:4000/',
         screenshot: 'only-on-failure',
         trace: 'on-first-retry',
     },

@@ -1,8 +1,10 @@
 {
+    "extends": "markdownlint/style/prettier",
     "default": true,
-    "MD013": { "line_length": 120 },
-    "MD033": true,
-    "MD041": true,
-    "MD051": true,
-    "MD024": true
+    "MD013": false,
+    "MD024": {
+        "siblings_only": true
+    },
+    "MD033": false,
+    "MD041": false
 }
