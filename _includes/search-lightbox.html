@@ -1,4 +1,4 @@
-<amp-lightbox id="search-lightbox" layout="nodisplay">
+<amp-lightbox id="search-lightbox" layout="nodisplay" on="lightboxOpen:AMP.setState({ searchModalOpen: true }); lightboxClose:AMP.setState({ searchModalOpen: false, searchQuery: '' })">
   <div class="search-modal">
     <div class="search-modal-inner">
       <div class="search-header">
@@ -29,28 +29,42 @@
           Results for <span class="search-query-display" [text]="searchQuery"></span>
         </div>
 
+        <!-- Lazy-load: only fetch search.json when modal is open -->
         <amp-list layout="fixed-height"
                   height="70vh"
-                  src="{{ '/search.json' | relative_url }}"
+                  [src]="searchModalOpen ? '{{ '/search.json' | relative_url }}' : ''"
+                  src=""
                   id="search-results"
                   single-item
-                  key="items">
+                  items="items"
+                  binding="refresh"
+                  reset-on-refresh>
           <template type="amp-mustache">
             <div class="search-hit-list">
-              {% raw %}
-              {{#.}}
-              <div class="search-hit" [hidden]="searchQuery && !title.toLowerCase().includes(searchQuery.toLowerCase())">
+              {{#items}}
+              <div class="search-hit" [hidden]="searchQuery && titleLower.indexOf(searchQuery.toLowerCase()) == -1 && tagsLower.indexOf(searchQuery.toLowerCase()) == -1">
                 <a href="{{url}}" class="search-hit-link">
                   <span class="search-hit-date">{{date}}</span>
                   <span class="search-hit-title">{{title}}</span>
+                  {{#tags.length}}
+                  <span class="search-hit-tags">
+                    {{#tags}}<span class="search-hit-tag">{{.}}</span>{{/tags}}
+                  </span>
+                  {{/tags.length}}
                 </a>
               </div>
-              {{/.}}
-              {% endraw %}
+              {{/items}}
             </div>
           </template>
+          <div placeholder class="search-placeholder">Loading results...</div>
+          <div fallback class="search-fallback">Failed to load search index.</div>
         </amp-list>
+
+        <div class="search-no-results" [hidden]="!searchQuery || !searchModalOpen" hidden>
+          <p>No results found for "<span [text]="searchQuery"></span>"</p>
+        </div>
       </div>
     </div>
   </div>
 </amp-lightbox>
+

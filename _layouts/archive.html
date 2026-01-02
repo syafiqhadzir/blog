@@ -31,8 +31,9 @@ layout: default
                placeholder="🔍 Search articles..."
                aria-label="Search articles"
                aria-describedby="search-hint"
+               on="input-debounced:AMP.setState({ archiveSearchQuery: event.value })"
                autocomplete="off">
-        <span class="search-hint" id="search-hint" aria-hidden="true">
+        <span class="search-hint" id="search-hint" aria-hidden="true" [hidden]="archiveSearchQuery">
             <kbd>/</kbd> to focus
         </span>
         <button type="button" class="search-clear" id="search-clear" hidden aria-label="Clear search">
@@ -41,8 +42,8 @@ layout: default
     </div>
 
     <!-- Result Counter -->
-    <div class="archive-results" aria-live="polite" aria-atomic="true">
-        <span id="results-count">Showing all {{ site.posts | size }} articles</span>
+    <div class="archive-results" aria-live="polite" aria-atomic="true" [hidden]="!archiveSearchQuery">
+        <span>Search results for <strong [text]="archiveSearchQuery"></strong></span>
     </div>
 
     {{ content }}
@@ -61,7 +62,7 @@ layout: default
                 {%- for post in year.items -%}
                 <li class="archive-post-item"
                     role="listitem"
-                    data-searchable="{{ post.title | downcase }} {{ post.tags | join: ' ' | downcase }} {{ post.category | downcase }}">
+                    [hidden]="archiveSearchQuery && '{{ post.title | downcase }} {{ post.tags | join: ' ' | downcase }}'.indexOf(archiveSearchQuery.toLowerCase()) == -1">
                     <time class="archive-date" datetime="{{ post.date | date_to_xmlschema }}">
                         {{ post.date | date: "%d %b" }}
                     </time>
@@ -471,108 +472,6 @@ details[open] .year-chevron {
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('archive-search-input');
-    const searchClear = document.getElementById('search-clear');
-    const resultsCount = document.getElementById('results-count');
-    const noResults = document.getElementById('no-results');
-    const searchTerm = document.getElementById('search-term');
-    const clearSearch = document.getElementById('clear-search');
-    const yearGroups = document.querySelectorAll('.year-group');
-    const totalPosts = {{ site.posts | size }};
-
-    function performSearch() {
-        const query = searchInput.value.toLowerCase().trim();
-        let visibleCount = 0;
-
-        // Show/hide clear button
-        searchClear.hidden = !query;
-
-        yearGroups.forEach(group => {
-            const posts = group.querySelectorAll('.archive-post-item');
-            let yearVisible = 0;
-
-            posts.forEach(post => {
-                const searchable = post.dataset.searchable || '';
-                const matches = !query || searchable.includes(query);
-                post.hidden = !matches;
-                if (matches) {
-                    visibleCount++;
-                    yearVisible++;
-                }
-            });
-
-            // Update year count
-            const countEl = group.querySelector('.year-count');
-            if (countEl) {
-                const original = countEl.dataset.original;
-                countEl.textContent = query
-                    ? `${yearVisible} of ${original}`
-                    : `${original} articles`;
-            }
-
-            // Hide empty year groups
-            group.hidden = yearVisible === 0 && query;
-        });
-
-        // Update results counter
-        if (!query) {
-            resultsCount.innerHTML = `Showing all <strong>${totalPosts}</strong> articles`;
-        } else if (visibleCount === 0) {
-            resultsCount.innerHTML = `No articles found`;
-        } else {
-            resultsCount.innerHTML = `Found <strong>${visibleCount}</strong> of ${totalPosts} articles`;
-        }
-
-        // Show/hide empty state
-        noResults.hidden = visibleCount > 0 || !query;
-        noResults.setAttribute('aria-hidden', visibleCount > 0 || !query);
-        if (searchTerm) searchTerm.textContent = query;
-
-        // Show/hide archive list
-        document.getElementById('archive-list').hidden = visibleCount === 0 && query;
-    }
-
-    // Debounced search
-    let debounceTimer;
-    searchInput.addEventListener('input', function() {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(performSearch, 150);
-    });
-
-    // Clear button
-    searchClear.addEventListener('click', function() {
-        searchInput.value = '';
-        performSearch();
-        searchInput.focus();
-    });
-
-    // Clear link in empty state
-    if (clearSearch) {
-        clearSearch.addEventListener('click', function() {
-            searchInput.value = '';
-            performSearch();
-            searchInput.focus();
-        });
-    }
-
-    // Keyboard shortcut: / to focus search
-    document.addEventListener('keydown', function(e) {
-        if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-            e.preventDefault();
-            searchInput.focus();
-        }
-        if (e.key === 'Escape' && document.activeElement === searchInput) {
-            searchInput.blur();
-            if (searchInput.value) {
-                searchInput.value = '';
-                performSearch();
-            }
-        }
-    });
-});
-</script>
 
 <script type="application/ld+json">
 {

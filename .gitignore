@@ -37,7 +37,6 @@ pnpm-debug.log*
 .nuxt/
 .output/
 
-# -----------------------------------------------------------------------------
 # Testing & Coverage
 # -----------------------------------------------------------------------------
 coverage/
@@ -49,8 +48,14 @@ playwright/.cache/
 e2e/snapshots/*-snapshots/
 .lighthouseci/
 *-report.json
+*-report.xml
 sonar-report.xml
 .scannerwork/
+output.txt
+*_out.txt
+*.log
+rspec_result.json
+*.js.map
 
 # -----------------------------------------------------------------------------
 # Ruby Development Tools

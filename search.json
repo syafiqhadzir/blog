@@ -6,10 +6,11 @@ layout: null
     {%- for post in site.posts -%}
     {
       "title": {{ post.title | jsonify }},
+      "titleLower": {{ post.title | downcase | jsonify }},
       "url": {{ post.url | relative_url | jsonify }},
       "date": {{ post.date | date: "%Y-%m-%d" | jsonify }},
       "tags": {{ post.tags | jsonify }},
-      "content": {{ post.content | strip_html | strip_newlines | truncate: 200 | jsonify }}
+      "tagsLower": {{ post.tags | join: " " | downcase | jsonify }}
     }{%- unless forloop.last -%},{%- endunless -%}
     {%- endfor -%}
   ]
