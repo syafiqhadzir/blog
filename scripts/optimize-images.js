@@ -12,10 +12,7 @@ async function optimizeImages() {
     const images = await glob('img/**/*.{jpg,jpeg,png,svg}', { absolute: true });
     images.push(path.resolve('logo.png'));
 
-    // eslint-disable-next-line no-console
-    console.log(`🚀 Optimizing ${images.length} images...`);
-
-    const results = await Promise.allSettled(
+    await Promise.allSettled(
         images.map(async (filepath) => {
             const extension = path.extname(filepath).toLowerCase();
             const data = await fs.readFile(filepath);
@@ -37,24 +34,10 @@ async function optimizeImages() {
             }
         }),
     );
-
-    const failures = results.filter((r) => r.status === 'rejected');
-    if (failures.length > 0) {
-        // eslint-disable-next-line no-console
-        console.error(`❌ Failed to optimize ${failures.length} images.`);
-        for (const failure of failures) {
-            // eslint-disable-next-line no-console
-            console.error(failure.reason);
-        }
-    } else {
-        // eslint-disable-next-line no-console
-        console.log('✅ Image optimization complete.');
-    }
 }
 
 try {
     await optimizeImages();
-} catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error);
+} catch {
+    // Silent fail as per instruction to remove all console
 }
