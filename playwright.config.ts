@@ -38,7 +38,7 @@ export default defineConfig({
     },
 
     webServer: {
-        command: 'bundle exec jekyll serve --port 4000',
+        command: process.env['CI'] ? 'npx http-server _site -p 4000' : 'bundle exec jekyll serve --port 4000',
         reuseExistingServer: !process.env['CI'],
         stderr: 'pipe',
         stdout: 'pipe',
