@@ -12,7 +12,7 @@
 
 #progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent-color), var(--link-color));
+    background: var(--gradient-cool);
     width: 100%;
     transform: scaleX(0);
     transform-origin: left;

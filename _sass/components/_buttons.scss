@@ -2,23 +2,57 @@
 .btn {
     display: inline-block;
     padding: 0.8rem 1.6rem;
-    background: var(--accent-color);
+    background: var(--gradient-accent);
     color: #fff;
     text-decoration: none;
     border-radius: 100px;
     font-weight: 700;
-    transition: all 0.2s ease;
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        filter var(--transition-fast);
     border: none;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-warm);
+    opacity: 0%;
+    transition: opacity var(--transition-base);
 }
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgb(0 0 0 / 15%);
-    opacity: 90%;
+    box-shadow: 0 8px 25px rgb(102 126 234 / 35%);
+}
+
+.btn:hover::before {
+    opacity: 100%;
+}
+
+.btn span {
+    position: relative;
+    z-index: 1;
 }
 
 .btn:focus-visible {
     box-shadow: var(--focus-ring);
     outline: none;
+}
+
+/* Secondary Button Variant */
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background: var(--accent-color);
+    color: #fff;
 }
