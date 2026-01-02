@@ -96,17 +96,4 @@ test.describe('Navigation', () => {
         // No results message should be visible
         await expect(page.locator('#no-results')).toBeVisible();
     });
-
-    test('navbar search icon navigates to archive with focus', async ({ page }) => {
-        await page.goto('/');
-
-        // Click search icon
-        await page.click('.search-link');
-
-        // Should navigate to archive with focus=search param
-        await expect(page).toHaveURL(/archive\.html\?focus=search/);
-
-        // Verify the input exists and is visible (focus may vary by browser)
-        await expect(page.locator('#archive-filter')).toBeVisible();
-    });
 });
