@@ -22,13 +22,10 @@ export default tseslint.config(
 
     // Node.js config files
     {
-        files: ['lighthouserc.js', 'lighthouserc.cjs', '*.config.js', '**/*.cjs'],
+        files: ['lighthouserc.js', 'lighthouserc.cjs', '*.config.js', '**/*.cjs', 'scripts/*.js'],
         languageOptions: {
             globals: {
-                __dirname: 'readonly',
-                module: 'readonly',
-                process: 'readonly',
-                require: 'readonly',
+                ...globals.node,
             },
         },
         rules: {
