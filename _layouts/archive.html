@@ -59,7 +59,7 @@ layout: default
                 {%- for post in year.items -%}
                 <li class="archive-post-item"
                     role="listitem"
-                    [hidden]="archiveSearchQuery && '{{ post.title | downcase | replace: "'", "\\'" }} {{ post.tags | join: ' ' | downcase | replace: "'", "\\'" }}'.indexOf(archiveSearchQuery.toLowerCase()) == -1">
+                    [hidden]="archiveSearchQuery && '{{ post.title | downcase | replace: '\\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }} {{ post.tags | join: ' ' | downcase | replace: '\\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }}'.indexOf(archiveSearchQuery.toLowerCase()) == -1">
                     <time class="archive-date" datetime="{{ post.date | date_to_xmlschema }}">
                         {{ post.date | date: "%d %b" }}
                     </time>
