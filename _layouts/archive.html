@@ -237,6 +237,9 @@ layout: default
     border-radius: 12px;
     overflow: hidden;
     transition: opacity 0.2s;
+    /* CWV: Skip rendering for off-screen year groups */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 300px;
 }
 
 .year-group[hidden] {
