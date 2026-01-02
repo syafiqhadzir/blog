@@ -18,7 +18,7 @@
     color: var(--link-color);
 }
 
-/* Search UI */
+/* Search UI (Archive page) */
 .search-container {
     margin: 0;
     position: relative;
@@ -49,117 +49,4 @@
     transform: translateY(-50%);
     color: var(--text-secondary);
     pointer-events: none;
-}
-
-/* Modal Search */
-.search-modal {
-    background: var(--bg-color);
-    width: 100vw;
-    height: 100vh;
-    padding: 2rem;
-    overflow-y: auto;
-}
-
-.search-modal-inner {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.search-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    position: sticky;
-    top: 0;
-    background: var(--bg-color);
-    padding: 1rem 0;
-    z-index: 10;
-}
-
-.close-search {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s;
-}
-
-.close-search:hover {
-    color: var(--text-color);
-}
-
-.search-results-wrapper {
-    padding-top: 1rem;
-}
-
-.search-results-info {
-    margin-bottom: 1.5rem;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-.search-query-display {
-    font-weight: 600;
-    color: var(--text-color);
-}
-
-.search-hit {
-    margin-bottom: 0.5rem;
-}
-
-.search-hit-link {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1rem;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.2s;
-    border: 1px solid transparent;
-}
-
-.search-hit-link:hover {
-    background: var(--code-bg);
-    border-color: var(--border-color);
-}
-
-.search-hit-date {
-    font-family: ui-monospace, monospace;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    min-width: 6rem;
-}
-
-.search-hit-title {
-    font-weight: 500;
-    color: var(--text-color);
-}
-
-.search-hit[hidden] {
-    display: none;
-}
-
-@keyframes fade-in {
-    from {
-        opacity: 0%;
-        transform: translateY(5px);
-    }
-
-    to {
-        opacity: 100%;
-        transform: translateY(0);
-    }
-}
-
-/* No Results Message */
-.no-results {
-    text-align: center;
-    color: var(--text-secondary);
-    padding: 2rem;
-    font-style: italic;
 }
