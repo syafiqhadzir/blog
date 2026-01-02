@@ -23,9 +23,11 @@ tags:
 
 ## Introduction
 
-PCI DSS (Payment Card Industry Data Security Standard) sounds boring. It is. But it is the "boring" that keeps your company from being fined into bankruptcy.
+PCI DSS (Payment Card Industry Data Security Standard) sounds boring. It is. But it is the "boring" that keeps your
+company from being fined into bankruptcy.
 
-If you think "Security is simpler if we just store the credit card in the database," please close this browser and go back to welding underwater. It is safer.
+If you think "Security is simpler if we just store the credit card in the database," please close this browser and go
+back to welding underwater. It is safer.
 
 For QA, PCI compliance means ensuring we never, ever touch the raw data.
 
@@ -45,7 +47,8 @@ The best way to secure data is to not have it. Modern payments use **Tokenisatio
 
 If hackers steal your database, they get a list of useless tokens.
 
-**QA Challenge**: Intercept the network request from the browser. Does the request go to `api.yourcompany.com`? FAIL. It must go to `api.stripe.com`.
+**QA Challenge**: Intercept the network request from the browser. Does the request go to `api.yourcompany.com`? FAIL. It
+must go to `api.stripe.com`.
 
 ## Logs: The Silent Leak
 
@@ -97,12 +100,15 @@ process_payment("4242 4242 4242 4242")
 
 Compliance is not just a checklist; it is a culture.
 
-It only takes one developer `print()`-ing a variable to debug a production issue to violate PCI DSS Level 1. Be the QA who catches that `print()`.
+It only takes one developer `print()`-ing a variable to debug a production issue to violate PCI DSS Level 1. Be the QA
+who catches that `print()`.
 
 ## Key Takeaways
 
-- **Auto-Complete needs disabling**: Disable it on CC inputs (`autocomplete="off"`). You do not want the browser saving the user's card on a shared computer.
-- **Dependencies need auditing**: Audit your third-party scripts. If you have a sketchy "Analytics" script on your checkout page, it can read the credit card field.
+- **Auto-Complete needs disabling**: Disable it on CC inputs (`autocomplete="off"`). You do not want the browser saving
+  the user's card on a shared computer.
+- **Dependencies need auditing**: Audit your third-party scripts. If you have a sketchy "Analytics" script on your
+  checkout page, it can read the credit card field.
 - **Data Retention needs limits**: Do not keep user data longer than necessary. "Data is a toxic asset."
 
 ## Next Steps

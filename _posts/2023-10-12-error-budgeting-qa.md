@@ -23,9 +23,12 @@ tags:
 
 ## Introduction
 
-In the old days, the goal of QA was "Zero Defects". This is a noble lie we told ourselves, like "I'll just watch one episode" or "I am only checking my emails on holiday".
+In the old days, the goal of QA was "Zero Defects". This is a noble lie we told ourselves, like "I'll just watch one
+episode" or "I am only checking my emails on holiday".
 
-In the modern SRE world, we accept that 100% uptime is impossible (and arguably too expensive). Enter the **Error Budget**: The precise amount of failure we are allowed to have before the reliability police (SREs) shut down the feature factory.
+In the modern SRE world, we accept that 100% uptime is impossible (and arguably too expensive). Enter the **Error
+Budget**: The precise amount of failure we are allowed to have before the reliability police (SREs) shut down the
+feature factory.
 
 ## TL;DR
 
@@ -40,11 +43,13 @@ Imagine an Error Budget is your salary.
 - **Features** are the cool stuff you want to buy (Video Games, Holidays).
 - **Incidents** are the unexpected bills (Car repair, Parking fines).
 
-If you spend all your money on "Move Fast and Break Things" (Releases), you will not have any left when "Reality Strikes" (Downtime).
+If you spend all your money on "Move Fast and Break Things" (Releases), you will not have any left when "Reality
+Strikes" (Downtime).
 
 Once your budget reaches zero, you are technically bankrupt. In engineering terms, this means **Feature Freeze**.
 
-Product Managers hate this. Developers hate this. QA Engineers... well, we secretly love this, because it proves we were right about that flaky test.
+Product Managers hate this. Developers hate this. QA Engineers... well, we secretly love this, because it proves we were
+right about that flaky test.
 
 ## Calculating the "Oopsie" Allowance
 
@@ -53,11 +58,13 @@ Let us say your Service Level Objective (SLO) is **99.9% Availability**. That im
 Over a 30-day period (43,200 minutes), you are allowed:
 `43,200 * 0.001 = 43.2 minutes` of downtime.
 
-If you blow 40 minutes of that on a single bad deployment because someone hardcoded `localhost` in production, you have 3.2 minutes left for the rest of the month. Good luck sleeping at night.
+If you blow 40 minutes of that on a single bad deployment because someone hardcoded `localhost` in production, you have
+3.2 minutes left for the rest of the month. Good luck sleeping at night.
 
 ## Code Snippet: The Budget Policeman
 
-Here is a Python script that might run fast in your CI/CD pipeline. It queries Prometheus to check if you have enough budget left to risk a deployment.
+Here is a Python script that might run fast in your CI/CD pipeline. It queries Prometheus to check if you have enough
+budget left to risk a deployment.
 
 ```python
 import requests
@@ -101,15 +108,18 @@ if __name__ == "__main__":
 
 ## Summary
 
-Error Budgets turn "Reliability" from a vague feeling into a hard currency. They align incentives: Devs want to ship, Ops want stability. The budget forces them to negotiate.
+Error Budgets turn "Reliability" from a vague feeling into a hard currency. They align incentives: Devs want to ship,
+Ops want stability. The budget forces them to negotiate.
 
 QA sits in the middle, ensuring that we do not spend the budget on avoidable bugs.
 
 ## Key Takeaways
 
 - **Agreement on SLOs is mandatory**: Product and Engineering must agree on the SLO (e.g., 99.9%).
-- **Consequences must exist**: There must be a penalty for exhaustion (Feature Freeze), otherwise, it is just a dashboard no one looks at.
-- **Spend Wisely**: Spending budget on chaos engineering (learning) is better than spending it on regression bugs (mistakes).
+- **Consequences must exist**: There must be a penalty for exhaustion (Feature Freeze), otherwise, it is just a
+  dashboard no one looks at.
+- **Spend Wisely**: Spending budget on chaos engineering (learning) is better than spending it on regression bugs
+  (mistakes).
 
 ## Next Steps
 

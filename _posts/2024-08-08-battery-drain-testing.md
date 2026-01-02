@@ -24,19 +24,24 @@ tags:
 
 ## Introduction
 
-Users hate apps that drain battery. If your users' phone gets hot enough to fry an egg whilst browsing your "About Us" page, you have a problem.
+Users hate apps that drain battery. If your users' phone gets hot enough to fry an egg whilst browsing your "About Us"
+page, you have a problem.
 
-QA usually tests on plugged-in desktops. Ideally, you should test on an old Android phone with 12% battery left. If your app kills the last 12% in 5 minutes, uninstall is imminent.
+QA usually tests on plugged-in desktops. Ideally, you should test on an old Android phone with 12% battery left. If your
+app kills the last 12% in 5 minutes, uninstall is imminent.
 
 ## TL;DR
 
 - **CPU Usage drains battery**: High CPU = High Battery drain. Keep usage low when idle (ideally 0%).
-- **Radio activity costs power**: Constant network requests keep the cellular modem active (high drain). Batch requests together.
-- **Dark Mode saves OLED power**: OLED screens save battery on black pixels. Test that your Dark Mode is actually black (`#000000`), not just dark grey.
+- **Radio activity costs power**: Constant network requests keep the cellular modem active (high drain). Batch requests
+  together.
+- **Dark Mode saves OLED power**: OLED screens save battery on black pixels. Test that your Dark Mode is actually black
+  (`#000000`), not just dark grey.
 
 ## The "Pocket Warmer" Effect
 
-Infinite loops in JavaScript do not just freeze the UI; they max out a CPU core. On a mobile device, this generates heat.
+Infinite loops in JavaScript do not just freeze the UI; they max out a CPU core. On a mobile device, this generates
+heat.
 
 Thermal throttling kicks in. The phone slows down. The user blames the phone, but the fault is your `while(true)` loop.
 
@@ -44,13 +49,16 @@ Thermal throttling kicks in. The phone slows down. The user blames the phone, bu
 
 ## Animations: The Silent Killer
 
-CSS Animations are great. But if you animate `margin-left` instead of `transform`, the browser has to re-calculate layout on every frame (Reflow). This is expensive.
+CSS Animations are great. But if you animate `margin-left` instead of `transform`, the browser has to re-calculate
+layout on every frame (Reflow). This is expensive.
 
-The GPU is efficient, but keeping it awake costs power. Stop animations when they are off-screen. If you have a spinning logo that is hidden behind a modal, stop spinning it.
+The GPU is efficient, but keeping it awake costs power. Stop animations when they are off-screen. If you have a spinning
+logo that is hidden behind a modal, stop spinning it.
 
 ## Code Snippet: Politeness (Visibility API)
 
-Your app should go to sleep when the user switches tabs. Stop polling. Stop animations. Stop mining crypto (just kidding... mostly).
+Your app should go to sleep when the user switches tabs. Stop polling. Stop animations. Stop mining crypto (just
+kidding... mostly).
 
 ```javascript
 /*
@@ -93,16 +101,20 @@ test('should stop polling when tab is hidden', async ({ page }) => {
 
 Battery testing is about empathy. Your user might be lost in a forest with 5% battery, trying to load your map.
 
-Do not be the reason their phone dies. Energy efficiency is also a form of Green coding. Save the planet, one CPU cycle at a time.
+Do not be the reason their phone dies. Energy efficiency is also a form of Green coding. Save the planet, one CPU cycle
+at a time.
 
 ## Key Takeaways
 
-- **Timers run in background**: `setInterval` runs even in background tabs (though browsers throttle it to 1Hz). Use `requestAnimationFrame` for visuals—it pauses automatically when hidden.
-- **GPS drains quickly**: Constant Geolocation updates drain battery fast. Do you need high accuracy (`enableHighAccuracy: true`)? Probably not.
+- **Timers run in background**: `setInterval` runs even in background tabs (though browsers throttle it to 1Hz). Use
+  `requestAnimationFrame` for visuals—it pauses automatically when hidden.
+- **GPS drains quickly**: Constant Geolocation updates drain battery fast. Do you need high accuracy
+  (`enableHighAccuracy: true`)? Probably not.
 - **Video is expensive**: Autoplaying video is a battery hog. Do not do it unless requested.
 
 ## Next Steps
 
 - **Tool**: Use **Android Studio Profiler** to see the energetic impact of your WebView.
-- **Learn**: Understand **Wake Locks**. Sometimes you *need* to keep the screen on (e.g., Recipe app), but use it wisely.
+- **Learn**: Understand **Wake Locks**. Sometimes you *need* to keep the screen on (e.g., Recipe app), but use it
+  wisely.
 - **Audit**: Check your `third-party-scripts`. Ad networks are notorious for burning CPU to track visibility.

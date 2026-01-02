@@ -28,7 +28,8 @@ If you offer a free API, someone will abuse it. It is a law of nature, like grav
 
 To stop one user from crashing the server for everyone else, we use **Rate Limiting**.
 
-It is the digital equivalent of a "One Per Customer" sign at an All-You-Can-Eat buffet. Testing it is fun because you essentially get permission to DDoS your own staging environment.
+It is the digital equivalent of a "One Per Customer" sign at an All-You-Can-Eat buffet. Testing it is fun because you
+essentially get permission to DDoS your own staging environment.
 
 ## TL;DR
 
@@ -44,7 +45,8 @@ A rate limiter sits at the front door (Gateway) and checks your ID.
 - **Fixed Window**: "You have 100 requests between 12:00 and 12:01." (Reset at 12:01).
 - **Sliding Window**: "You have 100 requests in the *last* 60 seconds." (Smoother, harder to implement).
 
-**QA Challenge**: Verify that the limiter actually blocks the 101st request but allows the 1st request of the *next* minute.
+**QA Challenge**: Verify that the limiter actually blocks the 101st request but allows the 1st request of the *next*
+minute.
 
 ## 429: The Most Passive-Aggressive HTTP Status
 
@@ -53,7 +55,8 @@ When a user hits the limit, you should return `429 Too Many Requests`. But do no
 Return a `Retry-After` header telling them when they can come back.
 *"Come back in 10 seconds, mate. You've had enough."*
 
-If your API just hangs or returns a 500 error, you have a bug. The limiter should not crash the app; it should protect it.
+If your API just hangs or returns a 500 error, you have a bug. The limiter should not crash the app; it should protect
+it.
 
 ## Code Snippet: The Spam Bot
 
@@ -90,15 +93,19 @@ export default function () {
 
 ## Summary
 
-Rate limiting is the unsung hero of reliability. It prevents "Thundering Herds" and keeps your API responsive for the 99% of users who behave nicely.
+Rate limiting is the unsung hero of reliability. It prevents "Thundering Herds" and keeps your API responsive for the
+99% of users who behave nicely.
 
 Your job as QA is to be the 1% who behaves badly, just to check if the bouncer is awake.
 
 ## Key Takeaways
 
-- **Test the Headers are accurate**: The headers (`X-RateLimit-Limit`, `X-RateLimit-Remaining`) are the contract. Verify they decrement correctly.
-- **Bypass Strategy needs whitelisting**: Ensure your Load Balancers/WAF do not rate limit your *Monitoring Tools*. Whitelist Datadog, or you will get paged for a false alarm.
-- **Distributed Limits need measurement**: If you have 3 servers, and the limit is 100, is it 100 *total* (using Redis) or 100 *per server* (300 total)? Measure this.
+- **Test the Headers are accurate**: The headers (`X-RateLimit-Limit`, `X-RateLimit-Remaining`) are the contract. Verify
+  they decrement correctly.
+- **Bypass Strategy needs whitelisting**: Ensure your Load Balancers/WAF do not rate limit your *Monitoring Tools*.
+  Whitelist Datadog, or you will get paged for a false alarm.
+- **Distributed Limits need measurement**: If you have 3 servers, and the limit is 100, is it 100 *total* (using Redis)
+  or 100 *per server* (300 total)? Measure this.
 
 ## Next Steps
 

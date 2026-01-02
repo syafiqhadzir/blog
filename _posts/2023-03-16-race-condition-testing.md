@@ -24,7 +24,8 @@ tags:
 
 ## Introduction
 
-Race conditions are the ghosts in the machine. In automated testing, they manifest as random failures that "fix themselves" when you re-run the pipeline.
+Race conditions are the ghosts in the machine. In automated testing, they manifest as random failures that "fix
+themselves" when you re-run the pipeline.
 
 "It worked on my machine!" screams the developer.
 "It failed in CI!" replies the log.
@@ -60,13 +61,15 @@ This turns your test suite into a nap suite.
 
 ## The Polling Solution
 
-The solution is **Deterministic Polling**. You ask "Are we there yet?" every 100ms until the answer is "Yes" or you time out.
+The solution is **Deterministic Polling**. You ask "Are we there yet?" every 100ms until the answer is "Yes" or you time
+out.
 
 Most modern frameworks (Playwright, Cypress) do this automatically. Selenium (and Unit Tests) often need manual help.
 
 ## Code Snippet: A Robust Wait
 
-Here is a robust, written-from-scratch polling utility in TypeScript. You essentially re-invent `await expect`, but understanding *how* it works is vital.
+Here is a robust, written-from-scratch polling utility in TypeScript. You essentially re-invent `await expect`, but
+understanding *how* it works is vital.
 
 ```typescript
 /**
@@ -107,18 +110,22 @@ test('Order status updates to COMPLETE', async () => {
 });
 ```
 
-This ensures the test waits *exactly* as long as necessary. If the server is fast, the test is fast. If the server is slow, the test remains patient.
+This ensures the test waits *exactly* as long as necessary. If the server is fast, the test is fast. If the server is
+slow, the test remains patient.
 
 ## Summary
 
-Concurrency is not a problem to be avoided, but a reality to be managed. High-performance test suites embrace parallel execution.
+Concurrency is not a problem to be avoided, but a reality to be managed. High-performance test suites embrace parallel
+execution.
 
-If you cannot run your tests in parallel because "they interfere with each other", you do not have a test suite; you have a house of cards.
+If you cannot run your tests in parallel because "they interfere with each other", you do not have a test suite; you
+have a house of cards.
 
 ## Key Takeaways
 
 - **Explicit over Implicit**: Define exactly what you are waiting for (Database state? DOM element? API 200 OK?).
-- **Flakiness is a Bug**: Do not ignore "random" failures. They are race conditions waiting to happen in production users' browsers.
+- **Flakiness is a Bug**: Do not ignore "random" failures. They are race conditions waiting to happen in production
+  users' browsers.
 - **Fail Fast**: Set reasonable timeouts. If it takes >10 seconds, it is probably broken.
 
 ## Next Steps

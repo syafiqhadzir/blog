@@ -23,9 +23,13 @@ tags:
 
 ## Introduction
 
-Search Engine Optimisation (SEO) and Quality Assurance (QA) usually sit at opposite ends of the office cafeteria. One group talks about "keywords" and "backlinks" and magical Google algorithms; the other mutters about "regressions" and "null pointers" and why the staging environment is down again.
+Search Engine Optimisation (SEO) and Quality Assurance (QA) usually sit at opposite ends of the office cafeteria. One
+group talks about "keywords" and "backlinks" and magical Google algorithms; the other mutters about "regressions" and
+"null pointers" and why the staging environment is down again.
 
-But here is the secret: good SEO is primarily about good technical quality. If your website is a slow, broken mess, all the keywords in the world will not save you. And who owns quality? We do. We are the gatekeepers of the invisible door that the Googlebot walks through.
+But here is the secret: good SEO is primarily about good technical quality. If your website is a slow, broken mess, all
+the keywords in the world will not save you. And who owns quality? We do. We are the gatekeepers of the invisible door
+that the Googlebot walks through.
 
 ## TL;DR
 
@@ -36,24 +40,30 @@ But here is the secret: good SEO is primarily about good technical quality. If y
 
 ## The Odd Couple: QA and SEO
 
-You might think SEO is just "marketing magic". And yes, there is a lot of wizardry involved in keyword research. But once the SEO analyst hands down the requirement—"This page needs a canonical tag pointing to X"—it becomes a technical requirement.
+You might think SEO is just "marketing magic". And yes, there is a lot of wizardry involved in keyword research. But
+once the SEO analyst hands down the requirement—"This page needs a canonical tag pointing to X"—it becomes a technical
+requirement.
 
-A developer refactoring the header might accidentally delete the `meta description` tag. To them, the site looks identical. To Google, the site just lobotomised itself.
+A developer refactoring the header might accidentally delete the `meta description` tag. To them, the site looks
+identical. To Google, the site just lobotomised itself.
 
-We do not need to understand the algorithm updates (which change faster than a JavaScript framework anyway). We just need to understand that **broken code = invisible website**.
+We do not need to understand the algorithm updates (which change faster than a JavaScript framework anyway). We just
+need to understand that **broken code = invisible website**.
 
 ## Technical SEO: Where We Come In
 
 Here is where the overlap happens. These are not "marketing" issues; they are bugs.
 
 1. **Meta Tags**: If the `title` tag says "React App", we have failed.
-2. **Performance**: Core Web Vitals (LCP, CLS, INP) are ranking factors. If the site takes 10 seconds to load, the user leaves, and Google notices.
+2. **Performance**: Core Web Vitals (LCP, CLS, INP) are ranking factors. If the site takes 10 seconds to load, the user
+leaves, and Google notices.
 3. **Broken Links**: 404s leak "link juice" (yes, that is a real term) and frustrate users.
 4. **Canonical Links**: Ensuring we are not competing with ourselves for Google's attention.
 
 ## Code Snippet: Automating the Basics
 
-Manually checking `meta` tags is the definition of insanity. Let us write a simple Playwright test to ensure we do not accidentally nuke our SEO hygiene.
+Manually checking `meta` tags is the definition of insanity. Let us write a simple Playwright test to ensure we do not
+accidentally nuke our SEO hygiene.
 
 ```typescript
 import { test, expect } from '@playwright/test';
@@ -81,13 +91,15 @@ test('SEO Essentials: Homepage should not be invisible', async ({ page }) => {
 });
 ```
 
-This simple script prevents a catastrophic deployment where the homepage title reverts to "Undefined". It runs in CI, it never complains, and it keeps the Marketing team from crying.
+This simple script prevents a catastrophic deployment where the homepage title reverts to "Undefined". It runs in CI, it
+never complains, and it keeps the Marketing team from crying.
 
 ## Summary
 
 SEO is nuanced and takes a tremendous amount of time. But ensuring the *technical foundation* is solid? That is pure QA.
 
-We are the safety net. If we do our job right, the SEO analysts can focus on their keyword wizardry without worrying that the website is throwing 404s behind their backs.
+We are the safety net. If we do our job right, the SEO analysts can focus on their keyword wizardry without worrying
+that the website is throwing 404s behind their backs.
 
 ## Key Takeaways
 
@@ -99,5 +111,6 @@ We are the safety net. If we do our job right, the SEO analysts can focus on the
 ## Next Steps
 
 - **Run Lighthouse**: Run a Lighthouse audit on your staging environment today. It is built into Chrome.
-- **Check Robots.txt**: Verify you are not accidentally blocking Google in production (`Disallow: /`). It happens more often than you think.
+- **Check Robots.txt**: Verify you are not accidentally blocking Google in production (`Disallow: /`). It happens more
+  often than you think.
 - **Add a Test**: Copy the code above and add it to your E2E suite.

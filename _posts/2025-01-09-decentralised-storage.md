@@ -23,23 +23,29 @@ tags:
 
 ## Introduction
 
-In Web2, a link points to a Location (URL). `google.com/cat.jpg`. If Google moves the file or goes bankrupt, 404 Error. The link rots.
+In Web2, a link points to a Location (URL). `google.com/cat.jpg`. If Google moves the file or goes bankrupt, 404 Error.
+The link rots.
 
-In Web3 (IPFS), a link points to the *Content itself* (CID). It is like asking the internet: "Who has the file with hash `QmXyZ...`?" If *anyone* has it, you get it.
+In Web3 (IPFS), a link points to the *Content itself* (CID). It is like asking the internet: "Who has the file with hash
+`QmXyZ...`?" If *anyone* has it, you get it.
 
 It transforms QA from "Is the server up?" to "Is the swarm alive?".
 
 ## TL;DR
 
-- **CID (Content Identifier)**: A cryptographic hash of the file. If one pixel changes, the hash changes (and you get a new CID).
-- **Availability is not guaranteed**: Just because you uploaded it does not mean anyone else stores it. If you turn off your laptop, the file might disappear from the network.
-- **Gateways are the weak link**: Most users access IPFS via HTTP Gateways (e.g., `ipfs.io/ipfs/CID`). Test these gateways; they are the weak link.
+- **CID (Content Identifier)**: A cryptographic hash of the file. If one pixel changes, the hash changes (and you get a
+  new CID).
+- **Availability is not guaranteed**: Just because you uploaded it does not mean anyone else stores it. If you turn off
+  your laptop, the file might disappear from the network.
+- **Gateways are the weak link**: Most users access IPFS via HTTP Gateways (e.g., `ipfs.io/ipfs/CID`). Test these
+  gateways; they are the weak link.
 
 ## IPFS and Content Addressing
 
 You do not upload "cat.jpg". You upload the *bytes* of cat.jpg. You get back `QmHash123...`.
 
-**QA Strategy**: Verify integrity. Download the file from the network, hash it locally, and compare it to the CID. They MUST match. If they do not, the network is lying (unlikely) or your library is broken (likely).
+**QA Strategy**: Verify integrity. Download the file from the network, hash it locally, and compare it to the CID. They
+MUST match. If they do not, the network is lying (unlikely) or your library is broken (likely).
 
 Also, test **Deduplication**. Upload the same file twice. You should get the same CID.
 
@@ -108,16 +114,21 @@ test('should fetch from gateway with fallback', async ({ page }) => {
 
 Decentralised storage is magic when it works, and a black hole when it does not.
 
-Be the QA who asks: "What if the only node seeding this file goes offline?" (Answer: The file is gone forever). Always have a redundancy plan (e.g., Filecoin or Arweave).
+Be the QA who asks: "What if the only node seeding this file goes offline?" (Answer: The file is gone forever). Always
+have a redundancy plan (e.g., Filecoin or Arweave).
 
 ## Key Takeaways
 
-- **Arweave offers permanence**: "Permissionless Permanent Storage". You pay once, store forever. Test that the transaction actually finalised (can take 20 mins).
-- **Mime Types must be handled**: IPFS is just bytes. It does not know it is a PDF. Your app must sniff the content type or store it in the metadata.
-- **Latency is significant**: DHT (Distributed Hash Table) lookups are slow. Fetching content can take 30+ seconds. Show a spinner.
+- **Arweave offers permanence**: "Permissionless Permanent Storage". You pay once, store forever. Test that the
+  transaction actually finalised (can take 20 mins).
+- **Mime Types must be handled**: IPFS is just bytes. It does not know it is a PDF. Your app must sniff the content type
+  or store it in the metadata.
+- **Latency is significant**: DHT (Distributed Hash Table) lookups are slow. Fetching content can take 30+ seconds. Show
+  a spinner.
 
 ## Next Steps
 
 - **Tool**: Use **IPFS Desktop** to run a local node and inspect traffic. It helps you understand the "Swarm".
 - **Learn**: Read about **Filecoin**. Ideally, people get paid to store your stuff, ensuring persistence.
-- **Audit**: Check your NFTs. Are the metadata JSONs stored on IPFS, or on a central server (AWS)? (If AWS, it is not a real NFT; it is a receipt).
+- **Audit**: Check your NFTs. Are the metadata JSONs stored on IPFS, or on a central server (AWS)? (If AWS, it is not a
+  real NFT; it is a receipt).

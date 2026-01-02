@@ -27,35 +27,43 @@ tags:
 
 Traditional QA: Input "2 + 2". Output *must* be "4".
 
-GenAI QA: Input "Write a poem about QA". Output... well, it changes every time. Sometimes it rhymes. Sometimes it is a haiku. Sometimes it is in Spanish.
+GenAI QA: Input "Write a poem about QA". Output... well, it changes every time. Sometimes it rhymes. Sometimes it is a
+haiku. Sometimes it is in Spanish.
 
-How do you write an automated assertion for "It should be a *nice* poem"? Welcome to Probabilistic Testing. The strict binary of Pass/Fail is dead.
+How do you write an automated assertion for "It should be a *nice* poem"? Welcome to Probabilistic Testing. The strict
+binary of Pass/Fail is dead.
 
 ## TL;DR
 
-- **Temperature controls chaos**: The chaos parameter. If set to 0, the model is *mostly* deterministic. Use 0 for regression testing. Use 0.7 for creativity features.
-- **Latency measures UX**: Verify **TTFT (Time To First Token)**. The user should not stare at a spinner for 10s; they should see text streaming immediately.
+- **Temperature controls chaos**: The chaos parameter. If set to 0, the model is *mostly* deterministic. Use 0 for
+  regression testing. Use 0.7 for creativity features.
+- **Latency measures UX**: Verify **TTFT (Time To First Token)**. The user should not stare at a spinner for 10s; they
+  should see text streaming immediately.
 - **Safety requires Red Teaming**: Does it refuse to write a bomb recipe? Does it refuse to write a Phishing email?
 
 ## Non-Deterministic Chaos
 
 You run the test. It passes. You run it again. It fails. Is it a flaky test? No, it is a creative AI.
 
-Assertion strategy changes from Exact Match (`===`) to Semantic Match. You cannot test for strings. You must test for *vibes* (semantics).
+Assertion strategy changes from Exact Match (`===`) to Semantic Match. You cannot test for strings. You must test for
+*vibes* (semantics).
 
-**Strategy**: "Golden Dataset". Create 100 question/answer pairs that are verified by humans. Run your new prompt against these 100 inputs and measure drift.
+**Strategy**: "Golden Dataset". Create 100 question/answer pairs that are verified by humans. Run your new prompt
+against these 100 inputs and measure drift.
 
 ## Fuzzy Matching and Embeddings
 
 How do we know if the answer is "Correct"?
 
-We convert the Model's Answer to a Vector (Embedding) using a model like `text-embedding-3-small`. We convert the Expected Answer to a Vector. We calculate the **Cosine Similarity** between them.
+We convert the Model's Answer to a Vector (Embedding) using a model like `text-embedding-3-small`. We convert the
+Expected Answer to a Vector. We calculate the **Cosine Similarity** between them.
 
 If the similarity is > 0.9, it is a pass. It means the AI said the same *thing*, just in different words.
 
 ## Code Snippet: Semantic Similarity Test
 
-Using a library like `langchain` or a simple vector maths helper. This test allows the AI to phrase things differently as long as the core facts are correct.
+Using a library like `langchain` or a simple vector maths helper. This test allows the AI to phrase things differently
+as long as the core facts are correct.
 
 ```javascript
 /*
@@ -95,16 +103,22 @@ test('should return a factually correct answer about Cats', async () => {
 
 QAing GenAI feels like grading 5th-grade essays. You cannot automate everything perfectly.
 
-You need "Golden Datasets" of good questions and answers (Evals). And you need to accept that sometimes, the AI just hallucinates. Your job is to minimise the hallucination rate, not eliminate it (impossible).
+You need "Golden Datasets" of good questions and answers (Evals). And you need to accept that sometimes, the AI just
+hallucinates. Your job is to minimise the hallucination rate, not eliminate it (impossible).
 
 ## Key Takeaways
 
-- **Token Limits require handling**: What happens if the context window fills up? Does the app crash? Does it summarise the middle? (The "Lost in the Middle" phenomenon).
-- **Streaming needs verification**: Verify the UI updates *whilst* the answer is generating. If your test waits for `LoadEventEnd`, it misses the UX.
-- **Rate Limits need graceful handling**: LLM APIs are expensive and rate-limited. Handle HTTP 429 "Too Many Requests" gracefully with exponential backoff.
+- **Token Limits require handling**: What happens if the context window fills up? Does the app crash? Does it summarise
+  the middle? (The "Lost in the Middle" phenomenon).
+- **Streaming needs verification**: Verify the UI updates *whilst* the answer is generating. If your test waits for
+  `LoadEventEnd`, it misses the UX.
+- **Rate Limits need graceful handling**: LLM APIs are expensive and rate-limited. Handle HTTP 429 "Too Many Requests"
+  gracefully with exponential backoff.
 
 ## Next Steps
 
 - **Tool**: Use **Promptfoo** (CLI tool) for automated LLM evaluation. It generates matrices of Prompt vs Model.
-- **Learn**: Read about **RAG (Retrieval-Augmented Generation)**. It is how you ground the AI in your own data to stop it lying.
-- **Audit**: Check your cost per query. Are you burning £1 per test run? Mock the OpenAI API for standard UI tests! Only hit the real API for "Intelligence" tests.
+- **Learn**: Read about **RAG (Retrieval-Augmented Generation)**. It is how you ground the AI in your own data to stop
+  it lying.
+- **Audit**: Check your cost per query. Are you burning £1 per test run? Mock the OpenAI API for standard UI tests! Only
+  hit the real API for "Intelligence" tests.

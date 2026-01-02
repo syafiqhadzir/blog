@@ -24,11 +24,13 @@ tags:
 
 ## Introduction
 
-Security is often relegated to a separate department ("The SecOps Guys" who reside in a dark basement). But the first line of defence is the QA engineer.
+Security is often relegated to a separate department ("The SecOps Guys" who reside in a dark basement). But the first
+line of defence is the QA engineer.
 
 Adopting a "Security Mindset" means stopping to ask: "This feature works, but how can I abuse it to ruin someone's day?"
 
-If you can paste the entire script of *Bee Movie* into your login field, or if putting a negative number in "Quantity" refunds your credit card, you have a problem.
+If you can paste the entire script of *Bee Movie* into your login field, or if putting a negative number in "Quantity"
+refunds your credit card, you have a problem.
 
 ## TL;DR
 
@@ -55,11 +57,13 @@ Functional testing asks: "Does the door open when I turn the handle?"
 
 Security testing asks: "Does the door open if I take the hinges off with a screwdriver?"
 
-One of the most common vulnerabilities is **XSS (Cross-Site Scripting)**, where an attacker injects a script into your page that executes for other users.
+One of the most common vulnerabilities is **XSS (Cross-Site Scripting)**, where an attacker injects a script into your
+page that executes for other users.
 
 ## Code Snippet: The XSS Payload
 
-Here is a Cypress test that attempts to inject a malicious script into a comment field. If the application is secure, it should not execute the script.
+Here is a Cypress test that attempts to inject a malicious script into a comment field. If the application is secure, it
+should not execute the script.
 
 ```javascript
 describe('Security: XSS Input Validation', () => {
@@ -91,11 +95,13 @@ describe('Security: XSS Input Validation', () => {
 });
 ```
 
-If this test fails (i.e., the raw `<script>` tag is present), you have a **Critical** high-severity vulnerability. Call the developers. Wake them up.
+If this test fails (i.e., the raw `<script>` tag is present), you have a **Critical** high-severity vulnerability. Call
+the developers. Wake them up.
 
 ## Summary
 
-Quality includes security. If your app works perfectly but leaks credit card numbers, it is not a high-quality app; it is a lawsuit.
+Quality includes security. If your app works perfectly but leaks credit card numbers, it is not a high-quality app; it
+is a lawsuit.
 
 You do not need to be a penetration tester to catch 80% of security bugs; you just need to be a suspicious QA.
 

@@ -24,21 +24,26 @@ tags:
 
 ## Introduction
 
-In the mid-2000s, web development had one enemy: **Internet Explorer 6**. We spent 50% of our time debugging why `z-index` was not working and why `png` transparency looked like a grey box.
+In the mid-2000s, web development had one enemy: **Internet Explorer 6**. We spent 50% of our time debugging why
+`z-index` was not working and why `png` transparency looked like a grey box.
 
-Today, Chrome has won. It is the new Standard. But we still have an enemy. It is installed on every iPhone, it refuses to implement standard APIs, and it updates only when the OS updates. **Safari** is the new IE.
+Today, Chrome has won. It is the new Standard. But we still have an enemy. It is installed on every iPhone, it refuses
+to implement standard APIs, and it updates only when the OS updates. **Safari** is the new IE.
 
-Cross-browser testing is not about testing 500 versions of Chrome. It is about testing the **Three Engines** that run the web.
+Cross-browser testing is not about testing 500 versions of Chrome. It is about testing the **Three Engines** that run
+the web.
 
 ## TL;DR
 
 - **Engines over Browsers**: Test **Blink** (Chrome/Edge), **Gecko** (Firefox), and **WebKit** (Safari).
 - **Mobile First applies here**: Safari on iOS is the most restrictive environment in the world. Test it first.
-- **Automation speeds testing**: Use Playwright to run tests in parallel across all engines. Selenium is too slow for this.
+- **Automation speeds testing**: Use Playwright to run tests in parallel across all engines. Selenium is too slow for
+  this.
 
 ## The Three Engines Problem
 
-You do not need to test Chrome, Edge, Brave, and Opera separately. They are all **Chromium** (Blink engine) under the hood. If it works in Chrome, it works in Edge.
+You do not need to test Chrome, Edge, Brave, and Opera separately. They are all **Chromium** (Blink engine) under the
+hood. If it works in Chrome, it works in Edge.
 
 You need to test:
 
@@ -53,14 +58,16 @@ If a bug is reported "only on iPhone", it is usually WebKit.
 Common issues:
 
 - **RegEx**: Safari refused to support 'Lookbehind' syntax for years.
-- **Dates**: `new Date('2023-01-01')` works in Chrome. In older Safari, it returns `Invalid Date` because it hates hyphens.
+- **Dates**: `new Date('2023-01-01')` works in Chrome. In older Safari, it returns `Invalid Date` because it hates
+  hyphens.
 - **100vh**: The "viewport height" changes when the address bar scrolls away, making your footer dance.
 
 Testing on Localhost is not enough. You need to run your suite against a real WebKit instance.
 
 ## Code Snippet: The Playwright Matrix
 
-Playwright is superior to Selenium because it bundles the actual browser binaries. Here is a config to run your suite across the Big Three.
+Playwright is superior to Selenium because it bundles the actual browser binaries. Here is a config to run your suite
+across the Big Three.
 
 ```typescript
 // playwright.config.ts
@@ -90,18 +97,22 @@ const config: PlaywrightTestConfig = {
 export default config;
 ```
 
-Run it with `npx playwright test`. If you see 3 green dots and 1 red dot, guess which browser failed? (Hint: It is the one made by a fruit company).
+Run it with `npx playwright test`. If you see 3 green dots and 1 red dot, guess which browser failed? (Hint: It is the
+one made by a fruit company).
 
 ## Summary
 
-Cross-browser testing is no longer about supporting outdated rubbish. It is about ensuring your React app works on the £1,000 phone your CEO is holding.
+Cross-browser testing is no longer about supporting outdated rubbish. It is about ensuring your React app works on the
+£1,000 phone your CEO is holding.
 
-Do not rely on "It works on my machine". Your machine is likely a MacBook Pro running Chrome. Your user is on a dusty iPad running Safari 14.
+Do not rely on "It works on my machine". Your machine is likely a MacBook Pro running Chrome. Your user is on a dusty
+iPad running Safari 14.
 
 ## Key Takeaways
 
 - **Do not Over-Test**: Chrome and Edge are twins. Test one.
-- **Date Handling needs libraries**: Use a library like `date-fns` or `dayjs`; never parse date strings manually if you want Safari support.
+- **Date Handling needs libraries**: Use a library like `date-fns` or `dayjs`; never parse date strings manually if you
+  want Safari support.
 - **Scroll Chains differ**: Test scrolling on mobile; "passive events" behave differently on iOS.
 
 ## Next Steps

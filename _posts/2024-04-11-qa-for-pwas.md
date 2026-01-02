@@ -23,7 +23,8 @@ tags:
 
 ## Introduction
 
-Progressive Web Apps (PWAs) are the "Gluten-Free" of software development. They promise to be healthy, light, and good for everyone.
+Progressive Web Apps (PWAs) are the "Gluten-Free" of software development. They promise to be healthy, light, and good
+for everyone.
 
 In reality, they are often dry, crumbly, and hard to swallow.
 
@@ -32,12 +33,14 @@ A PWA is just a website that pretends to be a native app. And the heart of this 
 ## TL;DR
 
 - **Offline must work**: If I turn on "Aeroplane Mode" and reload, do I get a dinosaur or your app?
-- **Updates must propagate**: If I deploy new code, does the user see it, or are they stuck in 2019 because of your cache policy?
+- **Updates must propagate**: If I deploy new code, does the user see it, or are they stuck in 2019 because of your
+  cache policy?
 - **Manifest must be complete**: If `manifest.json` is missing a 192x192 icon, Android will silently hate you.
 
 ## The Service Worker Cache Trap
 
-The Service Worker is a script that sits between the browser and the network. It can intercept requests and serve cached content. This makes the app fast.
+The Service Worker is a script that sits between the browser and the network. It can intercept requests and serve cached
+content. This makes the app fast.
 
 It also means that if you ship a bug, that bug is cached **forever** on the user's phone.
 
@@ -58,7 +61,8 @@ Good luck automating that test in Selenium.
 
 ## Code Snippet: Forcing a Service Worker Update
 
-Testing updates is hard. Here is how to programmatically force a check for a new Service Worker version in the browser console.
+Testing updates is hard. Here is how to programmatically force a check for a new Service Worker version in the browser
+console.
 
 ```javascript
 /* 
@@ -96,15 +100,19 @@ checkUpdate();
 
 ## Summary
 
-PWAs are powerful, but they shift the complexity from the server to the client. You are essentially installing a proxy server on the user's device.
+PWAs are powerful, but they shift the complexity from the server to the client. You are essentially installing a proxy
+server on the user's device.
 
 Treat it with the respect (and fear) it deserves.
 
 ## Key Takeaways
 
-- **Storage limits vary**: IndexedDB limits vary by device (iOS is stricter). Do not try to store 500MB of HD video on a low-end Android.
-- **Background Sync needs testing**: Test what happens when the user does an action offline and then closes the app. Does it sync when they come back online?
-- **Scope limits coverage**: Ensure your Service Worker scope (`/app/`) does not accidentally hijack your marketing pages (`/`).
+- **Storage limits vary**: IndexedDB limits vary by device (iOS is stricter). Do not try to store 500MB of HD video on a
+  low-end Android.
+- **Background Sync needs testing**: Test what happens when the user does an action offline and then closes the app.
+  Does it sync when they come back online?
+- **Scope limits coverage**: Ensure your Service Worker scope (`/app/`) does not accidentally hijack your marketing
+  pages (`/`).
 
 ## Next Steps
 

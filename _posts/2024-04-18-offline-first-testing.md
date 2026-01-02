@@ -28,7 +28,8 @@ You are on a train. You just wrote a 500-word review of a restaurant. The train 
 
 If your app says "Network Error" and deletes the review, you will throw your phone out the window.
 
-Offline-First means the app works *without* the internet, and syncs when it comes back. Testing this requires you to be the "Chaos Monkey" of connectivity.
+Offline-First means the app works *without* the internet, and syncs when it comes back. Testing this requires you to be
+the "Chaos Monkey" of connectivity.
 
 ## TL;DR
 
@@ -38,7 +39,8 @@ Offline-First means the app works *without* the internet, and syncs when it come
 
 ## The "Optimistic UI" Lie
 
-Optimistic UI means showing the success state *before* the server confirms it. User clicks "Like" -> Heart turns red immediately.
+Optimistic UI means showing the success state *before* the server confirms it. User clicks "Like" -> Heart turns red
+immediately.
 
 But what if the request fails?
 
@@ -63,7 +65,8 @@ Who wins?
 - **Manual Merge**: User A is confused.
 - **CRDTs**: Magic ensues.
 
-QA must verify the conflict policy specifically. "Last Write Wins" is the default, but often wrong for collaborative apps.
+QA must verify the conflict policy specifically. "Last Write Wins" is the default, but often wrong for collaborative
+apps.
 
 ## Code Snippet: Simulating Offline Mode with Playwright
 
@@ -106,14 +109,16 @@ test('should queue review when offline', async ({ page, context }) => {
 
 ## Summary
 
-Offline-first applications are robust, resilient, and really hard to build. If you treat the network as an optional enhancement rather than a requirement, you build better software.
+Offline-first applications are robust, resilient, and really hard to build. If you treat the network as an optional
+enhancement rather than a requirement, you build better software.
 
 But you also build a massive pile of edge cases for QA to test.
 
 ## Key Takeaways
 
 - **IndexedDB scales better**: LocalStorage is synchronous and limited (5MB). Use IndexedDB for real data.
-- **Retries need backoff**: Do not retry instantly. Use "Exponential Backoff" so you do not DDoS your own server when 10,000 users come back online at once.
+- **Retries need backoff**: Do not retry instantly. Use "Exponential Backoff" so you do not DDoS your own server when
+  10,000 users come back online at once.
 - **Idempotency prevents duplicates**: If the sync request sends twice, does the user get charged twice?
 
 ## Next Steps

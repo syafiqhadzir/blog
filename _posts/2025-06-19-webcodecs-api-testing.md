@@ -26,11 +26,13 @@ tags:
 
 For 25 years, the web had `<video src="movie.mp4">`. It was a black box. You feed it a URL, it plays. Magic.
 
-But what if you want to edit video frame-by-frame? Or build a cloud gaming client? Or a Zoom-like app with custom low-latency encryption?
+But what if you want to edit video frame-by-frame? Or build a cloud gaming client? Or a Zoom-like app with custom low-
+latency encryption?
 
 You need **WebCodecs**. It gives you raw access to the browser's **Hardware Encoders/Decoders**.
 
-**QA Challenge**: You are now manually managing the GPU memory. If you forget to `close()` a frame, you crash the tab. No pressure.
+**QA Challenge**: You are now manually managing the GPU memory. If you forget to `close()` a frame, you crash the tab.
+No pressure.
 
 ## TL;DR
 
@@ -42,7 +44,8 @@ You need **WebCodecs**. It gives you raw access to the browser's **Hardware Enco
 
 The standard video tag is optimised for *playback*. It buffers 10 seconds ahead. Lovely for watching cat videos.
 
-For **Cloud Gaming** or **Remote Desktop**, 10 seconds is an eternity. You need 10ms. WebCodecs allows you to receive a packet via WebSocket, decode it immediately, and paint it to a Canvas.
+For **Cloud Gaming** or **Remote Desktop**, 10 seconds is an eternity. You need 10ms. WebCodecs allows you to receive a
+packet via WebSocket, decode it immediately, and paint it to a Canvas.
 
 **QA Test**: Measure "Glass-to-Glass" latency. (Time from Camera Capture -> Encode -> Network -> Decode -> Screen).
 
@@ -50,7 +53,8 @@ For **Cloud Gaming** or **Remote Desktop**, 10 seconds is an eternity. You need 
 
 WebCodecs uses `VideoFrame` objects. These are wrappers around GPU textures. They are **Reference Counted**.
 
-If you do not call `frame.close()`, the GPU VRAM fills up. The browser will eventually panic and kill your WebGL context. It is like forgetting to return library books, except the library catches fire.
+If you do not call `frame.close()`, the GPU VRAM fills up. The browser will eventually panic and kill your WebGL
+context. It is like forgetting to return library books, except the library catches fire.
 
 **QA Strategy**: "Soak Testing". Run your video encoder loop for 12 hours. Watch the memory graph. It should be flat.
 
@@ -116,12 +120,15 @@ test('should encode frames without memory leaks', async () => {
 
 WebCodecs is "Assembly Language" for video on the web.
 
-It gives you incredible power but removes the safety rails of the `<video>` tag. Your QA must focus heavily on **Resource Management** and **Error Recovery** (what happens if the decoder crashes? Restart it!).
+It gives you incredible power but removes the safety rails of the `<video>` tag. Your QA must focus heavily on
+**Resource Management** and **Error Recovery** (what happens if the decoder crashes? Restart it!).
 
 ## Key Takeaways
 
-- **Codec support varies**: Test support for H.264, VP8, VP9, and AV1. Not all browsers support all hardware acceleration.
-- **Backpressure requires logic**: If decoding is faster than rendering, drop frames. If slower, you get lag. Test your queue logic.
+- **Codec support varies**: Test support for H.264, VP8, VP9, and AV1. Not all browsers support all hardware
+  acceleration.
+- **Backpressure requires logic**: If decoding is faster than rendering, drop frames. If slower, you get lag. Test your
+  queue logic.
 - **Sync is your responsibility**: Audio and Video are separate streams now. You are responsible for lip syncing.
 
 ## Next Steps

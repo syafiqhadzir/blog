@@ -23,11 +23,15 @@ tags:
 
 ## Introduction
 
-Back in the day, releases were terrifying events. We would deploy on Friday at 5 PM (because we hate ourselves) and pray.
+Back in the day, releases were terrifying events. We would deploy on Friday at 5 PM (because we hate ourselves) and
+pray.
 
-Today, we have **Feature Flags** (or Toggles). They verify that "Deployment != Release". You can deploy code now, but "release" it to users next Tuesday.
+Today, we have **Feature Flags** (or Toggles). They verify that "Deployment != Release". You can deploy code now, but
+"release" it to users next Tuesday.
 
-For developers, it is a dream. For QA, it can be a nightmare. Why? Because you just turned one application into two: the version with the flag `ON` and the version with the flag `OFF`. Add 10 flags, and you have $$2^{10}$$ (1,024) versions of your app to test.
+For developers, it is a dream. For QA, it can be a nightmare. Why? Because you just turned one application into two: the
+version with the flag `ON` and the version with the flag `OFF`. Add 10 flags, and you have $$2^{10}$$ (1,024) versions
+of your app to test.
 
 ## TL;DR
 
@@ -49,7 +53,8 @@ QA cannot test every permutation. We are not robots. The strategy here is **Risk
 
 1. **Production State**: Test the specific configuration currently live.
 2. **Target State**: Test the configuration you intend to release next.
-3. **The "Oh No" State**: Test what happens if the flag service (LaunchDarkly, Split.io) goes down. Does the app crash, or does it gracefully degrade?
+3. **The "Oh No" State**: Test what happens if the flag service (LaunchDarkly, Split.io) goes down. Does the app crash,
+or does it gracefully degrade?
 
 ## The Dangerous 'Default True'
 
@@ -59,7 +64,8 @@ The scariest code I see is this:
 const isEnabled = await flags.get('new-feature', true); // Defaulting to TRUE
 ```
 
-If the flag service fails, you just accidentally released a beta feature (likely broken) to 100% of your users. Always default to `false` (safe).
+If the flag service fails, you just accidentally released a beta feature (likely broken) to 100% of your users. Always
+default to `false` (safe).
 
 ## Code Snippet: Safer Implementation
 
@@ -95,15 +101,18 @@ This ensures that network failures do not turn your users into accidental beta t
 
 ## Summary
 
-Feature flags are the most powerful tool in the DevOps arsenal, allowing you to test in production with zero risk to the general public. But they are borrowed time. Every `if (flag)` statement is technical debt.
+Feature flags are the most powerful tool in the DevOps arsenal, allowing you to test in production with zero risk to the
+general public. But they are borrowed time. Every `if (flag)` statement is technical debt.
 
 QA's role is not just to verify the feature, but to verify the **removal** of the flag once the feature is stable.
 
 ## Key Takeaways
 
 - **Decouple deployments**: Using flags allows big messy merges without breaking Production.
-- **Test the Toggle**: Do not just test the feature; test flipping the switch whilst the user is using it. Does the UI update in real-time?
-- **Audit regularly**: Review your flags monthly. If a flag has been `true` for 45 days, it is not a flag anymore; it is just code. Delete it.
+- **Test the Toggle**: Do not just test the feature; test flipping the switch whilst the user is using it. Does the UI
+  update in real-time?
+- **Audit regularly**: Review your flags monthly. If a flag has been `true` for 45 days, it is not a flag anymore; it is
+  just code. Delete it.
 
 ## Next Steps
 

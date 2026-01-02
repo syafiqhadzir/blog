@@ -27,9 +27,11 @@ tags:
 
 It is 3 A.M. Do you know where your servers are?
 
-Traditionally, we find out that Production is broken when a user tweets an angry screenshot at us. This is... sub-optimal.
+Traditionally, we find out that Production is broken when a user tweets an angry screenshot at us. This is... sub-
+optimal.
 
-**Synthetic Monitoring** is the practice of running automated tests against your live environment 24/7. It is like paying a robot to click "Buy Now" on your website every minute, just to make sure the cash register still opens.
+**Synthetic Monitoring** is the practice of running automated tests against your live environment 24/7. It is like
+paying a robot to click "Buy Now" on your website every minute, just to make sure the cash register still opens.
 
 ## TL;DR
 
@@ -39,22 +41,27 @@ Traditionally, we find out that Production is broken when a user tweets an angry
 
 ## The "Secret Shopper" of Software
 
-Think of Synthetic Monitors as digital "Secret Shoppers". They visit your store (app), browse the aisles (pages), and try to buy something (API calls). If the door is locked or the cashier is missing, they trigger an alarm (PagerDuty).
+Think of Synthetic Monitors as digital "Secret Shoppers". They visit your store (app), browse the aisles (pages), and
+try to buy something (API calls). If the door is locked or the cashier is missing, they trigger an alarm (PagerDuty).
 
 Why is this better than just looking at server logs?
 
-Because your server might be returning `200 OK`, but the user sees a blank white screen because your JavaScript bundle failed to load. The server thinks everything is fine. The user thinks your site is broken. Synthetics take the *User's Perspective*.
+Because your server might be returning `200 OK`, but the user sees a blank white screen because your JavaScript bundle
+failed to load. The server thinks everything is fine. The user thinks your site is broken. Synthetics take the *User's
+Perspective*.
 
 ## Monitoring vs. Testing: What's the Difference?
 
 - **Testing** happens *before* deployment. It proves the code *can* work.
 - **Synthetics** happen *after* deployment. It proves the code *is* working right now.
 
-You need both. Tests catch bugs in logic; Synthetics catch bugs in reality (DNS outages, expired SSL certs, third-party API failures).
+You need both. Tests catch bugs in logic; Synthetics catch bugs in reality (DNS outages, expired SSL certs, third-party
+API failures).
 
 ## Code Snippet: The 3 A.M. Detective
 
-Here is a simple Playwright script you could run on a schedule (e.g., via GitHub Actions CRON or AWS Lambda) to check your health.
+Here is a simple Playwright script you could run on a schedule (e.g., via GitHub Actions CRON or AWS Lambda) to check
+your health.
 
 ```javascript
 // monitor.spec.js
@@ -93,13 +100,16 @@ test('Critical Flow: Can search for a product', async ({ page }) => {
 
 ## Summary
 
-Synthetic monitoring allows you to sleep at night because you know a tireless robot is keeping watch. If something breaks, the robot will wake you up. Ideally, it wakes you up *before* the CEO wakes up.
+Synthetic monitoring allows you to sleep at night because you know a tireless robot is keeping watch. If something
+breaks, the robot will wake you up. Ideally, it wakes you up *before* the CEO wakes up.
 
 ## Key Takeaways
 
 - **Frequency matters**: Run checks every 1-5 minutes. Once an hour is too slow.
-- **Exclude synthetic traffic from analytics**: Filter by User Agent, or your Marketing team will think you have a sudden influx of very robotic customers.
-- **Alert Fatigue needs prevention**: Only page on Critical failures. If the "About Us" page is slow, send an email, do not trigger a siren.
+- **Exclude synthetic traffic from analytics**: Filter by User Agent, or your Marketing team will think you have a
+  sudden influx of very robotic customers.
+- **Alert Fatigue needs prevention**: Only page on Critical failures. If the "About Us" page is slow, send an email, do
+  not trigger a siren.
 
 ## Next Steps
 

@@ -25,19 +25,25 @@ tags:
 
 The future of commerce is not "Buy New"; it is "Buy Used, Repair, Resell".
 
-Major brands (Patagonia, IKEA, Apple) are building "Circular" apps to resell their own gear. But how do you prove that the "Certified Refurbished" iPhone is not just a brick in a fancy box? How do you ensure the previous owner does not still have "Find My iPhone" locked?
+Major brands (Patagonia, IKEA, Apple) are building "Circular" apps to resell their own gear. But how do you prove that
+the "Certified Refurbished" iPhone is not just a brick in a fancy box? How do you ensure the previous owner does not
+still have "Find My iPhone" locked?
 
 QA is not just testing the "Cart"; we are testing the **Truth** and **Trust**.
 
 ## TL;DR
 
-- **Trust drives purchases**: If the customer does not believe the "Condition Report" (e.g., "Like New"), they will not buy. If they receive a scratched screen, they return it.
-- **Logistics complexity explodes**: Returns are 10x more complex in circular models. Test the "Reverse Logistics" API (printing shipping labels for trade-ins).
-- **Price dynamics need testing**: Dynamic pricing based on user-reported condition (Good vs Fair) needs serious mathematical testing. "If I say it has a scratch, does the offer drop by £50?"
+- **Trust drives purchases**: If the customer does not believe the "Condition Report" (e.g., "Like New"), they will not
+  buy. If they receive a scratched screen, they return it.
+- **Logistics complexity explodes**: Returns are 10x more complex in circular models. Test the "Reverse Logistics" API
+  (printing shipping labels for trade-ins).
+- **Price dynamics need testing**: Dynamic pricing based on user-reported condition (Good vs Fair) needs serious
+  mathematical testing. "If I say it has a scratch, does the offer drop by £50?"
 
 ## The "Provenance" Problem
 
-A Circular Economy runs on data. Who owned this? When was it repaired? Who repaired it? Was it stolen? This data usually lives on a Ledger (sometimes a nice SQL DB, sometimes a hipster Blockchain).
+A Circular Economy runs on data. Who owned this? When was it repaired? Who repaired it? Was it stolen? This data usually
+lives on a Ledger (sometimes a nice SQL DB, sometimes a hipster Blockchain).
 
 **QA Scenario**:
 
@@ -101,13 +107,17 @@ test('should redact previous owner PII', () => {
 
 The Circular Economy fails without QA.
 
-If a user buys a "Refurbished" laptop and it arrives with a broken keyboard, they will never buy used again. QA is the guardian of the **Reputation** of the entire sustainable movement. Do not let "Green" become synonymous with "Broken".
+If a user buys a "Refurbished" laptop and it arrives with a broken keyboard, they will never buy used again. QA is the
+guardian of the **Reputation** of the entire sustainable movement. Do not let "Green" become synonymous with "Broken".
 
 ## Key Takeaways
 
-- **Photos need careful handling**: Users upload photos of damage. Test the upload compression (do not lose detail) and EXIF scrubbing (do not leak their home GPS).
-- **Grading logic must be consistent**: Test the logic that downgrades an item from "Excellent" to "Good". Is it consistent?
-- **Refunds require precision**: Test the "Partial Refund" logic (e.g., "Keep the item, get £10 back because we missed the scratch").
+- **Photos need careful handling**: Users upload photos of damage. Test the upload compression (do not lose detail) and
+  EXIF scrubbing (do not leak their home GPS).
+- **Grading logic must be consistent**: Test the logic that downgrades an item from "Excellent" to "Good". Is it
+  consistent?
+- **Refunds require precision**: Test the "Partial Refund" logic (e.g., "Keep the item, get £10 back because we missed
+  the scratch").
 
 ## Next Steps
 

@@ -26,7 +26,8 @@ tags:
 
 gRPC is fast. It uses HTTP/2 and Protocol Buffers.
 
-It is also a pain in the neck to test because you cannot just `curl` it (well, you can with `grpcurl`, but you know what I mean).
+It is also a pain in the neck to test because you cannot just `curl` it (well, you can with `grpcurl`, but you know what
+I mean).
 
 Developers love it because "It's typed!" QA hates it because "Where is my JSON response? What is this binary rubbish?"
 
@@ -41,7 +42,8 @@ Developers love it because "It's typed!" QA hates it because "Where is my JSON r
 In REST, you can guess the payload. `{ "id": 1 }`.
 In gRPC, the payload is `0a 01 08 01`.
 
-If you do not have the `.proto` file, you are blind. QA must have access to the *source of truth* schemas. Ideally, these are in a separate repo (e.g., `schema-registry`) that both Dev and QA check out.
+If you do not have the `.proto` file, you are blind. QA must have access to the *source of truth* schemas. Ideally,
+these are in a separate repo (e.g., `schema-registry`) that both Dev and QA check out.
 
 ## Testing Streams (The Hard Part)
 
@@ -96,7 +98,8 @@ def test_process_payment(grpc_stub):
 
 ## Summary
 
-gRPC is the future of internal microservices (whether you like it or not). Stop being afraid of the binary. Embrace the schema.
+gRPC is the future of internal microservices (whether you like it or not). Stop being afraid of the binary. Embrace the
+schema.
 
 At least you never have to parse a Date string again.
 
@@ -104,7 +107,8 @@ At least you never have to parse a Date string again.
 
 - **Deadlines are mandatory**: Always set a deadline (timeout). Default is "Forever".
 - **Error Codes differ from HTTP**: gRPC has its own status codes (`NOT_FOUND`, `UNAVAILABLE`). Do not expect HTTP 404.
-- **Reflection aids discovery**: Enable "Server Reflection" in non-prod environments so tools can discover the schema automatically.
+- **Reflection aids discovery**: Enable "Server Reflection" in non-prod environments so tools can discover the schema
+  automatically.
 
 ## Next Steps
 

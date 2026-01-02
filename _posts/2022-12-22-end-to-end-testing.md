@@ -24,9 +24,11 @@ tags:
 
 ## Introduction
 
-End-to-end (E2E) testing is the ultimate reality check. Unit tests prove the logic works; Integration tests prove the components talk to each other; E2E tests prove that the user can actually buy the t-shirt.
+End-to-end (E2E) testing is the ultimate reality check. Unit tests prove the logic works; Integration tests prove the
+components talk to each other; E2E tests prove that the user can actually buy the t-shirt.
 
-It ensures that applications behave as expected from the real-world end user's perspective. It does not care if your Redux store is pure; it cares if the "Buy" button is clickable or covered by a GDPR banner.
+It ensures that applications behave as expected from the real-world end user's perspective. It does not care if your
+Redux store is pure; it cares if the "Buy" button is clickable or covered by a GDPR banner.
 
 ## TL;DR
 
@@ -39,7 +41,8 @@ It ensures that applications behave as expected from the real-world end user's p
 
 **Manual testing** is crucial for "vibes" based testing. Does the animation feel janky? Is the colour palette offensive?
 
-However, relying on manual testing for regression (checking if the login still works) is like trying to mow a football pitch with kitchen scissors. Possible? Yes. Painful? Excruciatingly.
+However, relying on manual testing for regression (checking if the login still works) is like trying to mow a football
+pitch with kitchen scissors. Possible? Yes. Painful? Excruciatingly.
 
 **Automation** allows you to sleep at night knowing the critical paths are not broken.
 
@@ -52,7 +55,8 @@ However, relying on manual testing for regression (checking if the login still w
 
 ## Code Snippet: Modern Playwright
 
-Gone are the days of flaky Selenium scripts that broke if you looked at them funny. Modern tools like Playwright are fast, reliable, and handle "waiting" automatically.
+Gone are the days of flaky Selenium scripts that broke if you looked at them funny. Modern tools like Playwright are
+fast, reliable, and handle "waiting" automatically.
 
 ```typescript
 import { test, expect } from '@playwright/test';
@@ -82,7 +86,8 @@ This script acts exactly like a user. It does not care about the code implementa
 
 ## Summary
 
-E2E testing is the final exam for your code before it graduates to production. It is expensive to run (slow) and expensive to maintain (brittle), so use it wisely.
+E2E testing is the final exam for your code before it graduates to production. It is expensive to run (slow) and
+expensive to maintain (brittle), so use it wisely.
 
 Do not test *everything* E2E. Test the money paths.
 

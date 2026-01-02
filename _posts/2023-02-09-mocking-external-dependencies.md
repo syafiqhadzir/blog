@@ -23,9 +23,11 @@ tags:
 
 ## Introduction
 
-Relying on live external APIs (like Stripe, Twilio, or Google Maps) in your test suite is a recipe for disaster. It introduces non-determinism (flakiness), costs money (API credits), and slows your suite to a crawl.
+Relying on live external APIs (like Stripe, Twilio, or Google Maps) in your test suite is a recipe for disaster. It
+introduces non-determinism (flakiness), costs money (API credits), and slows your suite to a crawl.
 
-But mocking is like Method Acting: if you get too into character, you forget what real life is like. You end up with a suite of green tests and a production environment that crashes because Stripe renamed a field from `amount` to `total`.
+But mocking is like Method Acting: if you get too into character, you forget what real life is like. You end up with a
+suite of green tests and a production environment that crashes because Stripe renamed a field from `amount` to `total`.
 
 ## TL;DR
 
@@ -38,15 +40,19 @@ But mocking is like Method Acting: if you get too into character, you forget wha
 
 The classic mistake is "Over-Mocking".
 
-You write a test that checks if `PaymentService.charge()` returns `true`. Inside `PaymentService`, you spy on the Stripe library and tell it to return `{ status: 'success' }`.
+You write a test that checks if `PaymentService.charge()` returns `true`. Inside `PaymentService`, you spy on the Stripe
+library and tell it to return `{ status: 'success' }`.
 
-Congratulations. You have tested nothing. You have verified that your mock returns what you told it to return. This is a tautology, not a test.
+Congratulations. You have tested nothing. You have verified that your mock returns what you told it to return. This is a
+tautology, not a test.
 
 ## Method vs Network Mocking
 
 Instead of mocking the library method (`stripe.charges.create`), mock the HTTP traffic.
 
-Tools like **MSW (Mock Service Worker)** intercept the outgoing request at the network layer. This means your application code runs *exactly as it would in production*, using the real Stripe SDK, believing it is talking to the real internet.
+Tools like **MSW (Mock Service Worker)** intercept the outgoing request at the network layer. This means your
+application code runs *exactly as it would in production*, using the real Stripe SDK, believing it is talking to the
+real internet.
 
 ## Code Snippet: Mocking with MSW
 
@@ -81,13 +87,16 @@ test('charges card successfully', async () => {
 });
 ```
 
-This is robust. If your `chargeCard` function changes how it builds the URL or headers, MSW will catch it (or return a 404), whereas a method spy would blindly pass.
+This is robust. If your `chargeCard` function changes how it builds the URL or headers, MSW will catch it (or return a
+404), whereas a method spy would blindly pass.
 
 ## Summary
 
-Mocks are a bridge, not the destination. They allow us to travel fast during development, but we must occasionally check the map (real API integration).
+Mocks are a bridge, not the destination. They allow us to travel fast during development, but we must occasionally check
+the map (real API integration).
 
-By mocking at the network layer and syncing with contracts, we get the speed of unit tests with the confidence of integration tests. And we stop lying to ourselves about whether the code actually works.
+By mocking at the network layer and syncing with contracts, we get the speed of unit tests with the confidence of
+integration tests. And we stop lying to ourselves about whether the code actually works.
 
 ## Key Takeaways
 

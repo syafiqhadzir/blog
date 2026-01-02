@@ -25,9 +25,11 @@ tags:
 
 In traditional AI, you collect all the user data into a massive central server (Data Lake) and train a model.
 
-In **Federated Learning (FL)**, you send the *model* to the user, train it on their device using their private data, and send back only the *updates* (gradients/weights). The raw data never leaves the phone.
+In **Federated Learning (FL)**, you send the *model* to the user, train it on their device using their private data, and
+send back only the *updates* (gradients/weights). The raw data never leaves the phone.
 
-Great for privacy. A nightmare for debugging. How do you reproduce a bug when you are legally forbidden from seeing the data that caused it?
+Great for privacy. A nightmare for debugging. How do you reproduce a bug when you are legally forbidden from seeing the
+data that caused it?
 
 ## TL;DR
 
@@ -53,7 +55,8 @@ Training a Neural Network is heavy.
 2. **Charging** (Power connected).
 3. **On Wi-Fi** (Unmetered network).
 
-If you violate this, users will uninstall your app because it drained their battery in 2 hours. They will leave a one-star review. Your career will suffer.
+If you violate this, users will uninstall your app because it drained their battery in 2 hours. They will leave a one-
+star review. Your career will suffer.
 
 ## Code Snippet: Federated Aggregation Simulation
 
@@ -122,7 +125,8 @@ test('should reject malicious outliers during aggregation', () => {
 
 Federated Learning allows us to build smarter apps without building a surveillance state. It respects the user.
 
-But it requires a comprehensive testing harness that can simulate thousands of diverse, flaky, disconnected devices contributing to a shared brain.
+But it requires a comprehensive testing harness that can simulate thousands of diverse, flaky, disconnected devices
+contributing to a shared brain.
 
 ## Key Takeaways
 

@@ -23,9 +23,11 @@ tags:
 
 ## Introduction
 
-As 2023 comes to a close, we must do what all Agile teams do: drag ourselves into a meeting room, eat stale mince pies, and talk about "feelings".
+As 2023 comes to a close, we must do what all Agile teams do: drag ourselves into a meeting room, eat stale mince pies,
+and talk about "feelings".
 
-A Year-End Retrospective is different from a sprint retro. We are not looking at "Why did ticket QA-123 fail?". We are looking at "Why did we spend 6 months building a framework that nobody uses?".
+A Year-End Retrospective is different from a sprint retro. We are not looking at "Why did ticket QA-123 fail?". We are
+looking at "Why did we spend 6 months building a framework that nobody uses?".
 
 It is time for radical honesty. And hopefully, better coffee.
 
@@ -45,7 +47,8 @@ Categorise them:
 - **The "I didn't think of that"**: Edge cases (Null pointers, huge payloads).
 - **The "Regression"**: We fixed X and broke Y.
 
-**Action**: For every P1, ask: "Would an automated test have caught this?" If yes, write it now. If no, improve your observability.
+**Action**: For every P1, ask: "Would an automated test have caught this?" If yes, write it now. If no, improve your
+observability.
 
 ## Automation: Quality vs. Quantity
 
@@ -54,9 +57,11 @@ Categorise them:
 
 2024 goal: Delete tests.
 
-Yes, you heard me. Delete the tests that provide no value. Delete the UI tests that check if the logo is the right shade of blue (nobody cares).
+Yes, you heard me. Delete the tests that provide no value. Delete the UI tests that check if the logo is the right shade
+of blue (nobody cares).
 
-Focus on **High Value** tests. One end-to-end flow that processes a payment is worth 1,000 unit tests that check if `User.getName()` returns a name.
+Focus on **High Value** tests. One end-to-end flow that processes a payment is worth 1,000 unit tests that check if
+`User.getName()` returns a name.
 
 ## Practical Artefact: The Retro Board
 
@@ -90,7 +95,8 @@ We need to stop testing harder and start testing smarter. Cheers to another year
 ## Key Takeaways
 
 - **Data Driven decisions**: Do not just say "Quality improved". Show the chart of "Bugs per Release".
-- **Culture matters**: Quality is everyone's job. If Devs are not writing tests, you are not a QA team; you are a crutch.
+- **Culture matters**: Quality is everyone's job. If Devs are not writing tests, you are not a QA team; you are a
+  crutch.
 - **Sanity preservation**: Take a break. The bugs will still be there in January.
 
 ## Next Steps

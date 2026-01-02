@@ -29,7 +29,8 @@ Internationalisation (i18n) is technical. Localisation (l10n) is cultural.
 i18n is "Can we swap the text?"
 l10n is "Did we imply that the user's mother is a hamster?"
 
-If you launch your app in Germany without an "Impressum" (Legal Notice), you can be sued. If you use the Thumbs Up emoji in the Middle East, you (historically) insulted someone.
+If you launch your app in Germany without an "Impressum" (Legal Notice), you can be sued. If you use the Thumbs Up emoji
+in the Middle East, you (historically) insulted someone.
 
 QA's job is to ensure you do not accidentally start a diplomatic incident.
 
@@ -41,11 +42,13 @@ QA's job is to ensure you do not accidentally start a diplomatic incident.
 
 ## Date Formats: The American Arrogance
 
-Americans use MM/DD/YYYY. Everyone else (mostly) uses DD/MM/YYYY. ISO-8601 (YYYY-MM-DD) stands alone as the only sane format.
+Americans use MM/DD/YYYY. Everyone else (mostly) uses DD/MM/YYYY. ISO-8601 (YYYY-MM-DD) stands alone as the only sane
+format.
 
 **QA Test**: Go to your profile settings. Change region to "UK". Does `04/05/2024` mean "May 4th" or "April 5th"?
 
-If it is ambiguous, use long formats ("4 May 2024"). The best QA test is entering a birth date like `31/01/1990` and seeing if the backend validation fails because it thinks the month is `31`.
+If it is ambiguous, use long formats ("4 May 2024"). The best QA test is entering a birth date like `31/01/1990` and
+seeing if the backend validation fails because it thinks the month is `31`.
 
 ## Currency: It's Not Just a Symbol
 
@@ -55,7 +58,8 @@ Which Dollar? US? Canadian? Australian? Singaporean?
 "Price: 100 Kr".
 Swedish, Danish, or Norwegian Krone?
 
-You must display the ISO code (USD, CAD) or precise symbol logic. Also, in Japan, there are no decimals in Yen (usually). `¥100.00` just looks weird. `¥100` is correct.
+You must display the ISO code (USD, CAD) or precise symbol logic. Also, in Japan, there are no decimals in Yen
+(usually). `¥100.00` just looks weird. `¥100` is correct.
 
 ## Code Snippet: Validating Formats with Intl
 
@@ -93,13 +97,17 @@ test('should format currency correctly for Germany', () => {
 
 Localisation is about respect. It shows the user: "We built this for *you*, not just for people in San Francisco."
 
-A well-localised app feels native. A poorly localised app feels like a tourist who shouts in English hoping to be understood.
+A well-localised app feels native. A poorly localised app feels like a tourist who shouts in English hoping to be
+understood.
 
 ## Key Takeaways
 
-- **Input Fields need locale awareness**: Does the postcode field accept letters? (UK/Canada: Yes. US: No). If you validate `^\d{5}$`, you just blocked the UK.
-- **Names vary globally**: "First Name" and "Last Name" is a western concept. Many cultures have one name, or family name first. Just use "Full Name".
-- **Colours have cultural meaning**: Red means "Stop/Danger" in the West. It means "Luck/Wealth" in China. Your "Delete" button might look "Lucky".
+- **Input Fields need locale awareness**: Does the postcode field accept letters? (UK/Canada: Yes. US: No). If you
+  validate `^\d{5}$`, you just blocked the UK.
+- **Names vary globally**: "First Name" and "Last Name" is a western concept. Many cultures have one name, or family
+  name first. Just use "Full Name".
+- **Colours have cultural meaning**: Red means "Stop/Danger" in the West. It means "Luck/Wealth" in China. Your "Delete"
+  button might look "Lucky".
 
 ## Next Steps
 

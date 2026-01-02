@@ -27,9 +27,11 @@ tags:
 
 ## Introduction
 
-Performance testing is the gym workout of software engineering. Everyone wants to be fit (fast), but nobody wants to do the heavy lifting (scripting) until the week before summer (Black Friday).
+Performance testing is the gym workout of software engineering. Everyone wants to be fit (fast), but nobody wants to do
+the heavy lifting (scripting) until the week before summer (Black Friday).
 
-It determines stability, availability, scalability, reliability, and responsiveness. Essentially, does your app collapse like a frantic waiter when 50 tables order at once?
+It determines stability, availability, scalability, reliability, and responsiveness. Essentially, does your app collapse
+like a frantic waiter when 50 tables order at once?
 
 ## TL;DR
 
@@ -43,11 +45,13 @@ It determines stability, availability, scalability, reliability, and responsiven
 
 The term originated in hardware repair. You plug in the device; if smoke comes out, you unplug it and go to the pub.
 
-In software, if the login page throws a 500 error immediately, there is no point in running a 5-hour regression suite. It is the "Hello World" of performance confidence.
+In software, if the login page throws a 500 error immediately, there is no point in running a 5-hour regression suite.
+It is the "Hello World" of performance confidence.
 
 ## Load Testing
 
-Load tests simulate real-life application load. The goal is to compare actual metrics against expected benchmarks (SLAs). If your website is a lift, load testing checks if it can carry the 10 people it says it can on the placard.
+Load tests simulate real-life application load. The goal is to compare actual metrics against expected benchmarks
+(SLAs). If your website is a lift, load testing checks if it can carry the 10 people it says it can on the placard.
 
 We look for:
 
@@ -59,13 +63,17 @@ We look for:
 
 Stress Testing is asking, "What is the breaking point?"
 
-We deliberately overload the system to see *how* it fails. Does it show a nice "We are busy" page, or does it leak database connections and display a stack trace containing your AWS keys? It is arguably more important to know how you fail than how you succeed.
+We deliberately overload the system to see *how* it fails. Does it show a nice "We are busy" page, or does it leak
+database connections and display a stack trace containing your AWS keys? It is arguably more important to know how you
+fail than how you succeed.
 
 ## Soak Testing
 
-Soak Testing (or Endurance Testing) assesses performance over an extended period. A system might run beautifully for an hour but crash after 24 hours because a developer forgot to close a file handle.
+Soak Testing (or Endurance Testing) assesses performance over an extended period. A system might run beautifully for an
+hour but crash after 24 hours because a developer forgot to close a file handle.
 
-Think of it like a marathon. You might sprint the first mile, but if you pass out at mile 20, you have not finished the race.
+Think of it like a marathon. You might sprint the first mile, but if you pass out at mile 20, you have not finished the
+race.
 
 ## Code Snippet: The K6 Load Test
 
@@ -100,7 +108,8 @@ export default function () {
 
 ## Summary
 
-Performance testing is all about reputation. Users are fickle; if your site takes 3 seconds to load, they are already on your competitor's site.
+Performance testing is all about reputation. Users are fickle; if your site takes 3 seconds to load, they are already on
+your competitor's site.
 
 It is not just about software quality, but about respecting the user's finite time on this earth.
 

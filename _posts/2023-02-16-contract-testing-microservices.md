@@ -24,30 +24,35 @@ tags:
 
 ## Introduction
 
-In a microservices architecture, End-to-End (E2E) tests are the stuff of nightmares. They are slow, brittle, and require the alignment of planets to pass.
+In a microservices architecture, End-to-End (E2E) tests are the stuff of nightmares. They are slow, brittle, and require
+the alignment of planets to pass.
 
 "Why did the test fail?"
 "Oh, the User Service is down."
 "No, the Order Service changed its API schema from `userID` to `userId` and didn't tell anyone."
 
-Contract Testing (via tools like Pact) is the polite handshake that solves this. It codifies expectations so services can evolve independently without setting the house on fire.
+Contract Testing (via tools like Pact) is the polite handshake that solves this. It codifies expectations so services
+can evolve independently without setting the house on fire.
 
 ## TL;DR
 
-- **Consumer-Driven**: The Consumer (Frontend) tells the Provider (Backend) "I need this field," not the other way around.
+- **Consumer-Driven**: The Consumer (Frontend) tells the Provider (Backend) "I need this field," not the other way
+  around.
 - **Fast Feedback**: Verify integration in *unit test time*, not *deployment time*.
 - **No Mocks (Sort of)**: You test against a contract, not a hardcoded mock that lies to you.
 - **Deploy Safely**: If the contract passes, you can deploy Service A without even checking if Service B is awake.
 
 ## The Microservices Headache
 
-Traditionally, to test if Service A can talk to Service B, you deploy both to a staging environment and run an HTTP request.
+Traditionally, to test if Service A can talk to Service B, you deploy both to a staging environment and run an HTTP
+request.
 
 1. It is slow.
 2. Debugging is hard.
 3. Version mismatch (Dev version vs Staging version).
 
-Contract Testing replaces this with **Stub Files**. The Consumer generates a contract (JSON) saying "I expect `GET /user/1` to return `{ id: 1 }`". The Provider takes that JSON and verifies "Yes, I can fulfil that."
+Contract Testing replaces this with **Stub Files**. The Consumer generates a contract (JSON) saying "I expect `GET
+/user/1` to return `{ id: 1 }`". The Provider takes that JSON and verifies "Yes, I can fulfil that."
 
 ## Enter the Pact
 
@@ -59,7 +64,8 @@ Pact is the industry standard for this. It works on a simple premise:
 
 ## Code Snippet: The Consumer Contract
 
-Here is a simplified example of a Consumer (e.g., a React App) defining expectations for a Provider (User API) using Pact JS.
+Here is a simplified example of a Consumer (e.g., a React App) defining expectations for a Provider (User API) using
+Pact JS.
 
 ```javascript
 import { Pact } from '@pact-foundation/pact';
@@ -103,11 +109,13 @@ describe('User API Contract', () => {
 });
 ```
 
-If the Provider (User API) later changes `name` to `fullName`, their own build will fail when verifying this contract. You catch the break *before* it merges.
+If the Provider (User API) later changes `name` to `fullName`, their own build will fail when verifying this contract.
+You catch the break *before* it merges.
 
 ## Summary
 
-Microservices are about autonomy, but autonomy without rules is anarchy. Contract testing provides the guardrails that allow teams to move fast without breaking their neighbours.
+Microservices are about autonomy, but autonomy without rules is anarchy. Contract testing provides the guardrails that
+allow teams to move fast without breaking their neighbours.
 
 It turns integration testing from a "Big Bang" event at the end of the sprint into a continuous, lightweight check.
 
@@ -121,4 +129,5 @@ It turns integration testing from a "Big Bang" event at the end of the sprint in
 
 - **Pick a Pair**: Choose one Consumer (e.g., Frontend) and one Provider (e.g., Backend).
 - **Write One Test**: Define one simple interaction (e.g., Get Health Check).
-- **Set up a Broker**: You need a place to store these JSON files. Use a free hosted Pact Broker or spin up the Docker image.
+- **Set up a Broker**: You need a place to store these JSON files. Use a free hosted Pact Broker or spin up the Docker
+  image.

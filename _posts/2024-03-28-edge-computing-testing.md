@@ -25,7 +25,8 @@ tags:
 
 ## Introduction
 
-"Edge Computing" sounds fancy. It just means running your code on a server that is geographically closer to the user (and usually less powerful than your iPhone).
+"Edge Computing" sounds fancy. It just means running your code on a server that is geographically closer to the user
+(and usually less powerful than your iPhone).
 
 Cloudflare Workers, AWS Lambda@Edge, Vercel Edge Functions. They promise speed. They deliver debugging nightmares.
 
@@ -64,7 +65,8 @@ If Edge B is still serving old data, you have an "Eventual Consistency" problem 
 
 ## Code Snippet: Unit Testing Edge Workers
 
-We can emulate the Edge environment locally using `vitest` or `jest-environment-miniflare`. Edge workers typically use the `Request` / `Response` Web Standard API.
+We can emulate the Edge environment locally using `vitest` or `jest-environment-miniflare`. Edge workers typically use
+the `Request` / `Response` Web Standard API.
 
 ```javascript
 /* 
@@ -107,14 +109,17 @@ describe('Edge Worker', () => {
 
 ## Summary
 
-Edge computing is great for simple logic (redirects, header manipulation, A/B testing). It is terrible for complex business logic.
+Edge computing is great for simple logic (redirects, header manipulation, A/B testing). It is terrible for complex
+business logic.
 
 Keep the edge "thin". Keep the complexity in the core.
 
 ## Key Takeaways
 
-- **Environment variables sync slowly**: Syncing secrets across 500 edge locations takes time. Test for "Partial Rollout" failure states.
-- **Analytics need server-side logging**: You cannot install Google Analytics on the server easily. You might need server-side logging.
+- **Environment variables sync slowly**: Syncing secrets across 500 edge locations takes time. Test for "Partial
+  Rollout" failure states.
+- **Analytics need server-side logging**: You cannot install Google Analytics on the server easily. You might need
+  server-side logging.
 - **Headers need verification**: Test that security headers (HSTS, CSP) are actually being injected by the edge worker.
 
 ## Next Steps

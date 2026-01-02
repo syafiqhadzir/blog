@@ -27,29 +27,38 @@ tags:
 
 If a button on a website does not work, it is a bug. You fix it. Nobody cries.
 
-If an AI résumé screener rejects all female candidates, it is a lawsuit, a PR nightmare, and a moral failure. The QA engineer is now the **Ethics Compliance Officer**. We do not just test "Does it work?". We test "Is it Fair?".
+If an AI résumé screener rejects all female candidates, it is a lawsuit, a PR nightmare, and a moral failure. The QA
+engineer is now the **Ethics Compliance Officer**. We do not just test "Does it work?". We test "Is it Fair?".
 
-This domain is called **FATE** (Fairness, Accountability, Transparency, Ethics), which is appropriate because if you ignore it, you are doomed.
+This domain is called **FATE** (Fairness, Accountability, Transparency, Ethics), which is appropriate because if you
+ignore it, you are doomed.
 
 ## TL;DR
 
-- **Disparate impact reveals bias**: If the approval rate for Group A is 80% and Group B is 20%, you have a problem. Fix your training data.
-- **Model Cards are nutrition labels**: Every model must have documentation listing its limitations. "Warning: May contain traces of 1950s sexism."
-- **Red Teaming finds problems first**: Hire diverse teams to actively try to make the AI say offensive things. Better they find it than Twitter.
+- **Disparate impact reveals bias**: If the approval rate for Group A is 80% and Group B is 20%, you have a problem. Fix
+  your training data.
+- **Model Cards are nutrition labels**: Every model must have documentation listing its limitations. "Warning: May
+  contain traces of 1950s sexism."
+- **Red Teaming finds problems first**: Hire diverse teams to actively try to make the AI say offensive things. Better
+  they find it than Twitter.
 
 ## The Bias Bug
 
 Training data reflects history. History is biased. Therefore, raw models are biased. Simple transitive logic.
 
-**QA Strategy**: **Sliced Evaluation**. Do not look at "Global Accuracy" (95%). That number is a lie designed to make you feel good.
+**QA Strategy**: **Sliced Evaluation**. Do not look at "Global Accuracy" (95%). That number is a lie designed to make
+you feel good.
 
-Look at accuracy for "Subgroups". "It works 99% for English speakers, but 10% for Spanish speakers." That is not an edge case. That is a critical P0 bug affecting millions of people.
+Look at accuracy for "Subgroups". "It works 99% for English speakers, but 10% for Spanish speakers." That is not an edge
+case. That is a critical P0 bug affecting millions of people.
 
 ## Explainability (XAI) as a Feature
 
-If the AI denies a loan, GDPR says the user has a "Right to Explanation". "Computer says no" is illegal. It is also infuriating.
+If the AI denies a loan, GDPR says the user has a "Right to Explanation". "Computer says no" is illegal. It is also
+infuriating.
 
-QA must test the **SHAP (Shapley Additive Explanations)** values. "Feature 'Income' contributed +50 points. Feature 'PostCode' contributed -100 points."
+QA must test the **SHAP (Shapley Additive Explanations)** values. "Feature 'Income' contributed +50 points. Feature
+'PostCode' contributed -100 points."
 
 If 'PostCode' is a proxy for race (which it often is), the model is discriminatory. Kill it.
 
@@ -100,13 +109,17 @@ if (di < 0.8) {
 
 You cannot debug bias with a debugger. You debug it with **Statistics** and **Empathy**.
 
-If you are building AI for the public good, your testing must be as rigorous as clinical trials. We are injecting code into society's bloodstream. The consequences of getting it wrong are measured in ruined lives, not just error messages.
+If you are building AI for the public good, your testing must be as rigorous as clinical trials. We are injecting code
+into society's bloodstream. The consequences of getting it wrong are measured in ruined lives, not just error messages.
 
 ## Key Takeaways
 
-- **Data lineage matters**: Where did this training data come from? Was it scraped without consent? If so, it is poisoned fruit.
-- **Feedback loops amplify bias**: If the model is deployed, does it create a self-fulfilling prophecy? (e.g., Policing algorithms sending more officers to "high crime" areas, finding more crime, reinforcing the model).
-- **Human in the loop for high stakes**: For high-stakes decisions (Life/Death/Jail/Job), AI should only be a *recommendation*, never the final judge. Test the *handoff* UI.
+- **Data lineage matters**: Where did this training data come from? Was it scraped without consent? If so, it is
+  poisoned fruit.
+- **Feedback loops amplify bias**: If the model is deployed, does it create a self-fulfilling prophecy? (e.g., Policing
+  algorithms sending more officers to "high crime" areas, finding more crime, reinforcing the model).
+- **Human in the loop for high stakes**: For high-stakes decisions (Life/Death/Jail/Job), AI should only be a
+  *recommendation*, never the final judge. Test the *handoff* UI.
 
 ## Next Steps
 

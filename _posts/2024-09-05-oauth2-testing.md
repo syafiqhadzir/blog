@@ -26,15 +26,18 @@ tags:
 
 "Login with Google". "Login with Facebook".
 
-It looks simple. A button click, a popup, and you are in. Under the hood, it is a terrifying relay race of Redirects, Authorisation Codes, Access Tokens, and Client Secrets.
+It looks simple. A button click, a popup, and you are in. Under the hood, it is a terrifying relay race of Redirects,
+Authorisation Codes, Access Tokens, and Client Secrets.
 
-If any runner drops the baton, the user is locked out. QA must test the "Edge Cases of Auth" because developers usually just test the "Happy Path" where the token never expires.
+If any runner drops the baton, the user is locked out. QA must test the "Edge Cases of Auth" because developers usually
+just test the "Happy Path" where the token never expires.
 
 ## TL;DR
 
 - **Expiry breaks sessions**: Access Tokens die (usually 1 hour). Does the app silently refresh it? Or does it crash?
 - **Scope limits access**: If I only granted "Read Profile", does the app explode when it tries to "Post Tweet"?
-- **State prevents CSRF**: The `state` parameter prevents CSRF (Cross-Site Request Forgery). Ensure it is validated, or you have a security hole.
+- **State prevents CSRF**: The `state` parameter prevents CSRF (Cross-Site Request Forgery). Ensure it is validated, or
+  you have a security hole.
 
 ## Access vs Refresh Tokens
 
@@ -52,15 +55,18 @@ If any runner drops the baton, the user is locked out. QA must test the "Edge Ca
 
 ## The "Lost State" Redirect
 
-User clicks "Login" whilst on the Checkout page with a basket full of items. They go to Google. They authorise. They come back to... the Homepage? With an empty basket?
+User clicks "Login" whilst on the Checkout page with a basket full of items. They go to Google. They authorise. They
+come back to... the Homepage? With an empty basket?
 
 **FAIL**.
 
-They should go back to the *page they were on* (Checkout). This requires storing the "Return URL" (often in the `state` param or local storage) before the redirect dance begins. Test this. It breaks constantly.
+They should go back to the *page they were on* (Checkout). This requires storing the "Return URL" (often in the `state`
+param or local storage) before the redirect dance begins. Test this. It breaks constantly.
 
 ## Code Snippet: Intercepting Token Refresh
 
-Simulate a token expiry to verify your frontend handles 401 Unauthorised responses correctly (by refreshing the token and retrying).
+Simulate a token expiry to verify your frontend handles 401 Unauthorised responses correctly (by refreshing the token
+and retrying).
 
 ```javascript
 /*
@@ -103,13 +109,17 @@ test('should auto-refresh token and retry on 401', async ({ page }) => {
 
 Auth bugs are Critical bugs. You cannot "Patch it later".
 
-If Auth is broken, nobody can use your features. You have zero users. Test the sadness of expiring tokens. Test the darkness of revoked permissions.
+If Auth is broken, nobody can use your features. You have zero users. Test the sadness of expiring tokens. Test the
+darkness of revoked permissions.
 
 ## Key Takeaways
 
-- **Revocation must be immediate**: If the user clicks "Log out of all devices" in their account settings, does the Refresh Token stop working effectively immediately?
-- **PKCE is mandatory for SPAs**: For mobile/SPA, ensure PKCE (Proof Key for Code Exchange) is used. It is more secure than the implicit flow.
-- **Errors need graceful handling**: Handle `access_denied` (User clicked Cancel on the Google consent screen). Do not show a 500 error stack trace. Show "Login Cancelled".
+- **Revocation must be immediate**: If the user clicks "Log out of all devices" in their account settings, does the
+  Refresh Token stop working effectively immediately?
+- **PKCE is mandatory for SPAs**: For mobile/SPA, ensure PKCE (Proof Key for Code Exchange) is used. It is more secure
+  than the implicit flow.
+- **Errors need graceful handling**: Handle `access_denied` (User clicked Cancel on the Google consent screen). Do not
+  show a 500 error stack trace. Show "Login Cancelled".
 
 ## Next Steps
 

@@ -26,9 +26,11 @@ tags:
 
 In a monolithic world, if you changed a function signature, the compiler would scream at you.
 
-In a microservices world, if you change an API response, the compiler stays silent... until the frontend crashes in production because it expected `userId` (camelCase) but you sent `user_id` (snake_case).
+In a microservices world, if you change an API response, the compiler stays silent... until the frontend crashes in
+production because it expected `userId` (camelCase) but you sent `user_id` (snake_case).
 
-**Contract Testing** (with Pact) is the solution. It is like a legal agreement between services: "I promise to send this JSON, and you promise to understand it."
+**Contract Testing** (with Pact) is the solution. It is like a legal agreement between services: "I promise to send this
+JSON, and you promise to understand it."
 
 ## TL;DR
 
@@ -44,17 +46,20 @@ We have all been there.
 **Frontend Dev**: "Why is the User Profile page blank?"
 **Backend Dev**: "Oh, I renamed `fullName` to `full_name`. Didn't you see the Slack message I sent on Friday at 5 PM?"
 
-This is "Integration Hell". You can try to solve it with End-to-End (E2E) tests, but they are slow, flaky, and expensive. Contract tests are fast, stable, and run before you even deploy code to Staging.
+This is "Integration Hell". You can try to solve it with End-to-End (E2E) tests, but they are slow, flaky, and
+expensive. Contract tests are fast, stable, and run before you even deploy code to Staging.
 
 ## Consumer-Driven Contracts
 
 Pact follows the **Consumer-Driven** philosophy.
 
-Ideally, the *Consumer* (e.g., the React App) says: "I need an endpoint `/user/1` that returns a JSON with an `id` (integer) and a `name` (string)."
+Ideally, the *Consumer* (e.g., the React App) says: "I need an endpoint `/user/1` that returns a JSON with an `id`
+(integer) and a `name` (string)."
 
 This definition generates a **Pact File** (a JSON contract).
 
-The *Provider* (the Go/Java Service) then replays this Pact file against itself. If it fails, the build breaks. No more surprise breakups.
+The *Provider* (the Go/Java Service) then replays this Pact file against itself. If it fails, the build breaks. No more
+surprise breakups.
 
 ## Code Snippet: Signing the Contract
 
@@ -103,7 +108,8 @@ describe('User Service API', () => {
 
 ## Summary
 
-Pact testing is the diplomat of your architecture. It ensures that different services can speak to each other without misunderstanding.
+Pact testing is the diplomat of your architecture. It ensures that different services can speak to each other without
+misunderstanding.
 
 It allows you to deploy services independently, confident that you have not broken the neighbours.
 

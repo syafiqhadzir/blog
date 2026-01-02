@@ -24,11 +24,14 @@ tags:
 
 ## Introduction
 
-We have all been there. You proudly present your Pull Request. The dashboard glows green: **100% Code Coverage**. You feel like a god. You merge it.
+We have all been there. You proudly present your Pull Request. The dashboard glows green: **100% Code Coverage**. You
+feel like a god. You merge it.
 
 Ten minutes later, Production is on fire.
 
-How is this possible? Because **Code Coverage is a vanity metric**. It tells you which lines of code were *executed*, not which lines were *verified*. It measures activity, not quality. To truly know if your tests are worth the electricity they consume, you need to go a step further. You need to release the zombies. You need **Mutation Testing**.
+How is this possible? Because **Code Coverage is a vanity metric**. It tells you which lines of code were *executed*,
+not which lines were *verified*. It measures activity, not quality. To truly know if your tests are worth the
+electricity they consume, you need to go a step further. You need to release the zombies. You need **Mutation Testing**.
 
 ## TL;DR
 
@@ -59,11 +62,14 @@ test('getPrice runs', () => {
 });
 ```
 
-Notice something? **I did not assert anything.** I just ran the code. The coverage tool sees the lines turn green and gives me a gold star. But the logic is completely untested. I could delete the `return` statement, and the test would still pass.
+Notice something? **I did not assert anything.** I just ran the code. The coverage tool sees the lines turn green and
+gives me a gold star. But the logic is completely untested. I could delete the `return` statement, and the test would
+still pass.
 
 ## Enter the Mutant
 
-Mutation testing automates the process of "sabotaging" your code to see if the tests notice. A "Mutator" will scan your code and spawn versions of it (Mutants) with slight defects.
+Mutation testing automates the process of "sabotaging" your code to see if the tests notice. A "Mutator" will scan your
+code and spawn versions of it (Mutants) with slight defects.
 
 Common mutations include:
 
@@ -72,7 +78,9 @@ Common mutations include:
 - **Conditionals**: Changing `true` to `false`.
 - **Strings**: Emptying a string `""`.
 
-If I run **Stryker** (a popular JS mutation testing tool) on the code above, it might generate a mutant that changes `discount > 10` to `discount >= 10`. If my test input was `discount = 12`, the result is the same for both `>` and `>=`. The mutant survives. The test is weak. To kill this mutant, I need a test case specifically for `10` (the boundary).
+If I run **Stryker** (a popular JS mutation testing tool) on the code above, it might generate a mutant that changes
+`discount > 10` to `discount >= 10`. If my test input was `discount = 12`, the result is the same for both `>` and `>=`.
+The mutant survives. The test is weak. To kill this mutant, I need a test case specifically for `10` (the boundary).
 
 ## Code Snippet: Killing a Mutant
 
@@ -110,12 +118,15 @@ That "SURVIVED" message is your cue. It says: "I broke your logic, and your test
 
 ## Summary
 
-Mutation testing is the only way to prove your test suite is not just security theatre. It is computationally expensive (running thousands of tests), so do not run it on every commit. Run it nightly, or on your core business logic libraries. It converts the abstract feeling of "confidence" into a hard, cold metric.
+Mutation testing is the only way to prove your test suite is not just security theatre. It is computationally expensive
+(running thousands of tests), so do not run it on every commit. Run it nightly, or on your core business logic
+libraries. It converts the abstract feeling of "confidence" into a hard, cold metric.
 
 ## Key Takeaways
 
 - **Quality over Quantity**: A suite with 100 tests that check nothing is worse than 10 tests that check everything.
-- **Boundary Value Analysis is forced**: Mutation testing naturally forces you to check your boundaries (off-by-one errors).
+- **Boundary Value Analysis is forced**: Mutation testing naturally forces you to check your boundaries (off-by-one
+  errors).
 - **The Score matters**: Aim for a **Mutation Score > 80%** on critical financial/logic modules. UI code can be lower.
 
 ## Next Steps

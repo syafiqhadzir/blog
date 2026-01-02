@@ -25,7 +25,8 @@ tags:
 
 In typical telly, there is a 30-second delay. It does not matter.
 
-In **Interactive Livestreams** (Twitch, Betting, Live Auctions, HQ Trivia), latency matters enormously. If the host asks "What is 2+2?" and you see the question 10 seconds *after* the polling window closes, the app is broken.
+In **Interactive Livestreams** (Twitch, Betting, Live Auctions, HQ Trivia), latency matters enormously. If the host asks
+"What is 2+2?" and you see the question 10 seconds *after* the polling window closes, the app is broken.
 
 QA is no longer testing "does video play". You are testing **Time**.
 
@@ -37,17 +38,22 @@ QA is no longer testing "does video play". You are testing **Time**.
 
 ## The Sync Problem
 
-If you send the "Show Poll" command via WebSocket, and the video via HLS (HTTP Live Streaming), they arrive at different times.
+If you send the "Show Poll" command via WebSocket, and the video via HLS (HTTP Live Streaming), they arrive at different
+times.
 
-HLS is delayed by 10-20 seconds. WebSocket is instant. Result: The user sees the poll **Spoiler** before the host even finishes asking the question. This is not a bug. It is a fundamental architecture problem.
+HLS is delayed by 10-20 seconds. WebSocket is instant. Result: The user sees the poll **Spoiler** before the host even
+finishes asking the question. This is not a bug. It is a fundamental architecture problem.
 
-**Solution**: Embed the "Trigger Timestamp" directly into the video stream using **SEI (Supplemental Enhancement Information)** or ID3 tags.
+**Solution**: Embed the "Trigger Timestamp" directly into the video stream using **SEI (Supplemental Enhancement
+Information)** or ID3 tags.
 
 ## The Thundering Herd
 
-When the host says "Click Now!", 100k users hit your API at once. This is not a normal load test. This is an instantaneous spike. The graph looks like a heart attack.
+When the host says "Click Now!", 100k users hit your API at once. This is not a normal load test. This is an
+instantaneous spike. The graph looks like a heart attack.
 
-**QA Strategy**: Use a "Sledgehammer" load test. Spin up 10,000 bots. Keep traffic at 0. Then, at T=10s, have ALL of them hit `POST /vote`. If your Load Balancer or Database falls over, you fail.
+**QA Strategy**: Use a "Sledgehammer" load test. Spin up 10,000 bots. Keep traffic at 0. Then, at T=10s, have ALL of
+them hit `POST /vote`. If your Load Balancer or Database falls over, you fail.
 
 ## Code Snippet: Syncing Events with SEI Metadata
 
@@ -116,7 +122,8 @@ class OverlayManager {
 
 The difference between a "Stream" and an "Experience" is interactivity.
 
-Testing this requires a holistic view of the pipeline: Ingest -> Transcode -> CDN -> Player -> UI Layer. Do not just test the frontend. Test the **Network Packets**.
+Testing this requires a holistic view of the pipeline: Ingest -> Transcode -> CDN -> Player -> UI Layer. Do not just
+test the frontend. Test the **Network Packets**.
 
 ## Key Takeaways
 

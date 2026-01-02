@@ -23,9 +23,12 @@ tags:
 
 ## Introduction
 
-Cryptography usually feels like maths homework that you accidentally swallowed. But in the world of QA, specifically when dealing with GDPR, PII (Personally Identifiable Information), and security testing, you need to know your AES from your DES.
+Cryptography usually feels like maths homework that you accidentally swallowed. But in the world of QA, specifically
+when dealing with GDPR, PII (Personally Identifiable Information), and security testing, you need to know your AES from
+your DES.
 
-Enter **Rijndael** (pronounced "Rain-dull", or "Rhine-dahl" if you want to sound fancy at parties), the algorithm that keeps the internet from being a total free-for-all.
+Enter **Rijndael** (pronounced "Rain-dull", or "Rhine-dahl" if you want to sound fancy at parties), the algorithm that
+keeps the internet from being a total free-for-all.
 
 ## TL;DR
 
@@ -36,7 +39,8 @@ Enter **Rijndael** (pronounced "Rain-dull", or "Rhine-dahl" if you want to sound
 
 ## What is AES (Rijndael)?
 
-Rijndael is the specific algorithm selected by NIST to become the **Advanced Encryption Standard (AES)**. It replaced DES, which was about as secure as a wet paper bag.
+Rijndael is the specific algorithm selected by NIST to become the **Advanced Encryption Standard (AES)**. It replaced
+DES, which was about as secure as a wet paper bag.
 
 It is a **Symmetric Block Cipher**.
 
@@ -47,13 +51,17 @@ It is a **Symmetric Block Cipher**.
 
 "I test buttons, why do I care about maths?"
 
-1. **Test Data Management**: You cannot just dump production data into staging. You need to mask it. If you mask it with `base64`, you are not encrypting it; you are just wearing a fake moustache.
-2. **Verification is essential**: If the requirement says "Credit Cards must be encrypted," you need to check the database. If you see `4111 1111 1111 1111`, raise a P1. You should see `a9f8e7...`.
-3. **Compliance matters**: GDPR fines are based on "reasonable protection". Storing passwords in plain text is not reasonable.
+1. **Test Data Management**: You cannot just dump production data into staging. You need to mask it. If you mask it with
+   `base64`, you are not encrypting it; you are just wearing a fake moustache.
+2. **Verification is essential**: If the requirement says "Credit Cards must be encrypted," you need to check the
+database. If you see `4111 1111 1111 1111`, raise a P1. You should see `a9f8e7...`.
+3. **Compliance matters**: GDPR fines are based on "reasonable protection". Storing passwords in plain text is not
+reasonable.
 
 ## Code Snippet: Creating Valid Test Data
 
-As a QA, you might need to generate valid encrypted payloads to test an API endpoint. Here is how you do it in Node.js without needing a maths degree.
+As a QA, you might need to generate valid encrypted payloads to test an API endpoint. Here is how you do it in Node.js
+without needing a maths degree.
 
 ```javascript
 const crypto = require('crypto');
@@ -82,11 +90,13 @@ console.log(`Sending to API: ${JSON.stringify(payload)}`);
 // Output: {"iv":"...","encryptedData":"..."}
 ```
 
-If you send this payload and the API returns 200 OK, the decryption logic works. If it returns 500, the dev probably hardcoded the IV.
+If you send this payload and the API returns 200 OK, the decryption logic works. If it returns 500, the dev probably
+hardcoded the IV.
 
 ## Summary
 
-I tried to keep this simple, but cryptography is inherently complex. However, understanding that "AES-256 is the standard" gives you enough vocabulary to argue with developers about security requirements.
+I tried to keep this simple, but cryptography is inherently complex. However, understanding that "AES-256 is the
+standard" gives you enough vocabulary to argue with developers about security requirements.
 
 And remember: if you see custom crypto code, run away.
 
@@ -99,4 +109,5 @@ And remember: if you see custom crypto code, run away.
 ## Next Steps
 
 - **Audit**: Go check your Staging DB. Are the passwords hashed? (Bcrypt/Argon2).
-- **Test**: Try sending an encrypted payload with the wrong Key. Does the API explicitly say "Decryption Failed" or does it crash?
+- **Test**: Try sending an encrypted payload with the wrong Key. Does the API explicitly say "Decryption Failed" or does
+  it crash?

@@ -24,11 +24,14 @@ tags:
 
 ## Introduction
 
-Arabic, Hebrew, Persian, and Urdu are read Right-to-Left (RTL). Most developers build Left-to-Right (LTR) and assume ticking a box in CSS fixes it.
+Arabic, Hebrew, Persian, and Urdu are read Right-to-Left (RTL). Most developers build Left-to-Right (LTR) and assume
+ticking a box in CSS fixes it.
 
 It does not.
 
-Testing RTL is like learning to drive in the UK. Everything is backwards, and you will crash into a roundabout. QA's job is to ensure the "Back" button points backwards relative to the language, not the screen (which implies "Forward" in LTR).
+Testing RTL is like learning to drive in the UK. Everything is backwards, and you will crash into a roundabout. QA's job
+is to ensure the "Back" button points backwards relative to the language, not the screen (which implies "Forward" in
+LTR).
 
 ## TL;DR
 
@@ -53,8 +56,10 @@ If you used hardcoded `left: 10px` or `offset-x: 5px`, your UI is broken.
 
 This is where it gets tricky.
 
-- **Flip**: Back arrow, Forward arrow, Progress bar, Bicycle (it should ride into the content), "Speech Bubble" (tail needs to flip).
-- **Do not Flip**: Clock hands, Checkmarks, Brand logos (Coca-Cola is always Coca-Cola), Video playback controls (Play is always Play).
+- **Flip**: Back arrow, Forward arrow, Progress bar, Bicycle (it should ride into the content), "Speech Bubble" (tail
+  needs to flip).
+- **Do not Flip**: Clock hands, Checkmarks, Brand logos (Coca-Cola is always Coca-Cola), Video playback controls (Play
+  is always Play).
 
 **QA Strategy**: Check every icon. If the "Play" button points backwards, your media player looks effectively broken.
 
@@ -93,14 +98,17 @@ test('should apply RTL direction to the body', async ({ page }) => {
 
 ## Summary
 
-RTL testing is mind-bending. It exposes every hardcoded "Left" and "Right" in your CSS. It forces you to think in "Start" and "End" (Logical Properties).
+RTL testing is mind-bending. It exposes every hardcoded "Left" and "Right" in your CSS. It forces you to think in
+"Start" and "End" (Logical Properties).
 
 Your app is not global until it works sideways.
 
 ## Key Takeaways
 
-- **Input Fields need care**: In RTL, the cursor starts on the right. Phone numbers (`+1 555...`) are tricky because numbers are often still LTR even in RTL text (Bidirectional text).
-- **Logical Properties are the solution**: Tell your devs to use `margin-inline-start` instead of `margin-left` to support both modes automatically.
+- **Input Fields need care**: In RTL, the cursor starts on the right. Phone numbers (`+1 555...`) are tricky because
+  numbers are often still LTR even in RTL text (Bidirectional text).
+- **Logical Properties are the solution**: Tell your devs to use `margin-inline-start` instead of `margin-left` to
+  support both modes automatically.
 - **Carousels must reverse**: Does the carousel swipe right to go next? It should.
 
 ## Next Steps

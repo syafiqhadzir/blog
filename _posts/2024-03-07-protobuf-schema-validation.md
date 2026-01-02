@@ -32,7 +32,8 @@ Backward compatibility is not a "nice-to-have"; it is the law.
 ## TL;DR
 
 - **Field Numbers are sacred**: Lock them in a vault. Never change them.
-- **Breaking Changes are crimes**: Renaming a field is technically fine (binary-wise), but deleting a required field is a crime.
+- **Breaking Changes are crimes**: Renaming a field is technically fine (binary-wise), but deleting a required field is
+  a crime.
 - **Linting catches errors**: Use `buf` or `protolint` in CI. Humans are bad at spotting these errors.
 
 ## The "Breaking Change" Trap
@@ -83,15 +84,18 @@ user.proto:8:1:Field "4" on message "User" was deleted.
 
 ## Summary
 
-Schema validation is the "Unit Test" of your API contract. It is boring, unglamorous work that prevents catastrophic failures.
+Schema validation is the "Unit Test" of your API contract. It is boring, unglamorous work that prevents catastrophic
+failures.
 
 Be the person who says "No" to the breaking change.
 
 ## Key Takeaways
 
 - **Reserve deleted fields**: If you delete a field, add `reserved 4;` to ensure nobody reuses it in the future.
-- **Package Versioning enables breaking changes**: If you really need to break it, create `package v2;` and run them side-by-side.
-- **Wire Compatibility matters**: Understand how Protobuf encodes data (Tag-Length-Value). The field name does not matter, only the ID.
+- **Package Versioning enables breaking changes**: If you really need to break it, create `package v2;` and run them
+  side-by-side.
+- **Wire Compatibility matters**: Understand how Protobuf encodes data (Tag-Length-Value). The field name does not
+  matter, only the ID.
 
 ## Next Steps
 

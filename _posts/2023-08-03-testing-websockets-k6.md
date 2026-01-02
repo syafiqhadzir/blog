@@ -24,17 +24,21 @@ tags:
 
 ## Introduction
 
-REST APIs are easy. You ask for data, the server gives data, and you both walk away. No strings attached. It is a casual transaction.
+REST APIs are easy. You ask for data, the server gives data, and you both walk away. No strings attached. It is a casual
+transaction.
 
-WebSockets are a marriage. You perform a handshake, you move in together, and you talk constantly. And just like marriage, maintaining thousands of persistent connections is *exhausting*.
+WebSockets are a marriage. You perform a handshake, you move in together, and you talk constantly. And just like
+marriage, maintaining thousands of persistent connections is *exhausting*.
 
-Most load tools (like JMeter) struggle with WebSockets because threads are heavy. Enter **K6**, a tool written in Go that eats concurrency for breakfast.
+Most load tools (like JMeter) struggle with WebSockets because threads are heavy. Enter **K6**, a tool written in Go
+that eats concurrency for breakfast.
 
 ## TL;DR
 
 - **Persistent State is hard**: Testing 1,000 requests is easy. Testing 1,000 held open connections is hard.
 - **Handshake Storms kill servers**: The server usually dies when everyone tries to connect at once (e.g., app launch).
-- **Latency needs measurement**: You must measure how long it takes for a message to travel from Client A -> Server -> Client B.
+- **Latency needs measurement**: You must measure how long it takes for a message to travel from Client A -> Server ->
+  Client B.
 
 ## The Stateful Nightmare
 
@@ -48,7 +52,9 @@ In WebSocket land, 10,000 users means 10,000 open TCP connections. This consumes
 
 ## Why K6?
 
-K6 scripts are written in JavaScript (easy for front-end devs) but run on a Go engine (fast). The `k6/ws` module allows you to implement listeners, event loops, and timers easily without the thread-blocking issues of Node.js-based runners or the memory bloat of Java-based runners.
+K6 scripts are written in JavaScript (easy for front-end devs) but run on a Go engine (fast). The `k6/ws` module allows
+you to implement listeners, event loops, and timers easily without the thread-blocking issues of Node.js-based runners
+or the memory bloat of Java-based runners.
 
 ## Code Snippet: Flooding the Chat
 
@@ -93,19 +99,24 @@ export default function () {
 }
 ```
 
-Running this with `k6 run --vus 100 --duration 30s load-test.js` will create 100 concurrent chatters screaming into the void.
+Running this with `k6 run --vus 100 --duration 30s load-test.js` will create 100 concurrent chatters screaming into the
+void.
 
 ## Summary
 
-WebSockets require a different testing philosophy. You are not testing "Throughput" (Requests per Second); you are testing "Capacity" (Concurrent Connections).
+WebSockets require a different testing philosophy. You are not testing "Throughput" (Requests per Second); you are
+testing "Capacity" (Concurrent Connections).
 
-K6 is the perfect tool to simulate the "Thundering Herd" scenario where your entire userbase reconnects simultaneously after a server restart.
+K6 is the perfect tool to simulate the "Thundering Herd" scenario where your entire userbase reconnects simultaneously
+after a server restart.
 
 ## Key Takeaways
 
 - **Status 101 is correct**: The HTTP status code for "Switching Protocols". If you see 200, you failed.
-- **Tuning Linux is required**: You likely need to increase `ulimit -n` on your load generator, or you will run out of file handles before the server does.
-- **Failover needs testing**: What happens to those 10,000 active users if you redeploy? Do they reconnect gracefully or DDOS your login server?
+- **Tuning Linux is required**: You likely need to increase `ulimit -n` on your load generator, or you will run out of
+  file handles before the server does.
+- **Failover needs testing**: What happens to those 10,000 active users if you redeploy? Do they reconnect gracefully or
+  DDOS your login server?
 
 ## Next Steps
 

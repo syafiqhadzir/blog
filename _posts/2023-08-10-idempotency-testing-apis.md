@@ -50,7 +50,8 @@ Two hours later, two pizzas arrive. You are happy (more pizza), but your bank ac
 In API design, we use an `Idempotency-Key`. The client generates a UUID (`req-123`) and sends it with the request.
 
 - **Request 1 (`req-123`)**: Server processes payment. Saves `req-123` as "Done". Returns 200 OK.
-- **Request 2 (`req-123`)**: Server sees `req-123` is already "Done". Returns 200 OK via Cache. **Does not charge card again.**
+- **Request 2 (`req-123`)**: Server sees `req-123` is already "Done". Returns 200 OK via Cache. **Does not charge card
+  again.**
 
 ## Testing the Idempotency Key
 
@@ -105,18 +106,21 @@ describe('POST /payments (Idempotency)', () => {
 
 ## Summary
 
-Idempotency is the difference between a robust distributed system and a system that accidentally double-bills customers every time AWS hiccups.
+Idempotency is the difference between a robust distributed system and a system that accidentally double-bills customers
+every time AWS hiccups.
 
 It requires client cooperation (sending the key) and server discipline (checking the key).
 
 ## Key Takeaways
 
 - **Cache Lifetime matters**: How long does the server remember the key? 24 hours is standard.
-- **Concurrency needs handling**: What if two requests with the same key arrive *at the exact same time*? (See Optimistic Locking).
+- **Concurrency needs handling**: What if two requests with the same key arrive *at the exact same time*? (See
+  Optimistic Locking).
 - **Chaos reveals issues**: Use a proxy to intentionally drop the response packet to force the client to retry.
 
 ## Next Steps
 
 - **Audit**: Check your `POST` endpoints. Do they support `Idempotency-Key`?
 - **Standard**: Read the Stripe API documentation on idempotency; it is the gold standard.
-- **Edge Cases**: Send the same Key but with a *different* payload body. The server should reject this (400 Bad Request) (safety check).
+- **Edge Cases**: Send the same Key but with a *different* payload body. The server should reject this (400 Bad Request)
+  (safety check).

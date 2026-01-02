@@ -23,21 +23,27 @@ tags:
 
 ## Introduction
 
-In 2015, DevOps meant "Every developer writes Terraform". It was chaos. Nobody understood what anyone else had built. The infrastructure was a snowflake factory.
+In 2015, DevOps meant "Every developer writes Terraform". It was chaos. Nobody understood what anyone else had built.
+The infrastructure was a snowflake factory.
 
-In 2025, we use **Internal Developer Platforms (IDPs)** like **Backstage**. Developers click "Create New Service" -> Select "Node.js API" -> Click "Deploy". Infrastructure is invisible.
+In 2025, we use **Internal Developer Platforms (IDPs)** like **Backstage**. Developers click "Create New Service" ->
+Select "Node.js API" -> Click "Deploy". Infrastructure is invisible.
 
-**QA Challenge**: If the Platform Team breaks the "Node.js API" template, 500 developers are blocked instantly. The blast radius is enormous.
+**QA Challenge**: If the Platform Team breaks the "Node.js API" template, 500 developers are blocked instantly. The
+blast radius is enormous.
 
 ## TL;DR
 
-- **Golden Paths reduce chaos**: The supported, blessed way to build software. QA must keep this path clear of obstacles.
-- **Drift detection reveals decay**: Old services might be using last year's template. How do we update them without breaking everything?
+- **Golden Paths reduce chaos**: The supported, blessed way to build software. QA must keep this path clear of
+  obstacles.
+- **Drift detection reveals decay**: Old services might be using last year's template. How do we update them without
+  breaking everything?
 - **Self-service is the metric**: If a developer has to open a Jira ticket to get a database, your IDP has failed.
 
 ## The "Works on My Machine" Killer
 
-The IDP ensures that Development, Staging, and Production look exactly the same. It manages `k8s.yaml`, `Dockerfile`, and `Helm Charts` centrally.
+The IDP ensures that Development, Staging, and Production look exactly the same. It manages `k8s.yaml`, `Dockerfile`,
+and `Helm Charts` centrally.
 
 **QA Strategy**:
 
@@ -46,9 +52,11 @@ The IDP ensures that Development, Staging, and Production look exactly the same.
 
 ## Testing the Templates
 
-IDPs work by using "Scaffolding" (like `cookiecutter` or `yeoman`). You need to treat these templates as **Software Products**.
+IDPs work by using "Scaffolding" (like `cookiecutter` or `yeoman`). You need to treat these templates as **Software
+Products**.
 
-They need versioning (`v1.2.0`), release notes, and automated tests. "If I generate a new app using `v1.2.0`, does `npm test` pass out of the box?" If not, the template is broken.
+They need versioning (`v1.2.0`), release notes, and automated tests. "If I generate a new app using `v1.2.0`, does `npm
+test` pass out of the box?" If not, the template is broken.
 
 ## Code Snippet: Templated Scaffold Verification
 
@@ -104,11 +112,13 @@ try {
 
 The Platform Team is a Product Team. Their customer is the Developer.
 
-The IDP needs the same rigorous QA as the customer-facing app. If the IDP is flaky, developers will go "Shadow IT" and spin up their own AWS instances. Then you have two problems instead of one.
+The IDP needs the same rigorous QA as the customer-facing app. If the IDP is flaky, developers will go "Shadow IT" and
+spin up their own AWS instances. Then you have two problems instead of one.
 
 ## Key Takeaways
 
-- **Catalogue health needs monitoring**: Use "Scorecards" to rate services (Silver, Gold, Platinum) based on their compliance with best practices.
+- **Catalogue health needs monitoring**: Use "Scorecards" to rate services (Silver, Gold, Platinum) based on their
+  compliance with best practices.
 - **Plugin interactions matter**: Backstage has hundreds of plugins. Test interactions between them.
 - **Documentation is infrastructure**: The IDP is also the documentation hub. Broken links = developer frustration.
 

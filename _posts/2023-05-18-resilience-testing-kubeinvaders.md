@@ -26,7 +26,8 @@ tags:
 
 "Chaos Engineering" sounds serious. It sounds like something men in lab coats do whilst frowning at monitors.
 
-**Kube-Invaders** turns it into an arcade game. It is literally "Space Invaders" for your Kubernetes cluster. You fly a little ship, shoot aliens, and every time you kill an alien, it deletes a random Pod in your cluster.
+**Kube-Invaders** turns it into an arcade game. It is literally "Space Invaders" for your Kubernetes cluster. You fly a
+little ship, shoot aliens, and every time you kill an alien, it deletes a random Pod in your cluster.
 
 It is the most fun you will ever have whilst terrifying your DevOps lead.
 
@@ -39,7 +40,8 @@ It is the most fun you will ever have whilst terrifying your DevOps lead.
 
 ## Why Gamify Destruction?
 
-Because resilience testing is boring. Nobody wants to run `kubectl delete pod` scripts all day. But everyone wants to get the high score.
+Because resilience testing is boring. Nobody wants to run `kubectl delete pod` scripts all day. But everyone wants to
+get the high score.
 
 By playing Kube-Invaders against a staging namespace, you visually verify:
 
@@ -49,13 +51,16 @@ By playing Kube-Invaders against a staging namespace, you visually verify:
 
 ## Under the Hood
 
-Kube-Invaders is just an HTML5 canvas game sitting on top of the Kubernetes API. When you press "Spacebar", it sends a delete API call.
+Kube-Invaders is just an HTML5 canvas game sitting on top of the Kubernetes API. When you press "Spacebar", it sends a
+delete API call.
 
-It is safe(ish). You can configure it to only target specific namespaces (please, for the love of God, do not point this at `kube-system`).
+It is safe(ish). You can configure it to only target specific namespaces (please, for the love of God, do not point this
+at `kube-system`).
 
 ## Code Snippet: Safe Config
 
-Installing Kube-Invaders is easy with Helm. Here is the configuration to safeguard it so you do not accidentally delete Production.
+Installing Kube-Invaders is easy with Helm. Here is the configuration to safeguard it so you do not accidentally delete
+Production.
 
 ```yaml
 apiVersion: v1
@@ -78,11 +83,13 @@ data:
   route_host: "kubeinvaders.internal.company.com"
 ```
 
-Once running, you open your browser and start blasting. It is a great demo for "Show and Tell" sessions. "Look, I'm destroying the billing service, and the site is still up!"
+Once running, you open your browser and start blasting. It is a great demo for "Show and Tell" sessions. "Look, I'm
+destroying the billing service, and the site is still up!"
 
 ## Summary
 
-Resilience is not a state you reach, but a muscle you train. Gamifying chaos makes the stressful reality of infrastructure failure a predictable and manageable part of your QA workflow.
+Resilience is not a state you reach, but a muscle you train. Gamifying chaos makes the stressful reality of
+infrastructure failure a predictable and manageable part of your QA workflow.
 
 Plus, it gives you a valid excuse to play video games at work.
 

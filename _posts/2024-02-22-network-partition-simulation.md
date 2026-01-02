@@ -25,7 +25,8 @@ tags:
 
 Distributed systems are great until someone trips over a network cable.
 
-Then you have two databases that both think they are the "Master". This is called a "Split-Brain" scenario. When they reconnect, who wins?
+Then you have two databases that both think they are the "Master". This is called a "Split-Brain" scenario. When they
+reconnect, who wins?
 
 If your answer is "Last Write Wins", please hand in your badge. You just lost half your customer data.
 
@@ -39,7 +40,8 @@ If your answer is "Last Write Wins", please hand in your badge. You just lost ha
 
 Eric Brewer said you can only pick two: Consistency, Availability, Partition Tolerance.
 
-Since P (Partition Tolerance) is mandatory for any distributed system (networks fail, get over it), you actually only have a choice between C and A.
+Since P (Partition Tolerance) is mandatory for any distributed system (networks fail, get over it), you actually only
+have a choice between C and A.
 
 - **CP (Consistency)**: "I'd rather be down than wrong." (Banking).
 - **AP (Availability)**: "I'd rather be wrong than down." (Twitter/X likes).
@@ -93,7 +95,8 @@ Use chaos engineering to verify that your system behaves predictably when the ne
 
 ## Key Takeaways
 
-- **Quorum prevents split-brain**: Ensure your system needs N/2 + 1 nodes to accept writes. (e.g. 3 nodes need 2 to agree).
+- **Quorum prevents split-brain**: Ensure your system needs N/2 + 1 nodes to accept writes. (e.g. 3 nodes need 2 to
+  agree).
 - **Timeouts cause false partitions**: Aggressive timeouts can cause partitions during slow traffic. Tunings matter.
 - **Alerting must be immediate**: "Split Brain" should trigger a P1 pager alert immediately.
 

@@ -23,9 +23,11 @@ tags:
 
 ## Introduction
 
-Chaos Engineering is the discipline of experimenting on a system to build confidence in its capability to withstand turbulent conditions.
+Chaos Engineering is the discipline of experimenting on a system to build confidence in its capability to withstand
+turbulent conditions.
 
-In simpler terms: We break things on purpose whilst we are watching, so they do not break by accident when we are sleeping. It is the ultimate QA test. "Oh, you think your system is robust? Let us unplug the database."
+In simpler terms: We break things on purpose whilst we are watching, so they do not break by accident when we are
+sleeping. It is the ultimate QA test. "Oh, you think your system is robust? Let us unplug the database."
 
 ## TL;DR
 
@@ -38,22 +40,26 @@ In simpler terms: We break things on purpose whilst we are watching, so they do 
 
 "Why would I break my own app?"
 
-Because Amazon is going to break it for you anyway. Networks fail. Hard drives die. Squirrels chew through fibre optic cables.
+Because Amazon is going to break it for you anyway. Networks fail. Hard drives die. Squirrels chew through fibre optic
+cables.
 
-The goal of chaos testing is not to cause disaster, but to prove that your system can handle the disaster gracefully. When you kill a database instance, does the application fail over to the replica, or does it throw a 500 error and cry?
+The goal of chaos testing is not to cause disaster, but to prove that your system can handle the disaster gracefully.
+When you kill a database instance, does the application fail over to the replica, or does it throw a 500 error and cry?
 
 ## The Hypothesis Method
 
 Chaos Engineering is science, not anarchy.
 
 1. **Steady State**: "Our homepage loads in 200ms."
-2. **Hypothesis**: "If we introduce 500ms of latency to the User Service, the homepage should still load in < 300ms because of caching."
+2. **Hypothesis**: "If we introduce 500ms of latency to the User Service, the homepage should still load in < 300ms
+because of caching."
 3. **Experiment**: Add latency (using Gremlin or Istio).
 4. **Verify**: Did it work? If yes, great. If no, you found a bug.
 
 ## Code Snippet: A Simple Chaos Script
 
-You do not need fancy tools to start. Here is a simple Node.js script that randomly kills a specific process (simulating a crash).
+You do not need fancy tools to start. Here is a simple Node.js script that randomly kills a specific process (simulating
+a crash).
 
 ```javascript
 // chaos-monkey.js
@@ -81,7 +87,8 @@ Run this in your Staging environment. Watch your monitoring dashboard. Do you ge
 
 ## Summary
 
-Resilience is built, not found. By intentionally breaking things in controlled environments, we ensure they do not break in production at 3 AM.
+Resilience is built, not found. By intentionally breaking things in controlled environments, we ensure they do not break
+in production at 3 AM.
 
 Chaos is the forge of reliability.
 

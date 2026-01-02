@@ -25,35 +25,43 @@ tags:
 
 ## Introduction
 
-Micro-services solved the backend monolith, but created "distributed headaches". Micro-frontends (MFEs) export that headache to the browser.
+Micro-services solved the backend monolith, but created "distributed headaches". Micro-frontends (MFEs) export that
+headache to the browser.
 
 Team A uses React 16. Team B uses React 18. Team C uses jQuery (why?).
 
-QA's job is to ensure the user does not notice they are navigating between three different decades of web development. It is like stitching together a Frankenstein's monster, but ensuring the arm does not fall off when it waves hello.
+QA's job is to ensure the user does not notice they are navigating between three different decades of web development.
+It is like stitching together a Frankenstein's monster, but ensuring the arm does not fall off when it waves hello.
 
 ## TL;DR
 
-- **Integration reveals composition bugs**: Unit tests are useless if the Shell (Container) crashes. Test the composition.
-- **Styling must not leak**: Ensure CSS does not leak. If Team A's `button` style breaks Team B's `checkout` form, you have failed.
+- **Integration reveals composition bugs**: Unit tests are useless if the Shell (Container) crashes. Test the
+  composition.
+- **Styling must not leak**: Ensure CSS does not leak. If Team A's `button` style breaks Team B's `checkout` form, you
+  have failed.
 - **Routing breaks first**: Deep linking is the first thing to break. Verify URL persistence across MFE boundaries.
 
 ## The "It Works on My Machine" Paradox
 
-Team A deploys their "Cart" MFE (Micro-Frontend) running on `localhost:3001`. It works in isolation. They deploy to Prod.
+Team A deploys their "Cart" MFE (Micro-Frontend) running on `localhost:3001`. It works in isolation. They deploy to
+Prod.
 
 The "Shell" app crashes because the Cart MFE exports `default` but the Shell expects `named` exports.
 
-**QA Strategy**: You *cannot* test MFEs in isolation alone. You need a "Canary Shell" environment where the latest `master` of Shell meets the `branch` of your MFE.
+**QA Strategy**: You *cannot* test MFEs in isolation alone. You need a "Canary Shell" environment where the latest
+`master` of Shell meets the `branch` of your MFE.
 
 ## Shared Dependency Hell
 
 "Let's share React to save bandwidth!"
 
-Team A upgrades to React 19 (Alpha). Team B is still on React 15. The Shell loads React 19 (because it wins the version resolution war). Team B's code explodes because `componentWillMount` is deprecated.
+Team A upgrades to React 19 (Alpha). Team B is still on React 15. The Shell loads React 19 (because it wins the version
+resolution war). Team B's code explodes because `componentWillMount` is deprecated.
 
 This is not a bug; it is a crime scene.
 
-QA must audit `package.json` resolutions in the build pipeline. If there are multiple versions of React loaded, your performance score will tank.
+QA must audit `package.json` resolutions in the build pipeline. If there are multiple versions of React loaded, your
+performance score will tank.
 
 ## Code Snippet: Testing Cross-MFE Communication
 
@@ -98,15 +106,19 @@ test('Cart MFE should update Header MFE', async ({ page }) => {
 
 ## Summary
 
-Micro-frontends are great for organisational scaling (Conway's Law), but terrible for consistency. Your test suite is the glue that holds the monster together.
+Micro-frontends are great for organisational scaling (Conway's Law), but terrible for consistency. Your test suite is
+the glue that holds the monster together.
 
 If the glue fails, the monster eats the user. Ideally, avoid MFEs unless you have >50 frontend developers.
 
 ## Key Takeaways
 
-- **Performance needs monitoring**: Monitor the network tab. Are you loading `lodash` 5 times? If so, your Webpack Module Federation config is wrong.
-- **Error Boundaries are mandatory**: If the "Ads" MFE crashes, the main content should still be visible. React Error Boundaries are mandatory.
-- **Versioning enables independent rollbacks**: Can you rollback *just* the Header without rolling back the Footer? If not, you do not have Micro-frontends; you have a Monolith with extra steps.
+- **Performance needs monitoring**: Monitor the network tab. Are you loading `lodash` 5 times? If so, your Webpack
+  Module Federation config is wrong.
+- **Error Boundaries are mandatory**: If the "Ads" MFE crashes, the main content should still be visible. React Error
+  Boundaries are mandatory.
+- **Versioning enables independent rollbacks**: Can you rollback *just* the Header without rolling back the Footer? If
+  not, you do not have Micro-frontends; you have a Monolith with extra steps.
 
 ## Next Steps
 

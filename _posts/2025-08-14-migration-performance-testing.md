@@ -29,7 +29,9 @@ tags:
 
 Will it?
 
-Migrations often **degrade** performance initially. Why? Because the old Monolith had shared memory. The new Microservices have Network Latency. To send a User Object from Service A to Service B takes 10ms. In memory, it took 0.0001ms. That is a substantial difference, and nobody mentioned it in the planning meeting.
+Migrations often **degrade** performance initially. Why? Because the old Monolith had shared memory. The new
+Microservices have Network Latency. To send a User Object from Service A to Service B takes 10ms. In memory, it took
+0.0001ms. That is a substantial difference, and nobody mentioned it in the planning meeting.
 
 **QA Challenge**: Validate that the performance gain outweighs the network overhead.
 
@@ -47,7 +49,8 @@ When you split a monolith, you introduce:
 2. **Network IO**: TCP handshakes, TLS termination.
 3. **Distributed Tracing overhead**.
 
-QA must measure this "Tax". If a request now takes 200ms instead of 50ms, the migration is a failure, even if the Go code is "fast". Fast code in a slow architecture is still slow.
+QA must measure this "Tax". If a request now takes 200ms instead of 50ms, the migration is a failure, even if the Go
+code is "fast". Fast code in a slow architecture is still slow.
 
 ## Shadow Traffic
 
@@ -120,13 +123,16 @@ app.listen(8080, () => console.log('Shadow Proxy running on 8080'));
 
 Migrations are risky. Shadowing reduces risk to nearly zero.
 
-It allows you to test the new system with **Real Production Traffic** without affecting real users. If the New Service crashes, nobody notices. That is the dream.
+It allows you to test the new system with **Real Production Traffic** without affecting real users. If the New Service
+crashes, nobody notices. That is the dream.
 
 ## Key Takeaways
 
-- **Idempotency matters enormously**: Be careful shadowing `POST` requests. You do not want to charge the user's credit card twice!
+- **Idempotency matters enormously**: Be careful shadowing `POST` requests. You do not want to charge the user's credit
+  card twice!
 - **Noise increases costs**: Shadowing doubles your log volume. Watch your Datadog bill.
-- **Baseline before you start**: Establish a p99 baseline BEFORE you start coding. "The Monolith handles 1000 RPS at 200ms". Beat it.
+- **Baseline before you start**: Establish a p99 baseline BEFORE you start coding. "The Monolith handles 1000 RPS at
+  200ms". Beat it.
 
 ## Next Steps
 

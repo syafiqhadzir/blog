@@ -25,9 +25,11 @@ tags:
 
 FinOps (Financial Operations) is usually the job of someone in a suit who yells about the AWS bill.
 
-But QA is often the biggest spender. We spin up 50 environments, run 10,000 automated tests, and store terabytes of screenshots that nobody looks at.
+But QA is often the biggest spender. We spin up 50 environments, run 10,000 automated tests, and store terabytes of
+screenshots that nobody looks at.
 
-If quality is "value to some person", and that person is the CFO, then saving £50k a month is a massive quality improvement.
+If quality is "value to some person", and that person is the CFO, then saving £50k a month is a massive quality
+improvement.
 
 ## TL;DR
 
@@ -37,7 +39,8 @@ If quality is "value to some person", and that person is the CFO, then saving £
 
 ## The "Zombie" Environment Effect
 
-I once found a "Load Test" cluster that had been running for 8 months. The load test finished in February. It was October.
+I once found a "Load Test" cluster that had been running for 8 months. The load test finished in February. It was
+October.
 
 That single cluster cost more than my salary.
 
@@ -49,7 +52,8 @@ AWS Spot Instances are 90% cheaper than On-Demand. But AWS can take them back wi
 
 Perfect.
 
-Your test automation *should* be robust enough to handle a node disappearing. If your tests fail because one node died, your tests are flaky.
+Your test automation *should* be robust enough to handle a node disappearing. If your tests fail because one node died,
+your tests are flaky.
 
 Use Spot for your Selenium Grid or Jmeter workers.
 
@@ -94,10 +98,12 @@ Optimising this spend proves that QA understands the *business*, not just the *c
 
 - **Tagging is mandatory**: If it does not have an `Owner` tag, delete it. No mercy.
 - **Retention needs limits**: Do you really need to keep Jenkins artefacts for 3 years? 30 days is fine.
-- **Serverless scales to zero**: For occasional tests, Lambda is cheaper than an EC2 instance that sleeps 90% of the time.
+- **Serverless scales to zero**: For occasional tests, Lambda is cheaper than an EC2 instance that sleeps 90% of the
+  time.
 
 ## Next Steps
 
-- **Dashboard**: Create a "Cost per Build" metric. If a build costs £50, devs will think twice before committing `console.log("hello")`.
+- **Dashboard**: Create a "Cost per Build" metric. If a build costs £50, devs will think twice before committing
+  `console.log("hello")`.
 - **Policy**: Auto-nuke any branch environment that has not received a commit in 48 hours.
 - **Celebrate**: When you save the company money, put it in your performance review.

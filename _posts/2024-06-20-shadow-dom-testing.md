@@ -26,21 +26,24 @@ tags:
 
 Web Components are cool. They let you hide your shame (and your CSS) inside a Shadow Root. The Shadow DOM is a fortress.
 
-Selenium tries to get in, but the drawbridge is up. QA's job is to be the ninja that scales the walls and verifies that the `<span>` inside really is red.
+Selenium tries to get in, but the drawbridge is up. QA's job is to be the ninja that scales the walls and verifies that
+the `<span>` inside really is red.
 
 If you are testing Salesforce LWC or Polymer apps, this is your daily life.
 
 ## TL;DR
 
 - **Selection differs**: Regular `document.querySelector` returns `null` for shadow elements. You need special tools.
-- **Events are retargeted**: Events inside Shadow DOM are "retargeted". A click on a button inside a component looks like a click on the component itself.
+- **Events are retargeted**: Events inside Shadow DOM are "retargeted". A click on a button inside a component looks
+  like a click on the component itself.
 - **Styling is encapsulated**: Your global `bootstrap.css` has no power here.
 
 ## The "Encapsulation" Wall
 
 Developers love Shadow DOM because "Global CSS is hard". QA hates Shadow DOM because "Global Automation is hard".
 
-If you try to find `#submit-btn` and it lives in `<login-form>`, your test fails. Standard libraries are slowly catching up, but many legacy tools still hit the wall.
+If you try to find `#submit-btn` and it lives in `<login-form>`, your test fails. Standard libraries are slowly catching
+up, but many legacy tools still hit the wall.
 
 If you are using Cypress, you need to enable `includeShadowDom: true` in your config.
 
@@ -48,9 +51,11 @@ If you are using Cypress, you need to enable `includeShadowDom: true` in your co
 
 The only thing that crosses the Shadow boundary is CSS Variables (`--main-color`).
 
-**QA Scenario**: The Designer changes `--error-color` to `pink` (designers are wild). Does the Web Component pick it up? Or did the developer hardcode `#ff0000` inside the component like a savage?
+**QA Scenario**: The Designer changes `--error-color` to `pink` (designers are wild). Does the Web Component pick it up?
+Or did the developer hardcode `#ff0000` inside the component like a savage?
 
-Automated Visual Regression testing (BackstopJS, Percy) is essential here because functional tests will not catch the colour mismatch.
+Automated Visual Regression testing (BackstopJS, Percy) is essential here because functional tests will not catch the
+colour mismatch.
 
 ## Code Snippet: Piercing the Shadow Root
 
@@ -92,13 +97,17 @@ await button.click();
 
 The Shadow DOM gives developers peace of mind. It gives QA engineers nightmares.
 
-But modern tools have turned those nightmares into mild inconveniences. Use them. If your automation engineer proposes writing a custom `openShadowRoot()` helper function, sack them and switch to Playwright.
+But modern tools have turned those nightmares into mild inconveniences. Use them. If your automation engineer proposes
+writing a custom `openShadowRoot()` helper function, sack them and switch to Playwright.
 
 ## Key Takeaways
 
-- **Closed Mode blocks access**: If a developer uses `mode: 'closed'`, you cannot access the shadow root from JS. Tell them to stop being paranoid. There is no valid use case for this in internal apps.
-- **Slots are tricky**: Testing content injected into `<slot>` is tricky. It renders inside, but logically lives outside (Light DOM). Know the difference.
-- **Forms need ElementInternals**: Form inputs inside Shadow DOM do not participate in the parent `<form>` submission automatically unless the dev implements `ElementInternals`. Verify the data actually submits.
+- **Closed Mode blocks access**: If a developer uses `mode: 'closed'`, you cannot access the shadow root from JS. Tell
+  them to stop being paranoid. There is no valid use case for this in internal apps.
+- **Slots are tricky**: Testing content injected into `<slot>` is tricky. It renders inside, but logically lives outside
+  (Light DOM). Know the difference.
+- **Forms need ElementInternals**: Form inputs inside Shadow DOM do not participate in the parent `<form>` submission
+  automatically unless the dev implements `ElementInternals`. Verify the data actually submits.
 
 ## Next Steps
 

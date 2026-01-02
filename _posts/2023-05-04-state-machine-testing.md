@@ -24,11 +24,14 @@ tags:
 
 ## Introduction
 
-Most application code is "Boolean Spaghetti". Flags like `isLoading`, `isError`, `isSuccess`, and `hasUserClickedThatButton` are scattered everywhere.
+Most application code is "Boolean Spaghetti". Flags like `isLoading`, `isError`, `isSuccess`, and
+`hasUserClickedThatButton` are scattered everywhere.
 
-Before you know it, your app is in a state where `isLoading` is true, but `isError` is also true, and the user is somehow logged in and logged out simultaneously.
+Before you know it, your app is in a state where `isLoading` is true, but `isError` is also true, and the user is
+somehow logged in and logged out simultaneously.
 
-**State Machines** (finite state automata) solve this by defining strict rules. Testing them is a joy because you do not test "scenarios" (guessing); you test the *model* itself (maths).
+**State Machines** (finite state automata) solve this by defining strict rules. Testing them is a joy because you do not
+test "scenarios" (guessing); you test the *model* itself (maths).
 
 ## TL;DR
 
@@ -43,7 +46,9 @@ In traditional testing, you write steps: "Click A, then B, expect C."
 
 In **Model-Based Testing**, you say: "Here are all the paths. Computer, please explore them all."
 
-This creates a graph of your application. If there is a path where a user can bypass payment and go straight to "Shipping", the state machine test will find it. Your manual test plan (which assumes users behave logically) will miss it every time.
+This creates a graph of your application. If there is a path where a user can bypass payment and go straight to
+"Shipping", the state machine test will find it. Your manual test plan (which assumes users behave logically) will miss
+it every time.
 
 ## State Machines vs Boolean Flags
 
@@ -53,11 +58,13 @@ Boolean flags are independent.
 - `isError` (True/False)
 - `hasData` (True/False)
 
-That is 2^3 = 8 possible states. But only 3 are valid (Loading, Error, content). The other 5 are bugs waiting to happen (e.g., Loading AND Error). State Machines make those 5 states impossible to represent.
+That is 2^3 = 8 possible states. But only 3 are valid (Loading, Error, content). The other 5 are bugs waiting to happen
+(e.g., Loading AND Error). State Machines make those 5 states impossible to represent.
 
 ## Code Snippet: A Predictable Machine
 
-Here is a simple traffic light machine. We test that it adheres to the correct transitions (Red -> Green -> Yellow -> Red).
+Here is a simple traffic light machine. We test that it adheres to the correct transitions (Red -> Green -> Yellow ->
+Red).
 
 ```javascript
 /* 
@@ -107,11 +114,13 @@ describe('Traffic Light Machine', () => {
 });
 ```
 
-This is simple, but imagine this logic handling a checkout flow with 50 inputs. The machine ensures you cannot reach `CONFIRMED` without passing through `PAYMENT_APPROVED`.
+This is simple, but imagine this logic handling a checkout flow with 50 inputs. The machine ensures you cannot reach
+`CONFIRMED` without passing through `PAYMENT_APPROVED`.
 
 ## Summary
 
-Formalising your application state makes it easier to test and harder to break. It turns "spaghetti code" into a predictable, testable map (a directed graph) of user behaviour.
+Formalising your application state makes it easier to test and harder to break. It turns "spaghetti code" into a
+predictable, testable map (a directed graph) of user behaviour.
 
 If you can draw it, you can test it. If you cannot draw it, you do not understand it.
 
@@ -123,6 +132,7 @@ If you can draw it, you can test it. If you cannot draw it, you do not understan
 
 ## Next Steps
 
-- **Refactor**: Take one hairy boolean-heavy component (`if (!loading && !error && data)`) and rewrite it as a switch statement.
+- **Refactor**: Take one hairy boolean-heavy component (`if (!loading && !error && data)`) and rewrite it as a switch
+  statement.
 - **Learn**: Check out `XState` docs.
 - **Draw**: Whiteboard your login flow. You will find edge cases immediately.

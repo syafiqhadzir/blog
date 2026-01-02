@@ -26,14 +26,17 @@ tags:
 
 Most QA engineers test like... QA engineers. They know where the bugs are. They click the buttons correctly.
 
-Real users are agents of chaos. Grandma double-clicks on everything. Teenagers spam the refresh button when the page loads too slowly.
+Real users are agents of chaos. Grandma double-clicks on everything. Teenagers spam the refresh button when the page
+loads too slowly.
 
 You need to stop being you, and start being them.
 
 ## TL;DR
 
-- **Roleplay enables empathy**: Adopt persona constraints (e.g., "I have 200ms reaction time" or "I am trying to steal data").
-- **Data diversity matters**: Test with massive accounts ("The Power User" with 50,000 files) and empty accounts ("The Newbie").
+- **Roleplay enables empathy**: Adopt persona constraints (e.g., "I have 200ms reaction time" or "I am trying to steal
+  data").
+- **Data diversity matters**: Test with massive accounts ("The Power User" with 50,000 files) and empty accounts ("The
+  Newbie").
 - **Accessibility reveals gaps**: Test with the monitor turned off (Screen Reader only).
 
 ## Meet "Senior Sarah" and "Hacker Harry"
@@ -115,10 +118,12 @@ A confused, impatient, clumsy human. Love them. Protect them.
 
 - **Zoom breaks layouts**: Test your app at 150% browser zoom. Does the nav bar explode?
 - **Touch differs from mouse**: Use Chrome DevTools "Touch Simulation". Hover states (`:hover`) do not exist on phones.
-- **Errors need human language**: Are your error messages helpful? "Error 500" scares Sarah. "We couldn't save that, try again" is better.
+- **Errors need human language**: Are your error messages helpful? "Error 500" scares Sarah. "We couldn't save that, try
+  again" is better.
 
 ## Next Steps
 
-- **Tool**: Create **Test Data Factories** that generate users with specific attributes (e.g., `create_user(:premium, :banned)`).
+- **Tool**: Create **Test Data Factories** that generate users with specific attributes (e.g., `create_user(:premium,
+  :banned)`).
 - **Learn**: Read about **Inclusive Design Principles**.
 - **Audit**: Watch a recording of a real user session (FullStory/LogRocket). It will humble you.

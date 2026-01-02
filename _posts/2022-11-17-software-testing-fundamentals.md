@@ -24,26 +24,32 @@ tags:
 
 ## Introduction
 
-Software testing is often treated like flossing: everyone says they do it, but most people only do it furiously right before the dentist (or the Release Manager) inspects their work.
+Software testing is often treated like flossing: everyone says they do it, but most people only do it furiously right
+before the dentist (or the Release Manager) inspects their work.
 
-But testing is not just a chore. It is the art of strategic pessimism. To succeed, you must accept one fundamental truth: Developers are optimists. They believe `2 + 2 = 4`. We are the realists who ask, "What if I add a banana to 2?"
+But testing is not just a chore. It is the art of strategic pessimism. To succeed, you must accept one fundamental
+truth: Developers are optimists. They believe `2 + 2 = 4`. We are the realists who ask, "What if I add a banana to 2?"
 
 ## TL;DR
 
 - **Trust No One**: Every line of code is potentially a crime scene.
 - **Defect Definition**: If it annoys the user, it is a bug. Even if "it works as designed."
-- **Severity != Priority**: A server crash (High Severity) might be less important than a typo on the CEO's name (High Priority).
+- **Severity != Priority**: A server crash (High Severity) might be less important than a typo on the CEO's name (High
+  Priority).
 - **Context is King**: A bug in a pacemaker is different from a bug in a cat meme generator.
 
 ## Guilty Until Proven Innocent
 
 The first rule of QA Club: **Every line of code is guilty.**
 
-It assumes that every software application has defects embedded in it, waiting to strike like a raccoon in a bin. Developers are blinded by the "Happy Path". They test that the login works with correct credentials. We test what happens if you paste the entire script of *Shrek* into the password field.
+It assumes that every software application has defects embedded in it, waiting to strike like a raccoon in a bin.
+Developers are blinded by the "Happy Path". They test that the login works with correct credentials. We test what
+happens if you paste the entire script of *Shrek* into the password field.
 
 ## Severity vs Priority: The Cage Match
 
-Understanding the difference between Severity and Priority is what separates the Lead QA from the person who just files everything as "Critical".
+Understanding the difference between Severity and Priority is what separates the Lead QA from the person who just files
+everything as "Critical".
 
 - **Severity** (Technical): How much damage does the bug do?
   - *The server exploded.* -> **Critical Severity**.
@@ -58,7 +64,8 @@ You can have a **Low Severity / High Priority** bug (The CEO's name is spelled w
 
 ## Code Snippet: Tagging Priorities
 
-We do not just prioritise bugs; we prioritise *tests*. You cannot run 5,000 E2E tests on every commit unless you have infinite money. Use tags.
+We do not just prioritise bugs; we prioritise *tests*. You cannot run 5,000 E2E tests on every commit unless you have
+infinite money. Use tags.
 
 Here is how you tag tests in Playwright to separate the "Must Fix" from the "Nice to Fix":
 
@@ -84,7 +91,9 @@ When the release is hot, run `npx playwright test --grep @critical`. When you ha
 
 ## Summary
 
-Software testing is not just about "breaking things"; it is about verifying reality. By understanding the difference between Severity and Priority, and by embracing the inherent guilt of all code, you become not just a tester, but a guardian of sanity.
+Software testing is not just about "breaking things"; it is about verifying reality. By understanding the difference
+between Severity and Priority, and by embracing the inherent guilt of all code, you become not just a tester, but a
+guardian of sanity.
 
 ## Key Takeaways
 

@@ -28,13 +28,16 @@ In your house, if you use your hairdryer and toaster at the same time, the light
 
 This is annoying, but it prevents your house from burning down.
 
-In software, we often let the house burn down. One slow microservice can cause a pile-up of requests, consuming all database connections, and crashing the entire platform. **Circuit Breakers** (like Resilience4j or Hystrix) are designed to stop this. But do they actually work?
+In software, we often let the house burn down. One slow microservice can cause a pile-up of requests, consuming all
+database connections, and crashing the entire platform. **Circuit Breakers** (like Resilience4j or Hystrix) are designed
+to stop this. But do they actually work?
 
 ## TL;DR
 
 - **Closed is normal**: Requests go through.
 - **Open is broken**: Requests fail fast (no wait time).
-- **Half-Open is tentative**: "Are you still angry, Service B?" (One request is let through; if it works, we close the circuit).
+- **Half-Open is tentative**: "Are you still angry, Service B?" (One request is let through; if it works, we close the
+  circuit).
 
 ## The Domino Effect of Microservices
 
@@ -46,11 +49,13 @@ Service C, which calls Service A, now dies.
 
 Congratulations, you have achieved **Cascading Failure**.
 
-A Circuit Breaker detects that Service B is sick, opens the circuit, and immediately returns "Sorry, try again later" to Service A, saving its resources.
+A Circuit Breaker detects that Service B is sick, opens the circuit, and immediately returns "Sorry, try again later" to
+Service A, saving its resources.
 
 ## Testing the "Open" State (The Fire Drill)
 
-You cannot test a fire alarm without a fire (or a drill). To test a circuit breaker, you must effectively murder the dependency.
+You cannot test a fire alarm without a fire (or a drill). To test a circuit breaker, you must effectively murder the
+dependency.
 
 1. **Latency Attack**: Use Toxiproxy to add 10 seconds of delay to the DB connection.
 2. **Error Injection**: Configure the dependency to return 500 errors continuously.
@@ -107,15 +112,18 @@ runTest();
 
 ## Summary
 
-A circuit breaker that never opens is just expensive middleware. A circuit breaker that opens too early is a denial of service.
+A circuit breaker that never opens is just expensive middleware. A circuit breaker that opens too early is a denial of
+service.
 
 Testing the thresholds is critical. You want the system to be resilient, not temperamental.
 
 ## Key Takeaways
 
 - **Fail Fast saves resources**: The user prefers an instant error over a 60-second loading spinner.
-- **Fallback Gracefully hides failures**: If the Recommendations API is down, show "Popular Products" (cached) instead of an empty white box.
-- **Self-Healing needs verification**: Verify the `Half-Open` state. The system should recover automatically when the dependency recovers.
+- **Fallback Gracefully hides failures**: If the Recommendations API is down, show "Popular Products" (cached) instead
+  of an empty white box.
+- **Self-Healing needs verification**: Verify the `Half-Open` state. The system should recover automatically when the
+  dependency recovers.
 
 ## Next Steps
 

@@ -23,9 +23,11 @@ tags:
 
 ## Introduction
 
-Humans are terrible at the edges. We are great at "average" and "normal", but ask us to define exactly when a "child" becomes an "adult" (18? 21? When they pay their own taxes?) and things get fuzzy.
+Humans are terrible at the edges. We are great at "average" and "normal", but ask us to define exactly when a "child"
+becomes an "adult" (18? 21? When they pay their own taxes?) and things get fuzzy.
 
-Software is the same. It loves the happy path. It crashes spectacularly when you give it a zero, a negative number, or a string that is exactly 256 characters long.
+Software is the same. It loves the happy path. It crashes spectacularly when you give it a zero, a negative number, or a
+string that is exactly 256 characters long.
 
 Enter **Boundary Value Analysis (BVA)**.
 
@@ -38,7 +40,8 @@ Enter **Boundary Value Analysis (BVA)**.
 
 ## Why the Edge Matters
 
-Developers often write loop conditions like `i < 10` when they meant `i <= 10`. That single character difference is the famous "Off-By-One" error. BVA is the systematic process of hunting these errors.
+Developers often write loop conditions like `i < 10` when they meant `i <= 10`. That single character difference is the
+famous "Off-By-One" error. BVA is the systematic process of hunting these errors.
 
 If a field accepts values from 1 to 100:
 
@@ -54,11 +57,13 @@ BVA is almost always used with **Equivalence Partitioning (EP)**.
 - **EP**: Divides data into groups (e.g., "Valid Ages" and "Invalid Ages").
 - **BVA**: Picks the specific values from those groups to test.
 
-Think of it like checking a fence. You do not shake every single panel (Testing All Values); you just check the posts at the corners (Boundary Values). If the corners hold, the fence holds.
+Think of it like checking a fence. You do not shake every single panel (Testing All Values); you just check the posts at
+the corners (Boundary Values). If the corners hold, the fence holds.
 
 ## Code Snippet: Parameterised Tests
 
-Here is how you write a BVA test in Jest using `test.each`. We are testing a function `isValidAge(age)` where the valid range is 18 to 65.
+Here is how you write a BVA test in Jest using `test.each`. We are testing a function `isValidAge(age)` where the valid
+range is 18 to 65.
 
 ```javascript
 const isValidAge = (age) => age >= 18 && age <= 65;
@@ -82,7 +87,8 @@ This simple table covers 90% of the possible logic errors in that function. It i
 
 ## Summary
 
-Precision at the edges defines the robustness of the system. By systematically hitting the boundaries, we ensure that the logic holds firm where it is most likely to snap.
+Precision at the edges defines the robustness of the system. By systematically hitting the boundaries, we ensure that
+the logic holds firm where it is most likely to snap.
 
 It is living on the edge, quite literally.
 

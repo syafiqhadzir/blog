@@ -27,9 +27,11 @@ tags:
 
 AI models are like toddlers: they repeat whatever they hear.
 
-If you train your hiring AI on 10 years of CVs from a male-dominated industry, guess who it is going to hire? (Hint: It is not users named "Alice").
+If you train your hiring AI on 10 years of CVs from a male-dominated industry, guess who it is going to hire? (Hint: It
+is not users named "Alice").
 
-Bias testing is not just "Woke QA"; it is about ensuring your product actually works for 100% of your users, not just the 50% who look like the developers.
+Bias testing is not just "Woke QA"; it is about ensuring your product actually works for 100% of your users, not just
+the 50% who look like the developers.
 
 If your face ID does not recognise people with dark skin, that is not a "glitch". That is a P0 defect.
 
@@ -41,15 +43,18 @@ If your face ID does not recognise people with dark skin, that is not a "glitch"
 
 ## The "Dave" Problem
 
-I call this the "Dave" problem. If your dataset features 10,000 Daves and only 5 Sarahs, the model will learn that "Dave" is a strong feature for success.
+I call this the "Dave" problem. If your dataset features 10,000 Daves and only 5 Sarahs, the model will learn that
+"Dave" is a strong feature for success.
 
-QA needs to audit the **Training Data** before a single line of code is written. Ask the Data Scientists: "What are the demographics of this dataset?"
+QA needs to audit the **Training Data** before a single line of code is written. Ask the Data Scientists: "What are the
+demographics of this dataset?"
 
 If they stare at their shoes and mumble, you have a problem.
 
 ## Testing for Fairness (Demographic Parity)
 
-We use a metric called **Disparate Impact Ratio**. If the selection rate for a protected group is less than 80% of the highest selection rate, you generally have a bias problem (using the "four-fifths rule").
+We use a metric called **Disparate Impact Ratio**. If the selection rate for a protected group is less than 80% of the
+highest selection rate, you generally have a bias problem (using the "four-fifths rule").
 
 ## Code Snippet: Measuring Disparate Impact
 
@@ -89,16 +94,19 @@ check_disparate_impact(0.50, 0.30)
 
 You would not ship a car that only turns left. Do not ship an AI that only works for half the population.
 
-Bias bugs are harder to fix than NullPointerExceptions because they are baked into the maths. Catch them early, or be prepared for a PR nightmare.
+Bias bugs are harder to fix than NullPointerExceptions because they are baked into the maths. Catch them early, or be
+prepared for a PR nightmare.
 
 ## Key Takeaways
 
 - **Audit Data first**: The bug is usually in the CSV, not the Python file.
 - **Slice Your Metrics**: Do not look at global accuracy. Look at "Accuracy for Women" vs "Accuracy for Men".
-- **Human in the Loop**: AI should aid decisions, not make them autonomously (especially for life-changing events like loans).
+- **Human in the Loop**: AI should aid decisions, not make them autonomously (especially for life-changing events like
+  loans).
 
 ## Next Steps
 
 - **Tooling**: Look into **IBM AI Fairness 360** (AIF360).
 - **Process**: Add a "Bias Review" column to your Jira board.
-- **Education**: Teach your team that "Blind" algorithms are often the most biased (because they find proxies for race/gender like Postcode).
+- **Education**: Teach your team that "Blind" algorithms are often the most biased (because they find proxies for
+  race/gender like Postcode).

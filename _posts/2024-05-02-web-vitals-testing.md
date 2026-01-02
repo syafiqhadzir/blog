@@ -24,9 +24,11 @@ tags:
 
 ## Introduction
 
-Google's Core Web Vitals (CWV) are not just "nice to have". If you fail them, Google buries your site on Page 10 of the search results, right next to the conspiracy theories and Myspace profiles.
+Google's Core Web Vitals (CWV) are not just "nice to have". If you fail them, Google buries your site on Page 10 of the
+search results, right next to the conspiracy theories and Myspace profiles.
 
-QA determines if a new feature is "functional". CWV determines if it is "usable". A feature that works but takes 10 seconds to load is not a feature; it is a bug.
+QA determines if a new feature is "functional". CWV determines if it is "usable". A feature that works but takes 10
+seconds to load is not a feature; it is a bug.
 
 ## TL;DR
 
@@ -42,7 +44,8 @@ QA's job is to ask: "Does this 5MB PNG file spark joy, or just latency?"
 
 Test on **Slow 3G**. If you cannot brew a coffee before it loads, it is too slow.
 
-**Optimisation tip**: If the hero image is lazy-loaded, you are doing it wrong. Proper LCP images should be eager-loaded.
+**Optimisation tip**: If the hero image is lazy-loaded, you are doing it wrong. Proper LCP images should be eager-
+loaded.
 
 ## CLS: The "Stop Moving the Button" Metric
 
@@ -50,7 +53,8 @@ You go to click "Cancel". An ad loads. The layout shifts down. You click "Buy No
 
 That is CLS. It is the most annoying pattern on the web.
 
-**QA Scenario**: Verify that images have explicit `width` and `height` attributes to reserve space. If you inject a banner dynamically, make sure you reserve the pixels for it first.
+**QA Scenario**: Verify that images have explicit `width` and `height` attributes to reserve space. If you inject a
+banner dynamically, make sure you reserve the pixels for it first.
 
 ## Code Snippet: Measuring Vitals in QA
 
@@ -92,7 +96,8 @@ QA is the guardian of the Vitals. If you let a regression slip, traffic drops, r
 
 - **Fonts cause layout shifts**: Web fonts cause layout shifts (FOUT/FOIT). Preload them or use `font-display: swap`.
 - **Third-Party Scripts slow LCP**: Chat widgets and tracking pixels are the #1 cause of slow LCP.
-- **SPA Navigation needs monitoring**: Vitals are tricky in Single Page Apps (Soft Navigations). Ensure you monitor route changes, not just the initial load.
+- **SPA Navigation needs monitoring**: Vitals are tricky in Single Page Apps (Soft Navigations). Ensure you monitor
+  route changes, not just the initial load.
 
 ## Next Steps
 

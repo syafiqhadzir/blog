@@ -23,11 +23,13 @@ tags:
 
 ## Introduction
 
-So, Production is down. The CTO is pacing, the customers are tweeting, and the coffee machine is broken. Eventually, you fix the bug (it was a missing semicolon, was it not?).
+So, Production is down. The CTO is pacing, the customers are tweeting, and the coffee machine is broken. Eventually, you
+fix the bug (it was a missing semicolon, was it not?).
 
 Now comes the most important part: The **Post-Mortem**.
 
-Unfortunately, many companies treat this as a "Who do we fire?" meeting. This is wrong. A good QA turns this meeting into a "How do we make sure this never happens again?" party.
+Unfortunately, many companies treat this as a "Who do we fire?" meeting. This is wrong. A good QA turns this meeting
+into a "How do we make sure this never happens again?" party.
 
 ## TL;DR
 
@@ -37,7 +39,8 @@ Unfortunately, many companies treat this as a "Who do we fire?" meeting. This is
 
 ## The Blame Game (And How to Stop It)
 
-Human error is inevitable. If your system collapses because Dave from Accounting clicked the wrong button, the problem is not Dave; the problem is that you gave Dave a button that destroys the system.
+Human error is inevitable. If your system collapses because Dave from Accounting clicked the wrong button, the problem
+is not Dave; the problem is that you gave Dave a button that destroys the system.
 
 When leading a post-mortem, use **Blameless Language**:
 
@@ -62,7 +65,8 @@ To find the root cause, you must ask "Why?" until it becomes annoying.
 
 ## Practical Artefact: The "Mea Culpa" Template
 
-Do not start from scratch. Copy this Markdown template into your issue tracker (Jira/GitHub Issues) for every Sev-1 incident.
+Do not start from scratch. Copy this Markdown template into your issue tracker (Jira/GitHub Issues) for every Sev-1
+incident.
 
 ```markdown
 # 💀 Incident Post-Mortem: [Incident Name]
@@ -96,7 +100,8 @@ Do not start from scratch. Copy this Markdown template into your issue tracker (
 
 A post-mortem without action items is just a group therapy session.
 
-The value of an incident is the lesson it teaches. If you pay the tuition (downtime), make sure you learn the lesson (process improvement).
+The value of an incident is the lesson it teaches. If you pay the tuition (downtime), make sure you learn the lesson
+(process improvement).
 
 ## Key Takeaways
 

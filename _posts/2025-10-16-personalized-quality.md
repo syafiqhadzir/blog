@@ -23,21 +23,28 @@ tags:
 
 ## Introduction
 
-QA traditionally defines a "Golden Path". "The user logs in, clicks Buy, and sees the Thank You page." Simple. Clean. Entirely fictional.
+QA traditionally defines a "Golden Path". "The user logs in, clicks Buy, and sees the Thank You page." Simple. Clean.
+Entirely fictional.
 
-What if the user is seventy years old, colour-blind, on a 3G connection in a tunnel? What if the user is a sixteen-year-old eSports professional on fibre in Seoul?
+What if the user is seventy years old, colour-blind, on a 3G connection in a tunnel? What if the user is a sixteen-year-
+old eSports professional on fibre in Seoul?
 
-**Personalised Quality** means the app adapts itself. The "Golden Path" is now dynamic. "One size fits all" is a lie we tell ourselves to ship faster.
+**Personalised Quality** means the app adapts itself. The "Golden Path" is now dynamic. "One size fits all" is a lie we
+tell ourselves to ship faster.
 
 ## TL;DR
 
-- **Adaptive bitrate applies to features**: Like Netflix quality adjustment. If the network drops, the quality drops, but the video keeps playing. Apply this to *software features*. Disable animations if the battery is low.
-- **Preference testing catches the flashbang**: If the user selects "Dark Mode", do they ever see a white flash? (The "Flashbang" bug. It burns.)
-- **Accessibility is usability**: It is not a compliance tick-box. Try using your app with your eyes closed (Screen Reader). It is humbling.
+- **Adaptive bitrate applies to features**: Like Netflix quality adjustment. If the network drops, the quality drops,
+  but the video keeps playing. Apply this to *software features*. Disable animations if the battery is low.
+- **Preference testing catches the flashbang**: If the user selects "Dark Mode", do they ever see a white flash? (The
+  "Flashbang" bug. It burns.)
+- **Accessibility is usability**: It is not a compliance tick-box. Try using your app with your eyes closed (Screen
+  Reader). It is humbling.
 
 ## The Death of the "Average User"
 
-Stop testing on an iPhone 15 Pro on corporate Wi-Fi. That is not the real world. That is the fantasy world where developers live.
+Stop testing on an iPhone 15 Pro on corporate Wi-Fi. That is not the real world. That is the fantasy world where
+developers live.
 
 Test on:
 
@@ -47,9 +54,11 @@ Test on:
 
 ## Adaptive UI Testing
 
-If the user has **Tremors**, the UI should increase button hit areas. If the user has **ADHD**, the UI should remove distracting animations.
+If the user has **Tremors**, the UI should increase button hit areas. If the user has **ADHD**, the UI should remove
+distracting animations.
 
-**QA Strategy**: Inject "User Context" into your E2E tests. `test('should disable animations for prefers-reduced-motion')`.
+**QA Strategy**: Inject "User Context" into your E2E tests. `test('should disable animations for prefers-reduced-
+motion')`.
 
 ## Code Snippet: Dynamic Feature Switching
 
@@ -91,15 +100,20 @@ describe('Adaptive Performance', () => {
 
 ## Summary
 
-Quality is subjective. To the gamer, "Quality" is 144 FPS. To the journalist, "Quality" is text readability. To the business, "Quality" is conversion rate.
+Quality is subjective. To the gamer, "Quality" is 144 FPS. To the journalist, "Quality" is text readability. To the
+business, "Quality" is conversion rate.
 
-Your test suite must protect *all* these definitions. You are the diplomat between these tribes, and diplomacy is exhausting.
+Your test suite must protect *all* these definitions. You are the diplomat between these tribes, and diplomacy is
+exhausting.
 
 ## Key Takeaways
 
-- **Context-awareness saves data plans**: The app should know if it is running on a metered connection and stop auto-playing videos. If it does not, you are stealing the user's data allowance.
-- **User overrides prevent nannying**: Always allow the user to say "I know my battery is low, but I want High Quality anyway." Do not be a nanny.
-- **Telemetry beats guessing**: Do not guess. Measure. "How many users are on devices with less than 4GB RAM?" If it is 20%, you had better optimise for it.
+- **Context-awareness saves data plans**: The app should know if it is running on a metered connection and stop auto-
+  playing videos. If it does not, you are stealing the user's data allowance.
+- **User overrides prevent nannying**: Always allow the user to say "I know my battery is low, but I want High Quality
+  anyway." Do not be a nanny.
+- **Telemetry beats guessing**: Do not guess. Measure. "How many users are on devices with less than 4GB RAM?" If it is
+  20%, you had better optimise for it.
 
 ## Next Steps
 

@@ -28,7 +28,8 @@ Data Warehouses (Snowflake, BigQuery, Redshift) are where good data goes to reti
 
 Everyone loves building "The Pipeline". It sounds impressive. "We are streaming 4TB of data per second!"
 
-Cool. But if 2TB of that is `null` because a developer renamed a column from `userId` to `user_id`, your CEO's dashboard is going to look very interesting (and by interesting, I mean incorrect).
+Cool. But if 2TB of that is `null` because a developer renamed a column from `userId` to `user_id`, your CEO's dashboard
+is going to look very interesting (and by interesting, I mean incorrect).
 
 QA in the data world is not about clicking buttons; it is about statistically validating reality.
 
@@ -40,7 +41,8 @@ QA in the data world is not about clicking buttons; it is about statistically va
 
 ## The "Garbage In, Garbage Out" Paradox
 
-Software engineers write unit tests for logic: `if (x) return y`. Data engineers rarely write tests for *data*. They assume the upstream API will not change. This is a fatal optimism.
+Software engineers write unit tests for logic: `if (x) return y`. Data engineers rarely write tests for *data*. They
+assume the upstream API will not change. This is a fatal optimism.
 
 When testing a specific Data Warehouse, you must shift your mindset:
 
@@ -50,15 +52,18 @@ When testing a specific Data Warehouse, you must shift your mindset:
 
 ## Tools of the Trade: dbt & Great Expectations
 
-If you represent your data transformations in SQL (which you should), **dbt** (data build tool) is the standard for testing.
+If you represent your data transformations in SQL (which you should), **dbt** (data build tool) is the standard for
+testing.
 
 It allows you to assert the state of your data *inside* the pipeline, rather than just checking the final dashboard.
 
-Alternatively, **Great Expectations** allows for Python-based validation suites that are more complex ("Column A must be greater than Column B 90% of the time").
+Alternatively, **Great Expectations** allows for Python-based validation suites that are more complex ("Column A must be
+greater than Column B 90% of the time").
 
 ## Code Snippet: Using dbt for Schema Tests
 
-Here is a simple `schema.yml` file for a dbt project. It enforces that `user_id` is unique and not null, and that `status` is one of a valid set.
+Here is a simple `schema.yml` file for a dbt project. It enforces that `user_id` is unique and not null, and that
+`status` is one of a valid set.
 
 ```yaml
 version: 2
@@ -81,11 +86,13 @@ models:
           - not_null
 ```
 
-If any row violates these rules during the build, dbt will fail the pipeline. This stops bad data from reaching the CEO's dashboard.
+If any row violates these rules during the build, dbt will fail the pipeline. This stops bad data from reaching the
+CEO's dashboard.
 
 ## Summary
 
-Data Quality is not a "nice to have". It is the only thing standing between your company and a lawsuit (or just really bad business advice).
+Data Quality is not a "nice to have". It is the only thing standing between your company and a lawsuit (or just really
+bad business advice).
 
 Treat data pipelines like production code. Test them. CI/CD them. And please, stop using `SELECT *`.
 

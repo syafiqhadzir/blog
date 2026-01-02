@@ -25,13 +25,16 @@ tags:
 
 In a "Zero-Code" world, Marketing Bob can build a CRM. HR Susan can build an onboarding app. This is terrifying.
 
-Marketing Bob does not know what SQL injection is. HR Susan does not know that storing passport numbers in a public Trello board is a GDPR violation waiting to happen. The democratisation of development is wonderful until someone democratises a security breach.
+Marketing Bob does not know what SQL injection is. HR Susan does not know that storing passport numbers in a public
+Trello board is a GDPR violation waiting to happen. The democratisation of development is wonderful until someone
+democratises a security breach.
 
 **QA Role**: You are no longer checking code. You are policing the platform.
 
 ## TL;DR
 
-- **Guardrails are essential**: The platform must prevent Bob from making catastrophic mistakes. If he can delete the database, the platform has failed.
+- **Guardrails are essential**: The platform must prevent Bob from making catastrophic mistakes. If he can delete the
+  database, the platform has failed.
 - **Shadow IT lurks everywhere**: Discovering "hidden apps" running on the corporate network is now part of the job.
 - **Governance requires automation**: Manual policy enforcement does not scale when everyone is a developer.
 
@@ -39,15 +42,20 @@ Marketing Bob does not know what SQL injection is. HR Susan does not know that s
 
 It is the democratisation of creation. It is also the democratisation of technical debt.
 
-A "No-Code" app is just code you cannot see. And code you cannot see is code you cannot patch. Somewhere in your organisation, there is a Zapier workflow held together with string and optimism that nobody remembers building.
+A "No-Code" app is just code you cannot see. And code you cannot see is code you cannot patch. Somewhere in your
+organisation, there is a Zapier workflow held together with string and optimism that nobody remembers building.
 
-**QA Strategy**: Shift right. If you cannot test the build (because there is no build), you must monitor the runtime. Anomaly detection is your new unit test.
+**QA Strategy**: Shift right. If you cannot test the build (because there is no build), you must monitor the runtime.
+Anomaly detection is your new unit test.
 
 ## Testing the Un-Testable
 
-How do you test a Zapier flow? You cannot spin up a local instance. It lives in the cloud, blissfully unaware of your concerns.
+How do you test a Zapier flow? You cannot spin up a local instance. It lives in the cloud, blissfully unaware of your
+concerns.
 
-You need **Synthetic Monitoring**. Create a "Test User" that mimics HR Susan and tries to break things. If the platform allows a loop that sends ten thousand emails in one minute, file a bug against the platform vendor. Then file a bug against whoever approved that workflow without reading it.
+You need **Synthetic Monitoring**. Create a "Test User" that mimics HR Susan and tries to break things. If the platform
+allows a loop that sends ten thousand emails in one minute, file a bug against the platform vendor. Then file a bug
+against whoever approved that workflow without reading it.
 
 ## Code Snippet: Shadow IT Scanner
 
@@ -86,13 +94,17 @@ scanNetworkTraffic([
 
 Zero-Code does not mean Zero-Bugs. It means "Bugs created by people who do not know they are creating bugs".
 
-The QA team evolves from "Gatekeepers" to "Educators". Teach Bob why he should not expose the customer list to the open internet. Do it gently. He means well; he just does not know what he does not know.
+The QA team evolves from "Gatekeepers" to "Educators". Teach Bob why he should not expose the customer list to the open
+internet. Do it gently. He means well; he just does not know what he does not know.
 
 ## Key Takeaways
 
-- **Vendor risk is your risk**: You are betting your business on the No-Code platform's uptime. SLA matters more than features.
-- **Data residency is a legal minefield**: Where does the No-Code app store data? If it is "US East" and you are in Germany, you have a compliance problem.
-- **Exit strategy is optional (until it isn't)**: If the No-Code startup goes bust, can you export your logic? Probably not.
+- **Vendor risk is your risk**: You are betting your business on the No-Code platform's uptime. SLA matters more than
+  features.
+- **Data residency is a legal minefield**: Where does the No-Code app store data? If it is "US East" and you are in
+  Germany, you have a compliance problem.
+- **Exit strategy is optional (until it isn't)**: If the No-Code startup goes bust, can you export your logic? Probably
+  not.
 
 ## Next Steps
 

@@ -26,7 +26,8 @@ tags:
 
 Internet of Things (IoT). It means your fridge has a Twitter account and your doorbell has an IP address.
 
-Testing IoT is unique because "Connectivity" is not just about HTTP 200 OK. It is about "Did the garage door actually open, or did the app just say it opened and invite burglars in?"
+Testing IoT is unique because "Connectivity" is not just about HTTP 200 OK. It is about "Did the garage door actually
+open, or did the app just say it opened and invite burglars in?"
 
 ## TL;DR
 
@@ -44,11 +45,13 @@ The app shows the light is "ON". But the light is "OFF" because the WiFi packet 
 2. Tweak the app UI (Toggle switch to ON).
 3. Observe if the app detects the device is unreachable ("Shadow Update Rejected").
 
-If the app cheerfully says "Light turned ON" whilst the device is dead, you have failed. The UI must reflect *reality*, not *intent*.
+If the app cheerfully says "Light turned ON" whilst the device is dead, you have failed. The UI must reflect *reality*,
+not *intent*.
 
 ## Firmware Updates: Russian Roulette
 
-Over-The-Air (OTA) updates are the most dangerous operation in IoT. If it fails, you do not just have a bug. You have a "Brick" (a very expensive paperweight).
+Over-The-Air (OTA) updates are the most dangerous operation in IoT. If it fails, you do not just have a bug. You have a
+"Brick" (a very expensive paperweight).
 
 ### QA Scenario: "The Power Cut"
 
@@ -59,7 +62,8 @@ Over-The-Air (OTA) updates are the most dangerous operation in IoT. If it fails,
 
 ## Code Snippet: Simulating IoT Telemetry with MQTT
 
-You cannot have 1,000 physical thermostats on your desk. But you can spawn 1,000 Python scripts that *pretend* to be thermostats.
+You cannot have 1,000 physical thermostats on your desk. But you can spawn 1,000 Python scripts that *pretend* to be
+thermostats.
 
 ```python
 import paho.mqtt.client as mqtt
@@ -102,18 +106,23 @@ except Exception as e:
 
 ## Summary
 
-IoT testing connects the digital world to the physical world. The stakes are higher. A bug in a web app is annoying. A bug in a smart lock leaves someone stranded in the rain.
+IoT testing connects the digital world to the physical world. The stakes are higher. A bug in a web app is annoying. A
+bug in a smart lock leaves someone stranded in the rain.
 
 Be paranoid. Test the hardware.
 
 ## Key Takeaways
 
-- **Keep-Alive prevents silent disconnection**: MQTT connections drop silently. Ensure you have a "Last Will and Testament" (LWT) message configured on the broker.
-- **Security requires changing defaults**: If your device uses default credentials (`admin:admin`), you are part of a botnet.
-- **Geofencing needs GPS simulation**: Does the heater turn on when I am 5 miles away? Simulating GPS locations is mandatory.
+- **Keep-Alive prevents silent disconnection**: MQTT connections drop silently. Ensure you have a "Last Will and
+  Testament" (LWT) message configured on the broker.
+- **Security requires changing defaults**: If your device uses default credentials (`admin:admin`), you are part of a
+  botnet.
+- **Geofencing needs GPS simulation**: Does the heater turn on when I am 5 miles away? Simulating GPS locations is
+  mandatory.
 
 ## Next Steps
 
 - **Tool**: Use **HiveMQ** public broker for testing MQTT logic if you do not have a dev environment yet.
-- **Learn**: Read the **AWS IoT Core** documentation (even if you do not use it, the concepts like Device Shadows are universal).
+- **Learn**: Read the **AWS IoT Core** documentation (even if you do not use it, the concepts like Device Shadows are
+  universal).
 - **Audit**: Check if your device leaks its WiFi credentials to the serial console log (`UART`).

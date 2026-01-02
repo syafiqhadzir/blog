@@ -24,17 +24,21 @@ tags:
 
 ## Introduction
 
-Training AI happens in the cloud (Nvidia H100s). Running AI (Inference) is moving to the Edge... literally to your browser.
+Training AI happens in the cloud (Nvidia H100s). Running AI (Inference) is moving to the Edge... literally to your
+browser.
 
-The Web Neural Network API (WebNN) allows JS to access the specialised AI chips (NPU) on your phone. This enables background blur, face detection, and noise cancellation *without* sending data to a server.
+The Web Neural Network API (WebNN) allows JS to access the specialised AI chips (NPU) on your phone. This enables
+background blur, face detection, and noise cancellation *without* sending data to a server.
 
 Privacy win? Yes. Battery loss? Also yes. If your website makes my phone hot enough to fry an egg, I am closing the tab.
 
 ## TL;DR
 
-- **Inference is what WebNN does**: Running the model to get a prediction. It optimises `matmul` (Matrix Multiplication).
+- **Inference is what WebNN does**: Running the model to get a prediction. It optimises `matmul` (Matrix
+  Multiplication).
 - **Ops vary by browser**: Mathematical operations (clamp, conv2d, matmul). Not all browsers support all Ops yet.
-- **Backend differences cause drift**: Testing against CPU vs GPU vs NPU backends. The results might differ slightly (Floating Point drift).
+- **Backend differences cause drift**: Testing against CPU vs GPU vs NPU backends. The results might differ slightly
+  (Floating Point drift).
 
 ## AI in the Browser (Shift Left... Far Left)
 
@@ -44,7 +48,8 @@ Why do this?
 2. **Latency**: Zero network lag. No "Loading..." spinner.
 3. **Cost**: You pay for the user's electricity, not AWS GPU hours (£££).
 
-**QA Challenge**: Every device has different hardware. It works on my Pixel 8 (Tensor Chip). Does it work on a 2015 Windows laptop with Intel Integrated Graphics? You need a "Device Farm" for testing.
+**QA Challenge**: Every device has different hardware. It works on my Pixel 8 (Tensor Chip). Does it work on a 2015
+Windows laptop with Intel Integrated Graphics? You need a "Device Farm" for testing.
 
 ## Hardware Acceleration (NPU/GPU)
 
@@ -54,11 +59,13 @@ WebNN tries to use the fastest hardware available.
 - **GPU**: Fast, High Power.
 - **CPU**: Slow, High Power. (Fallback).
 
-**QA Strategy**: Force different execution providers via flags. Does the result precision match? GPU might return `0.999999`. CPU might return `1.000001`. Is `Math.abs(diff) < epsilon`?
+**QA Strategy**: Force different execution providers via flags. Does the result precision match? GPU might return
+`0.999999`. CPU might return `1.000001`. Is `Math.abs(diff) < epsilon`?
 
 ## Code Snippet: Building a Graph
 
-Constructing a simple computation graph using the WebNN API. Note: This API is very low-level. You usually use a library like ONNX Runtime Web on top of it.
+Constructing a simple computation graph using the WebNN API. Note: This API is very low-level. You usually use a library
+like ONNX Runtime Web on top of it.
 
 ```javascript
 /*
@@ -105,12 +112,15 @@ test('should perform matrix multiplication via WebNN', async () => {
 
 WebNN optimises the web for the AI era. It turns the browser into a high-performance compute engine.
 
-QA must verify that we do not crash the video driver or overheat the phone. If the phone shuts down due to thermal throttling, that is a P0 bug.
+QA must verify that we do not crash the video driver or overheat the phone. If the phone shuts down due to thermal
+throttling, that is a P0 bug.
 
 ## Key Takeaways
 
-- **Fallbacks are essential**: If WebNN fails (no NPU), does it fall back to WebASM (WASM) or plain JS? It should. The app must not crash.
-- **Memory Leaks consume VRAM**: Tensors must be disposed (`tensor.destroy()`) or they crash the tab. Chrome Task Manager is your friend.
+- **Fallbacks are essential**: If WebNN fails (no NPU), does it fall back to WebASM (WASM) or plain JS? It should. The
+  app must not crash.
+- **Memory Leaks consume VRAM**: Tensors must be disposed (`tensor.destroy()`) or they crash the tab. Chrome Task
+  Manager is your friend.
 - **Model Formats need testing**: **ONNX** is the standard. Test importing ONNX models from HuggingFace.
 
 ## Next Steps

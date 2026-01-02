@@ -29,15 +29,18 @@ tags:
 "Bandwidth is infinite."
 "The junior dev won't delete the prod database."
 
-These are the [Fallacies of Distributed Computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing). Chaos Engineering is the practice of breaking these assumptions intentionally to see if your app cries or adapts.
+These are the [Fallacies of Distributed Computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing).
+Chaos Engineering is the practice of breaking these assumptions intentionally to see if your app cries or adapts.
 
 Chaos Mesh is the Kubernetes-native way to do it.
 
 ## TL;DR
 
 - **Start Small**: Do not kill the database on day 1. Kill a stateless frontend pod. Build confidence.
-- **Observability is mandatory**: If you cannot see the chaos (Metrics/Logs), do not run the chaos. You need to know *when* and *why* it broke.
-- **Hypothesis drives experiments**: "If I kill one Redis node, latency will spike by 10% but errors will remain 0." Validate it.
+- **Observability is mandatory**: If you cannot see the chaos (Metrics/Logs), do not run the chaos. You need to know
+  *when* and *why* it broke.
+- **Hypothesis drives experiments**: "If I kill one Redis node, latency will spike by 10% but errors will remain 0."
+  Validate it.
 
 ## Why Kubernetes Needs Chaos
 
@@ -58,7 +61,8 @@ This is the "Hello World" of Chaos. Randomly delete pods in a namespace.
 
 Your ReplicaSet should re-create them. Your LoadBalancer should stop sending traffic to the dead ones.
 
-If your users see a 502 Bad Gateway... you failed. You likely have long running requests that did not handle the shutdown signal gracefully.
+If your users see a 502 Bad Gateway... you failed. You likely have long running requests that did not handle the
+shutdown signal gracefully.
 
 ## Code Snippet: Chaos Mesh YAML
 
@@ -91,12 +95,16 @@ Inject controlled chaos now, so you can sleep later. If you are not breaking you
 
 ## Key Takeaways
 
-- **Blast Radius must be limited**: Limit chaos to specific namespaces or labels. Do not blow up the cluster control plane (`kube-system`).
-- **Automatic rollback is available**: Chaos Mesh can abort the experiment if health checks fail (e.g., if Error Rate > 5%).
-- **GameDay creates team training**: Make it a team event. "Friday Afternoon Chaos". Order pizza. Watch the dashboards burn.
+- **Blast Radius must be limited**: Limit chaos to specific namespaces or labels. Do not blow up the cluster control
+  plane (`kube-system`).
+- **Automatic rollback is available**: Chaos Mesh can abort the experiment if health checks fail (e.g., if Error Rate >
+  5%).
+- **GameDay creates team training**: Make it a team event. "Friday Afternoon Chaos". Order pizza. Watch the dashboards
+  burn.
 
 ## Next Steps
 
 - **Tool**: Install **Chaos Mesh** or **LitmusChaos** on your staging cluster.
 - **Learn**: Read the [Principles of Chaos Engineering](https://principlesofchaos.org/).
-- **Audit**: Does your frontend implement "Retry with Exponential Backoff"? Chaos will verify it. If it retries immediately, you will DDoS yourself.
+- **Audit**: Does your frontend implement "Retry with Exponential Backoff"? Chaos will verify it. If it retries
+  immediately, you will DDoS yourself.

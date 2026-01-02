@@ -26,15 +26,20 @@ tags:
 
 Autonomous Agents (like AutoGPT, BabyAGI) are cool. You say "Build me a website", and it goes off and does it. Ideally.
 
-In reality, it googles "How to build a website", then "How to install Node.js", then "Why is npm broken", and 5,000 tokens later it has achieved nothing but burning your credit card.
+In reality, it googles "How to build a website", then "How to install Node.js", then "Why is npm broken", and 5,000
+tokens later it has achieved nothing but burning your credit card.
 
-QA for Agents is about **Efficiency** and **Termination**. You are not testing *what* it knows, but *how* it behaves when it does not know.
+QA for Agents is about **Efficiency** and **Termination**. You are not testing *what* it knows, but *how* it behaves
+when it does not know.
 
 ## TL;DR
 
-- **Guardrails prevent runaway costs**: Hard limit the number of steps (e.g., Max 10 thoughts). If it has not solved it by then, it is not going to.
-- **Human-in-the-Loop protects you**: The agent must Ask Permission before executing dangerous commands (`rm -rf /` or `email send`).
-- **Convergence must be verified**: Is the agent getting closer to the goal, or just talking to itself? (e.g., "I will now think about thinking").
+- **Guardrails prevent runaway costs**: Hard limit the number of steps (e.g., Max 10 thoughts). If it has not solved it
+  by then, it is not going to.
+- **Human-in-the-Loop protects you**: The agent must Ask Permission before executing dangerous commands (`rm -rf /` or
+  `email send`).
+- **Convergence must be verified**: Is the agent getting closer to the goal, or just talking to itself? (e.g., "I will
+  now think about thinking").
 
 ## The "Lost in Thought" Problem
 
@@ -45,11 +50,13 @@ Agent: "I cannot find the file."
 Agent: "I will check the file again."
 Agent: "I cannot find the file."
 
-**QA must implement Loop Detection heuristics**: If (Last 3 Actions are identical) -> **KILL PROCESS**. It is an infinite loop, just with natural language.
+**QA must implement Loop Detection heuristics**: If (Last 3 Actions are identical) -> **KILL PROCESS**. It is an
+infinite loop, just with natural language.
 
 ## Cost-to-Win Ratio
 
-If the agent successfully books a flight for you (£100 ticket), but spends £150 in OpenAI API credits to do it, that is a Fail.
+If the agent successfully books a flight for you (£100 ticket), but spends £150 in OpenAI API credits to do it, that is
+a Fail.
 
 **QA metrics for Agents**:
 
@@ -107,13 +114,17 @@ except Exception as e:
 
 Testing Agents is less like testing software and more like managing a chaos-prone intern.
 
-You have to check their work, stop them from deleting the database, and make sure they do not spend the whole afternoon browsing Reddit (or hallucinating about it). The goal is to move from "Autonomous" to "Reliable".
+You have to check their work, stop them from deleting the database, and make sure they do not spend the whole afternoon
+browsing Reddit (or hallucinating about it). The goal is to move from "Autonomous" to "Reliable".
 
 ## Key Takeaways
 
-- **Mocking is essential**: Do not let the test agent browse the real internet. Mock the `Search` tool response. You need deterministic tests.
-- **Sandboxing is mandatory**: Run the agent in a **Docker** container. Always. Never run an agent on your local shell. It *will* try to install things.
-- **Determinism varies by temperature**: Set `temperature=0` for debugging, but test with `temperature=0.7` because that is how users use it. Chaos is part of the product.
+- **Mocking is essential**: Do not let the test agent browse the real internet. Mock the `Search` tool response. You
+  need deterministic tests.
+- **Sandboxing is mandatory**: Run the agent in a **Docker** container. Always. Never run an agent on your local shell.
+  It *will* try to install things.
+- **Determinism varies by temperature**: Set `temperature=0` for debugging, but test with `temperature=0.7` because that
+  is how users use it. Chaos is part of the product.
 
 ## Next Steps
 

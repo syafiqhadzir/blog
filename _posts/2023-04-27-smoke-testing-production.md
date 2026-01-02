@@ -26,12 +26,15 @@ tags:
 
 "I don't always test my code, but when I do, I do it in production." The old meme is funny because it is terrifying.
 
-But in the era of Microservices and Continuous Delivery, **Testing in Production (TiP)** is not recklessness; it is a necessity. Staging environments are like a staged house: they look nice, but the plumbing probably does not work because no one has flushed the toilet in six weeks. Production is where real life happens.
+But in the era of Microservices and Continuous Delivery, **Testing in Production (TiP)** is not recklessness; it is a
+necessity. Staging environments are like a staged house: they look nice, but the plumbing probably does not work because
+no one has flushed the toilet in six weeks. Production is where real life happens.
 
 ## TL;DR
 
 - **Read-Only is safest**: Run tests that check connectivity but do not delete data (GET requests).
-- **Test Accounts isolate impact**: Use a dedicated user (e.g., `smoke_test_user@company.com`) that is filtered out of analytics.
+- **Test Accounts isolate impact**: Use a dedicated user (e.g., `smoke_test_user@company.com`) that is filtered out of
+  analytics.
 - **Observability reveals issues**: Monitor error rates immediately after deployment.
 - **Headers suppress side effects**: Use `X-Test-Traffic: true` to suppress emails.
 
@@ -39,7 +42,9 @@ But in the era of Microservices and Continuous Delivery, **Testing in Production
 
 Because "It worked on my machine" is not a legal defence.
 
-Staging environments drift. Data is stale. Configuration is slightly different (e.g., Staging uses a mocked Payment Gateway, Prod uses Real Stripe). The only way to know *for sure* if the `Checkout` button works for Mrs. Jones in Wales is to actually check it on the live infrastructure (preferably without charging Mrs. Jones's credit card).
+Staging environments drift. Data is stale. Configuration is slightly different (e.g., Staging uses a mocked Payment
+Gateway, Prod uses Real Stripe). The only way to know *for sure* if the `Checkout` button works for Mrs. Jones in Wales
+is to actually check it on the live infrastructure (preferably without charging Mrs. Jones's credit card).
 
 A **Smoke Test** is a quick sanity check (5-10 minutes) that verifies the critical paths:
 
@@ -57,7 +62,8 @@ You do not want to accidentally email 50,000 users "Hello World".
 
 ## Code Snippet: The Synthetic User
 
-Here is a Playwright script designed to run against Production. It uses specific "Test User" credentials stored in secrets.
+Here is a Playwright script designed to run against Production. It uses specific "Test User" credentials stored in
+secrets.
 
 ```typescript
 import { test, expect } from '@playwright/test';
@@ -87,11 +93,13 @@ test('Critical Path: Login and View Dashboard', async ({ page }) => {
 });
 ```
 
-If this test fails, it should trigger a **P1 incident** via PagerDuty and wake up the on-call engineer. It means your shop is closed, even if the server status page says "System Operational" (it lies).
+If this test fails, it should trigger a **P1 incident** via PagerDuty and wake up the on-call engineer. It means your
+shop is closed, even if the server status page says "System Operational" (it lies).
 
 ## Summary
 
-Production is the only environment that truly matters. By cautiously testing in the wild, we bridge the gap between "theory" and "practice".
+Production is the only environment that truly matters. By cautiously testing in the wild, we bridge the gap between
+"theory" and "practice".
 
 Do not fear production; respect it. And maybe do not run `DROP TABLE` scripts there.
 

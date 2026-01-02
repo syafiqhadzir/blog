@@ -23,9 +23,12 @@ tags:
 
 ## Introduction
 
-Imagine you are building a house, but the windows will not arrive for six months. Do you stop building? No, you put up plastic sheets and keep working.
+Imagine you are building a house, but the windows will not arrive for six months. Do you stop building? No, you put up
+plastic sheets and keep working.
 
-**Service Virtualisation (SV)** is that plastic sheet, but high-tech. It is the practice of simulating the behaviour of expensive, unavailable, or just plain cranky dependencies (like mainframes or 3rd party payment gateways) so your dev team does not have to sit on their hands playing table tennis.
+**Service Virtualisation (SV)** is that plastic sheet, but high-tech. It is the practice of simulating the behaviour of
+expensive, unavailable, or just plain cranky dependencies (like mainframes or 3rd party payment gateways) so your dev
+team does not have to sit on their hands playing table tennis.
 
 ## TL;DR
 
@@ -40,20 +43,24 @@ Imagine you are building a house, but the windows will not arrive for six months
 Well, yes and no.
 
 - **Mocks** are like cardboard cutouts. They are static, dumb, and live inside your unit test code.
-- **Virtual Services** are like an animatronic dinosaur. They run on a real network port, maintain state ("I remember you deposited £50, so now your balance is £150"), and can simplify complex protocol handshakes.
+- **Virtual Services** are like an animatronic dinosaur. They run on a real network port, maintain state ("I remember
+  you deposited £50, so now your balance is £150"), and can simplify complex protocol handshakes.
 
 If mocking is a bicycle, Service Virtualisation is a Ducati.
 
 ## The "Digital Twin" Concept
 
-SV creates a "Digital Twin" of the dependency. You record the traffic between your app and the real service once, and then replay it forever. This is essential for:
+SV creates a "Digital Twin" of the dependency. You record the traffic between your app and the real service once, and
+then replay it forever. This is essential for:
 
 1. **Mainframes**: Access is often limited to a 2-hour window on Tuesdays (if the wind is blowing North).
-2. **Third Parties**: Salesforce or PayPal sandboxes often have rate limits that your performance checks will smash in seconds.
+2. **Third Parties**: Salesforce or PayPal sandboxes often have rate limits that your performance checks will smash in
+seconds.
 
 ## Code Snippet: Using Hoverfly
 
-Hoverfly is a fantastic open-source SV tool. Here is how you can simulate a slow payment provider using a JSON simulation file.
+Hoverfly is a fantastic open-source SV tool. Here is how you can simulate a slow payment provider using a JSON
+simulation file.
 
 ```json
 {
@@ -83,18 +90,22 @@ Hoverfly is a fantastic open-source SV tool. Here is how you can simulate a slow
 }
 ```
 
-By adding that `delays` block, every request to this virtual endpoint will wait exactly 2 seconds before responding. Now you can test if your application's "Loading Spinner" actually works, without needing to physically strangle the network cable.
+By adding that `delays` block, every request to this virtual endpoint will wait exactly 2 seconds before responding. Now
+you can test if your application's "Loading Spinner" actually works, without needing to physically strangle the network
+cable.
 
 ## Summary
 
-Service Virtualisation removes the roadblocks of reality. It empowers QA to test early, often, and rigorously, regardless of whether the entire ecosystem is online.
+Service Virtualisation removes the roadblocks of reality. It empowers QA to test early, often, and rigorously,
+regardless of whether the entire ecosystem is online.
 
 It turns "We are blocked by the API team" into "We finished testing three days ago."
 
 ## Key Takeaways
 
 - **Shift Left**: Start testing before the real API even exists.
-- **Performance testing becomes possible**: Virtual services can respond faster (or slower) than the real thing, allowing for stress testing.
+- **Performance testing becomes possible**: Virtual services can respond faster (or slower) than the real thing,
+  allowing for stress testing.
 - **Cost savings are real**: A virtual transaction costs £0.00. A real Stripe transaction costs actual revenue.
 
 ## Next Steps

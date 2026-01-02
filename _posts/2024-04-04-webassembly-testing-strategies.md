@@ -27,7 +27,8 @@ tags:
 
 JavaScript is great. It runs everywhere, it is flexible, and it is slow.
 
-WebAssembly (WASM) is the answer for when you want to run Photoshop in a browser tab. It lets you write code in Rust, C++, or Go and run it on the web at near-native speed.
+WebAssembly (WASM) is the answer for when you want to run Photoshop in a browser tab. It lets you write code in Rust,
+C++, or Go and run it on the web at near-native speed.
 
 But how do you test a binary blob that you cannot even read? Welcome to the thunderdome of low-level web debugging.
 
@@ -35,7 +36,8 @@ But how do you test a binary blob that you cannot even read? Welcome to the thun
 
 - **Unit Tests run in source language**: Run them in the source language (Rust/C++) before compiling.
 - **Integration tests verify glue code**: Test the JavaScript "Glue Code" that passes data in and out.
-- **Performance must be measured**: Use `performance.measure` to verify that WASM is actually faster than JS (sometimes it is not due to overhead).
+- **Performance must be measured**: Use `performance.measure` to verify that WASM is actually faster than JS (sometimes
+  it is not due to overhead).
 
 ## The "Black Box" Problem
 
@@ -48,7 +50,8 @@ If the output is wrong, blame the Rust developer.
 
 ## Memory Leaks (The Rust Edition)
 
-In JS, the Garbage Collector cleans up your mess. In WASM (depending on the language), you might have to manage memory manually.
+In JS, the Garbage Collector cleans up your mess. In WASM (depending on the language), you might have to manage memory
+manually.
 
 If your WASM module chews up 2GB of RAM and crashes the tab, that is a P0 bug.
 
@@ -95,12 +98,16 @@ QA must ensure that this complexity buys us performance, not just "CV-driven dev
 
 ## Key Takeaways
 
-- **Glue Code is the weak point**: The biggest bugs are usually in the data conversion (e.g., passing a String from JS to Rust requires utf-8 encoding/decoding).
-- **Fallback must exist**: What happens if the browser does not support WASM (rare in 2024, but possible on old environments)?
-- **Size needs monitoring**: WASM files can be huge. Check if `gzip` or `brotli` compression is working effectively on your CDN.
+- **Glue Code is the weak point**: The biggest bugs are usually in the data conversion (e.g., passing a String from JS
+  to Rust requires utf-8 encoding/decoding).
+- **Fallback must exist**: What happens if the browser does not support WASM (rare in 2024, but possible on old
+  environments)?
+- **Size needs monitoring**: WASM files can be huge. Check if `gzip` or `brotli` compression is working effectively on
+  your CDN.
 
 ## Next Steps
 
-- **Tool**: Use **Chrome DevTools** "WebAssembly" tab to step through the bytecode (if you are brave enough to read Assembly).
+- **Tool**: Use **Chrome DevTools** "WebAssembly" tab to step through the bytecode (if you are brave enough to read
+  Assembly).
 - **Learn**: Read the **Rust and WebAssembly** book.
 - **Audit**: Measure the "Boot Time" of your WASM module. If it takes 5 seconds to load, the user is gone.

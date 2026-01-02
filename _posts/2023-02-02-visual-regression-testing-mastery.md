@@ -24,9 +24,12 @@ tags:
 
 ## Introduction
 
-Functional tests verify logic. They check if `2 + 2 = 4`. Visual regression tests check if the `4` is drawn in Comic Sans or is invisible because it is white text on a white background.
+Functional tests verify logic. They check if `2 + 2 = 4`. Visual regression tests check if the `4` is drawn in Comic
+Sans or is invisible because it is white text on a white background.
 
-You can have a functional test pass because the "Submit" button exists in the DOM, but if that button is covered by a GDPR banner, your user cannot click it. Visual regression testing is the practice of spotting these unintended CSS crimes before users do.
+You can have a functional test pass because the "Submit" button exists in the DOM, but if that button is covered by a
+GDPR banner, your user cannot click it. Visual regression testing is the practice of spotting these unintended CSS
+crimes before users do.
 
 ## TL;DR
 
@@ -47,7 +50,8 @@ If the difference is greater than a set threshold (say, 0.1%), the test fails. T
 
 ## The Flakiness Trap
 
-The biggest hurdle in visual testing is noise. A test that fails because of a blinking cursor is a test you will eventually delete.
+The biggest hurdle in visual testing is noise. A test that fails because of a blinking cursor is a test you will
+eventually delete.
 
 1. **Cursor Blinking**: A blinking cursor creates 100% diffs on that pixel.
 2. **Animations**: If a spinner is rotating, every screenshot is unique.
@@ -57,7 +61,8 @@ To master this, you must **freeze** the state. Disable animations, mock the data
 
 ## Code Snippet: Taming the Visual Beast
 
-Playwright makes this incredibly easy. Here is a robust setup that handles the "noise" by injecting CSS to kill animations.
+Playwright makes this incredibly easy. Here is a robust setup that handles the "noise" by injecting CSS to kill
+animations.
 
 ```typescript
 import { test, expect } from '@playwright/test';
@@ -84,7 +89,8 @@ test('Homepage visual check', async ({ page }) => {
 });
 ```
 
-This script explicitly kills animations and hides dynamic content before taking the photo. It is like telling the kids to sit still for the family portrait.
+This script explicitly kills animations and hides dynamic content before taking the photo. It is like telling the kids
+to sit still for the family portrait.
 
 ## Summary
 

@@ -30,7 +30,8 @@ The problem is, testing it is a nightmare.
 
 - You cannot run Lambda on your laptop (not easily).
 - You cannot mock the entire internet.
-- You cannot debug a production error because the logs are in CloudWatch, which costs £0.50 per click to view (exaggeration, but barely).
+- You cannot debug a production error because the logs are in CloudWatch, which costs £0.50 per click to view
+  (exaggeration, but barely).
 
 ## TL;DR
 
@@ -40,13 +41,16 @@ The problem is, testing it is a nightmare.
 
 ## The Cold Start Freeze
 
-A "Cold Start" is when AWS has to find a spare server, install Linux, install Node.js, download your code, and run it. This takes 2 seconds. Users hate waiting 2 seconds.
+A "Cold Start" is when AWS has to find a spare server, install Linux, install Node.js, download your code, and run it.
+This takes 2 seconds. Users hate waiting 2 seconds.
 
-**QA Challenge**: Your performance tests must differentiate between "Cold Start" (P99 latency) and "Warm Start" (P50 latency). If your P99 is 5 seconds, your function is too fat. Remove heavyweight dependencies.
+**QA Challenge**: Your performance tests must differentiate between "Cold Start" (P99 latency) and "Warm Start" (P50
+latency). If your P99 is 5 seconds, your function is too fat. Remove heavyweight dependencies.
 
 ## The LocalStack Illusion
 
-LocalStack is a Docker container that pretends to be AWS. It accepts S3 uploads and DynamoDB writes. It is fantastic for feature testing. It is useless for IAM testing.
+LocalStack is a Docker container that pretends to be AWS. It accepts S3 uploads and DynamoDB writes. It is fantastic for
+feature testing. It is useless for IAM testing.
 
 LocalStack will gladly let you write to a bucket without permission. Real AWS will scream `403 Access Denied`.
 
@@ -54,7 +58,8 @@ LocalStack will gladly let you write to a bucket without permission. Real AWS wi
 
 ## Code Snippet: Mocking AWS SDK
 
-To unit test a Lambda function without paying Jeff Bezos, act like the AWS SDK does not exist. Using `aws-sdk-mock` is the old way; let us adhere to modern Jest mocks with the V3 SDK.
+To unit test a Lambda function without paying Jeff Bezos, act like the AWS SDK does not exist. Using `aws-sdk-mock` is
+the old way; let us adhere to modern Jest mocks with the V3 SDK.
 
 ```javascript
 /* 
@@ -103,8 +108,10 @@ If you try to spin up a real CloudFormation stack for every PR, your CI bill wil
 ## Key Takeaways
 
 - **Timeouts need adjustment**: The default Lambda timeout is 3 seconds. Your DB query takes 4 seconds. Crash.
-- **Memory affects CPU speed**: Increasing RAM also increases CPU speed in Lambda. Sometimes paying more is cheaper because it runs faster.
-- **Concurrency has limits**: AWS has a limit (default 1,000 parallel executions). If you DDoS your own API, you will get throttled.
+- **Memory affects CPU speed**: Increasing RAM also increases CPU speed in Lambda. Sometimes paying more is cheaper
+  because it runs faster.
+- **Concurrency has limits**: AWS has a limit (default 1,000 parallel executions). If you DDoS your own API, you will
+  get throttled.
 
 ## Next Steps
 

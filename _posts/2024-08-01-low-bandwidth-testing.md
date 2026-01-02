@@ -24,23 +24,27 @@ tags:
 
 ## Introduction
 
-We build apps on MacBook Pros connected to Gigabit Fibre. Our users use apps on £50 Android phones connected to 3G in an underground tunnel.
+We build apps on MacBook Pros connected to Gigabit Fibre. Our users use apps on £50 Android phones connected to 3G in an
+underground tunnel.
 
-The gap between "Dev Reality" and "User Reality" is where performance bugs live. If your app loads a 5MB hero video on the homepage, you are punishing the poor.
+The gap between "Dev Reality" and "User Reality" is where performance bugs live. If your app loads a 5MB hero video on
+the homepage, you are punishing the poor.
 
 QA must be the voice of the user who is watching their data cap evaporate.
 
 ## TL;DR
 
 - **Throttling reveals problems**: Test on "Slow 3G". If it takes > 5 seconds to become interactive, you failed.
-- **Retries handle failures gracefully**: What happens if a request fails? Do you retry automatically? (Exponential Backoff is your friend).
+- **Retries handle failures gracefully**: What happens if a request fails? Do you retry automatically? (Exponential
+  Backoff is your friend).
 - **Optimistic UI improves UX**: Show the "Like" instantly, send the request in the background. Do not block the user.
 
 ## The "Lie-Fi" Phenomenon
 
 "Lie-Fi" is when your phone says "4 Bars of LTE" but nothing loads. The connection is open, but packets are dropped.
 
-This is worse than being offline. Offline apps can show an "Offline" screen immediately. Lie-Fi apps stare at a white screen until the request times out (usually 60 seconds).
+This is worse than being offline. Offline apps can show an "Offline" screen immediately. Lie-Fi apps stare at a white
+screen until the request times out (usually 60 seconds).
 
 **QA Strategy**: Set your request timeouts to 5-10 seconds. Retry once. Then fail gracefully ("The connection is weak").
 
@@ -48,7 +52,8 @@ This is worse than being offline. Offline apps can show an "Offline" screen imme
 
 There is nothing users hate more than a spinner that never stops.
 
-If a request takes 10 seconds, show a progress bar. If it takes 1 minute, send an email when it is done. Do not hypnotise the user with a spinning circle.
+If a request takes 10 seconds, show a progress bar. If it takes 1 minute, send an email when it is done. Do not
+hypnotise the user with a spinning circle.
 
 **QA Check**: Verify that every spinner has a "Cancel" button. Give the user control.
 
@@ -87,7 +92,8 @@ test('should handle Slow 3G gracefully', async ({ page }) => {
 
 Performance is inclusion. By optimising for low bandwidth, you welcome more users into your ecosystem.
 
-Do not let your app be an exclusive club for people with fast WiFi. Also, Google ranks fast sites higher. Greed is a good motivator too.
+Do not let your app be an exclusive club for people with fast WiFi. Also, Google ranks fast sites higher. Greed is a
+good motivator too.
 
 ## Key Takeaways
 

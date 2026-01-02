@@ -23,24 +23,29 @@ tags:
 
 ## Introduction
 
-GDPR (General Data Protection Regulation) is the reason we have cookie banners on every website. It is also the reason why copying your production database to staging is now illegal (mostly).
+GDPR (General Data Protection Regulation) is the reason we have cookie banners on every website. It is also the reason
+why copying your production database to staging is now illegal (mostly).
 
-If your staging environment contains real emails like `ceo@bigbank.com`, and you accidentally send a test email to that address, you have not just made a mistake. You have committed a data breach.
+If your staging environment contains real emails like `ceo@bigbank.com`, and you accidentally send a test email to that
+address, you have not just made a mistake. You have committed a data breach.
 
 QA needs data that *looks* real but is not.
 
 ## TL;DR
 
 - **Synthetic Data is safest**: Use libraries like `Faker` to generate fake users.
-- **Masking reduces risk**: If you must use Prod data, scrub PII (Personal Identifiable Information) *before* it leaves the Prod VPC.
-- **Right to be Forgotten needs testing**: Verify that the "Delete Account" button actually deletes the data (and does not just set `is_deleted=true`).
+- **Masking reduces risk**: If you must use Prod data, scrub PII (Personal Identifiable Information) *before* it leaves
+  the Prod VPC.
+- **Right to be Forgotten needs testing**: Verify that the "Delete Account" button actually deletes the data (and does
+  not just set `is_deleted=true`).
 
 ## The "Dump and Restore" Anti-Pattern
 
 In 2010, it was common practice to `mysqldump` production and restore it to staging.
 "It catches edge cases!" developers argued.
 
-In 2023, this is a lawsuit waiting to happen. The moment a developer leaves their laptop on the tube, that local copy of the DB is a liability.
+In 2023, this is a lawsuit waiting to happen. The moment a developer leaves their laptop on the tube, that local copy of
+the DB is a liability.
 
 **Rule #1 of Test Data**: If it is real, it stays in Prod.
 **Rule #2 of Test Data**: If you think you need real data to test, your test coverage is bad.
@@ -95,11 +100,13 @@ if __name__ == "__main__":
 
 Privacy is not just a legal box to tick. It is about respect.
 
-If you treat your users' data like nuclear waste (handle with extreme care), you will avoid the meltdown that comes with a leak.
+If you treat your users' data like nuclear waste (handle with extreme care), you will avoid the meltdown that comes with
+a leak.
 
 ## Key Takeaways
 
-- **Seed Scripts generate safe data**: Write scripts to populate your staging DB with 10,000 fake users. It is cleaner and safer than scrubbing prod data.
+- **Seed Scripts generate safe data**: Write scripts to populate your staging DB with 10,000 fake users. It is cleaner
+  and safer than scrubbing prod data.
 - **Data Aging prevents rot**: Automate the deletion of test data. A staging DB from 2019 is of no use to anyone.
 - **PII Scanner catches leaks**: Use tools like `git-secrets` to verify no PII accidentally ends up in your repo.
 

@@ -25,7 +25,9 @@ tags:
 
 ## Introduction
 
-Technical debt in testing is like eating fast food for every meal. It feels great (and cheap) in the moment, but six months later, you wake up and realise you cannot climb a flight of stairs (deploy to production) without having a heart attack (pipeline failure).
+Technical debt in testing is like eating fast food for every meal. It feels great (and cheap) in the moment, but six
+months later, you wake up and realise you cannot climb a flight of stairs (deploy to production) without having a heart
+attack (pipeline failure).
 
 It manifests as flaky tests, slow CI pipelines, and a test suite that everyone is terrified to touch.
 
@@ -37,14 +39,17 @@ It manifests as flaky tests, slow CI pipelines, and a test suite that everyone i
 
 ## The Interest Rate is 100%
 
-When we shortcut test design—like hardcoding environment variables, using `sleep(5000)`, or copy-pasting setup logic—we are not just saving time; we are taking out a loan from a loan shark.
+When we shortcut test design—like hardcoding environment variables, using `sleep(5000)`, or copy-pasting setup logic—we
+are not just saving time; we are taking out a loan from a loan shark.
 
-The interest is paid every time a developer waits 40 minutes for a suite that fails because of "network issues" (read: bad code).
+The interest is paid every time a developer waits 40 minutes for a suite that fails because of "network issues" (read:
+bad code).
 
 ## Forms of Debt
 
 1. **Hardcoded Data**: `expect(user.id).toBe(123)`. What happens when the DB resets? You cry.
-2. **No Abstraction**: You copied the login steps into 50 different test files. Now the login page changed. You have to update 50 files. Enjoy your weekend.
+2. **No Abstraction**: You copied the login steps into 50 different test files. Now the login page changed. You have to
+update 50 files. Enjoy your weekend.
 3. **Flakiness**: Tests that pass 80% of the time are worse than tests that fail 100% of the time. They erode trust.
 
 ## Code Snippet: The Dirty vs The Clean

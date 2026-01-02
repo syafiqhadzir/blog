@@ -26,9 +26,11 @@ tags:
 
 Deploying application code is easy. If it breaks, you just revert the specific docker container.
 
-Deploying database changes is **terrifying**. If you accidentally run `DROP TABLE users;`, there is no "Ctrl+Z". You are restoring from a backup whilst the CEO breathes down your neck and the stock price plummets.
+Deploying database changes is **terrifying**. If you accidentally run `DROP TABLE users;`, there is no "Ctrl+Z". You are
+restoring from a backup whilst the CEO breathes down your neck and the stock price plummets.
 
-Testing migrations is the only way to lower your heart rate during deployments. It ensures that your SQL scripts modify the data correctly without locking the database for 4 hours.
+Testing migrations is the only way to lower your heart rate during deployments. It ensures that your SQL scripts modify
+the data correctly without locking the database for 4 hours.
 
 ## TL;DR
 
@@ -44,7 +46,8 @@ The big mistake junior devs make is renaming a column in a single step.
 2. **Migration** renames `user_name` to `username`.
 3. **Code V2** expects `username` (new column).
 
-During the deployment (which takes time), **Code V1** is still processing requests but the database now has `username`. **Code V1** crashes.
+During the deployment (which takes time), **Code V1** is still processing requests but the database now has `username`.
+**Code V1** crashes.
 
 The solution is **Expand and Contract**:
 
@@ -54,9 +57,11 @@ The solution is **Expand and Contract**:
 
 ## Testing the Rollback
 
-Every migration tool (Flyway, Alembic, Knex) allows you to define a `down` method. Most developers leave it empty or write `// TODO`.
+Every migration tool (Flyway, Alembic, Knex) allows you to define a `down` method. Most developers leave it empty or
+write `// TODO`.
 
-This is suicidal. If your deployment fails halfway through, you need to be able to undo the database changes instantly. A tested rollback script is your parachute. If you do not pack it, do not jump out of the aeroplane.
+This is suicidal. If your deployment fails halfway through, you need to be able to undo the database changes instantly.
+A tested rollback script is your parachute. If you do not pack it, do not jump out of the aeroplane.
 
 ## Code Snippet: Safe Column Rename
 

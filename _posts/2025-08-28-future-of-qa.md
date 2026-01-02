@@ -33,16 +33,21 @@ In Traditional QA, the workflow is painfully linear:
 In **Predictive QA**, we treat the repository like a crime scene before the crime happens:
 
 1. Developer types code.
-2. IDE screams: "You are editing `payment.ts`. This file is highly coupled with `invoice.ts`. The last three times this was edited, it caused a regression in the `billing-test-suite`."
+2. IDE screams: "You are editing `payment.ts`. This file is highly coupled with `invoice.ts`. The last three times this
+was edited, it caused a regression in the `billing-test-suite`."
 3. Feedback loop: **1 Second**.
 
-We are not finding bugs anymore. We are predicting them. Minority Report, but with fewer wooden balls and more Python scripts.
+We are not finding bugs anymore. We are predicting them. Minority Report, but with fewer wooden balls and more Python
+scripts.
 
 ## TL;DR
 
-- **Test splitting reduces waste**: Do not run all tests. Run relevant tests. If you change a CSS file, why are you running the database migration suite?
-- **Hotspots reveal risk**: 80% of your bugs come from 20% of your weirdest files. Identify them. Mark them with a "Here be Dragons" sign.
-- **Commit risk scoring gates merges**: Score every Pull Request from 0 (Safe) to 100 (Critical). If it is a 90, block the merge button.
+- **Test splitting reduces waste**: Do not run all tests. Run relevant tests. If you change a CSS file, why are you
+  running the database migration suite?
+- **Hotspots reveal risk**: 80% of your bugs come from 20% of your weirdest files. Identify them. Mark them with a "Here
+  be Dragons" sign.
+- **Commit risk scoring gates merges**: Score every Pull Request from 0 (Safe) to 100 (Critical). If it is a 90, block
+  the merge button.
 
 ## The Bug that Never Happened
 
@@ -61,7 +66,8 @@ The biggest lie in DevOps is "Run All Tests On Every Commit". It is a waste of e
 Predictive CI builds a dependency graph:
 `Button.css` -> `Login.tsx` -> `LoginSpec.ts`.
 
-If you touch `Button.css`, the CI should know to ONLY run `LoginSpec.ts`. This reduces CI time from 45 minutes to 2 minutes. You cannot beat physics, but you can cheat at mathematics.
+If you touch `Button.css`, the CI should know to ONLY run `LoginSpec.ts`. This reduces CI time from 45 minutes to 2
+minutes. You cannot beat physics, but you can cheat at mathematics.
 
 ## Code Snippet: Training a Defect Prediction Model
 
@@ -118,18 +124,24 @@ function isRecent(dateString) {
 
 ## Summary
 
-We are drowning in tests. Many companies have 50,000+ tests that provide a false sense of security. Running them all is unsustainable and, frankly, lazy.
+We are drowning in tests. Many companies have 50,000+ tests that provide a false sense of security. Running them all is
+unsustainable and, frankly, lazy.
 
-Predictive QA uses Data Science to optimise the engineering process. It is the only way to scale Quality in a Monorepo without hiring a thousand QA engineers. Work smarter, not harder. Your CI bill will thank you.
+Predictive QA uses Data Science to optimise the engineering process. It is the only way to scale Quality in a Monorepo
+without hiring a thousand QA engineers. Work smarter, not harder. Your CI bill will thank you.
 
 ## Key Takeaways
 
-- **Flaky tests poison the model**: The bane of Predictive QA. If a test fails randomly, the model learns noise. Fix flakiness first, or your model will be rubbish.
-- **Repository mining reveals patterns**: Your `git log` is a goldmine of behavioural data. Mine it. It knows who breaks the build on Fridays.
-- **Feedback loops train the model**: If the model predicts a bug, and there IS a bug, reward the model. Reinforcement Learning is not just for ChatGPT.
+- **Flaky tests poison the model**: The bane of Predictive QA. If a test fails randomly, the model learns noise. Fix
+  flakiness first, or your model will be rubbish.
+- **Repository mining reveals patterns**: Your `git log` is a goldmine of behavioural data. Mine it. It knows who breaks
+  the build on Fridays.
+- **Feedback loops train the model**: If the model predicts a bug, and there IS a bug, reward the model. Reinforcement
+  Learning is not just for ChatGPT.
 
 ## Next Steps
 
 - **Tool**: Look at **Launchable** or **Gradle Enterprise** for out-of-the-box Predictive Test Selection.
 - **Learn**: Read about **Google's TAP (Test Automation Platform)**. They solved this problem a decade ago.
-- **Measure**: Calculate "Time Saved by Skipping Tests". If you skip 50% of tests and catch 100% of bugs, you are a hero.
+- **Measure**: Calculate "Time Saved by Skipping Tests". If you skip 50% of tests and catch 100% of bugs, you are a
+  hero.

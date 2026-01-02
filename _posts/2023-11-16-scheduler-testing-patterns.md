@@ -24,16 +24,19 @@ tags:
 
 ## Introduction
 
-Schedulers (Cron jobs) are the alarm clocks of the server world. They wake up, drink coffee (consume CPU), do a task (backup the DB), and go back to sleep.
+Schedulers (Cron jobs) are the alarm clocks of the server world. They wake up, drink coffee (consume CPU), do a task
+(backup the DB), and go back to sleep.
 
 But testing them is a nightmare.
 
-"I'll just wait for 24 hours to see if the daily report runs," said no efficient QA ever. If you are manually changing the system clock on your server to test a job, you are doing it wrong (and you probably just broke SSL).
+"I'll just wait for 24 hours to see if the daily report runs," said no efficient QA ever. If you are manually changing
+the system clock on your server to test a job, you are doing it wrong (and you probably just broke SSL).
 
 ## TL;DR
 
 - **Decoupling enables testing**: Separate the *Job Logic* from the *Scheduling Logic*.
-- **Time Travel enables verification**: Use libraries like `Timecop` (Ruby) or `freezegun` (Python) to mock the system clock.
+- **Time Travel enables verification**: Use libraries like `Timecop` (Ruby) or `freezegun` (Python) to mock the system
+  clock.
 - **Edge Cases hide bugs**: Test Leap Years, Daylight Savings, and the dreaded "End of Month".
 
 ## The "It Works on my Machine" of Time
@@ -44,13 +47,16 @@ Bugs in schedulers rarely happen at 2 PM on a Tuesday. They happen at:
 - 02:00 when clocks go back (The job ran twice!).
 - Feb 29th (The job did not run at all).
 
-If you hardcode dates or rely on `new Date()` inside your functions without dependency injection, you are building a time bomb.
+If you hardcode dates or rely on `new Date()` inside your functions without dependency injection, you are building a
+time bomb.
 
 ## Time Travel for Fun and Profit
 
 To test a monthly report, you should not wait a month. You should warp time.
 
-By mocking the clock, you can simulate a year's worth of cron jobs in 5 seconds. This also allows you to test the "Overlapping Run" scenario: What happens if the job takes 61 minutes to run, but it is scheduled every hour? (Hint: chaos).
+By mocking the clock, you can simulate a year's worth of cron jobs in 5 seconds. This also allows you to test the
+"Overlapping Run" scenario: What happens if the job takes 61 minutes to run, but it is scheduled every hour? (Hint:
+chaos).
 
 ## Code Snippet: The Time Lord
 

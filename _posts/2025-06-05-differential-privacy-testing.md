@@ -29,13 +29,16 @@ Q: How do you tell me the average salary of the team without telling me *anyone'
 
 A: You lie a little bit.
 
-**Differential Privacy (DP)** is the mathematical framework of adding carefully calibrated "Noise" to a query result. It guarantees that the output is statistically almost the same whether any *single* individual is in the dataset or not.
+**Differential Privacy (DP)** is the mathematical framework of adding carefully calibrated "Noise" to a query result. It
+guarantees that the output is statistically almost the same whether any *single* individual is in the dataset or not.
 
-It gives every user **Plausible Deniability**. "Did I visit that website? Maybe. The data says 'Yes', but it also says 'Yes' for 10% of people who didn't."
+It gives every user **Plausible Deniability**. "Did I visit that website? Maybe. The data says 'Yes', but it also says
+'Yes' for 10% of people who didn't."
 
 ## TL;DR
 
-- **Epsilon (ε) controls the trade-off**: The Privacy Loss parameter. Low ε (e.g., 0.1) = High Privacy / Low Accuracy. High ε (e.g., 10) = Low Privacy / High Accuracy.
+- **Epsilon (ε) controls the trade-off**: The Privacy Loss parameter. Low ε (e.g., 0.1) = High Privacy / Low Accuracy.
+  High ε (e.g., 10) = Low Privacy / High Accuracy.
 - **Noise follows distribution**: Randomness added to the answer (Laplace or Gaussian distribution).
 - **Privacy Budget depletes**: You cannot query the dataset forever. Eventually, you burn the budget and the DB locks.
 
@@ -45,13 +48,16 @@ If I ask "How many people have cancer?" and the answer is **100**. And I know **
 
 If I ask again and the answer is **101**, I know **Mr. Smith has cancer**. This is a **Differentiation Attack**.
 
-DP prevents this by making the answer **100 ± 2**. So when Smith joins, the answer might still be **100**, or **102**. I cannot be certain.
+DP prevents this by making the answer **100 ± 2**. So when Smith joins, the answer might still be **100**, or **102**. I
+cannot be certain.
 
 ## The Privacy Budget (Epsilon)
 
-Every time an analyst queries the database, they "spend" a little bit of privacy (Epsilon). If they ask the same question 1,000 times and average the results, they can filter out the noise and find the true value.
+Every time an analyst queries the database, they "spend" a little bit of privacy (Epsilon). If they ask the same
+question 1,000 times and average the results, they can filter out the noise and find the true value.
 
-**QA Requirement**: Test the **Accountant**. When the budget hits 0, the API usually returns `429 Too Many Requests` or `403 Forbidden`. The data is "burned". No more questions.
+**QA Requirement**: Test the **Accountant**. When the budget hits 0, the API usually returns `429 Too Many Requests` or
+`403 Forbidden`. The data is "burned". No more questions.
 
 ## Code Snippet: Testing Noise Distribution
 
@@ -108,9 +114,11 @@ It allows you to use sensitive data (Health, Taxes, Voting) for public good with
 
 ## Key Takeaways
 
-- **Utility vs. Privacy is eternal**: The eternal trade-off. You cannot have perfect accuracy and perfect privacy. QA must validate the "Utility Curve".
+- **Utility vs. Privacy is eternal**: The eternal trade-off. You cannot have perfect accuracy and perfect privacy. QA
+  must validate the "Utility Curve".
 - **Composition accumulates quickly**: 5 small queries = 1 big privacy loss. Budgets add up.
-- **Use established libraries**: Do not roll your own crypto. Do not roll your own DP. Use libraries like **Google DP** or **OpenDP**.
+- **Use established libraries**: Do not roll your own crypto. Do not roll your own DP. Use libraries like **Google DP**
+  or **OpenDP**.
 
 ## Next Steps
 

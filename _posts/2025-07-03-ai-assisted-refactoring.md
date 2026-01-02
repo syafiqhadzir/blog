@@ -24,9 +24,11 @@ tags:
 
 ## Introduction
 
-Developers are using Copilot, Cursor, and ChatGPT to rewrite legacy code. "Refactor this 500-line function into a class" they say. The AI does it in 5 seconds.
+Developers are using Copilot, Cursor, and ChatGPT to rewrite legacy code. "Refactor this 500-line function into a class"
+they say. The AI does it in 5 seconds.
 
-**The Danger**: The AI might remove a subtle edge-case check (e.g., `if (user == null) return`) because it *looked* redundant, but was actually protecting the database from a catastrophic null pointer.
+**The Danger**: The AI might remove a subtle edge-case check (e.g., `if (user == null) return`) because it *looked*
+redundant, but was actually protecting the database from a catastrophic null pointer.
 
 QA is no longer checking "New Features". You are checking "Old Features" that should not have changed.
 
@@ -40,13 +42,16 @@ QA is no longer checking "New Features". You are checking "Old Features" that sh
 
 AI models optimise for "Probable Tokens", not "Correct Logic".
 
-The AI might replace a custom sorting algorithm with `.sort()`, not realising the custom sort was doing something specific with non-ASCII characters. "It looked redundant", the AI might say if it could speak.
+The AI might replace a custom sorting algorithm with `.sort()`, not realising the custom sort was doing something
+specific with non-ASCII characters. "It looked redundant", the AI might say if it could speak.
 
-**QA Strategy**: **Property-Based Testing** (Fuzzing). Run the old code 10,000 times with random inputs. Run the new code 10,000 times with the *same* random inputs. If `Output_Old != Output_New`, reject the commit.
+**QA Strategy**: **Property-Based Testing** (Fuzzing). Run the old code 10,000 times with random inputs. Run the new
+code 10,000 times with the *same* random inputs. If `Output_Old != Output_New`, reject the commit.
 
 ## The AST (Abstract Syntax Tree) Guard
 
-Text diffs are useless for major refactors. You need tools like **jscodeshift** or **AST Explorer** to verify that the *intent* of the code remains.
+Text diffs are useless for major refactors. You need tools like **jscodeshift** or **AST Explorer** to verify that the
+*intent* of the code remains.
 
 "Did we lose a `try/catch` block?" "Did the variable scope change?" These are questions text diffs cannot answer.
 
@@ -94,18 +99,21 @@ test('modern calculator should be mathematically equivalent to legacy', () => {
 
 ## Summary
 
-AI is the ultimate "Intern". It works fast, it is eager to please, but it makes confident mistakes. Your job is to be the "Senior Engineer" who reviews the Intern's PRs.
+AI is the ultimate "Intern". It works fast, it is eager to please, but it makes confident mistakes. Your job is to be
+the "Senior Engineer" who reviews the Intern's PRs.
 
 Never rubber-stamp AI code. The confidence of the response is inversely proportional to how much you should trust it.
 
 ## Key Takeaways
 
 - **Subtle bugs hide in refactors**: Look for off-by-one errors and lost `null` checks. AI hates "defensive coding".
-- **Performance often degrades**: AI writes readable code, not fast code. It might replace a `for` loop with a `map().filter().reduce()` that allocates 3x memory.
+- **Performance often degrades**: AI writes readable code, not fast code. It might replace a `for` loop with a
+  `map().filter().reduce()` that allocates 3x memory.
 - **Readability matters most**: If the AI writes code that humans cannot understand, revert it. Code is for humans.
 
 ## Next Steps
 
 - **Tool**: **Fast-Check** (JS) or **Hypothesis** (Python) for property-based testing.
 - **Learn**: Understand **ASTs** (Abstract Syntax Trees). It is how linters see code.
-- **Process**: Implement a "No Refactor without Tests" rule. If there are no tests, write tests *before* asking AI to refactor.
+- **Process**: Implement a "No Refactor without Tests" rule. If there are no tests, write tests *before* asking AI to
+  refactor.

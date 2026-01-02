@@ -24,23 +24,28 @@ tags:
 
 ## Introduction
 
-One AI Agent is a helper. One hundred AI Agents is a Swarm. They talk to each other. They trade. They fight over resources.
+One AI Agent is a helper. One hundred AI Agents is a Swarm. They talk to each other. They trade. They fight over
+resources.
 
 **QA Challenge**: You cannot test them individually. You have to test the *crowd*.
 
-If Agent A hates Agent B, and Agent B hates Agent C, does the whole network deadlock like a Thanksgiving dinner political debate? Only testing reveals the answer.
+If Agent A hates Agent B, and Agent B hates Agent C, does the whole network deadlock like a Thanksgiving dinner
+political debate? Only testing reveals the answer.
 
 ## TL;DR
 
 - **MAS (Multi-Agent Systems)**: Distributed AI. No central brain.
-- **Micro-Economics applies**: Agents need a currency (tokens/priority) to prioritise tasks. Otherwise, everything is P0.
+- **Micro-Economics applies**: Agents need a currency (tokens/priority) to prioritise tasks. Otherwise, everything is
+  P0.
 - **Looping causes deadlocks**: "I'm waiting for you." "No, I'm waiting for you." (Distributed Deadlock).
 
 ## Emergent Behaviour (The Ghost in the Machine)
 
-You program simple rules: "Walk forward", "Avoid neighbour", "Seek food". Suddenly, they form a flock. Or a mosh pit. This is **Emergence**. You did not code "Flocking", but "Flocking" happened.
+You program simple rules: "Walk forward", "Avoid neighbour", "Seek food". Suddenly, they form a flock. Or a mosh pit.
+This is **Emergence**. You did not code "Flocking", but "Flocking" happened.
 
-**QA Strategy**: Simulation (Monte Carlo). Run 10,000 steps. Check for "Stampedes" (All agents rushing to one API endpoint simultaneously). Check for "Starvation" (One agent hoarding all the resources).
+**QA Strategy**: Simulation (Monte Carlo). Run 10,000 steps. Check for "Stampedes" (All agents rushing to one API
+endpoint simultaneously). Check for "Starvation" (One agent hoarding all the resources).
 
 ## Negotiation Protocols
 
@@ -119,9 +124,11 @@ We are building digital civilisations. If we do not write good laws (protocols),
 
 ## Key Takeaways
 
-- **Self-DDoS is possible**: Your agents might accidentally DDoS your own server. Rate limit your children. Ideally, they should communicate peer-to-peer.
+- **Self-DDoS is possible**: Your agents might accidentally DDoS your own server. Rate limit your children. Ideally,
+  they should communicate peer-to-peer.
 - **Communication needs standards**: Use standard protocols (ACL, KQML) or JSON-RPC. Do not invent your own language.
-- **Kill Switch is mandatory**: You need a "Command & Control" override. "Order 66: Shutdown All Agents." Test this feature weekly.
+- **Kill Switch is mandatory**: You need a "Command & Control" override. "Order 66: Shutdown All Agents." Test this
+  feature weekly.
 
 ## Next Steps
 

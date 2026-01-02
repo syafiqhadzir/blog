@@ -27,7 +27,8 @@ tags:
 
 No matter how many staging environments you have, nothing behaves exactly like real users on real unsteady Wi-Fi.
 
-**Canary Deployment** is the practice of rolling out a new version to a small subset of users (usually 1-5%) and waiting to see if they scream. If they do not, you roll out to the rest.
+**Canary Deployment** is the practice of rolling out a new version to a small subset of users (usually 1-5%) and waiting
+to see if they scream. If they do not, you roll out to the rest.
 
 ## TL;DR
 
@@ -37,7 +38,8 @@ No matter how many staging environments you have, nothing behaves exactly like r
 
 ## The 1% Rule
 
-Why 1%? Because if you break 1% of your users, your Support team can probably handle the ticket volume. If you break 100%, your CTO is writing an apology letter on LinkedIn.
+Why 1%? Because if you break 1% of your users, your Support team can probably handle the ticket volume. If you break
+100%, your CTO is writing an apology letter on LinkedIn.
 
 QA's job changes here. We are not manually clicking things anymore. We are monitoring **Baseline vs. Canary**.
 
@@ -52,11 +54,13 @@ A "Quality Gate" is an automated bouncer. It stands at the door of the rollout a
 
 If the Canary violates a threshold (e.g., "Latency > 500ms"), the gate closes, and the system automatically rolls back.
 
-This removes the "human hesitation". You do not want a manager debating whether "a few errors are okay" at 3 AM. The maths decides.
+This removes the "human hesitation". You do not want a manager debating whether "a few errors are okay" at 3 AM. The
+maths decides.
 
 ## Code Snippet: The Prometheus Gate
 
-Here is a Prometheus Query Language (PromQL) snippet that you might use in Grafana or a tool like Argo Rollouts to determine if the Canary is healthy.
+Here is a Prometheus Query Language (PromQL) snippet that you might use in Grafana or a tool like Argo Rollouts to
+determine if the Canary is healthy.
 
 ```yaml
 # prometheus-quality-gate.yaml
@@ -84,12 +88,14 @@ If this expression evaluates to `true`, the deployment pipeline aborts immediate
 
 Canary releases turn deployment from a "Cliff Edge" into a "Gentle Ramp".
 
-They allow you to be bold with features but conservative with risk. As a QA, your focus shifts from "finding bugs" to "defining the criteria for a healthy system".
+They allow you to be bold with features but conservative with risk. As a QA, your focus shifts from "finding bugs" to
+"defining the criteria for a healthy system".
 
 ## Key Takeaways
 
 - **Automate Rollback**: Do not rely on a button press. If metrics fail, the system should heal itself.
-- **Sticky Sessions prevent confusion**: Ensure the same user stays on the Canary. Do not swap them back and forth, or they will get confused (and lose their shopping cart).
+- **Sticky Sessions prevent confusion**: Ensure the same user stays on the Canary. Do not swap them back and forth, or
+  they will get confused (and lose their shopping cart).
 - **Log Context by version**: Add `{ version: "canary" }` to your JSON logs so you can filter errors by version.
 
 ## Next Steps

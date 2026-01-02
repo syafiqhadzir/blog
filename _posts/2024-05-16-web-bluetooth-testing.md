@@ -25,9 +25,11 @@ tags:
 
 ## Introduction
 
-The web can now talk to your heart rate monitor, your drone, and your smart lightbulb. The `navigator.bluetooth` API is amazing.
+The web can now talk to your heart rate monitor, your drone, and your smart lightbulb. The `navigator.bluetooth` API is
+amazing.
 
-It is also a security nightmare wrapped in a UX disaster. QA's job is to ensure that when the user clicks "Connect", their toaster does not explode.
+It is also a security nightmare wrapped in a UX disaster. QA's job is to ensure that when the user clicks "Connect",
+their toaster does not explode.
 
 ## TL;DR
 
@@ -61,7 +63,8 @@ Bluetooth Low Energy (BLE) has a range of about 10 metres (if you are lucky).
 
 ## Code Snippet: Mocking Bluetooth in Tests
 
-You cannot automate real Bluetooth hardware easily (unless you build a robot finger to tap the screen). But you *can* mock the API in your test environment to verify your application logic.
+You cannot automate real Bluetooth hardware easily (unless you build a robot finger to tap the screen). But you *can*
+mock the API in your test environment to verify your application logic.
 
 ```javascript
 /*
@@ -109,14 +112,16 @@ if (window.navigator) {
 
 ## Summary
 
-Web Bluetooth bridges the gap between the "Cloud" and the "Real World". But the real world is messy. Batteries die. Signals fade.
+Web Bluetooth bridges the gap between the "Cloud" and the "Real World". But the real world is messy. Batteries die.
+Signals fade.
 
 Your code must be robust enough to handle the physical reality of the user.
 
 ## Key Takeaways
 
 - **Battery Level needs display**: Always read the standard `battery_level` service (0x180F). Show it in the UI.
-- **Firmware Updates are the boss fight**: Can your web app update the device firmware (DFU)? That is the ultimate QA boss fight.
+- **Firmware Updates are the boss fight**: Can your web app update the device firmware (DFU)? That is the ultimate QA
+  boss fight.
 - **Privacy requires care**: Do not bond to devices you do not own.
 
 ## Next Steps

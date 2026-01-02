@@ -23,7 +23,8 @@ tags:
 
 ## Introduction
 
-Deploying to production used to be an adrenaline sport. You would upload the files, restart the server, and watch the error logs like a hawk whilst thousands of users saw a "503 Service Unavailable" page.
+Deploying to production used to be an adrenaline sport. You would upload the files, restart the server, and watch the
+error logs like a hawk whilst thousands of users saw a "503 Service Unavailable" page.
 
 Blue-Green deployment changed that. Now, we have two identical environments:
 
@@ -44,15 +45,18 @@ The beauty of Blue-Green is that you can test "Production" without actually bein
 
 However, this leads to a false sense of security.
 "It works on Green!"
-Great, but does Green have the same config as Blue? Did someone change the `MAX_CONNECTIONS` on Blue last night and forget to update the Terraform script for Green?
+Great, but does Green have the same config as Blue? Did someone change the `MAX_CONNECTIONS` on Blue last night and
+forget to update the Terraform script for Green?
 
-**QA Challenge**: Verify **Configuration Parity**. If Blue is running on a larger instance type than Green, your performance test on Green is a lie.
+**QA Challenge**: Verify **Configuration Parity**. If Blue is running on a larger instance type than Green, your
+performance test on Green is a lie.
 
 ## The Database Trap
 
 This is where 90% of Blue-Green deployments fail.
 
-You have two versions of the app code, but only **one database**. If Version 2 (Green) renames a column that Version 1 (Blue) is still using, you will break the live site *before* you even switch traffic.
+You have two versions of the app code, but only **one database**. If Version 2 (Green) renames a column that Version 1
+(Blue) is still using, you will break the live site *before* you even switch traffic.
 
 **Rule**: All database changes must be **N-1 Compatible** (Backward Compatible).
 
@@ -63,7 +67,8 @@ You have two versions of the app code, but only **one database**. If Version 2 (
 
 ## Code Snippet: The Warm-Up Script
 
-Before flipping the switch, you want to make sure the Green environment is not "cold". Here is a simple bash script to warm up the new instances and verify they are returning 200 OK.
+Before flipping the switch, you want to make sure the Green environment is not "cold". Here is a simple bash script to
+warm up the new instances and verify they are returning 200 OK.
 
 ```bash
 #!/bin/bash
@@ -96,18 +101,23 @@ echo "✅ Green is healthy and running $CURRENT_VERSION. Ready to swap!"
 
 ## Summary
 
-Blue-Green deployment is the safety net that lets you sleep at night. It turns a "Rollback" from a 30-minute panic into a 1-second load balancer update.
+Blue-Green deployment is the safety net that lets you sleep at night. It turns a "Rollback" from a 30-minute panic into
+a 1-second load balancer update.
 
 But remember: The safety net only works if you check the knots before you jump.
 
 ## Key Takeaways
 
-- **Parity is mandatory**: Ensure Blue and Green hardware/config are identical. Use Infrastructure as Code (Terraform) to guarantee this.
-- **Shared State needs care**: Remember they share the same DB, Cache, and S3 buckets. Do not delete things in Green that Blue needs.
-- **Warm-Up prevents cold starts**: Hit the Green endpoints to load classes into memory (Java/C#) before user traffic hits.
+- **Parity is mandatory**: Ensure Blue and Green hardware/config are identical. Use Infrastructure as Code (Terraform)
+  to guarantee this.
+- **Shared State needs care**: Remember they share the same DB, Cache, and S3 buckets. Do not delete things in Green
+  that Blue needs.
+- **Warm-Up prevents cold starts**: Hit the Green endpoints to load classes into memory (Java/C#) before user traffic
+  hits.
 
 ## Next Steps
 
 - **Automation**: Add the validation script above to your Jenkins/GitLab pipeline as a blocking step.
 - **Observability**: Ensure your logs clearly distinguish between `env=blue` and `env=green`.
-- **Practice**: Perform a rollback in staging. If you cannot rollback instantly, you are not doing Blue-Green; you are just doing "Deployment Hopscotch".
+- **Practice**: Perform a rollback in staging. If you cannot rollback instantly, you are not doing Blue-Green; you are
+  just doing "Deployment Hopscotch".

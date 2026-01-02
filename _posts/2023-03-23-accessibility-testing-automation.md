@@ -26,9 +26,12 @@ tags:
 
 ## Introduction
 
-Accessibility (a11y) is not an "optional feature" like Dark Mode or a generic Avatar. It is a human right. In many jurisdictions, it is also a legal requirement unless you enjoy giving money to lawyers.
+Accessibility (a11y) is not an "optional feature" like Dark Mode or a generic Avatar. It is a human right. In many
+jurisdictions, it is also a legal requirement unless you enjoy giving money to lawyers.
 
-Yet, manual accessibility auditing is tedious. The good news: you can automate about 50% of it using the `axe-core` library. The bad news: automation cannot gauge "usability" or "empathy," but it gets rid of the low-hanging fruit so you can focus on the hard stuff.
+Yet, manual accessibility auditing is tedious. The good news: you can automate about 50% of it using the `axe-core`
+library. The bad news: automation cannot gauge "usability" or "empathy," but it gets rid of the low-hanging fruit so you
+can focus on the hard stuff.
 
 ## TL;DR
 
@@ -41,13 +44,17 @@ Yet, manual accessibility auditing is tedious. The good news: you can automate a
 
 Many teams treat a11y as a final checkbox. "We'll build it, then we'll make it accessible."
 
-That is like saying, "We'll build the house, then we'll add the doors." It is expensive, painful, and you end up cutting holes in load-bearing walls.
+That is like saying, "We'll build the house, then we'll add the doors." It is expensive, painful, and you end up cutting
+holes in load-bearing walls.
 
-By integrating automated checks into your standard E2E or Component tests, you ensure that every new button, form, and modal is accessible **by default**.
+By integrating automated checks into your standard E2E or Component tests, you ensure that every new button, form, and
+modal is accessible **by default**.
 
 ## Enter Axe-Core
 
-Deque System's `axe-core` is the engine behind Google Lighthouse and most a11y tools. It scans the DOM and reports violations based on WCAG 2.1 guidelines. It is incredibly easy to inject into frameworks like Playwright, Cypress, or Selenium.
+Deque System's `axe-core` is the engine behind Google Lighthouse and most a11y tools. It scans the DOM and reports
+violations based on WCAG 2.1 guidelines. It is incredibly easy to inject into frameworks like Playwright, Cypress, or
+Selenium.
 
 ## Code Snippet: Playwright + Axe = Love
 
@@ -76,11 +83,13 @@ test('landing page should not have any accessibility violations', async ({ page 
 });
 ```
 
-When this test runs, it will scream at you if your button is just a `<div>` or if your grey text is too light against the white background (Contrast Ratio < 4.5:1).
+When this test runs, it will scream at you if your button is just a `<div>` or if your grey text is too light against
+the white background (Contrast Ratio < 4.5:1).
 
 ## Summary
 
-Building accessible software is about empathy, but automation provides the safety net. It catches the silly mistakes (missing IDs, bad nesting) so your human auditors can focus on the complex interactions.
+Building accessible software is about empathy, but automation provides the safety net. It catches the silly mistakes
+(missing IDs, bad nesting) so your human auditors can focus on the complex interactions.
 
 Automation does not replace manual testing; it enhances it.
 

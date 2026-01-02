@@ -25,15 +25,18 @@ tags:
 
 Documentation is like a New Year's Resolution: It starts with good intentions and is abandoned by February.
 
-Your API docs say the `user.age` field is an `integer`. Your Backend Developer changes it to a `string` ("21 years old") because "it looks nicer in the JSON". Your iOS app crashes instantly because it tried to do maths on a string.
+Your API docs say the `user.age` field is an `integer`. Your Backend Developer changes it to a `string` ("21 years old")
+because "it looks nicer in the JSON". Your iOS app crashes instantly because it tried to do maths on a string.
 
-This divergence between *Expectation* (Docs) and *Reality* (Response) is called **Schema Drift**. And it is the reason your mobile team hates your backend team.
+This divergence between *Expectation* (Docs) and *Reality* (Response) is called **Schema Drift**. And it is the reason
+your mobile team hates your backend team.
 
 ## TL;DR
 
 - **Drift is divergence**: A mismatch between the deployed API and the consumer's understanding of it.
 - **Breaking Changes cause crashes**: Removing fields or changing types (e.g., Integer -> String).
-- **Green Tests hide problems**: Unit tests pass because everyone mocks the other side. Integration tests expose the truth.
+- **Green Tests hide problems**: Unit tests pass because everyone mocks the other side. Integration tests expose the
+  truth.
 
 ## The Silent Killer
 
@@ -48,9 +51,11 @@ You need **Contract Tests** or **Schema Validation** running against the *real* 
 
 ## Contract Testing 101
 
-You do not need a heavy tool like Pact for everything. Often, a simple JSON Schema validation in your E2E suite is enough.
+You do not need a heavy tool like Pact for everything. Often, a simple JSON Schema validation in your E2E suite is
+enough.
 
-Every time your test fetches a User, validate the structure against a strict schema. If `user.id` is missing, **fail the test**. If `user.email` is not an email format, **fail the test**.
+Every time your test fetches a User, validate the structure against a strict schema. If `user.id` is missing, **fail the
+test**. If `user.email` is not an email format, **fail the test**.
 
 ## Code Snippet: Validating with Ajv
 
@@ -96,13 +101,16 @@ test('GET /users/1 matches strict schema', async () => {
 });
 ```
 
-Using `additionalProperties: false` ensures you are aware of every change in the payload. It is strict, but it stops "data pollution" where valid but undocumented fields creep into your app logic.
+Using `additionalProperties: false` ensures you are aware of every change in the payload. It is strict, but it stops
+"data pollution" where valid but undocumented fields creep into your app logic.
 
 ## Summary
 
-Schema Drift is inevitable in agile teams. The goal is not to stop changes; it is to detect them *before* the mobile app update is approved by Apple.
+Schema Drift is inevitable in agile teams. The goal is not to stop changes; it is to detect them *before* the mobile app
+update is approved by Apple.
 
-If you rely on "Backend promised they wouldn't change it," you are going to have a bad time. Backend devs lie. (Not on purpose, but they do).
+If you rely on "Backend promised they wouldn't change it," you are going to have a bad time. Backend devs lie. (Not on
+purpose, but they do).
 
 ## Key Takeaways
 

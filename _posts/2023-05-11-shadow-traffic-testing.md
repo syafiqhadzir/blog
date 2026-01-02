@@ -24,9 +24,12 @@ tags:
 
 ## Introduction
 
-What if I told you there is a way to test your new code with **100% real production traffic** without a single user knowing?
+What if I told you there is a way to test your new code with **100% real production traffic** without a single user
+knowing?
 
-No, it is not magic; it is **Shadow Traffic** (or Traffic Mirroring). It is the ultimate flex: running your new version alongside the old one, letting it sweat under the load, but discarding its responses so nobody sees the bugs. It is like a rehearsal where the audience is already seated, but they are watching a hologram of the previous show.
+No, it is not magic; it is **Shadow Traffic** (or Traffic Mirroring). It is the ultimate flex: running your new version
+alongside the old one, letting it sweat under the load, but discarding its responses so nobody sees the bugs. It is like
+a rehearsal where the audience is already seated, but they are watching a hologram of the previous show.
 
 ## TL;DR
 
@@ -39,7 +42,8 @@ No, it is not magic; it is **Shadow Traffic** (or Traffic Mirroring). It is the 
 Shadowing (also known as Dark Launching) involves duplicating incoming requests at the Load Balancer level.
 
 1. **Primary**: Goes to `Service V1`. This responds to the user.
-2. **Shadow**: Goes to `Service V2`. This processes the request, hits the DB, does the maths... and then the response is sent to `/dev/null`.
+2. **Shadow**: Goes to `Service V2`. This processes the request, hits the DB, does the maths... and then the response is
+sent to `/dev/null`.
 
 We monitor `Service V2`. Did it crash? Did it throw a 500 error? Did it calculate the tax wrong?
 
@@ -49,7 +53,8 @@ If `V2` explodes, we fix it silently. If `V2` survives the Friday night rush, we
 
 The catch? **Side Effects**.
 
-If `Service V1` charges a credit card, and `Service V2` also charges the credit card, you are going to double-charge your customer. That is a CV Generating Event.
+If `Service V1` charges a credit card, and `Service V2` also charges the credit card, you are going to double-charge
+your customer. That is a CV Generating Event.
 
 Shadow versions must:
 
@@ -88,12 +93,14 @@ In this config:
 
 ## Summary
 
-Watch the mirror, protect the reality. Shadow traffic testing is the secret weapon of high-scale engineering teams (Google, Netflix), providing the confidence to refactor critical legacy systems without the "Big Bang" deployment fear.
+Watch the mirror, protect the reality. Shadow traffic testing is the secret weapon of high-scale engineering teams
+(Google, Netflix), providing the confidence to refactor critical legacy systems without the "Big Bang" deployment fear.
 
 ## Key Takeaways
 
 - **Idempotency prevents disasters**: Ensure your shadow service does not mutate data (or your users will hate you).
-- **Diffing reveals regressions**: Use tools to compare `Response V1` vs `Response V2`. Differences indicate regressions.
+- **Diffing reveals regressions**: Use tools to compare `Response V1` vs `Response V2`. Differences indicate
+  regressions.
 - **Resource Usage doubles**: Remember, you are doubling the load on your database. Make sure it can handle 2x requests.
 
 ## Next Steps

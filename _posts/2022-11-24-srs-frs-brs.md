@@ -25,9 +25,12 @@ tags:
 
 ## Introduction
 
-Welcome to the world of acronyms, where we turn simple concepts into three-letter abbreviations to sound smarter in meetings. QA and testing professionals must recognise these three pillars of documentation: **SRS**, **FRS**, and **BRS**.
+Welcome to the world of acronyms, where we turn simple concepts into three-letter abbreviations to sound smarter in
+meetings. QA and testing professionals must recognise these three pillars of documentation: **SRS**, **FRS**, and
+**BRS**.
 
-Without them, we are just guessing what the software is supposed to do. And whilst "Intuition-Based Testing" sounds cool, it usually leads to a Production Incident Report (PIR).
+Without them, we are just guessing what the software is supposed to do. And whilst "Intuition-Based Testing" sounds
+cool, it usually leads to a Production Incident Report (PIR).
 
 ## TL;DR
 
@@ -46,13 +49,16 @@ Think of it as a hierarchy of pain:
 
 ## SRS: The "Contract"
 
-A **Software Requirement Specification (SRS)** is the contract between the client and the developer. It says, "You will build X, and it will do Y."
+A **Software Requirement Specification (SRS)** is the contract between the client and the developer. It says, "You will
+build X, and it will do Y."
 
-If 'it' is not in the SRS, 'it' should not exist in the code. (In theory. In practice, 'it' is usually a feature the CEO dreamt up in the shower this morning).
+If 'it' is not in the SRS, 'it' should not exist in the code. (In theory. In practice, 'it' is usually a feature the CEO
+dreamt up in the shower this morning).
 
 ## FRS: The "Manual"
 
-A **Functional Requirement Specification (FRS)** is the bible for QA. It translates "We want a fast login" (BRS) into "Login API must respond within 200ms using a JWT token" (FRS).
+A **Functional Requirement Specification (FRS)** is the bible for QA. It translates "We want a fast login" (BRS) into
+"Login API must respond within 200ms using a JWT token" (FRS).
 
 It covers:
 
@@ -94,21 +100,26 @@ Feature: User Authentication
     Then the account should be locked for 15 minutes
 ```
 
-By tagging scenarios with `@req:FRS-1.2`, we create **Traceability**. If the client asks, "Did you test FRS-1.2?", you can point to the green checkmark.
+By tagging scenarios with `@req:FRS-1.2`, we create **Traceability**. If the client asks, "Did you test FRS-1.2?", you
+can point to the green checkmark.
 
 ## Summary
 
-Never forget this fact: if we build a perfect FRS that fails the BRS, we have built a perfect failure. We built the wrong thing, correctly.
+Never forget this fact: if we build a perfect FRS that fails the BRS, we have built a perfect failure. We built the
+wrong thing, correctly.
 
-Jim Highsmith once said, "Documentation is not understanding." True. But try explaining that to a stakeholder when the feature does not work. Good documentation is your insurance policy.
+Jim Highsmith once said, "Documentation is not understanding." True. But try explaining that to a stakeholder when the
+feature does not work. Good documentation is your insurance policy.
 
 ## Key Takeaways
 
 - **Traceability matters**: Map your test cases to the specific FRS item.
-- **Ambiguity must be rejected**: If the requirement says "The system should be fast", reject it. "Fast" is not a number. "Under 200ms" is a number.
+- **Ambiguity must be rejected**: If the requirement says "The system should be fast", reject it. "Fast" is not a
+  number. "Under 200ms" is a number.
 - **Ask Why**: If an FRS makes no sense, check the BRS. Maybe the business goal changed.
 
 ## Next Steps
 
-- **Find the BRS**: Go ask your Project Manager for the BRS of your current project. Watch the colour drain from their face.
+- **Find the BRS**: Go ask your Project Manager for the BRS of your current project. Watch the colour drain from their
+  face.
 - **Map It**: Take one feature and trace it: BRS -> SRS -> FRS -> Test Case.

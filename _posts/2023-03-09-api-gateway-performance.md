@@ -24,9 +24,12 @@ tags:
 
 ## Introduction
 
-The API Gateway (Kong, Nginx, AWS API Gateway) is the bouncer of your microservices club. It creates the first impression.
+The API Gateway (Kong, Nginx, AWS API Gateway) is the bouncer of your microservices club. It creates the first
+impression.
 
-If the bouncer is slow, checking IDs one by one with a magnifying glass whilst a queue forms around the block, people are going to leave and go to the club next door (your competitor). Testing the gateway is distinct from testing the services behind it. We care about throughput (RPS) and the "tax" it charges on every request.
+If the bouncer is slow, checking IDs one by one with a magnifying glass whilst a queue forms around the block, people
+are going to leave and go to the club next door (your competitor). Testing the gateway is distinct from testing the
+services behind it. We care about throughput (RPS) and the "tax" it charges on every request.
 
 ## TL;DR
 
@@ -37,7 +40,8 @@ If the bouncer is slow, checking IDs one by one with a magnifying glass whilst a
 
 ## The Middleware Tax
 
-When you test an API Gateway, you are not testing the business logic (the "Database Service"). You are testing the infrastructure plumbing.
+When you test an API Gateway, you are not testing the business logic (the "Database Service"). You are testing the
+infrastructure plumbing.
 
 Everything you add to the gateway adds latency:
 
@@ -45,17 +49,20 @@ Everything you add to the gateway adds latency:
 2. **Rate Limiting**: "Is this IP allowed?" requires a Redis lookup. Network lag.
 3. **Transformation**: Converting XML to JSON takes parsing time.
 
-If your Checkout Service responds in 50ms, but your Gateway adds 200ms of lag, your user sees 250ms. That is unacceptable. You are paying a 400% tax.
+If your Checkout Service responds in 50ms, but your Gateway adds 200ms of lag, your user sees 250ms. That is
+unacceptable. You are paying a 400% tax.
 
 ## Metrics That Matter (Stop Looking at Averages)
 
 Do not just look at "Average Response Time". That is a lie metrics tell to managers to make them feel safe.
 
-Look at the **p99** (99th percentile). If p99 is 2 seconds, it means 1 in 100 users is waiting 2 seconds. In a system with 1 million users, that is 10,000 angry people tweeting about how slow your app is.
+Look at the **p99** (99th percentile). If p99 is 2 seconds, it means 1 in 100 users is waiting 2 seconds. In a system
+with 1 million users, that is 10,000 angry people tweeting about how slow your app is.
 
 ## Code Snippet: Using k6 to Hammer the Gateway
 
-k6 is a modern load testing tool written in Go/JS. Here is a script to hammer your gateway and check if it survives a "Marketing Spike".
+k6 is a modern load testing tool written in Go/JS. Here is a script to hammer your gateway and check if it survives a
+"Marketing Spike".
 
 ```javascript
 import http from 'k6/http';
@@ -95,17 +102,20 @@ export default function () {
 }
 ```
 
-Running this will show you exactly when the Gateway starts to sweat. If the latency spikes when you enable Authentication, you know the bottleneck is not the network; it is the CPU.
+Running this will show you exactly when the Gateway starts to sweat. If the latency spikes when you enable
+Authentication, you know the bottleneck is not the network; it is the CPU.
 
 ## Summary
 
 The API Gateway is often the single point of failure. If it goes down, everything goes down.
 
-Performance testing it is not optional; it is survival. Configure the thread pools, tune the worker processes, and ensure the bouncer keeps the queue moving.
+Performance testing it is not optional; it is survival. Configure the thread pools, tune the worker processes, and
+ensure the bouncer keeps the queue moving.
 
 ## Key Takeaways
 
-- **Isolate for measurement**: Test the Gateway with a mocked backend (responding in 0ms) to measure *pure* Gateway latency.
+- **Isolate for measurement**: Test the Gateway with a mocked backend (responding in 0ms) to measure *pure* Gateway
+  latency.
 - **Spike Test reveals limits**: Sudden traffic breaks gateways faster than steady traffic.
 - **Cache drops latency**: If you cache responses, the p99 should drop to < 10ms. Verify it.
 

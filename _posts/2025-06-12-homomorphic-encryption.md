@@ -23,15 +23,20 @@ tags:
 
 ## Introduction
 
-Imagine you have a locked box containing a number. You cannot open it. You send the box to a mathematician. The mathematician adds "5" to the box without opening it. They send the box back. You open it with your key. The number inside has increased by 5.
+Imagine you have a locked box containing a number. You cannot open it. You send the box to a mathematician. The
+mathematician adds "5" to the box without opening it. They send the box back. You open it with your key. The number
+inside has increased by 5.
 
 This is **Homomorphic Encryption (HE)**.
 
-It allows cloud servers to process sensitive data (Medical Records, Bank Balances) *without ever decrypting it*. The server never sees your data, but it can still do the mathematics. It sounds impossible, but it is just very clever algebra.
+It allows cloud servers to process sensitive data (Medical Records, Bank Balances) *without ever decrypting it*. The
+server never sees your data, but it can still do the mathematics. It sounds impossible, but it is just very clever
+algebra.
 
 ## TL;DR
 
-- **PHE vs FHE**: **Partially** HE (Addition OR Multiplication) is fast. **Fully** HE (Addition AND Multiplication) is historically very slow.
+- **PHE vs FHE**: **Partially** HE (Addition OR Multiplication) is fast. **Fully** HE (Addition AND Multiplication) is
+  historically very slow.
 - **Ciphertext Expansion bloats data**: An encrypted "1" might be 4MB in size. Bandwidth is a testing bottleneck.
 - **Correctness is mathematical**: `Decrypt(Op(Encrypt(A))) == Op(A)`. If this fails, mathematics is broken.
 
@@ -41,19 +46,23 @@ In standard encryption (AES), if you change one bit of the encrypted text, the d
 
 In HE, the mathematics is preserved "homomorphically" (same shape).
 
-**QA Challenge**: Mathematics on floating point numbers in HE is hard. Usually, you work with integers or fixed-point representations. Rounding errors can explode deeper inside a circuit.
+**QA Challenge**: Mathematics on floating point numbers in HE is hard. Usually, you work with integers or fixed-point
+representations. Rounding errors can explode deeper inside a circuit.
 
 ## The Noise Barrier
 
-Every operation in HE adds "Noise" to the ciphertext. If you do too many multiplications, the noise overwhelms the signal, and you effectively decrypt rubbish.
+Every operation in HE adds "Noise" to the ciphertext. If you do too many multiplications, the noise overwhelms the
+signal, and you effectively decrypt rubbish.
 
-**Bootstrapping** is a technique to "refresh" the ciphertext and reduce noise, but it is computationally expensive. Like taking your car for a service after every journey.
+**Bootstrapping** is a technique to "refresh" the ciphertext and reduce noise, but it is computationally expensive. Like
+taking your car for a service after every journey.
 
 **QA Test**: Stress test the "Circuit Depth". Can we do 10 operations? 100? 1000? At what point does `Decrypt()` fail?
 
 ## Code Snippet: Simulated Homomorphic Addition
 
-Since actual FHE libraries (like Microsoft SEAL or TFHE) are complex C++ bindings, here is a conceptual test using Paillier (Additive HE) logic.
+Since actual FHE libraries (like Microsoft SEAL or TFHE) are complex C++ bindings, here is a conceptual test using
+Paillier (Additive HE) logic.
 
 ```javascript
 /*
@@ -121,13 +130,16 @@ test('server should not know values', () => {
 
 Homomorphic Encryption is the "Holy Grail" of privacy.
 
-It is computationally heavy (100x-1000x slower than plaintext), but for specific high-security tasks (Voting, DNA analysis), it is revolutionary. QA requires moving from "functional testing" to "mathematical verification".
+It is computationally heavy (100x-1000x slower than plaintext), but for specific high-security tasks (Voting, DNA
+analysis), it is revolutionary. QA requires moving from "functional testing" to "mathematical verification".
 
 ## Key Takeaways
 
-- **Performance resembles vintage computing**: It acts like a 1980s CPU. Optimise your "circuits". Do not encrypt what you do not have to.
+- **Performance resembles vintage computing**: It acts like a 1980s CPU. Optimise your "circuits". Do not encrypt what
+  you do not have to.
 - **Data types have limits**: You do not have infinite precision. Watch out for overflows.
-- **Security requires key isolation**: Ensure the server *actually* has no key. If the keys are in memory on the compute node, it is not HE.
+- **Security requires key isolation**: Ensure the server *actually* has no key. If the keys are in memory on the compute
+  node, it is not HE.
 
 ## Next Steps
 

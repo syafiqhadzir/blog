@@ -4,10 +4,10 @@ title: Accessibility
 description: Accessibility statement for this blog, detailing our commitment to WCAG 2.2 conformance.
 permalink: /accessibility
 ---
-
 ## Accessibility Statement
 
-This website is committed to ensuring digital accessibility for everyone, including people with disabilities. We aim to meet [WCAG 2.2 Level AA](https://www.w3.org/TR/WCAG22/) conformance.
+This website is committed to ensuring digital accessibility for everyone, including people with
+disabilities. We aim to meet [WCAG 2.2 Level AA](https://www.w3.org/TR/WCAG22/) conformance.
 
 ### Measures Taken
 
@@ -20,7 +20,8 @@ This website is committed to ensuring digital accessibility for everyone, includ
 
 ### Known Limitations
 
-- **User-Generated Content**: Blog post images may not always have descriptive alt text. We strive to improve this continuously.
+- **User-Generated Content**: Blog post images may not always have descriptive alt text. We strive to improve this
+  continuously.
 - **Third-Party Content**: External embeds (if any) may not fully conform.
 
 ### Feedback

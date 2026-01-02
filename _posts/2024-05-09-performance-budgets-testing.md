@@ -25,9 +25,11 @@ tags:
 
 ## Introduction
 
-Your developers want to import `moment.js` (60KB) to format one date. They want `lodash` (70KB) to flatten one array. They are building a monster.
+Your developers want to import `moment.js` (60KB) to format one date. They want `lodash` (70KB) to flatten one array.
+They are building a monster.
 
-A Performance Budget is the only thing standing between your speedy app and a bloatware disaster. It is a hard limit. If you cross it, the build fails. No mercy.
+A Performance Budget is the only thing standing between your speedy app and a bloatware disaster. It is a hard limit. If
+you cross it, the build fails. No mercy.
 
 ## TL;DR
 
@@ -97,8 +99,10 @@ A budget forces the team to make trade-offs. "Do we really need this library? Or
 
 ## Key Takeaways
 
-- **Tree Shaking must be verified**: Ensure your build tool is actually removing unused code. Testing imports is good; testing exports is better.
-- **Code Splitting reduces initial load**: Do not load the "Admin Dashboard" code for the "Homepage" user. Use dynamic imports (`import()`).
+- **Tree Shaking must be verified**: Ensure your build tool is actually removing unused code. Testing imports is good;
+  testing exports is better.
+- **Code Splitting reduces initial load**: Do not load the "Admin Dashboard" code for the "Homepage" user. Use dynamic
+  imports (`import()`).
 - **Compression needs enabling**: Is Brotli enabled? It beats Gzip every time.
 
 ## Next Steps

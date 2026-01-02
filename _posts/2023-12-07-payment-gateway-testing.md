@@ -28,12 +28,15 @@ There is no bug more terrifying than a Payment Bug.
 
 If a button is misaligned, users laugh. If you charge a user £99 instead of £9, users sue.
 
-Testing payment gateways (Stripe, PayPal, Adyen) is basically bomb defusal. You need to verify that money moves correctly, without actually moving real money (unless you want to explain to your CFO why you spent £5,000 on "Test Trainers").
+Testing payment gateways (Stripe, PayPal, Adyen) is basically bomb defusal. You need to verify that money moves
+correctly, without actually moving real money (unless you want to explain to your CFO why you spent £5,000 on "Test
+Trainers").
 
 ## TL;DR
 
 - **Sandbox is mandatory**: Always use the Sandbox environment.
-- **Magic Numbers trigger behaviours**: Use specific credit card numbers to trigger specific errors (Decline, Insufficient Funds).
+- **Magic Numbers trigger behaviours**: Use specific credit card numbers to trigger specific errors (Decline,
+  Insufficient Funds).
 - **Webhooks need verification**: Verify that your backend handles the asynchronous "Payment Succeeded" callback.
 
 ## The High Stakes of Payments
@@ -57,11 +60,13 @@ Stripe provides a list of test cards that trigger specific behaviours.
 - `4000...`: Declined (Generic).
 - `4000 0000 0000 0099`: Lost Card (Stolen).
 
-You **must** write automated tests for the failure cases. What does your UI do when the card is declined? Does it show a red box? Or does it spinner forever?
+You **must** write automated tests for the failure cases. What does your UI do when the card is declined? Does it show a
+red box? Or does it spinner forever?
 
 ## Code Snippet: Using Mock Stripe
 
-Instead of hitting the real Stripe API (even sandbox) in your CI, you should Mock it using a tool like `stripe-mock` or Nock.
+Instead of hitting the real Stripe API (even sandbox) in your CI, you should Mock it using a tool like `stripe-mock` or
+Nock.
 
 Here is a Node.js test using `nock` to simulate a declined charge.
 
@@ -105,7 +110,8 @@ Remember: The only thing worse than a payment failing is a payment succeeding wh
 ## Key Takeaways
 
 - **Never touch the PAN**: Never, ever, ever log the 16-digit card number. PCI-DSS will hunt you down.
-- **Idempotency keys prevent double-charging**: Use them. They prevent you from charging the user twice if the network flakes out.
+- **Idempotency keys prevent double-charging**: Use them. They prevent you from charging the user twice if the network
+  flakes out.
 - **Expiry Dates need testing**: Test what happens when a card expires *next month*.
 
 ## Next Steps

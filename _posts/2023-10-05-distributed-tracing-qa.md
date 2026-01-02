@@ -23,11 +23,14 @@ tags:
 
 ## Introduction
 
-In a Monolith, if a request is slow, you look at the `slow_query_log` and blame the DBA. In Microservices, if a request is slow, you look at... nothing. You stare into the abyss.
+In a Monolith, if a request is slow, you look at the `slow_query_log` and blame the DBA. In Microservices, if a request
+is slow, you look at... nothing. You stare into the abyss.
 
-Did the Frontend call the Backend? Did the Backend call the Auth Service? Did the Auth Service allow the Redis Cache to timeout?
+Did the Frontend call the Backend? Did the Backend call the Auth Service? Did the Auth Service allow the Redis Cache to
+timeout?
 
-**Distributed Tracing** (Jaeger, Zipkin, Honeycomb) visualises the entire lifespan of a request as a waterfall chart. It turns "I think it's slow (Opinion)" into "It's slow because the Checkout Service took 2s to talk to Stripe (Fact)."
+**Distributed Tracing** (Jaeger, Zipkin, Honeycomb) visualises the entire lifespan of a request as a waterfall chart. It
+turns "I think it's slow (Opinion)" into "It's slow because the Checkout Service took 2s to talk to Stripe (Fact)."
 
 ## TL;DR
 
@@ -46,15 +49,18 @@ Imagine a request fails with a 500 error.
 
 Without tracing, this investigation takes 3 days and involves 4 meetings.
 
-With tracing, you open the Trace ID in Jaeger, see a red bar on Service C, click it, and see "Connection Pool Exhausted". Time to solve: 3 minutes.
+With tracing, you open the Trace ID in Jaeger, see a red bar on Service C, click it, and see "Connection Pool
+Exhausted". Time to solve: 3 minutes.
 
 ## Spans, Traces, and Context
 
 To make tracing work, every service must agree to play "Pass the Parcel".
 
-When Service A calls Service B, it MUST inject a header (e.g., `uber-trace-id` or `traceparent`). If Service B drops the header, the trace breaks, and you are blind again.
+When Service A calls Service B, it MUST inject a header (e.g., `uber-trace-id` or `traceparent`). If Service B drops the
+header, the trace breaks, and you are blind again.
 
-**QA Challenge**: Verify **Context Propagation**. Write a test that sends a request with a specific `trace-id` and asserts that the downstream logs contain that same ID.
+**QA Challenge**: Verify **Context Propagation**. Write a test that sends a request with a specific `trace-id` and
+asserts that the downstream logs contain that same ID.
 
 ## Code Snippet: Creating a Span
 
@@ -94,13 +100,17 @@ async function processOrder(orderId) {
 
 Distributed Tracing is the only way to retain your sanity in a microservice architecture. It provides the "Wow" factor.
 
-When you show a waterfall chart to a manager and point at the big long red bar that says "Legacy System", you do not even need to speak. The chart does the blaming for you.
+When you show a waterfall chart to a manager and point at the big long red bar that says "Legacy System", you do not
+even need to speak. The chart does the blaming for you.
 
 ## Key Takeaways
 
-- **Sampling reduces overhead**: In production, trace 1% of requests. In Staging, trace 100% (so your tests are always visible).
-- **Headers need forwarding**: If you use a custom HTTP client, ensure it forwards headers. `axios` does not do it automatically.
-- **Tags improve searchability**: Add meaningful tags like `user_id` or `payment_method` to your spans for better searchability.
+- **Sampling reduces overhead**: In production, trace 1% of requests. In Staging, trace 100% (so your tests are always
+  visible).
+- **Headers need forwarding**: If you use a custom HTTP client, ensure it forwards headers. `axios` does not do it
+  automatically.
+- **Tags improve searchability**: Add meaningful tags like `user_id` or `payment_method` to your spans for better
+  searchability.
 
 ## Next Steps
 

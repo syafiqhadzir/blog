@@ -24,31 +24,42 @@ tags:
 
 ## Introduction
 
-RSA-2048 is secure today. In 2030, a quantum computer with four thousand stable qubits will crack it in seconds via Shor's Algorithm. This is not science fiction. It is mathematics with a deadline.
+RSA-2048 is secure today. In 2030, a quantum computer with four thousand stable qubits will crack it in seconds via
+Shor's Algorithm. This is not science fiction. It is mathematics with a deadline.
 
-The NIST has standardised new algorithms: **ML-KEM (Kyber)** and **ML-DSA (Dilithium)**. These names sound like rejected Star Wars planets, but they are the future of cryptography.
+The NIST has standardised new algorithms: **ML-KEM (Kyber)** and **ML-DSA (Dilithium)**. These names sound like rejected
+Star Wars planets, but they are the future of cryptography.
 
-**QA Challenge**: These keys are HUGE (kilobytes instead of bytes). Will your UDP packets fragment? Will your handshake timeout? Will your IoT toaster run out of RAM trying to verify a signature? These are the questions that keep cryptographers awake at night.
+**QA Challenge**: These keys are HUGE (kilobytes instead of bytes). Will your UDP packets fragment? Will your handshake
+timeout? Will your IoT toaster run out of RAM trying to verify a signature? These are the questions that keep
+cryptographers awake at night.
 
 ## TL;DR
 
-- **Latency balloons with key size**: Post-Quantum keys are larger. Handshakes take longer. Test on 3G. If your app feels slow now, wait until you add ten kilobytes of cryptography to every request.
+- **Latency balloons with key size**: Post-Quantum keys are larger. Handshakes take longer. Test on 3G. If your app
+  feels slow now, wait until you add ten kilobytes of cryptography to every request.
 - **Fragmentation breaks everything**: If the ClientHello exceeds 1500 bytes (MTU), packet loss skyrockets.
-- **Hybrid mode doubles the work**: You must run "Hybrid Mode" (RSA + Kyber) for the next decade. Double the keys, double the fun, double the latency.
+- **Hybrid mode doubles the work**: You must run "Hybrid Mode" (RSA + Kyber) for the next decade. Double the keys,
+  double the fun, double the latency.
 
 ## The Harvest Now, Decrypt Later Attack
 
 Hackers are stealing your encrypted data *today*. They cannot read it yet. They store it on cheap hard drives and wait.
 
-In 2030, they will decrypt it. Your customers' medical records, your company's intellectual property, every embarrassing email chain—all readable.
+In 2030, they will decrypt it. Your customers' medical records, your company's intellectual property, every embarrassing
+email chain—all readable.
 
-**QA Strategy**: Verify that all "Long Term Secrets" (API keys, private health records, skeletons in the digital closet) are re-encrypted with PQC (Post-Quantum Cryptography) *now*. Do not wait for the quantum computer to exist. By then, it is too late.
+**QA Strategy**: Verify that all "Long Term Secrets" (API keys, private health records, skeletons in the digital closet)
+are re-encrypted with PQC (Post-Quantum Cryptography) *now*. Do not wait for the quantum computer to exist. By then, it
+is too late.
 
 ## Testing the Hybrid Handshake
 
-Browsers are rolling out `X25519Kyber768Draft00`. This combines ECC (Elliptic Curve Cryptography) with Kyber. If the quantum part fails (because mathematics is hard), ECC saves you.
+Browsers are rolling out `X25519Kyber768Draft00`. This combines ECC (Elliptic Curve Cryptography) with Kyber. If the
+quantum part fails (because mathematics is hard), ECC saves you.
 
-**QA Tooling**: You need a custom build of **OpenSSL 3.2+** or **BoringSSL** to test this. Standard `curl` will not support it unless you compile it yourself. Welcome to C hell. Bring snacks.
+**QA Tooling**: You need a custom build of **OpenSSL 3.2+** or **BoringSSL** to test this. Standard `curl` will not
+support it unless you compile it yourself. Welcome to C hell. Bring snacks.
 
 ## Code Snippet: Benchmarking PQC Algorithms
 
@@ -91,15 +102,20 @@ runBenchmark();
 
 ## Summary
 
-The "Quantum Apocalypse" (Y2Q) is a deadline. We do not know when it is. Maybe 2028. Maybe 2035. But migration takes years. Start testing now.
+The "Quantum Apocalypse" (Y2Q) is a deadline. We do not know when it is. Maybe 2028. Maybe 2035. But migration takes
+years. Start testing now.
 
-If you are the QA Lead who forgot to test PQC, you will be the reason the company gets hacked in 2032. And unlike regular hacks, this one will be mathematically inevitable. No pressure.
+If you are the QA Lead who forgot to test PQC, you will be the reason the company gets hacked in 2032. And unlike
+regular hacks, this one will be mathematically inevitable. No pressure.
 
 ## Key Takeaways
 
-- **Certificates need upgrading**: Your TLS certificates use RSA signatures. You need to upgrade your CA (Certificate Authority) infrastructure. Good luck explaining that to Ops.
-- **JWTs get heavy**: If you use JSON Web Tokens, adding a Dilithium signature adds 2KB to *every request header*. That is massive.
-- **Hardware acceleration is missing**: Current CPUs have AES-NI instructions. They do not have Kyber instructions yet. Expect high CPU usage and hot servers.
+- **Certificates need upgrading**: Your TLS certificates use RSA signatures. You need to upgrade your CA (Certificate
+  Authority) infrastructure. Good luck explaining that to Ops.
+- **JWTs get heavy**: If you use JSON Web Tokens, adding a Dilithium signature adds 2KB to *every request header*. That
+  is massive.
+- **Hardware acceleration is missing**: Current CPUs have AES-NI instructions. They do not have Kyber instructions yet.
+  Expect high CPU usage and hot servers.
 
 ## Next Steps
 

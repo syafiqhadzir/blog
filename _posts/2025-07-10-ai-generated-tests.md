@@ -114,7 +114,8 @@ Delete tests that do not kill mutants. Be ruthless.
   integration tests where it matters.
 - **Maintainability requires refactoring**: AI writes verbose, repetitive code. Refactor the tests into helpers, or your
   test suite will become unmaintainable spaghetti.
-- **AI tests need extra scrutiny**: Treat AI tests with *more* suspicion than human tests, because AI has no understanding
+- **AI tests need extra scrutiny**: Treat AI tests with *more* suspicion than human tests, because AI has no
+  understanding
   of "Why are we testing this?".
 
 ## Next Steps

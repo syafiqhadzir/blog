@@ -24,9 +24,11 @@ tags:
 
 ## Introduction
 
-In the world of web development, anything that takes longer than 500ms is a "Background Job". Sending emails, resizing images, mining crypto on your users' CPUs (joking... mostly).
+In the world of web development, anything that takes longer than 500ms is a "Background Job". Sending emails, resizing
+images, mining crypto on your users' CPUs (joking... mostly).
 
-Developers love "Fire and Forget". QA Engineers know that "Forget" usually means "It silently failed, and we found out three months later when the CEO tried to reset his password."
+Developers love "Fire and Forget". QA Engineers know that "Forget" usually means "It silently failed, and we found out
+three months later when the CEO tried to reset his password."
 
 ## TL;DR
 
@@ -36,11 +38,13 @@ Developers love "Fire and Forget". QA Engineers know that "Forget" usually means
 
 ## Fire and Forget (And Pray)
 
-The problem with async jobs is that the HTTP response is usually `202 Accepted`. This just means "I promise to do this later."
+The problem with async jobs is that the HTTP response is usually `202 Accepted`. This just means "I promise to do this
+later."
 
 Promises, as my ex will tell you, are often broken.
 
-Testing background jobs requires a mindset shift. You cannot just assert the response code. You have to peek behind the curtain and check the queue, the database side-effects, and the external API calls.
+Testing background jobs requires a mindset shift. You cannot just assert the response code. You have to peek behind the
+curtain and check the queue, the database side-effects, and the external API calls.
 
 ## The Three Phases of Async Testing
 
@@ -99,8 +103,10 @@ By testing the enqueueing, execution, and failure modes, you make sure that "Asy
 
 ## Key Takeaways
 
-- **Idempotency prevents double-charging**: Ensure that running the job twice does not charge the customer twice. (Queues sometimes deliver double messages).
-- **Observability catches silent failures**: If a job dies in the forest (queue) and no one logs it, did it make a sound?
+- **Idempotency prevents double-charging**: Ensure that running the job twice does not charge the customer twice.
+  (Queues sometimes deliver double messages).
+- **Observability catches silent failures**: If a job dies in the forest (queue) and no one logs it, did it make a
+  sound?
 - **Integration tests need polling**: At least one E2E test should wait for the job to complete (use polling).
 
 ## Next Steps

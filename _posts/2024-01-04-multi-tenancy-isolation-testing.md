@@ -24,17 +24,20 @@ tags:
 
 ## Introduction
 
-If you are building a SaaS product, you are basically running a hotel. Everyone gets a room (Tenant), but they all share the same plumbing (Database).
+If you are building a SaaS product, you are basically running a hotel. Everyone gets a room (Tenant), but they all share
+the same plumbing (Database).
 
 A "Data Leak" is when the guest in Room 101 turns on their tap and gets the water intended for Room 102.
 
-In the enterprise world, if Pepsi sees Coca-Cola's sales data because of a `WHERE tenant_id = ?` bug, you will not just lose a customer. You will lose your business.
+In the enterprise world, if Pepsi sees Coca-Cola's sales data because of a `WHERE tenant_id = ?` bug, you will not just
+lose a customer. You will lose your business.
 
 ## TL;DR
 
 - **Authorisation needs testing**: Does `User A` have access to `Resource B`? (Should be 403 Forbidden).
 - **Partitioning needs verification**: Ensure your DB queries *always* include the Tenant ID.
-- **Cache needs namespacing**: Do not use global keys like `cache.get('dashboard_stats')`. Use `cache.get('tenant_123_dashboard_stats')`.
+- **Cache needs namespacing**: Do not use global keys like `cache.get('dashboard_stats')`. Use
+  `cache.get('tenant_123_dashboard_stats')`.
 
 ## The "Coca-Cola vs. Pepsi" Scenario
 
@@ -43,11 +46,13 @@ Imagine you have two tenants:
 1. **Evil Corp** (Tenant ID: 1)
 2. **Good Corp** (Tenant ID: 2)
 
-A user from **Evil Corp** logs in. They have a valid JWT. They inspect the network traffic and see a request: `GET /api/orders/101`. They wonder: "What happens if I change that to 102?"
+A user from **Evil Corp** logs in. They have a valid JWT. They inspect the network traffic and see a request: `GET
+/api/orders/101`. They wonder: "What happens if I change that to 102?"
 
 `GET /api/orders/102`
 
-If your backend says "Here is the order for Good Corp", you have failed. The backend must check: "Does this User belong to the Tenant that owns Order 102?".
+If your backend says "Here is the order for Good Corp", you have failed. The backend must check: "Does this User belong
+to the Tenant that owns Order 102?".
 
 ## Testing the Leak
 
@@ -119,8 +124,10 @@ The question is "Can I view *someone else's* order?". You must specifically test
 
 ## Key Takeaways
 
-- **Middleware centralises checks**: Implement isolation checks in a global middleware, not in every controller. It is too easy to forget.
-- **UUIDs prevent guessing**: Use UUIDs instead of incremental IDs (1, 2, 3) to make guessing resources harder (Security through Obscurity is not security, but it helps).
+- **Middleware centralises checks**: Implement isolation checks in a global middleware, not in every controller. It is
+  too easy to forget.
+- **UUIDs prevent guessing**: Use UUIDs instead of incremental IDs (1, 2, 3) to make guessing resources harder (Security
+  through Obscurity is not security, but it helps).
 - **Logs record breach attempts**: Ensure that when an isolation breach is attempted, it logs a "Security Alert".
 
 ## Next Steps

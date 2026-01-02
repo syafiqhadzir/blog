@@ -26,17 +26,22 @@ tags:
 
 Jamstack. JavaScript, APIs, and Markup.
 
-Ideally, it is pre-rendered HTML served from a CDN. Indestructible. You could unplug the backend, and the site would still load (mostly).
+Ideally, it is pre-rendered HTML served from a CDN. Indestructible. You could unplug the backend, and the site would
+still load (mostly).
 
-In reality, your site calls 15 APIs (Contentful, Stripe, Algolia, Auth0) at runtime. If Algolia goes down, your search bar is a decoration. If Stripe goes down, you cannot make money.
+In reality, your site calls 15 APIs (Contentful, Stripe, Algolia, Auth0) at runtime. If Algolia goes down, your search
+bar is a decoration. If Stripe goes down, you cannot make money.
 
 QA needs to verify the "A" in Jamstack, because "M" (Markup) rarely breaks, but "A" (API) breaks every Tuesday.
 
 ## TL;DR
 
-- **Build Failures are Sev-1**: Treat a failed build as a Sev-1 bug. If you cannot deploy, you cannot fix a security patch.
-- **Fallback behaviour matters**: If the API call fails, do we show a blank page or cached data? (Hint: Show stale data > Error page).
-- **Auth needs verification**: You cannot hide API keys in the client bundle. Did you verify that your public keys are actually public-safe?
+- **Build Failures are Sev-1**: Treat a failed build as a Sev-1 bug. If you cannot deploy, you cannot fix a security
+  patch.
+- **Fallback behaviour matters**: If the API call fails, do we show a blank page or cached data? (Hint: Show stale data
+  > Error page).
+- **Auth needs verification**: You cannot hide API keys in the client bundle. Did you verify that your public keys are
+  actually public-safe?
 
 ## The "Build Time" vs "Run Time" Trap
 
@@ -46,7 +51,8 @@ QA needs to verify the "A" in Jamstack, because "M" (Markup) rarely breaks, but 
 **QA Strategy**:
 
 1. **Verify Build Integrity**: Updates to the CMS should trigger a Webhook -> Build -> Deploy. Test this pipeline.
-2. **Verify Runtime Resilience**: Block the API (DevTools -> Network -> Block URL) and refresh. Does the UI crash or show a "Retry" button?
+2. **Verify Runtime Resilience**: Block the API (DevTools -> Network -> Block URL) and refresh. Does the UI crash or
+show a "Retry" button?
 
 ## API Dependencies: The House of Cards
 
@@ -57,7 +63,8 @@ Your site is a Frankenstein monster of services.
 - Auth0 (Users)
 - Lambda (Logic)
 
-If *one* fails, what does the user see? Test with **Service Virtualisation**. Mock the failures. If Contentful returns a 500, does your Next.js `getStaticProps` retry? Or does it fail the build? (It should fail the build).
+If *one* fails, what does the user see? Test with **Service Virtualisation**. Mock the failures. If Contentful returns a
+500, does your Next.js `getStaticProps` retry? Or does it fail the build? (It should fail the build).
 
 ## Code Snippet: Mocking API at Build Time
 
@@ -105,12 +112,17 @@ Your QA tests must run at the edge too. Do not just test the UI; test the pipeli
 
 ## Key Takeaways
 
-- **Atomic Deploys need verification**: Verify that a bad deploy does not break the live site. (Netlify/Vercel handles this well, but check your Database migrations—those are not atomic).
-- **Preview URLs are your friend**: Every Pull Request gets a URL. Test *that* URL, not just localhost. It is the closest thing to production.
-- **Incremental Builds affect timing**: If you change one typo, do we rebuild 10,000 pages? (ISR - Incremental Static Regeneration). Test the "regeneration" time.
+- **Atomic Deploys need verification**: Verify that a bad deploy does not break the live site. (Netlify/Vercel handles
+  this well, but check your Database migrations—those are not atomic).
+- **Preview URLs are your friend**: Every Pull Request gets a URL. Test *that* URL, not just localhost. It is the
+  closest thing to production.
+- **Incremental Builds affect timing**: If you change one typo, do we rebuild 10,000 pages? (ISR - Incremental Static
+  Regeneration). Test the "regeneration" time.
 
 ## Next Steps
 
 - **Tool**: Use **Mock Service Worker (MSW)** to intercept requests at the network level in the browser. It is magic.
-- **Learn**: Read about **Edge Functions** (Cloudflare Workers). Logic running on the CDN. How do you test that locally? (Wrangler).
-- **Audit**: Are you exposing your `STRIPE_SECRET_KEY` in the frontend bundle? Search your `main.js` for "sk_live_". You would be surprised.
+- **Learn**: Read about **Edge Functions** (Cloudflare Workers). Logic running on the CDN. How do you test that locally?
+  (Wrangler).
+- **Audit**: Are you exposing your `STRIPE_SECRET_KEY` in the frontend bundle? Search your `main.js` for "sk_live_". You
+  would be surprised.

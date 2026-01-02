@@ -28,7 +28,8 @@ You have Jaeger or Datadog installed. You have 10 million traces per day. Now wh
 Most teams use Tracing only for debugging *after* an incident. "Why did the checkout fail at 2 AM?" -> Search Trace ->
 Found it.
 
-**Advanced QA** uses Tracing proactively. We write tests that assert on the *shape* of the trace. "Did this API call create
+**Advanced QA** uses Tracing proactively. We write tests that assert on the *shape* of the trace. "Did this API call
+create
 a circular dependency?" "Did this login request hit the database 50 times instead of 1?"
 
 ## TL;DR
@@ -53,7 +54,8 @@ A "Performance Regression" is not just "It is slower". It is often "The structur
 Week 1: `Frontend -> API -> DB`
 Week 2: `Frontend -> API -> Auth -> UserProfile -> DB`
 
-The latency might be the same (because of caching), but the *complexity* explodes. QA must detect these structural shifts
+The latency might be the same (because of caching), but the *complexity* explodes. QA must detect these structural
+shifts
 before they become problems.
 
 ## Code Snippet: Analysing Traces for N+1 Problems
@@ -118,7 +120,8 @@ code is wrong.
 
 ## Key Takeaways
 
-- **Metadata enables filtering**: Ensure developers tag spans with `user_id`, `region`, and `version`. You cannot analyse
+- **Metadata enables filtering**: Ensure developers tag spans with `user_id`, `region`, and `version`. You cannot
+  analyse
   what you cannot filter.
 - **Sampling differs by environment**: In Prod, you sample 1%. In Test, sample 100%. Do not miss the bugs in CI.
 - **Propagation must be verified**: Test that `traceparent` headers are correctly passed to third-party webhooks.

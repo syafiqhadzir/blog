@@ -25,9 +25,12 @@ tags:
 
 ## Introduction
 
-In the old days (REST APIs), you sent a request, and the server replied "200 OK" or "500 ERROR". It was polite. It was synchronous. It was like a phone call.
+In the old days (REST APIs), you sent a request, and the server replied "200 OK" or "500 ERROR". It was polite. It was
+synchronous. It was like a phone call.
 
-**Event-Driven Architecture (EDA)** is like a WhatsApp group chat. You send a message (Event) into the void (Kafka/RabbitMQ), and maybe someone reads it. Maybe they do not. Maybe they read it three times. Maybe they reply next Tuesday.
+**Event-Driven Architecture (EDA)** is like a WhatsApp group chat. You send a message (Event) into the void
+(Kafka/RabbitMQ), and maybe someone reads it. Maybe they do not. Maybe they read it three times. Maybe they reply next
+Tuesday.
 
 Testing this chaos requires a mindset shift from "Input -> Output" to "Input -> ...wait for it... -> Effect".
 
@@ -40,9 +43,12 @@ Testing this chaos requires a mindset shift from "Input -> Output" to "Input -> 
 
 ## The Silence of the Logs
 
-The hardest part of testing EDA is observability. If Service A publishes `OrderCreated` and Service B fails to process it, Service A is still happy. It successfully published the message. The error is hidden in Service B's logs (or worse, the message just vanished into the ether).
+The hardest part of testing EDA is observability. If Service A publishes `OrderCreated` and Service B fails to process
+it, Service A is still happy. It successfully published the message. The error is hidden in Service B's logs (or worse,
+the message just vanished into the ether).
 
-To test this, you need **Distributed Tracing**. Every event must have a `trace_id` (correlation ID) attached to its metadata. Your test should:
+To test this, you need **Distributed Tracing**. Every event must have a `trace_id` (correlation ID) attached to its
+metadata. Your test should:
 
 1. Inject an event with `trace_id: test-123`.
 2. Query the logging/tracing platform (Jaeger, Datadog) for `test-123`.
@@ -50,7 +56,8 @@ To test this, you need **Distributed Tracing**. Every event must have a `trace_i
 
 ## Idempotency: The Duplicate Nightmare
 
-Message queues promise "At Least Once" delivery. This is a polite way of saying "We might send you the same message twice just for fun."
+Message queues promise "At Least Once" delivery. This is a polite way of saying "We might send you the same message
+twice just for fun."
 
 If your consumer processes `PaymentReceived` twice, do you charge the user twice?
 
@@ -62,7 +69,8 @@ Your QA tests must explicitly inject duplicate events.
 
 ## Code Snippet: Testing Async Events
 
-Here is a conceptual example using Jest to test an asynchronous event consumer. We use a "polling" mechanism to wait for the side effect.
+Here is a conceptual example using Jest to test an asynchronous event consumer. We use a "polling" mechanism to wait for
+the side effect.
 
 ```javascript
 /* 
@@ -104,13 +112,16 @@ This prevents the dreaded "Flaky Test" that fails 10% of the time because the da
 
 Testing event-driven systems is not for the faint of heart. It involves race conditions, retries, and a lot of waiting.
 
-But if you only test the happy path (synchronous success), you are not testing the system; you are testing your imagination. Real production systems are messy, asynchronous, and occasionally duplicate your data.
+But if you only test the happy path (synchronous success), you are not testing the system; you are testing your
+imagination. Real production systems are messy, asynchronous, and occasionally duplicate your data.
 
 ## Key Takeaways
 
 - **Tracing is mandatory**: You cannot debug async flows without a Correlation ID.
-- **Chaos reveals resilience**: What happens if the Consumer is down when the Producer sends a message? (Hint: The queue should hold it).
-- **Schema Registry validates contracts**: Ensure your producer sends valid JSON that matches the consumer's expectations (Contract Testing).
+- **Chaos reveals resilience**: What happens if the Consumer is down when the Producer sends a message? (Hint: The queue
+  should hold it).
+- **Schema Registry validates contracts**: Ensure your producer sends valid JSON that matches the consumer's
+  expectations (Contract Testing).
 
 ## Next Steps
 

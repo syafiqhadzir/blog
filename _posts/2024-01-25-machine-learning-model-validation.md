@@ -23,11 +23,14 @@ tags:
 
 ## Introduction
 
-Machine Learning (ML) is the only field of Engineering where "The code is correct, but the answer is wrong" is a valid statement.
+Machine Learning (ML) is the only field of Engineering where "The code is correct, but the answer is wrong" is a valid
+statement.
 
-Traditional QA fails here. You cannot write a unit test that says `assert model.predict(image) == "Hotdog"`. Because 1% of the time, it will be a banana.
+Traditional QA fails here. You cannot write a unit test that says `assert model.predict(image) == "Hotdog"`. Because 1%
+of the time, it will be a banana.
 
-Validating ML is about **Probability**, **Drift**, and preventing your fancy AI from becoming a glorified random number generator.
+Validating ML is about **Probability**, **Drift**, and preventing your fancy AI from becoming a glorified random number
+generator.
 
 ## TL;DR
 
@@ -39,7 +42,9 @@ Validating ML is about **Probability**, **Drift**, and preventing your fancy AI 
 
 In traditional software, we trace the logic. In ML, we trace the **Performance Metrics**.
 
-A model that worked yesterday might fail today because the world changed (Concept Drift). Example: An ML model trained to detect toilet paper was very accurate in 2019. In 2020, people started hoarding it, and the "normal" purchasing behaviour vanished. The model drifted.
+A model that worked yesterday might fail today because the world changed (Concept Drift). Example: An ML model trained
+to detect toilet paper was very accurate in 2019. In 2020, people started hoarding it, and the "normal" purchasing
+behaviour vanished. The model drifted.
 
 QA must monitor this drift.
 
@@ -47,7 +52,8 @@ QA must monitor this drift.
 
 You need to validate two things:
 
-1. **Data Drift**: Is the input data significantly different from the training data? (e.g., Input images are suddenly blurry).
+1. **Data Drift**: Is the input data significantly different from the training data? (e.g., Input images are suddenly
+   blurry).
 2. **Model Drift**: Is the accuracy dropping over time?
 
 Tools like **Evidently AI** or **Deepchecks** are fantastic for this. They act as "Unit Tests for Data Distributions".
@@ -91,7 +97,8 @@ if __name__ == "__main__":
 
 Do not treat ML models like magic. Treat them like untrustworthy interns.
 
-They are smart, but they make mistakes, and if you do not check their work, they will embarrass you in production. Automated validation pipelines are the only way to keep them honest.
+They are smart, but they make mistakes, and if you do not check their work, they will embarrass you in production.
+Automated validation pipelines are the only way to keep them honest.
 
 ## Key Takeaways
 

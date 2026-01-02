@@ -26,7 +26,10 @@ tags:
 
 Bad design is like staring directly into the sun: impactful, sure, but mostly just painful.
 
-As QA engineers, we often focus on "does it work?" (Functionality) and forget "does it look like a ransom note?" (Aesthetics). But here is the truth: to a user, a button that is misaligned by 50 pixels is just as broken as a button that throws a 500 error. We are the final line of defence against pixel-imperfect layouts and Comic Sans slipping into production.
+As QA engineers, we often focus on "does it work?" (Functionality) and forget "does it look like a ransom note?"
+(Aesthetics). But here is the truth: to a user, a button that is misaligned by 50 pixels is just as broken as a button
+that throws a 500 error. We are the final line of defence against pixel-imperfect layouts and Comic Sans slipping into
+production.
 
 ## TL;DR
 
@@ -39,26 +42,32 @@ As QA engineers, we often focus on "does it work?" (Functionality) and forget "d
 
 "I am a functional tester," you say. "I do not care about colours."
 
-Wrong. You are a *Quality* Assurance engineer. Visuals are part of quality. If the deliverable looks like it was assembled in the dark by a raccoon, the quality is low. A button that works but is invisible (white text on a white background) is functionally correct but practically useless.
+Wrong. You are a *Quality* Assurance engineer. Visuals are part of quality. If the deliverable looks like it was
+assembled in the dark by a raccoon, the quality is low. A button that works but is invisible (white text on a white
+background) is functionally correct but practically useless.
 
 ## The Visual QA Guide
 
 Do not just look; *inspect*.
 
 1. **Typography**: Is that *Roboto* or *Arial*? If you cannot tell, use the DevTools.
-2. **Spacing**: Padding and margins should be consistent. If one button has 10px padding and the next has 12px, fix it. "Magic numbers" are for magicians, not CSS.
+2. **Spacing**: Padding and margins should be consistent. If one button has 10px padding and the next has 12px, fix it.
+"Magic numbers" are for magicians, not CSS.
 3. **Responsiveness**: Resize the browser. Drag it from "Desktop" to "Mobile". Does the layout scream in agony?
 4. **States**: Hover, Focus, Active, Disabled. Does the button do something when you touch it, or is it playing dead?
 
 ## Collaboration: Don't Be a Cop
 
-Designers need to treat QA as their best friends. We are the ones who ensure their vision survived the developer's brutal CSS refactor.
+Designers need to treat QA as their best friends. We are the ones who ensure their vision survived the developer's
+brutal CSS refactor.
 
-When you find a visual bug, do not just say "It's ugly." Say, "The padding on the primary button is 8px, but the design system specifies 12px." Be precise. Designers love precision.
+When you find a visual bug, do not just say "It's ugly." Say, "The padding on the primary button is 8px, but the design
+system specifies 12px." Be precise. Designers love precision.
 
 ## Code Snippet: Visual Regression Testing
 
-Human eyes are great at spotting a tiger in the bushes, but terrible at spotting a 1px border change. Algorithms are the opposite. Here is how you can use Playwright to automate your visual checks:
+Human eyes are great at spotting a tiger in the bushes, but terrible at spotting a 1px border change. Algorithms are the
+opposite. Here is how you can use Playwright to automate your visual checks:
 
 ```typescript
 import { test, expect } from '@playwright/test';
@@ -79,11 +88,13 @@ test('Homepage Visual Regression Check', async ({ page }) => {
 });
 ```
 
-This test is ruthless. It will fail if a developer changes the `font-size` by 1px. But that is what we want. We want to know *everything*.
+This test is ruthless. It will fail if a developer changes the `font-size` by 1px. But that is what we want. We want to
+know *everything*.
 
 ## Summary
 
-QA testers should never be satisfied with "good enough" solutions. A misalignment of 2px might seem trivial to a backend dev, but it screams "we do not care" to the user.
+QA testers should never be satisfied with "good enough" solutions. A misalignment of 2px might seem trivial to a backend
+dev, but it screams "we do not care" to the user.
 
 Always remember: the Q stands for Quality, not "Quite okay".
 

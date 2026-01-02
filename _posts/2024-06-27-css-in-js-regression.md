@@ -23,11 +23,13 @@ tags:
 
 ## Introduction
 
-CSS-in-JS (Styled-components, Emotion) allows developers to write CSS in JavaScript files. It sounds like heresy, but it works.
+CSS-in-JS (Styled-components, Emotion) allows developers to write CSS in JavaScript files. It sounds like heresy, but it
+works.
 
 The problem: Class names are now `sc-aXZVg`. Good luck verifying that in a Selenium script.
 
-QA must move beyond "Class Name Inspection" to "Computed Style Verification". If you are still writing XPaths like `//div[@class='btn-primary']`, you are already dead.
+QA must move beyond "Class Name Inspection" to "Computed Style Verification". If you are still writing XPaths like
+`//div[@class='btn-primary']`, you are already dead.
 
 ## TL;DR
 
@@ -40,9 +42,11 @@ QA must move beyond "Class Name Inspection" to "Computed Style Verification". If
 Browser: `<button class="sc-fzoLag jXyZf">`.
 QA: "Is it red?"
 
-The only way to know is `window.getComputedStyle()`. Do not rely on the hashed class name. It changes every time the developer sneezes (or updates the library).
+The only way to know is `window.getComputedStyle()`. Do not rely on the hashed class name. It changes every time the
+developer sneezes (or updates the library).
 
-In Playwright, use `expect(locator).toHaveCSS('background-color', 'rgb(255, 0, 0)')`. Note the RGB format; browsers normalise colours.
+In Playwright, use `expect(locator).toHaveCSS('background-color', 'rgb(255, 0, 0)')`. Note the RGB format; browsers
+normalise colours.
 
 ## Dynamic Props: The Silent Killer
 
@@ -55,7 +59,8 @@ Developer logic: `background: ${props => props.isActive ? 'red' : 'blue'}`.
 3. Render component with `isActive={false}`.
 4. Assert background is blue.
 
-If you skip step 3, you are not testing the logic; you are just admiring the colour. Also, verify that `isActive` is not leaking into the DOM as a valid HTML attribute (causing React warnings).
+If you skip step 3, you are not testing the logic; you are just admiring the colour. Also, verify that `isActive` is not
+leaking into the DOM as a valid HTML attribute (causing React warnings).
 
 ## Code Snippet: Testing Styled Components with Jest
 
@@ -101,18 +106,22 @@ test('it handles hover states', () => {
 
 ## Summary
 
-CSS-in-JS is powerful but opaque. If you treat the DOM as a black box and only look at the final rendered pixels (or computed styles), you will be safe from the churn of hashed class names.
+CSS-in-JS is powerful but opaque. If you treat the DOM as a black box and only look at the final rendered pixels (or
+computed styles), you will be safe from the churn of hashed class names.
 
 But seriously, talk to your devs about "Stable Selectors" (`data-testid`).
 
 ## Key Takeaways
 
-- **Performance has runtime cost**: Generating CSS at runtime is slow. Check your "Style Injection" cost in the Performance tab. Zero-runtime libs (Vanilla Extract) are the future.
+- **Performance has runtime cost**: Generating CSS at runtime is slow. Check your "Style Injection" cost in the
+  Performance tab. Zero-runtime libs (Vanilla Extract) are the future.
 - **Specificity can flatten**: CSS-in-JS libraries often flatten specificity. Ensure your overrides work.
 - **Dead Code accumulates**: It is easy to leave unused styles in JS files. Use a linter like `stylelint`.
 
 ## Next Steps
 
-- **Tool**: Use **Chromatic** or **Percy** for visual regression testing at the pixel level. Robots are better at spotting 1px shifts than you are.
+- **Tool**: Use **Chromatic** or **Percy** for visual regression testing at the pixel level. Robots are better at
+  spotting 1px shifts than you are.
 - **Learn**: Understand the **CSSOM** (CSS Object Model) and how JS writes to it.
-- **Audit**: Verify that your Critical CSS is being extracted for Server-Side Rendering (SSR). If the screen flashes unstyled content (FOUC), you failed.
+- **Audit**: Verify that your Critical CSS is being extracted for Server-Side Rendering (SSR). If the screen flashes
+  unstyled content (FOUC), you failed.

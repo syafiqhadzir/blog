@@ -24,7 +24,8 @@ tags:
 
 ## Introduction
 
-Legacy code. The phrase strikes fear into the hearts of developers. It brings to mind spaghetti logic, variable names like `temp2`, and comments that say `// DO NOT TOUCH THIS OR GOD WILL KILL A KITTEN`.
+Legacy code. The phrase strikes fear into the hearts of developers. It brings to mind spaghetti logic, variable names
+like `temp2`, and comments that say `// DO NOT TOUCH THIS OR GOD WILL KILL A KITTEN`.
 
 But as QA engineers, we do not have the luxury of fear. We have to test it. We are the bomb disposal squad.
 
@@ -33,19 +34,25 @@ But as QA engineers, we do not have the luxury of fear. We have to test it. We a
 - **Definition is brutal**: Legacy Code is simply "code without tests" (Michael Feathers).
 - **No Rewrites allowed**: Do not rewrite it from scratch. You will fail.
 - **Seams enable testing**: Find places to break dependencies (like database calls) to insert tests.
-- **Characterisation Tests document behaviour**: Write tests that verify the *current* buggy behaviour, so you know if you change it.
+- **Characterisation Tests document behaviour**: Write tests that verify the *current* buggy behaviour, so you know if
+  you change it.
 
 ## What is "Legacy" Anyway?
 
-Michael Feathers, the author of *Working Effectively with Legacy Code*, defines it brutally: "**Legacy code is code without tests.**"
+Michael Feathers, the author of *Working Effectively with Legacy Code*, defines it brutally: "**Legacy code is code
+without tests.**"
 
-It does not matter if you wrote it yesterday. If it lacks automated verification, it is legacy. Why? Because you cannot change it with confidence. You are walking through a minefield where the mines move every time you deploy.
+It does not matter if you wrote it yesterday. If it lacks automated verification, it is legacy. Why? Because you cannot
+change it with confidence. You are walking through a minefield where the mines move every time you deploy.
 
 ## The Seam Pattern
 
-The biggest problem with legacy code is tight coupling. A `ProcessPayment` class might directly instantiate a `ThirdPartyBankService`. To test `ProcessPayment`, you end up charging a real credit card. Not ideal for your bank balance.
+The biggest problem with legacy code is tight coupling. A `ProcessPayment` class might directly instantiate a
+`ThirdPartyBankService`. To test `ProcessPayment`, you end up charging a real credit card. Not ideal for your bank
+balance.
 
-We need a **Seam**: a place where we can alter the behaviour of the programme without editing the programme itself (much). This usually means **Dependency Injection**.
+We need a **Seam**: a place where we can alter the behaviour of the programme without editing the programme itself
+(much). This usually means **Dependency Injection**.
 
 ## Code Snippet: Creating a Seam
 
@@ -96,7 +103,8 @@ We did not change what the code does; we changed *how* it gets its friends. Now 
 
 ## Summary
 
-Testing legacy code is an exercise in archaeology. You must carefully uncover the layers of logic before you can hope to modernise them without breaking the system.
+Testing legacy code is an exercise in archaeology. You must carefully uncover the layers of logic before you can hope to
+modernise them without breaking the system.
 
 It is messy, unglamorous work, but it is the only way to pay down technical debt.
 

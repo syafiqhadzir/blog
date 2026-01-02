@@ -23,9 +23,11 @@ tags:
 
 ## Introduction
 
-The Test Pyramid (coined by Mike Cohn) is the healthy food pyramid of software. Be honest: your diet is mostly pizza (E2E tests) and very little broccoli (Unit tests), is it not?
+The Test Pyramid (coined by Mike Cohn) is the healthy food pyramid of software. Be honest: your diet is mostly pizza
+(E2E tests) and very little broccoli (Unit tests), is it not?
 
-Many teams accidentally build the "Ice Cream Cone" anti-pattern: tons of slow, flaky UI tests and almost no unit tests. The result? A build pipeline that takes 4 hours, fails randomly because the wind blew, and makes everyone hate Tuesdays.
+Many teams accidentally build the "Ice Cream Cone" anti-pattern: tons of slow, flaky UI tests and almost no unit tests.
+The result? A build pipeline that takes 4 hours, fails randomly because the wind blew, and makes everyone hate Tuesdays.
 
 ## TL;DR
 
@@ -36,7 +38,8 @@ Many teams accidentally build the "Ice Cream Cone" anti-pattern: tons of slow, f
 
 ## The Ice Cream Cone of Death
 
-Why do teams end up with the inverted pyramid? Because UI tests feel "real". It is satisfying to watch a bot click through the app. "Look! It's working!"
+Why do teams end up with the inverted pyramid? Because UI tests feel "real". It is satisfying to watch a bot click
+through the app. "Look! It's working!"
 
 But this addiction comes at a cost.
 
@@ -95,9 +98,11 @@ The E2E test is **2,500x slower** and validates the exact same maths. Why are yo
 
 ## Summary
 
-The goal is not to eliminate E2E tests—they are vital for ensuring the system works as a whole. The goal is to use them sparingly.
+The goal is not to eliminate E2E tests—they are vital for ensuring the system works as a whole. The goal is to use them
+sparingly.
 
-Save the heavy artillery for the critical user journeys (Login, Checkout) and use the sniper rifle (Unit Tests) for everything else.
+Save the heavy artillery for the critical user journeys (Login, Checkout) and use the sniper rifle (Unit Tests) for
+everything else.
 
 ## Key Takeaways
 

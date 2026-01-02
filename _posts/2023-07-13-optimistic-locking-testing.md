@@ -24,13 +24,16 @@ tags:
 
 ## Introduction
 
-Imagine two people, Alice and Bob, open the same collaborative wiki page at 9:00 AM. Alice fixes a typo. Bob deletes the entire paragraph.
+Imagine two people, Alice and Bob, open the same collaborative wiki page at 9:00 AM. Alice fixes a typo. Bob deletes the
+entire paragraph.
 
 Alice hits "Save" at 9:01. Bob hits "Save" at 9:02.
 
-In a naive system, Bob's save overwrites Alice's save perfectly. Alice's work is lost forever. This is the **Lost Update** problem.
+In a naive system, Bob's save overwrites Alice's save perfectly. Alice's work is lost forever. This is the **Lost
+Update** problem.
 
-To fix this, we need **Locking**. But locking the database (Pessimistic) makes your app slower than a sloth on sedatives. The answer is **Optimistic Locking**.
+To fix this, we need **Locking**. But locking the database (Pessimistic) makes your app slower than a sloth on
+sedatives. The answer is **Optimistic Locking**.
 
 ## TL;DR
 
@@ -51,12 +54,15 @@ test('save profile', () => {
 
 This test proves nothing about real-world usage. In the real world, requests overlap.
 
-Optimistic locking is like the "Shotgun" rule for the front seat of a car. If you call it, but someone else sits down first, you lose. You do not get to sit on top of them.
+Optimistic locking is like the "Shotgun" rule for the front seat of a car. If you call it, but someone else sits down
+first, you lose. You do not get to sit on top of them.
 
 ## Optimistic vs Pessimistic
 
-- **Pessimistic Locking**: "I am editing this row. Nobody else can touch it until I am done." (Great for avoiding conflicts, terrible for performance).
-- **Optimistic Locking**: "Go ahead and edit. But check if it changed before you save." (Great for performance, requires handling errors).
+- **Pessimistic Locking**: "I am editing this row. Nobody else can touch it until I am done." (Great for avoiding
+  conflicts, terrible for performance).
+- **Optimistic Locking**: "Go ahead and edit. But check if it changed before you save." (Great for performance, requires
+  handling errors).
 
 Your job as QA is to verify that **User B gets an error**, not a success.
 
@@ -101,7 +107,8 @@ test('prevents lost updates using versioning', async () => {
 
 ## Summary
 
-Optimistic locking is the standard for high-concurrency web apps. It shifts the complexity from the Database (locks) to the Application (version checks) and the UI (handling merge conflicts).
+Optimistic locking is the standard for high-concurrency web apps. It shifts the complexity from the Database (locks) to
+the Application (version checks) and the UI (handling merge conflicts).
 
 If you do not test this scenario, your users will silently overwrite each other's work, and they will hate you for it.
 
@@ -115,4 +122,5 @@ If you do not test this scenario, your users will silently overwrite each other'
 
 - **Inspect**: Check your database schema. Do your tables have a `version` or `_v` column?
 - **Attack**: Try to automate a script that sends 50 concurrent updates to the same ID.
-- **Monitor**: Alert on 409 Conflict spikes; it might mean your locking logic is too aggressive (or your app is getting popular).
+- **Monitor**: Alert on 409 Conflict spikes; it might mean your locking logic is too aggressive (or your app is getting
+  popular).

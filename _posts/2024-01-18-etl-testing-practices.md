@@ -26,9 +26,12 @@ tags:
 
 ETL (Extract, Transform, Load) pipelines are the "plumbing" of the data world.
 
-Nobody notices them until they burst, and suddenly the boardroom is flooded with sewage (or in this case, duplicate customer records).
+Nobody notices them until they burst, and suddenly the boardroom is flooded with sewage (or in this case, duplicate
+customer records).
 
-Testing ETL often feels like trying to catch water with a sieve. The source data changes formats without warning, the API rate limits you, and suddenly your "Robust Pipeline" is crashing because someone put an emoji in a `ZipCode` field. 💩
+Testing ETL often feels like trying to catch water with a sieve. The source data changes formats without warning, the
+API rate limits you, and suddenly your "Robust Pipeline" is crashing because someone put an emoji in a `ZipCode` field.
+💩
 
 ## TL;DR
 
@@ -38,11 +41,13 @@ Testing ETL often feels like trying to catch water with a sieve. The source data
 
 ## The "Fragile Pipeline" Problem
 
-Most data engineers write "E2E" tests: "Run the whole DAG and see if it is green." This is testing **Availability**, not **Correctness**.
+Most data engineers write "E2E" tests: "Run the whole DAG and see if it is green." This is testing **Availability**, not
+**Correctness**.
 
 A green pipeline can still write 1,000,000 rows of rubbish.
 
-You must test the *Transform* step in isolation. If your business logic says "Convert USD to GBP", you need a test that proves `$1.00` becomes `£0.79` (or whatever the sad exchange rate is today).
+You must test the *Transform* step in isolation. If your business logic says "Convert USD to GBP", you need a test that
+proves `$1.00` becomes `£0.79` (or whatever the sad exchange rate is today).
 
 ## Unit Testing Transformations
 
@@ -50,7 +55,8 @@ Stop testing your transformations inside Airflow or dbt execution runs.
 
 Extract the logic into pure Python functions. `def calculate_ltv(user_orders): ...`
 
-Now you can write a `pytest` suite that passes in a list of orders and asserts the LTV. No database required. Fast, deterministic, and actually tests the logic.
+Now you can write a `pytest` suite that passes in a list of orders and asserts the LTV. No database required. Fast,
+deterministic, and actually tests the logic.
 
 ## Code Snippet: Testing Pandas Logic
 
@@ -84,15 +90,18 @@ def test_clean_currency():
 
 ## Summary
 
-ETL testing is about moving from "Inspection" (looking at the final table) to "Prevention" (testing the logic before it runs).
+ETL testing is about moving from "Inspection" (looking at the final table) to "Prevention" (testing the logic before it
+runs).
 
-If you treat your data pipelines like software features, your data quality will skyrocket. If you treat them like scripts you found on Stack Overflow... good luck.
+If you treat your data pipelines like software features, your data quality will skyrocket. If you treat them like
+scripts you found on Stack Overflow... good luck.
 
 ## Key Takeaways
 
 - **Decompose giant DAGs**: Break giant DAGs into small, testable tasks.
 - **Validate Input early**: Fail fast if the source data schema is wrong.
-- **Idempotency prevents duplicates**: Ensure re-runs are safe. If the job fails halfway, retrying should not create duplicates.
+- **Idempotency prevents duplicates**: Ensure re-runs are safe. If the job fails halfway, retrying should not create
+  duplicates.
 
 ## Next Steps
 

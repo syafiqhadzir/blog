@@ -25,9 +25,11 @@ tags:
 
 In the old days, if a server crashed, you would SSH into it, `cd /var/log`, and run `tail -f server.log`.
 
-Then we invented Microservices. Now you have 50 servers. SSH-ing into all of them is effectively a DDoS attack on your own productivity.
+Then we invented Microservices. Now you have 50 servers. SSH-ing into all of them is effectively a DDoS attack on your
+own productivity.
 
-**Log Aggregation** is the practice of sucking all those logs into one big search engine (like ELK, Splunk, or Datadog) so you can debug the entire system from your browser whilst sipping coffee.
+**Log Aggregation** is the practice of sucking all those logs into one big search engine (like ELK, Splunk, or Datadog)
+so you can debug the entire system from your browser whilst sipping coffee.
 
 ## TL;DR
 
@@ -37,18 +39,22 @@ Then we invented Microservices. Now you have 50 servers. SSH-ing into all of the
 
 ## The Grep Struggle
 
-Searching a 2GB text file with `grep` characterises a "Junior Developer". Searching 500GB of indexed logs with Kibana characterises a "Senior Engineer".
+Searching a 2GB text file with `grep` characterises a "Junior Developer". Searching 500GB of indexed logs with Kibana
+characterises a "Senior Engineer".
 
 **QA Challenge**: Verify that when an error occurs, it actually appears in the aggregator.
 
-I have seen systems where the app was crashing, but the logging agent (Fluentd) was also crashing, so the dashboard showed "100% Health" whilst the users were burning the comments section.
+I have seen systems where the app was crashing, but the logging agent (Fluentd) was also crashing, so the dashboard
+showed "100% Health" whilst the users were burning the comments section.
 
 ## Centralised vs Distributed
 
-- **Distributed**: Logs stay on the server. If the server dies (Auto-Scaling Group triggers), the logs die with it. Forensics is impossible.
+- **Distributed**: Logs stay on the server. If the server dies (Auto-Scaling Group triggers), the logs die with it.
+  Forensics is impossible.
 - **Centralised**: Logs are shipped to a separate cluster. If the app server dies, the evidence remains.
 
-For QA, this means you can perform **Post-Mortems** on transient failures. "Why did the payment fail at 2 AM?" -> Search logs -> "Oh, the generic-3rd-party-api timed out."
+For QA, this means you can perform **Post-Mortems** on transient failures. "Why did the payment fail at 2 AM?" -> Search
+logs -> "Oh, the generic-3rd-party-api timed out."
 
 ## Code Snippet: Fluentd Config
 
@@ -84,7 +90,8 @@ Here is how you configure `fluentd` to tail a Docker log file and verify it catc
 </match>
 ```
 
-**QA Test**: Deploy a "Log Generator" pod that prints 100 lines/second. Check Kibana receives 100 lines/second. If it receives 80, your logging pipeline has drop issues (backpressure), and you will lose critical errors during a spike.
+**QA Test**: Deploy a "Log Generator" pod that prints 100 lines/second. Check Kibana receives 100 lines/second. If it
+receives 80, your logging pipeline has drop issues (backpressure), and you will lose critical errors during a spike.
 
 ## Summary
 
@@ -95,8 +102,10 @@ And remember: Friends do not let friends parse raw text logs with Regex.
 ## Key Takeaways
 
 - **No Files**: Applications should log to `stdout`/`stderr`. Let the infrastructure (Docker/K8s) handle the files.
-- **Retention needs limits**: Logs occupy space (and cost money). Delete debug logs after 7 days; keep error logs for 90 days.
-- **Redaction needs testing**: Write a test that deliberately logs a fake credit card number, then verify it is masked (`****`) in the dashboard.
+- **Retention needs limits**: Logs occupy space (and cost money). Delete debug logs after 7 days; keep error logs for 90
+  days.
+- **Redaction needs testing**: Write a test that deliberately logs a fake credit card number, then verify it is masked
+  (`****`) in the dashboard.
 
 ## Next Steps
 
