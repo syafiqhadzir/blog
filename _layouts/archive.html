@@ -32,6 +32,7 @@ layout: default
                aria-label="Search articles"
                aria-describedby="search-hint"
                on="input-debounced:AMP.setState({ archiveSearchQuery: event.value })"
+               [value]="archiveSearchQuery || ''"
                autocomplete="off">
         <span class="search-hint" id="search-hint" aria-hidden="true" [hidden]="archiveSearchQuery">
             <kbd>/</kbd> to focus
@@ -49,7 +50,14 @@ layout: default
     <div class="archive-years" id="archive-list">
         {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
         {%- for year in posts_by_year -%}
-        <details class="year-group" open data-year="{{ year.name }}">
+        {%- capture year_content -%}
+            {%- for post in year.items -%}
+                {{ post.title | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\'" }} {{ post.tags | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\'" }}
+            {%- endfor -%}
+        {%- endcapture -%}
+        <details class="year-group" open
+                 data-year="{{ year.name }}"
+                 [hidden]="archiveSearchQuery && '{{ year_content | strip_newlines }}'.indexOf(archiveSearchQuery.toLowerCase()) == -1">
             <summary class="year-header">
                 <span class="year-chevron" aria-hidden="true"></span>
                 <span class="year-label">{{ year.name }}</span>
@@ -59,7 +67,7 @@ layout: default
                 {%- for post in year.items -%}
                 <li class="archive-post-item"
                     role="listitem"
-                    [hidden]="archiveSearchQuery && '{{ post.title | downcase | replace: '\\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }} {{ post.tags | join: ' ' | downcase | replace: '\\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }}'.indexOf(archiveSearchQuery.toLowerCase()) == -1">
+                    [hidden]="archiveSearchQuery && '{{ post.title | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\'" }} {{ post.tags | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\'" }}'.indexOf(archiveSearchQuery.toLowerCase()) == -1">
                     <time class="archive-date" datetime="{{ post.date | date_to_xmlschema }}">
                         {{ post.date | date: "%d %b" }}
                     </time>
@@ -81,10 +89,10 @@ layout: default
     </div>
 
     <!-- Empty State -->
-    <div class="archive-empty" id="no-results" hidden aria-hidden="true">
+    <div class="archive-empty" id="no-results" [hidden]="!archiveSearchQuery || '{{ site.posts | map: 'title' | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\'" }} {{ site.posts | map: 'tags' | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\'" }}'.indexOf(archiveSearchQuery.toLowerCase()) != -1">
         <div class="empty-icon" aria-hidden="true">🔍</div>
-        <p>No articles found matching "<strong id="search-term"></strong>"</p>
-        <p class="empty-hint">Try different keywords or <button type="button" class="clear-link" id="clear-search">clear the search</button></p>
+        <p>No articles found matching "<strong [text]="archiveSearchQuery"></strong>"</p>
+        <p class="empty-hint">Try different keywords or <button type="button" class="clear-link" on="tap:AMP.setState({ archiveSearchQuery: '' })">clear the search</button></p>
     </div>
 </section>
 
