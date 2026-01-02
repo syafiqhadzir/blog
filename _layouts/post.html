@@ -83,28 +83,7 @@ layout: default
 
 <amp-image-lightbox id="lightbox" layout="nodisplay"></amp-image-lightbox>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "Home",
-    "item": "{{ '/' | absolute_url }}"
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "name": "Archive",
-    "item": "{{ '/archive.html' | absolute_url }}"
-  },{
-    "@type": "ListItem",
-    "position": 3,
-    "name": "{{ page.title }}",
-    "item": "{{ page.url | absolute_url }}"
-  }]
-}
-</script>
+
 
 {%- include smart_related_posts.html -%}
 {%- include post_navigation.html -%}

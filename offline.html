@@ -184,6 +184,15 @@ permalink: /offline.html
                 z-index: 100;
             }
         </style>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "Offline",
+                "url": "{{ '/offline.html' | absolute_url }}",
+                "description": "Offline fallback page for {{ site.title }}"
+            }
+        </script>
     </head>
 
     <body class="light-theme" [class]="uiMode == 'dark' ? 'dark-theme' : 'light-theme'">

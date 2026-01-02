@@ -2,8 +2,10 @@
   <meta charset="utf-8">
   <link rel="preconnect" href="https://cdn.ampproject.org/" crossorigin>
   <link rel="dns-prefetch" href="https://cdn.ampproject.org/">
-  <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
 
   {%- seo -%}
@@ -12,6 +14,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}">
   <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
   <meta name="theme-color" content="#000000">
+  <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="{{ '/icons/icon-192.png' | relative_url }}">
@@ -107,41 +110,6 @@
   {% if page.mathml == true %}
   <script async custom-element="amp-mathml" src="https://cdn.ampproject.org/v0/amp-mathml-0.1.js"></script>
   {% endif %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "{{ '/' | absolute_url }}#website",
-        "url": "{{ '/' | absolute_url }}",
-        "name": "{{ site.title }}",
-        "description": "{{ site.description }}",
-        "publisher": {
-          "@id": "{{ '/' | absolute_url }}#person"
-        },
-        "inLanguage": "en-GB"
-      },
-      {
-        "@type": "Person",
-        "@id": "{{ '/' | absolute_url }}#person",
-        "name": "{{ site.author.name }}",
-        "url": "{{ '/' | absolute_url }}",
-        "image": {
-          "@type": "ImageObject",
-          "url": "{{ '/logo.png' | absolute_url }}",
-          "width": 512,
-          "height": 512,
-          "caption": "{{ site.author.name }}"
-        },
-        "jobTitle": "QA Engineer",
-        "sameAs": [
-          "https://github.com/syafiqhadzir",
-          "https://linkedin.com/in/syafiqhadzir"
-        ]
-      }
-    ]
-  }
-  </script>
+  {% include seo_json_ld.html %}
 
 </head>

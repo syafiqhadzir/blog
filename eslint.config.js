@@ -12,7 +12,17 @@ import tseslint from 'typescript-eslint';
 /** @type {import('typescript-eslint').ConfigArray} */
 export default [
     // Global ignores
-    { ignores: ['_site/**', 'vendor/**', 'coverage/**', 'playwright-report/**', 'sw.js', 'test-results/**'] },
+    {
+        ignores: [
+            '_site/**',
+            'vendor/**',
+            'coverage/**',
+            'playwright-report/**',
+            'sw.js',
+            'test-results/**',
+            'scripts/seo-audit.js',
+        ],
+    },
 
     // Base configs
     js.configs.recommended,

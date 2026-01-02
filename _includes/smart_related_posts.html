@@ -28,10 +28,13 @@
         {%- for entry in sorted_related -%}
           {%- if count < RELATED_POSTS_LIMIT -%}
             {%- assign parts = entry | split: "#" -%}
+            {%- assign score = parts[0] | plus: 0 -%}
             {%- assign url = parts[1] -%}
             {%- for p in site.posts -%}
               {%- if p.url == url -%}
-                <a class="related-link" href="{{ p.url | relative_url }}">
+                <a class="related-link" href="{{ p.url | relative_url }}"
+                   data-score="{{ score }}"
+                   {% if score >= 2 %}data-cluster="true"{% endif %}>
                     <span class="nav-label">{{ p.date | date: "%d %b %Y" }}</span>
                     <span class="nav-title">{{ p.title | truncate: 60 }}</span>
                 </a>
