@@ -1,19 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-    testDir: './e2e',
-    fullyParallel: true,
     forbidOnly: !!process.env['CI'],
+    fullyParallel: true,
     retries: process.env['CI'] ? 2 : 0,
+    testDir: './e2e',
     ...(process.env['CI'] ? { workers: 1 } : {}),
-    reporter: 'html',
-
-    use: {
-        baseURL: process.env['BASE_URL'] || 'http://127.0.0.1:4000/',
-        trace: 'on-first-retry',
-        screenshot: 'only-on-failure',
-    },
-
     projects: [
         {
             name: 'chromium',
@@ -37,12 +29,20 @@ export default defineConfig({
         },
     ],
 
+    reporter: 'html',
+
+    use: {
+        baseURL: process.env['BASE_URL'] || 'http://127.0.0.1:4000/',
+        screenshot: 'only-on-failure',
+        trace: 'on-first-retry',
+    },
+
     webServer: {
         command: 'bundle exec jekyll serve --port 4000',
-        url: 'http://127.0.0.1:4000/',
         reuseExistingServer: !process.env['CI'],
-        timeout: 180_000,
-        stdout: 'pipe',
         stderr: 'pipe',
+        stdout: 'pipe',
+        timeout: 180_000,
+        url: 'http://127.0.0.1:4000/',
     },
 });

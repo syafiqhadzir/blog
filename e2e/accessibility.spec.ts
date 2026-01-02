@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { expect, test } from '@playwright/test';
 
 test.describe('Accessibility (WCAG 2.2)', () => {
     test('homepage has no critical accessibility violations', async ({ page }) => {
@@ -56,7 +56,7 @@ test.describe('Accessibility (WCAG 2.2)', () => {
         expect(accessibilityScanResults.violations).toEqual([]);
     });
 
-    test('focus is visible on all interactive elements', async ({ page, isMobile, browserName }) => {
+    test('focus is visible on all interactive elements', async ({ browserName, isMobile, page }) => {
         // Skip on mobile devices and WebKit as default focus behavior differs
         // and may require explicit OS-level configuration to show focus rings
         // eslint-disable-next-line playwright/no-skipped-test

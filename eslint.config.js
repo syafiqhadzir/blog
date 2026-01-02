@@ -1,10 +1,11 @@
 import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import playwright from 'eslint-plugin-playwright';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import globals from 'globals';
+import perfectionist from 'eslint-plugin-perfectionist';
+import playwright from 'eslint-plugin-playwright';
 import sonarjs from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
     // Global ignores
@@ -17,16 +18,17 @@ export default tseslint.config(
     ...tseslint.configs.stylistic,
     sonarjs.configs.recommended,
     unicorn.configs['flat/recommended'],
+    perfectionist.configs['recommended-natural'],
 
     // Node.js config files
     {
         files: ['lighthouserc.js', 'lighthouserc.cjs', '*.config.js', '**/*.cjs'],
         languageOptions: {
             globals: {
+                __dirname: 'readonly',
                 module: 'readonly',
                 process: 'readonly',
                 require: 'readonly',
-                __dirname: 'readonly',
             },
         },
         rules: {
@@ -49,13 +51,13 @@ export default tseslint.config(
         files: ['e2e/**/*.{ts,js}'],
         rules: {
             ...playwright.configs['flat/recommended'].rules,
-            'playwright/no-wait-for-timeout': 'error',
-            'playwright/no-skipped-test': 'error',
-            'playwright/no-focused-test': 'error',
-            'playwright/no-conditional-in-test': 'error',
             'playwright/expect-expect': 'error',
+            'playwright/no-conditional-in-test': 'error',
+            'playwright/no-focused-test': 'error',
             'playwright/no-force-option': 'warn',
             'playwright/no-page-pause': 'error',
+            'playwright/no-skipped-test': 'error',
+            'playwright/no-wait-for-timeout': 'error',
             'playwright/prefer-to-be': 'error',
             'playwright/prefer-to-have-count': 'error',
             'playwright/prefer-to-have-length': 'error',
@@ -65,14 +67,14 @@ export default tseslint.config(
     // General rules customization
     {
         rules: {
-            'no-console': 'error',
+            '@typescript-eslint/consistent-type-imports': 'error',
+            '@typescript-eslint/no-explicit-any': 'error',
+            '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
             'complexity': ['error', 10],
+            'max-depth': ['error', 3],
             'max-lines': ['error', 300],
             'max-params': ['error', 4],
-            'max-depth': ['error', 3],
-            '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-            '@typescript-eslint/no-explicit-any': 'error',
-            '@typescript-eslint/consistent-type-imports': 'error',
+            'no-console': 'error',
         },
     },
 
