@@ -55,12 +55,12 @@ jekyll-minifier:
     remove_intertag_spaces: false
     remove_quotes: false
     compress_css: true
-    compress_javascript: true
+    compress_javascript: false
     compress_json: true
     ignore:
         - '*.xml'
         - '*.txt'
-        - 'assets/*.js'
+        - 'assets/js/**/*.js'
 
 # Default values for posts
 defaults:
@@ -82,6 +82,7 @@ exclude:
     - Gemfile
     - Gemfile.lock
     - Rakefile
+    - scripts
     - vendor
     - spec
     - node_modules
