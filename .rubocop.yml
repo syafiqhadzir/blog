@@ -11,7 +11,8 @@ AllCops:
         - 'vendor/**/*'
         - '_site/**/*'
         - 'node_modules/**/*'
-        - 'bin/**/*'
+        - 'bin/jekyll'
+        - 'bin/bootstrap'
         - 'Gemfile.lock'
 
 # Documentation - disabled for specs
