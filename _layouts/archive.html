@@ -46,18 +46,29 @@ layout: default
 
     {{ content }}
 
+    <!-- AMP State for Progressive Disclosure -->
+    <amp-state id="showAllYears">
+        <script type="application/json">
+            false
+        </script>
+    </amp-state>
+
     <!-- Posts by Year -->
     <div class="archive-years" id="archive-list">
         {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
+        {%- assign initial_years = 3 -%}
         {%- for year in posts_by_year -%}
+        {%- assign year_index = forloop.index0 -%}
         {%- capture year_content -%}
             {%- for post in year.items -%}
                 {{ post.title | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }} {{ post.tags | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }}
             {%- endfor -%}
         {%- endcapture -%}
-        <details class="year-group" open
+        <details class="year-group" {% if year_index < initial_years %}open{% endif %}
                  data-year="{{ year.name }}"
-                 [hidden]="archiveSearchQuery && '{{ year_content | strip_newlines }}'.indexOf(archiveSearchQuery.toLowerCase()) == -1">
+                 data-year-index="{{ year_index }}"
+                 {% if year_index >= initial_years %}hidden{% endif %}
+                 [hidden]="({{ year_index }} >= {{ initial_years }} && !showAllYears && !archiveSearchQuery) || (archiveSearchQuery && '{{ year_content | strip_newlines }}'.indexOf(archiveSearchQuery.toLowerCase()) == -1)">
             <summary class="year-header">
                 <span class="year-chevron" aria-hidden="true"></span>
                 <span class="year-label">{{ year.name }}</span>
@@ -75,7 +86,7 @@ layout: default
                         {{ post.title }}
                     </a>
                     {%- if post.tags.size > 0 -%}
-                    <span class="archive-tags" aria-label="Tags">
+                    <span class="archive-tags">
                         {%- for tag in post.tags limit: 2 -%}
                         <span class="archive-tag">{{ tag }}</span>
                         {%- endfor -%}
@@ -86,6 +97,16 @@ layout: default
             </ul>
         </details>
         {%- endfor -%}
+
+        {%- if posts_by_year.size > initial_years -%}
+        <div class="archive-load-more" [hidden]="showAllYears || archiveSearchQuery">
+            <button type="button" 
+                    class="load-more-years"
+                    on="tap:AMP.setState({ showAllYears: true })">
+                Load {{ posts_by_year.size | minus: initial_years }} more years
+            </button>
+        </div>
+        {%- endif -%}
     </div>
 
     <!-- Empty State -->
