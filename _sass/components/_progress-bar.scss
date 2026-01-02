@@ -10,19 +10,17 @@
     pointer-events: none;
 }
 
-#progress-bar {
-    height: 100%;
-    background: var(--gradient-cool);
+.progress-bar {
     width: 100%;
-    transform: scaleX(0);
+    height: 100%;
+    background: linear-gradient(90deg, var(--link-color) 0%, var(--link-color-hover) 100%);
     transform-origin: left;
-    transition: none;
-    box-shadow: 0 0 10px var(--accent-color);
+    transform: scaleX(0);
+    box-shadow: 0 0 10px var(--link-color);
 }
 
 /* Subtle glow in dark mode */
-.dark-theme #progress-bar {
-    box-shadow:
-        0 0 15px var(--accent-color),
-        0 0 5px var(--link-color);
+.dark-theme .progress-bar {
+    background: linear-gradient(90deg, rgb(187 134 252) 0%, rgb(3 218 198) 100%);
+    box-shadow: 0 0 15px rgb(187 134 252 / 50%);
 }
