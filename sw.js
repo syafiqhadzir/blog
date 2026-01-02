@@ -1,8 +1,8 @@
-/* eslint-disable */
 ---
     layout: null
 permalink: /sw.js
 ---
+/* eslint-disable */
 /**
  * Service Worker v4 - Workbox 7 Implementation
  * Production-grade caching with Google Workbox
