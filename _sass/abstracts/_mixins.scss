@@ -143,7 +143,7 @@ $breakpoints: (
         box-shadow var(--transition-fast);
 
     &:hover {
-        box-shadow: 0 8px 25px rgb(0 0 0 / 15%);
+        box-shadow: var(--shadow-lift);
         transform: translateY(-#{$distance});
     }
 
@@ -159,15 +159,15 @@ $breakpoints: (
 @mixin elevation($level: 1) {
     @if $level == 1 {
         box-shadow:
-            0 1px 3px rgb(0 0 0 / 12%),
+            0 1px 3px var(--shadow-base),
             0 1px 2px rgb(0 0 0 / 6%);
     } @else if $level == 2 {
         box-shadow:
-            0 4px 6px rgb(0 0 0 / 10%),
+            0 4px 6px var(--shadow-base),
             0 2px 4px rgb(0 0 0 / 6%);
     } @else if $level == 3 {
         box-shadow:
-            0 10px 20px rgb(0 0 0 / 15%),
-            0 3px 6px rgb(0 0 0 / 10%);
+            0 10px 20px var(--shadow-lift),
+            0 3px 6px var(--shadow-base);
     }
 }

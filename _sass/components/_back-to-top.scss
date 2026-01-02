@@ -3,14 +3,14 @@
     position: fixed;
     right: 2rem;
     bottom: 2rem;
-    z-index: 99;
+    z-index: var(--z-back-to-top);
     display: flex;
     visibility: hidden;
     align-items: center;
     justify-content: center;
     width: 48px;
     height: 48px;
-    color: #fff;
+    color: var(--bg-color);
     cursor: pointer;
     background: var(--accent-color);
     border: none;
