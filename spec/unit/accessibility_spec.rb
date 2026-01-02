@@ -49,12 +49,6 @@ RSpec.describe 'Accessibility (A11y)' do
                          'menu_item.html should use list structure'
     end
 
-    it 'back_link.html has aria-label' do
-      content = File.read(File.join(includes_dir, 'back_link.html'))
-      expect(content).to include('aria-label'),
-                         'back_link.html should have aria-label'
-    end
-
     it 'post_list.html uses semantic time element' do
       content = File.read(File.join(includes_dir, 'post_list.html'))
       expect(content).to include('<time'),
@@ -63,22 +57,21 @@ RSpec.describe 'Accessibility (A11y)' do
   end
 
   describe 'CSS accessibility' do
-    it 'head.html has focus styles' do
-      content = File.read(File.join(includes_dir, 'head.html'))
-      expect(content).to include(':focus'),
-                         'head.html should define focus styles for keyboard navigation'
+    let(:a11y_scss) { File.read(File.join(Dir.pwd, '_sass', 'base', '_a11y.scss')) }
+
+    it 'a11y.scss has focus styles' do
+      expect(a11y_scss).to include(':focus'),
+                           '_a11y.scss should define focus styles for keyboard navigation'
     end
 
-    it 'head.html has skip-link styles' do
-      content = File.read(File.join(includes_dir, 'head.html'))
-      expect(content).to include('.skip-link'),
-                         'head.html should have skip-link CSS class'
+    it 'a11y.scss has skip-link styles' do
+      expect(a11y_scss).to include('.skip-link'),
+                           '_a11y.scss should have skip-link CSS class'
     end
 
-    it 'head.html has screen reader only styles' do
-      content = File.read(File.join(includes_dir, 'head.html'))
-      expect(content).to include('.sr-only').or(include('visually-hidden')),
-                         'head.html should have screen reader only CSS class'
+    it 'a11y.scss has screen reader only styles' do
+      expect(a11y_scss).to include('.sr-only').or(include('visually-hidden')),
+                           '_a11y.scss should have screen reader only CSS class'
     end
   end
   # rubocop:enable RSpec/DescribeClass

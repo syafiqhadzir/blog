@@ -79,7 +79,7 @@ RSpec.describe 'Essential Files' do
   ESSENTIAL_FILES = [
     'robots.txt',
     'site.webmanifest',
-    '404.html',
+    '404.md',
     'offline.html',
     'sw.js',
     'CNAME'

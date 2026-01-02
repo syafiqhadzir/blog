@@ -61,7 +61,7 @@ end
 
 RSpec.describe 'Includes' do
   # Required includes for the site
-  let(:required_includes) { ['head.html', 'back_link.html', 'menu_item.html', 'post_list.html'] }
+  let(:required_includes) { ['head.html', 'menu_item.html', 'post_list.html'] }
 
   describe 'Required includes' do
     it 'all required includes exist' do

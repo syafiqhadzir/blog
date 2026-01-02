@@ -1,11 +1,9 @@
 // Abstracts
 @use 'abstracts/variables';
-@use 'abstracts/mixins';
 
 // Base
 @use 'base/reset';
 @use 'base/typography';
-@use 'base/global';
 @use 'base/a11y';
 
 // Layout
@@ -34,5 +32,4 @@
 @use 'pages/404' as error404;
 
 // Themes
-@use 'themes/light';
 @use 'themes/dark';
