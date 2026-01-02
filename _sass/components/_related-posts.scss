@@ -1,16 +1,16 @@
 /* Related Posts - Minimal Nav Style */
 .related-posts {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
-    content-visibility: auto;
     contain-intrinsic-size: auto 300px;
+    padding-top: 2rem;
+    margin-top: 3rem;
+    content-visibility: auto;
+    border-top: 1px solid var(--border-color);
 }
 
 .related-heading {
+    margin: 0 0 1rem;
     font-size: 1rem;
     font-weight: 600;
-    margin: 0 0 1rem;
     color: var(--text-secondary);
 }
 
@@ -25,10 +25,10 @@
     flex-direction: column;
     gap: 0.25rem;
     padding: 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
     text-decoration: none;
     background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
 }
 
 .related-link:hover {
@@ -36,15 +36,15 @@
 }
 
 .related-link .nav-label {
+    font-family: ui-monospace, monospace;
     font-size: 0.8rem;
     color: var(--text-secondary);
-    font-family: ui-monospace, monospace;
 }
 
 .related-link .nav-title {
     font-weight: 600;
-    color: var(--text-color);
     line-height: 1.4;
+    color: var(--text-color);
 }
 
 .related-link:hover .nav-title {
@@ -63,9 +63,9 @@
 
 /* WCAG: Related Posts Touch Targets */
 .related-posts-list {
-    list-style: none;
     padding-left: 0;
     margin-top: 1rem;
+    list-style: none;
 }
 
 .related-posts-list li {
@@ -75,12 +75,12 @@
 .related-posts-list a {
     display: flex;
     align-items: center;
+    min-height: 44px;
     padding: 0.75rem;
-    text-decoration: none;
     color: var(--link-color);
+    text-decoration: none;
     background: var(--code-bg);
     border-radius: 4px;
-    min-height: 44px;
     transition: background-color 0.2s ease;
 }
 

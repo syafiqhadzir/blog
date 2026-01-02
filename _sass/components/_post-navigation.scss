@@ -1,32 +1,32 @@
 /* Klisé-style Post Navigation */
 .post-navigation {
-    margin-top: 4rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 3rem;
-    content-visibility: auto;
     contain-intrinsic-size: auto 200px;
+    padding-top: 3rem;
+    margin-top: 4rem;
+    content-visibility: auto;
+    border-top: 1px solid var(--border-color);
 }
 
 .post-navigation a {
     display: flex;
     flex-direction: column;
-    text-decoration: none;
+    min-height: 44px; /* WCAG Target Size */
     padding: 1.5rem;
-    border-radius: 16px;
+    text-decoration: none;
     background: var(--bg-color);
     border: 1px solid var(--border-color);
+    border-radius: 16px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    min-height: 44px; /* WCAG Target Size */
 }
 
 .post-navigation a:hover {
     background: var(--border-color);
     border-color: var(--accent-color);
-    transform: translateY(-4px);
     box-shadow: 0 8px 25px rgb(0 0 0 / 10%);
+    transform: translateY(-4px);
 }
 
 .post-navigation a:focus-visible {
@@ -39,24 +39,24 @@
 }
 
 .nav-next {
-    text-align: right;
     margin-left: auto;
+    text-align: right;
 }
 
 .nav-label {
+    margin-bottom: 0.75rem;
     font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--text-secondary);
-    margin-bottom: 0.75rem;
-    font-weight: 700;
 }
 
 .nav-title {
-    font-weight: 800;
-    color: var(--text-color);
-    line-height: 1.4;
     font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1.4;
+    color: var(--text-color);
 }
 
 @media (width <= 600px) {

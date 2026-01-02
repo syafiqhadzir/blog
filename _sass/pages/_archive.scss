@@ -11,10 +11,10 @@
 
 /* Header */
 .archive-header {
-    margin-bottom: 2rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 2rem;
     text-align: center;
+    border-bottom: 1px solid var(--border-color);
 
     h1 {
         margin-bottom: 0.5rem;
@@ -23,9 +23,9 @@
 }
 
 .archive-description {
-    color: var(--text-secondary);
     margin-bottom: 0.5rem;
     font-size: 1.05rem;
+    color: var(--text-secondary);
 }
 
 .archive-stats {
@@ -34,9 +34,9 @@
 }
 
 .stat-total {
+    font-size: 1.1em;
     font-weight: 700;
     color: var(--link-color);
-    font-size: 1.1em;
 }
 
 /* Search Box */
@@ -49,10 +49,10 @@
     width: 100%;
     padding: 1rem 3.5rem 1rem 1.25rem;
     font-size: 1rem;
+    color: var(--text-color);
+    background: var(--bg-color);
     border: 2px solid var(--border-color);
     border-radius: 12px;
-    background: var(--bg-color);
-    color: var(--text-color);
     transition:
         border-color 0.2s,
         box-shadow 0.2s;
@@ -70,12 +70,12 @@
 
 .search-hint {
     position: absolute;
-    right: 1rem;
     top: 50%;
-    transform: translateY(-50%);
+    right: 1rem;
     font-size: 0.75rem;
     color: var(--text-secondary);
     pointer-events: none;
+    transform: translateY(-50%);
     transition: opacity 0.2s;
 
     kbd {
@@ -97,27 +97,27 @@
 
 .search-clear {
     position: absolute;
-    right: 0.75rem;
     top: 50%;
-    transform: translateY(-50%);
-    width: 28px;
-    height: 28px;
-    border: none;
-    background: var(--code-bg);
-    color: var(--text-secondary);
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 0.9rem;
+    right: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    background: var(--code-bg);
+    border: none;
+    border-radius: 50%;
+    transform: translateY(-50%);
     transition:
         background 0.2s,
         color 0.2s;
 
     &:hover {
-        background: var(--border-color);
         color: var(--text-color);
+        background: var(--border-color);
     }
 
     &[hidden] {
@@ -145,14 +145,14 @@
 }
 
 .year-group {
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: opacity 0.2s;
+    contain-intrinsic-size: auto 300px;
 
     /* CWV: Skip rendering for off-screen year groups */
     content-visibility: auto;
-    contain-intrinsic-size: auto 300px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: opacity 0.2s;
 
     &[hidden] {
         display: none;
@@ -165,14 +165,14 @@
 
 .year-header {
     display: flex;
-    align-items: center;
     gap: 0.75rem;
+    align-items: center;
     padding: 1rem 1.25rem;
-    background: linear-gradient(to right, var(--code-bg), transparent);
-    cursor: pointer;
     font-weight: 600;
-    list-style: none;
+    cursor: pointer;
     user-select: none;
+    list-style: none;
+    background: linear-gradient(to right, var(--code-bg), transparent);
     transition: background 0.2s;
 
     &:hover {
@@ -187,9 +187,9 @@
 .year-chevron {
     width: 0;
     height: 0;
-    border-left: 5px solid var(--text-secondary);
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
+    border-left: 5px solid var(--text-secondary);
     transition: transform 0.2s ease;
 }
 
@@ -199,32 +199,32 @@ details[open] .year-chevron {
 }
 
 .year-label {
+    flex: 1;
     font-size: 1.15rem;
     color: var(--text-color);
-    flex: 1;
 }
 
 .year-count {
+    padding: 0.3rem 0.75rem;
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--text-secondary);
     background: var(--bg-color);
-    padding: 0.3rem 0.75rem;
-    border-radius: 2rem;
     border: 1px solid var(--border-color);
+    border-radius: 2rem;
 }
 
 /* Post List */
 .archive-posts {
-    list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .archive-post-item {
     display: flex;
-    align-items: baseline;
     gap: 1rem;
+    align-items: baseline;
     padding: 0.875rem 1.25rem;
     border-top: 1px solid var(--border-color);
     transition: background-color 0.15s;
@@ -241,17 +241,17 @@ details[open] .year-chevron {
 .archive-date {
     flex-shrink: 0;
     min-width: 3.5rem;
-    font-size: 0.8rem;
     font-family: ui-monospace, monospace;
+    font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
 .archive-link {
     flex: 1;
-    color: var(--text-color);
-    text-decoration: none;
     font-weight: 500;
     line-height: 1.4;
+    color: var(--text-color);
+    text-decoration: none;
 
     &:hover {
         color: var(--link-color);
@@ -260,23 +260,23 @@ details[open] .year-chevron {
 
 .archive-tags {
     display: flex;
-    gap: 0.35rem;
     flex-shrink: 0;
+    gap: 0.35rem;
 }
 
 .archive-tag {
-    font-size: 0.7rem;
     padding: 0.15rem 0.5rem;
-    background: var(--code-bg);
+    font-size: 0.7rem;
     color: var(--text-secondary);
+    background: var(--code-bg);
     border-radius: 3px;
 }
 
 /* Empty State */
 .archive-empty {
-    text-align: center;
     padding: 4rem 1rem;
     color: var(--text-secondary);
+    text-align: center;
 
     &[hidden] {
         display: none;
@@ -292,8 +292,8 @@ details[open] .year-chevron {
 }
 
 .empty-icon {
-    font-size: 3rem;
     margin-bottom: 1rem;
+    font-size: 3rem;
     opacity: 50%;
 }
 
@@ -302,12 +302,12 @@ details[open] .year-chevron {
 }
 
 .clear-link {
+    font: inherit;
+    color: var(--link-color);
+    text-decoration: underline;
+    cursor: pointer;
     background: none;
     border: none;
-    color: var(--link-color);
-    cursor: pointer;
-    text-decoration: underline;
-    font: inherit;
 }
 
 /* Dark Mode */

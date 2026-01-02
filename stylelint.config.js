@@ -1,9 +1,9 @@
 /** @type {import('stylelint').Config} */
 export default {
-    extends: ['stylelint-config-standard', 'stylelint-config-standard-scss'],
+    extends: ['stylelint-config-standard', 'stylelint-config-standard-scss', 'stylelint-config-recess-order'],
     rules: {
         // SCSS-specific rules
-        'at-rule-no-unknown': null,
+        'at-rule-no-unknown': undefined,
         'scss/at-rule-no-unknown': true,
 
         // Strict naming patterns
@@ -34,7 +34,7 @@ export default {
         ],
         'color-function-notation': 'modern',
         'alpha-value-notation': 'percentage',
-        'color-function-alias-notation': null,
+        'color-function-alias-notation': undefined,
 
         // Strict selector rules
         'selector-max-id': 0, // No IDs allows

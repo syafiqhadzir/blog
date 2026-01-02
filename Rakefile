@@ -37,10 +37,11 @@ namespace :test do
     puts '🔍 Running HTMLProofer integration tests...'
     options = {
       assume_extension: '.html',
-      disable_external: true,
-      enforce_https: false,
+      check_html: true,
+      check_img_http: true,
+      check_opengraph: true,
+      enforce_https: true,
       checks: %w[Links Images Scripts],
-      allow_missing_href: true,
       ignore_urls: [/^#/, /^mailto:/, /^javascript:/]
     }
     sh "bundle exec ruby -e \"require 'html-proofer'; HTMLProofer.check_directory('./_site', #{options}).run\""

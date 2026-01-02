@@ -15,15 +15,15 @@ body {
         'Open Sans',
         'Helvetica Neue',
         sans-serif;
-    line-height: var(--line-height);
     font-size: clamp(1.1rem, 1rem + 0.25vw, 1.25rem);
+    line-height: var(--line-height);
 }
 
 h1 {
-    font-size: 2.5rem;
-    line-height: 1.1;
     margin-bottom: 1.5rem;
+    font-size: 2.5rem;
     font-weight: 800;
+    line-height: 1.1;
     letter-spacing: -0.04em;
 }
 
@@ -53,8 +53,8 @@ a:hover {
 }
 
 code {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
     color: var(--code-color);
     background: var(--code-bg);
     border-radius: 3px;
-    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
 }

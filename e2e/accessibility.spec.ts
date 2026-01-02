@@ -83,8 +83,8 @@ test.describe('Accessibility (WCAG 2.2)', () => {
         const images = page.locator('img');
         const imageCount = await images.count();
 
-        for (let i = 0; i < imageCount; i++) {
-            const img = images.nth(i);
+        for (let index = 0; index < imageCount; index++) {
+            const img = images.nth(index);
             const alt = await img.getAttribute('alt');
             const ariaHidden = await img.getAttribute('aria-hidden');
 

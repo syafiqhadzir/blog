@@ -2,21 +2,21 @@
 
 /* Post Content */
 .tldr-block {
-    background: var(--code-bg);
-    border-left: 4px solid var(--accent-color);
     padding: 1.5rem;
     margin: 2rem 0;
+    background: var(--code-bg);
+    border-left: 4px solid var(--accent-color);
     border-radius: 4px;
 }
 
 .tldr-title {
     margin-top: 0;
+    margin-bottom: 0.5rem;
     font-size: 1.1rem;
     font-weight: 800;
     color: var(--accent-color);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
 }
 
 .post-content {
@@ -56,8 +56,8 @@
 
     ul,
     ol {
-        margin: 1.5rem 0;
         padding-left: 1.5rem;
+        margin: 1.5rem 0;
     }
 
     li {
@@ -66,9 +66,9 @@
     }
 
     img {
+        display: block;
         max-width: 100%;
         height: auto;
-        display: block;
         margin: 2rem auto;
         border-radius: 8px;
     }
@@ -86,23 +86,23 @@
 /* Blockquotes: Visual Quote Marks */
 blockquote {
     position: relative;
-    font-style: italic;
     padding: 1.5rem 2rem 1.5rem 3rem;
-    border-left: 4px solid var(--accent-color);
-    background: var(--code-bg);
     margin: 2rem 0;
+    font-style: italic;
+    background: var(--code-bg);
+    border-left: 4px solid var(--accent-color);
     border-radius: 0 8px 8px 0;
 
     &::before {
-        content: '"';
         position: absolute;
-        left: 0.75rem;
         top: 0.5rem;
-        font-size: 3rem;
+        left: 0.75rem;
         font-family: Georgia, serif;
-        color: var(--accent-color);
-        opacity: 30%;
+        font-size: 3rem;
         line-height: 1;
+        color: var(--accent-color);
+        content: '"';
+        opacity: 30%;
     }
 
     p {
@@ -113,8 +113,8 @@ blockquote {
         display: block;
         margin-top: 1rem;
         font-size: 0.9rem;
-        color: var(--text-secondary);
         font-style: normal;
+        color: var(--text-secondary);
     }
 }
 
@@ -134,23 +134,23 @@ figure {
 figcaption {
     margin-top: 1rem;
     font-size: 0.9rem;
-    color: var(--text-secondary);
     font-style: italic;
     line-height: 1.5;
+    color: var(--text-secondary);
 }
 
 /* Post List */
 .post-list {
-    list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
+    list-style: none;
 
     li {
-        margin: 0;
-        padding: 1rem 0;
         display: flex;
         gap: 1.5rem;
         align-items: center;
+        padding: 1rem 0;
+        margin: 0;
         border-bottom: 1px solid var(--border-color);
         transition: padding-left 0.2s ease;
 
@@ -169,19 +169,19 @@ figcaption {
 }
 
 .post-date {
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
     min-width: 6.5rem;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
     white-space: nowrap;
 }
 
 .post-list-title {
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-decoration: none;
-    color: var(--text-color);
     flex: 1;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
 
     &:hover {
         color: var(--link-color);

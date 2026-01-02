@@ -58,10 +58,40 @@ jobs:
               env:
                   JEKYLL_ENV: production
 
-            - name: Check HTML (Proofer)
-              run: bundle exec htmlproofer ./_site --disable-external --check-html --allow-hash-href
-              continue-on-error: true # Optional: Fail if you want strictly valid HTML
+            - name: Upload Build
+              uses: actions/upload-artifact@v4
+              with:
+                  name: site-build
+                  path: _site
+                  retention-days: 1
 
+            - name: Check HTML (Proofer)
+              run: bundle exec htmlproofer ./_site --disable-external --check-html --enforce-https
+
+    validate-amp:
+        name: AMP Validation
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - uses: actions/checkout@v4
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '24'
+            - name: Install amphtml-validator
+              run: npm install -g amphtml-validator
+            - name: Download Build
+              uses: actions/download-artifact@v4 # This would work if build job uploaded _site
+              # For this simulation, we assume build and validation could be in same job or use artifacts
+              # Since I can't easily change the whole workflow structure without more edits,
+              # I'll add it to the build job instead for simplicity if preferred,
+              # but Step 35 asked for a dedicated job.
+              # Let's adjust 'build' job to upload and this one to download.
+              with:
+                  name: site-build
+                  path: _site
+            - name: Validate AMP
+              run: amphtml-validator _site/**/*.html
 
             # Note: E2E Tests would go here, usually passing the built site to them.
             # For now, we skip heavy E2E in this basic simulation unless explicitly requested.

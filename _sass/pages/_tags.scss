@@ -11,9 +11,9 @@
 
 /* Header */
 .tags-header {
-    text-align: center;
-    margin-bottom: 2rem;
     padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
     border-bottom: 1px solid var(--border-color);
 
     h1 {
@@ -23,9 +23,9 @@
 }
 
 .tags-description {
-    color: var(--text-secondary);
-    font-size: 1.05rem;
     margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    color: var(--text-secondary);
 }
 
 .tags-stats {
@@ -34,9 +34,9 @@
 }
 
 .stat-total {
+    font-size: 1.1em;
     font-weight: 700;
     color: var(--link-color);
-    font-size: 1.1em;
 }
 
 /* Search */
@@ -48,10 +48,10 @@
     width: 100%;
     padding: 1rem 1.25rem;
     font-size: 1rem;
+    color: var(--text-color);
+    background: var(--bg-color);
     border: 2px solid var(--border-color);
     border-radius: 12px;
-    background: var(--bg-color);
-    color: var(--text-color);
     transition:
         border-color 0.2s,
         box-shadow 0.2s;
@@ -79,37 +79,37 @@
 
 .tag-w3 {
     font-size: 0.95rem;
-    background: var(--accent-color);
     color: #fff;
+    background: var(--accent-color);
     border-color: var(--accent-color);
 
     .tag-chip-count {
-        background: rgb(255 255 255 / 20%);
         color: #fff;
+        background: rgb(255 255 255 / 20%);
     }
 }
 
 .tag-w4 {
     font-size: 1rem;
-    background: var(--accent-color);
     color: #fff;
+    background: var(--accent-color);
     border-color: var(--accent-color);
 
     .tag-chip-count {
-        background: rgb(255 255 255 / 20%);
         color: #fff;
+        background: rgb(255 255 255 / 20%);
     }
 }
 
 .tag-w5 {
     font-size: 1.05rem;
-    background: linear-gradient(135deg, var(--accent-color), var(--link-color));
     color: #fff;
+    background: linear-gradient(135deg, var(--accent-color), var(--link-color));
     border-color: transparent;
 
     .tag-chip-count {
-        background: rgb(255 255 255 / 25%);
         color: #fff;
+        background: rgb(255 255 255 / 25%);
     }
 }
 
@@ -121,10 +121,10 @@
 }
 
 .tag-group {
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
     overflow: hidden;
     scroll-margin-top: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
 
     &[hidden] {
         display: none;
@@ -133,13 +133,13 @@
 
 .tag-group-header {
     display: flex;
-    align-items: center;
     gap: 0.75rem;
+    align-items: center;
     padding: 1rem 1.25rem;
-    background: linear-gradient(to right, var(--code-bg), transparent);
-    cursor: pointer;
     font-weight: 600;
+    cursor: pointer;
     list-style: none;
+    background: linear-gradient(to right, var(--code-bg), transparent);
 
     &::-webkit-details-marker {
         display: none;
@@ -153,9 +153,9 @@
 .tag-chevron {
     width: 0;
     height: 0;
-    border-left: 5px solid var(--text-secondary);
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
+    border-left: 5px solid var(--text-secondary);
     transition: transform 0.2s ease;
 }
 
@@ -165,19 +165,19 @@ details[open] .tag-chevron {
 }
 
 .tag-label {
+    flex: 1;
     font-size: 1.15rem;
     color: var(--text-color);
-    flex: 1;
 }
 
 .tag-count {
+    padding: 0.3rem 0.75rem;
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--text-secondary);
     background: var(--bg-color);
-    padding: 0.3rem 0.75rem;
-    border-radius: 2rem;
     border: 1px solid var(--border-color);
+    border-radius: 2rem;
 }
 
 .tag-group-description {
@@ -189,22 +189,22 @@ details[open] .tag-chevron {
 
 /* Tag Section (CWV optimised) */
 .tag-section {
+    contain-intrinsic-size: auto 200px;
     margin-bottom: 3rem;
     content-visibility: auto;
-    contain-intrinsic-size: auto 200px;
 }
 
 /* Posts List */
 .tag-posts {
-    list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .tag-post-item {
     display: flex;
-    align-items: baseline;
     gap: 1rem;
+    align-items: baseline;
     padding: 0.875rem 1.25rem;
     border-top: 1px solid var(--border-color);
     transition: background-color 0.15s;
@@ -217,17 +217,17 @@ details[open] .tag-chevron {
 .tag-post-date {
     flex-shrink: 0;
     min-width: 5rem;
-    font-size: 0.8rem;
     font-family: ui-monospace, monospace;
+    font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
 .tag-post-link {
     flex: 1;
-    color: var(--text-color);
-    text-decoration: none;
     font-weight: 500;
     line-height: 1.4;
+    color: var(--text-color);
+    text-decoration: none;
 
     &:hover {
         color: var(--link-color);
@@ -242,9 +242,9 @@ details[open] .tag-chevron {
 
 /* Empty State */
 .tags-empty {
-    text-align: center;
     padding: 3rem;
     color: var(--text-secondary);
+    text-align: center;
 
     &[hidden] {
         display: none;

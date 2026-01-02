@@ -17,22 +17,22 @@
 /* Base Tag Chip Stats */
 %tag-chip {
     display: inline-flex;
-    align-items: center;
     gap: 0.35rem;
+    align-items: center;
     padding: 0.5rem 0.875rem;
-    border-radius: 2rem;
-    text-decoration: none;
     font-weight: 500;
-    border: 1px solid var(--border-color);
-    background: var(--code-bg);
     color: var(--text-color);
+    text-decoration: none;
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 2rem;
     transition: all var(--transition-base);
 
     &:hover {
-        border-color: var(--accent-color);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgb(0 0 0 / 10%);
         text-decoration: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 4px 15px rgb(0 0 0 / 10%);
+        transform: translateY(-2px);
     }
 
     &.hidden {
@@ -45,11 +45,11 @@
 }
 
 .tag-chip-count {
-    font-size: 0.75rem;
     padding: 0.1rem 0.4rem;
-    border-radius: 1rem;
-    background: var(--bg-color);
+    font-size: 0.75rem;
     color: var(--text-secondary);
+    background: var(--bg-color);
+    border-radius: 1rem;
 }
 
 /* Post Tags (e.g. at bottom of single post) */
@@ -69,7 +69,7 @@
 
     /* Reset hover transform for smaller tags if desired, or keep generic */
     &:hover {
-        background: var(--accent-color);
         color: #fff;
+        background: var(--accent-color);
     }
 }

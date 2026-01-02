@@ -41,7 +41,7 @@ export default defineConfig({
         command: 'bundle exec jekyll serve --port 4000',
         url: 'http://127.0.0.1:4000/',
         reuseExistingServer: !process.env['CI'],
-        timeout: 180000,
+        timeout: 180_000,
         stdout: 'pipe',
         stderr: 'pipe',
     },

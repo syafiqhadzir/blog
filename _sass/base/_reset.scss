@@ -42,8 +42,8 @@ html {
 }
 
 body {
-    color: var(--text-color);
     min-height: 100%;
+    color: var(--text-color);
     overflow-wrap: break-word;
     transition: var(--theme-transition);
     -webkit-font-smoothing: antialiased;
@@ -52,9 +52,9 @@ body {
 
 hr {
     margin: 2rem 0;
+    color: var(--text-secondary);
     text-align: center;
     border: 0;
-    color: var(--text-secondary);
 }
 
 hr::before {
@@ -70,12 +70,12 @@ li {
 }
 
 :target {
-    background: #ff0;
     color: #000;
+    background: #ff0;
 }
 
 .wrapper {
     max-width: var(--layout-width);
-    margin: 0 auto;
     padding: clamp(1.5rem, 5vw, 3rem);
+    margin: 0 auto;
 }

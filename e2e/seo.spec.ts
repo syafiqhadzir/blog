@@ -37,14 +37,15 @@ test.describe('SEO Metadata', () => {
         // Evaluate all script tags content in the browser context
         const schemas = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) => {
             return scripts
-                .map((s) => {
+                .filter((script) => {
                     try {
-                        return JSON.parse(s.textContent || '{}');
+                        JSON.parse(script.textContent || '{}');
+                        return true;
                     } catch {
-                        return null;
+                        return false;
                     }
                 })
-                .filter((s) => s !== null);
+                .map((script) => JSON.parse(script.textContent || '{}'));
         });
 
         const blogPostingSchemas = schemas.filter((s) => s['@type'] === 'BlogPosting' || s['@type'] === 'Article');

@@ -3,6 +3,8 @@ import tseslint from 'typescript-eslint';
 import playwright from 'eslint-plugin-playwright';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
+import sonarjs from 'eslint-plugin-sonarjs';
+import unicorn from 'eslint-plugin-unicorn';
 
 export default tseslint.config(
     // Global ignores
@@ -13,6 +15,8 @@ export default tseslint.config(
     ...tseslint.configs.recommended,
     ...tseslint.configs.strict,
     ...tseslint.configs.stylistic,
+    sonarjs.configs.recommended,
+    unicorn.configs['flat/recommended'],
 
     // Node.js config files
     {

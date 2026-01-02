@@ -1,22 +1,22 @@
 /* Klisé-style Footer */
 .klise-footer {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
-    content-visibility: auto;
     contain-intrinsic-size: auto 150px;
-    text-align: center;
+    padding-top: 2rem;
+    margin-top: 4rem;
+    content-visibility: auto;
     font-size: 0.875rem;
     color: var(--text-secondary);
+    text-align: center;
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-row {
-    margin-bottom: 8px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
     flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
 }
 
 .footer-icon {

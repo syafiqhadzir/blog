@@ -1,13 +1,13 @@
 /* Reading Settings Widget */
 .reading-settings-trigger {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: var(--text-secondary);
-    transition: color 0.15s ease;
-    padding: 0.5rem;
     display: flex;
     align-items: center;
+    padding: 0.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: color 0.15s ease;
 }
 
 .reading-settings-trigger:hover {
@@ -18,15 +18,15 @@
     position: absolute;
     top: 100%;
     right: 0;
+    z-index: 1000;
+    display: none;
     width: 300px;
+    padding: 1.5rem;
+    margin-top: 0.5rem;
     background: var(--bg-color);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 1.5rem;
     box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
-    z-index: 1000;
-    display: none;
-    margin-top: 0.5rem;
 }
 
 .reading-settings-panel[aria-hidden='false'] {
@@ -43,9 +43,9 @@
 
 .settings-label {
     display: block;
+    margin-bottom: 0.5rem;
     font-size: 0.85rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
     color: var(--text-secondary);
 }
 
@@ -58,11 +58,11 @@
     flex: 1;
     padding: 0.5rem;
     font-size: 0.9rem;
-    border: 1px solid var(--border-color);
-    background: transparent;
-    border-radius: 4px;
-    cursor: pointer;
     color: var(--text-color);
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
 }
 
 .settings-btn:hover {
@@ -70,7 +70,7 @@
 }
 
 .settings-btn[aria-pressed='true'] {
-    background: var(--accent-color);
     color: #fff;
+    background: var(--accent-color);
     border-color: var(--accent-color);
 }

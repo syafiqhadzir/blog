@@ -1,38 +1,38 @@
 /* Global Button Utility */
 .btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-width: 44px;
+    min-height: 44px; /* WCAG 2.5.5 Target Size */
     padding: 0.8rem 1.6rem;
-    background: var(--gradient-accent);
+    overflow: hidden;
+    font-weight: 700;
     color: #fff;
     text-decoration: none;
+    cursor: pointer;
+    background: var(--gradient-accent);
+    border: none;
     border-radius: 100px;
-    font-weight: 700;
     transition:
         transform var(--transition-fast),
         box-shadow var(--transition-fast),
         filter var(--transition-fast);
-    border: none;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    min-height: 44px; /* WCAG 2.5.5 Target Size */
-    min-width: 44px;
 }
 
 .btn::before {
-    content: '';
     position: absolute;
     inset: 0;
+    content: '';
     background: var(--gradient-warm);
     opacity: 0%;
     transition: opacity var(--transition-base);
 }
 
 .btn:hover {
-    transform: translateY(-2px);
     box-shadow: 0 8px 25px rgb(102 126 234 / 35%);
+    transform: translateY(-2px);
 }
 
 .btn:hover::before {
@@ -45,18 +45,18 @@
 }
 
 .btn:focus-visible {
-    box-shadow: var(--focus-ring);
     outline: none;
+    box-shadow: var(--focus-ring);
 }
 
 /* Secondary Button Variant */
 .btn-secondary {
+    color: var(--accent-color);
     background: transparent;
     border: 2px solid var(--accent-color);
-    color: var(--accent-color);
 }
 
 .btn-secondary:hover {
-    background: var(--accent-color);
     color: #fff;
+    background: var(--accent-color);
 }

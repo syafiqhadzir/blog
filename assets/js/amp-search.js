@@ -1,24 +1,22 @@
-const searchInput = document.getElementById('global-search-input');
-const resultsContainer = document.getElementById('global-search-results');
-const endpointInput = document.getElementById('search-endpoint');
+const searchInput = document.querySelector('#global-search-input');
+const resultsContainer = document.querySelector('#global-search-results');
+const endpointInput = document.querySelector('#search-endpoint');
 let searchData = [];
 
 // Fetch data immediately
 if (endpointInput) {
-    fetch(endpointInput.value)
-        .then((response) => response.json())
-        .then((data) => {
-            searchData = data.items || [];
-        })
-        .catch(() => {
-            if (resultsContainer) {
-                resultsContainer.innerHTML = '<div class="search-message">Error loading search data</div>';
-            }
-        });
+    try {
+        const response = await fetch(endpointInput.value);
+        const data = await response.json();
+        searchData = data.items || [];
+    } catch {
+        if (resultsContainer) {
+            resultsContainer.innerHTML = '<div class="search-message">Error loading search data</div>';
+        }
+    }
 }
-
-searchInput.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase().trim();
+searchInput.addEventListener('input', (event) => {
+    const query = event.target.value.toLowerCase().trim();
 
     if (!query) {
         resultsContainer.innerHTML = '';

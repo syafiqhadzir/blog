@@ -2,19 +2,19 @@
 
 /* Breadcrumbs */
 .breadcrumbs {
+    padding: 0;
+    margin: 1rem 0 2rem;
     font-size: 0.9rem;
     color: var(--text-secondary);
-    margin: 1rem 0 2rem;
-    padding: 0;
 }
 
 .breadcrumbs ol {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .breadcrumbs li {
@@ -44,6 +44,6 @@
 
 /* stylelint-disable-next-line selector-no-qualifying-type -- semantic span required for current page indicator */
 .breadcrumbs span[aria-current='page'] {
-    color: var(--text-color);
     font-weight: 500;
+    color: var(--text-color);
 }

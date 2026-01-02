@@ -1,12 +1,12 @@
 /* Social Share */
 .social-share {
-    margin-top: 2rem;
     display: flex;
-    gap: 0.75rem;
     flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
 }
 
 amp-social-share {
-    border-radius: 4px;
     background-size: 24px;
+    border-radius: 4px;
 }

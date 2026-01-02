@@ -14,8 +14,8 @@
 .highlight .cm,
 .highlight .c1,
 .highlight .cs {
-    color: var(--ctp-subtext1);
     font-style: italic;
+    color: var(--ctp-subtext1);
 }
 
 /* Errors */
@@ -86,8 +86,8 @@
 }
 
 .highlight .nd {
-    color: var(--ctp-blue);
     font-style: italic;
+    color: var(--ctp-blue);
 }
 
 .highlight .nf {
@@ -158,8 +158,8 @@
 }
 
 .highlight .gh {
-    color: var(--ctp-blue);
     font-weight: 700;
+    color: var(--ctp-blue);
 }
 
 .highlight .gp {
@@ -177,15 +177,15 @@
 
 /* Container */
 .highlight {
-    background: var(--code-bg);
-    color: var(--ctp-text);
-    border-radius: 12px;
     padding: 1.5rem;
-    overflow-x: auto;
     margin: 2rem 0;
-    border: 1px solid var(--border-color);
+    overflow-x: auto;
     font-size: 0.95rem;
     line-height: 1.6;
+    color: var(--ctp-text);
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
 }
 
 pre {
@@ -196,20 +196,20 @@ pre {
 /* Rouge helpers */
 .highlight,
 .highlighter-rouge pre {
+    padding: 1.5rem;
+    margin: 2rem 0;
+    overflow-x: auto;
+    font-size: 0.95rem;
+    line-height: 1.6;
     background-color: var(--code-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    padding: 1.5rem;
-    overflow-x: auto;
-    margin: 2rem 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
 }
 
 .highlighter-rouge code {
     display: block;
-    white-space: pre;
-    color: var(--ctp-text);
-    background: transparent;
     padding: 0;
+    color: var(--ctp-text);
+    white-space: pre;
+    background: transparent;
 }
