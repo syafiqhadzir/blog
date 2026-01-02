@@ -44,13 +44,17 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <div class="wrapper">
-    {%- include navbar.html -%}
+    <header role="banner">
+      {%- include navbar.html -%}
+    </header>
 
     <main id="main-content" class="page-content" role="main" aria-label="Main content">
       {{ content }}
     </main>
 
-    {%- include footer.html -%}
+    <footer role="contentinfo">
+      {%- include footer.html -%}
+    </footer>
   </div>
 
   <!-- Back to Top Button -->

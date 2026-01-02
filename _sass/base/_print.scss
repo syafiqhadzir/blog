@@ -1,0 +1,70 @@
+/* Expert Print Stylesheet */
+@media print {
+    /* Hide non-essential elements */
+    header[role='banner'],
+    footer[role='contentinfo'],
+    .skip-link,
+    .mode-toggle,
+    .post-navigation,
+    .related-posts,
+    .social-share,
+    .back-to-top,
+    amp-install-serviceworker,
+    .progress-container {
+        display: none !important;
+    }
+
+    /* Reset layout for paper */
+    body,
+    main,
+    .wrapper,
+    article {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    /* Typography optimization */
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+    }
+
+    h1,
+    h2,
+    h3 {
+        break-after: avoid;
+        color: #000;
+    }
+
+    /* Link expansion (optional, acceptable for tech blogs) */
+    a[href^='http']::after {
+        content: ' (' attr(href) ')';
+        font-size: 0.8em;
+        color: #666;
+    }
+
+    /* Don't show link addresses for internal anchors or javascript */
+    a[href^='#']::after,
+    a[href^='javascript']::after {
+        content: '';
+    }
+
+    /* Code blocks */
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        break-inside: avoid;
+    }
+
+    /* Images */
+    img,
+    amp-img {
+        max-width: 100% !important;
+        break-inside: avoid;
+    }
+}

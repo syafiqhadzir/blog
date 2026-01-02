@@ -100,14 +100,19 @@
     cursor: pointer;
 }
 
-.mode-toggle span[role='button'] {
+.mode-toggle .icon-moon,
+.mode-toggle .icon-sun {
     display: flex;
     align-items: center;
-    padding: 0.25rem;
-    transition: color 0.075s ease-in;
+    padding: 0.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: color 0.15s ease;
 }
 
-.mode-toggle span[role='button']:hover {
+.mode-toggle button:hover {
     color: var(--text-color);
 }
 

@@ -245,17 +245,25 @@ permalink: /offline.html
             </div>
             <h1>You're Offline</h1>
             <p
-                >It looks like you've lost your internet connection. Don't worry, you can still
-                browse your recently visited pages once you're back.</p
+                >It looks like you've lost your internet connection. Check your connection or try
+                these offline-friendly pages:</p
             >
             <a href="{{ '/' | relative_url }}" class="btn" aria-label="Try to reload the site"
                 >Try Again</a
             >
 
             <div class="links">
+                <h2>Explore Offline</h2>
                 <a href="{{ '/' | relative_url }}">Return Home</a>
                 <a href="{{ '/archive.html' | relative_url }}">Post Archive</a>
                 <a href="{{ '/tags.html' | relative_url }}">Browse Tags</a>
+            </div>
+
+            <div class="links">
+                <h2>Contact</h2>
+                <p>Need to reach me urgently?</p>
+                <a href="mailto:{{ site.email }}">Email Me</a>
+                <a href="https://linkedin.com/in/syafiqhadzir">LinkedIn</a>
             </div>
         </main>
     </body>
