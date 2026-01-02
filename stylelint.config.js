@@ -27,8 +27,9 @@ export default {
         'declaration-block-no-redundant-longhand-properties': true,
         'shorthand-property-no-redundant-values': true,
         'font-weight-notation': 'numeric',
-        'color-function-notation': 'modern',
-        'alpha-value-notation': 'percentage',
+        'color-function-notation': 'legacy',
+        'alpha-value-notation': 'number',
+        'color-function-alias-notation': null,
 
         // Strict selector rules
         'selector-max-id': 1,

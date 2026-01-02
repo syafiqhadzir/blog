@@ -23,12 +23,12 @@
 @use 'components/breadcrumbs';
 @use 'components/author-bio';
 @use 'components/related-posts';
-@use 'components/tags';
+@use 'components/tags' as tags-component;
 @use 'components/post-navigation';
 @use 'components/theme-toggle';
 
 // Pages
-@use 'pages/tags';
+@use 'pages/tags' as tags-page;
 @use 'pages/archive';
 @use 'pages/404' as error404;
 

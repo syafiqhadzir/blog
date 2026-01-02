@@ -149,12 +149,12 @@
 /* Diff */
 .highlight .gd {
     color: var(--ctp-red);
-    background-color: rgb(243 139 168 / 10%);
+    background-color: rgba(243, 139, 168, 0.1);
 }
 
 .highlight .gi {
     color: var(--ctp-green);
-    background-color: rgb(166 227 161 / 10%);
+    background-color: rgba(166, 227, 161, 0.1);
 }
 
 .highlight .gh {
