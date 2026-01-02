@@ -12,7 +12,8 @@
         "test:e2e:ui": "playwright test --ui",
         "test:amp": "npx amphtml-validator _site/index.html _site/tags.html _site/404.html",
         "minify": "node scripts/minify.js",
-        "build": "bundle exec jekyll build",
+        "build": "bundle exec jekyll build && npm run build:sw",
+        "build:sw": "node scripts/build-sw.js",
         "optimize:img": "node scripts/optimize-images.js",
         "lighthouse": "lhci autorun",
         "lighthouse:collect": "lhci collect --staticDistDir=./_site",
@@ -39,6 +40,7 @@
         "@playwright/test": "^1.57.0",
         "@types/node": "^25.0.3",
         "amphtml-validator": "^1.0.38",
+        "esbuild": "^0.27.2",
         "eslint": "^9.39.2",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-perfectionist": "^5.2.0",
@@ -64,7 +66,14 @@
         "stylelint-order": "^7.0.1",
         "svgo": "^4.0.0",
         "typescript": "^5.9.3",
-        "typescript-eslint": "^8.51.0"
+        "typescript-eslint": "^8.51.0",
+        "workbox-build": "^7.4.0",
+        "workbox-cacheable-response": "^7.4.0",
+        "workbox-core": "^7.4.0",
+        "workbox-expiration": "^7.4.0",
+        "workbox-precaching": "^7.4.0",
+        "workbox-routing": "^7.4.0",
+        "workbox-strategies": "^7.4.0"
     },
     "lint-staged": {
         "*.{ts,js}": [

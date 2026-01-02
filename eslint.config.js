@@ -58,10 +58,10 @@ export default [
 
     // Browser files - disable type-checked for legacy assets
     {
-        files: ['assets/js/**/*.js'],
+        files: ['assets/js/**/*.js', 'sw-source.js'],
         ...tseslint.configs.disableTypeChecked,
         languageOptions: {
-            globals: globals.browser,
+            globals: { ...globals.browser, ...globals.serviceworker },
         },
     },
 
