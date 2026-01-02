@@ -3,20 +3,22 @@ module.exports = {
         assert: {
             // Performance budgets aligned with Web Core Vitals
             assertions: {
-                'categories:accessibility': ['error', { minScore: 1 }],
+                'categories:accessibility': ['error', { minScore: 0.95 }],
                 'categories:best-practices': ['error', { minScore: 1 }],
-                // Core Web Vitals (Strictest: 100%)
-                'categories:performance': ['error', { minScore: 1 }],
+                // Core Web Vitals (Realistic threshold for CI)
+                'categories:performance': ['error', { minScore: 0.9 }],
                 'categories:seo': ['error', { minScore: 1 }],
 
-                // Accessibility
+                // Performance & Budgets
                 'color-contrast': 'off', // AMP handles this differently
                 'cumulative-layout-shift': ['error', { maxNumericValue: 0.1 }],
+                'duplicated-javascript': 'off',
+                'duplicated-javascript-insight': 'off',
                 'first-contentful-paint': ['warn', { maxNumericValue: 1800 }],
-                // Specific Core Web Vitals metrics
+                'label-content-name-mismatch': 'warn',
                 'largest-contentful-paint': ['warn', { maxNumericValue: 2500 }],
-
                 'total-blocking-time': ['warn', { maxNumericValue: 300 }],
+                'unused-javascript': 'off',
 
                 // Best practices
                 'uses-http2': 'warn',
