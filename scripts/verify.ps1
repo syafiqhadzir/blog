@@ -1,7 +1,18 @@
 <#
 .SYNOPSIS
-    Verify local codebase against CI/CD standards.
-    Simulates the GitHub Actions pipeline for fast-fail local dev.
+    Syafiq Hadzir's Blog - High-Fidelity Local CI Simulation
+
+.DESCRIPTION
+    This script mirrors the GitHub Actions CI pipeline on a local Windows machine.
+    It performs dependency verification, security auditing, multi-parallel linting,
+    production building, and payload profiling.
+
+.EXAMPLE
+    ./scripts/verify.ps1
+    Runs the full CI suite and reports success/failure.
+
+.NOTES
+    Requires: Node.js 24+, Ruby 3.4.1+, PowerShell 7+.
 #>
 
 $ErrorActionPreference = "Stop"

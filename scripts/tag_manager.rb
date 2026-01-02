@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require 'yaml'
-require 'date'
-
-# Manages tagging of blog posts
+# Manages the canonicalization and normalization of tags across all blog posts.
+# Ensures consistency by enforcing a whitelist (CANONICAL_TAGS) and mapping
+# synonyms (SYNONYMS) to their primary counterparts.
 class TagManager
   POSTS_DIR = '_posts'
 
@@ -30,6 +29,7 @@ class TagManager
     'sql' => 'data'
   }.freeze
 
+  # Iterates through all markdown files in the posts directory and processes them.
   def self.run
     puts 'Starting Bulk Tagging...'
     count = 0
@@ -83,6 +83,7 @@ class TagManager
     end
   end
 
+  # Normalizes a list of tags: downcases, strips, maps synonyms, and filters against the whitelist.
   def self.normalize_tags(list)
     list.map { |t| t.to_s.downcase.strip }
         .map { |t| SYNONYMS[t] || t }
