@@ -25,13 +25,15 @@ tags:
 
 In 2021, the SolarWinds attack changed everything.
 
-Hackers did not attack the customers. They attacked the *Build System*. If your CI/CD pipeline is compromised, you are shipping malware signed with your own certificate. It is the ultimate betrayal of trust.
+Hackers did not attack the customers. They attacked the *Build System*. If your CI/CD pipeline is compromised, you are
+shipping malware signed with your own certificate. It is the ultimate betrayal of trust.
 
 QA's responsibility now extends to "Pipeline Integrity". Is the code you deployed actually the code you wrote?
 
 ## TL;DR
 
-- **Least Privilege protects everyone**: The CI Runner should not have Admin access to AWS/GCP. It needs just enough permissions to do its job.
+- **Least Privilege protects everyone**: The CI Runner should not have Admin access to AWS/GCP. It needs just enough
+  permissions to do its job.
 - **Immutable logs foil attackers**: Hackers delete logs. Send them to a WORM (Write Once Read Many) bucket.
 - **Pin dependencies to avoid surprises**: `npm install` is a vulnerability. Use `npm ci`.
 
@@ -50,7 +52,8 @@ Attack Vector:
 
 If someone steals your GitHub password, they can commit code as you. Unless you enforce **GPG Signing**.
 
-Configure GitHub/GitLab to *reject* any push that is not signed with a YubiKey or GPG key. This proves **Identity** + **Intent**. It is the digital equivalent of a wax seal.
+Configure GitHub/GitLab to *reject* any push that is not signed with a YubiKey or GPG key. This proves **Identity** +
+**Intent**. It is the digital equivalent of a wax seal.
 
 ## Code Snippet: Verifying Artifact Integrity
 
@@ -104,7 +107,8 @@ try {
 
 The pipeline is production. Treat it as such.
 
-If you cannot trust the pipeline, you cannot trust the software. Implement SLSA (Supply-chain Levels for Software Artifacts) Level 3. Be paranoid. Paranoia is appropriate here.
+If you cannot trust the pipeline, you cannot trust the software. Implement SLSA
+(Supply-chain Levels for Software Artifacts) Level 3. Be paranoid. Paranoia is appropriate here.
 
 ## Key Takeaways
 
@@ -116,4 +120,5 @@ If you cannot trust the pipeline, you cannot trust the software. Implement SLSA 
 
 - **Tool**: **Cosign** (Sigstore) for signing containers.
 - **Standard**: Read the **SLSA** (Salsa) framework.
-- **Practice**: Audit your GitHub Actions used. Are you using `actions/checkout@v2` or `actions/checkout@abc12345` (SHA pinning)?
+- **Practice**: Audit your GitHub Actions used. Are you using `actions/checkout@v2` or
+  `actions/checkout@abc12345` (SHA pinning)?

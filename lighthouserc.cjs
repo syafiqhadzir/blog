@@ -4,11 +4,7 @@ module.exports = {
             // Use static server for the built site
             staticDistDir: './_site',
             // URLs to test
-            url: [
-                'http://localhost/index.html',
-                'http://localhost/about.html',
-                'http://localhost/archive.html',
-            ],
+            url: ['http://localhost/index.html', 'http://localhost/about.html', 'http://localhost/archive.html'],
             // Number of runs per URL for accuracy
             numberOfRuns: 3,
             // Lighthouse settings

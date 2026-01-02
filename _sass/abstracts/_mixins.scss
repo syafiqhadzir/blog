@@ -35,7 +35,7 @@ $breakpoints: (
 /// @param {String} $breakpoint - Breakpoint name
 @mixin breakpoint-down($breakpoint) {
     @if map.has-key($breakpoints, $breakpoint) {
-        @media (max-width: map.get($breakpoints, $breakpoint) - 0.02px) {
+        @media (max-width: (map.get($breakpoints, $breakpoint) - 0.02px)) {
             @content;
         }
     } @else {
@@ -74,7 +74,7 @@ $breakpoints: (
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
     @media (prefers-reduced-motion: reduce) {
-        /* stylelint-disable-next-line no-invalid-position-declaration */
+        /* stylelint-disable-next-line no-invalid-position-declaration -- transition-duration must be on the element itself */
         transition-duration: 0.01ms;
     }
 }
@@ -128,11 +128,7 @@ $breakpoints: (
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
-
-    /* stylelint-disable-next-line property-no-vendor-prefix */
     -webkit-box-orient: vertical;
-
-    /* stylelint-disable-next-line value-no-vendor-prefix */
     -webkit-line-clamp: $lines;
 }
 
@@ -148,7 +144,7 @@ $breakpoints: (
 
     &:hover {
         transform: translateY(-#{$distance});
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 8px 25px rgb(0 0 0 / 15%);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -163,15 +159,15 @@ $breakpoints: (
 @mixin elevation($level: 1) {
     @if $level == 1 {
         box-shadow:
-            0 1px 3px rgba(0, 0, 0, 0.12),
-            0 1px 2px rgba(0, 0, 0, 0.06);
+            0 1px 3px rgb(0 0 0 / 12%),
+            0 1px 2px rgb(0 0 0 / 6%);
     } @else if $level == 2 {
         box-shadow:
-            0 4px 6px rgba(0, 0, 0, 0.1),
-            0 2px 4px rgba(0, 0, 0, 0.06);
+            0 4px 6px rgb(0 0 0 / 10%),
+            0 2px 4px rgb(0 0 0 / 6%);
     } @else if $level == 3 {
         box-shadow:
-            0 10px 20px rgba(0, 0, 0, 0.15),
-            0 3px 6px rgba(0, 0, 0, 0.1);
+            0 10px 20px rgb(0 0 0 / 15%),
+            0 3px 6px rgb(0 0 0 / 10%);
     }
 }

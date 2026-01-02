@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import playwright from 'eslint-plugin-playwright';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import globals from 'globals';
 
 export default tseslint.config(
     // Global ignores
@@ -30,6 +31,14 @@ export default tseslint.config(
         },
     },
 
+    // Browser files
+    {
+        files: ['assets/js/**/*.js'],
+        languageOptions: {
+            globals: globals.browser,
+        },
+    },
+
     // Playwright specific config - Strict testing rules
     {
         ...playwright.configs['flat/recommended'],
@@ -52,7 +61,11 @@ export default tseslint.config(
     // General rules customization
     {
         rules: {
-            'no-console': ['warn', { allow: ['warn', 'error'] }],
+            'no-console': 'error',
+            'complexity': ['error', 10],
+            'max-lines': ['error', 300],
+            'max-params': ['error', 4],
+            'max-depth': ['error', 3],
             '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
             '@typescript-eslint/no-explicit-any': 'error',
             '@typescript-eslint/consistent-type-imports': 'error',

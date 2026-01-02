@@ -26,17 +26,17 @@
     position: absolute;
     inset: 0;
     background: var(--gradient-warm);
-    opacity: 0;
+    opacity: 0%;
     transition: opacity var(--transition-base);
 }
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.35);
+    box-shadow: 0 8px 25px rgb(102 126 234 / 35%);
 }
 
 .btn:hover::before {
-    opacity: 1;
+    opacity: 100%;
 }
 
 .btn span {

@@ -25,9 +25,11 @@ tags:
 
 You have Jaeger or Datadog installed. You have 10 million traces per day. Now what?
 
-Most teams use Tracing only for debugging *after* an incident. "Why did the checkout fail at 2 AM?" -> Search Trace -> Found it.
+Most teams use Tracing only for debugging *after* an incident. "Why did the checkout fail at 2 AM?" -> Search Trace ->
+Found it.
 
-**Advanced QA** uses Tracing proactively. We write tests that assert on the *shape* of the trace. "Did this API call create a circular dependency?" "Did this login request hit the database 50 times instead of 1?"
+**Advanced QA** uses Tracing proactively. We write tests that assert on the *shape* of the trace. "Did this API call create
+a circular dependency?" "Did this login request hit the database 50 times instead of 1?"
 
 ## TL;DR
 
@@ -39,7 +41,8 @@ Most teams use Tracing only for debugging *after* an incident. "Why did the chec
 
 Manual visual inspection of traces is impossible at scale. You cannot stare at 10 million traces. Your eyes would melt.
 
-You need **Trace Analytics**. We treat traces as **Structured Data**. A Trace is a Tree of Spans. QA writes queries against this Tree.
+You need **Trace Analytics**. We treat traces as **Structured Data**. A Trace is a Tree of Spans. QA writes queries
+against this Tree.
 
 `count(spans) where service='billing' > 5` -> Fail.
 
@@ -50,7 +53,8 @@ A "Performance Regression" is not just "It is slower". It is often "The structur
 Week 1: `Frontend -> API -> DB`
 Week 2: `Frontend -> API -> Auth -> UserProfile -> DB`
 
-The latency might be the same (because of caching), but the *complexity* explodes. QA must detect these structural shifts before they become problems.
+The latency might be the same (because of caching), but the *complexity* explodes. QA must detect these structural shifts
+before they become problems.
 
 ## Code Snippet: Analysing Traces for N+1 Problems
 
@@ -109,11 +113,13 @@ test('should fail trace audit if N+1 query pattern detected', () => {
 
 Tracing is not just for Ops. It is a QA goldmine.
 
-It allows "White Box" testing without looking at the code. You look at the execution flow. If the flow looks wrong, the code is wrong.
+It allows "White Box" testing without looking at the code. You look at the execution flow. If the flow looks wrong, the
+code is wrong.
 
 ## Key Takeaways
 
-- **Metadata enables filtering**: Ensure developers tag spans with `user_id`, `region`, and `version`. You cannot analyse what you cannot filter.
+- **Metadata enables filtering**: Ensure developers tag spans with `user_id`, `region`, and `version`. You cannot analyse
+  what you cannot filter.
 - **Sampling differs by environment**: In Prod, you sample 1%. In Test, sample 100%. Do not miss the bugs in CI.
 - **Propagation must be verified**: Test that `traceparent` headers are correctly passed to third-party webhooks.
 

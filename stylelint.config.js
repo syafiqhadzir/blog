@@ -20,25 +20,32 @@ export default {
             },
         ],
 
-        // Specificity rules (warning level for gradual adoption)
-        'no-descending-specificity': [true, { severity: 'warning' }],
+        // Specificity rules (Strict: Error level)
+        'no-descending-specificity': true,
 
         // Strict formatting rules
         'declaration-block-no-redundant-longhand-properties': true,
         'shorthand-property-no-redundant-values': true,
-        'font-weight-notation': 'numeric',
-        'color-function-notation': 'legacy',
-        'alpha-value-notation': 'number',
+        'font-weight-notation': [
+            'numeric',
+            {
+                ignore: ['relative'],
+            },
+        ],
+        'color-function-notation': 'modern',
+        'alpha-value-notation': 'percentage',
         'color-function-alias-notation': null,
 
         // Strict selector rules
-        'selector-max-id': 1,
-        'selector-max-universal': 1,
-        'selector-no-qualifying-type': [true, { ignore: ['attribute'] }],
+        'selector-max-id': 0, // No IDs allows
+        'selector-max-universal': 0, // No universal selector
+        'selector-no-qualifying-type': true,
+        'selector-max-compound-selectors': 3,
+        'selector-max-specificity': '0,4,0',
 
         // Strict declaration rules
-        'declaration-no-important': [true, { severity: 'warning' }],
-        'max-nesting-depth': [3, { ignoreAtRules: ['media', 'supports', 'include'] }],
+        'declaration-no-important': true,
+        'max-nesting-depth': [2, { ignoreAtRules: ['media', 'supports', 'include'] }],
 
         // Prevent vendor prefixes (use autoprefixer instead)
         'property-no-vendor-prefix': true,
@@ -47,5 +54,8 @@ export default {
         'media-feature-name-no-vendor-prefix': true,
         'at-rule-no-vendor-prefix': true,
     },
+    reportDescriptionlessDisables: true,
+    reportInvalidScopeDisables: true,
+    reportNeedlessDisables: true,
     ignoreFiles: ['_site/**', 'vendor/**', 'coverage/**', 'node_modules/**'],
 };

@@ -15,57 +15,39 @@ test.describe('SEO Metadata', () => {
 
         // Open Graph
         await expect(page.locator('meta[property="og:title"]')).toHaveCount(1);
-        await expect(page.locator('meta[property="og:description"]')).toHaveAttribute(
-            'content',
-            /.+/,
-        );
-        await expect(page.locator('meta[property="og:type"]')).toHaveAttribute(
-            'content',
-            'article',
-        );
+        await expect(page.locator('meta[property="og:description"]')).toHaveAttribute('content', /.+/);
+        await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'article');
 
         // Twitter
-        await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
-            'content',
-            'summary_large_image',
-        );
+        await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image');
     });
 
     test('should have canonical link', async ({ page }) => {
-        await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
-            'href',
-            /^https?:\/\/.+/,
-        );
+        await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /^https?:\/\/.+/);
     });
 
     test('should have AMP specific tags', async ({ page }) => {
         await expect(page.locator('html')).toHaveAttribute('⚡', ''); // AMP attribute on html
         await expect(page.locator('style[amp-boilerplate]')).toHaveCount(1);
         await expect(page.locator('style[amp-custom]')).toHaveCount(1);
-        await expect(page.locator('script[src^="https://cdn.ampproject.org/v0.js"]')).toHaveCount(
-            1,
-        );
+        await expect(page.locator('script[src^="https://cdn.ampproject.org/v0.js"]')).toHaveCount(1);
     });
 
     test('should prevent duplicate JSON-LD schemas', async ({ page }) => {
         // Evaluate all script tags content in the browser context
-        const schemas = await page
-            .locator('script[type="application/ld+json"]')
-            .evaluateAll((scripts) => {
-                return scripts
-                    .map((s) => {
-                        try {
-                            return JSON.parse(s.textContent || '{}');
-                        } catch {
-                            return null;
-                        }
-                    })
-                    .filter((s) => s !== null);
-            });
+        const schemas = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) => {
+            return scripts
+                .map((s) => {
+                    try {
+                        return JSON.parse(s.textContent || '{}');
+                    } catch {
+                        return null;
+                    }
+                })
+                .filter((s) => s !== null);
+        });
 
-        const blogPostingSchemas = schemas.filter(
-            (s) => s['@type'] === 'BlogPosting' || s['@type'] === 'Article',
-        );
+        const blogPostingSchemas = schemas.filter((s) => s['@type'] === 'BlogPosting' || s['@type'] === 'Article');
 
         // We expect exactly 1 BlogPosting schema (from jekyll-seo-tag)
         expect(blogPostingSchemas).toHaveLength(1);

@@ -36,11 +36,13 @@
     text-decoration-color: var(--link-color);
 }
 
+/* stylelint-disable-next-line selector-no-qualifying-type -- semantic span required for ARIA hidden element */
 .breadcrumbs span[aria-hidden='true'] {
     margin: 0 0.5rem;
-    opacity: 0.5;
+    opacity: 50%;
 }
 
+/* stylelint-disable-next-line selector-no-qualifying-type -- semantic span required for current page indicator */
 .breadcrumbs span[aria-current='page'] {
     color: var(--text-color);
     font-weight: 500;

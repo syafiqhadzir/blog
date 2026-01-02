@@ -60,7 +60,7 @@
     &:focus {
         outline: none;
         border-color: var(--link-color);
-        box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.12);
+        box-shadow: 0 0 0 4px rgb(0 102 204 / 12%);
     }
 
     &::placeholder {
@@ -86,13 +86,13 @@
         background: var(--code-bg);
         border: 1px solid var(--border-color);
         border-radius: 4px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
     }
 }
 
 .archive-search-input:focus ~ .search-hint,
 .archive-search-input:not(:placeholder-shown) ~ .search-hint {
-    opacity: 0;
+    opacity: 0%;
 }
 
 .search-clear {
@@ -159,7 +159,7 @@
     }
 
     &.dimmed {
-        opacity: 0.5;
+        opacity: 50%;
     }
 }
 
@@ -193,6 +193,7 @@
     transition: transform 0.2s ease;
 }
 
+/* stylelint-disable-next-line selector-no-qualifying-type -- Using [open] attribute for semantic state styling */
 details[open] .year-chevron {
     transform: rotate(90deg);
 }
@@ -229,7 +230,7 @@ details[open] .year-chevron {
     transition: background-color 0.15s;
 
     &:hover {
-        background: rgba(0, 102, 204, 0.03);
+        background: rgb(0 102 204 / 3%);
     }
 
     &[hidden] {
@@ -293,7 +294,7 @@ details[open] .year-chevron {
 .empty-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
-    opacity: 0.5;
+    opacity: 50%;
 }
 
 .empty-hint {
@@ -326,7 +327,7 @@ details[open] .year-chevron {
     }
 
     .archive-post-item:hover {
-        background: rgba(88, 166, 255, 0.05);
+        background: rgb(88 166 255 / 5%);
     }
 
     .archive-tag {

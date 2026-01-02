@@ -4,6 +4,8 @@ title: Glossary
 permalink: /glossary/
 ---
 
+<!-- markdownlint-disable-file MD033 -->
+
 <div class="glossary-list">
   {% for entry in site.data.glossary %}
     <dl id="{{ entry.term | slugify }}">

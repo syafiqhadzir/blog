@@ -59,7 +59,7 @@
     &:focus {
         outline: none;
         border-color: var(--link-color);
-        box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.12);
+        box-shadow: 0 0 0 4px rgb(0 102 204 / 12%);
     }
 }
 
@@ -84,7 +84,7 @@
     border-color: var(--accent-color);
 
     .tag-chip-count {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgb(255 255 255 / 20%);
         color: #fff;
     }
 }
@@ -96,7 +96,7 @@
     border-color: var(--accent-color);
 
     .tag-chip-count {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgb(255 255 255 / 20%);
         color: #fff;
     }
 }
@@ -108,7 +108,7 @@
     border-color: transparent;
 
     .tag-chip-count {
-        background: rgba(255, 255, 255, 0.25);
+        background: rgb(255 255 255 / 25%);
         color: #fff;
     }
 }
@@ -159,6 +159,7 @@
     transition: transform 0.2s ease;
 }
 
+/* stylelint-disable-next-line selector-no-qualifying-type -- Using [open] attribute for semantic state styling */
 details[open] .tag-chevron {
     transform: rotate(90deg);
 }
@@ -209,7 +210,7 @@ details[open] .tag-chevron {
     transition: background-color 0.15s;
 
     &:hover {
-        background: rgba(0, 102, 204, 0.03);
+        background: rgb(0 102 204 / 3%);
     }
 }
 
@@ -257,7 +258,7 @@ details[open] .tag-chevron {
     }
 
     .tag-post-item:hover {
-        background: rgba(88, 166, 255, 0.05);
+        background: rgb(88 166 255 / 5%);
     }
 
     .tag-chip-count {

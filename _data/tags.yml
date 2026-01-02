@@ -1,6 +1,7 @@
 qa:
     name: Quality Assurance
-    description: 'Strategies, methodologies, and tools for ensuring software quality, from manual testing to advanced automation.'
+    description:
+        'Strategies, methodologies, and tools for ensuring software quality, from manual testing to advanced automation.'
 
 testing:
     name: Software Testing

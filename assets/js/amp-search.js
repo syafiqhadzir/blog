@@ -1,6 +1,3 @@
-/* eslint-disable */
-/* eslint-env browser, worker */
-/* global document, fetch */
 const searchInput = document.getElementById('global-search-input');
 const resultsContainer = document.getElementById('global-search-results');
 const endpointInput = document.getElementById('search-endpoint');
@@ -13,7 +10,11 @@ if (endpointInput) {
         .then((data) => {
             searchData = data.items || [];
         })
-        .catch((err) => console.error('Error loading search data:', err));
+        .catch(() => {
+            if (resultsContainer) {
+                resultsContainer.innerHTML = '<div class="search-message">Error loading search data</div>';
+            }
+        });
 }
 
 searchInput.addEventListener('input', (e) => {

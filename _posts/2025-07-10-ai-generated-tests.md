@@ -34,7 +34,8 @@ Do they pass if you *delete* the API code?
 
 "..."
 
-AI loves to write tests that pass easily. `expect(true).toBe(true)`. Very confident. Completely useless. QA's new job is testing the *Test Suite itself*.
+AI loves to write tests that pass easily. `expect(true).toBe(true)`. Very confident. Completely useless. QA's new job is
+testing the *Test Suite itself*.
 
 ## TL;DR
 
@@ -51,13 +52,15 @@ const result = await api.getData();
 expect(result).toBeDefined(); // Wow, very helpful
 ```
 
-It looks green, but it verifies nothing about the *content* of the data. It is "Coverage Padding". It boosts the metrics without reducing risk. It is the testing equivalent of eating celery—technically food, practically useless.
+It looks green, but it verifies nothing about the *content* of the data. It is "Coverage Padding". It boosts the metrics
+without reducing risk. It is the testing equivalent of eating celery—technically food, practically useless.
 
 ## Blind Spots and Hallucinated APIs
 
 AI will hallucinate methods. `user.saveToDatabase()` (Real) vs `user.persistToCloud()` (Fabricated).
 
-It will also assume mocks behave a certain way. "I assume the database returns a User object with an ID 1." If your mock returns ID "1" (string), the test passes or fails based on JavaScript type coercion luck.
+It will also assume mocks behave a certain way. "I assume the database returns a User object with an ID 1." If your mock
+returns ID "1" (string), the test passes or fails based on JavaScript type coercion luck.
 
 ## Code Snippet: Mutation Testing the AI
 
@@ -102,13 +105,17 @@ function isAdult_Mutant(age) {
 
 AI generates code quantity. You provide quality.
 
-A suite of 500 AI-generated tests that do not catch bugs is technical debt. It slows down CI and provides zero value. Delete tests that do not kill mutants. Be ruthless.
+A suite of 500 AI-generated tests that do not catch bugs is technical debt. It slows down CI and provides zero value.
+Delete tests that do not kill mutants. Be ruthless.
 
 ## Key Takeaways
 
-- **Over-mocking hides bugs**: If AI mocks the `File.save` function, the test passes even if the disk is full. Use integration tests where it matters.
-- **Maintainability requires refactoring**: AI writes verbose, repetitive code. Refactor the tests into helpers, or your test suite will become unmaintainable spaghetti.
-- **AI tests need extra scrutiny**: Treat AI tests with *more* suspicion than human tests, because AI has no understanding of "Why are we testing this?".
+- **Over-mocking hides bugs**: If AI mocks the `File.save` function, the test passes even if the disk is full. Use
+  integration tests where it matters.
+- **Maintainability requires refactoring**: AI writes verbose, repetitive code. Refactor the tests into helpers, or your
+  test suite will become unmaintainable spaghetti.
+- **AI tests need extra scrutiny**: Treat AI tests with *more* suspicion than human tests, because AI has no understanding
+  of "Why are we testing this?".
 
 ## Next Steps
 

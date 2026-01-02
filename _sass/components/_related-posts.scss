@@ -92,15 +92,3 @@
     outline: 2px solid var(--link-color);
     outline-offset: 2px;
 }
-
-/* Related posts section */
-aside[aria-label='Related posts'] {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
-}
-
-aside[aria-label='Related posts'] h2 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-}

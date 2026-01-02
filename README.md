@@ -14,7 +14,8 @@
 
 ## 🌐 Live Site
 
-**[blog.syafiqhadzir.dev](https://blog.syafiqhadzir.dev)** • [Sitemap](https://blog.syafiqhadzir.dev/sitemap.xml) • [RSS Feed](https://blog.syafiqhadzir.dev/feed.xml)
+**[blog.syafiqhadzir.dev](https://blog.syafiqhadzir.dev)** • [Sitemap](https://blog.syafiqhadzir.dev/sitemap.xml) •
+[RSS Feed](https://blog.syafiqhadzir.dev/feed.xml)
 
 ## ✨ Features
 
@@ -132,6 +133,8 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
+<!-- markdownlint-disable-next-line MD033 -->
 <p align="center">
+  <!-- markdownlint-disable-next-line MD033 -->
   Made with ❤️ by <a href="https://syafiqhadzir.dev">Syafiq Hadzir</a>
 </p>
