@@ -100,7 +100,7 @@ layout: default
 
         {%- if posts_by_year.size > initial_years -%}
         <div class="archive-load-more" [hidden]="showAllYears || archiveSearchQuery">
-            <button type="button" 
+            <button type="button"
                     class="load-more-years"
                     on="tap:AMP.setState({ showAllYears: true })">
                 Load {{ posts_by_year.size | minus: initial_years }} more years
@@ -110,7 +110,7 @@ layout: default
     </div>
 
     <!-- Empty State -->
-    <div class="archive-empty" id="no-results" [hidden]="!archiveSearchQuery || '{{ site.posts | map: 'title' | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }} {{ site.posts | map: 'tags' | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }}'.indexOf(archiveSearchQuery.toLowerCase()) != -1">
+    <div class="archive-empty" id="no-results" [hidden]="!archiveSearchQuery || archiveSearchQuery.length === 0 || '{{ site.posts | map: 'title' | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }} {{ site.posts | map: 'tags' | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }}'.indexOf(archiveSearchQuery.toLowerCase()) != -1">
         <div class="empty-icon" aria-hidden="true">🔍</div>
         <p>No articles found matching "<strong [text]="archiveSearchQuery"></strong>"</p>
         <p class="empty-hint">Try different keywords or <button type="button" class="clear-link" on="tap:AMP.setState({ archiveSearchQuery: '' })">clear the search</button></p>
