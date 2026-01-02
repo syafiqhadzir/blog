@@ -6,8 +6,7 @@ import { JSDOM } from 'jsdom';
 async function auditSEO() {
     const siteDir = '_site';
     if (!fs.existsSync(siteDir)) {
-        // eslint-disable-next-line no-console
-        console.error('Error: _site directory not found. Run jekyll build first.');
+        process.stderr.write('Error: _site directory not found. Run jekyll build first.\n');
         process.exit(1);
     }
 
@@ -15,8 +14,7 @@ async function auditSEO() {
     let errors = 0;
     let warnings = 0;
 
-    // eslint-disable-next-line no-console
-    console.log(`Auditing ${files.length} HTML files...`);
+    process.stdout.write(`Auditing ${files.length} HTML files...\n`);
 
     for (const file of files) {
         const html = fs.readFileSync(file, 'utf8');
@@ -27,72 +25,59 @@ async function auditSEO() {
         // 1. Title Presence
         const title = doc.querySelector('title');
         if (!title || !title.textContent) {
-            // eslint-disable-next-line no-console
-            console.error(`[ERROR] ${relativePath}: Missing <title> tag`);
+            process.stderr.write(`[ERROR] ${relativePath}: Missing <title> tag\n`);
             errors++;
         }
 
         // 2. Canonical Tag
         const canonical = doc.querySelector('link[rel="canonical"]');
         if (!canonical) {
-            // eslint-disable-next-line no-console
-            console.error(`[ERROR] ${relativePath}: Missing rel="canonical" tag`);
+            process.stderr.write(`[ERROR] ${relativePath}: Missing rel="canonical" tag\n`);
             errors++;
         }
 
         // 3. Duplicate H1s
         const h1s = doc.querySelectorAll('h1');
         if (h1s.length > 1) {
-            // eslint-disable-next-line no-console
-            console.warn(`[WARN] ${relativePath}: Multiple H1 tags found (${h1s.length})`);
+            process.stdout.write(`[WARN] ${relativePath}: Multiple H1 tags found (${h1s.length})\n`);
             warnings++;
         } else if (h1s.length === 0) {
-            // eslint-disable-next-line no-console
-            console.warn(`[WARN] ${relativePath}: No H1 tag found`);
+            process.stdout.write(`[WARN] ${relativePath}: No H1 tag found\n`);
             warnings++;
         }
 
         // 4. Missing Alt Text
         const images = doc.querySelectorAll('amp-img, img');
-        images.forEach((img) => {
+        for (const img of images) {
             if (!img.getAttribute('alt')) {
-                // eslint-disable-next-line no-console
-                console.warn(
-                    `[WARN] ${relativePath}: Missing alt text on ${img.tagName} (src: ${img.getAttribute('src')})`,
-                );
+                const src = img.getAttribute('src') ?? 'unknown';
+                process.stdout.write(`[WARN] ${relativePath}: Missing alt text on ${img.tagName} (src: ${src})\n`);
                 warnings++;
             }
-        });
+        }
 
         // 5. JSON-LD Graph
         const schema = doc.querySelector('script[type="application/ld+json"]');
         if (!schema) {
-            // eslint-disable-next-line no-console
-            console.warn(`[WARN] ${relativePath}: Missing JSON-LD structured data`);
+            process.stdout.write(`[WARN] ${relativePath}: Missing JSON-LD structured data\n`);
             warnings++;
         }
     }
 
-    // eslint-disable-next-line no-console
-    console.log('\n--- Audit Results ---');
-    // eslint-disable-next-line no-console
-    console.log(`Files Processed: ${files.length}`);
-    // eslint-disable-next-line no-console
-    console.log(`Errors: ${errors} (Critical SEO issues)`);
-    // eslint-disable-next-line no-console
-    console.log(`Warnings: ${warnings} (Best practice recommendations)`);
+    process.stdout.write('\n--- Audit Results ---\n');
+    process.stdout.write(`Files Processed: ${String(files.length)}\n`);
+    process.stdout.write(`Errors: ${String(errors)} (Critical SEO issues)\n`);
+    process.stdout.write(`Warnings: ${String(warnings)} (Best practice recommendations)\n`);
 
     if (errors > 0) {
         process.exit(1);
     }
 }
 
-(async () => {
-    try {
-        await auditSEO();
-    } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(error);
-        process.exit(1);
-    }
-})();
+try {
+    await auditSEO();
+} catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    process.stderr.write(`${errorMessage}\n`);
+    process.exit(1);
+}

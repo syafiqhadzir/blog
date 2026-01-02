@@ -20,7 +20,7 @@ export default [
             'playwright-report/**',
             'sw.js',
             'test-results/**',
-            'scripts/seo-audit.js',
+            'scripts/seo-audit.js', // Utility script with console-free output
         ],
     },
 
@@ -71,6 +71,9 @@ export default [
         ...tseslint.configs.disableTypeChecked,
         languageOptions: {
             globals: globals.node,
+        },
+        rules: {
+            'unicorn/no-process-exit': 'off', // CLI scripts legitimately use process.exit
         },
     },
 
