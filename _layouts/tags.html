@@ -14,22 +14,6 @@ layout: default
         </p>
     </header>
 
-    <!-- Search Box -->
-    <div class="tags-search" role="search">
-        <label for="tag-search-input" class="sr-only">Search tags</label>
-        <input
-            type="search"
-            id="tag-search-input"
-            class="tags-search-input"
-            placeholder="🔍 Search tags..."
-            aria-label="Search tags"
-            on="input-debounced:AMP.setState({ tagSearchQuery: event.value })"
-            autocomplete="off"
-        />
-        <button type="button" class="tag-search-clear" [hidden]="!tagSearchQuery" on="tap:AMP.setState({ tagSearchQuery: '' })" aria-label="Clear search">
-            ✕
-        </button>
-    </div>
 
     <!-- Tag Cloud -->
     <nav class="tag-cloud-section" aria-label="Tag cloud">
@@ -48,7 +32,6 @@ layout: default
                 class="tag-chip {{ w_class }}"
                 data-tag="{{ tag[0] }}"
                 role="listitem"
-                [hidden]="tagSearchQuery && '{{ tag[0] | downcase }}'.indexOf(tagSearchQuery.toLowerCase()) == -1"
             >
                 {{ site.data.tags[tag[0]].name | default: tag[0] }}
                 <span class="tag-chip-count">{{ count }}</span>
@@ -60,7 +43,7 @@ layout: default
     <!-- Tag Sections -->
     <div class="tag-sections" id="tag-list">
         {%- for tag in sorted_tags -%}
-        <details class="tag-group" open id="{{ tag[0] | slugify }}" data-tag="{{ tag[0] }}" [hidden]="tagSearchQuery && '{{ tag[0] | downcase }}'.indexOf(tagSearchQuery.toLowerCase()) == -1">
+        <details class="tag-group" open id="{{ tag[0] | slugify }}" data-tag="{{ tag[0] }}">
             <summary class="tag-group-header">
                 <span class="tag-chevron" aria-hidden="true"></span>
                 <span class="tag-label"
@@ -90,10 +73,6 @@ layout: default
         {%- endfor -%}
     </div>
 
-    <!-- Empty State -->
-    <div class="tags-empty" id="no-results" [hidden]="!tagSearchQuery">
-        <p>Searching for "<strong [text]="tagSearchQuery"></strong>"</p>
-    </div>
 </section>
 
 {{ content }}
