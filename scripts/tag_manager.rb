@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+require 'yaml'
 
 # Manages the canonicalization and normalization of tags across all blog posts.
 # Ensures consistency by enforcing a whitelist (CANONICAL_TAGS) and mapping
@@ -77,7 +77,13 @@ class TagManager
   end
 
   def self.add_slug_tags(file, front_matter, tags)
-    slug = front_matter['slug'] || File.basename(file, '.md')[11..]
+    basename = File.basename(file, '.md')
+    # fallback to basename if too short to have date prefix
+    slug_from_filename = basename.length > 11 ? basename[11..] : basename
+    slug = front_matter['slug'] || slug_from_filename
+
+    return unless slug
+
     slug.to_s.split('-').each do |w|
       tags << w if CANONICAL_TAGS.include?(w) || SYNONYMS.key?(w)
     end

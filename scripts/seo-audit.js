@@ -36,6 +36,13 @@ async function auditSEO() {
             errors++;
         }
 
+        // 3. Meta Description
+        const description = doc.querySelector('meta[name="description"]');
+        if (!description || !description.getAttribute('content')) {
+            process.stdout.write(`[WARN] ${relativePath}: Missing meta description\n`);
+            warnings++;
+        }
+
         // 3. Duplicate H1s
         const h1s = doc.querySelectorAll('h1');
         if (h1s.length > 1) {

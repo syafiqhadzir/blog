@@ -38,6 +38,7 @@ async function optimizeImages() {
 
 try {
     await optimizeImages();
-} catch {
-    // Silent fail as per instruction to remove all console
+} catch (error) {
+    process.stderr.write(`Image optimization failed: ${String(error)}\n`);
+    process.exit(1);
 }
