@@ -20,19 +20,13 @@ const minifyFiles = async () => {
         useShortDoctype: true,
     };
 
-    const results = await Promise.allSettled(
+    await Promise.allSettled(
         files.map(async (file) => {
             const content = await fs.readFile(file, 'utf8');
             const minified = await minify(content, minifyOptions);
             await fs.writeFile(file, minified);
         }),
     );
-
-    const errors = results.filter((result) => result.status === 'rejected');
-    if (errors.length > 0) {
-        // eslint-disable-next-line no-console
-        console.warn(`⚠️ Minification failed for ${errors.length} files. Skipping those.`);
-    }
 };
 
 await minifyFiles();
