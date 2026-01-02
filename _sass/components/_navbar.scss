@@ -102,7 +102,7 @@
 
 .mode-toggle .icon-moon,
 .mode-toggle .icon-sun {
-    display: flex;
+    display: none; /* Default hidden */
     align-items: center;
     padding: 0.5rem;
     background: transparent;
@@ -110,6 +110,40 @@
     cursor: pointer;
     color: var(--text-secondary);
     transition: color 0.15s ease;
+}
+
+/* Default (Light Mode) */
+.mode-toggle .icon-moon {
+    display: flex;
+}
+
+/* Dark Theme Override */
+.dark-theme .mode-toggle .icon-moon {
+    display: none;
+}
+
+.dark-theme .mode-toggle .icon-sun {
+    display: flex;
+}
+
+/* Light Theme Override (Explicit) */
+.light-theme .mode-toggle .icon-moon {
+    display: flex;
+}
+
+.light-theme .mode-toggle .icon-sun {
+    display: none;
+}
+
+/* System Dark Preference (Auto) */
+@media (prefers-color-scheme: dark) {
+    .auto .mode-toggle .icon-moon {
+        display: none;
+    }
+
+    .auto .mode-toggle .icon-sun {
+        display: flex;
+    }
 }
 
 .mode-toggle button:hover {
