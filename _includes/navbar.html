@@ -9,6 +9,7 @@
             <li><a href="{{ '/archive' | relative_url }}" class="{% if page.url contains '/archive' %}active{% endif %}">Archive</a></li>
             <li><a href="{{ '/tags' | relative_url }}" class="{% if page.url contains '/tags' %}active{% endif %}">Tags</a></li>
             <li><a href="{{ '/about' | relative_url }}" class="{% if page.url contains '/about' %}active{% endif %}">About</a></li>
+            <li>{% include reading_settings.html %}</li>
             <li class="nav-toggle">
                 <div class="mode-toggle">
                     <!-- Moon Icon: Visible in Light Mode -->

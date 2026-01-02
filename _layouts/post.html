@@ -53,6 +53,13 @@ layout: default
     <h1 id="post-title">{{ page.title }}</h1>
   </header>
 
+    {%- if page.summary or page.description -%}
+      <div class="tldr-block" role="region" aria-label="Plain Language Summary">
+        <h2 class="tldr-title">TL;DR</h2>
+        <p>{{ page.summary | default: page.description }}</p>
+      </div>
+    {%- endif -%}
+
   <div class="post-content" itemprop="articleBody">
     {{ content }}
   </div>

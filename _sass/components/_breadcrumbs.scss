@@ -1,19 +1,47 @@
 /* Breadcrumbs */
+
+/* Breadcrumbs */
 .breadcrumbs {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    margin-bottom: 1rem;
+    margin: 1rem 0 2rem;
+    padding: 0;
+}
+
+.breadcrumbs ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.breadcrumbs li {
+    display: inline-flex;
+    align-items: center;
 }
 
 .breadcrumbs a {
     color: var(--text-secondary);
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition:
+        text-decoration-color 0.2s ease,
+        color 0.2s ease;
 }
 
 .breadcrumbs a:hover {
     color: var(--link-color);
+    text-decoration-color: var(--link-color);
 }
 
-.breadcrumbs span {
+.breadcrumbs span[aria-hidden='true'] {
     margin: 0 0.5rem;
+    opacity: 0.5;
+}
+
+.breadcrumbs span[aria-current='page'] {
+    color: var(--text-color);
+    font-weight: 500;
 }

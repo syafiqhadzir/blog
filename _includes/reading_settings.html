@@ -1,0 +1,112 @@
+<div class="reading-settings-wrapper" style="position: relative;">
+    <button type="button" class="reading-settings-trigger" id="reading-settings-btn" aria-expanded="false" aria-controls="reading-settings-panel" aria-label="Reading Settings">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+    </button>
+
+    <div id="reading-settings-panel" class="reading-settings-panel" aria-hidden="true">
+        <!-- Text Size -->
+        <div class="settings-group">
+            <span class="settings-label">Text Size</span>
+            <div class="settings-options">
+                <button type="button" class="settings-btn" data-setting="text-scale" data-value="1">100%</button>
+                <button type="button" class="settings-btn" data-setting="text-scale" data-value="1.5">150%</button>
+                <button type="button" class="settings-btn" data-setting="text-scale" data-value="2">200%</button>
+            </div>
+        </div>
+
+        <!-- Line Height -->
+        <div class="settings-group">
+            <span class="settings-label">Line Height</span>
+            <div class="settings-options">
+                <button type="button" class="settings-btn" data-setting="line-height" data-value="1.5">Compact</button>
+                <button type="button" class="settings-btn" data-setting="line-height" data-value="1.7">Normal</button>
+                <button type="button" class="settings-btn" data-setting="line-height" data-value="2">Relaxed</button>
+            </div>
+        </div>
+
+        <!-- Width -->
+        <div class="settings-group">
+            <span class="settings-label">Content Width</span>
+            <div class="settings-options">
+                <button type="button" class="settings-btn" data-setting="layout-width" data-value="600px">Narrow</button>
+                <button type="button" class="settings-btn" data-setting="layout-width" data-value="800px">Normal</button>
+                <button type="button" class="settings-btn" data-setting="layout-width" data-value="100%">Full</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn = document.getElementById('reading-settings-btn');
+        const panel = document.getElementById('reading-settings-panel');
+        const root = document.documentElement;
+        const buttons = panel.querySelectorAll('.settings-btn');
+
+        // Toggle Panel
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', !isExpanded);
+            panel.setAttribute('aria-hidden', isExpanded);
+        });
+
+        // Close on click outside
+        document.addEventListener('click', (e) => {
+            if (!panel.contains(e.target) && btn.getAttribute('aria-expanded') === 'true') {
+                btn.setAttribute('aria-expanded', 'false');
+                panel.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        // Stop propagation inside panel to prevent closing
+        panel.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Settings Logic
+        function setReadingSetting(property, value) {
+            root.style.setProperty('--' + property, value);
+            localStorage.setItem('reading-' + property, value);
+            updateActiveButtons(property, value);
+        }
+
+        function updateActiveButtons(property, value) {
+             const settingButtons = panel.querySelectorAll(`[data-setting="${property}"]`);
+             settingButtons.forEach(b => {
+                 // Convert both to strings for comparison
+                 const match = String(b.getAttribute('data-value')) === String(value);
+                 b.setAttribute('aria-pressed', match);
+             });
+        }
+
+        // Event Delegation for Buttons
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const prop = button.getAttribute('data-setting');
+                const val = button.getAttribute('data-value');
+                setReadingSetting(prop, val);
+            });
+        });
+
+        // Init from stored values
+        const defaults = {
+            'text-scale': '1',
+            'line-height': '1.7',
+            'layout-width': '800px'
+        };
+
+        for (const [prop, defaultVal] of Object.entries(defaults)) {
+            const stored = localStorage.getItem('reading-' + prop);
+            if (stored) {
+                root.style.setProperty('--' + prop, stored);
+                updateActiveButtons(prop, stored);
+            } else {
+                updateActiveButtons(prop, defaultVal);
+            }
+        }
+    });
+</script>

@@ -1,0 +1,43 @@
+
+<nav aria-label="Breadcrumb" class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    <!-- Home Item -->
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="{{ '/' | relative_url }}" itemprop="item">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+
+    {% assign position = 1 %}
+
+    <!-- Blog/Archive Path (for posts) -->
+    {% if page.url contains '/posts/' or page.layout == 'post' %}
+      {% assign position = position | plus: 1 %}
+      <span aria-hidden="true">/</span>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="{{ '/archive.html' | relative_url }}" itemprop="item">
+          <span itemprop="name">Blog</span>
+        </a>
+        <meta itemprop="position" content="{{ position }}" />
+      </li>
+    {% endif %}
+
+    <!-- Current Page -->
+    {% if page.url != '/' %}
+      {% assign position = position | plus: 1 %}
+      <span aria-hidden="true">/</span>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name" aria-current="page">
+          {% if page.title %}
+            {{ page.title }}
+          {% else %}
+            {{ page.url | split: '/' | last | capitalize }}
+          {% endif %}
+        </span>
+        <link itemprop="item" href="{{ page.url | absolute_url }}" />
+        <meta itemprop="position" content="{{ position }}" />
+      </li>
+    {% endif %}
+  </ol>
+</nav>
