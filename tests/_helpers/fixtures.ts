@@ -27,7 +27,15 @@ interface BlogFixtures {
 
 // --- Helper Functions ---
 const normalizeRoute = (route: string): string => {
-    let clean = route.replace(BASE_URL, '').split('#')[0];
+    // Remove both local and production base URLs
+
+    let clean = route
+        .replace(BASE_URL, '')
+        .replace('https://blog.syafiqhadzir.dev', '')
+        // eslint-disable-next-line sonarjs/no-clear-text-protocols
+        .replace('http://blog.syafiqhadzir.dev', '')
+        .split('#')[0];
+
     if (clean?.endsWith('index.html')) clean = clean.replace('index.html', '');
     if (!clean?.startsWith('/')) clean = '/' + (clean ?? '');
     return clean;

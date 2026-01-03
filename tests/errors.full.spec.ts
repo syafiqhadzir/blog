@@ -17,10 +17,8 @@ test.describe('Error Handling', { tag: ['@full', '@errors'] }, () => {
         const response = await request.get('/');
         expect(response.ok()).toBeTruthy();
 
-        const responseSlash = await request.get('/archive/'); // Assuming folder
-        // If /archive/ exists as a folder with index.html, it should be 200
-        // If it's just archive.html, /archive/ might 404 depending on server.
-        // We'll just check home availability as basic normalization test.
-        expect(responseSlash.ok()).toBeTruthy();
+        // Test that archive page is accessible
+        const archiveResponse = await request.get('/archive.html');
+        expect(archiveResponse.ok()).toBeTruthy();
     });
 });
