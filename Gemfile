@@ -31,4 +31,6 @@ end
 
 gem 'jekyll-minifier', '~> 0.2.2'
 
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+platforms :mingw, :x64_mingw, :mswin do
+  gem 'wdm', '>= 0.1.0'
+end
