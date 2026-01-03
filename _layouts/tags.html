@@ -7,8 +7,7 @@ TAGS PAGE LAYOUT (AMP-COMPLIANT)
 Features:
   1. Hierarchical taxonomy display with parent/child relationships
   2. Weighted tag cloud with recency scoring (TF-IDF-like)
-  3. AMP-compatible fuzzy search using amp-bind
-  4. Enhanced Schema.org JSON-LD with Wikidata sameAs
+  3. Enhanced Schema.org JSON-LD with Wikidata sameAs
 ================================================================================
 {%- endcomment -%}
 
@@ -47,17 +46,7 @@ Features:
     </p>
   </header>
 
-  {%- comment -%} AMP-compatible Search {%- endcomment -%}
-  <div class="tags-search" role="search">
-    <input
-      type="search"
-      class="tags-search-input"
-      placeholder="🔍 Search tags..."
-      aria-label="Search tags"
-      on="input-debounced:AMP.setState({tagQuery: event.value.toLowerCase()})"
-      [value]="tagQuery || ''"
-    >
-  </div>
+
 
   {%- comment -%} Weighted Tag Cloud with Recency Scoring {%- endcomment -%}
   <nav class="tag-cloud-section" aria-label="Tag cloud">
@@ -99,13 +88,11 @@ Features:
             {%- assign w_class = 'tag-w7' -%}
           {%- endif -%}
 
-          {%- assign tag_name_lower = tag[0] | downcase -%}
           <a
             href="#{{ tag[0] | slugify }}"
             class="tag-chip {{ w_class }}"
             data-tag="{{ tag[0] }}"
             role="listitem"
-            [hidden]="tagQuery && !('{{ tag_name_lower }}'.includes(tagQuery) || '{{ tag_data.name | default: tag[0] | downcase }}'.includes(tagQuery))"
           >
             {%- if tag_data.icon -%}<span class="tag-icon" aria-hidden="true">{{ tag_data.icon }}</span>{%- endif -%}
             {{ tag_data.name | default: tag[0] }}
@@ -121,13 +108,11 @@ Features:
     {%- for tag in sorted_tags -%}
       {%- assign tag_data = site.data.tags[tag[0]] -%}
       {%- if tag_data.deprecated != true -%}
-        {%- assign tag_name_lower = tag[0] | downcase -%}
         <details
           class="tag-group"
           open
           id="{{ tag[0] | slugify }}"
           data-tag="{{ tag[0] }}"
-          [hidden]="tagQuery && !('{{ tag_name_lower }}'.includes(tagQuery) || '{{ tag_data.name | default: tag[0] | downcase }}'.includes(tagQuery))"
         >
           <summary class="tag-group-header">
             <span class="tag-chevron" aria-hidden="true"></span>
@@ -174,10 +159,7 @@ Features:
     {%- endfor -%}
   </div>
 
-  {%- comment -%} Empty state {%- endcomment -%}
-  <div class="tags-empty" [hidden]="!tagQuery || tagQuery.length < 2" hidden>
-    <p>No tags matching "<span [text]="tagQuery"></span>"</p>
-  </div>
+
 </section>
 
 {{ content }}
