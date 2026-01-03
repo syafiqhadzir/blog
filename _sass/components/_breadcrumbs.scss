@@ -20,6 +20,13 @@
 .breadcrumbs li {
     display: inline-flex;
     align-items: center;
+    color: var(--text-secondary);
+}
+
+.breadcrumbs li:not(:last-child)::after {
+    margin: 0 0.5rem;
+    color: var(--text-secondary);
+    opacity: 50%;
 }
 
 .breadcrumbs a {

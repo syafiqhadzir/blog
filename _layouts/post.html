@@ -29,11 +29,11 @@ layout: default
 <article role="article" aria-labelledby="post-title">
   <header class="post-header">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <span>/</span>
-      <a href="{{ '/archive.html' | relative_url }}">Archive</a>
-      <span>/</span>
-      {{ page.title }}
+      <ol>
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/archive.html' | relative_url }}">Archive</a></li>
+        <li aria-current="page">{{ page.title }}</li>
+      </ol>
     </nav>
 
     <p class="post-meta">
@@ -61,7 +61,7 @@ layout: default
     {%- endif -%}
 
   <div class="post-content" itemprop="articleBody">
-    {{ content }}
+    {{ content | replace: '<div class="highlight">', '<div class="highlight" tabindex="0" role="region" aria-label="Code snippet">' | replace: '<pre class="highlight">', '<pre class="highlight" tabindex="0">' }}
   </div>
 
   <div class="social-share">

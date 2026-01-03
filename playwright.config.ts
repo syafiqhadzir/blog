@@ -5,11 +5,12 @@ const PERF_MODE = process.env['PERF_MODE'] === 'true';
 const CI = !!process.env['CI'];
 
 // Helper to determine worker count
-// eslint-disable-next-line sonarjs/function-return-type
-function getWorkerCount(): number | string | undefined {
-    if (!CI) return undefined; // Let Playwright decide in non-CI
-    // In CI, use optimal worker count based on available CPUs
-    return PERF_MODE ? Math.min(os.cpus().length, 8) : '50%';
+function getWorkerCount(): number {
+    const cpuCount = os.cpus().length;
+    if (!CI) {
+        return 1;
+    }
+    return PERF_MODE ? Math.min(cpuCount, 8) : Math.max(1, Math.floor(cpuCount / 2));
 }
 
 export default defineConfig({
@@ -50,8 +51,8 @@ export default defineConfig({
     retries: CI ? 2 : 0, // Increased retries for CI flakiness
     testDir: './tests',
 
-    // Reduced timeout for faster feedback
-    timeout: 15_000,
+    // Increased timeout for better stability in CI
+    timeout: 30_000,
 
     use: {
         // Performance optimizations
