@@ -45,6 +45,18 @@
     margin-bottom: 1rem;
 }
 
+/* Search Icon */
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    font-size: 1rem;
+    pointer-events: none;
+    opacity: 60%;
+    transform: translateY(-50%);
+    transition: opacity 0.2s;
+}
+
 .archive-search-input {
     width: 100%;
     padding: 1rem 3.5rem 1rem 1.25rem;
@@ -55,17 +67,31 @@
     border-radius: 12px;
     transition:
         border-color 0.2s,
-        box-shadow 0.2s;
+        box-shadow 0.2s,
+        transform 0.1s;
 
     &:focus {
         outline: none;
         border-color: var(--link-color);
-        box-shadow: 0 0 0 4px rgb(0 102 204 / 12%);
+        box-shadow:
+            0 0 0 4px var(--accent-shadow),
+            0 4px 12px rgb(0 0 0 / 8%);
+        transform: translateY(-1px);
     }
 
     &::placeholder {
         color: var(--text-secondary);
     }
+}
+
+/* Search input with icon - extra left padding */
+.archive-search-input.has-icon {
+    padding-left: 2.75rem;
+}
+
+/* Focus state for search icon */
+.archive-search-input:focus ~ .search-icon {
+    opacity: 100%;
 }
 
 .search-hint {
@@ -227,7 +253,10 @@ details[open] .year-chevron {
     align-items: baseline;
     padding: 0.875rem 1.25rem;
     border-top: 1px solid var(--border-color);
-    transition: background-color 0.15s;
+    border-left: 3px solid transparent;
+    transition:
+        background-color 0.15s,
+        border-left-color 0.15s;
 
     &:hover {
         background: rgb(0 102 204 / 3%);
@@ -235,6 +264,12 @@ details[open] .year-chevron {
 
     &[hidden] {
         display: none;
+    }
+
+    /* Matched post highlight during search */
+    &.is-matched {
+        background: var(--accent-shadow);
+        border-left-color: var(--accent-color);
     }
 }
 

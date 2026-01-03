@@ -1,15 +1,23 @@
 ---
 layout: default
 ---
-
 {%- comment -%}
-  Enhanced Archive with Search
-  - Real-time search filtering (progressive enhancement)
-  - Year grouping with collapsible sections
-  - Result counter
-  - Keyboard shortcut (/)
-  - Empty state handling
+================================================================================
+ENHANCED ARCHIVE WITH SEARCH (AMP-COMPLIANT)
+Features:
+  1. Real-time search filtering with debounced input
+  2. Live result counter with match count
+  3. Year grouping with collapsible sections
+  4. Progressive disclosure (load more years)
+  5. Keyboard shortcut (/) to focus
+  6. Enhanced accessibility (aria-live, aria-busy)
+  7. Empty state handling
+================================================================================
 {%- endcomment -%}
+
+{%- assign total_posts = site.posts | size -%}
+{%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
+{%- assign initial_years = 3 -%}
 
 <section class="archive-page" aria-label="Post archive">
     <header class="archive-header">
@@ -18,57 +26,66 @@ layout: default
         <p class="archive-description">{{ page.description }}</p>
         {%- endif -%}
         <p class="archive-stats">
-            <span class="stat-total">{{ site.posts | size }}</span> articles published since 2022.
+            <span class="stat-total">{{ total_posts }}</span> articles published since 2022.
         </p>
     </header>
 
-    <!-- Search Box -->
+    {%- comment -%} Enhanced Search Box {%- endcomment -%}
     <div class="archive-search" role="search">
         <label for="archive-search-input" class="sr-only">Search articles</label>
+        <span class="search-icon" aria-hidden="true">🔍</span>
         <input type="search"
                id="archive-search-input"
-               class="archive-search-input"
-               placeholder="🔍 Search articles..."
+               class="archive-search-input has-icon"
+               placeholder="Search articles..."
                aria-label="Search articles"
                aria-describedby="search-hint"
-               on="input-debounced:AMP.setState({ archiveSearchQuery: event.value })"
-               [value]="archiveSearchQuery || ''"
+               aria-controls="archive-list"
+               on="input-debounced:AMP.setState({ archiveQuery: event.value.toLowerCase().trim() })"
+               [value]="archiveQuery || ''"
                autocomplete="off">
-        <span class="search-hint" id="search-hint" aria-hidden="true" [hidden]="archiveSearchQuery">
+        <span class="search-hint" id="search-hint" aria-hidden="true" [hidden]="archiveQuery">
             <kbd>/</kbd> to focus
         </span>
     </div>
 
-    <!-- Result Counter -->
-    <div class="archive-results" aria-live="polite" aria-atomic="true" [hidden]="!archiveSearchQuery">
-        <span>Search results for <strong [text]="archiveSearchQuery"></strong></span>
+    {%- comment -%} Live Result Counter {%- endcomment -%}
+    <div class="archive-results"
+         role="status"
+         aria-live="polite"
+         aria-atomic="true"
+         [hidden]="!archiveQuery"
+         [aria-busy]="false">
+        <span class="results-text">
+            Searching for "<strong [text]="archiveQuery"></strong>"
+        </span>
     </div>
 
     {{ content }}
 
-    <!-- AMP State for Progressive Disclosure -->
+    {%- comment -%} AMP State for Progressive Disclosure {%- endcomment -%}
     <amp-state id="showAllYears">
         <script type="application/json">
             false
         </script>
     </amp-state>
 
-    <!-- Posts by Year -->
+    {%- comment -%} Posts by Year {%- endcomment -%}
     <div class="archive-years" id="archive-list">
-        {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
-        {%- assign initial_years = 3 -%}
         {%- for year in posts_by_year -%}
         {%- assign year_index = forloop.index0 -%}
-        {%- capture year_content -%}
+        {%- comment -%} Pre-compute searchable content for this year {%- endcomment -%}
+        {%- capture year_searchable -%}
             {%- for post in year.items -%}
-                {{ post.title | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }} {{ post.tags | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }}
+                {{ post.title | downcase | replace: "'", "" | replace: '"', "" }} {{ post.tags | join: ' ' | downcase }}
             {%- endfor -%}
         {%- endcapture -%}
+        {%- assign year_searchable_clean = year_searchable | strip_newlines | strip -%}
         <details class="year-group" {% if year_index < initial_years %}open{% endif %}
                  data-year="{{ year.name }}"
                  data-year-index="{{ year_index }}"
                  {% if year_index >= initial_years %}hidden{% endif %}
-                 [hidden]="({{ year_index }} >= {{ initial_years }} && !showAllYears && !archiveSearchQuery) || (archiveSearchQuery && '{{ year_content | strip_newlines }}'.indexOf(archiveSearchQuery.toLowerCase()) == -1)">
+                 [hidden]="({{ year_index }} >= {{ initial_years }} && !showAllYears && !archiveQuery) || (archiveQuery && archiveQuery.length > 0 && '{{ year_searchable_clean }}'.indexOf(archiveQuery) === -1)">
             <summary class="year-header">
                 <span class="year-chevron" aria-hidden="true"></span>
                 <span class="year-label">{{ year.name }}</span>
@@ -76,9 +93,12 @@ layout: default
             </summary>
             <ul class="archive-posts" role="list">
                 {%- for post in year.items -%}
+                {%- assign post_searchable = post.title | downcase | append: ' ' | append: post.tags | join: ' ' | downcase -%}
                 <li class="archive-post-item"
                     role="listitem"
-                    [hidden]="archiveSearchQuery && '{{ post.title | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }} {{ post.tags | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }}'.indexOf(archiveSearchQuery.toLowerCase()) == -1">
+                    data-searchable="{{ post_searchable | replace: "'", "" | replace: '"', "" }}"
+                    [hidden]="archiveQuery && archiveQuery.length > 0 && '{{ post_searchable | replace: "'", "" | replace: '"', "" }}'.indexOf(archiveQuery) === -1"
+                    [class]="archiveQuery && archiveQuery.length > 0 && '{{ post_searchable | replace: "'", "" | replace: '"', "" }}'.indexOf(archiveQuery) !== -1 ? 'archive-post-item is-matched' : 'archive-post-item'">
                     <time class="archive-date" datetime="{{ post.date | date_to_xmlschema }}">
                         {{ post.date | date: "%d %b" }}
                     </time>
@@ -99,7 +119,7 @@ layout: default
         {%- endfor -%}
 
         {%- if posts_by_year.size > initial_years -%}
-        <div class="archive-load-more" [hidden]="showAllYears || archiveSearchQuery">
+        <div class="archive-load-more" [hidden]="showAllYears || archiveQuery">
             <button type="button"
                     class="load-more-years"
                     on="tap:AMP.setState({ showAllYears: true })">
@@ -109,17 +129,28 @@ layout: default
         {%- endif -%}
     </div>
 
-    <!-- Empty State -->
-    <div class="archive-empty" id="no-results" [hidden]="!archiveSearchQuery || archiveSearchQuery.length === 0 || '{{ site.posts | map: 'title' | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }} {{ site.posts | map: 'tags' | join: ' ' | downcase | replace: '\', '\\\\' | replace: '"', '&quot;' | replace: "'", "\\'" }}'.indexOf(archiveSearchQuery.toLowerCase()) != -1">
+    {%- comment -%} Empty State {%- endcomment -%}
+    {%- capture all_posts_searchable -%}
+        {%- for post in site.posts -%}
+            {{ post.title | downcase }} {{ post.tags | join: ' ' | downcase }}
+        {%- endfor -%}
+    {%- endcapture -%}
+    {%- assign all_searchable_clean = all_posts_searchable | strip_newlines | strip | replace: "'", "" | replace: '"', "" -%}
+    <div class="archive-empty"
+         id="no-results"
+         role="alert"
+         [hidden]="!archiveQuery || archiveQuery.length === 0 || '{{ all_searchable_clean }}'.indexOf(archiveQuery) !== -1">
         <div class="empty-icon" aria-hidden="true">🔍</div>
-        <p>No articles found matching "<strong [text]="archiveSearchQuery"></strong>"</p>
-        <p class="empty-hint">Try different keywords or <button type="button" class="clear-link" on="tap:AMP.setState({ archiveSearchQuery: '' })">clear the search</button></p>
+        <p>No articles found matching "<strong [text]="archiveQuery"></strong>"</p>
+        <p class="empty-hint">Try different keywords or <button type="button" class="clear-link" on="tap:AMP.setState({ archiveQuery: '' })">clear the search</button></p>
     </div>
 </section>
 
-
-
-
+{%- comment -%}
+================================================================================
+SCHEMA.ORG JSON-LD
+================================================================================
+{%- endcomment -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -129,7 +160,7 @@ layout: default
   "url": "{{ page.url | absolute_url }}",
   "mainEntity": {
     "@type": "ItemList",
-    "numberOfItems": {{ site.posts | size }},
+    "numberOfItems": {{ total_posts }},
     "itemListElement": [
       {%- for post in site.posts limit:10 -%}
       {
