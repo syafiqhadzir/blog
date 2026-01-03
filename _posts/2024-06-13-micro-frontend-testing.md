@@ -6,11 +6,13 @@ category: QA
 slug: micro-frontend-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
 - frontend
-- qa
+- integration-testing
+- microservices
+- quality-assurance
 - testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

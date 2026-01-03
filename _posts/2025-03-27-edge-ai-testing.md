@@ -6,11 +6,12 @@ category: QA
 slug: edge-ai-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- ai
-- qa
+- artificial-intelligence
+- edge-computing
+- quality-assurance
 - testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

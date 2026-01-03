@@ -6,9 +6,10 @@ category: QA
 slug: canary-release-quality-gates
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- devops
+- quality-assurance
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

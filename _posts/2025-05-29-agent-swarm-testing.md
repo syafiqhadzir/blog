@@ -6,10 +6,11 @@ category: QA
 slug: agent-swarm-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- artificial-intelligence
+- quality-assurance
 - testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

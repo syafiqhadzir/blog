@@ -1,32 +1,318 @@
-qa:
+# Blog Tag Definitions
+# Each tag has a display name and description for the tags page.
+# All tags are >= 4 characters per the enhanced tagging policy.
+
+# Core QA & Testing
+quality-assurance:
     name: Quality Assurance
-    description:
-        'Strategies, methodologies, and tools for ensuring software quality, from manual testing to advanced automation.'
+    description: 'Strategies, methodologies, and tools for ensuring software quality.'
 
 testing:
     name: Software Testing
-    description: 'In-depth guides on unit, integration, and end-to-end testing practices.'
-
-security:
-    name: Security
-    description: 'Cybersecurity insights, penetration testing tips, and guarding against digital threats.'
+    description: 'In-depth guides on testing practices and methodologies.'
 
 automation:
     name: Automation
-    description: 'Automating workflows, tests, and deployments to increase velocity and reliability.'
+    description: 'Automating workflows, tests, and deployments.'
 
+# Testing Types
+unit-testing:
+    name: Unit Testing
+    description: 'Testing individual components in isolation.'
+
+integration-testing:
+    name: Integration Testing
+    description: 'Testing interactions between system components.'
+
+e2e-testing:
+    name: End-to-End Testing
+    description: 'Full user journey and workflow testing.'
+
+visual-testing:
+    name: Visual Testing
+    description: 'Screenshot comparison and visual regression testing.'
+
+contract-testing:
+    name: Contract Testing
+    description: 'API contract verification between services.'
+
+chaos-testing:
+    name: Chaos Testing
+    description: 'Resilience testing through controlled failure injection.'
+
+load-testing:
+    name: Load Testing
+    description: 'Performance under expected and peak loads.'
+
+stress-testing:
+    name: Stress Testing
+    description: 'Behaviour at and beyond capacity limits.'
+
+mutation-testing:
+    name: Mutation Testing
+    description: 'Validating test suite effectiveness via code mutations.'
+
+regression-testing:
+    name: Regression Testing
+    description: 'Ensuring changes don not break existing functionality.'
+
+exploratory-testing:
+    name: Exploratory Testing
+    description: 'Unscripted, creative testing approaches.'
+
+smoke-testing:
+    name: Smoke Testing
+    description: 'Quick sanity checks for critical functionality.'
+
+# Security
+security:
+    name: Security
+    description: 'Cybersecurity insights and threat mitigation.'
+
+penetration-testing:
+    name: Penetration Testing
+    description: 'Offensive security testing and red teaming.'
+
+vulnerability-scanning:
+    name: Vulnerability Scanning
+    description: 'Automated security weakness detection.'
+
+access-control:
+    name: Access Control
+    description: 'Authorization and permission validation.'
+
+authentication:
+    name: Authentication
+    description: 'Identity verification (OAuth, SSO, JWT).'
+
+encryption:
+    name: Encryption
+    description: 'Cryptographic protection of data.'
+
+zero-trust:
+    name: Zero Trust
+    description: 'Never trust, always verify security model.'
+
+compliance:
+    name: Compliance
+    description: 'Regulatory standards (GDPR, PCI-DSS, SOC2).'
+
+# Performance
 performance:
     name: Performance
-    description: 'Optimization techniques, benchmarking, and ensuring your software runs at speed.'
+    description: 'Optimization, benchmarking, and speed.'
 
+# Accessibility
 accessibility:
     name: Accessibility (A11y)
-    description: 'Building inclusive digital experiences for all users, regardless of ability.'
+    description: 'Building inclusive digital experiences.'
 
-ai:
+# AI & ML
+artificial-intelligence:
     name: Artificial Intelligence
-    description: 'The impact of AI on software development, testing, and society.'
+    description: 'AI impact on development, testing, and society.'
+
+machine-learning:
+    name: Machine Learning
+    description: 'ML model validation and testing.'
+
+# Web Technologies
+progressive-web-apps:
+    name: Progressive Web Apps
+    description: 'PWA testing, service workers, offline-first.'
+
+web3:
+    name: Web3
+    description: 'Decentralised web, smart contracts, DeFi.'
+
+blockchain:
+    name: Blockchain
+    description: 'Distributed ledger and smart contract testing.'
+
+# Infrastructure & DevOps
+devops:
+    name: DevOps
+    description: 'CI/CD, deployment strategies, and tooling.'
+
+containers:
+    name: Containers
+    description: 'Docker, containerisation, and orchestration.'
+
+kubernetes:
+    name: Kubernetes
+    description: 'K8s orchestration and testing strategies.'
+
+serverless:
+    name: Serverless
+    description: 'FaaS testing and cold start optimisation.'
+
+microservices:
+    name: Microservices
+    description: 'Distributed system testing patterns.'
+
+infrastructure:
+    name: Infrastructure
+    description: 'Cloud and on-premises infrastructure testing.'
+
+edge-computing:
+    name: Edge Computing
+    description: 'CDN, edge functions, and IoT testing.'
+
+service-mesh:
+    name: Service Mesh
+    description: 'Istio, Linkerd, and mesh policy testing.'
+
+networking:
+    name: Networking
+    description: '5G, 6G, and network protocol testing.'
+
+# Observability
+monitoring:
+    name: Monitoring
+    description: 'Synthetic monitoring and alerting strategies.'
+
+tracing:
+    name: Tracing
+    description: 'Distributed tracing and request flows.'
+
+logging:
+    name: Logging
+    description: 'Log aggregation and analysis.'
+
+observability:
+    name: Observability
+    description: 'Unified monitoring, logging, and tracing.'
+
+debugging:
+    name: Debugging
+    description: 'Root cause analysis and troubleshooting.'
+
+reliability:
+    name: Reliability
+    description: 'SRE practices, error budgets, and resilience.'
+
+# Data
+data-engineering:
+    name: Data Engineering
+    description: 'ETL, data pipelines, and warehousing.'
+
+data-quality:
+    name: Data Quality
+    description: 'Data validation and integrity testing.'
+
+# Real-Time
+real-time:
+    name: Real-Time
+    description: 'WebSockets, gRPC, and streaming protocols.'
+
+streaming:
+    name: Streaming
+    description: 'Video, audio, and event streaming.'
+
+websockets:
+    name: WebSockets
+    description: 'Bidirectional real-time communication.'
+
+# Frontend & UX
+frontend:
+    name: Frontend
+    description: 'Browser, JavaScript, and UI testing.'
+
+backend:
+    name: Backend
+    description: 'API, database, and server-side testing.'
+
+user-experience:
+    name: User Experience
+    description: 'UX testing and user journey validation.'
+
+responsive-design:
+    name: Responsive Design
+    description: 'Multi-device and viewport testing.'
+
+internationalisation:
+    name: Internationalisation
+    description: 'i18n testing for global audiences.'
+
+localisation:
+    name: Localisation
+    description: 'l10n, RTL layouts, and regional formats.'
+
+mobile:
+    name: Mobile
+    description: 'iOS, Android, and hybrid app testing.'
+
+# Architecture
+architecture:
+    name: Architecture
+    description: 'System design and architectural patterns.'
+
+cloud:
+    name: Cloud
+    description: 'AWS, Azure, GCP, and multi-cloud testing.'
+
+# Emerging Technologies
+emerging-tech:
+    name: Emerging Tech
+    description: 'WebGPU, WebNN, WebAssembly, and new APIs.'
+
+quantum:
+    name: Quantum Computing
+    description: 'Quantum algorithms and post-quantum security.'
+
+metaverse:
+    name: Metaverse
+    description: 'Virtual worlds and immersive experiences.'
+
+spatial-computing:
+    name: Spatial Computing
+    description: 'AR, VR, XR, and WebXR testing.'
+
+biotech:
+    name: Biotech Software
+    description: 'Healthcare, biotech, and medical device QA.'
+
+# Strategy & Career
+strategies:
+    name: Strategies
+    description: 'Test strategies and quality planning.'
+
+management:
+    name: Management
+    description: 'QA leadership and team management.'
 
 career:
     name: Career Growth
-    description: 'Navigating the tech industry, soft skills, and leadership advice for engineers.'
+    description: 'Navigating tech careers and leadership.'
+
+soft-skills:
+    name: Soft Skills
+    description: 'Communication, collaboration, and leadership.'
+
+tools:
+    name: Tools
+    description: 'Testing tools, frameworks, and utilities.'
+
+privacy:
+    name: Privacy
+    description: 'Data privacy and user consent testing.'
+
+ethics:
+    name: Ethics
+    description: 'Ethical AI, responsible tech, and bias.'
+
+sustainability:
+    name: Sustainability
+    description: 'Green tech and carbon-aware development.'
+
+finops:
+    name: FinOps
+    description: 'Cloud cost optimisation and budgeting.'
+
+cost-optimisation:
+    name: Cost Optimisation
+    description: 'Resource efficiency and cost management.'
+
+crypto:
+    name: Crypto
+    description: 'Cryptocurrency and token testing.'

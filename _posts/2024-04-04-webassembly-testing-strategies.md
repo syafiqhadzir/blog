@@ -6,11 +6,13 @@ category: QA
 slug: webassembly-testing-strategies
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- emerging-tech
+- quality-assurance
+- real-time
 - strategies
 - testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

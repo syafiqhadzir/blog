@@ -6,11 +6,12 @@ category: QA
 slug: event-driven-architecture-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
 - architecture
-- qa
+- chaos-testing
+- quality-assurance
 - testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

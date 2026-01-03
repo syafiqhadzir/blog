@@ -6,10 +6,12 @@ category: QA
 slug: multi-cloud-failover
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
+- artificial-intelligence
 - cloud
-- qa
+- quality-assurance
+- reliability
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

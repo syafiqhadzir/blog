@@ -6,11 +6,12 @@ category: QA
 slug: exploratory-testing-devops
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
 - devops
-- qa
+- exploratory-testing
+- quality-assurance
 - testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

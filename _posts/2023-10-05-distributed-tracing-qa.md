@@ -6,9 +6,10 @@ category: QA
 slug: distributed-tracing-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- quality-assurance
+- tracing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

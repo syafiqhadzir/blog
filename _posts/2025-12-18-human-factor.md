@@ -6,9 +6,10 @@ category: QA
 slug: human-factor
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- artificial-intelligence
+- quality-assurance
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

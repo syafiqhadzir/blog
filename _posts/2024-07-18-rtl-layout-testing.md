@@ -6,10 +6,11 @@ category: QA
 slug: rtl-layout-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- localisation
+- quality-assurance
 - testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

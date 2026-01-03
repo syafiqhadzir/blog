@@ -6,10 +6,12 @@ category: QA
 slug: web3-smart-contract
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- blockchain
+- contract-testing
+- quality-assurance
 - web3
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

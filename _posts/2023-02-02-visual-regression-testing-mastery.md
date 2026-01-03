@@ -6,10 +6,12 @@ category: QA
 slug: visual-regression-testing-mastery
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- quality-assurance
+- regression-testing
 - testing
+- visual-testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

@@ -6,11 +6,11 @@ category: QA
 slug: performance-testing
 gpgkey: 4AEE 18F8 3AFD EB23
 tags:
-
 - performance
-- qa
+- quality-assurance
 - testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

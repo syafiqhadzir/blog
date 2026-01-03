@@ -6,12 +6,12 @@ category: QA
 slug: accessibility-testing-automation
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
 - accessibility
 - automation
-- qa
+- quality-assurance
 - testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

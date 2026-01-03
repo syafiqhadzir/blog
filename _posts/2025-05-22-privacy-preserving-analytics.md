@@ -6,10 +6,10 @@ category: QA
 slug: privacy-preserving-analytics
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
 - privacy
-- qa
+- quality-assurance
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

@@ -6,10 +6,11 @@ category: QA
 slug: 5g-app-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- networking
+- quality-assurance
 - testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

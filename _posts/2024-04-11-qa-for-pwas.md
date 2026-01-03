@@ -6,9 +6,10 @@ category: QA
 slug: qa-for-pwas
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- progressive-web-apps
+- quality-assurance
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

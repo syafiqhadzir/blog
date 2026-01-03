@@ -6,11 +6,11 @@ category: QA
 slug: ssr-testing-strategies
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- quality-assurance
 - strategies
 - testing
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

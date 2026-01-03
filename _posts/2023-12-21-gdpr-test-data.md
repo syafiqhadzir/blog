@@ -6,9 +6,11 @@ category: QA
 slug: gdpr-test-data
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-
-- qa
+- compliance
+- data-engineering
+- quality-assurance
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
