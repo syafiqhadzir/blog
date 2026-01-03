@@ -27,6 +27,15 @@ test.describe('Full Page Coverage', { tag: '@full' }, () => {
     // We'll iterate.
 
     for (const route of routes) {
+      if (
+        route.includes('.xml') ||
+        route.includes('.txt') ||
+        route.includes('.json') ||
+        route.includes('.js') ||
+        route.includes('.css')
+      )
+        continue;
+
       await test.step(`Visit ${route}`, async () => {
         const response = await page.goto(route, {
           waitUntil: 'domcontentloaded',

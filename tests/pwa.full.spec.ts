@@ -33,7 +33,7 @@ test.describe('PWA Functionality', { tag: ['@full', '@pwa'] }, () => {
   });
 
   test('Manifest file exists and is valid', async ({ page }) => {
-    const response = await page.request.get('/manifest.json');
+    const response = await page.request.get('/site.webmanifest');
     expect(response.status()).toBe(200);
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -54,7 +54,9 @@ test.describe('PWA Functionality', { tag: ['@full', '@pwa'] }, () => {
     await page.goto('/');
 
     // Wait for service worker to be active
-    await page.waitForTimeout(2000);
+    await page.evaluate(async () => {
+      await navigator.serviceWorker.ready;
+    });
 
     // Go offline
     await context.setOffline(true);
@@ -80,7 +82,7 @@ test.describe('PWA Functionality', { tag: ['@full', '@pwa'] }, () => {
   });
 
   test('Icons are properly sized', async ({ page }) => {
-    const response = await page.request.get('/manifest.json');
+    const response = await page.request.get('/site.webmanifest');
 
     // Skip if manifest doesn't exist (PWA not fully implemented)
     if (!response.ok()) {
