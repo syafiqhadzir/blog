@@ -11,7 +11,8 @@ const CACHE_VERSION = 'v4';
 const OFFLINE_URL = '/offline.html';
 
 // Precache core assets
-precacheAndRoute(globalThis.__WB_MANIFEST);
+// eslint-disable-next-line unicorn/prefer-global-this
+precacheAndRoute(self.__WB_MANIFEST);
 
 // Clean up old caches
 cleanupOutdatedCaches();
