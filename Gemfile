@@ -31,6 +31,6 @@ end
 
 gem 'jekyll-minifier', '~> 0.2.2'
 
-platforms :mingw, :x64_mingw, :mswin do
+platforms :windows do
   gem 'wdm', '>= 0.1.0'
 end

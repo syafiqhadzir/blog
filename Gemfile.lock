@@ -6,7 +6,7 @@ GEM
       public_suffix (>= 2.0.2, < 8.0)
     afm (1.0.0)
     ast (2.4.3)
-    async (2.35.0)
+    async (2.35.1)
       console (~> 1.29)
       fiber-annotation
       io-event (~> 1.11)
@@ -258,7 +258,7 @@ CHECKSUMS
   addressable (2.8.8) sha256=7c13b8f9536cf6364c03b9d417c19986019e28f7c00ac8132da4eb0fe393b057
   afm (1.0.0) sha256=5bd4d6f6241e7014ef090985ec6f4c3e9745f6de0828ddd58bc1efdd138f4545
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
-  async (2.35.0) sha256=0f792ce968023677669fb8608d0b16585332247181ed5417b4ff45900201e834
+  async (2.35.1) sha256=5232b76ed07db1b071eab1dc9e61a7db617034f37c42a5f4b59b3c5068b14145
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   benchmark (0.5.0) sha256=465df122341aedcb81a2a24b4d3bd19b6c67c1530713fd533f3ff034e419236c
   bigdecimal (4.0.1) sha256=8b07d3d065a9f921c80ceaea7c9d4ae596697295b584c296fe599dd0ad01c4a7
@@ -361,7 +361,7 @@ CHECKSUMS
   zeitwerk (2.7.4) sha256=2bef90f356bdafe9a6c2bd32bcd804f83a4f9b8bc27f3600fff051eb3edcec8b
 
 RUBY VERSION
-   ruby 3.4.7
+  ruby 3.4.7
 
 BUNDLED WITH
-   2.6.2
+  4.0.3
