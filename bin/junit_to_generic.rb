@@ -11,15 +11,23 @@ class JunitConverter
 
   def convert
     validate_input
-    generic_doc = REXML::Document.new
-    generic_doc << REXML::XMLDecl.new
-    test_executions = generic_doc.add_element('testExecutions', { 'version' => '1' })
-
-    process_testcases(REXML::Document.new(File.read(JUNIT_FILE)).root, test_executions)
-    write_report(generic_doc)
+    doc = create_generic_document
+    process_testcases(junit_root, doc.elements['testExecutions'])
+    write_report(doc)
   end
 
   private
+
+  def create_generic_document
+    doc = REXML::Document.new
+    doc << REXML::XMLDecl.new
+    doc.add_element('testExecutions', { 'version' => '1' })
+    doc
+  end
+
+  def junit_root
+    REXML::Document.new(File.read(JUNIT_FILE)).root
+  end
 
   def validate_input
     return if File.exist?(JUNIT_FILE)
@@ -39,19 +47,30 @@ class JunitConverter
   end
 
   def add_testcase(testcase, file_element)
-    name = testcase.attributes['name']
-    duration = (testcase.attributes['time'].to_f * 1000).to_i
-    test_case_element = file_element.add_element('testCase', { 'name' => name, 'duration' => duration.to_s })
-    add_results(testcase, test_case_element)
+    attrs = testcase.attributes
+    duration = (attrs['time'].to_f * 1000).to_i
+    node = file_element.add_element('testCase', {
+                                      'name' => attrs['name'],
+                                      'duration' => duration.to_s
+                                    })
+    add_results(testcase, node)
   end
 
   def add_results(testcase, test_case_element)
-    if (failure = testcase.elements['failure'])
-      add_failure(failure, test_case_element)
-    elsif (error = testcase.elements['error'])
-      add_error(error, test_case_element)
-    elsif (skipped = testcase.elements['skipped'])
-      add_skipped(skipped, test_case_element)
+    %w[failure error skipped].each do |type|
+      element = testcase.elements[type]
+      next unless element
+
+      process_result(type, element, test_case_element)
+      break
+    end
+  end
+
+  def process_result(type, element, test_case_element)
+    case type
+    when 'failure' then add_failure(element, test_case_element)
+    when 'error' then add_error(element, test_case_element)
+    when 'skipped' then add_skipped(element, test_case_element)
     end
   end
 

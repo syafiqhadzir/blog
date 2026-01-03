@@ -15,9 +15,14 @@ AllCops:
     - 'bin/bootstrap'
     - 'Gemfile.lock'
 
-# Documentation - disabled for specs
+# Documentation - enabled for non-specs
 Style/Documentation:
-  Enabled: false
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+    - 'Rakefile'
+    - 'Gemfile'
+    - 'scripts/*.js'
 
 # Frozen string literal required
 Style/FrozenStringLiteralComment:
@@ -53,23 +58,23 @@ Layout/LineLength:
 
 # Method length - strict but reasonable
 Metrics/MethodLength:
-  Max: 15
+  Max: 10
 
 # Class length
 Metrics/ClassLength:
-  Max: 150
+  Max: 100
 
 # ABC size - complexity metric
 Metrics/AbcSize:
-  Max: 15
+  Max: 10
 
 # Cyclomatic Complexity
 Metrics/CyclomaticComplexity:
-  Max: 6
+  Max: 5
 
 # Perceived Complexity
 Metrics/PerceivedComplexity:
-  Max: 7
+  Max: 6
 
 # RSpec - stricter settings
 RSpec/ExampleLength:

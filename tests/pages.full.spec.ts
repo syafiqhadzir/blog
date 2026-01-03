@@ -1,67 +1,120 @@
+import type { Page, Response } from '@playwright/test';
+
 import { expect } from '@playwright/test';
 
 import { test } from './_helpers/fixtures';
 
-test.describe('Full Page Coverage', { tag: '@full' }, () => {
+test.describe('Global Site Audit (100% Coverage)', { tag: '@full' }, () => {
   test.describe.configure({ mode: 'parallel' });
 
-  test('Visit every generated HTML page', async ({
+  test('Every generated page must be valid and high-quality', async ({
     blockAdsAndAnalytics,
     getAllInternalRoutes,
     page,
   }) => {
-    // In full mode, we might blocks ads/analytics too to reduce noise, or keep them to test real behavior?
-    // Requirements say: PERF_MODE false in nightly. Fixture handles logic.
-    // We'll call the blocker anyway; fixture decides based on env.
     await blockAdsAndAnalytics(page);
-
     const routes = await getAllInternalRoutes();
 
-    const errors: string[] = [];
+    const htmlRoutes = routes.filter(
+      (route) =>
+        !route.endsWith('.xml') &&
+        !route.endsWith('.txt') &&
+        !route.endsWith('.json') &&
+        !route.endsWith('.js') &&
+        !route.endsWith('.css'),
+    );
 
-    // Batch processing if array is huge?
-    // For < 1000 pages, generic serial visit in one worker is simplest but slow.
-    // Parallelism is set at file level.
-    // To truly parallelize page visits, we'd need multiple tests.
-    // But routes are discovered runtime.
-    // We'll iterate.
+    // We must have at least one assertion or a call to a function that asserts.
+    expect(htmlRoutes.length).toBeGreaterThan(0);
 
-    for (const route of routes) {
-      if (
-        route.includes('.xml') ||
-        route.includes('.txt') ||
-        route.includes('.json') ||
-        route.includes('.js') ||
-        route.includes('.css')
-      )
-        continue;
-
-      await test.step(`Visit ${route}`, async () => {
+    for (const route of htmlRoutes) {
+      await test.step(`Audit ${route}`, async () => {
         const response = await page.goto(route, {
           waitUntil: 'domcontentloaded',
         });
 
-        if (!response) {
-          errors.push(`${route}: No response`);
-          return;
-        }
-
-        if (response.status() >= 400) {
-          // Double check if it's a 404 page that is actually expected?
-          // No, "getAllInternalRoutes" finds files that exist.
-          // If we goto a file that exists and get 404, server configuration or issue.
-          // Exception: The 404.html page itself should return 404?
-          // http-server usually serves file with 200 if you ask for /404.html directly.
-          if (route.includes('404')) return;
-          errors.push(`${route}: Status ${String(response.status())}`);
-        }
-
-        // Generic content checks
-        const title = await page.title();
-        if (!title) errors.push(`${route}: Empty title`);
+        await validateResponse(route, response);
+        await validateAccessibilityFeatures(route, page);
+        await validateAmp(route, page);
+        await validateSeo(route, page);
       });
     }
-
-    expect(errors, `Failed pages:\n${errors.join('\n')}`).toHaveLength(0);
   });
 });
+
+async function validateAccessibilityFeatures(
+  route: string,
+  page: Page,
+): Promise<void> {
+  const hasFlashingContent = await page.evaluate(() => {
+    const animations = document.getAnimations();
+    return animations.some((anim) => {
+      const effect = anim.effect;
+      if (!effect || !('getTiming' in effect)) return false;
+      const timing = effect.getTiming();
+      const infinityValue = Number.POSITIVE_INFINITY;
+      const loopThreshold = 3;
+      const isLooping =
+        timing.iterations === infinityValue ||
+        Number(timing.iterations) > loopThreshold;
+      const durationThreshold = 333;
+      return (
+        isLooping &&
+        timing.duration !== 'auto' &&
+        Number(timing.duration) < durationThreshold
+      );
+    });
+  });
+  expect(hasFlashingContent, `${route}: Detected flashing content`).toBe(false);
+}
+
+async function validateAmp(route: string, page: Page): Promise<void> {
+  const ampRuntime = page.locator('script[src*="cdn.ampproject.org/v0.js"]');
+  await expect(ampRuntime, `${route}: Missing AMP runtime`).toHaveCount(1);
+
+  const viewport = page.locator('meta[name="viewport"]');
+  await expect(viewport, `${route}: Missing viewport`).toHaveAttribute(
+    'content',
+    /.+/,
+  );
+}
+
+// eslint-disable-next-line @typescript-eslint/require-await
+async function validateResponse(
+  route: string,
+  response: null | Response,
+): Promise<void> {
+  expect(response, `${route}: No response`).not.toBeNull();
+  if (response) {
+    const status = response.status();
+    const okStatusThreshold = 400;
+    const isExpected404 = route.includes('404');
+    const isSuccess = status < okStatusThreshold || isExpected404;
+    expect(isSuccess, `${route}: Unexpected status ${String(status)}`).toBe(
+      true,
+    );
+  }
+}
+
+async function validateSeo(route: string, page: Page): Promise<void> {
+  const title = await page.title();
+  const minTitleLength = 10;
+  expect(title.length, `${route}: Poor title`).toBeGreaterThanOrEqual(
+    minTitleLength,
+  );
+
+  const description = await page
+    .locator('meta[name="description"]')
+    .getAttribute('content');
+  const minDescLength = 50;
+  expect(
+    description?.length ?? 0,
+    `${route}: Poor description`,
+  ).toBeGreaterThanOrEqual(minDescLength);
+
+  const canonical = page.locator('link[rel="canonical"]');
+  await expect(canonical, `${route}: Missing canonical`).toHaveAttribute(
+    'href',
+    /.+/,
+  );
+}

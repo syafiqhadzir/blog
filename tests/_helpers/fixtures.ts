@@ -1,6 +1,9 @@
-import type { Page } from '@playwright/test';
-
-import { test as base } from '@playwright/test';
+/* eslint-disable @typescript-eslint/naming-convention */
+import {
+  type APIRequestContext,
+  test as base,
+  type Page,
+} from '@playwright/test';
 import { XMLParser } from 'fast-xml-parser';
 import * as fs from 'node:fs';
 import path from 'node:path';
@@ -42,21 +45,19 @@ const normalizeRoute = (route: string): string => {
 };
 
 // Helper to parse feed XML and extract routes
- 
+
 async function parseFeedRoutes(
-  request: any,
+  request: APIRequestContext,
   routes: Set<string>,
 ): Promise<void> {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const feedResponse = await request.get(`${BASE_URL}/feed.xml`);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+
     if (!feedResponse.ok()) return;
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const xml = await feedResponse.text();
-    const parser = new XMLParser();
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    const parser = new XMLParser({ ignoreAttributes: false });
+
     const feedObject = parser.parse(xml) as { feed?: { entry?: unknown } };
     const feedEntries = feedObject.feed?.entry ?? [];
     const entryList = Array.isArray(feedEntries)
@@ -64,9 +65,9 @@ async function parseFeedRoutes(
       : [feedEntries];
 
     for (const entry of entryList) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
-      const link = (entry as any).link?.['@_href'];
-      if (link && typeof link === 'string') {
+      const entryObject = entry as { link?: { '@_href'?: string } };
+      const link = entryObject.link?.['@_href'];
+      if (link) {
         routes.add(normalizeRoute(link));
       }
     }
@@ -76,21 +77,19 @@ async function parseFeedRoutes(
 }
 
 // Helper to parse sitemap XML and extract routes
- 
+
 async function parseSitemapRoutes(
-  request: any,
+  request: APIRequestContext,
   routes: Set<string>,
 ): Promise<void> {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const sitemapResponse = await request.get(`${BASE_URL}/sitemap.xml`);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+
     if (!sitemapResponse.ok()) return;
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const xml = await sitemapResponse.text();
     const parser = new XMLParser();
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+
     const jsonObject = parser.parse(xml) as { urlset?: { url?: unknown } };
     const urlEntries = jsonObject.urlset?.url ?? [];
     const urlList = Array.isArray(urlEntries)
@@ -98,15 +97,14 @@ async function parseSitemapRoutes(
       : [urlEntries];
 
     for (const entry of urlList) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
-      const location = (entry as any).loc;
-      if (location && typeof location === 'string') {
+      const entryObject = entry as { loc?: string };
+      const location = entryObject.loc;
+      if (location) {
         routes.add(normalizeRoute(location));
       }
     }
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.warn('Sitemap discovery failed, relying on filesystem.', error);
+    process.stderr.write(`Sitemap discovery failed: ${String(error)}\n`);
   }
 }
 
@@ -227,10 +225,10 @@ export const test = base.extend<BlogFixtures>({
       const uniqueHrefs = [...new Set(hrefs)];
 
       for (const href of uniqueHrefs) {
-         
         if (
           href.startsWith('#') ||
           href.startsWith('mailto:') ||
+          // eslint-disable-next-line sonarjs/code-eval
           href.startsWith('javascript:')
         )
           continue;

@@ -12,6 +12,8 @@ async function optimizeImages() {
   const images = await glob('img/**/*.{jpg,jpeg,png,svg}', { absolute: true });
   images.push(path.resolve('logo.png'));
 
+  const QUALITY = 80;
+
   await Promise.allSettled(
     images.map(async (filepath) => {
       const extension = path.extname(filepath).toLowerCase();
@@ -26,8 +28,8 @@ async function optimizeImages() {
       } else if (['.jpeg', '.jpg', '.png'].includes(extension)) {
         const pipeline =
           extension === '.png'
-            ? sharp(data).png({ palette: true, quality: 80 })
-            : sharp(data).jpeg({ progressive: true, quality: 80 });
+            ? sharp(data).png({ palette: true, quality: QUALITY })
+            : sharp(data).jpeg({ progressive: true, quality: QUALITY });
 
         await pipeline.toFile(filepath + '.tmp');
         await fs.rename(filepath + '.tmp', filepath);
@@ -40,5 +42,6 @@ try {
   await optimizeImages();
 } catch (error) {
   process.stderr.write(`Image optimization failed: ${String(error)}\n`);
+  // eslint-disable-next-line unicorn/no-process-exit
   process.exit(1);
 }

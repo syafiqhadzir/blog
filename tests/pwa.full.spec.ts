@@ -36,8 +36,15 @@ test.describe('PWA Functionality', { tag: ['@full', '@pwa'] }, () => {
     const response = await page.request.get('/site.webmanifest');
     expect(response.status()).toBe(200);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const manifest = await response.json();
+    const manifest = (await response.json()) as {
+      display: string;
+      icons: unknown[];
+      name: string;
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      short_name: string;
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      start_url: string;
+    };
 
     // Verify required manifest fields
     expect(manifest).toHaveProperty('name');
@@ -74,40 +81,30 @@ test.describe('PWA Functionality', { tag: ['@full', '@pwa'] }, () => {
   test('Cache API is available', async ({ page }) => {
     await page.goto('/');
 
-    const cacheAvailable = await page.evaluate(() => {
-      return 'caches' in globalThis;
-    });
+    const cacheAvailable = await page.evaluate(() => 'caches' in globalThis);
 
     expect(cacheAvailable).toBe(true);
   });
 
   test('Icons are properly sized', async ({ page }) => {
     const response = await page.request.get('/site.webmanifest');
-
-    // Skip if manifest doesn't exist (PWA not fully implemented)
-    if (!response.ok()) {
-      test.skip();
-      return;
-    }
+    expect(response.ok(), 'Manifest should exist').toBe(true);
 
     const manifest = (await response.json()) as {
-      icons?: { sizes: string; src: string; type: string }[];
+      icons: { sizes: string; src: string; type: string }[];
     };
 
     expect(manifest.icons).toBeDefined();
     expect(Array.isArray(manifest.icons)).toBe(true);
-    expect(manifest.icons?.length).toBeGreaterThan(0);
+    expect(manifest.icons.length).toBeGreaterThan(0);
 
-    const icons = manifest.icons ?? [];
-    for (const icon of icons) {
+    for (const icon of manifest.icons) {
       expect(icon).toHaveProperty('src');
       expect(icon).toHaveProperty('sizes');
       expect(icon).toHaveProperty('type');
 
       // Verify icon file exists
-      const iconResponse = await page.request.get(
-        (icon as { src: string }).src,
-      );
+      const iconResponse = await page.request.get(icon.src);
       expect(iconResponse.status()).toBe(200);
     }
   });

@@ -36,8 +36,20 @@ jobs:
       - name: Run ESLint
         run: npm run lint:ts
 
+      - name: Run Stylelint
+        run: npm run lint:css
+
       - name: Run RuboCop
         run: bundle exec rubocop
+
+      - name: Generate Reports for Sonar
+        run: npm run report
+
+      - name: SonarQube Analysis
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   pr-fast-lane:
     needs: lint-and-typecheck

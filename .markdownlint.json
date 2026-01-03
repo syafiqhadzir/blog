@@ -56,6 +56,13 @@
     ]
   },
   "MD024": {
-    "siblings_only": true
-  }
+    "siblings_only": false
+  },
+  "MD025": true,
+  "MD026": true,
+  "MD029": {
+    "style": "ordered"
+  },
+  "MD036": true,
+  "MD041": true
 }

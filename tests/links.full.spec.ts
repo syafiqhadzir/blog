@@ -74,7 +74,6 @@ test.describe('Internal Link Validation', { tag: ['@full', '@links'] }, () => {
     page,
   }) => {
     const routes = await getAllInternalRoutes();
-    const brokenLinks: string[] = [];
     const allFoundLinks = new Set<string>();
 
     // Extract all links from all pages
@@ -100,15 +99,19 @@ test.describe('Internal Link Validation', { tag: ['@full', '@links'] }, () => {
     );
 
     // Validate all found links
-    for (const link of allFoundLinks) {
-      if (!checkLinkExists(link, routeSet)) {
-        const response = await page.request.head(link);
-        if (response.status() === 404) {
-          brokenLinks.push(link);
-        }
-      }
-    }
+    const linkValidationResults = await Promise.all(
+      [...allFoundLinks].map(async (link) => {
+        const exists = checkLinkExists(link, routeSet);
+        const response = exists ? undefined : await page.request.head(link);
+        const status = response?.status() ?? 200;
+        return { link, status };
+      }),
+    );
 
-    expect(brokenLinks).toHaveLength(0);
+    const broken = linkValidationResults
+      .filter((result) => result.status === 404)
+      .map((result) => result.link);
+
+    expect(broken).toHaveLength(0);
   });
 });

@@ -11,8 +11,13 @@ test.describe('Performance Metrics', { tag: ['@full', '@perf'] }, () => {
 
   test.afterAll(() => {
     const resultsDirectory = path.resolve('test-results');
-    if (!fs.existsSync(resultsDirectory))
-      fs.mkdirSync(resultsDirectory, { recursive: true });
+    try {
+      if (!fs.existsSync(resultsDirectory)) {
+        fs.mkdirSync(resultsDirectory, { recursive: true });
+      }
+    } catch {
+      // Ignore if dir exists or creation fails
+    }
 
     fs.writeFileSync(
       path.join(resultsDirectory, 'perf.json'),
@@ -31,9 +36,7 @@ test.describe('Performance Metrics', { tag: ['@full', '@perf'] }, () => {
       results.push(await collectPerfMetrics(page));
     }
 
-    const loadMax = process.env['LOAD_MAX']
-      ? Number.parseInt(process.env['LOAD_MAX'], 10)
-      : 3500;
+    const loadMax = Number.parseInt(process.env['LOAD_MAX'] ?? '3500', 10);
 
     for (const result of results) {
       expect(result.loaded, `Page ${result.url} too slow`).toBeLessThan(

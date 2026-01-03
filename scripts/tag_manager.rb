@@ -178,16 +178,19 @@ class TagManager
 
   def self.process_content(file, fm_text, body)
     fm = YAML.safe_load(fm_text, permitted_classes: [Date, Time])
-    tags = extract_initial_tags(fm)
-    add_category_tags(fm, tags)
-    add_slug_tags(file, fm, tags)
-    add_keyword_tags(file, fm, tags)
+    enrich_metadata(file, fm)
+    write_file(file, fm, body)
+  end
+
+  def self.enrich_metadata(file, front_matter)
+    tags = extract_initial_tags(front_matter)
+    add_category_tags(front_matter, tags)
+    add_slug_tags(file, front_matter, tags)
+    add_keyword_tags(file, front_matter, tags)
 
     final_tags = normalize_tags(tags)
     final_tags << 'strategies' if final_tags.empty?
-    fm['tags'] = final_tags.sort
-
-    write_file(file, fm, body)
+    front_matter['tags'] = final_tags.sort
   end
 
   def self.extract_initial_tags(front_matter)
@@ -206,9 +209,17 @@ class TagManager
     slug = front_matter['slug'] || extract_slug_from_filename(file)
     return unless slug
 
-    slug.to_s.split('-').each do |w|
-      tags << w if CANONICAL_TAGS.include?(w) || SYNONYMS.key?(w)
+    process_slug_into_tags(slug.to_s, tags)
+  end
+
+  def self.process_slug_into_tags(slug, tags)
+    slug.split('-').each do |word|
+      tags << word if valid_slug_word?(word)
     end
+  end
+
+  def self.valid_slug_word?(word)
+    CANONICAL_TAGS.include?(word) || SYNONYMS.key?(word)
   end
 
   def self.extract_slug_from_filename(file)
@@ -227,10 +238,18 @@ class TagManager
   end
 
   def self.normalize_tags(list)
-    list.map { |t| t.to_s.downcase.strip }
-        .map { |t| SYNONYMS[t] || t }
+    list.map { |t| normalize_tag(t) }
         .uniq
-        .select { |t| t.length >= MIN_TAG_LENGTH && CANONICAL_TAGS.include?(t) }
+        .select { |t| valid_tag?(t) }
+  end
+
+  def self.normalize_tag(tag)
+    t = tag.to_s.downcase.strip
+    SYNONYMS[t] || t
+  end
+
+  def self.valid_tag?(tag)
+    tag.length >= MIN_TAG_LENGTH && CANONICAL_TAGS.include?(tag)
   end
 
   def self.write_file(file, front_matter, body)
