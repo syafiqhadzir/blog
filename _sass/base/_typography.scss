@@ -1,25 +1,25 @@
 html {
-    font-size: calc(100% * var(--text-scale));
+  font-size: calc(100% * var(--text-scale));
 }
 
 body {
-    font-family: var(--font-body);
-    font-size: clamp(1.1rem, 1rem + 0.25vw, 1.25rem);
-    line-height: var(--line-height);
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 1rem + 0.25vw, 1.25rem);
+  line-height: var(--line-height);
 }
 
 h1 {
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
 }
 
 h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 h2,
@@ -27,23 +27,23 @@ h3,
 h4,
 h5,
 h6 {
-    margin-top: 3rem;
-    color: var(--text-color);
+  margin-top: 3rem;
+  color: var(--text-color);
 }
 
 a {
-    color: var(--link-color);
-    text-decoration: underline;
-    text-decoration-skip-ink: auto;
+  color: var(--link-color);
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 code {
-    font-family: var(--font-mono);
-    color: var(--code-color);
-    background: var(--code-bg);
-    border-radius: 3px;
+  font-family: var(--font-mono);
+  color: var(--code-color);
+  background: var(--code-bg);
+  border-radius: 3px;
 }

@@ -5,7 +5,7 @@ date: 2022-11-17
 category: QA
 slug: software-testing-fundamentals
 gpgkey: EBE8 BD81 6838 1BAF
-tags: ["methodology", "automation", "frontend-testing"]
+tags: ['methodology', 'automation', 'frontend-testing']
 ---
 
 ## Table of Contents
@@ -22,50 +22,59 @@ tags: ["methodology", "automation", "frontend-testing"]
 
 ## Introduction
 
-Software testing is often treated like flossing: everyone says they do it, but most people only do it furiously right
-before the dentist (or the Release Manager) inspects their work.
+Software testing is often treated like flossing: everyone says they do it, but
+most people only do it furiously right before the dentist (or the Release
+Manager) inspects their work.
 
-But testing is not just a chore. It is the art of strategic pessimism. To succeed, you must accept one fundamental
-truth: Developers are optimists. They believe `2 + 2 = 4`. We are the realists who ask, "What if I add a banana to 2?"
+But testing is not just a chore. It is the art of strategic pessimism. To
+succeed, you must accept one fundamental truth: Developers are optimists. They
+believe `2 + 2 = 4`. We are the realists who ask, "What if I add a banana to 2?"
 
 ## TL;DR
 
 - **Trust No One**: Every line of code is potentially a crime scene.
-- **Defect Definition**: If it annoys the user, it is a bug. Even if "it works as designed."
-- **Severity != Priority**: A server crash (High Severity) might be less important than a typo on the CEO's name (High
-  Priority).
-- **Context is King**: A bug in a pacemaker is different from a bug in a cat meme generator.
+- **Defect Definition**: If it annoys the user, it is a bug. Even if "it works
+  as designed."
+- **Severity != Priority**: A server crash (High Severity) might be less
+  important than a typo on the CEO's name (High Priority).
+- **Context is King**: A bug in a pacemaker is different from a bug in a cat
+  meme generator.
 
 ## Guilty Until Proven Innocent
 
 The first rule of QA Club: **Every line of code is guilty.**
 
-It assumes that every software application has defects embedded in it, waiting to strike like a raccoon in a bin.
-Developers are blinded by the "Happy Path". They test that the login works with correct credentials. We test what
-happens if you paste the entire script of *Shrek* into the password field.
+It assumes that every software application has defects embedded in it, waiting
+to strike like a raccoon in a bin. Developers are blinded by the "Happy Path".
+They test that the login works with correct credentials. We test what happens if
+you paste the entire script of _Shrek_ into the password field.
 
 ## Severity vs Priority: The Cage Match
 
-Understanding the difference between Severity and Priority is what separates the Lead QA from the person who just files
-everything as "Critical".
+Understanding the difference between Severity and Priority is what separates the
+Lead QA from the person who just files everything as "Critical".
 
 - **Severity** (Technical): How much damage does the bug do?
-  - *The server exploded.* -> **Critical Severity**.
-  - *The logo is 1px off.* -> **Low Severity**.
+  - _The server exploded._ -> **Critical Severity**.
+  - _The logo is 1px off._ -> **Low Severity**.
 
 - **Priority** (Business): How fast do we need to fix it?
-  - *The logo is 1px off, but it is on the Super Bowl advert landing page.* -> **Critical Priority**.
-  - *The server exploded, but it is the dev environment at 3 AM.* -> **Low Priority**.
+  - _The logo is 1px off, but it is on the Super Bowl advert landing page._ ->
+    **Critical Priority**.
+  - _The server exploded, but it is the dev environment at 3 AM._ -> **Low
+    Priority**.
 
-You can have a **High Severity / Low Priority** bug (The application crashes on Windows 95).
-You can have a **Low Severity / High Priority** bug (The CEO's name is spelled wrong on the homepage).
+You can have a **High Severity / Low Priority** bug (The application crashes on
+Windows 95). You can have a **Low Severity / High Priority** bug (The CEO's name
+is spelled wrong on the homepage).
 
 ## Code Snippet: Tagging Priorities
 
-We do not just prioritise bugs; we prioritise *tests*. You cannot run 5,000 E2E tests on every commit unless you have
-infinite money. Use tags.
+We do not just prioritise bugs; we prioritise _tests_. You cannot run 5,000 E2E
+tests on every commit unless you have infinite money. Use tags.
 
-Here is how you tag tests in Playwright to separate the "Must Fix" from the "Nice to Fix":
+Here is how you tag tests in Playwright to separate the "Must Fix" from the
+"Nice to Fix":
 
 ```javascript
 import { test, expect } from '@playwright/test';
@@ -85,22 +94,28 @@ test('Footer copyright year is current [@minor]', async ({ page }) => {
 });
 ```
 
-When the release is hot, run `npx playwright test --grep @critical`. When you have time (never), run them all.
+When the release is hot, run `npx playwright test --grep @critical`. When you
+have time (never), run them all.
 
 ## Summary
 
-Software testing is not just about "breaking things"; it is about verifying reality. By understanding the difference
-between Severity and Priority, and by embracing the inherent guilt of all code, you become not just a tester, but a
+Software testing is not just about "breaking things"; it is about verifying
+reality. By understanding the difference between Severity and Priority, and by
+embracing the inherent guilt of all code, you become not just a tester, but a
 guardian of sanity.
 
 ## Key Takeaways
 
-- **Differentiate**: Know the difference between a technical crash and a business emergency.
-- **Advocate**: Fight for the user. If a bug frustrates them, it matters foundationally.
-- **Tagging**: Categorise your tests. Not every test deserves to block a deployment.
+- **Differentiate**: Know the difference between a technical crash and a
+  business emergency.
+- **Advocate**: Fight for the user. If a bug frustrates them, it matters
+  foundationally.
+- **Tagging**: Categorise your tests. Not every test deserves to block a
+  deployment.
 
 ## Next Steps
 
-- **Audit**: Go look at your Jira backlog. Are the Priorities accurate, or is everything "High"?
+- **Audit**: Go look at your Jira backlog. Are the Priorities accurate, or is
+  everything "High"?
 - **Tag**: Add `[@critical]` to your top 5 most important automated tests today.
 - **Floss**: Seriously, do it. Ideally every day.

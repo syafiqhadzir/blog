@@ -1,155 +1,155 @@
 /* Klisé-style Navigation */
 .klise-nav {
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .nav-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .nav-left {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
 }
 
 .nav-brand {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-color);
-    text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+  text-decoration: none;
 }
 
 .nav-brand:hover {
-    color: var(--link-color);
+  color: var(--link-color);
 }
 
 .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .nav-links li {
-    margin: 0;
+  margin: 0;
 }
 
 .nav-links a {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 
-    /* WCAG 2.5.8: Minimum 24×24px touch target */
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition:
-        color var(--transition-fast),
-        transform var(--transition-fast);
+  /* WCAG 2.5.8: Minimum 24×24px touch target */
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 /* Gradient underline effect */
 .nav-links a::after {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    content: '';
-    background: var(--gradient-accent);
-    transition:
-        width var(--transition-base) var(--ease-out-expo),
-        left var(--transition-base) var(--ease-out-expo);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  content: '';
+  background: var(--gradient-accent);
+  transition:
+    width var(--transition-base) var(--ease-out-expo),
+    left var(--transition-base) var(--ease-out-expo);
 }
 
 .nav-links a:hover::after,
 .nav-links .active::after {
-    left: 0;
-    width: 100%;
+  left: 0;
+  width: 100%;
 }
 
 .nav-links a:hover,
 .nav-links .active {
-    font-weight: 600;
-    color: var(--text-color);
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 .nav-links a:focus-visible {
-    outline: none;
-    border-radius: 4px;
-    box-shadow: var(--focus-ring);
+  outline: none;
+  border-radius: 4px;
+  box-shadow: var(--focus-ring);
 }
 
 /* Klisé-style Mode Toggle */
 .mode-toggle {
-    display: flex;
-    align-items: center;
-    color: var(--text-secondary);
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  cursor: pointer;
 }
 
 .mode-toggle .icon-moon,
 .mode-toggle .icon-sun {
-    display: none; /* Default hidden */
-    align-items: center;
-    padding: 0.5rem;
-    color: var(--text-secondary);
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    transition: color 0.15s ease;
+  display: none; /* Default hidden */
+  align-items: center;
+  padding: 0.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: color 0.15s ease;
 }
 
 /* Default (Light Mode) */
 .mode-toggle .icon-moon {
-    display: flex;
+  display: flex;
 }
 
 /* Dark Theme Override */
 .dark-theme .mode-toggle .icon-moon {
-    display: none;
+  display: none;
 }
 
 .dark-theme .mode-toggle .icon-sun {
-    display: flex;
+  display: flex;
 }
 
 /* Light Theme Override (Explicit) */
 .light-theme .mode-toggle .icon-moon {
-    display: flex;
+  display: flex;
 }
 
 .light-theme .mode-toggle .icon-sun {
-    display: none;
+  display: none;
 }
 
 /* System Dark Preference (Auto) */
 @media (prefers-color-scheme: dark) {
-    .auto .mode-toggle .icon-moon {
-        display: none;
-    }
+  .auto .mode-toggle .icon-moon {
+    display: none;
+  }
 
-    .auto .mode-toggle .icon-sun {
-        display: flex;
-    }
+  .auto .mode-toggle .icon-sun {
+    display: flex;
+  }
 }
 
 .mode-toggle button:hover {
-    color: var(--text-color);
+  color: var(--text-color);
 }
 
 .mode-toggle svg {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }

@@ -2,55 +2,55 @@
 
 /* Breadcrumbs */
 .breadcrumbs {
-    padding: 0;
-    margin: 1rem 0 2rem;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+  padding: 0;
+  margin: 1rem 0 2rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
 }
 
 .breadcrumbs ol {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .breadcrumbs li {
-    display: inline-flex;
-    align-items: center;
-    color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-secondary);
 }
 
 .breadcrumbs li:not(:last-child)::after {
-    margin: 0 0.5rem;
-    color: var(--text-secondary);
-    opacity: 50%;
+  margin: 0 0.5rem;
+  color: var(--text-secondary);
+  opacity: 50%;
 }
 
 .breadcrumbs a {
-    color: var(--text-secondary);
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition:
-        text-decoration-color 0.2s ease,
-        color 0.2s ease;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition:
+    text-decoration-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .breadcrumbs a:hover {
-    color: var(--link-color);
-    text-decoration-color: var(--link-color);
+  color: var(--link-color);
+  text-decoration-color: var(--link-color);
 }
 
 /* stylelint-disable-next-line selector-no-qualifying-type -- semantic span required for ARIA hidden element */
 .breadcrumbs span[aria-hidden='true'] {
-    margin: 0 0.5rem;
-    opacity: 50%;
+  margin: 0 0.5rem;
+  opacity: 50%;
 }
 
 /* stylelint-disable-next-line selector-no-qualifying-type -- semantic span required for current page indicator */
 .breadcrumbs span[aria-current='page'] {
-    font-weight: 500;
-    color: var(--text-color);
+  font-weight: 500;
+  color: var(--text-color);
 }

@@ -1,61 +1,61 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": [
-        "config:recommended",
-        "group:allNonMajor",
-        ":dependencyDashboard",
-        ":semanticCommits",
-        ":automergePatch"
-    ],
-    "timezone": "Asia/Kuala_Lumpur",
-    "schedule": ["before 6am on Monday"],
-    "labels": ["dependencies", "renovate"],
-    "prHourlyLimit": 2,
-    "prConcurrentLimit": 5,
-    "automerge": true,
-    "automergeType": "pr",
-    "platformAutomerge": true,
-    "packageRules": [
-        {
-            "description": "Auto-merge patch updates",
-            "matchUpdateTypes": ["patch"],
-            "automerge": true
-        },
-        {
-            "description": "Auto-merge minor updates for dev dependencies",
-            "matchDepTypes": ["devDependencies"],
-            "matchUpdateTypes": ["minor"],
-            "automerge": true
-        },
-        {
-            "description": "Require approval for major updates",
-            "matchUpdateTypes": ["major"],
-            "automerge": false,
-            "labels": ["major-update", "requires-review"]
-        },
-        {
-            "description": "Group Playwright updates",
-            "matchPackagePatterns": ["^@playwright", "^playwright"],
-            "groupName": "Playwright"
-        },
-        {
-            "description": "Group ESLint updates",
-            "matchPackagePatterns": ["^eslint", "^@eslint"],
-            "groupName": "ESLint"
-        },
-        {
-            "description": "Group TypeScript updates",
-            "matchPackagePatterns": ["^typescript", "^@types"],
-            "groupName": "TypeScript"
-        },
-        {
-            "description": "Group Jekyll plugins",
-            "matchPackagePatterns": ["^jekyll"],
-            "groupName": "Jekyll"
-        }
-    ],
-    "vulnerabilityAlerts": {
-        "enabled": true,
-        "labels": ["security"]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "group:allNonMajor",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":automergePatch"
+  ],
+  "timezone": "Asia/Kuala_Lumpur",
+  "schedule": ["before 6am on Monday"],
+  "labels": ["dependencies", "renovate"],
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 5,
+  "automerge": true,
+  "automergeType": "pr",
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "description": "Auto-merge patch updates",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "description": "Auto-merge minor updates for dev dependencies",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": true
+    },
+    {
+      "description": "Require approval for major updates",
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["major-update", "requires-review"]
+    },
+    {
+      "description": "Group Playwright updates",
+      "matchPackagePatterns": ["^@playwright", "^playwright"],
+      "groupName": "Playwright"
+    },
+    {
+      "description": "Group ESLint updates",
+      "matchPackagePatterns": ["^eslint", "^@eslint"],
+      "groupName": "ESLint"
+    },
+    {
+      "description": "Group TypeScript updates",
+      "matchPackagePatterns": ["^typescript", "^@types"],
+      "groupName": "TypeScript"
+    },
+    {
+      "description": "Group Jekyll plugins",
+      "matchPackagePatterns": ["^jekyll"],
+      "groupName": "Jekyll"
     }
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security"]
+  }
 }

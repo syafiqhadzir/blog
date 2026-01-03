@@ -3,65 +3,65 @@
 
 version: 2
 updates:
-    # Ruby/Bundler dependencies
-    - package-ecosystem: 'bundler'
-      directory: '/'
-      schedule:
-          interval: 'weekly'
-          day: 'monday'
-          time: '06:00'
-          timezone: 'Asia/Kuala_Lumpur'
-      open-pull-requests-limit: 5
-      commit-message:
-          prefix: 'deps(ruby)'
-      labels:
-          - 'dependencies'
-          - 'ruby'
-      groups:
-          ruby-minor-patch:
-              patterns:
-                  - '*'
-              update-types:
-                  - 'minor'
-                  - 'patch'
+  # Ruby/Bundler dependencies
+  - package-ecosystem: 'bundler'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '06:00'
+      timezone: 'Asia/Kuala_Lumpur'
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: 'deps(ruby)'
+    labels:
+      - 'dependencies'
+      - 'ruby'
+    groups:
+      ruby-minor-patch:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
 
-    # npm dependencies
-    - package-ecosystem: 'npm'
-      directory: '/'
-      schedule:
-          interval: 'weekly'
-          day: 'monday'
-          time: '06:00'
-          timezone: 'Asia/Kuala_Lumpur'
-      open-pull-requests-limit: 5
-      commit-message:
-          prefix: 'deps(npm)'
-      labels:
-          - 'dependencies'
-          - 'javascript'
-      groups:
-          npm-minor-patch:
-              patterns:
-                  - '*'
-              update-types:
-                  - 'minor'
-                  - 'patch'
+  # npm dependencies
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '06:00'
+      timezone: 'Asia/Kuala_Lumpur'
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: 'deps(npm)'
+    labels:
+      - 'dependencies'
+      - 'javascript'
+    groups:
+      npm-minor-patch:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
 
-    # GitHub Actions
-    - package-ecosystem: 'github-actions'
-      directory: '/'
-      schedule:
-          interval: 'weekly'
-          day: 'monday'
-          time: '06:00'
-          timezone: 'Asia/Kuala_Lumpur'
-      open-pull-requests-limit: 3
-      commit-message:
-          prefix: 'ci(actions)'
-      labels:
-          - 'dependencies'
-          - 'github-actions'
-      groups:
-          actions-all:
-              patterns:
-                  - '*'
+  # GitHub Actions
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '06:00'
+      timezone: 'Asia/Kuala_Lumpur'
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: 'ci(actions)'
+    labels:
+      - 'dependencies'
+      - 'github-actions'
+    groups:
+      actions-all:
+        patterns:
+          - '*'

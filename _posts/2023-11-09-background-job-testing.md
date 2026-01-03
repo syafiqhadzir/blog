@@ -5,7 +5,7 @@ date: 2023-11-09
 category: QA
 slug: background-job-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags: ["qa-general"]
+tags: ['qa-general']
 ---
 
 ## Table of Contents
@@ -22,37 +22,47 @@ tags: ["qa-general"]
 
 ## Introduction
 
-In the world of web development, anything that takes longer than 500ms is a "Background Job". Sending emails, resizing
-images, mining crypto on your users' CPUs (joking... mostly).
+In the world of web development, anything that takes longer than 500ms is a
+"Background Job". Sending emails, resizing images, mining crypto on your users'
+CPUs (joking... mostly).
 
-Developers love "Fire and Forget". QA Engineers know that "Forget" usually means "It silently failed, and we found out
-three months later when the CEO tried to reset his password."
+Developers love "Fire and Forget". QA Engineers know that "Forget" usually means
+"It silently failed, and we found out three months later when the CEO tried to
+reset his password."
 
 ## TL;DR
 
-- **Enqueueing needs verification**: Verify the job was actually sent to the queue.
-- **Execution needs verification**: Verify the job performs the task (e.g., sends email) when processed.
-- **Dead Letter Queue (DLQ) needs testing**: Verify what happens when the job fails 5 times. Does it retry or die?
+- **Enqueueing needs verification**: Verify the job was actually sent to the
+  queue.
+- **Execution needs verification**: Verify the job performs the task (e.g.,
+  sends email) when processed.
+- **Dead Letter Queue (DLQ) needs testing**: Verify what happens when the job
+  fails 5 times. Does it retry or die?
 
 ## Fire and Forget (And Pray)
 
-The problem with async jobs is that the HTTP response is usually `202 Accepted`. This just means "I promise to do this
-later."
+The problem with async jobs is that the HTTP response is usually `202 Accepted`.
+This just means "I promise to do this later."
 
 Promises, as my ex will tell you, are often broken.
 
-Testing background jobs requires a mindset shift. You cannot just assert the response code. You have to peek behind the
-curtain and check the queue, the database side-effects, and the external API calls.
+Testing background jobs requires a mindset shift. You cannot just assert the
+response code. You have to peek behind the curtain and check the queue, the
+database side-effects, and the external API calls.
 
 ## The Three Phases of Async Testing
 
-1. **The Trigger**: Does clicking "Sign Up" actually queue the `WelcomeEmailJob`? (Mock the queue).
-2. **The Work**: Does running `WelcomeEmailJob` actually send an email? (Mock the email provider).
-3. **The Retries**: If the Email Service is down, does the job retry exponentially, or does it crash and burn?
+1. **The Trigger**: Does clicking "Sign Up" actually queue the
+   `WelcomeEmailJob`? (Mock the queue).
+2. **The Work**: Does running `WelcomeEmailJob` actually send an email? (Mock
+   the email provider).
+3. **The Retries**: If the Email Service is down, does the job retry
+   exponentially, or does it crash and burn?
 
 ## Code Snippet: Testing the Worker
 
-Here is a typical test case using a mock for an Email Worker (JavaScript/Jest style).
+Here is a typical test case using a mock for an Email Worker (JavaScript/Jest
+style).
 
 ```javascript
 /* 
@@ -76,7 +86,7 @@ describe('Email Worker', () => {
     expect(emailProvider.send).toHaveBeenCalledWith({
       to: 'qa@example.com',
       subject: 'Welcome!',
-      body: expect.stringContaining('Thanks for signing up')
+      body: expect.stringContaining('Thanks for signing up'),
     });
   });
 
@@ -86,7 +96,7 @@ describe('Email Worker', () => {
 
     // 2. Assert the bubble-up ensures the Queue System sees the failure
     await expect(emailWorker.process(jobPayload)).rejects.toThrow('API Down');
-    
+
     // Note: The Queue System (e.g. Bull/Sidekiq) is responsible for the Retry logic,
     // so we just need to verify we bubble the error up.
   });
@@ -95,20 +105,25 @@ describe('Email Worker', () => {
 
 ## Summary
 
-Background jobs are the plumbing of your application. Nobody notices them until the toilets back up.
+Background jobs are the plumbing of your application. Nobody notices them until
+the toilets back up.
 
-By testing the enqueueing, execution, and failure modes, you make sure that "Async" does not mean "Abyss".
+By testing the enqueueing, execution, and failure modes, you make sure that
+"Async" does not mean "Abyss".
 
 ## Key Takeaways
 
-- **Idempotency prevents double-charging**: Ensure that running the job twice does not charge the customer twice.
-  (Queues sometimes deliver double messages).
-- **Observability catches silent failures**: If a job dies in the forest (queue) and no one logs it, did it make a
-  sound?
-- **Integration tests need polling**: At least one E2E test should wait for the job to complete (use polling).
+- **Idempotency prevents double-charging**: Ensure that running the job twice
+  does not charge the customer twice. (Queues sometimes deliver double
+  messages).
+- **Observability catches silent failures**: If a job dies in the forest (queue)
+  and no one logs it, did it make a sound?
+- **Integration tests need polling**: At least one E2E test should wait for the
+  job to complete (use polling).
 
 ## Next Steps
 
 - **Audit**: List all background jobs in your codebase.
-- **Check DLQ**: Go look at your Dead Letter Queue. Is it full of valid jobs from 2021?
+- **Check DLQ**: Go look at your Dead Letter Queue. Is it full of valid jobs
+  from 2021?
 - **Add Tests**: Write a unit test for your most critical worker today.

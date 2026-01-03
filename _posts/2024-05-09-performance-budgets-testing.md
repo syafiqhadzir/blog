@@ -5,7 +5,7 @@ date: 2024-05-09
 category: QA
 slug: performance-budgets-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags: ["performance", "qa-strategy", "automation"]
+tags: ['performance', 'qa-strategy', 'automation']
 ---
 
 ## Table of Contents
@@ -22,24 +22,26 @@ tags: ["performance", "qa-strategy", "automation"]
 
 ## Introduction
 
-Your developers want to import `moment.js` (60KB) to format one date. They want `lodash` (70KB) to flatten one array.
-They are building a monster.
+Your developers want to import `moment.js` (60KB) to format one date. They want
+`lodash` (70KB) to flatten one array. They are building a monster.
 
-A Performance Budget is the only thing standing between your speedy app and a bloatware disaster. It is a hard limit. If
-you cross it, the build fails. No mercy.
+A Performance Budget is the only thing standing between your speedy app and a
+bloatware disaster. It is a hard limit. If you cross it, the build fails. No
+mercy.
 
 ## TL;DR
 
 - **Size limits are mandatory**: JavaScript < 200KB (Gzipped). CSS < 50KB.
 - **Time limits matter**: Time to Interactive (TTI) < 3.5s on 3G.
-- **Images need compression**: No single image > 100KB unless it is the Mona Lisa (and even then, use WebP).
+- **Images need compression**: No single image > 100KB unless it is the Mona
+  Lisa (and even then, use WebP).
 
 ## The "One More Library" Syndrome
 
 Developers love npm.
 
-"I need a carousel." `npm install react-super-mega-carousel`.
-"I need a toggle." `npm install react-toggle-v99`.
+"I need a carousel." `npm install react-super-mega-carousel`. "I need a toggle."
+`npm install react-toggle-v99`.
 
 Suddenly, your internal dashboard needs 5MB of JS to render a `div`.
 
@@ -51,7 +53,8 @@ If you just "suggest" a budget, nobody cares.
 
 "We'll optimise it later," they say. (Narrator: They did not optimise it later).
 
-You must integrate budget checks into the CI pipeline. Red build. Blocked merge. Sad developer. Happy user.
+You must integrate budget checks into the CI pipeline. Red build. Blocked merge.
+Sad developer. Happy user.
 
 ## Code Snippet: Failing the Build on Size
 
@@ -63,7 +66,7 @@ module.exports = {
   // ...
   performance: {
     // 'warning' is for cowards. Use 'error'.
-    hints: 'error', 
+    hints: 'error',
     maxEntrypointSize: 250000, // 250KB max for the main bundle
     maxAssetSize: 250000, // 250KB max for any single file
   },
@@ -90,20 +93,23 @@ Or, use `bundlesize` in any CI environment (great for checking output files):
 
 ## Summary
 
-Performance is a feature. It is arguably the *most important* feature.
+Performance is a feature. It is arguably the _most important_ feature.
 
-A budget forces the team to make trade-offs. "Do we really need this library? Or can we write 5 lines of code instead?"
+A budget forces the team to make trade-offs. "Do we really need this library? Or
+can we write 5 lines of code instead?"
 
 ## Key Takeaways
 
-- **Tree Shaking must be verified**: Ensure your build tool is actually removing unused code. Testing imports is good;
-  testing exports is better.
-- **Code Splitting reduces initial load**: Do not load the "Admin Dashboard" code for the "Homepage" user. Use dynamic
-  imports (`import()`).
+- **Tree Shaking must be verified**: Ensure your build tool is actually removing
+  unused code. Testing imports is good; testing exports is better.
+- **Code Splitting reduces initial load**: Do not load the "Admin Dashboard"
+  code for the "Homepage" user. Use dynamic imports (`import()`).
 - **Compression needs enabling**: Is Brotli enabled? It beats Gzip every time.
 
 ## Next Steps
 
-- **Tool**: Use **Webpack Bundle Analyser** to visualise exactly what is taking up space (it draws pretty boxes).
+- **Tool**: Use **Webpack Bundle Analyser** to visualise exactly what is taking
+  up space (it draws pretty boxes).
 - **Learn**: Read about **PRPL Pattern** (Push, Render, Pre-cache, Lazy-load).
-- **Audit**: Check your `node_modules`. You might find five different versions of the same library (Dependency Hell).
+- **Audit**: Check your `node_modules`. You might find five different versions
+  of the same library (Dependency Hell).

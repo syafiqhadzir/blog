@@ -1,62 +1,62 @@
 /* Global Button Utility */
 .btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 44px;
-    min-height: 44px; /* WCAG 2.5.5 Target Size */
-    padding: 0.8rem 1.6rem;
-    overflow: hidden;
-    font-weight: 700;
-    color: var(--bg-color);
-    text-decoration: none;
-    cursor: pointer;
-    background: var(--gradient-accent);
-    border: none;
-    border-radius: 100px;
-    transition:
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast),
-        filter var(--transition-fast);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px; /* WCAG 2.5.5 Target Size */
+  padding: 0.8rem 1.6rem;
+  overflow: hidden;
+  font-weight: 700;
+  color: var(--bg-color);
+  text-decoration: none;
+  cursor: pointer;
+  background: var(--gradient-accent);
+  border: none;
+  border-radius: 100px;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    filter var(--transition-fast);
 }
 
 .btn::before {
-    position: absolute;
-    inset: 0;
-    content: '';
-    background: var(--gradient-warm);
-    opacity: 0%;
-    transition: opacity var(--transition-base);
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: var(--gradient-warm);
+  opacity: 0%;
+  transition: opacity var(--transition-base);
 }
 
 .btn:hover {
-    box-shadow: 0 8px 25px var(--accent-shadow);
-    transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--accent-shadow);
+  transform: translateY(-2px);
 }
 
 .btn:hover::before {
-    opacity: 100%;
+  opacity: 100%;
 }
 
 .btn span {
-    position: relative;
-    z-index: var(--z-layer);
+  position: relative;
+  z-index: var(--z-layer);
 }
 
 .btn:focus-visible {
-    outline: none;
-    box-shadow: var(--focus-ring);
+  outline: none;
+  box-shadow: var(--focus-ring);
 }
 
 /* Secondary Button Variant */
 .btn-secondary {
-    color: var(--accent-color);
-    background: transparent;
-    border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  background: transparent;
+  border: 2px solid var(--accent-color);
 }
 
 .btn-secondary:hover {
-    color: var(--bg-color);
-    background: var(--accent-color);
+  color: var(--bg-color);
+  background: var(--accent-color);
 }

@@ -2,17 +2,17 @@
 # https://github.com/riggraz/no-style-please#customize-the-menu
 
 entries:
-    - title: About
-      entries:
-          - title: As both a linguist and a programmer, codes are my poetries.
-          - title: Read more ...
-            url: https://syafiqhadzir.dev/
-    - title: All Posts
-      post_list:
-          limit: 5
-          show_more: true
-          show_more_text: See archive ...
-          show_more_url: /archive
-    - title: RSS
-      url: feed.xml
-    - title: Powered by GitHub Pages & Cloudflare
+  - title: About
+    entries:
+      - title: As both a linguist and a programmer, codes are my poetries.
+      - title: Read more ...
+        url: https://syafiqhadzir.dev/
+  - title: All Posts
+    post_list:
+      limit: 5
+      show_more: true
+      show_more_text: See archive ...
+      show_more_url: /archive
+  - title: RSS
+    url: feed.xml
+  - title: Powered by GitHub Pages & Cloudflare

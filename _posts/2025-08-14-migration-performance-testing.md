@@ -5,7 +5,7 @@ date: 2025-08-14
 category: QA
 slug: migration-performance-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags: ["performance", "data-testing", "mobile-testing"]
+tags: ['performance', 'data-testing', 'mobile-testing']
 ---
 
 ## Table of Contents
@@ -26,17 +26,23 @@ tags: ["performance", "data-testing", "mobile-testing"]
 
 Will it?
 
-Migrations often **degrade** performance initially. Why? Because the old Monolith had shared memory. The new
-Microservices have Network Latency. To send a User Object from Service A to Service B takes 10ms. In memory, it took
-0.0001ms. That is a substantial difference, and nobody mentioned it in the planning meeting.
+Migrations often **degrade** performance initially. Why? Because the old
+Monolith had shared memory. The new Microservices have Network Latency. To send
+a User Object from Service A to Service B takes 10ms. In memory, it took
+0.0001ms. That is a substantial difference, and nobody mentioned it in the
+planning meeting.
 
-**QA Challenge**: Validate that the performance gain outweighs the network overhead.
+**QA Challenge**: Validate that the performance gain outweighs the network
+overhead.
 
 ## TL;DR
 
-- **Latency budget awareness**: Every network hop adds latency. 10 Microservices = 10 Hops. Plan accordingly.
-- **Data parity verification**: "JSON output from New API must equal JSON output from Old API". Character for character.
-- **Cutover strategy matters**: Canary (1%), then 10%, then 100%. Never Big Bang.
+- **Latency budget awareness**: Every network hop adds latency. 10 Microservices
+  = 10 Hops. Plan accordingly.
+- **Data parity verification**: "JSON output from New API must equal JSON output
+  from Old API". Character for character.
+- **Cutover strategy matters**: Canary (1%), then 10%, then 100%. Never Big
+  Bang.
 
 ## The "Microservices Tax"
 
@@ -46,8 +52,9 @@ When you split a monolith, you introduce:
 2. **Network IO**: TCP handshakes, TLS termination.
 3. **Distributed Tracing overhead**.
 
-QA must measure this "Tax". If a request now takes 200ms instead of 50ms, the migration is a failure, even if the Go
-code is "fast". Fast code in a slow architecture is still slow.
+QA must measure this "Tax". If a request now takes 200ms instead of 50ms, the
+migration is a failure, even if the Go code is "fast". Fast code in a slow
+architecture is still slow.
 
 ## Shadow Traffic
 
@@ -77,40 +84,42 @@ const OLD_API = 'http://localhost:3000';
 const NEW_API = 'http://localhost:4000';
 
 app.use(async (req, res) => {
-    const start = Date.now();
-    
-    // 1. Send to Primary (Old) - Wait for it
-    const primaryPromise = axios({
-        method: req.method,
-        url: OLD_API + req.url,
-        data: req.body,
-        headers: req.headers
+  const start = Date.now();
+
+  // 1. Send to Primary (Old) - Wait for it
+  const primaryPromise = axios({
+    method: req.method,
+    url: OLD_API + req.url,
+    data: req.body,
+    headers: req.headers,
+  });
+
+  // 2. Send to Shadow (New) - Fire and Forget
+  const shadowPromise = axios({
+    method: req.method,
+    url: NEW_API + req.url,
+    data: req.body,
+    headers: req.headers,
+  })
+    .then((response) => {
+      const duration = Date.now() - start;
+      console.log(`[Shadow] Status: ${response.status}, Time: ${duration}ms`);
+      // Compare response.data with primary response here
+    })
+    .catch((err) => {
+      console.error(`[Shadow] Failed: ${err.message}`);
     });
-    
-    // 2. Send to Shadow (New) - Fire and Forget
-    const shadowPromise = axios({
-        method: req.method,
-        url: NEW_API + req.url,
-        data: req.body,
-        headers: req.headers
-    }).then(response => {
-        const duration = Date.now() - start;
-        console.log(`[Shadow] Status: ${response.status}, Time: ${duration}ms`);
-        // Compare response.data with primary response here
-    }).catch(err => {
-        console.error(`[Shadow] Failed: ${err.message}`);
-    });
-    
-    try {
-        const response = await primaryPromise;
-        const duration = Date.now() - start;
-        console.log(`[Primary] Status: ${response.status}, Time: ${duration}ms`);
-        
-        // Return Primary result to user
-        res.status(response.status).send(response.data);
-    } catch (err) {
-        res.status(500).send(err.message);
-    }
+
+  try {
+    const response = await primaryPromise;
+    const duration = Date.now() - start;
+    console.log(`[Primary] Status: ${response.status}, Time: ${duration}ms`);
+
+    // Return Primary result to user
+    res.status(response.status).send(response.data);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
 });
 
 app.listen(8080, () => console.log('Shadow Proxy running on 8080'));
@@ -120,19 +129,22 @@ app.listen(8080, () => console.log('Shadow Proxy running on 8080'));
 
 Migrations are risky. Shadowing reduces risk to nearly zero.
 
-It allows you to test the new system with **Real Production Traffic** without affecting real users. If the New Service
-crashes, nobody notices. That is the dream.
+It allows you to test the new system with **Real Production Traffic** without
+affecting real users. If the New Service crashes, nobody notices. That is the
+dream.
 
 ## Key Takeaways
 
-- **Idempotency matters enormously**: Be careful shadowing `POST` requests. You do not want to charge the user's credit
-  card twice!
-- **Noise increases costs**: Shadowing doubles your log volume. Watch your Datadog bill.
-- **Baseline before you start**: Establish a p99 baseline BEFORE you start coding. "The Monolith handles 1000 RPS at
-  200ms". Beat it.
+- **Idempotency matters enormously**: Be careful shadowing `POST` requests. You
+  do not want to charge the user's credit card twice!
+- **Noise increases costs**: Shadowing doubles your log volume. Watch your
+  Datadog bill.
+- **Baseline before you start**: Establish a p99 baseline BEFORE you start
+  coding. "The Monolith handles 1000 RPS at 200ms". Beat it.
 
 ## Next Steps
 
 - **Tool**: **Envoy Proxy**, **Traefik**, or **Nginx** `mirror` module.
-- **Framework**: **Scientist** (GitHub's Ruby library for refactoring experiments).
+- **Framework**: **Scientist** (GitHub's Ruby library for refactoring
+  experiments).
 - **Read**: "Rebuilding the plane while flying it."

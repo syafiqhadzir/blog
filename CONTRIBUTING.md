@@ -1,6 +1,7 @@
 # Contributing to Syafiq Hadzir's Blog
 
-Thank you for your interest in contributing! This document provides guidelines for contributing to this project.
+Thank you for your interest in contributing! This document provides guidelines
+for contributing to this project.
 
 ## Development Setup
 
@@ -85,7 +86,8 @@ bundle exec rake test:all
 
 1. **Fork** the repository
 2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes following [Conventional Commits](https://www.conventionalcommits.org/)
+3. **Commit** your changes following
+   [Conventional Commits](https://www.conventionalcommits.org/)
 4. **Push** to your branch (`git push origin feature/amazing-feature`)
 5. **Open** a Pull Request
 
@@ -110,10 +112,15 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
 ## Reporting Issues
 
-Use the [Bug Report](https://github.com/syafiqhadzir/blog/issues/new?template=bug_report.yml) template for bugs.
+Use the
+[Bug Report](https://github.com/syafiqhadzir/blog/issues/new?template=bug_report.yml)
+template for bugs.
 
-Use the [Feature Request](https://github.com/syafiqhadzir/blog/issues/new?template=feature_request.yml) template for enhancements.
+Use the
+[Feature Request](https://github.com/syafiqhadzir/blog/issues/new?template=feature_request.yml)
+template for enhancements.
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+By contributing, you agree that your contributions will be licensed under the
+MIT License.

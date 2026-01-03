@@ -1,6 +1,7 @@
 # Accessibility Authoring Guide
 
-To maintain WCAG 2.2 AA compliance, follow these guidelines when writing new blog posts.
+To maintain WCAG 2.2 AA compliance, follow these guidelines when writing new
+blog posts.
 
 ## Images
 
@@ -10,7 +11,7 @@ To maintain WCAG 2.2 AA compliance, follow these guidelines when writing new blo
 
 ## Headings
 
-- Use `#` for the post title (Level 1) - *Jekyll handles this automatically*.
+- Use `#` for the post title (Level 1) - _Jekyll handles this automatically_.
 - Use `##` for main sections (Level 2).
 - Use `###` for subsections (Level 3).
 - **Do not skip levels** (e.g., jumping from `##` to `####`).
@@ -29,4 +30,5 @@ To maintain WCAG 2.2 AA compliance, follow these guidelines when writing new blo
 
 ## Code Blocks
 
-- Use standard markdown fences. The syntax highlighting theme handles contrast automatically.
+- Use standard markdown fences. The syntax highlighting theme handles contrast
+  automatically.

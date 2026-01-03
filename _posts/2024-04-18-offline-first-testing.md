@@ -5,7 +5,7 @@ date: 2024-04-18
 category: QA
 slug: offline-first-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags: ["progressive-web-apps"]
+tags: ['progressive-web-apps']
 ---
 
 ## Table of Contents
@@ -22,23 +22,28 @@ tags: ["progressive-web-apps"]
 
 ## Introduction
 
-You are on a train. You just wrote a 500-word review of a restaurant. The train goes into a tunnel. You hit "Submit".
+You are on a train. You just wrote a 500-word review of a restaurant. The train
+goes into a tunnel. You hit "Submit".
 
-If your app says "Network Error" and deletes the review, you will throw your phone out the window.
+If your app says "Network Error" and deletes the review, you will throw your
+phone out the window.
 
-Offline-First means the app works *without* the internet, and syncs when it comes back. Testing this requires you to be
-the "Chaos Monkey" of connectivity.
+Offline-First means the app works _without_ the internet, and syncs when it
+comes back. Testing this requires you to be the "Chaos Monkey" of connectivity.
 
 ## TL;DR
 
-- **Queues store offline actions**: Offline actions must be queued (IndexedDB/Redux Persist).
-- **Indicators inform users**: The user must know they are offline ("You are offline. Changes saved locally.").
-- **Sync must be ordered**: When the internet returns, the queue must process in order (FIFO).
+- **Queues store offline actions**: Offline actions must be queued
+  (IndexedDB/Redux Persist).
+- **Indicators inform users**: The user must know they are offline ("You are
+  offline. Changes saved locally.").
+- **Sync must be ordered**: When the internet returns, the queue must process in
+  order (FIFO).
 
 ## The "Optimistic UI" Lie
 
-Optimistic UI means showing the success state *before* the server confirms it. User clicks "Like" -> Heart turns red
-immediately.
+Optimistic UI means showing the success state _before_ the server confirms it.
+User clicks "Like" -> Heart turns red immediately.
 
 But what if the request fails?
 
@@ -54,17 +59,15 @@ If the heart turns white on reload, you lied to the user.
 
 ## Conflict Resolution: The Cage Match
 
-User A (on a plane) edits Doc X.
-User B (in the office) edits Doc X.
-User A lands and syncs.
-Who wins?
+User A (on a plane) edits Doc X. User B (in the office) edits Doc X. User A
+lands and syncs. Who wins?
 
 - **Last Write Wins**: User B cries.
 - **Manual Merge**: User A is confused.
 - **CRDTs**: Magic ensues.
 
-QA must verify the conflict policy specifically. "Last Write Wins" is the default, but often wrong for collaborative
-apps.
+QA must verify the conflict policy specifically. "Last Write Wins" is the
+default, but often wrong for collaborative apps.
 
 ## Code Snippet: Simulating Offline Mode with Playwright
 
@@ -79,45 +82,48 @@ const { test, expect } = require('@playwright/test');
 
 test('should queue review when offline', async ({ page, context }) => {
   await page.goto('/restaurant/1');
-  
+
   // 1. Fill out the form
   await page.fill('#review', 'Great food!');
-  
+
   // 2. Go Offline (Simulates Aeroplane Mode)
   await context.setOffline(true);
-  
+
   // 3. Submit
   await page.click('#submit');
-  
+
   // 4. Verify Optimistic UI (The user thinks it worked)
   await expect(page.locator('.toast')).toHaveText('Review saved locally');
-  
+
   // 5. Go Online
   await context.setOffline(false);
-  
+
   // 6. Verify Sync (Wait for the background sync to fire)
   // We expect the POST request to go out now
-  const response = await page.waitForResponse(resp => 
-    resp.url().includes('/api/reviews') && resp.status() === 200
+  const response = await page.waitForResponse(
+    (resp) => resp.url().includes('/api/reviews') && resp.status() === 200,
   );
-  
+
   // 7. Verify the DB actually has it (Optional integration check)
 });
 ```
 
 ## Summary
 
-Offline-first applications are robust, resilient, and really hard to build. If you treat the network as an optional
-enhancement rather than a requirement, you build better software.
+Offline-first applications are robust, resilient, and really hard to build. If
+you treat the network as an optional enhancement rather than a requirement, you
+build better software.
 
 But you also build a massive pile of edge cases for QA to test.
 
 ## Key Takeaways
 
-- **IndexedDB scales better**: LocalStorage is synchronous and limited (5MB). Use IndexedDB for real data.
-- **Retries need backoff**: Do not retry instantly. Use "Exponential Backoff" so you do not DDoS your own server when
-  10,000 users come back online at once.
-- **Idempotency prevents duplicates**: If the sync request sends twice, does the user get charged twice?
+- **IndexedDB scales better**: LocalStorage is synchronous and limited (5MB).
+  Use IndexedDB for real data.
+- **Retries need backoff**: Do not retry instantly. Use "Exponential Backoff" so
+  you do not DDoS your own server when 10,000 users come back online at once.
+- **Idempotency prevents duplicates**: If the sync request sends twice, does the
+  user get charged twice?
 
 ## Next Steps
 

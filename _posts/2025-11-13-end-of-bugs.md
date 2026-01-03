@@ -5,7 +5,7 @@ date: 2025-11-13
 category: QA
 slug: end-of-bugs
 gpgkey: EBE8 BD81 6838 1BAF
-tags: ["philosophy"]
+tags: ['philosophy']
 ---
 
 ## Table of Contents
@@ -24,41 +24,48 @@ tags: ["philosophy"]
 
 "Software has bugs." This is accepted wisdom. It is also a lie.
 
-Bridges do not collapse (often). Aeroplanes do not fall out of the sky (often). Software Engineering is moving towards
-**Zero Defect** methodology. The tools are shifting from "Finding Bugs" (Testing) to "Proving Bugs Impossible" (Formal
+Bridges do not collapse (often). Aeroplanes do not fall out of the sky (often).
+Software Engineering is moving towards **Zero Defect** methodology. The tools
+are shifting from "Finding Bugs" (Testing) to "Proving Bugs Impossible" (Formal
 Verification).
 
-If you are still writing `assert.equal(2, 2)`, you are doing it wrong. That test will pass until the heat death of the
-universe, but it proves nothing useful about your actual code.
+If you are still writing `assert.equal(2, 2)`, you are doing it wrong. That test
+will pass until the heat death of the universe, but it proves nothing useful
+about your actual code.
 
 ## TL;DR
 
-- **Formal Methods prove impossibility**: Mathematical proof that `x` can never be `null`. Not "most of the time".
-  *Never*.
-- **Static analysis evolves**: Linters that understand business logic. "You are trying to charge a credit card in a
-  read-only function. Denied."
-- **Runtime repair emerges**: If an exception occurs, the AI patches the binary in-memory. It is like Wolverine for
-  code.
+- **Formal Methods prove impossibility**: Mathematical proof that `x` can never
+  be `null`. Not "most of the time". _Never_.
+- **Static analysis evolves**: Linters that understand business logic. "You are
+  trying to charge a credit card in a read-only function. Denied."
+- **Runtime repair emerges**: If an exception occurs, the AI patches the binary
+  in-memory. It is like Wolverine for code.
 
 ## Formal Verification vs. Unit Tests
 
-A unit test proves that `add(2, 2) == 4`. It does *not* prove that `add(x, y)` works for all integers. You have tested
-one pair of inputs. There are approximately four billion left to go.
+A unit test proves that `add(2, 2) == 4`. It does _not_ prove that `add(x, y)`
+works for all integers. You have tested one pair of inputs. There are
+approximately four billion left to go.
 
-**TLA+ (Temporal Logic of Actions)** and **Dafny** allow you to write a specification. The compiler then *proves* that
-your implementation matches the spec. If it does not, it will not compile.
+**TLA+ (Temporal Logic of Actions)** and **Dafny** allow you to write a
+specification. The compiler then _proves_ that your implementation matches the
+spec. If it does not, it will not compile.
 
-**QA Role**: Writing the *Specification*, not the test cases. You are now a lawyer for logic. Object. Sustained.
+**QA Role**: Writing the _Specification_, not the test cases. You are now a
+lawyer for logic. Object. Sustained.
 
 ## Self-Healing Software
 
 In 2025, Kubernetes pods restart if they crash. Basic. Predictable. Boring.
 
-In 2030, the application catches its own crash, asks an LLM for a patch, applies the patch, and continues. This sounds
-wonderful until you realise nobody actually understands what the patched code does anymore.
+In 2030, the application catches its own crash, asks an LLM for a patch, applies
+the patch, and continues. This sounds wonderful until you realise nobody
+actually understands what the patched code does anymore.
 
-**QA Challenge**: How do you test a system that changes its own code at runtime? You need "Chaos Engineering for AI
-Patching". If the AI decides to "fix" the bug by deleting the database, you have a problem. A very empty problem.
+**QA Challenge**: How do you test a system that changes its own code at runtime?
+You need "Chaos Engineering for AI Patching". If the AI decides to "fix" the bug
+by deleting the database, you have a problem. A very empty problem.
 
 ## Code Snippet: Runtime Self-Correction
 
@@ -71,52 +78,55 @@ A conceptual example of an Error Boundary that attempts an automatic fix.
 
 // Simulating a flaky 3rd party API
 function unstableApi() {
-    if (Math.random() > 0.5) throw new Error('503 Service Unavailable');
-    return "Success";
+  if (Math.random() > 0.5) throw new Error('503 Service Unavailable');
+  return 'Success';
 }
 
 // The "Healer" Strategy
 async function executeWithHealer(fn) {
-    try {
-        return fn();
-    } catch (error) {
-        console.warn(`⚠️ Detected Crash: ${error.message}`);
-        
-        // Strategy 1: Retry with Backoff
-        // Strategy 2: Switch to Fallback Provider
-        // Strategy 3: (Future) Rewrite the function bytecode? 
-        // We are not there yet, but soon.
-        
-        console.log('💊 Applying Fix: Circuit Breaker...');
-        return "Fallback Response (System Healed)";
-    }
+  try {
+    return fn();
+  } catch (error) {
+    console.warn(`⚠️ Detected Crash: ${error.message}`);
+
+    // Strategy 1: Retry with Backoff
+    // Strategy 2: Switch to Fallback Provider
+    // Strategy 3: (Future) Rewrite the function bytecode?
+    // We are not there yet, but soon.
+
+    console.log('💊 Applying Fix: Circuit Breaker...');
+    return 'Fallback Response (System Healed)';
+  }
 }
 
 // Run
 (async () => {
-    const result = await executeWithHealer(unstableApi);
-    console.log(`Final Result: ${result}`);
+  const result = await executeWithHealer(unstableApi);
+  console.log(`Final Result: ${result}`);
 })();
 ```
 
 ## Summary
 
-The "Tester" who manually clicks buttons is extinct. The "SDET" who writes Selenium scripts is endangered. The future is
-the **Quality Logician**.
+The "Tester" who manually clicks buttons is extinct. The "SDET" who writes
+Selenium scripts is endangered. The future is the **Quality Logician**.
 
-You define the Truth. The Machine enforces it. If that sounds boring, remember: robots are great at following orders,
-but terrible at understanding irony. Your job is safe for now.
+You define the Truth. The Machine enforces it. If that sounds boring, remember:
+robots are great at following orders, but terrible at understanding irony. Your
+job is safe for now.
 
 ## Key Takeaways
 
-- **Spec-Driven Development**: The Spec is the Source of Truth. The code is just an artefact generated by an LLM.
-- **Invariant Testing**: Do not test inputs/outputs. Test properties. "The user's balance must never appear negative, no
-  matter what happens."
-- **Complexity shifts**: As code becomes bug-free, business logic becomes infinitely complex. We trade TypeErrors for
-  logical paradoxes.
+- **Spec-Driven Development**: The Spec is the Source of Truth. The code is just
+  an artefact generated by an LLM.
+- **Invariant Testing**: Do not test inputs/outputs. Test properties. "The
+  user's balance must never appear negative, no matter what happens."
+- **Complexity shifts**: As code becomes bug-free, business logic becomes
+  infinitely complex. We trade TypeErrors for logical paradoxes.
 
 ## Next Steps
 
 - **Tool**: **TLA+** (Leslie Lamport). It is hard. Do it anyway.
-- **Language**: **Rust** (Ownership model prevents memory bugs) or **Ada** (Safety critical).
-- **Read**: *The Art of Immutable Architecture*.
+- **Language**: **Rust** (Ownership model prevents memory bugs) or **Ada**
+  (Safety critical).
+- **Read**: _The Art of Immutable Architecture_.

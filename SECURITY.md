@@ -2,7 +2,8 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in this project, please report it responsibly.
+If you discover a security vulnerability in this project, please report it
+responsibly.
 
 ### Contact
 
@@ -24,7 +25,8 @@ This security policy applies to:
 
 ### Acknowledgments
 
-We appreciate responsible disclosure and will acknowledge security researchers who help improve our security.
+We appreciate responsible disclosure and will acknowledge security researchers
+who help improve our security.
 
 ## Security Measures
 

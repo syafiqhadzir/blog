@@ -1,81 +1,81 @@
 /* stylelint-disable-next-line selector-max-universal -- Universal selector is standard for box-sizing reset */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 blockquote,
 table,
 td,
 th {
-    border: thin solid var(--border-color);
+  border: thin solid var(--border-color);
 }
 
 p {
-    margin: 1rem 0;
-    line-height: var(--line-height);
+  margin: 1rem 0;
+  line-height: var(--line-height);
 }
 
 blockquote p,
 body {
-    margin: 0;
+  margin: 0;
 }
 
 .w,
 img {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 body,
 html {
-    background: var(--bg-color);
-    scroll-behavior: smooth;
+  background: var(--bg-color);
+  scroll-behavior: smooth;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    min-height: 100%;
-    color: var(--text-color);
-    overflow-wrap: break-word;
-    transition: var(--theme-transition);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+  color: var(--text-color);
+  overflow-wrap: break-word;
+  transition: var(--theme-transition);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 hr {
-    margin: 2rem 0;
-    color: var(--text-secondary);
-    text-align: center;
-    border: 0;
+  margin: 2rem 0;
+  color: var(--text-secondary);
+  text-align: center;
+  border: 0;
 }
 
 hr::before {
-    content: '/////';
+  content: '/////';
 }
 
 hr::after {
-    content: attr(data-content) '/////';
+  content: attr(data-content) '/////';
 }
 
 li {
-    margin: 0.4rem 0;
+  margin: 0.4rem 0;
 }
 
 :target {
-    color: var(--ctp-text);
-    background: var(--ctp-peach);
+  color: var(--ctp-text);
+  background: var(--ctp-peach);
 }
 
 .wrapper {
-    max-width: var(--layout-width);
-    padding: clamp(1.5rem, 5vw, 3rem);
-    margin: 0 auto;
+  max-width: var(--layout-width);
+  padding: clamp(1.5rem, 5vw, 3rem);
+  margin: 0 auto;
 }

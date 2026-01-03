@@ -5,7 +5,7 @@ date: 2024-02-29
 category: QA
 slug: grpc-services-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags: ["real-time", "backend-testing"]
+tags: ['real-time', 'backend-testing']
 ---
 
 ## Table of Contents
@@ -24,24 +24,29 @@ tags: ["real-time", "backend-testing"]
 
 gRPC is fast. It uses HTTP/2 and Protocol Buffers.
 
-It is also a pain in the neck to test because you cannot just `curl` it (well, you can with `grpcurl`, but you know what
-I mean).
+It is also a pain in the neck to test because you cannot just `curl` it (well,
+you can with `grpcurl`, but you know what I mean).
 
-Developers love it because "It's typed!" QA hates it because "Where is my JSON response? What is this binary rubbish?"
+Developers love it because "It's typed!" QA hates it because "Where is my JSON
+response? What is this binary rubbish?"
 
 ## TL;DR
 
-- **Tooling differs from REST**: Throw away Postman (unless you have the update). Use **Kreya** or **BloomRPC**.
-- **Schema is the Bible**: The `.proto` file is your Bible. If it changes, your tests break.
-- **Mocking requires service-level mock**: You need to mock the *Service*, not just the HTTP endpoint.
+- **Tooling differs from REST**: Throw away Postman (unless you have the
+  update). Use **Kreya** or **BloomRPC**.
+- **Schema is the Bible**: The `.proto` file is your Bible. If it changes, your
+  tests break.
+- **Mocking requires service-level mock**: You need to mock the _Service_, not
+  just the HTTP endpoint.
 
 ## The "Binary" Problem
 
-In REST, you can guess the payload. `{ "id": 1 }`.
-In gRPC, the payload is `0a 01 08 01`.
+In REST, you can guess the payload. `{ "id": 1 }`. In gRPC, the payload is
+`0a 01 08 01`.
 
-If you do not have the `.proto` file, you are blind. QA must have access to the *source of truth* schemas. Ideally,
-these are in a separate repo (e.g., `schema-registry`) that both Dev and QA check out.
+If you do not have the `.proto` file, you are blind. QA must have access to the
+_source of truth_ schemas. Ideally, these are in a separate repo (e.g.,
+`schema-registry`) that both Dev and QA check out.
 
 ## Testing Streams (The Hard Part)
 
@@ -52,7 +57,8 @@ gRPC is not just Request/Response. It supports:
 3. **Client Streaming**: 100 requests, one response.
 4. **Bidirectional**: Chaos.
 
-Test the timeout. If the server streams data for 10 minutes, does the client timeout after 30 seconds?
+Test the timeout. If the server streams data for 10 minutes, does the client
+timeout after 30 seconds?
 
 ## Code Snippet: Testing gRPC with Python
 
@@ -77,16 +83,16 @@ def test_process_payment(grpc_stub):
         amount=99.99,
         currency="GBP"
     )
-    
+
     try:
         # Always set a timeout/deadline.
         response = grpc_stub.ProcessPayment(request, timeout=5)
-        
-        # In gRPC, success is usually just "no exception thrown" 
+
+        # In gRPC, success is usually just "no exception thrown"
         # but check the internal status too.
         assert response.status == payment_pb2.SUCCESS
         print(f"Transaction ID: {response.transaction_id}")
-        
+
     except grpc.RpcError as e:
         pytest.fail(f"gRPC Call failed: {e.code()} - {e.details()}")
 
@@ -96,20 +102,25 @@ def test_process_payment(grpc_stub):
 
 ## Summary
 
-gRPC is the future of internal microservices (whether you like it or not). Stop being afraid of the binary. Embrace the
-schema.
+gRPC is the future of internal microservices (whether you like it or not). Stop
+being afraid of the binary. Embrace the schema.
 
 At least you never have to parse a Date string again.
 
 ## Key Takeaways
 
-- **Deadlines are mandatory**: Always set a deadline (timeout). Default is "Forever".
-- **Error Codes differ from HTTP**: gRPC has its own status codes (`NOT_FOUND`, `UNAVAILABLE`). Do not expect HTTP 404.
-- **Reflection aids discovery**: Enable "Server Reflection" in non-prod environments so tools can discover the schema
-  automatically.
+- **Deadlines are mandatory**: Always set a deadline (timeout). Default is
+  "Forever".
+- **Error Codes differ from HTTP**: gRPC has its own status codes (`NOT_FOUND`,
+  `UNAVAILABLE`). Do not expect HTTP 404.
+- **Reflection aids discovery**: Enable "Server Reflection" in non-prod
+  environments so tools can discover the schema automatically.
 
 ## Next Steps
 
-- **Download**: Get **BloomRPC** (deprecated) or **Kreya** (current). They are the "Postman for gRPC".
-- **Automate**: Add a "Lint Check" for your `.proto` files using `buf` (it catches breaking changes).
-- **Ask**: "Why are we using gRPC for a public API?" (You probably should not be; it is bad for browsers).
+- **Download**: Get **BloomRPC** (deprecated) or **Kreya** (current). They are
+  the "Postman for gRPC".
+- **Automate**: Add a "Lint Check" for your `.proto` files using `buf` (it
+  catches breaking changes).
+- **Ask**: "Why are we using gRPC for a public API?" (You probably should not
+  be; it is bad for browsers).

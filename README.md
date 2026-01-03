@@ -12,33 +12,34 @@
 
 ## 🌐 Live Site
 
-**[blog.syafiqhadzir.dev](https://blog.syafiqhadzir.dev)** • [Sitemap](https://blog.syafiqhadzir.dev/sitemap.xml) •
+**[blog.syafiqhadzir.dev](https://blog.syafiqhadzir.dev)** •
+[Sitemap](https://blog.syafiqhadzir.dev/sitemap.xml) •
 [RSS Feed](https://blog.syafiqhadzir.dev/feed.xml)
 
 ## ✨ Features
 
-| Feature | Description |
-| --------- | ------------- |
-| ⚡ **AMP-First** | All pages are valid AMP for instant loading |
-| 📱 **PWA** | Service worker v4 (Workbox 7) with offline support |
-| ♿ **WCAG 2.1 AA** | Full accessibility compliance |
-| 🧪 **250+ Tests** | 68 quality specs + 170+ HTMLProofer checks + E2E |
-| 📖 **Reading Time** | Estimated read time per post |
-| 🔗 **Related Posts** | Category-based recommendations |
-| 🔒 **Security** | Zero-vulnerability audits, AI bot blocks, RFC 9116 |
+| Feature              | Description                                         |
+| -------------------- | --------------------------------------------------- |
+| ⚡ **AMP-First**     | All pages are valid AMP for instant loading         |
+| 📱 **PWA**           | Service worker v4 (Workbox 7) with offline support  |
+| ♿ **WCAG 2.1 AA**   | Full accessibility compliance                       |
+| 🧪 **250+ Tests**    | 68 quality specs + 170+ HTMLProofer checks + E2E    |
+| 📖 **Reading Time**  | Estimated read time per post                        |
+| 🔗 **Related Posts** | Category-based recommendations                      |
+| 🔒 **Security**      | Zero-vulnerability audits, AI bot blocks, RFC 9116  |
 | 🚀 **Bleeding Edge** | Unified CI/CD with payload-profiling & minification |
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-| ------- | ------------ |
-| Runtime | Ruby 3.4.1, Node.js 24 |
-| Generator | Jekyll 4.4.1 |
-| Framework | AMP HTML |
-| Linters | ESLint 9 (Strict), Stylelint (Strict), RuboCop |
-| E2E Tests | Playwright (Sharded) |
-| CI/CD | GitHub Actions (Unified Pipeline) |
-| Performance | Lighthouse CI (100% Targets) |
+| Layer       | Technology                                     |
+| ----------- | ---------------------------------------------- |
+| Runtime     | Ruby 3.4.1, Node.js 24                         |
+| Generator   | Jekyll 4.4.1                                   |
+| Framework   | AMP HTML                                       |
+| Linters     | ESLint 9 (Strict), Stylelint (Strict), RuboCop |
+| E2E Tests   | Playwright (Sharded)                           |
+| CI/CD       | GitHub Actions (Unified Pipeline)              |
+| Performance | Lighthouse CI (100% Targets)                   |
 
 ## 🚀 Quick Start
 
@@ -78,13 +79,13 @@ blog/
 
 We maintain 100% scores in Lighthouse and 0 violations across all linters.
 
-| Level | Tool | Strategy |
-| ------------- | --------------- | ---------------------------------------------------------------------- |
-| **Quality** | RSpec | Structural integrity & data validation |
-| **Integrity** | HTMLProofer | Broken links, image alt, HTTPS enforcement |
-| **Performance** | Lighthouse | Automated audits (Perf/A11y/SEO/Best Practice) |
-| **Security** | Audit | Surgical dependency overrides for zero-vulnerability |
-| **E2E** | Playwright | Multi-device sharded browser verification |
+| Level           | Tool        | Strategy                                             |
+| --------------- | ----------- | ---------------------------------------------------- |
+| **Quality**     | RSpec       | Structural integrity & data validation               |
+| **Integrity**   | HTMLProofer | Broken links, image alt, HTTPS enforcement           |
+| **Performance** | Lighthouse  | Automated audits (Perf/A11y/SEO/Best Practice)       |
+| **Security**    | Audit       | Surgical dependency overrides for zero-vulnerability |
+| **E2E**         | Playwright  | Multi-device sharded browser verification            |
 
 ## 🔍 Schema.org
 

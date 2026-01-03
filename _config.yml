@@ -1,12 +1,12 @@
 title: Syafiq Hadzir # name of the site
 author:
-    name: Syafiq Hadzir # name of site's author
-    url: https://syafiqhadzir.dev # URL of site's author
+  name: Syafiq Hadzir # name of site's author
+  url: https://syafiqhadzir.dev # URL of site's author
 email: syafiqhadzir@live.com.my # email of site's author
 url: https://blog.syafiqhadzir.dev # root address of the site
 baseurl: '' # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
-    Just another QA engineer who codes and writes.
+  Just another QA engineer who codes and writes.
 lang: en-GB
 permalink: /posts/:year/:month/:day/:slug.html
 
@@ -15,22 +15,22 @@ favicon: 'logo.png' # name+extension of favicon (which must be put on the root f
 # Theme: Klisé-inspired (AMP-compatible)
 
 theme_config:
-    appearance: 'auto' # can be "light", "dark" or "auto"
-    back_home_text: '..' # customize text for homepage link in post layout
-    date_format: '%Y-%m-%d' # customize how date is formatted
-    show_description: true # show blog description in home page
+  appearance: 'auto' # can be "light", "dark" or "auto"
+  back_home_text: '..' # customize text for homepage link in post layout
+  date_format: '%Y-%m-%d' # customize how date is formatted
+  show_description: true # show blog description in home page
 
 plugins:
-    - jekyll-feed
-    - jekyll-github-metadata
-    - jekyll-seo-tag
-    # - jekyll-sitemap # Replaced by custom sitemap.xml
-    - jekyll-minifier
+  - jekyll-feed
+  - jekyll-github-metadata
+  - jekyll-seo-tag
+  # - jekyll-sitemap # Replaced by custom sitemap.xml
+  - jekyll-minifier
 
 social:
-    name: Syafiq Hadzir
-    links:
-        - https://github.com/SyafiqHadzir
+  name: Syafiq Hadzir
+  links:
+    - https://github.com/SyafiqHadzir
 
 # Default values for posts
 # ------------------------------------
@@ -38,76 +38,76 @@ social:
 # ------------------------------------
 markdown: kramdown
 kramdown:
-    input: GFM
-    syntax_highlighter: rouge
-    hard_wrap: false
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
 
 sass:
-    style: compressed
+  style: compressed
 
 strict_front_matter: true
 
 jekyll-minifier:
-    preserve_php: false
-    remove_spaces_inside_tags: true
-    remove_multi_spaces: true
-    remove_comments: true
-    remove_intertag_spaces: false
-    remove_quotes: false
-    compress_css: true
-    compress_javascript: false
-    compress_json: true
-    ignore:
-        - '*.xml'
-        - '*.txt'
-        - 'assets/js/**/*.js'
+  preserve_php: false
+  remove_spaces_inside_tags: true
+  remove_multi_spaces: true
+  remove_comments: true
+  remove_intertag_spaces: false
+  remove_quotes: false
+  compress_css: true
+  compress_javascript: false
+  compress_json: true
+  ignore:
+    - '*.xml'
+    - '*.txt'
+    - 'assets/js/**/*.js'
 
 # Default values for posts
 defaults:
-    - scope:
-          path: ''
-          type: 'posts'
-      values:
-          layout: post
-          image: https://blog.syafiqhadzir.dev/logo.png
-          keywords: 'QA, software testing, quality assurance, automation'
-    - scope:
-          path: ''
-          type: 'pages'
-      values:
-          layout: page
+  - scope:
+      path: ''
+      type: 'posts'
+    values:
+      layout: post
+      image: https://blog.syafiqhadzir.dev/logo.png
+      keywords: 'QA, software testing, quality assurance, automation'
+  - scope:
+      path: ''
+      type: 'pages'
+    values:
+      layout: page
 
 # Exclude from build
 exclude:
-    - Gemfile
-    - Gemfile.lock
-    - Rakefile
-    - scripts
-    - vendor
-    - spec
-    - node_modules
-    - .bundle
-    - .git
-    - '*.gemspec'
-    - README.md
-    - CHANGELOG.md
-    - SECURITY.md
-    - CONTRIBUTING.md
-    - docs
-    - e2e
-    - playwright.config.ts
-    - package.json
-    - package-lock.json
-    - tsconfig.json
-    - eslint.config.js
-    - stylelint.config.js
-    - lighthouserc.cjs
-    - .prettierrc
-    - .prettierignore
-    - .markdownlint.json
-    - .rubocop.yml
-    - .rubocop_todo.yml
-    - .nvmrc
-    - sonar-project.properties
-    - playwright-report
-    - test-results
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+  - scripts
+  - vendor
+  - spec
+  - node_modules
+  - .bundle
+  - .git
+  - '*.gemspec'
+  - README.md
+  - CHANGELOG.md
+  - SECURITY.md
+  - CONTRIBUTING.md
+  - docs
+  - e2e
+  - playwright.config.ts
+  - package.json
+  - package-lock.json
+  - tsconfig.json
+  - eslint.config.js
+  - stylelint.config.js
+  - lighthouserc.cjs
+  - .prettierrc
+  - .prettierignore
+  - .markdownlint.json
+  - .rubocop.yml
+  - .rubocop_todo.yml
+  - .nvmrc
+  - sonar-project.properties
+  - playwright-report
+  - test-results

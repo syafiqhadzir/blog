@@ -1,10 +1,61 @@
 {
-    "extends": "markdownlint/style/prettier",
-    "default": true,
-    "MD013": false,
-    "MD024": {
-        "siblings_only": true
-    },
-    "MD033": false,
-    "MD041": false
+  "default": true,
+  "MD013": {
+    "line_length": 80,
+    "code_blocks": false,
+    "tables": false
+  },
+  "MD033": {
+    "allowed_elements": [
+      "amp-img",
+      "amp-video",
+      "amp-animation",
+      "amp-state",
+      "amp-analytics",
+      "amp-autocomplete",
+      "amp-position-observer",
+      "amp-install-serviceworker",
+      "amp-mustache",
+      "script",
+      "template",
+      "div",
+      "span",
+      "br",
+      "hr",
+      "kbd",
+      "section",
+      "header",
+      "footer",
+      "main",
+      "nav",
+      "details",
+      "summary",
+      "time",
+      "strong",
+      "em",
+      "i",
+      "b",
+      "u",
+      "a",
+      "p",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "ul",
+      "ol",
+      "li",
+      "dl",
+      "dt",
+      "dd",
+      "code",
+      "pre",
+      "blockquote"
+    ]
+  },
+  "MD024": {
+    "siblings_only": true
+  }
 }

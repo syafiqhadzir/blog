@@ -1,10 +1,13 @@
 - term: WCAG
-  definition: Web Content Accessibility Guidelines. A set of recommendations for making Web content more accessible.
+  definition:
+    Web Content Accessibility Guidelines. A set of recommendations for making
+    Web content more accessible.
 - term: ARIA
   definition:
-      Accessible Rich Internet Applications. A set of attributes that define ways to make web content and web
-      applications (especially those developed with Ajax and JavaScript) more accessible to people with disabilities.
+    Accessible Rich Internet Applications. A set of attributes that define ways
+    to make web content and web applications (especially those developed with
+    Ajax and JavaScript) more accessible to people with disabilities.
 - term: AAA
   definition:
-      The highest level of conformance in WCAG, requiring the most robust accessibility features, such as 7:1 contrast
-      ratios.
+    The highest level of conformance in WCAG, requiring the most robust
+    accessibility features, such as 7:1 contrast ratios.

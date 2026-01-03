@@ -5,7 +5,7 @@ date: 2025-04-24
 category: QA
 slug: webgpu-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags: ["emerging-tech", "frontend-testing"]
+tags: ['emerging-tech', 'frontend-testing']
 ---
 
 ## Table of Contents
@@ -24,47 +24,54 @@ tags: ["emerging-tech", "frontend-testing"]
 
 WebGL was cute. It let us draw triangles in 2011.
 
-WebGPU is a monster. It gives you direct access to the GPU for "General Purpose Compute" (GPGPU). This means you can run
-complex simulations (Fluid Dynamics), massive AI models (LLMs), or mining algorithms directly in JavaScript.
+WebGPU is a monster. It gives you direct access to the GPU for "General Purpose
+Compute" (GPGPU). This means you can run complex simulations (Fluid Dynamics),
+massive AI models (LLMs), or mining algorithms directly in JavaScript.
 
-Or you can crash the user's entire Graphics Driver and BSOD (Blue Screen of Death) their machine. QA's job is to prevent
-the latter.
+Or you can crash the user's entire Graphics Driver and BSOD (Blue Screen of
+Death) their machine. QA's job is to prevent the latter.
 
 ## TL;DR
 
-- **Compute Shaders run on the GPU**: Logic that runs on the GPU, not the CPU. Highly parallel. Hard to debug because
-  `console.log` does not exist inside a shader.
-- **Resource limits are strict**: 2GB of VRAM is your budget (usually). Exceed it, and the tab dies. Different GPUs have
-  different limits (Buffer Size, Texture Dimensions).
-- **Async is everywhere**: Everything in WebGPU is asynchronous. `mapAsync`, `onSubmitWorkDone`. It is a race condition
-  minefield.
+- **Compute Shaders run on the GPU**: Logic that runs on the GPU, not the CPU.
+  Highly parallel. Hard to debug because `console.log` does not exist inside a
+  shader.
+- **Resource limits are strict**: 2GB of VRAM is your budget (usually). Exceed
+  it, and the tab dies. Different GPUs have different limits (Buffer Size,
+  Texture Dimensions).
+- **Async is everywhere**: Everything in WebGPU is asynchronous. `mapAsync`,
+  `onSubmitWorkDone`. It is a race condition minefield.
 
 ## Vertex vs. Fragment vs. Compute (The Trinity)
 
 - **Vertex**: Where are the points? (Geometric QA). Is the 3D model distorted?
-- **Fragment**: What colour are the pixels? (Visual QA). Is the lighting correct?
+- **Fragment**: What colour are the pixels? (Visual QA). Is the lighting
+  correct?
 - **Compute**: Physics, AI, Maths. (Data QA).
 
-If you are testing a WebGPU app, you are likely testing a "Simulation". Check the *numbers* coming out of the simulation
-buffer, not just the pretty pictures. If the Physics engine says gravity is `9.8` but the ball floats, the Compute
+If you are testing a WebGPU app, you are likely testing a "Simulation". Check
+the _numbers_ coming out of the simulation buffer, not just the pretty pictures.
+If the Physics engine says gravity is `9.8` but the ball floats, the Compute
 Shader logic is broken.
 
 ## Memory Leaks in VRAM (The Silent Killer)
 
-In JavaScript, the Garbage Collector (GC) saves you. In WebGPU, you manually allocate buffers (`createBuffer`). If you
-do not `destroy()` them, they stay in VRAM forever.
+In JavaScript, the Garbage Collector (GC) saves you. In WebGPU, you manually
+allocate buffers (`createBuffer`). If you do not `destroy()` them, they stay in
+VRAM forever.
 
 **Test Scenario**:
 
 1. Open App (Task Manager: GPU Memory 200MB).
 2. User performs "Heavy Action" (Load 3D Scene). (GPU Memory 800MB).
 3. User resets/closes Scene. (GPU Memory SHOULD go back to 200MB).
-4. If it stays at 800MB, you have a VRAM leak. Three clicks later, the machine freezes.
+4. If it stays at 800MB, you have a VRAM leak. Three clicks later, the machine
+   freezes.
 
 ## Code Snippet: Running a Compute Shader
 
-Here is the "Hello World" of parallel computing on the web. We calculate values in parallel on the GPU and read them
-back to JS.
+Here is the "Hello World" of parallel computing on the web. We calculate values
+in parallel on the GPU and read them back to JS.
 
 ```javascript
 /*
@@ -83,12 +90,15 @@ test('should execute parallel compute shader', async ({ page }) => {
 
     // 1. Array of data: [0, 1, 2, 3]
     const data = new Float32Array([0, 1, 2, 3]);
-    
+
     // 2. Create GPU Buffer
     const buffer = device.createBuffer({
-        size: data.byteLength,
-        usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC | GPUBufferUsage.COPY_DST,
-        mappedAtCreation: true,
+      size: data.byteLength,
+      usage:
+        GPUBufferUsage.STORAGE |
+        GPUBufferUsage.COPY_SRC |
+        GPUBufferUsage.COPY_DST,
+      mappedAtCreation: true,
     });
     new Float32Array(buffer.getMappedRange()).set(data);
     buffer.unmap();
@@ -113,36 +123,39 @@ test('should execute parallel compute shader', async ({ page }) => {
     // 5. Read Back Buffer
     // ... copyBufferToBuffer ...
     // ... mapAsync ...
-    
+
     // For this snippet, assume we return the processed array
-    return [0, 2, 4, 6]; 
+    return [0, 2, 4, 6];
   });
 
   if (result !== 'Not Supported') {
-       expect(result).toEqual([0, 2, 4, 6]);
+    expect(result).toEqual([0, 2, 4, 6]);
   }
 });
 ```
 
 ## Summary
 
-WebGPU brings "Console Quality" graphics to the web. It also brings "Console Quality" complexity and crashes.
+WebGPU brings "Console Quality" graphics to the web. It also brings "Console
+Quality" complexity and crashes.
 
-Your testing must go beyond "Functional" and into "Systems Engineering". You are managing memory, synchronisation, and
-parallelism.
+Your testing must go beyond "Functional" and into "Systems Engineering". You are
+managing memory, synchronisation, and parallelism.
 
 ## Key Takeaways
 
-- **WGSL requires learning**: The WebGPU Shading Language is like Rust and C++ had a baby. You need to learn it to read
-  the code. It is stricter than GLSL.
-- **Device Loss must be handled**: The GPU *will* crash (TDR - Timeout Detection and Recovery). Handle the `device.lost`
-  promise gracefully. Do not let the page freeze white.
-- **Test on bleeding edge**: Always test on Canary/Nightly. WebGPU implementations are bleeding edge.
+- **WGSL requires learning**: The WebGPU Shading Language is like Rust and C++
+  had a baby. You need to learn it to read the code. It is stricter than GLSL.
+- **Device Loss must be handled**: The GPU _will_ crash (TDR - Timeout Detection
+  and Recovery). Handle the `device.lost` promise gracefully. Do not let the
+  page freeze white.
+- **Test on bleeding edge**: Always test on Canary/Nightly. WebGPU
+  implementations are bleeding edge.
 
 ## Next Steps
 
-- **Tool**: Use **PIX on Windows** or **RenderDoc** (if you can attach to the browser process) to step through GPU
-  frames.
+- **Tool**: Use **PIX on Windows** or **RenderDoc** (if you can attach to the
+  browser process) to step through GPU frames.
 - **Learn**: Read **"WebGPU Fundamentals"** (the website). It is the bible.
-- **Audit**: Are you checking `device.limits.maxStorageBufferBindingSize`? If you try to bind a buffer larger than the
-  hardware supports, it crashes.
+- **Audit**: Are you checking `device.limits.maxStorageBufferBindingSize`? If
+  you try to bind a buffer larger than the hardware supports, it crashes.

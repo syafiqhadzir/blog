@@ -3,50 +3,50 @@
    A soothing pastel theme for the high-spirited! */
 
 .highlight {
-    /* AAA Compliant Light Palette (WCAG 2.2 AAA Optimized) */
-    --ctp-rosewater: #843b2c;
-    --ctp-flamingo: #843232;
-    --ctp-pink: #8d2673;
-    --ctp-mauve: #4b1f80;
-    --ctp-red: #85061f;
-    --ctp-maroon: #850c19;
-    --ctp-peach: #853200;
-    --ctp-yellow: #6e4400;
-    --ctp-green: #1d5410;
-    --ctp-teal: #0a4b4f;
-    --ctp-sky: #004d73;
-    --ctp-sapphire: #0b4a58;
-    --ctp-blue: #00327e;
-    --ctp-lavender: #34408c;
-    --ctp-text: #111;
-    --ctp-subtext1: #333;
-    --ctp-subtext0: #444;
-    --ctp-overlay2: #555;
-    --ctp-overlay1: #666;
-    --ctp-overlay0: #777;
-    --ctp-surface2: #8c909e;
-    --ctp-surface1: #9ca0ac;
-    --ctp-surface0: #acb0ba;
-    --ctp-base: #f0f0f0;
-    --ctp-mantle: #e6e6e6;
-    --ctp-crust: #dce0e8;
+  /* AAA Compliant Light Palette (WCAG 2.2 AAA Optimized) */
+  --ctp-rosewater: #843b2c;
+  --ctp-flamingo: #843232;
+  --ctp-pink: #8d2673;
+  --ctp-mauve: #4b1f80;
+  --ctp-red: #85061f;
+  --ctp-maroon: #850c19;
+  --ctp-peach: #853200;
+  --ctp-yellow: #6e4400;
+  --ctp-green: #1d5410;
+  --ctp-teal: #0a4b4f;
+  --ctp-sky: #004d73;
+  --ctp-sapphire: #0b4a58;
+  --ctp-blue: #00327e;
+  --ctp-lavender: #34408c;
+  --ctp-text: #111;
+  --ctp-subtext1: #333;
+  --ctp-subtext0: #444;
+  --ctp-overlay2: #555;
+  --ctp-overlay1: #666;
+  --ctp-overlay0: #777;
+  --ctp-surface2: #8c909e;
+  --ctp-surface1: #9ca0ac;
+  --ctp-surface0: #acb0ba;
+  --ctp-base: #f0f0f0;
+  --ctp-mantle: #e6e6e6;
+  --ctp-crust: #dce0e8;
 
-    /* Base text */
-    &,
-    .w {
-        color: var(--ctp-text);
-    }
-
-    /* Container */
-    padding: 1.5rem;
-    margin: 2rem 0;
-    overflow-x: auto;
-    font-size: 0.95rem;
-    line-height: 1.6;
+  /* Base text */
+  &,
+  .w {
     color: var(--ctp-text);
-    background: var(--code-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+  }
+
+  /* Container */
+  padding: 1.5rem;
+  margin: 2rem 0;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ctp-text);
+  background: var(--code-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
 }
 
 /* Comments - Bumped to Subtext1 for safe AA contrast */
@@ -55,13 +55,13 @@
 .highlight .cm,
 .highlight .c1,
 .highlight .cs {
-    font-style: italic;
-    color: var(--ctp-subtext1);
+  font-style: italic;
+  color: var(--ctp-subtext1);
 }
 
 /* Errors */
 .highlight .err {
-    color: var(--ctp-red);
+  color: var(--ctp-red);
 }
 
 /* Keywords */
@@ -70,19 +70,19 @@
 .highlight .kp,
 .highlight .kr,
 .highlight .kv {
-    color: var(--ctp-mauve);
+  color: var(--ctp-mauve);
 }
 
 .highlight .kc {
-    color: var(--ctp-peach);
+  color: var(--ctp-peach);
 }
 
 .highlight .kd {
-    color: var(--ctp-blue);
+  color: var(--ctp-blue);
 }
 
 .highlight .kt {
-    color: var(--ctp-yellow);
+  color: var(--ctp-yellow);
 }
 
 /* Strings */
@@ -94,73 +94,73 @@
 .highlight .sh,
 .highlight .sx,
 .highlight .s1 {
-    color: var(--ctp-green);
+  color: var(--ctp-green);
 }
 
 .highlight .si {
-    color: var(--ctp-maroon);
+  color: var(--ctp-maroon);
 }
 
 .highlight .sr {
-    color: var(--ctp-pink);
+  color: var(--ctp-pink);
 }
 
 .highlight .se {
-    color: var(--ctp-pink);
+  color: var(--ctp-pink);
 }
 
 .highlight .ss {
-    color: var(--ctp-green);
+  color: var(--ctp-green);
 }
 
 /* Names */
 .highlight .na {
-    color: var(--ctp-blue);
+  color: var(--ctp-blue);
 }
 
 .highlight .nb {
-    color: var(--ctp-peach);
+  color: var(--ctp-peach);
 }
 
 .highlight .nc {
-    color: var(--ctp-yellow);
+  color: var(--ctp-yellow);
 }
 
 .highlight .nd {
-    font-style: italic;
-    color: var(--ctp-blue);
+  font-style: italic;
+  color: var(--ctp-blue);
 }
 
 .highlight .nf {
-    color: var(--ctp-blue);
+  color: var(--ctp-blue);
 }
 
 .highlight .ni {
-    color: var(--ctp-teal);
+  color: var(--ctp-teal);
 }
 
 .highlight .nl {
-    color: var(--ctp-blue);
+  color: var(--ctp-blue);
 }
 
 .highlight .nn {
-    color: var(--ctp-peach);
+  color: var(--ctp-peach);
 }
 
 .highlight .no {
-    color: var(--ctp-peach);
+  color: var(--ctp-peach);
 }
 
 .highlight .nt {
-    color: var(--ctp-mauve);
+  color: var(--ctp-mauve);
 }
 
 .highlight .nv {
-    color: var(--ctp-text);
+  color: var(--ctp-text);
 }
 
 .highlight .nx {
-    color: var(--ctp-blue);
+  color: var(--ctp-blue);
 }
 
 /* Numbers */
@@ -172,71 +172,71 @@
 .highlight .mo,
 .highlight .mb,
 .highlight .mx {
-    color: var(--ctp-peach);
+  color: var(--ctp-peach);
 }
 
 /* Operators */
 .highlight .o,
 .highlight .ow {
-    color: var(--ctp-sky);
+  color: var(--ctp-sky);
 }
 
 /* Punctuation - Bumped to Subtext1 for safe AA contrast */
 .highlight .p,
 .highlight .pi {
-    color: var(--ctp-subtext1);
+  color: var(--ctp-subtext1);
 }
 
 /* Diff */
 .highlight .gd {
-    color: var(--ctp-red);
-    background-color: rgb(243 139 168 / 10%);
+  color: var(--ctp-red);
+  background-color: rgb(243 139 168 / 10%);
 }
 
 .highlight .gi {
-    color: var(--ctp-green);
-    background-color: rgb(166 227 161 / 10%);
+  color: var(--ctp-green);
+  background-color: rgb(166 227 161 / 10%);
 }
 
 .highlight .gh {
-    font-weight: 700;
-    color: var(--ctp-blue);
+  font-weight: 700;
+  color: var(--ctp-blue);
 }
 
 .highlight .gp {
-    color: var(--ctp-overlay2);
+  color: var(--ctp-overlay2);
 }
 
 /* Preprocessor */
 .highlight .cp {
-    color: var(--ctp-pink);
+  color: var(--ctp-pink);
 }
 
 .highlight .cpf {
-    color: var(--ctp-green);
+  color: var(--ctp-green);
 }
 
 pre {
-    margin: 0;
-    font-family: var(--font-mono);
+  margin: 0;
+  font-family: var(--font-mono);
 }
 
 /* Rouge helpers */
 .highlighter-rouge pre {
-    padding: 1.5rem;
-    margin: 2rem 0;
-    overflow-x: auto;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    background-color: var(--code-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background-color: var(--code-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
 }
 
 .highlighter-rouge code {
-    display: block;
-    padding: 0;
-    color: var(--ctp-text);
-    white-space: pre;
-    background: transparent;
+  display: block;
+  padding: 0;
+  color: var(--ctp-text);
+  white-space: pre;
+  background: transparent;
 }

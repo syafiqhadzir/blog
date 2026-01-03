@@ -1,40 +1,40 @@
 /* Klisé-style Footer */
 .klise-footer {
-    contain-intrinsic-size: auto 150px;
-    padding-top: 2rem;
-    margin-top: 4rem;
-    content-visibility: auto;
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    text-align: center;
-    border-top: 1px solid var(--border-color);
+  contain-intrinsic-size: auto 150px;
+  padding-top: 2rem;
+  margin-top: 4rem;
+  content-visibility: auto;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-align: center;
+  border-top: 1px solid var(--border-color);
 }
 
 .footer-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
 }
 
 .footer-icon {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-    fill: currentcolor;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  fill: currentcolor;
 }
 
 .footer-content p {
-    margin: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 
 .footer-links a {
-    color: var(--text-secondary);
-    text-decoration: none;
+  color: var(--text-secondary);
+  text-decoration: none;
 }
 
 .footer-links a:hover {
-    color: var(--text-color);
+  color: var(--text-color);
 }

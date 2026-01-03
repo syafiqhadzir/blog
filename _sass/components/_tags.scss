@@ -7,69 +7,69 @@
 
 /* Tag Cloud Container */
 .tag-cloud {
-    @include flex-center;
+  @include flex-center;
 
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 2rem 0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 2rem 0;
 }
 
 /* Base Tag Chip Stats */
 %tag-chip {
-    display: inline-flex;
-    gap: 0.35rem;
-    align-items: center;
-    padding: 0.5rem 0.875rem;
-    font-weight: 500;
-    color: var(--text-color);
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  padding: 0.5rem 0.875rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+  background: var(--code-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  transition: all var(--transition-base);
+
+  &:hover {
     text-decoration: none;
-    background: var(--code-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 2rem;
-    transition: all var(--transition-base);
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-base);
+    transform: translateY(-2px);
+  }
 
-    &:hover {
-        text-decoration: none;
-        border-color: var(--accent-color);
-        box-shadow: var(--shadow-base);
-        transform: translateY(-2px);
-    }
-
-    &.hidden {
-        display: none;
-    }
+  &.hidden {
+    display: none;
+  }
 }
 
 .tag-chip {
-    @extend %tag-chip;
+  @extend %tag-chip;
 }
 
 .tag-chip-count {
-    padding: 0.1rem 0.4rem;
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    background: var(--bg-color);
-    border-radius: 1rem;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: var(--bg-color);
+  border-radius: 1rem;
 }
 
 /* Post Tags (e.g. at bottom of single post) */
 .post-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
 }
 
 .tag {
-    @extend %tag-chip;
+  @extend %tag-chip;
 
-    padding: 0.2rem 0.6rem;
-    font-size: 0.8rem;
-    border-radius: 99px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 99px;
 
-    /* Reset hover transform for smaller tags if desired, or keep generic */
-    &:hover {
-        color: var(--bg-color);
-        background: var(--accent-color);
-    }
+  /* Reset hover transform for smaller tags if desired, or keep generic */
+  &:hover {
+    color: var(--bg-color);
+    background: var(--accent-color);
+  }
 }

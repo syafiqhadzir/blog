@@ -4,231 +4,235 @@
 name: CI/CD Pipeline
 
 on:
-    push:
-        branches: [main]
-        paths-ignore:
-            - '**.md'
-            - 'LICENSE'
-            - '.gitignore'
-            - 'humans.txt'
-    pull_request:
-        branches: [main]
-    workflow_dispatch:
-    schedule:
-        # Weekly security check on Sundays at 00:00 UTC
-        - cron: '0 0 * * 0'
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+      - '.gitignore'
+      - 'humans.txt'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Weekly security check on Sundays at 00:00 UTC
+    - cron: '0 0 * * 0'
 
 permissions:
-    contents: read
-    pages: write
-    id-token: write
-    security-events: write
-    pull-requests: write # For Lighthouse comments
+  contents: read
+  pages: write
+  id-token: write
+  security-events: write
+  pull-requests: write # For Lighthouse comments
 
 concurrency:
-    group: ${{ github.workflow }}-${{ github.ref }}
-    cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 env:
-    RUBY_VERSION: '3.4.1'
-    NODE_VERSION: '24'
-    JEKYLL_ENV: production
+  RUBY_VERSION: '3.4.1'
+  NODE_VERSION: '24'
+  JEKYLL_ENV: production
 
 jobs:
-    # 🔒 Security: Harden Runner and Dependency Review
-    security-preflight:
-        name: Security Hardening
-        runs-on: ubuntu-latest
-        steps:
-            - name: Harden Runner
-              uses: step-security/harden-runner@v2
-              with:
-                  egress-policy: audit # Change to 'block' after verification
+  # 🔒 Security: Harden Runner and Dependency Review
+  security-preflight:
+    name: Security Hardening
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit # Change to 'block' after verification
 
-            - name: Checkout
-              uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v6
 
-            - name: Dependency Review
-              if: github.event_name == 'pull_request'
-              uses: actions/dependency-review-action@v4
+      - name: Dependency Review
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@v4
 
-    # 🧪 Quality: Linting & Unit Tests
-    quality:
-        name: Quality (Lint & Test)
-        runs-on: ubuntu-latest
-        needs: security-preflight
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v6
+  # 🧪 Quality: Linting & Unit Tests
+  quality:
+    name: Quality (Lint & Test)
+    runs-on: ubuntu-latest
+    needs: security-preflight
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v6
-              with:
-                  node-version: ${{ env.NODE_VERSION }}
-                  cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
 
-            - name: Setup Ruby
-              uses: ruby/setup-ruby@v1
-              with:
-                  ruby-version: ${{ env.RUBY_VERSION }}
-                  bundler-cache: true
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
 
-            - name: Install dependencies
-              run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Quality Suite (Parallel)
-              run: |
-                  npm run typecheck &
-                  npm run lint:ts &
-                  npm run format:check &
-                  npm run lint:md &
-                  bundle exec rubocop --parallel &
-                  bundle exec rspec spec/unit --format documentation &
-                  wait
-              env:
-                  CI: true
+      - name: Quality Suite (Parallel)
+        run: |
+          npm run typecheck &
+          npm run lint:ts &
+          npm run format:check &
+          npm run lint:md &
+          bundle exec rubocop --parallel &
+          bundle exec rspec spec/unit --format documentation &
+          wait
+        env:
+          CI: true
 
-    # 🔨 Build: Single build point for the entire pipeline
-    build:
-        name: Build & Profile
-        runs-on: ubuntu-latest
-        needs: quality
-        outputs:
-            base_path: ${{ steps.pages.outputs.base_path }}
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v6
+  # 🔨 Build: Single build point for the entire pipeline
+  build:
+    name: Build & Profile
+    runs-on: ubuntu-latest
+    needs: quality
+    outputs:
+      base_path: ${{ steps.pages.outputs.base_path }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
 
-            - name: Setup Ruby
-              uses: ruby/setup-ruby@v1
-              with:
-                  ruby-version: ${{ env.RUBY_VERSION }}
-                  bundler-cache: true
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
 
-            - name: Setup Pages
-              id: pages
-              uses: actions/configure-pages@v5
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v6
-              with:
-                  node-version: ${{ env.NODE_VERSION }}
-                  cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
 
-            - name: Install Node dependencies
-              run: npm ci
+      - name: Install Node dependencies
+        run: npm ci
 
-            - name: Build Jekyll
-              run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+      - name: Build Jekyll
+        run:
+          bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path
+          }}"
 
-            - name: Minify HTML
-              run: npm run minify
+      - name: Minify HTML
+        run: npm run minify
 
-            - name: Build Service Worker
-              run: npm run build:sw
+      - name: Build Service Worker
+        run: npm run build:sw
 
-            - name: Binary Size Watchdog
-              run: |
-                  echo "## 📊 Build Size Report" >> $GITHUB_STEP_SUMMARY
-                  SIZE=$(du -sh _site | cut -f1)
-                  SIZE_BYTES=$(du -sb _site | cut -f1)
-                  echo "**Total Payload:** $SIZE ($SIZE_BYTES bytes)" >> $GITHUB_STEP_SUMMARY
+      - name: Binary Size Watchdog
+        run: |
+          echo "## 📊 Build Size Report" >> $GITHUB_STEP_SUMMARY
+          SIZE=$(du -sh _site | cut -f1)
+          SIZE_BYTES=$(du -sb _site | cut -f1)
+          echo "**Total Payload:** $SIZE ($SIZE_BYTES bytes)" >> $GITHUB_STEP_SUMMARY
 
-                  # Threshold: 15MB (Bumped for legitimate asset growth)
-                  if [ "$SIZE_BYTES" -gt 15728640 ]; then
-                    echo "❌ **ALERT:** Build size exceeds 15MB budget!" >> $GITHUB_STEP_SUMMARY
-                    exit 1
-                  fi
+          # Threshold: 15MB (Bumped for legitimate asset growth)
+          if [ "$SIZE_BYTES" -gt 15728640 ]; then
+            echo "❌ **ALERT:** Build size exceeds 15MB budget!" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
 
-            - name: Upload _site Artifact
-              uses: actions/upload-artifact@v6
-              with:
-                  name: site-build
-                  path: _site
-                  retention-days: 1
+      - name: Upload _site Artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: site-build
+          path: _site
+          retention-days: 1
 
-            - name: Upload Pages Artifact
-              uses: actions/upload-pages-artifact@v4
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v4
 
-    # 🔦 Lighthouse: Performance Guardrails
-    lighthouse:
-        name: Lighthouse CI
-        runs-on: ubuntu-latest
-        needs: build
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v6
+  # 🔦 Lighthouse: Performance Guardrails
+  lighthouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v6
-              with:
-                  node-version: ${{ env.NODE_VERSION }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
-            - name: Download Build Artifact
-              uses: actions/download-artifact@v6
-              with:
-                  name: site-build
-                  path: _site
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: site-build
+          path: _site
 
-            - name: Install LHCI
-              run: npm install -g @lhci/cli
+      - name: Install LHCI
+        run: npm install -g @lhci/cli
 
-            - name: Run LHCI
-              run: |
-                  lhci collect --staticDistDir=./_site
-                  lhci assert --preset=lighthouse:recommended
-                  lhci upload --target=temporary-public-storage || echo "Upload failed, but continuing..."
-              env:
-                  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      - name: Run LHCI
+        run: |
+          lhci collect --staticDistDir=./_site
+          lhci assert --preset=lighthouse:recommended
+          lhci upload --target=temporary-public-storage || echo "Upload failed, but continuing..."
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
-    # 🧪 E2E: Distributed testing via sharding
-    e2e:
-        name: E2E Tests (Shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
-        runs-on: ubuntu-latest
-        needs: build
-        strategy:
-            fail-fast: false
-            matrix:
-                shardIndex: [1, 2]
-                shardTotal: [2]
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v6
+  # 🧪 E2E: Distributed testing via sharding
+  e2e:
+    name: E2E Tests (Shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
+    runs-on: ubuntu-latest
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2]
+        shardTotal: [2]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v6
-              with:
-                  node-version: ${{ env.NODE_VERSION }}
-                  cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
 
-            - name: Install dependencies
-              run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Install Playwright Browsers
-              run: npx playwright install --with-deps chromium
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
 
-            - name: Download Build Artifact
-              uses: actions/download-artifact@v6
-              with:
-                  name: site-build
-                  path: _site
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: site-build
+          path: _site
 
-            - name: Run Playwright tests
-              run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --project=full-chromium
-              env:
-                  BASE_URL: http://127.0.0.1:5000
-                  SKIP_BUILD: 'true'
+      - name: Run Playwright tests
+        run:
+          npx playwright test --shard=${{ matrix.shardIndex }}/${{
+          matrix.shardTotal }} --project=full-chromium
+        env:
+          BASE_URL: http://127.0.0.1:5000
+          SKIP_BUILD: 'true'
 
-    # 🚀 Deploy: Final stage
-    deploy:
-        name: Deploy
-        runs-on: ubuntu-latest
-        needs: [lighthouse, e2e]
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
-        steps:
-            - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v4
+  # 🚀 Deploy: Final stage
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: [lighthouse, e2e]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
