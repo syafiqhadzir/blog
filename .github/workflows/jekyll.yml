@@ -211,9 +211,9 @@ jobs:
                   path: _site
 
             - name: Run Playwright tests
-              run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --project=chromium
+              run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --project=full-chromium
               env:
-                  BASE_URL: http://localhost:4000/
+                  BASE_URL: http://127.0.0.1:5000
 
     # 🚀 Deploy: Final stage
     deploy:
