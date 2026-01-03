@@ -30,3 +30,5 @@ group :test do
 end
 
 gem 'jekyll-minifier', '~> 0.2.2'
+
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
