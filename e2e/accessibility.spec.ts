@@ -2,6 +2,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
 test.describe('Accessibility (WCAG 2.2)', () => {
+    test.describe.configure({ mode: 'parallel' });
     test('homepage has no critical accessibility violations', async ({ page }) => {
         await page.goto('/');
 

@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('SEO Metadata', () => {
+    test.describe.configure({ mode: 'parallel' });
     test.beforeEach(async ({ page }) => {
         await page.goto('/archive.html');
         // Click first post link to check a real post

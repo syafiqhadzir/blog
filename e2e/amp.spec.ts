@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('AMP Validation', () => {
+    test.describe.configure({ mode: 'parallel' });
     test('homepage is valid AMP', async ({ page }) => {
         await page.goto('/');
 

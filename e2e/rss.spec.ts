@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('RSS Feed', () => {
+    test.describe.configure({ mode: 'parallel' });
     test('feed.xml exists and returns valid response', async ({ request }) => {
         const response = await request.get('/feed.xml');
         expect(response.ok()).toBeTruthy();

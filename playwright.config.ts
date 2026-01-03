@@ -1,48 +1,64 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const PERF_MODE = process.env['PERF_MODE'] === 'true';
+const CI = !!process.env['CI'];
+
+// Helper to determine worker count
+// eslint-disable-next-line sonarjs/function-return-type
+function getWorkerCount(): number | string | undefined {
+    if (!CI) return undefined; // Let Playwright decide in non-CI
+    return PERF_MODE ? 4 : '50%';
+}
+
 export default defineConfig({
-    forbidOnly: !!process.env['CI'],
+    expect: {
+        timeout: 5000,
+    },
+    forbidOnly: CI,
     fullyParallel: true,
-    retries: process.env['CI'] ? 2 : 0,
-    testDir: './e2e',
-    ...(process.env['CI'] ? { workers: 1 } : {}),
     projects: [
         {
-            name: 'chromium',
+            grep: /@fast/,
+            name: 'fast-chromium',
             use: { ...devices['Desktop Chrome'] },
         },
         {
-            name: 'firefox',
+            grep: /@full|@fast/,
+            name: 'full-chromium',
+            use: { ...devices['Desktop Chrome'] },
+        },
+        {
+            grep: /@full|@fast/,
+            name: 'full-firefox',
             use: { ...devices['Desktop Firefox'] },
         },
         {
-            name: 'webkit',
+            grep: /@full|@fast/,
+            name: 'full-webkit',
             use: { ...devices['Desktop Safari'] },
         },
-        {
-            name: 'mobile-chrome',
-            use: { ...devices['Pixel 5'] },
-        },
-        {
-            name: 'mobile-safari',
-            use: { ...devices['iPhone 12'] },
-        },
     ],
+    reporter: CI ? [['html'], ['list']] : 'list',
+    retries: CI ? 1 : 0,
+    testDir: './tests',
 
-    reporter: 'html',
+    timeout: 30_000,
 
     use: {
-        baseURL: process.env['BASE_URL'] ?? 'http://127.0.0.1:4000/',
+        baseURL: 'http://127.0.0.1:5000',
         screenshot: 'only-on-failure',
         trace: 'on-first-retry',
+        video: 'on-first-retry',
     },
 
     webServer: {
-        command: process.env['CI'] ? 'npx http-server _site -p 4000' : 'bundle exec jekyll serve --port 4000',
-        reuseExistingServer: !process.env['CI'],
+        command: 'npm run build && npm run serve:site',
+        reuseExistingServer: !CI,
         stderr: 'pipe',
         stdout: 'pipe',
-        timeout: 180_000,
-        url: 'http://127.0.0.1:4000/',
+        timeout: 120 * 1000,
+        url: 'http://127.0.0.1:5000',
     },
+
+    workers: getWorkerCount(),
 });
