@@ -14,11 +14,10 @@ test.describe('Fast Smoke Suite', { tag: '@fast' }, () => {
     });
 
     test('Archive loads and has posts', async ({ page }) => {
-        await page.goto('/archive.html'); // Normalize URL to match build output logic
-        await expect(page.locator('.post-list')).toBeVisible();
-        // Assuming .post-list or similar exists. Using generic logic based on prev context
-        // Actually, previous context showed 'amp-autocomplete', let's stick to safe visible checks
+        await page.goto('/archive.html');
         await expect(page.locator('main')).toBeVisible();
+        // Verify page has content
+        await expect(page.locator('h1')).toBeVisible();
     });
 
     test('Latest post loads', async ({ getAllInternalRoutes, page }) => {

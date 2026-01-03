@@ -1,6 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
 import os from 'node:os';
-import { fileURLToPath } from 'node:url';
 
 const PERF_MODE = process.env['PERF_MODE'] === 'true';
 const CI = !!process.env['CI'];
@@ -19,10 +18,6 @@ export default defineConfig({
     },
     forbidOnly: CI,
     fullyParallel: true,
-
-    // Global setup/teardown for build-once-run-many
-    globalSetup: fileURLToPath(new URL('tests/global-setup.ts', import.meta.url)),
-    globalTeardown: fileURLToPath(new URL('tests/global-teardown.ts', import.meta.url)),
 
     projects: [
         {
@@ -70,8 +65,15 @@ export default defineConfig({
         video: 'retain-on-failure',
     },
 
-    // Remove webServer since we use global setup
-    // webServer: { ... },
+    // Use webServer for reliable build-once-serve-static pattern
+    webServer: {
+        command: 'npm run build && npx http-server _site -p 5000 -c-1 --silent',
+        reuseExistingServer: !CI,
+        stderr: 'pipe',
+        stdout: 'pipe',
+        timeout: 120 * 1000,
+        url: 'http://127.0.0.1:5000',
+    },
 
     workers: getWorkerCount(),
 });
