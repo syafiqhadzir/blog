@@ -18,9 +18,9 @@ test.describe('Mobile & Responsive', { tag: ['@full', '@mobile'] }, () => {
     expect(viewport?.width).toBe(390);
 
     // Verify mobile menu exists
-    const mobileMenu = page
-      .locator('[class*="mobile"]')
-      .or(page.locator('nav'));
+    const mobileMenu = page.getByRole('navigation', {
+      name: 'Main navigation',
+    });
     await expect(mobileMenu).toBeVisible();
 
     await context.close();
@@ -54,13 +54,12 @@ test.describe('Mobile & Responsive', { tag: ['@full', '@mobile'] }, () => {
 
     await page.goto('/');
 
-    // Test touch tap on link
-    const firstLink = page.locator('a[href^="/"]').first();
-    await firstLink.tap();
+    // Test touch tap on link - use specific link that changes URL
+    const archiveLink = page.getByRole('link', { name: 'Archive' });
+    await archiveLink.tap();
 
     // Verify navigation occurred
-    await page.waitForLoadState('domcontentloaded');
-    expect(page.url()).not.toBe('http://127.0.0.1:5000/');
+    await expect(page).toHaveURL(/archive/);
 
     await context.close();
   });
