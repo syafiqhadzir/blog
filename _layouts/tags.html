@@ -92,7 +92,6 @@ Features:
             href="#{{ tag[0] | slugify }}"
             class="tag-chip {{ w_class }}"
             data-tag="{{ tag[0] }}"
-            role="listitem"
           >
             {%- if tag_data.icon -%}<span class="tag-icon" aria-hidden="true">{{ tag_data.icon }}</span>{%- endif -%}
             {{ tag_data.name | default: tag[0] }}
@@ -145,7 +144,7 @@ Features:
 
           <ul class="tag-posts" role="list">
             {%- for post in tag[1] -%}
-            <li class="tag-post-item" role="listitem">
+            <li class="tag-post-item">
               <time class="tag-post-date" datetime="{{ post.date | date_to_xmlschema }}">
                 {{ post.date | date: "%d %b %Y" }}
               </time>

@@ -13,7 +13,7 @@
 {%- if posts.size > 0 -%}
 <ul role="list" aria-label="Blog posts">
   {%- for post in posts limit: include.limit -%}
-  <li role="listitem">
+  <li>
     <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
       {{- post.date | date: site.theme_config.date_format -}}
     </time>
@@ -24,7 +24,7 @@
   </li>
   {%- endfor -%}
   {%- if include.show_more and limit_exceeded -%}
-  <li role="listitem"><a href="{{ include.show_more_url }}" aria-label="Show more posts">{{ include.show_more_text |
+  <li><a href="{{ include.show_more_url }}" aria-label="Show more posts">{{ include.show_more_text |
       default: "Show more..." }}</a></li>
   {%- endif -%}
 </ul>

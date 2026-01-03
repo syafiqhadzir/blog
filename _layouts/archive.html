@@ -140,7 +140,6 @@ Features:
                 {%- assign post_searchable = post_searchable | strip_newlines | strip -%}
 
                 <li class="archive-post-item"
-                    role="listitem"
                     data-searchable="{{ post_searchable | replace: "'", "" | replace: '"', "" }}"
                     [hidden]="archiveQuery ? searchData.posts[{{ global_post_index }}].indexOf(archiveQuery) == -1 : false"
                     [class]="'archive-post-item' + (archiveQuery && searchData.posts[{{ global_post_index }}].indexOf(archiveQuery) != -1 ? ' is-matched' : '')">

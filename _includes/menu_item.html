@@ -1,6 +1,6 @@
 <ul role="list">
   {%-for item in include.collection-%}
-  <li role="listitem">
+  <li>
     {%- if item.url -%}
     <a href="{{ item.url }}" aria-label="{{ item.title }}">{{ item.title }}</a>
     {%- else -%}
