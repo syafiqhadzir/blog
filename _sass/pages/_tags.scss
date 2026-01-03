@@ -68,16 +68,32 @@
     margin-bottom: 2rem;
 }
 
-/* Tag Weight Classes */
+/* Tag Icons */
+.tag-icon {
+    margin-right: 0.25rem;
+    font-size: 0.9em;
+}
+
+/* =============================================================
+   7-TIER WEIGHTED TAG CLOUD
+   Based on combined count + recency scoring
+   w1 = lowest weight, w7 = highest (trending) weight
+   ============================================================= */
+
 .tag-w1 {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    opacity: 80%;
 }
 
 .tag-w2 {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .tag-w3 {
+    font-size: 0.9rem;
+}
+
+.tag-w4 {
     font-size: 0.95rem;
     color: var(--bg-color);
     background: var(--accent-color);
@@ -89,8 +105,9 @@
     }
 }
 
-.tag-w4 {
+.tag-w5 {
     font-size: 1rem;
+    font-weight: 600;
     color: var(--bg-color);
     background: var(--accent-color);
     border-color: var(--accent-color);
@@ -101,15 +118,85 @@
     }
 }
 
-.tag-w5 {
+.tag-w6 {
     font-size: 1.05rem;
+    font-weight: 600;
     color: var(--bg-color);
     background: linear-gradient(135deg, var(--accent-color), var(--link-color));
     border-color: transparent;
+    box-shadow: 0 2px 8px var(--accent-shadow);
 
     .tag-chip-count {
         color: var(--bg-color);
         background: rgb(255 255 255 / 25%);
+    }
+}
+
+.tag-w7 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--bg-color);
+    background: linear-gradient(135deg, var(--link-color), #ff6b6b, var(--accent-color));
+    background-size: 200% 200%;
+    border-color: transparent;
+    box-shadow: 0 4px 16px var(--accent-shadow);
+    animation: tag-pulse 3s ease-in-out infinite;
+
+    .tag-chip-count {
+        font-weight: 600;
+        color: var(--bg-color);
+        background: rgb(255 255 255 / 30%);
+    }
+}
+
+@keyframes tag-pulse {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Parent Badge (Hierarchy) */
+.tag-parent-badge {
+    padding: 0.2rem 0.5rem;
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+}
+
+/* Related Tags */
+.tag-related {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0 1.25rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+.tag-related-label {
+    color: var(--text-secondary);
+}
+
+.tag-related-link {
+    padding: 0.15rem 0.5rem;
+    color: var(--link-color);
+    text-decoration: none;
+    background: var(--accent-shadow);
+    border-radius: 0.5rem;
+    transition: background-color 0.15s;
+
+    &:hover {
+        color: var(--bg-color);
+        background: var(--accent-color);
     }
 }
 

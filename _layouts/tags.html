@@ -1,95 +1,248 @@
 ---
 layout: default
 ---
+{%- comment -%}
+================================================================================
+TAGS PAGE LAYOUT (AMP-COMPLIANT)
+Features:
+  1. Hierarchical taxonomy display with parent/child relationships
+  2. Weighted tag cloud with recency scoring (TF-IDF-like)
+  3. AMP-compatible fuzzy search using amp-bind
+  4. Enhanced Schema.org JSON-LD with Wikidata sameAs
+================================================================================
+{%- endcomment -%}
+
+{%- assign sorted_tags = site.tags | sort -%}
+{%- assign now_epoch = 'now' | date: '%s' | plus: 0 -%}
+
+{%- comment -%} Calculate max post count and max recency score {%- endcomment -%}
+{%- assign max_count = 0 -%}
+{%- assign max_score = 0 -%}
+{%- for tag in sorted_tags -%}
+  {%- if tag[1].size > max_count -%}
+    {%- assign max_count = tag[1].size -%}
+  {%- endif -%}
+  {%- assign tag_score = 0 -%}
+  {%- for post in tag[1] -%}
+    {%- assign post_epoch = post.date | date: '%s' | plus: 0 -%}
+    {%- assign days_ago = now_epoch | minus: post_epoch | divided_by: 86400 -%}
+    {%- assign recency = 365 | minus: days_ago -%}
+    {%- if recency < 30 -%}{%- assign recency = 30 -%}{%- endif -%}
+    {%- assign tag_score = tag_score | plus: recency -%}
+  {%- endfor -%}
+  {%- if tag_score > max_score -%}
+    {%- assign max_score = tag_score -%}
+  {%- endif -%}
+{%- endfor -%}
 
 <section class="tags-page" aria-label="Tags">
-    <header class="tags-header">
-        <h1 id="tags-title">{{ page.title | default: "Explore by Topic" }}</h1>
-        {% if page.description %}
-        <p class="tags-description">{{ page.description }}</p>
-        {% endif %}
-        <p class="tags-stats">
-            <span class="stat-total">{{ site.tags | size }}</span> topics across
-            <span class="stat-total">{{ site.posts | size }}</span> articles
-        </p>
-    </header>
+  <header class="tags-header">
+    <h1 id="tags-title">{{ page.title | default: "Explore by Topic" }}</h1>
+    {% if page.description %}
+    <p class="tags-description">{{ page.description }}</p>
+    {% endif %}
+    <p class="tags-stats">
+      <span class="stat-total">{{ site.tags | size }}</span> topics across
+      <span class="stat-total">{{ site.posts | size }}</span> articles
+    </p>
+  </header>
 
-    <!-- Tag Cloud -->
-    <nav class="tag-cloud-section" aria-label="Tag cloud">
-        {%- assign sorted_tags = site.tags | sort -%} {%- assign max_count = 0 -%} {%- for tag in
-        sorted_tags -%} {%- if tag[1].size > max_count -%} {%- assign max_count = tag[1].size -%}
-        {%- endif -%} {%- endfor -%}
+  {%- comment -%} AMP-compatible Search {%- endcomment -%}
+  <div class="tags-search" role="search">
+    <input
+      type="search"
+      class="tags-search-input"
+      placeholder="🔍 Search tags..."
+      aria-label="Search tags"
+      on="input-debounced:AMP.setState({tagQuery: event.value.toLowerCase()})"
+      [value]="tagQuery || ''"
+    >
+  </div>
 
-        <div class="tag-cloud" role="list">
-            {%- for tag in sorted_tags -%} {%- assign count = tag[1].size -%} {%- assign ratio =
-            count | times: 100 | divided_by: max_count -%} {%- if ratio < 20 -%} {%- assign w_class
-            = 'tag-w1' -%} {%- elsif ratio < 40 -%} {%- assign w_class = 'tag-w2' -%} {%- elsif
-            ratio < 60 -%} {%- assign w_class = 'tag-w3' -%} {%- elsif ratio < 80 -%} {%- assign
-            w_class = 'tag-w4' -%} {%- else -%} {%- assign w_class = 'tag-w5' -%} {%- endif -%}
-            <a
-                href="#{{ tag[0] | slugify }}"
-                class="tag-chip {{ w_class }}"
-                data-tag="{{ tag[0] }}"
-                role="listitem"
-            >
-                {{ site.data.tags[tag[0]].name | default: tag[0] }}
-                <span class="tag-chip-count">{{ count }}</span>
-            </a>
-            {%- endfor -%}
-        </div>
-    </nav>
+  {%- comment -%} Weighted Tag Cloud with Recency Scoring {%- endcomment -%}
+  <nav class="tag-cloud-section" aria-label="Tag cloud">
+    <div class="tag-cloud" role="list">
+      {%- for tag in sorted_tags -%}
+        {%- assign tag_data = site.data.tags[tag[0]] -%}
+        {%- if tag_data.deprecated != true -%}
+          {%- assign count = tag[1].size -%}
 
-    <!-- Tag Sections -->
-    <div class="tag-sections" id="tag-list">
-        {%- for tag in sorted_tags -%}
-        <details class="tag-group" open id="{{ tag[0] | slugify }}" data-tag="{{ tag[0] }}">
-            <summary class="tag-group-header">
-                <span class="tag-chevron" aria-hidden="true"></span>
-                <span class="tag-label"
-                    >{{ site.data.tags[tag[0]].name | default: tag[0] | capitalize }}</span
-                >
-                <span class="tag-count">{{ tag[1].size }} articles</span>
-            </summary>
-            {%- if site.data.tags[tag[0]].description -%}
-            <p class="tag-group-description">{{ site.data.tags[tag[0]].description }}</p>
-            {%- endif -%}
-            <ul class="tag-posts" role="list">
-                {%- for post in tag[1] -%}
-                <li class="tag-post-item" role="listitem">
-                    <time class="tag-post-date" datetime="{{ post.date | date_to_xmlschema }}">
-                        {{ post.date | date: "%d %b %Y" }}
-                    </time>
-                    <a class="tag-post-link" href="{{ post.url | relative_url }}"
-                        >{{ post.title }}</a
-                    >
-                    <span class="tag-post-meta"
-                        >{%- include reading_time.html content=post.content -%}</span
-                    >
-                </li>
-                {%- endfor -%}
-            </ul>
-        </details>
-        {%- endfor -%}
+          {%- comment -%} Calculate recency-weighted score {%- endcomment -%}
+          {%- assign tag_score = 0 -%}
+          {%- for post in tag[1] -%}
+            {%- assign post_epoch = post.date | date: '%s' | plus: 0 -%}
+            {%- assign days_ago = now_epoch | minus: post_epoch | divided_by: 86400 -%}
+            {%- assign recency = 365 | minus: days_ago -%}
+            {%- if recency < 30 -%}{%- assign recency = 30 -%}{%- endif -%}
+            {%- assign tag_score = tag_score | plus: recency -%}
+          {%- endfor -%}
+
+          {%- comment -%} Combine count + recency for final weight (50/50 blend) {%- endcomment -%}
+          {%- assign count_ratio = count | times: 100 | divided_by: max_count -%}
+          {%- assign score_ratio = tag_score | times: 100 | divided_by: max_score -%}
+          {%- assign final_ratio = count_ratio | plus: score_ratio | divided_by: 2 -%}
+
+          {%- comment -%} 7-tier weight classes {%- endcomment -%}
+          {%- if final_ratio < 15 -%}
+            {%- assign w_class = 'tag-w1' -%}
+          {%- elsif final_ratio < 30 -%}
+            {%- assign w_class = 'tag-w2' -%}
+          {%- elsif final_ratio < 45 -%}
+            {%- assign w_class = 'tag-w3' -%}
+          {%- elsif final_ratio < 60 -%}
+            {%- assign w_class = 'tag-w4' -%}
+          {%- elsif final_ratio < 75 -%}
+            {%- assign w_class = 'tag-w5' -%}
+          {%- elsif final_ratio < 90 -%}
+            {%- assign w_class = 'tag-w6' -%}
+          {%- else -%}
+            {%- assign w_class = 'tag-w7' -%}
+          {%- endif -%}
+
+          {%- assign tag_name_lower = tag[0] | downcase -%}
+          <a
+            href="#{{ tag[0] | slugify }}"
+            class="tag-chip {{ w_class }}"
+            data-tag="{{ tag[0] }}"
+            role="listitem"
+            [hidden]="tagQuery && !('{{ tag_name_lower }}'.includes(tagQuery) || '{{ tag_data.name | default: tag[0] | downcase }}'.includes(tagQuery))"
+          >
+            {%- if tag_data.icon -%}<span class="tag-icon" aria-hidden="true">{{ tag_data.icon }}</span>{%- endif -%}
+            {{ tag_data.name | default: tag[0] }}
+            <span class="tag-chip-count">{{ count }}</span>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
     </div>
+  </nav>
 
+  {%- comment -%} Hierarchical Tag Sections {%- endcomment -%}
+  <div class="tag-sections" id="tag-list">
+    {%- for tag in sorted_tags -%}
+      {%- assign tag_data = site.data.tags[tag[0]] -%}
+      {%- if tag_data.deprecated != true -%}
+        {%- assign tag_name_lower = tag[0] | downcase -%}
+        <details
+          class="tag-group"
+          open
+          id="{{ tag[0] | slugify }}"
+          data-tag="{{ tag[0] }}"
+          [hidden]="tagQuery && !('{{ tag_name_lower }}'.includes(tagQuery) || '{{ tag_data.name | default: tag[0] | downcase }}'.includes(tagQuery))"
+        >
+          <summary class="tag-group-header">
+            <span class="tag-chevron" aria-hidden="true"></span>
+            {%- if tag_data.icon -%}<span class="tag-icon" aria-hidden="true">{{ tag_data.icon }}</span>{%- endif -%}
+            <span class="tag-label">{{ tag_data.name | default: tag[0] | capitalize }}</span>
+            {%- if tag_data.parent -%}
+              <span class="tag-parent-badge" title="Part of {{ site.data.tags[tag_data.parent].name | default: tag_data.parent }}">
+                ↳ {{ site.data.tags[tag_data.parent].name | default: tag_data.parent }}
+              </span>
+            {%- endif -%}
+            <span class="tag-count">{{ tag[1].size }} articles</span>
+          </summary>
+
+          {%- if tag_data.description -%}
+          <p class="tag-group-description">{{ tag_data.description }}</p>
+          {%- endif -%}
+
+          {%- comment -%} Related Tags {%- endcomment -%}
+          {%- if tag_data.related -%}
+          <div class="tag-related">
+            <span class="tag-related-label">Related:</span>
+            {%- for related_tag in tag_data.related limit:5 -%}
+              {%- assign related_data = site.data.tags[related_tag] -%}
+              <a href="#{{ related_tag | slugify }}" class="tag-related-link">
+                {{ related_data.name | default: related_tag }}
+              </a>
+            {%- endfor -%}
+          </div>
+          {%- endif -%}
+
+          <ul class="tag-posts" role="list">
+            {%- for post in tag[1] -%}
+            <li class="tag-post-item" role="listitem">
+              <time class="tag-post-date" datetime="{{ post.date | date_to_xmlschema }}">
+                {{ post.date | date: "%d %b %Y" }}
+              </time>
+              <a class="tag-post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              <span class="tag-post-meta">{%- include reading_time.html content=post.content -%}</span>
+            </li>
+            {%- endfor -%}
+          </ul>
+        </details>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  {%- comment -%} Empty state {%- endcomment -%}
+  <div class="tags-empty" [hidden]="!tagQuery || tagQuery.length < 2" hidden>
+    <p>No tags matching "<span [text]="tagQuery"></span>"</p>
+  </div>
 </section>
 
 {{ content }}
 
+{%- comment -%}
+================================================================================
+ENHANCED SCHEMA.ORG JSON-LD
+Includes Wikidata sameAs links for knowledge graph integration
+================================================================================
+{%- endcomment -%}
 <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "Tags",
-        "description": "Browse all blog posts by tag",
-        "url": "{{ page.url | absolute_url }}",
-        "numberOfItems": {{ site.tags | size }},
-        "breadcrumb": {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ '/' | absolute_url }}" },
-                { "@type": "ListItem", "position": 2, "name": "Tags" }
-            ]
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ page.title | default: 'Tags' }}",
+  "description": "{{ page.description | default: 'Browse all blog posts by topic' }}",
+  "url": "{{ page.url | absolute_url }}",
+  "numberOfItems": {{ site.tags | size }},
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": {{ site.tags | size }},
+    "itemListElement": [
+      {%- for tag in sorted_tags -%}
+      {%- assign tag_data = site.data.tags[tag[0]] -%}
+      {%- if tag_data.deprecated != true -%}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "item": {
+          "@type": "Thing",
+          "name": "{{ tag_data.name | default: tag[0] }}",
+          "description": "{{ tag_data.description | default: '' | escape }}",
+          "url": "{{ page.url | absolute_url }}#{{ tag[0] | slugify }}"
+          {%- if tag_data.wikidata -%},
+          "sameAs": "https://www.wikidata.org/wiki/{{ tag_data.wikidata }}"
+          {%- endif -%}
         }
-    }
+      }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endif -%}
+      {%- endfor -%}
+    ]
+  },
+  "about": [
+    {%- assign about_tags = "" | split: "" -%}
+    {%- for tag in sorted_tags -%}
+      {%- assign tag_data = site.data.tags[tag[0]] -%}
+      {%- if tag_data.wikidata and tag_data.deprecated != true -%}
+        {%- assign about_tags = about_tags | push: tag -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- for tag in about_tags limit:10 -%}
+    {%- assign tag_data = site.data.tags[tag[0]] -%}
+    {
+      "@type": "Thing",
+      "name": "{{ tag_data.name | default: tag[0] }}",
+      "sameAs": "https://www.wikidata.org/wiki/{{ tag_data.wikidata }}"
+    }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ],
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ '/' | absolute_url }}" },
+      { "@type": "ListItem", "position": 2, "name": "Tags" }
+    ]
+  }
+}
 </script>

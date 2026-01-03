@@ -1,318 +1,628 @@
-# Blog Tag Definitions
-# Each tag has a display name and description for the tags page.
+# =============================================================================
+# BLOG TAG ONTOLOGY
+# Hierarchical taxonomy with Wikidata knowledge graph integration
 # All tags are >= 4 characters per the enhanced tagging policy.
+#
+# SCHEMA:
+#   name: Display name for the tag
+#   description: Brief description for SEO and tag pages
+#   parent: Parent category (for hierarchy)
+#   related: Semantically related tags
+#   wikidata: Wikidata QID for Schema.org sameAs
+#   icon: Emoji icon for visual display
+#   deprecated: Set true to hide from cloud (redirects to redirect_to)
+#   redirect_to: Target tag for deprecated tags
+# =============================================================================
 
-# Core QA & Testing
+# =============================================================================
+# ROOT CATEGORIES (No parent)
+# =============================================================================
+
 quality-assurance:
     name: Quality Assurance
-    description: 'Strategies, methodologies, and tools for ensuring software quality.'
+    description: Strategies, methodologies, and tools for ensuring software quality.
+    icon: '✅'
+    wikidata: Q1326689
+    related: [testing, automation, strategies]
 
 testing:
     name: Software Testing
-    description: 'In-depth guides on testing practices and methodologies.'
+    description: In-depth guides on testing practices and methodologies.
+    icon: '🧪'
+    wikidata: Q3516404
+    related: [quality-assurance, automation]
 
-automation:
-    name: Automation
-    description: 'Automating workflows, tests, and deployments.'
+security:
+    name: Security
+    description: Cybersecurity insights and threat mitigation.
+    icon: '🔒'
+    wikidata: Q3510521
+    related: [authentication, encryption, compliance]
 
-# Testing Types
+performance:
+    name: Performance
+    description: Optimization, benchmarking, and speed.
+    icon: '⚡'
+    wikidata: Q2629392
+    related: [load-testing, stress-testing]
+
+accessibility:
+    name: Accessibility (A11y)
+    description: Building inclusive digital experiences.
+    icon: '♿'
+    wikidata: Q217078
+    related: [user-experience, frontend]
+
+devops:
+    name: DevOps
+    description: CI/CD, deployment strategies, and tooling.
+    icon: '🔄'
+    wikidata: Q748566
+    related: [automation, containers, infrastructure]
+
+architecture:
+    name: Architecture
+    description: System design and architectural patterns.
+    icon: '🏗️'
+    wikidata: Q846421
+    related: [microservices, cloud]
+
+# =============================================================================
+# TESTING TYPES (Parent: testing)
+# =============================================================================
+
 unit-testing:
     name: Unit Testing
-    description: 'Testing individual components in isolation.'
+    description: Testing individual components in isolation.
+    parent: testing
+    icon: '🔬'
+    wikidata: Q3516408
+    related: [mocking, test-driven-development]
 
 integration-testing:
     name: Integration Testing
-    description: 'Testing interactions between system components.'
+    description: Testing interactions between system components.
+    parent: testing
+    icon: '🔗'
+    wikidata: Q1138718
+    related: [contract-testing, microservices]
 
 e2e-testing:
     name: End-to-End Testing
-    description: 'Full user journey and workflow testing.'
+    description: Full user journey and workflow testing.
+    parent: testing
+    icon: '🎯'
+    wikidata: Q5327288
+    related: [visual-testing, automation]
 
 visual-testing:
     name: Visual Testing
-    description: 'Screenshot comparison and visual regression testing.'
+    description: Screenshot comparison and visual regression testing.
+    parent: testing
+    icon: '👁️'
+    related: [regression-testing, frontend]
 
 contract-testing:
     name: Contract Testing
-    description: 'API contract verification between services.'
+    description: API contract verification between services.
+    parent: testing
+    icon: '📜'
+    related: [integration-testing, microservices]
 
 chaos-testing:
     name: Chaos Testing
-    description: 'Resilience testing through controlled failure injection.'
+    description: Resilience testing through controlled failure injection.
+    parent: testing
+    icon: '💥'
+    wikidata: Q5073042
+    related: [reliability, kubernetes]
 
 load-testing:
     name: Load Testing
-    description: 'Performance under expected and peak loads.'
+    description: Performance under expected and peak loads.
+    parent: testing
+    icon: '📊'
+    wikidata: Q1478715
+    related: [performance, stress-testing]
 
 stress-testing:
     name: Stress Testing
-    description: 'Behaviour at and beyond capacity limits.'
+    description: Behaviour at and beyond capacity limits.
+    parent: testing
+    icon: '🔥'
+    wikidata: Q2718740
+    related: [load-testing, performance]
 
 mutation-testing:
     name: Mutation Testing
-    description: 'Validating test suite effectiveness via code mutations.'
+    description: Validating test suite effectiveness via code mutations.
+    parent: testing
+    icon: '🧬'
+    wikidata: Q1054719
+    related: [unit-testing, quality-assurance]
 
 regression-testing:
     name: Regression Testing
-    description: 'Ensuring changes don not break existing functionality.'
+    description: Ensuring changes do not break existing functionality.
+    parent: testing
+    icon: '🔄'
+    wikidata: Q1543843
+    related: [automation, visual-testing]
 
 exploratory-testing:
     name: Exploratory Testing
-    description: 'Unscripted, creative testing approaches.'
+    description: Unscripted, creative testing approaches.
+    parent: testing
+    icon: '🧭'
+    wikidata: Q2406870
+    related: [quality-assurance, strategies]
 
 smoke-testing:
     name: Smoke Testing
-    description: 'Quick sanity checks for critical functionality.'
+    description: Quick sanity checks for critical functionality.
+    parent: testing
+    icon: '💨'
+    wikidata: Q2515359
+    related: [regression-testing, devops]
 
-# Security
-security:
-    name: Security
-    description: 'Cybersecurity insights and threat mitigation.'
+# =============================================================================
+# SECURITY (Parent: security)
+# =============================================================================
 
 penetration-testing:
     name: Penetration Testing
-    description: 'Offensive security testing and red teaming.'
+    description: Offensive security testing and red teaming.
+    parent: security
+    icon: '🎯'
+    wikidata: Q1320991
+    related: [vulnerability-scanning, ethical-hacking]
 
 vulnerability-scanning:
     name: Vulnerability Scanning
-    description: 'Automated security weakness detection.'
+    description: Automated security weakness detection.
+    parent: security
+    icon: '🔍'
+    related: [penetration-testing, compliance]
 
 access-control:
     name: Access Control
-    description: 'Authorization and permission validation.'
+    description: Authorization and permission validation.
+    parent: security
+    icon: '🚪'
+    wikidata: Q180224
+    related: [authentication, zero-trust]
 
 authentication:
     name: Authentication
-    description: 'Identity verification (OAuth, SSO, JWT).'
+    description: Identity verification (OAuth, SSO, JWT).
+    parent: security
+    icon: '🔑'
+    wikidata: Q211256
+    related: [access-control, zero-trust]
 
 encryption:
     name: Encryption
-    description: 'Cryptographic protection of data.'
+    description: Cryptographic protection of data.
+    parent: security
+    icon: '🔐'
+    wikidata: Q141090
+    related: [privacy, compliance]
 
 zero-trust:
     name: Zero Trust
-    description: 'Never trust, always verify security model.'
+    description: Never trust, always verify security model.
+    parent: security
+    icon: '🛡️'
+    wikidata: Q96396977
+    related: [authentication, access-control]
 
 compliance:
     name: Compliance
-    description: 'Regulatory standards (GDPR, PCI-DSS, SOC2).'
+    description: Regulatory standards (GDPR, PCI-DSS, SOC2).
+    parent: security
+    icon: '📋'
+    wikidata: Q1107168
+    related: [privacy, security]
 
-# Performance
-performance:
-    name: Performance
-    description: 'Optimization, benchmarking, and speed.'
+# =============================================================================
+# INFRASTRUCTURE & DEVOPS (Parent: devops)
+# =============================================================================
 
-# Accessibility
-accessibility:
-    name: Accessibility (A11y)
-    description: 'Building inclusive digital experiences.'
-
-# AI & ML
-artificial-intelligence:
-    name: Artificial Intelligence
-    description: 'AI impact on development, testing, and society.'
-
-machine-learning:
-    name: Machine Learning
-    description: 'ML model validation and testing.'
-
-# Web Technologies
-progressive-web-apps:
-    name: Progressive Web Apps
-    description: 'PWA testing, service workers, offline-first.'
-
-web3:
-    name: Web3
-    description: 'Decentralised web, smart contracts, DeFi.'
-
-blockchain:
-    name: Blockchain
-    description: 'Distributed ledger and smart contract testing.'
-
-# Infrastructure & DevOps
-devops:
-    name: DevOps
-    description: 'CI/CD, deployment strategies, and tooling.'
+automation:
+    name: Automation
+    description: Automating workflows, tests, and deployments.
+    parent: devops
+    icon: '🤖'
+    wikidata: Q184356
+    related: [testing, devops]
 
 containers:
     name: Containers
-    description: 'Docker, containerisation, and orchestration.'
+    description: Docker, containerisation, and orchestration.
+    parent: devops
+    icon: '📦'
+    wikidata: Q15206305
+    related: [kubernetes, microservices]
 
 kubernetes:
     name: Kubernetes
-    description: 'K8s orchestration and testing strategies.'
+    description: K8s orchestration and testing strategies.
+    parent: devops
+    icon: '☸️'
+    wikidata: Q22661306
+    related: [containers, service-mesh]
 
 serverless:
     name: Serverless
-    description: 'FaaS testing and cold start optimisation.'
+    description: FaaS testing and cold start optimisation.
+    parent: devops
+    icon: '☁️'
+    wikidata: Q23758386
+    related: [cloud, edge-computing]
 
 microservices:
     name: Microservices
-    description: 'Distributed system testing patterns.'
+    description: Distributed system testing patterns.
+    parent: architecture
+    icon: '🔌'
+    wikidata: Q18344624
+    related: [contract-testing, service-mesh]
 
 infrastructure:
     name: Infrastructure
-    description: 'Cloud and on-premises infrastructure testing.'
+    description: Cloud and on-premises infrastructure testing.
+    parent: devops
+    icon: '🏢'
+    related: [cloud, containers]
 
 edge-computing:
     name: Edge Computing
-    description: 'CDN, edge functions, and IoT testing.'
+    description: CDN, edge functions, and IoT testing.
+    parent: devops
+    icon: '📡'
+    wikidata: Q18389795
+    related: [networking, serverless]
 
 service-mesh:
     name: Service Mesh
-    description: 'Istio, Linkerd, and mesh policy testing.'
+    description: Istio, Linkerd, and mesh policy testing.
+    parent: devops
+    icon: '🕸️'
+    wikidata: Q56322222
+    related: [kubernetes, microservices]
 
 networking:
     name: Networking
-    description: '5G, 6G, and network protocol testing.'
-
-# Observability
-monitoring:
-    name: Monitoring
-    description: 'Synthetic monitoring and alerting strategies.'
-
-tracing:
-    name: Tracing
-    description: 'Distributed tracing and request flows.'
-
-logging:
-    name: Logging
-    description: 'Log aggregation and analysis.'
-
-observability:
-    name: Observability
-    description: 'Unified monitoring, logging, and tracing.'
-
-debugging:
-    name: Debugging
-    description: 'Root cause analysis and troubleshooting.'
-
-reliability:
-    name: Reliability
-    description: 'SRE practices, error budgets, and resilience.'
-
-# Data
-data-engineering:
-    name: Data Engineering
-    description: 'ETL, data pipelines, and warehousing.'
-
-data-quality:
-    name: Data Quality
-    description: 'Data validation and integrity testing.'
-
-# Real-Time
-real-time:
-    name: Real-Time
-    description: 'WebSockets, gRPC, and streaming protocols.'
-
-streaming:
-    name: Streaming
-    description: 'Video, audio, and event streaming.'
-
-websockets:
-    name: WebSockets
-    description: 'Bidirectional real-time communication.'
-
-# Frontend & UX
-frontend:
-    name: Frontend
-    description: 'Browser, JavaScript, and UI testing.'
-
-backend:
-    name: Backend
-    description: 'API, database, and server-side testing.'
-
-user-experience:
-    name: User Experience
-    description: 'UX testing and user journey validation.'
-
-responsive-design:
-    name: Responsive Design
-    description: 'Multi-device and viewport testing.'
-
-internationalisation:
-    name: Internationalisation
-    description: 'i18n testing for global audiences.'
-
-localisation:
-    name: Localisation
-    description: 'l10n, RTL layouts, and regional formats.'
-
-mobile:
-    name: Mobile
-    description: 'iOS, Android, and hybrid app testing.'
-
-# Architecture
-architecture:
-    name: Architecture
-    description: 'System design and architectural patterns.'
+    description: 5G, 6G, and network protocol testing.
+    parent: infrastructure
+    icon: '🌐'
+    wikidata: Q1301371
+    related: [edge-computing, real-time]
 
 cloud:
     name: Cloud
-    description: 'AWS, Azure, GCP, and multi-cloud testing.'
+    description: AWS, Azure, GCP, and multi-cloud testing.
+    parent: infrastructure
+    icon: '☁️'
+    wikidata: Q483639
+    related: [serverless, containers]
 
-# Emerging Technologies
+# =============================================================================
+# OBSERVABILITY (Parent: devops)
+# =============================================================================
+
+monitoring:
+    name: Monitoring
+    description: Synthetic monitoring and alerting strategies.
+    parent: observability
+    icon: '📈'
+    wikidata: Q2247569
+    related: [tracing, logging]
+
+tracing:
+    name: Tracing
+    description: Distributed tracing and request flows.
+    parent: observability
+    icon: '🔍'
+    related: [monitoring, debugging]
+
+logging:
+    name: Logging
+    description: Log aggregation and analysis.
+    parent: observability
+    icon: '📝'
+    wikidata: Q2229629
+    related: [monitoring, debugging]
+
+observability:
+    name: Observability
+    description: Unified monitoring, logging, and tracing.
+    parent: devops
+    icon: '👀'
+    wikidata: Q96379099
+    related: [monitoring, tracing, logging]
+
+debugging:
+    name: Debugging
+    description: Root cause analysis and troubleshooting.
+    parent: observability
+    icon: '🐛'
+    wikidata: Q165096
+    related: [tracing, logging]
+
+reliability:
+    name: Reliability
+    description: SRE practices, error budgets, and resilience.
+    parent: devops
+    icon: '🛡️'
+    wikidata: Q1063538
+    related: [chaos-testing, monitoring]
+
+# =============================================================================
+# AI & MACHINE LEARNING
+# =============================================================================
+
+artificial-intelligence:
+    name: Artificial Intelligence
+    description: AI impact on development, testing, and society.
+    icon: '🤖'
+    wikidata: Q11660
+    related: [machine-learning, ethics]
+
+machine-learning:
+    name: Machine Learning
+    description: ML model validation and testing.
+    parent: artificial-intelligence
+    icon: '🧠'
+    wikidata: Q2539
+    related: [artificial-intelligence, data-engineering]
+
+# =============================================================================
+# WEB TECHNOLOGIES
+# =============================================================================
+
+progressive-web-apps:
+    name: Progressive Web Apps
+    description: PWA testing, service workers, offline-first.
+    parent: frontend
+    icon: '📱'
+    wikidata: Q25554603
+    related: [frontend, mobile]
+
+web3:
+    name: Web3
+    description: Decentralised web, smart contracts, DeFi.
+    icon: '🌐'
+    wikidata: Q105903153
+    related: [blockchain, crypto]
+
+blockchain:
+    name: Blockchain
+    description: Distributed ledger and smart contract testing.
+    parent: web3
+    icon: '⛓️'
+    wikidata: Q20514253
+    related: [web3, crypto]
+
+# =============================================================================
+# DATA
+# =============================================================================
+
+data-engineering:
+    name: Data Engineering
+    description: ETL, data pipelines, and warehousing.
+    icon: '📊'
+    wikidata: Q55643124
+    related: [data-quality, machine-learning]
+
+data-quality:
+    name: Data Quality
+    description: Data validation and integrity testing.
+    parent: data-engineering
+    icon: '✔️'
+    related: [data-engineering, testing]
+
+# =============================================================================
+# REAL-TIME
+# =============================================================================
+
+real-time:
+    name: Real-Time
+    description: WebSockets, gRPC, and streaming protocols.
+    icon: '⚡'
+    related: [websockets, streaming]
+
+streaming:
+    name: Streaming
+    description: Video, audio, and event streaming.
+    parent: real-time
+    icon: '📺'
+    wikidata: Q1353141
+    related: [real-time, performance]
+
+websockets:
+    name: WebSockets
+    description: Bidirectional real-time communication.
+    parent: real-time
+    icon: '🔌'
+    wikidata: Q2006173
+    related: [real-time, networking]
+
+# =============================================================================
+# FRONTEND & UX
+# =============================================================================
+
+frontend:
+    name: Frontend
+    description: Browser, JavaScript, and UI testing.
+    icon: '🎨'
+    wikidata: Q2364693
+    related: [accessibility, user-experience]
+
+backend:
+    name: Backend
+    description: API, database, and server-side testing.
+    icon: '⚙️'
+    wikidata: Q69227
+    related: [architecture, microservices]
+
+user-experience:
+    name: User Experience
+    description: UX testing and user journey validation.
+    parent: frontend
+    icon: '👤'
+    wikidata: Q6679387
+    related: [accessibility, responsive-design]
+
+responsive-design:
+    name: Responsive Design
+    description: Multi-device and viewport testing.
+    parent: frontend
+    icon: '📐'
+    wikidata: Q1164984
+    related: [mobile, accessibility]
+
+internationalisation:
+    name: Internationalisation
+    description: i18n testing for global audiences.
+    parent: frontend
+    icon: '🌍'
+    wikidata: Q468152
+    related: [localisation, accessibility]
+
+localisation:
+    name: Localisation
+    description: l10n, RTL layouts, and regional formats.
+    parent: frontend
+    icon: '🗺️'
+    wikidata: Q477380
+    related: [internationalisation, user-experience]
+
+mobile:
+    name: Mobile
+    description: iOS, Android, and hybrid app testing.
+    icon: '📱'
+    wikidata: Q7088993
+    related: [progressive-web-apps, responsive-design]
+
+# =============================================================================
+# EMERGING TECHNOLOGIES
+# =============================================================================
+
 emerging-tech:
     name: Emerging Tech
-    description: 'WebGPU, WebNN, WebAssembly, and new APIs.'
+    description: WebGPU, WebNN, WebAssembly, and new APIs.
+    icon: '🚀'
+    related: [quantum, spatial-computing, biotech]
 
 quantum:
     name: Quantum Computing
-    description: 'Quantum algorithms and post-quantum security.'
+    description: Quantum algorithms and post-quantum security.
+    parent: emerging-tech
+    icon: '⚛️'
+    wikidata: Q97
+    related: [encryption, security]
 
 metaverse:
     name: Metaverse
-    description: 'Virtual worlds and immersive experiences.'
+    description: Virtual worlds and immersive experiences.
+    parent: emerging-tech
+    icon: '🌌'
+    wikidata: Q105894712
+    related: [spatial-computing, web3]
 
 spatial-computing:
     name: Spatial Computing
-    description: 'AR, VR, XR, and WebXR testing.'
+    description: AR, VR, XR, and WebXR testing.
+    parent: emerging-tech
+    icon: '🥽'
+    wikidata: Q1433046
+    related: [metaverse, frontend]
 
 biotech:
     name: Biotech Software
-    description: 'Healthcare, biotech, and medical device QA.'
+    description: Healthcare, biotech, and medical device QA.
+    parent: emerging-tech
+    icon: '🧬'
+    wikidata: Q7108
+    related: [compliance, ethics]
 
-# Strategy & Career
+# =============================================================================
+# STRATEGY & CAREER
+# =============================================================================
+
 strategies:
     name: Strategies
-    description: 'Test strategies and quality planning.'
+    description: Test strategies and quality planning.
+    icon: '📋'
+    related: [quality-assurance, management]
 
 management:
     name: Management
-    description: 'QA leadership and team management.'
+    description: QA leadership and team management.
+    icon: '👔'
+    wikidata: Q40231
+    related: [career, soft-skills]
 
 career:
     name: Career Growth
-    description: 'Navigating tech careers and leadership.'
+    description: Navigating tech careers and leadership.
+    icon: '📈'
+    related: [management, soft-skills]
 
 soft-skills:
     name: Soft Skills
-    description: 'Communication, collaboration, and leadership.'
+    description: Communication, collaboration, and leadership.
+    parent: career
+    icon: '🤝'
+    wikidata: Q61746906
+    related: [management, career]
 
 tools:
     name: Tools
-    description: 'Testing tools, frameworks, and utilities.'
+    description: Testing tools, frameworks, and utilities.
+    icon: '🔧'
+    related: [automation, devops]
 
 privacy:
     name: Privacy
-    description: 'Data privacy and user consent testing.'
+    description: Data privacy and user consent testing.
+    icon: '🔏'
+    wikidata: Q8492
+    related: [compliance, security]
 
 ethics:
     name: Ethics
-    description: 'Ethical AI, responsible tech, and bias.'
+    description: Ethical AI, responsible tech, and bias.
+    icon: '⚖️'
+    wikidata: Q9465
+    related: [artificial-intelligence, privacy]
 
 sustainability:
     name: Sustainability
-    description: 'Green tech and carbon-aware development.'
+    description: Green tech and carbon-aware development.
+    icon: '🌱'
+    wikidata: Q219416
+    related: [ethics, finops]
 
 finops:
     name: FinOps
-    description: 'Cloud cost optimisation and budgeting.'
+    description: Cloud cost optimisation and budgeting.
+    icon: '💰'
+    wikidata: Q97202628
+    related: [cloud, cost-optimisation]
 
 cost-optimisation:
     name: Cost Optimisation
-    description: 'Resource efficiency and cost management.'
+    description: Resource efficiency and cost management.
+    parent: finops
+    icon: '📉'
+    related: [finops, cloud]
 
 crypto:
     name: Crypto
-    description: 'Cryptocurrency and token testing.'
+    description: Cryptocurrency and token testing.
+    parent: web3
+    icon: '💎'
+    wikidata: Q13479982
+    related: [blockchain, web3]
