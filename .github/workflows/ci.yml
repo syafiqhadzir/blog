@@ -9,17 +9,48 @@ on:
         - cron: '0 2 * * *' # Nightly at 2am
 
 jobs:
-    pr-fast-lane:
-        if: github.event_name == 'pull_request'
-        timeout-minutes: 10
+    lint-and-typecheck:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
             - uses: ruby/setup-ruby@v1
               with:
                   ruby-version: '3.4'
                   bundler-cache: true
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v6
+              with:
+                  node-version: '24'
+                  cache: 'npm'
+
+            - name: Install Deps
+              run: |
+                  npm ci
+                  bundle install
+
+            - name: Run Markdown Lint
+              run: npm run lint:md
+
+            - name: Run TypeScript Typecheck
+              run: npm run typecheck
+
+            - name: Run ESLint
+              run: npm run lint:ts
+
+            - name: Run RuboCop
+              run: bundle exec rubocop
+
+    pr-fast-lane:
+        needs: lint-and-typecheck
+        if: github.event_name == 'pull_request'
+        timeout-minutes: 10
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: '3.4'
+                  bundler-cache: true
+            - uses: actions/setup-node@v6
               with:
                   node-version: '24'
                   cache: 'npm'
@@ -34,16 +65,17 @@ jobs:
               run: npm run test:fast
 
     nightly-full:
+        needs: lint-and-typecheck
         if: github.event_name == 'schedule' || github.event_name == 'push'
         timeout-minutes: 45
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
             - uses: ruby/setup-ruby@v1
               with:
                   ruby-version: '3.4'
                   bundler-cache: true
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v6
               with:
                   node-version: '24'
                   cache: 'npm'
@@ -59,7 +91,7 @@ jobs:
               env:
                   check_external: true
 
-            - uses: actions/upload-artifact@v4
+            - uses: actions/upload-artifact@v6
               if: failure()
               with:
                   name: playwright-report

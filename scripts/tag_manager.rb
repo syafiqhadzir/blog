@@ -1,18 +1,10 @@
+# frozen_string_literal: true
+
 require 'yaml'
 
-# Manages the canonicalization and normalization of tags across all blog posts.
-# Ensures consistency by enforcing a whitelist (CANONICAL_TAGS), mapping
-# synonyms (SYNONYMS) to their primary counterparts, and auto-assigning
-# semantic tags based on title/slug keywords (KEYWORD_TAGS).
-#
-# @since 2026-01-03 Enhanced: removed short tags (<4 chars), added semantic
-#        subcategories, keyword-based auto-categorisation.
-class TagManager
-  POSTS_DIR = '_posts'
-
+# module containing whitelist to keep TagManager clean
+module CanonicalTags
   # All canonical tags must be >= 4 characters.
-  # NOTE: 'quality-assurance' and 'testing' removed - too broad.
-  # Posts should use specific semantic tags instead.
   CANONICAL_TAGS = %w[
     automation security performance accessibility
     artificial-intelligence progressive-web-apps web3 devops mobile frontend
@@ -39,17 +31,14 @@ class TagManager
 
     quantum metaverse spatial-computing emerging-tech biotech
   ].freeze
+end
 
+# module containing synonyms
+module TagSynonyms
   # Maps short or alternative terms to canonical tags.
-  # NOTE: 'qa' and 'testing' now map to more specific types based on context.
   SYNONYMS = {
-    # Short tags → removed (no longer used)
-    # 'qa' removed - too broad
-    # 'ai' maps to specific AI tag
     'ai' => 'artificial-intelligence',
     'pwa' => 'progressive-web-apps',
-
-    # General synonyms
     'speed' => 'performance',
     'hacking' => 'security',
     'a11y' => 'accessibility',
@@ -77,137 +66,96 @@ class TagManager
     'ar' => 'spatial-computing',
     'xr' => 'spatial-computing'
   }.freeze
+end
 
-  # Maps title/slug keywords to semantic tags for auto-categorisation.
-  # This helps break down high-volume parent tags into semantic subcategories.
-  KEYWORD_TAGS = {
-    # Testing types
-    'unit' => 'unit-testing',
-    'integration' => 'integration-testing',
-    'e2e' => 'e2e-testing',
-    'end-to-end' => 'e2e-testing',
-    'visual' => 'visual-testing',
-    'contract' => 'contract-testing',
-    'pact' => 'contract-testing',
-    'chaos' => 'chaos-testing',
-    'load' => 'load-testing',
-    'stress' => 'stress-testing',
-    'mutation' => 'mutation-testing',
-    'regression' => 'regression-testing',
-    'exploratory' => 'exploratory-testing',
-    'smoke' => 'smoke-testing',
+# module containing keyword mappings (Testing & Security)
+module TagKeywordsPrimary
+  MAPPING = {
+    'unit' => 'unit-testing', 'integration' => 'integration-testing',
+    'e2e' => 'e2e-testing', 'end-to-end' => 'e2e-testing',
+    'visual' => 'visual-testing', 'contract' => 'contract-testing',
+    'pact' => 'contract-testing', 'chaos' => 'chaos-testing',
+    'load' => 'load-testing', 'stress' => 'stress-testing',
+    'mutation' => 'mutation-testing', 'regression' => 'regression-testing',
+    'exploratory' => 'exploratory-testing', 'smoke' => 'smoke-testing',
     'snapshot' => 'visual-testing',
-
-    # Security
     'penetration' => 'penetration-testing',
     'vulnerability' => 'vulnerability-scanning',
-    'oauth' => 'authentication',
-    'oauth2' => 'authentication',
-    'sso' => 'authentication',
-    'jwt' => 'authentication',
-    'zero-trust' => 'zero-trust',
-    'csp' => 'security',
-    'gdpr' => 'compliance',
-    'pci' => 'compliance',
-    'encryption' => 'encryption',
-    'cryptography' => 'encryption',
-    'homomorphic' => 'encryption',
+    'oauth' => 'authentication', 'oauth2' => 'authentication',
+    'sso' => 'authentication', 'jwt' => 'authentication',
+    'zero-trust' => 'zero-trust', 'csp' => 'security',
+    'gdpr' => 'compliance', 'pci' => 'compliance',
+    'encryption' => 'encryption', 'cryptography' => 'encryption',
+    'homomorphic' => 'encryption'
+  }.freeze
+end
 
-    # Observability
-    'monitoring' => 'monitoring',
-    'tracing' => 'tracing',
-    'logging' => 'logging',
-    'observability' => 'observability',
-    'debug' => 'debugging',
-    'debugging' => 'debugging',
+# module containing keyword mappings (Infrastructure, Data, etc)
+module TagKeywordsSecondary
+  MAPPING = {
+    'monitoring' => 'monitoring', 'tracing' => 'tracing',
+    'logging' => 'logging', 'observability' => 'observability',
+    'debug' => 'debugging', 'debugging' => 'debugging',
     'post-mortem' => 'debugging',
+    'kubernetes' => 'kubernetes', 'k8s' => 'kubernetes',
+    'container' => 'containers', 'docker' => 'containers',
+    'serverless' => 'serverless', 'microservice' => 'microservices',
+    'micro-frontend' => 'microservices', 'service-mesh' => 'service-mesh',
+    'edge' => 'edge-computing', 'cdn' => 'infrastructure',
+    'cicd' => 'devops', 'pipeline' => 'devops',
+    'blue-green' => 'devops', 'canary' => 'devops',
+    'websocket' => 'real-time', 'grpc' => 'real-time',
+    'sse' => 'real-time', 'streaming' => 'streaming',
+    'realtime' => 'real-time', 'etl' => 'data-engineering',
+    'warehouse' => 'data-engineering', 'cdc' => 'data-engineering'
+  }.freeze
+end
 
-    # Infrastructure
-    'kubernetes' => 'kubernetes',
-    'k8s' => 'kubernetes',
-    'container' => 'containers',
-    'docker' => 'containers',
-    'serverless' => 'serverless',
-    'microservice' => 'microservices',
-    'micro-frontend' => 'microservices',
-    'service-mesh' => 'service-mesh',
-    'edge' => 'edge-computing',
-    'cdn' => 'infrastructure',
-    'cicd' => 'devops',
-    'pipeline' => 'devops',
-    'blue-green' => 'devops',
-    'canary' => 'devops',
-
-    # Real-time / Data
-    'websocket' => 'real-time',
-    'grpc' => 'real-time',
-    'sse' => 'real-time',
-    'streaming' => 'streaming',
-    'realtime' => 'real-time',
-    'etl' => 'data-engineering',
-    'warehouse' => 'data-engineering',
-    'cdc' => 'data-engineering',
-
-    # Performance
-    'performance' => 'performance',
-    'web-vitals' => 'performance',
-    'latency' => 'performance',
-    'bandwidth' => 'performance',
-    'battery' => 'performance',
-    'memory' => 'performance',
-    'optimisation' => 'performance',
-    'optimization' => 'performance',
-
-    # Frontend / UX
-    'accessibility' => 'accessibility',
-    'a11y' => 'accessibility',
-    'i18n' => 'internationalisation',
-    'l10n' => 'localisation',
-    'rtl' => 'localisation',
-    'responsive' => 'responsive-design',
-    'mobile' => 'mobile',
-    'pwa' => 'progressive-web-apps',
+# module containing keyword mappings (Performance, Frontend, Emerging)
+module TagKeywordsTertiary
+  MAPPING = {
+    'performance' => 'performance', 'web-vitals' => 'performance',
+    'latency' => 'performance', 'bandwidth' => 'performance',
+    'battery' => 'performance', 'memory' => 'performance',
+    'optimisation' => 'performance', 'optimization' => 'performance',
+    'accessibility' => 'accessibility', 'a11y' => 'accessibility',
+    'i18n' => 'internationalisation', 'l10n' => 'localisation',
+    'rtl' => 'localisation', 'responsive' => 'responsive-design',
+    'mobile' => 'mobile', 'pwa' => 'progressive-web-apps',
     'offline' => 'progressive-web-apps',
     'service-worker' => 'progressive-web-apps',
-
-    # Emerging tech
-    'web3' => 'web3',
-    'blockchain' => 'blockchain',
-    'smart-contract' => 'blockchain',
-    'quantum' => 'quantum',
-    'metaverse' => 'metaverse',
-    'spatial' => 'spatial-computing',
-    'webxr' => 'spatial-computing',
-    'webgpu' => 'emerging-tech',
-    'webnn' => 'emerging-tech',
-    'wasm' => 'emerging-tech',
-    'webassembly' => 'emerging-tech',
-    'biotech' => 'biotech',
+    'web3' => 'web3', 'blockchain' => 'blockchain',
+    'smart-contract' => 'blockchain', 'quantum' => 'quantum',
+    'metaverse' => 'metaverse', 'spatial' => 'spatial-computing',
+    'webxr' => 'spatial-computing', 'webgpu' => 'emerging-tech',
+    'webnn' => 'emerging-tech', 'wasm' => 'emerging-tech',
+    'webassembly' => 'emerging-tech', 'biotech' => 'biotech',
     'bio-integrated' => 'biotech',
-
-    # AI
-    'ai' => 'artificial-intelligence',
-    'ml' => 'machine-learning',
-    'llm' => 'artificial-intelligence',
-    'gpt' => 'artificial-intelligence',
-    'generative' => 'artificial-intelligence',
-    'hallucination' => 'artificial-intelligence',
-    'prompt' => 'artificial-intelligence',
-    'agent' => 'artificial-intelligence',
+    'ai' => 'artificial-intelligence', 'ml' => 'machine-learning',
+    'llm' => 'artificial-intelligence', 'gpt' => 'artificial-intelligence',
+    'generative' => 'artificial-intelligence', 'hallucination' => 'artificial-intelligence',
+    'prompt' => 'artificial-intelligence', 'agent' => 'artificial-intelligence',
     'vector' => 'artificial-intelligence',
-
-    # Reliability
-    'resilience' => 'reliability',
-    'disaster' => 'reliability',
-    'failover' => 'reliability',
-    'circuit-breaker' => 'reliability',
+    'resilience' => 'reliability', 'disaster' => 'reliability',
+    'failover' => 'reliability', 'circuit-breaker' => 'reliability',
     'rate-limiting' => 'reliability'
   }.freeze
+end
 
-  # Minimum valid tag length (enforces >= 4 characters)
+# Manages the canonicalization and normalization of tags across all blog posts.
+class TagManager
+  include CanonicalTags
+  include TagSynonyms
+  include TagKeywordsPrimary
+  include TagKeywordsSecondary
+  include TagKeywordsTertiary
+
+  POSTS_DIR = '_posts'
   MIN_TAG_LENGTH = 4
+  KEYWORD_TAGS = TagKeywordsPrimary::MAPPING
+                 .merge(TagKeywordsSecondary::MAPPING)
+                 .merge(TagKeywordsTertiary::MAPPING).freeze
 
-  # Iterates through all markdown files in the posts directory and processes them.
   def self.run
     puts 'Starting Bulk Tagging (Enhanced)...'
     count = 0
@@ -236,7 +184,6 @@ class TagManager
     add_keyword_tags(file, fm, tags)
 
     final_tags = normalize_tags(tags)
-    # Default fallback: assign 'strategies' if no tags found
     final_tags << 'strategies' if final_tags.empty?
     fm['tags'] = final_tags.sort
 
@@ -252,15 +199,11 @@ class TagManager
     return unless front_matter['category']
 
     cat = front_matter['category'].to_s.downcase
-    # Map 'qa' category to strategies (since quality-assurance removed)
     tags << 'strategies' if cat == 'qa'
   end
 
   def self.add_slug_tags(file, front_matter, tags)
-    basename = File.basename(file, '.md')
-    slug_from_filename = basename.length > 11 ? basename[11..] : basename
-    slug = front_matter['slug'] || slug_from_filename
-
+    slug = front_matter['slug'] || extract_slug_from_filename(file)
     return unless slug
 
     slug.to_s.split('-').each do |w|
@@ -268,11 +211,14 @@ class TagManager
     end
   end
 
-  # Scans title and slug for keywords and auto-assigns semantic tags.
+  def self.extract_slug_from_filename(file)
+    basename = File.basename(file, '.md')
+    basename.length > 11 ? basename[11..] : basename
+  end
+
   def self.add_keyword_tags(file, front_matter, tags)
     title = front_matter['title'].to_s.downcase
-    basename = File.basename(file, '.md')
-    slug = front_matter['slug'] || (basename.length > 11 ? basename[11..] : basename)
+    slug = front_matter['slug'] || extract_slug_from_filename(file)
     combined = "#{title} #{slug}"
 
     KEYWORD_TAGS.each do |keyword, tag|
@@ -280,19 +226,15 @@ class TagManager
     end
   end
 
-  # Normalizes a list of tags: downcases, strips, maps synonyms, filters
-  # against whitelist, and rejects tags shorter than MIN_TAG_LENGTH.
   def self.normalize_tags(list)
     list.map { |t| t.to_s.downcase.strip }
         .map { |t| SYNONYMS[t] || t }
         .uniq
-        .select { |t| t.length >= MIN_TAG_LENGTH }
-        .select { |t| CANONICAL_TAGS.include?(t) }
+        .select { |t| t.length >= MIN_TAG_LENGTH && CANONICAL_TAGS.include?(t) }
   end
 
   def self.write_file(file, front_matter, body)
     yaml_out = YAML.dump(front_matter).strip.sub(/\A---\s*[\r\n]+/, '')
-    # Ensure body starts with newline for proper separation from front matter
     clean_body = body.sub(/\A[\r\n]*/, "\n")
     new_content = "---\n#{yaml_out}\n---#{clean_body}"
     File.write(file, new_content)

@@ -35,7 +35,7 @@ async function extractLinksFromPage(page: Page, baseUrl: string): Promise<string
 
 // Helper function to normalize URLs
 function normalizeUrl(href: string): string {
-    let clean: string = href.split('#')[0];
+    let clean: string = href.split('#')[0] ?? '';
     if (clean.endsWith('index.html')) clean = clean.replace('index.html', '');
 
     // Safe concatenation

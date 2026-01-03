@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require_relative '../../scripts/tag_manager'
 require 'fileutils'
@@ -6,7 +8,7 @@ RSpec.describe TagManager do
   let(:posts_dir) { '_posts_test' }
 
   before do
-    allow(TagManager).to receive(:puts) # Silence stdout
+    allow(described_class).to receive(:puts) # Silence stdout
     stub_const('TagManager::POSTS_DIR', posts_dir)
     FileUtils.mkdir_p(posts_dir)
   end
@@ -24,11 +26,11 @@ RSpec.describe TagManager do
       end
 
       it 'processes successfully without crashing' do
-        expect(TagManager.process_file(filename)).to be true
+        expect(described_class.process_file(filename)).to be true
       end
 
       it 'extracts slug correctly from frontmatter' do
-        TagManager.process_file(filename)
+        described_class.process_file(filename)
         content = File.read(filename)
         expect(content).to include('tags:')
       end
@@ -42,11 +44,13 @@ RSpec.describe TagManager do
       end
 
       it 'falls back to basename for slug and does not crash' do
-        expect(TagManager.process_file(filename)).to be true
+        expect(described_class.process_file(filename)).to be true
+      end
+
+      it 'assigns default strategies tag' do
+        described_class.process_file(filename)
         content = File.read(filename)
-        # Should default to 'qa' tag if no other tags found/generated
-        expect(content).to include('tags:')
-        expect(content).to include('qa')
+        expect(content).to include('strategies')
       end
     end
 
@@ -58,7 +62,7 @@ RSpec.describe TagManager do
       end
 
       it 'handles error gracefully and returns false' do
-        expect(TagManager.process_file(filename)).to be false
+        expect(described_class.process_file(filename)).to be false
       end
     end
   end
