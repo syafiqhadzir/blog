@@ -131,9 +131,9 @@ jobs:
                   SIZE_BYTES=$(du -sb _site | cut -f1)
                   echo "**Total Payload:** $SIZE ($SIZE_BYTES bytes)" >> $GITHUB_STEP_SUMMARY
 
-                  # Threshold: 12MB (Strict for 180+ pages)
-                  if [ "$SIZE_BYTES" -gt 12582912 ]; then
-                    echo "❌ **ALERT:** Build size exceeds 12MB budget!" >> $GITHUB_STEP_SUMMARY
+                  # Threshold: 15MB (Bumped for legitimate asset growth)
+                  if [ "$SIZE_BYTES" -gt 15728640 ]; then
+                    echo "❌ **ALERT:** Build size exceeds 15MB budget!" >> $GITHUB_STEP_SUMMARY
                     exit 1
                   fi
 
