@@ -7,10 +7,8 @@ slug: end-to-end-testing
 gpgkey: 4AEE 18F8 3AFD EB23
 tags:
 - e2e-testing
-- quality-assurance
-- testing
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

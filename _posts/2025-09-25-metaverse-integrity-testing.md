@@ -7,10 +7,8 @@ slug: metaverse-integrity-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
 - metaverse
-- quality-assurance
-- testing
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

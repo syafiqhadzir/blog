@@ -7,9 +7,8 @@ slug: ai-generated-tests
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
 - artificial-intelligence
-- quality-assurance
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

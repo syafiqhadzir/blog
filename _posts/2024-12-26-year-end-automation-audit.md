@@ -7,9 +7,8 @@ slug: year-end-automation-audit
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
 - automation
-- quality-assurance
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

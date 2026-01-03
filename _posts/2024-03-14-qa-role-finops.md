@@ -7,9 +7,8 @@ slug: qa-role-finops
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
 - finops
-- quality-assurance
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

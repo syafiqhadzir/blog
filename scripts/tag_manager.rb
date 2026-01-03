@@ -11,9 +11,10 @@ class TagManager
   POSTS_DIR = '_posts'
 
   # All canonical tags must be >= 4 characters.
-  # Organised by category for maintainability.
+  # NOTE: 'quality-assurance' and 'testing' removed - too broad.
+  # Posts should use specific semantic tags instead.
   CANONICAL_TAGS = %w[
-    quality-assurance testing automation security performance accessibility
+    automation security performance accessibility
     artificial-intelligence progressive-web-apps web3 devops mobile frontend
     backend career soft-skills sustainability blockchain crypto machine-learning
     cloud architecture strategies management tools privacy ethics
@@ -40,14 +41,15 @@ class TagManager
   ].freeze
 
   # Maps short or alternative terms to canonical tags.
+  # NOTE: 'qa' and 'testing' now map to more specific types based on context.
   SYNONYMS = {
-    # Short tags → semantic equivalents
-    'qa' => 'quality-assurance',
+    # Short tags → removed (no longer used)
+    # 'qa' removed - too broad
+    # 'ai' maps to specific AI tag
     'ai' => 'artificial-intelligence',
     'pwa' => 'progressive-web-apps',
 
     # General synonyms
-    'quality' => 'quality-assurance',
     'speed' => 'performance',
     'hacking' => 'security',
     'a11y' => 'accessibility',
@@ -234,7 +236,8 @@ class TagManager
     add_keyword_tags(file, fm, tags)
 
     final_tags = normalize_tags(tags)
-    final_tags << 'quality-assurance' if final_tags.empty?
+    # Default fallback: assign 'strategies' if no tags found
+    final_tags << 'strategies' if final_tags.empty?
     fm['tags'] = final_tags.sort
 
     write_file(file, fm, body)
@@ -249,8 +252,8 @@ class TagManager
     return unless front_matter['category']
 
     cat = front_matter['category'].to_s.downcase
-    tags << cat
-    tags << 'quality-assurance' if cat == 'qa'
+    # Map 'qa' category to strategies (since quality-assurance removed)
+    tags << 'strategies' if cat == 'qa'
   end
 
   def self.add_slug_tags(file, front_matter, tags)

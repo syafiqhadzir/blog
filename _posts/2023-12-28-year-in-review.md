@@ -6,9 +6,8 @@ category: QA
 slug: year-in-review
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-- quality-assurance
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

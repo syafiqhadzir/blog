@@ -6,12 +6,10 @@ category: QA
 slug: testing-websockets-k6
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-- quality-assurance
 - real-time
-- testing
+- strategies
 - websockets
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

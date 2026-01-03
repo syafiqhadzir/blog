@@ -6,9 +6,8 @@ category: QA
 slug: srs-frs-brs
 gpgkey: D25D D0AD 3FDB F7C6
 tags:
-- quality-assurance
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

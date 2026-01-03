@@ -6,10 +6,9 @@ category: QA
 slug: quantum-simulators
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-- quality-assurance
 - quantum
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

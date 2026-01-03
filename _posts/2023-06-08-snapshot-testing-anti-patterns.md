@@ -6,11 +6,9 @@ category: QA
 slug: snapshot-testing-anti-patterns
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-- quality-assurance
-- testing
+- strategies
 - visual-testing
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

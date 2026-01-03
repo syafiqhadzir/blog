@@ -6,11 +6,10 @@ category: QA
 slug: post-quantum-security-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-- quality-assurance
 - quantum
 - security
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

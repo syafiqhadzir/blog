@@ -7,10 +7,8 @@ slug: mutation-testing-patterns
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
 - mutation-testing
-- quality-assurance
-- testing
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

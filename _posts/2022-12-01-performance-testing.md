@@ -7,10 +7,8 @@ slug: performance-testing
 gpgkey: 4AEE 18F8 3AFD EB23
 tags:
 - performance
-- quality-assurance
-- testing
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

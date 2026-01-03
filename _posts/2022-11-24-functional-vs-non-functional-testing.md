@@ -6,10 +6,8 @@ category: QA
 slug: functional-vs-non-functional-testing
 gpgkey: D25D D0AD 3FDB F7C6
 tags:
-- quality-assurance
-- testing
+- strategies
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

@@ -8,10 +8,9 @@ gpgkey: EBE8 BD81 6838 1BAF
 tags:
 - blockchain
 - contract-testing
-- quality-assurance
+- strategies
 - web3
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

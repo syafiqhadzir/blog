@@ -6,11 +6,9 @@ category: QA
 slug: video-streaming-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
-- quality-assurance
+- strategies
 - streaming
-- testing
 ---
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
