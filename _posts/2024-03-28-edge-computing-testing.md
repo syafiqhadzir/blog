@@ -5,11 +5,9 @@ date: 2024-03-28
 category: QA
 slug: edge-computing-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- edge-computing
-- performance
-- strategies
+tags: ["edge-computing", "performance"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

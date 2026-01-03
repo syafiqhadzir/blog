@@ -5,10 +5,9 @@ date: 2025-04-10
 category: QA
 slug: ultra-low-latency-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- performance
-- strategies
+tags: ["performance"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

@@ -5,10 +5,9 @@ date: 2025-04-10
 category: QA
 slug: biotech-software-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- biotech
-- strategies
+tags: ["biotech", "hardware-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

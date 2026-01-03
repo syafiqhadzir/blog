@@ -5,10 +5,9 @@ date: 2025-04-24
 category: QA
 slug: webgpu-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- emerging-tech
-- strategies
+tags: ["emerging-tech", "frontend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

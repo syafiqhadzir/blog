@@ -5,10 +5,9 @@ date: 2023-10-19
 category: QA
 slug: incident-post-mortems
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- debugging
-- strategies
+tags: ["debugging", "backend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

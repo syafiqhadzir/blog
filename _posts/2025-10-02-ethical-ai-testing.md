@@ -5,10 +5,9 @@ date: 2025-10-02
 category: QA
 slug: ethical-ai-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- artificial-intelligence
-- strategies
+tags: ["artificial-intelligence", "ethics", "philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

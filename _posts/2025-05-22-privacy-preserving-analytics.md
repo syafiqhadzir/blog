@@ -5,10 +5,9 @@ date: 2025-05-22
 category: QA
 slug: privacy-preserving-analytics
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- privacy
-- strategies
+tags: ["privacy", "security", "data-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

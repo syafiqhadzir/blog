@@ -5,10 +5,9 @@ date: 2024-12-19
 category: QA
 slug: performance-api-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- performance
-- strategies
+tags: ["performance", "backend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

@@ -5,10 +5,9 @@ date: 2025-08-14
 category: QA
 slug: migration-performance-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- performance
-- strategies
+tags: ["performance", "data-testing", "mobile-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

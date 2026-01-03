@@ -5,11 +5,9 @@ date: 2023-06-15
 category: QA
 slug: load-balancing-test-strategies
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- load-testing
-- performance
-- strategies
+tags: ["load-testing", "performance"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

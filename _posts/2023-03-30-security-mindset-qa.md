@@ -5,11 +5,9 @@ date: 2023-03-30
 category: QA
 slug: security-mindset-qa
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- artificial-intelligence
-- security
-- strategies
+tags: ["artificial-intelligence", "security", "qa-strategy", "philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

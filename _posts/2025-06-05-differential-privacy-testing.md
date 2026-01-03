@@ -5,10 +5,9 @@ date: 2025-06-05
 category: QA
 slug: differential-privacy-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- privacy
-- strategies
+tags: ["privacy", "security", "philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

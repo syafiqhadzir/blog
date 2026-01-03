@@ -5,10 +5,9 @@ date: 2024-06-27
 category: QA
 slug: css-in-js-regression
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- regression-testing
-- strategies
+tags: ["regression-testing", "frontend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

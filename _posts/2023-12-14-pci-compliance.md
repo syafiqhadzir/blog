@@ -5,10 +5,9 @@ date: 2023-12-14
 category: QA
 slug: pci-compliance
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- compliance
-- strategies
+tags: ["compliance", "security"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

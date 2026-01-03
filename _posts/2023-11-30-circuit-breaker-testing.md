@@ -5,11 +5,9 @@ date: 2023-11-30
 category: QA
 slug: circuit-breaker-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- artificial-intelligence
-- reliability
-- strategies
+tags: ["artificial-intelligence", "reliability", "frontend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

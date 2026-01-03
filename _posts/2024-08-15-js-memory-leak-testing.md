@@ -5,10 +5,9 @@ date: 2024-08-15
 category: QA
 slug: js-memory-leak-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- performance
-- strategies
+tags: ["performance", "automation"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

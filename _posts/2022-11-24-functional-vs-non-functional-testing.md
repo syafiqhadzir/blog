@@ -5,9 +5,9 @@ date: 2022-11-24
 category: QA
 slug: functional-vs-non-functional-testing
 gpgkey: D25D D0AD 3FDB F7C6
-tags:
-- strategies
+tags: ["philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

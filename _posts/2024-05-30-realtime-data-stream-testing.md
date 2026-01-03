@@ -5,11 +5,9 @@ date: 2024-05-30
 category: QA
 slug: realtime-data-stream-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- data-engineering
-- real-time
-- strategies
+tags: ["data-engineering", "real-time", "data-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

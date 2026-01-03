@@ -5,10 +5,9 @@ date: 2023-06-08
 category: QA
 slug: snapshot-testing-anti-patterns
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
-- visual-testing
+tags: ["visual-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

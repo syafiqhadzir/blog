@@ -5,10 +5,9 @@ date: 2025-07-24
 category: QA
 slug: hardening-ci-cd-pipeline
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- devops
-- strategies
+tags: ["devops"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

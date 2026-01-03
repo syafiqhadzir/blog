@@ -6,10 +6,9 @@ date: 2023-10-26
 category: QA
 slug: synthetic-monitoring-strategies
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- monitoring
-- strategies
+tags: ["monitoring", "devops"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

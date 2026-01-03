@@ -5,9 +5,9 @@ date: 2022-11-10
 category: QA
 slug: qa-engineers-for-seo
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["qa-general"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

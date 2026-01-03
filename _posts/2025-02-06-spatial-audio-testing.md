@@ -5,10 +5,9 @@ date: 2025-02-06
 category: QA
 slug: spatial-audio-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- spatial-computing
-- strategies
+tags: ["spatial-computing", "emerging-tech"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

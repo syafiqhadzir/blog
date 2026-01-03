@@ -5,9 +5,9 @@ date: 2023-08-17
 category: QA
 slug: schema-drift-detection
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["backend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

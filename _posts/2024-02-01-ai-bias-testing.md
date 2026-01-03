@@ -5,10 +5,9 @@ date: 2024-02-01
 category: QA
 slug: ai-bias-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- artificial-intelligence
-- strategies
+tags: ["artificial-intelligence", "ethics"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

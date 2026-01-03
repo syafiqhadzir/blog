@@ -5,10 +5,9 @@ date: 2023-09-21
 category: QA
 slug: observability-driven-development
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- observability
-- strategies
+tags: ["observability", "devops"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

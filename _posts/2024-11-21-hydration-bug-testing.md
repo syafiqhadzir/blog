@@ -5,9 +5,9 @@ date: 2024-11-21
 category: QA
 slug: hydration-bug-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

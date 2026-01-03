@@ -5,10 +5,9 @@ date: 2024-11-07
 category: QA
 slug: service-mesh-policy-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- service-mesh
-- strategies
+tags: ["service-mesh"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

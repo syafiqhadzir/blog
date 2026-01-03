@@ -5,10 +5,9 @@ date: 2025-04-03
 category: QA
 slug: 5g-app-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- networking
-- strategies
+tags: ["networking", "performance", "mobile-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

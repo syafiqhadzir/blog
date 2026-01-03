@@ -5,9 +5,9 @@ date: 2024-03-21
 category: QA
 slug: cost-optimised-test-envs
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["qa-strategy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

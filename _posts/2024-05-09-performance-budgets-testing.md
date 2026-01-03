@@ -5,10 +5,9 @@ date: 2024-05-09
 category: QA
 slug: performance-budgets-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- performance
-- strategies
+tags: ["performance", "qa-strategy", "automation"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

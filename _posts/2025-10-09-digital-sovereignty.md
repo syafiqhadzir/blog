@@ -5,9 +5,9 @@ date: 2025-10-09
 category: QA
 slug: digital-sovereignty
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["ethics"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

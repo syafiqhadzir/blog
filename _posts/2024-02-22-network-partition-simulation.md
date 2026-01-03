@@ -5,10 +5,9 @@ date: 2024-02-22
 category: QA
 slug: network-partition-simulation
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- artificial-intelligence
-- strategies
+tags: ["artificial-intelligence"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

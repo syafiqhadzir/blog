@@ -5,11 +5,9 @@ date: 2023-02-02
 category: QA
 slug: visual-regression-testing-mastery
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- regression-testing
-- strategies
-- visual-testing
+tags: ["regression-testing", "visual-testing", "frontend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

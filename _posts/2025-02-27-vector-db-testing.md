@@ -5,10 +5,9 @@ date: 2025-02-27
 category: QA
 slug: vector-db-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- artificial-intelligence
-- strategies
+tags: ["artificial-intelligence", "data-testing", "emerging-tech"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

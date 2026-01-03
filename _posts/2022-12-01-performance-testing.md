@@ -5,10 +5,9 @@ date: 2022-12-01
 category: QA
 slug: performance-testing
 gpgkey: 4AEE 18F8 3AFD EB23
-tags:
-- performance
-- strategies
+tags: ["performance", "mobile-testing", "philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

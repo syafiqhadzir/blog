@@ -5,9 +5,9 @@ date: 2022-12-29
 category: QA
 slug: technical-debt-in-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["qa-general"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

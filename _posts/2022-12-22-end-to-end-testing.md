@@ -5,10 +5,9 @@ date: 2022-12-22
 category: QA
 slug: end-to-end-testing
 gpgkey: 4AEE 18F8 3AFD EB23
-tags:
-- e2e-testing
-- strategies
+tags: ["e2e-testing", "automation", "philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

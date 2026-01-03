@@ -5,11 +5,9 @@ date: 2023-12-21
 category: QA
 slug: gdpr-test-data
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- compliance
-- data-engineering
-- strategies
+tags: ["compliance", "data-engineering", "hardware-testing", "security", "data-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

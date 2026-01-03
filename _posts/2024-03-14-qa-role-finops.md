@@ -5,10 +5,9 @@ date: 2024-03-14
 category: QA
 slug: qa-role-finops
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- finops
-- strategies
+tags: ["finops", "qa-strategy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

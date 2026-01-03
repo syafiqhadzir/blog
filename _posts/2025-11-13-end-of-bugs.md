@@ -5,9 +5,9 @@ date: 2025-11-13
 category: QA
 slug: end-of-bugs
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

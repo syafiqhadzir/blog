@@ -5,10 +5,9 @@ date: 2023-07-06
 category: QA
 slug: mocking-sse-events
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- real-time
-- strategies
+tags: ["real-time"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

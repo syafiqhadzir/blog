@@ -5,10 +5,9 @@ date: 2023-07-27
 category: QA
 slug: mobile-emulation-real-devices
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- mobile
-- strategies
+tags: ["mobile", "hardware-testing", "mobile-testing", "philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

@@ -5,10 +5,9 @@ date: 2024-06-06
 category: QA
 slug: cdc-testing-patterns
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- data-engineering
-- strategies
+tags: ["data-engineering", "data-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

@@ -5,10 +5,9 @@ date: 2025-09-04
 category: QA
 slug: bio-integrated-web-interfaces
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- biotech
-- strategies
+tags: ["biotech"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

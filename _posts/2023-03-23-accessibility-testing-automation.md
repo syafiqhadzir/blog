@@ -5,11 +5,9 @@ date: 2023-03-23
 category: QA
 slug: accessibility-testing-automation
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- accessibility
-- automation
-- strategies
+tags: ["accessibility", "automation", "frontend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

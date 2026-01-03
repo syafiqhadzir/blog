@@ -5,9 +5,9 @@ date: 2023-07-20
 category: QA
 slug: cross-browser-testing-realities
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["frontend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

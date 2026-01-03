@@ -5,10 +5,9 @@ date: 2024-08-29
 category: QA
 slug: csp-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- security
-- strategies
+tags: ["security", "frontend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

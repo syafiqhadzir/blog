@@ -5,10 +5,9 @@ date: 2023-09-14
 category: QA
 slug: canary-release-quality-gates
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- devops
-- strategies
+tags: ["devops", "ethics"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

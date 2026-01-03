@@ -5,10 +5,9 @@ date: 2023-09-07
 category: QA
 slug: blue-green-deployment-validation
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- devops
-- strategies
+tags: ["devops"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

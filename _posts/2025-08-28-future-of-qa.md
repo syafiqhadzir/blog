@@ -5,9 +5,9 @@ date: 2025-08-28
 category: QA
 slug: future-of-qa
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["emerging-tech"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

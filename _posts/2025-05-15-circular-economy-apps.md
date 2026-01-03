@@ -5,9 +5,9 @@ date: 2025-05-15
 category: QA
 slug: circular-economy-apps
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["mobile-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

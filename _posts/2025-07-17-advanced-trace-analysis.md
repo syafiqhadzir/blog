@@ -5,9 +5,9 @@ date: 2025-07-17
 category: QA
 slug: advanced-trace-analysis
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["qa-general"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

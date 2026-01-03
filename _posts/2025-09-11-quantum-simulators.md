@@ -5,10 +5,9 @@ date: 2025-09-11
 category: QA
 slug: quantum-simulators
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- quantum
-- strategies
+tags: ["quantum", "mobile-testing", "emerging-tech"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

@@ -5,11 +5,9 @@ date: 2023-06-29
 category: QA
 slug: event-driven-architecture-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- architecture
-- chaos-testing
-- strategies
+tags: ["architecture", "chaos-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

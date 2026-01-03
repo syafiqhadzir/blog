@@ -5,9 +5,9 @@ date: 2024-06-20
 category: QA
 slug: shadow-dom-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["qa-general"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

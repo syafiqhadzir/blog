@@ -5,11 +5,9 @@ date: 2023-08-03
 category: QA
 slug: testing-websockets-k6
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- real-time
-- strategies
-- websockets
+tags: ["real-time", "websockets", "backend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

@@ -5,10 +5,9 @@ date: 2025-01-30
 category: QA
 slug: ar-vr-web-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- spatial-computing
-- strategies
+tags: ["spatial-computing", "emerging-tech"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

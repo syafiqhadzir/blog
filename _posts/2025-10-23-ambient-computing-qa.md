@@ -5,9 +5,9 @@ date: 2025-10-23
 category: QA
 slug: ambient-computing-qa
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["qa-general"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

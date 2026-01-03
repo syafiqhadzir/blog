@@ -5,10 +5,9 @@ date: 2023-08-31
 category: QA
 slug: serverless-function-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- serverless
-- strategies
+tags: ["serverless", "backend-testing", "devops"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

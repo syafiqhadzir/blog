@@ -5,12 +5,9 @@ date: 2024-06-13
 category: QA
 slug: micro-frontend-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- frontend
-- integration-testing
-- microservices
-- strategies
+tags: ["frontend", "integration-testing", "microservices", "frontend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

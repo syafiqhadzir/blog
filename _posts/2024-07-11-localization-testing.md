@@ -5,9 +5,9 @@ date: 2024-07-11
 category: QA
 slug: localization-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["mobile-testing", "philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

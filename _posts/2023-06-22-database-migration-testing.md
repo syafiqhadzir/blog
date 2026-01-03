@@ -5,9 +5,9 @@ date: 2023-06-22
 category: QA
 slug: database-migration-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["data-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

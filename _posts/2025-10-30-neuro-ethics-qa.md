@@ -5,10 +5,9 @@ date: 2025-10-30
 category: QA
 slug: neuro-ethics-qa
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- ethics
-- strategies
+tags: ["ethics"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

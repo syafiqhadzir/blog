@@ -5,10 +5,9 @@ date: 2024-10-24
 category: QA
 slug: disaster-recovery-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- reliability
-- strategies
+tags: ["reliability", "data-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

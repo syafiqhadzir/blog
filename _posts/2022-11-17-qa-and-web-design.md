@@ -5,9 +5,9 @@ date: 2022-11-17
 category: QA
 slug: qa-and-web-design
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

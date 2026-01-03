@@ -5,10 +5,9 @@ date: 2024-12-12
 category: QA
 slug: dynamic-image-optimisation-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- performance
-- strategies
+tags: ["performance"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

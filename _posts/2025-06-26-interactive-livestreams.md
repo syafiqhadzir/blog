@@ -5,9 +5,9 @@ date: 2025-06-26
 category: QA
 slug: interactive-livestreams
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["qa-general"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

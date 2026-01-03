@@ -5,9 +5,9 @@ date: 2025-01-09
 category: QA
 slug: decentralised-storage
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["web3"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

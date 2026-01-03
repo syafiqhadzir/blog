@@ -5,10 +5,9 @@ date: 2023-04-06
 category: QA
 slug: chaos-engineering-qa
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- chaos-testing
-- strategies
+tags: ["chaos-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

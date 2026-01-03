@@ -5,9 +5,9 @@ date: 2023-10-12
 category: QA
 slug: error-budgeting-qa
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["qa-strategy", "philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

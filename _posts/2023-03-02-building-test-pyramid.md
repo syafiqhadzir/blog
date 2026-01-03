@@ -5,9 +5,9 @@ date: 2023-03-02
 category: QA
 slug: building-test-pyramid
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["frontend-testing", "philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

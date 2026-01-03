@@ -5,9 +5,9 @@ date: 2024-05-16
 category: QA
 slug: web-bluetooth-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["hardware-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

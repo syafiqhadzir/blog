@@ -5,10 +5,9 @@ date: 2023-10-05
 category: QA
 slug: distributed-tracing-qa
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
-- tracing
+tags: ["tracing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

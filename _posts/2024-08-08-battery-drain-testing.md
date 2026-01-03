@@ -5,11 +5,9 @@ date: 2024-08-08
 category: QA
 slug: battery-drain-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- artificial-intelligence
-- performance
-- strategies
+tags: ["artificial-intelligence", "performance", "hardware-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

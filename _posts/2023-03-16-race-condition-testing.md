@@ -5,10 +5,9 @@ date: 2023-03-16
 category: QA
 slug: race-condition-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- devops
-- strategies
+tags: ["devops", "data-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

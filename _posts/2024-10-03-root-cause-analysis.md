@@ -5,9 +5,9 @@ date: 2024-10-03
 category: QA
 slug: root-cause-analysis
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["qa-general"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

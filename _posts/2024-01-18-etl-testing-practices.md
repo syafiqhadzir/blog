@@ -5,10 +5,9 @@ date: 2024-01-18
 category: QA
 slug: etl-testing-practices
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- data-engineering
-- strategies
+tags: ["data-engineering", "data-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

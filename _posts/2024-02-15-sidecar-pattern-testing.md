@@ -5,11 +5,9 @@ date: 2024-02-15
 category: QA
 slug: sidecar-pattern-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- artificial-intelligence
-- containers
-- strategies
+tags: ["artificial-intelligence", "containers", "devops"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

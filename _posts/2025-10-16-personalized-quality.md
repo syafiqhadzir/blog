@@ -5,9 +5,9 @@ date: 2025-10-16
 category: QA
 slug: personalized-quality
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["qa-general"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

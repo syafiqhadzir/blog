@@ -5,10 +5,9 @@ date: 2025-07-10
 category: QA
 slug: ai-generated-tests
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- artificial-intelligence
-- strategies
+tags: ["artificial-intelligence"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

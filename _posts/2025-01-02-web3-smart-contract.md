@@ -5,12 +5,9 @@ date: 2025-01-02
 category: QA
 slug: web3-smart-contract
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- blockchain
-- contract-testing
-- strategies
-- web3
+tags: ["blockchain", "contract-testing", "web3", "automation", "frontend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

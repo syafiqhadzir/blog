@@ -5,10 +5,9 @@ date: 2025-06-12
 category: QA
 slug: homomorphic-encryption
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- encryption
-- strategies
+tags: ["encryption"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

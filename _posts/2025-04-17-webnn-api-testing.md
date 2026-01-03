@@ -5,10 +5,9 @@ date: 2025-04-17
 category: QA
 slug: webnn-api-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- emerging-tech
-- strategies
+tags: ["emerging-tech", "backend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

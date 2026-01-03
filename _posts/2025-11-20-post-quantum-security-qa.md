@@ -5,11 +5,9 @@ date: 2025-11-20
 category: QA
 slug: post-quantum-security-qa
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- quantum
-- security
-- strategies
+tags: ["quantum", "security", "emerging-tech"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

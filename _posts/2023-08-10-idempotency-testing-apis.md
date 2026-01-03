@@ -5,9 +5,9 @@ date: 2023-08-10
 category: QA
 slug: idempotency-testing-apis
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- strategies
+tags: ["backend-testing", "philosophy"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

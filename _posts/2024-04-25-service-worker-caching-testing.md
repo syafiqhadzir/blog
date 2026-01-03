@@ -5,10 +5,9 @@ date: 2024-04-25
 category: QA
 slug: service-worker-caching-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- progressive-web-apps
-- strategies
+tags: ["progressive-web-apps"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

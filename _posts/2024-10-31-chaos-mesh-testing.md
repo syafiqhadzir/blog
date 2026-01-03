@@ -5,11 +5,9 @@ date: 2024-10-31
 category: QA
 slug: chaos-mesh-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- artificial-intelligence
-- chaos-testing
-- strategies
+tags: ["artificial-intelligence", "chaos-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

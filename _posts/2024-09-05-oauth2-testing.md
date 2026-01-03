@@ -5,10 +5,9 @@ date: 2024-09-05
 category: QA
 slug: oauth2-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- authentication
-- strategies
+tags: ["authentication", "security"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

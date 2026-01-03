@@ -5,10 +5,9 @@ date: 2024-04-11
 category: QA
 slug: qa-for-pwas
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- progressive-web-apps
-- strategies
+tags: ["progressive-web-apps", "mobile-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

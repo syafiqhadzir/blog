@@ -5,11 +5,9 @@ date: 2023-02-16
 category: QA
 slug: contract-testing-microservices
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- contract-testing
-- microservices
-- strategies
+tags: ["contract-testing", "microservices", "backend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

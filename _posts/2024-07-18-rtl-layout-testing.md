@@ -5,10 +5,9 @@ date: 2024-07-18
 category: QA
 slug: rtl-layout-testing
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- localisation
-- strategies
+tags: ["localisation", "frontend-testing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)

@@ -5,10 +5,9 @@ date: 2023-01-26
 category: QA
 slug: boundary-value-analysis
 gpgkey: EBE8 BD81 6838 1BAF
-tags:
-- edge-computing
-- strategies
+tags: ["edge-computing"]
 ---
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
