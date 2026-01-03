@@ -68,7 +68,9 @@ export default defineConfig({
 
     // Use webServer for reliable build-once-serve-static pattern
     webServer: {
-        command: 'npm run build && npx http-server _site -p 5000 -c-1 --silent',
+        command: process.env['SKIP_BUILD']
+            ? 'npx http-server _site -p 5000 -c-1 --silent'
+            : 'npm run build && npx http-server _site -p 5000 -c-1 --silent',
         reuseExistingServer: !CI,
         stderr: 'pipe',
         stdout: 'pipe',
