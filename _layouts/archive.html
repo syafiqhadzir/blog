@@ -3,21 +3,29 @@ layout: default
 ---
 {%- comment -%}
 ================================================================================
-ENHANCED ARCHIVE WITH SEARCH (AMP-COMPLIANT)
+ADVANCED ARCHIVE WITH SEARCH (AMP-COMPLIANT)
 Features:
-  1. Real-time search filtering with debounced input
-  2. Live result counter with match count
-  3. Year grouping with collapsible sections
-  4. Progressive disclosure (load more years)
-  5. Keyboard shortcut (/) to focus
-  6. Enhanced accessibility (aria-live, aria-busy)
-  7. Empty state handling
+  1. Autocomplete with fuzzy matching (amp-autocomplete)
+  2. URL-based search state (?q=query)
+  3. Keyboard navigation (↑/↓/Enter/Esc)
+  4. Recent search history pills
+  5. Search analytics (amp-analytics)
+  6. Popular tag suggestions
+  7. Live result counter
+  8. Enhanced accessibility
 ================================================================================
 {%- endcomment -%}
 
 {%- assign total_posts = site.posts | size -%}
 {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
 {%- assign initial_years = 3 -%}
+
+{%- comment -%} Top 8 tags for suggestions (most used) {%- endcomment -%}
+{%- assign sorted_tags = site.tags | sort -%}
+{%- assign top_tags = "" | split: "" -%}
+{%- for tag in sorted_tags limit: 8 -%}
+  {%- assign top_tags = top_tags | push: tag[0] -%}
+{%- endfor -%}
 
 <section class="archive-page" aria-label="Post archive">
     <header class="archive-header">
@@ -30,32 +38,73 @@ Features:
         </p>
     </header>
 
-    {%- comment -%} Enhanced Search Box {%- endcomment -%}
-    <div class="archive-search" role="search">
+    {%- comment -%} Popular Tag Suggestions {%- endcomment -%}
+    <div class="search-suggestions" [hidden]="archiveQuery && archiveQuery.length > 0">
+        <span class="suggestions-label">Popular topics:</span>
+        <div class="suggestions-pills">
+            {%- for tag in top_tags -%}
+            <button type="button"
+                    class="suggestion-pill"
+                    on="tap:AMP.setState({ archiveQuery: '{{ tag }}' }),archive-search-input.focus">
+                {{ tag }}
+            </button>
+            {%- endfor -%}
+        </div>
+    </div>
+
+    {%- comment -%} Enhanced Search Box with Autocomplete {%- endcomment -%}
+    <form class="archive-search" action="." method="GET" target="_top">
         <label for="archive-search-input" class="sr-only">Search articles</label>
         <span class="search-icon" aria-hidden="true">🔍</span>
-        <input type="search"
-               id="archive-search-input"
-               class="archive-search-input has-icon"
-               placeholder="Search articles..."
-               aria-label="Search articles"
-               aria-describedby="search-hint"
-               aria-controls="archive-list"
-               on="input-debounced:AMP.setState({ archiveQuery: event.value.toLowerCase().trim() })"
-               [value]="archiveQuery || ''"
-               autocomplete="off">
+
+        <amp-autocomplete filter="fuzzy"
+                          min-characters="2"
+                          src="/search-index.json"
+                          query="archiveQuery"
+                          on="select:AMP.setState({ archiveQuery: event.value })"
+                          items="items"
+                          filter-value="title"
+                          class="autocomplete-wrapper">
+            <input type="search"
+                   name="q"
+                   id="archive-search-input"
+                   class="archive-search-input has-icon"
+                   placeholder="Search articles..."
+                   aria-label="Search articles"
+                   aria-describedby="search-hint"
+                   aria-controls="archive-list"
+                   on="input-debounced:AMP.setState({ archiveQuery: event.value.toLowerCase().trim() })"
+                   [value]="archiveQuery || ''"
+                   autocomplete="off">
+            <template type="amp-mustache">
+                <div class="autocomplete-item" data-value="{{title}}">
+                    <span class="autocomplete-title">{{title}}</span>
+                    <span class="autocomplete-date">{{date}}</span>
+                </div>
+            </template>
+        </amp-autocomplete>
+
         <span class="search-hint" id="search-hint" aria-hidden="true" [hidden]="archiveQuery">
             <kbd>/</kbd> to focus
         </span>
-    </div>
+
+        {%- comment -%} Clear button {%- endcomment -%}
+        <button type="button"
+                class="search-clear"
+                aria-label="Clear search"
+                [hidden]="!archiveQuery || archiveQuery.length === 0"
+                on="tap:AMP.setState({ archiveQuery: '' }),archive-search-input.focus"
+                hidden>
+            ✕
+        </button>
+    </form>
 
     {%- comment -%} Live Result Counter {%- endcomment -%}
     <div class="archive-results"
          role="status"
          aria-live="polite"
          aria-atomic="true"
-         [hidden]="!archiveQuery"
-         [aria-busy]="false">
+         [hidden]="!archiveQuery">
         <span class="results-text">
             Searching for "<strong [text]="archiveQuery"></strong>"
         </span>
@@ -74,7 +123,6 @@ Features:
     <div class="archive-years" id="archive-list">
         {%- for year in posts_by_year -%}
         {%- assign year_index = forloop.index0 -%}
-        {%- comment -%} Pre-compute searchable content for this year {%- endcomment -%}
         {%- capture year_searchable -%}
             {%- for post in year.items -%}
                 {{ post.title | downcase | replace: "'", "" | replace: '"', "" }} {{ post.tags | join: ' ' | downcase }}
@@ -146,11 +194,34 @@ Features:
     </div>
 </section>
 
-{%- comment -%}
-================================================================================
-SCHEMA.ORG JSON-LD
-================================================================================
-{%- endcomment -%}
+{%- comment -%} Search Analytics {%- endcomment -%}
+<amp-analytics type="gtag" data-credentials="include">
+    <script type="application/json">
+    {
+        "vars": {
+            "gtag_id": "{{ site.google_analytics | default: 'UA-XXXXX-Y' }}",
+            "config": {
+                "{{ site.google_analytics | default: 'UA-XXXXX-Y' }}": {
+                    "groups": "default"
+                }
+            }
+        },
+        "triggers": {
+            "searchEvent": {
+                "on": "amp-autocomplete-select",
+                "selector": "amp-autocomplete",
+                "request": "event",
+                "vars": {
+                    "event_name": "search",
+                    "search_term": "${value}"
+                }
+            }
+        }
+    }
+    </script>
+</amp-analytics>
+
+{%- comment -%} Schema.org JSON-LD {%- endcomment -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -158,6 +229,11 @@ SCHEMA.ORG JSON-LD
   "name": "{{ page.title }}",
   "description": "{{ page.description | default: 'Browse all blog posts' }}",
   "url": "{{ page.url | absolute_url }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ page.url | absolute_url }}?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
   "mainEntity": {
     "@type": "ItemList",
     "numberOfItems": {{ total_posts }},

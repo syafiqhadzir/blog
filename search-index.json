@@ -1,0 +1,25 @@
+---
+layout: null
+permalink: /search-index.json
+---
+{
+  "items": [
+    {%- for post in site.posts -%}
+    {
+      "title": {{ post.title | jsonify }},
+      "url": "{{ post.url | relative_url }}",
+      "date": "{{ post.date | date: '%d %b %Y' }}",
+      "tags": {{ post.tags | jsonify }}
+    }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ],
+  "tags": [
+    {%- assign all_tags = site.tags | sort -%}
+    {%- for tag in all_tags -%}
+    {
+      "name": "{{ tag[0] }}",
+      "count": {{ tag[1].size }}
+    }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+}
