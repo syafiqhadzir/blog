@@ -64,7 +64,10 @@ test.describe('Mobile & Responsive', { tag: ['@full', '@mobile'] }, () => {
     await page.waitForLoadState('networkidle');
 
     // Test touch tap on link - use specific link that changes URL
-    const archiveLink = page.getByRole('link', { name: 'Archive' });
+    const archiveLink = page.getByRole('link', {
+      exact: true,
+      name: 'Archive',
+    });
 
     await Promise.all([
       page.waitForURL(/archive/, { waitUntil: 'domcontentloaded' }),
