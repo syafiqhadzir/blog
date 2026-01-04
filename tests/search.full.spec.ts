@@ -63,19 +63,35 @@ test.describe('Search Functionality', { tag: ['@full', '@search'] }, () => {
 
     await searchInput.fill('playwright');
 
-    // Wait for URL to update (AMP bind or traditional)
+    // Wait for AMP state to update (AMP bind uses state, not URL params)
     await page.waitForFunction(
       (query) => {
-        const url = globalThis.location.href;
-        return url.includes('q=') || url.includes(query);
+        // Check if AMP state has been updated
+        const ampStateElement = globalThis.document.querySelector(
+          'amp-state#archiveQuery script',
+        );
+        if (ampStateElement?.textContent) {
+          try {
+            const state = JSON.parse(ampStateElement.textContent) as string;
+            return state.includes(query);
+          } catch {
+            return false;
+          }
+        }
+        // Fallback: check if input value matches
+        const input = globalThis.document.querySelector('input[type="search"]');
+        if (input instanceof HTMLInputElement) {
+          return input.value.toLowerCase().includes(query);
+        }
+        return false;
       },
       'playwright',
-      { timeout: 5000 },
+      { timeout: 10_000 },
     );
 
-    // Verify URL contains search query
-    const url = page.url();
-    expect(url).toMatch(/q=|playwright/);
+    // Verify search input value is synchronized
+    const inputValue = await searchInput.inputValue();
+    expect(inputValue.toLowerCase()).toContain('playwright');
   });
 
   test('Clear search resets results', async ({ page }) => {

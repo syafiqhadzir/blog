@@ -6,7 +6,7 @@ email: syafiqhadzir@live.com.my # email of site's author
 url: https://blog.syafiqhadzir.dev # root address of the site
 baseurl: '' # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
-  Just another QA engineer who codes and writes.
+  Just another QA engineer who codes, tests, and writes about quality.
 lang: en-GB
 permalink: /posts/:year/:month/:day/:slug.html
 
