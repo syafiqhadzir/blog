@@ -58,12 +58,34 @@ test.describe('PWA Functionality', { tag: ['@full', '@pwa'] }, () => {
     const context = await browser.newContext();
     const page = await context.newPage();
 
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'networkidle' });
 
-    // Wait for service worker to be active
-    await page.evaluate(async () => {
-      await navigator.serviceWorker.ready;
+    // Wait for service worker to be active and controlling the page
+    const swActivated = await page.evaluate(async () => {
+      if ('serviceWorker' in navigator) {
+        const registration = await navigator.serviceWorker.ready;
+        // Wait for service worker to control the page
+        if (!navigator.serviceWorker.controller) {
+          await new Promise((resolve) => {
+            navigator.serviceWorker.addEventListener(
+              'controllerchange',
+              resolve,
+              {
+                once: true,
+              },
+            );
+          });
+        }
+        return !!registration.active;
+      }
+      return false;
     });
+
+    expect(swActivated).toBe(true);
+
+    // Prime the cache by visiting the archive page while online
+    await page.goto('/archive.html', { waitUntil: 'networkidle' });
+    await page.goto('/', { waitUntil: 'networkidle' });
 
     // Go offline
     await context.setOffline(true);

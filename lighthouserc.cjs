@@ -211,10 +211,10 @@ module.exports = {
       },
       // Test critical pages
       url: [
-        'http://localhost/index.html',
-        'http://localhost/about.html',
-        'http://localhost/archive.html',
-        'http://localhost/tags.html',
+        'http://localhost:5000/index.html',
+        'http://localhost:5000/about.html',
+        'http://localhost:5000/archive.html',
+        'http://localhost:5000/tags.html',
       ],
     },
     upload: {

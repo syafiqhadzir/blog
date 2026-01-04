@@ -11,7 +11,10 @@ test.describe('Mobile & Responsive', { tag: ['@full', '@mobile'] }, () => {
     });
     const page = await context.newPage();
 
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+
+    // Wait for page to be fully loaded
+    await page.waitForLoadState('networkidle');
 
     // Verify mobile viewport
     const viewport = page.viewportSize();
@@ -32,7 +35,10 @@ test.describe('Mobile & Responsive', { tag: ['@full', '@mobile'] }, () => {
     });
     const page = await context.newPage();
 
-    await page.goto('/archive.html');
+    await page.goto('/archive.html', { waitUntil: 'domcontentloaded' });
+
+    // Wait for page to be fully loaded
+    await page.waitForLoadState('networkidle');
 
     // Verify tablet viewport
     const viewport = page.viewportSize();
@@ -52,11 +58,18 @@ test.describe('Mobile & Responsive', { tag: ['@full', '@mobile'] }, () => {
     });
     const page = await context.newPage();
 
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+
+    // Wait for page to be fully loaded
+    await page.waitForLoadState('networkidle');
 
     // Test touch tap on link - use specific link that changes URL
     const archiveLink = page.getByRole('link', { name: 'Archive' });
-    await archiveLink.tap();
+
+    await Promise.all([
+      page.waitForURL(/archive/, { waitUntil: 'domcontentloaded' }),
+      archiveLink.tap(),
+    ]);
 
     // Verify navigation occurred
     await expect(page).toHaveURL(/archive/);
@@ -67,7 +80,7 @@ test.describe('Mobile & Responsive', { tag: ['@full', '@mobile'] }, () => {
   test('Responsive breakpoints - Desktop to mobile', async ({ page }) => {
     // Test desktop viewport
     await page.setViewportSize({ height: 1080, width: 1920 });
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
 
     let viewport = page.viewportSize();
     expect(viewport?.width).toBe(1920);

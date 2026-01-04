@@ -8,13 +8,13 @@ test.describe('Fast Smoke Suite', { tag: '@fast' }, () => {
   });
 
   test('Homepage loads instantly', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
     await expect(page).toHaveTitle(/Syafiq Hadzir/);
     await expect(page.locator('h1')).toBeVisible();
   });
 
   test('Archive loads and has posts', async ({ page }) => {
-    await page.goto('/archive.html');
+    await page.goto('/archive.html', { waitUntil: 'domcontentloaded' });
     await expect(page.locator('main')).toBeVisible();
     await expect(page.locator('h1')).toBeVisible();
   });
@@ -28,13 +28,16 @@ test.describe('Fast Smoke Suite', { tag: '@fast' }, () => {
       'At least one post should exist for smoke test',
     ).toBeDefined();
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    await page.goto(postRoute!);
+    await page.goto(postRoute!, { waitUntil: 'domcontentloaded' });
     await expect(page.locator('article')).toBeVisible();
   });
 
   test('Navigation works', async ({ page }) => {
-    await page.goto('/');
-    await page.click('a[href="/archive"]');
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await Promise.all([
+      page.waitForURL(/archive/, { waitUntil: 'domcontentloaded' }),
+      page.click('a[href="/archive"]'),
+    ]);
     await expect(page).toHaveURL(/archive/);
   });
 });

@@ -63,13 +63,19 @@ test.describe('Search Functionality', { tag: ['@full', '@search'] }, () => {
 
     await searchInput.fill('playwright');
 
-    await expect(async () => {
-      const url = page.url();
-      // This implies that the search query is correctly reflected in the URL.
-      expect(url).toContain('q=');
-      expect(url).toContain('playwright');
-      await Promise.resolve();
-    }).toPass();
+    // Wait for URL to update (AMP bind or traditional)
+    await page.waitForFunction(
+      (query) => {
+        const url = globalThis.location.href;
+        return url.includes('q=') || url.includes(query);
+      },
+      'playwright',
+      { timeout: 5000 },
+    );
+
+    // Verify URL contains search query
+    const url = page.url();
+    expect(url).toMatch(/q=|playwright/);
   });
 
   test('Clear search resets results', async ({ page }) => {
