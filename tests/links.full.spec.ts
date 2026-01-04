@@ -104,6 +104,7 @@ test.describe('Internal Link Validation', { tag: ['@full', '@links'] }, () => {
     getAllInternalRoutes,
     page,
   }) => {
+    test.setTimeout(60_000); // Increase timeout for crawling
     const routes = await getAllInternalRoutes();
     const allFoundLinks = new Set<string>();
 
