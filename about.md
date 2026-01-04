@@ -1,7 +1,9 @@
 ---
 layout: page
 title: About
-description: A little bit about me and this blog.
+description:
+  Learn about Syafiq Hadzir, a Software Engineer in Test (SDET) specializing in
+  automated quality systems, chaos engineering, and ethical AI.
 permalink: /about
 ---
 

@@ -55,43 +55,20 @@ test.describe('Search Functionality', { tag: ['@full', '@search'] }, () => {
   test('Search URL state synchronization', async ({ page }) => {
     await page.goto('/archive.html');
 
-    const searchInput = page
-      .locator(
-        'input[type="search"], input[placeholder*="search" i], input[aria-label*="search" i]',
-      )
-      .first();
+    const searchInput = page.locator('#archive-search-input');
+    const suggestions = page.locator('.search-suggestions');
+
+    // Initially suggestions should be visible
+    await expect(suggestions).toBeVisible();
 
     await searchInput.fill('playwright');
 
-    // Wait for AMP state to update (AMP bind uses state, not URL params)
-    await page.waitForFunction(
-      (query) => {
-        // Check if AMP state has been updated
-        const ampStateElement = globalThis.document.querySelector(
-          'amp-state#archiveQuery script',
-        );
-        if (ampStateElement?.textContent) {
-          try {
-            const state = JSON.parse(ampStateElement.textContent) as string;
-            return state.includes(query);
-          } catch {
-            return false;
-          }
-        }
-        // Fallback: check if input value matches
-        const input = globalThis.document.querySelector('input[type="search"]');
-        if (input instanceof HTMLInputElement) {
-          return input.value.toLowerCase().includes(query);
-        }
-        return false;
-      },
-      'playwright',
-      { timeout: 10_000 },
-    );
+    // Wait for suggestions to be hidden (indicates AMP state 'archiveQuery' is updated)
+    // AMP hides this element when archiveQuery is truthy
+    await expect(suggestions).toBeHidden({ timeout: 10_000 });
 
-    // Verify search input value is synchronized
-    const inputValue = await searchInput.inputValue();
-    expect(inputValue.toLowerCase()).toContain('playwright');
+    // Verify search input value is synchronized using locator assertion
+    await expect(searchInput).toHaveValue(/playwright/i);
   });
 
   test('Clear search resets results', async ({ page }) => {
