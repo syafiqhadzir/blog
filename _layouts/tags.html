@@ -50,7 +50,7 @@ Features:
 
   {%- comment -%} Weighted Tag Cloud with Recency Scoring {%- endcomment -%}
   <nav class="tag-cloud-section" aria-label="Tag cloud">
-    <div class="tag-cloud" role="list">
+    <ul class="tag-cloud">
       {%- for tag in sorted_tags -%}
         {%- assign tag_data = site.data.tags[tag[0]] -%}
         {%- if tag_data.deprecated != true -%}
@@ -88,18 +88,20 @@ Features:
             {%- assign w_class = 'tag-w7' -%}
           {%- endif -%}
 
-          <a
-            href="#{{ tag[0] | slugify }}"
-            class="tag-chip {{ w_class }}"
-            data-tag="{{ tag[0] }}"
-          >
-            {%- if tag_data.icon -%}<span class="tag-icon" aria-hidden="true">{{ tag_data.icon }}</span>{%- endif -%}
-            {{ tag_data.name | default: tag[0] }}
-            <span class="tag-chip-count">{{ count }}</span>
-          </a>
+          <li>
+            <a
+              href="#{{ tag[0] | slugify }}"
+              class="tag-chip {{ w_class }}"
+              data-tag="{{ tag[0] }}"
+            >
+              {%- if tag_data.icon -%}<span class="tag-icon" aria-hidden="true">{{ tag_data.icon }}</span>{%- endif -%}
+              {{ tag_data.name | default: tag[0] }}
+              <span class="tag-chip-count">{{ count }}</span>
+            </a>
+          </li>
         {%- endif -%}
       {%- endfor -%}
-    </div>
+    </ul>
   </nav>
 
   {%- comment -%} Hierarchical Tag Sections {%- endcomment -%}
