@@ -1,0 +1,81 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  lighthouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: bundle exec jekyll build
+
+      - name: Run Lighthouse CI
+        run: npm run lighthouse:ci
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Upload Lighthouse reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+          retention-days: 30
+
+      - name: Comment PR with results
+        uses: actions/github-script@v7
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            const fs = require('fs');
+            const reports = fs.readdirSync('.lighthouseci').filter(f => f.endsWith('.json'));
+
+            let comment = '## 🔦 Lighthouse CI Results\\n\\n';
+
+            for (const report of reports) {
+              const data = JSON.parse(fs.readFileSync(`.lighthouseci/${report}`));
+              const url = data.finalUrl || data.requestedUrl;
+              const scores = data.categories;
+
+              comment += `### ${url}\\n`;
+              comment += `- ⚡ Performance: ${Math.round(scores.performance.score * 100)}\\n`;
+              comment += `- ♿ Accessibility: ${Math.round(scores.accessibility.score * 100)}\\n`;
+              comment += `- 🎯 Best Practices: ${Math.round(scores['best-practices'].score * 100)}\\n`;
+              comment += `- 🔍 SEO: ${Math.round(scores.seo.score * 100)}\\n\\n`;
+            }
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
