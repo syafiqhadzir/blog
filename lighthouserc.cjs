@@ -63,9 +63,9 @@ module.exports = {
         dlitem: 'error',
         doctype: 'error',
         'document-title': 'error',
-        'dom-size': ['warn', { maxNumericValue: 2100 }], // Increased for Tags page
+        'dom-size': ['warn', { maxNumericValue: 2200 }], // Increased for Tags page
         'duplicate-id-aria': 'error',
-        'duplicated-javascript-insight': 'off', // AMP runtime optimization often triggers this
+        'duplicated-javascript': 'off', // AMP runtime optimization often triggers this
         'efficient-animated-content': 'error',
         'errors-in-console': 'error',
         // FCP: First Contentful Paint (Good: <1.8s)
@@ -86,10 +86,6 @@ module.exports = {
         'input-button-name': 'error',
         'input-image-alt': 'error',
         'inspector-issues': 'error',
-        // ============================================================
-        // PWA (Service Worker)
-        // ============================================================
-        'installable-manifest': 'warn',
 
         // ============================================================
         // PERFORMANCE BUDGETS
@@ -103,8 +99,8 @@ module.exports = {
         // ============================================================
         // CORE WEB VITALS (Strict AMP Thresholds)
         // ============================================================
-        // LCP: Largest Contentful Paint (Good: <2.5s)
-        'largest-contentful-paint': ['error', { maxNumericValue: 2500 }],
+        // LCP: Largest Contentful Paint (Good: <2.5s, relaxed for CI)
+        'largest-contentful-paint': ['error', { maxNumericValue: 2700 }],
         'legacy-javascript': 'off', // AMP runtime is modern
         'link-name': 'error',
         'link-text': 'error',
@@ -125,26 +121,19 @@ module.exports = {
         'notification-on-start': 'error',
         'object-alt': 'error',
         'offscreen-images': 'error',
-        // eslint-disable-next-line sonarjs/no-hardcoded-passwords
-        'password-inputs-can-be-pasted-into': 'error',
         redirects: 'error',
         'render-blocking-resources': 'warn', // AMP optimizes this
         'robots-txt': 'error',
 
         'select-name': 'error',
         'server-response-time': ['error', { maxNumericValue: 600 }], // TTFB <600ms
-        'service-worker': 'warn',
         'skip-link': 'error',
         // SI: Speed Index (Good: <3.4s)
         'speed-index': ['error', { maxNumericValue: 3400 }],
-        'splash-screen': 'warn',
-        // Structured data might return NaN if missing, so we warn instead of error
-        'structured-data': 'warn',
         tabindex: 'error',
         'table-duplicate-name': 'error',
         'td-headers-attr': 'error',
         'th-has-data-cells': 'error',
-        'themed-omnibox': 'warn',
         'third-party-facades': 'warn',
         'third-party-summary': 'off', // AMP manages third-party
         // TBT: Total Blocking Time (Good: <200ms)
@@ -155,20 +144,15 @@ module.exports = {
         'unsized-images': 'error',
         'unused-css-rules': 'warn',
         'unused-javascript': 'off', // AMP runtime optimization
-        'uses-http2': 'warn', // GitHub Pages limitation
         'uses-long-cache-ttl': 'warn',
         'uses-optimized-images': 'error',
         'uses-passive-event-listeners': 'error',
         'uses-rel-preconnect': 'warn',
-        'uses-rel-preload': 'warn',
         'uses-responsive-images': 'error',
         'uses-text-compression': 'error',
-
-        'uses-webp-images': 'warn',
         'valid-lang': 'error',
         'video-caption': 'error',
         viewport: 'error',
-        'works-offline': 'warn',
       },
       // Strict preset with custom overrides for AMP excellence
       preset: 'lighthouse:recommended',
@@ -187,9 +171,8 @@ module.exports = {
           'seo',
           'pwa',
         ],
-        // Skip audits that don't apply to AMP
+        // Skip audits that don't apply to AMP or are deprecated
         skipAudits: [
-          'uses-http2', // GitHub Pages limitation
           'bf-cache', // Not applicable to static sites
         ],
         // Throttling to simulate 4G

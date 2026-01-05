@@ -144,7 +144,7 @@ Features:
           </div>
           {%- endif -%}
 
-          <ul class="tag-posts" role="list">
+          <ul class="tag-posts">
             {%- for post in tag[1] -%}
             <li class="tag-post-item">
               <time class="tag-post-date" datetime="{{ post.date | date_to_xmlschema }}">
