@@ -13,6 +13,8 @@ jobs:
   deploy-canary:
     name: Deploy Canary (10%)
     runs-on: ubuntu-latest
+    outputs:
+      healthy: ${{ steps.canary-health.outputs.healthy }}
 
     steps:
       - name: Checkout code
