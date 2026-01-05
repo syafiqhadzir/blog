@@ -81,7 +81,6 @@ RSpec.describe 'Essential Files' do
     'site.webmanifest',
     '404.md',
     'offline.html',
-    'sw.js',
     'CNAME'
   ].freeze
 

@@ -9,7 +9,6 @@ test.describe('AMP Validation', () => {
     // Check for AMP attribute on html tag
     const html = page.locator('html');
 
-
     const ampAttribute =
       (await html.getAttribute('⚡')) ?? (await html.getAttribute('amp'));
     expect(ampAttribute).not.toBeNull();
@@ -55,7 +54,6 @@ test.describe('AMP Validation', () => {
 
     // Check for AMP attribute
     const html = page.locator('html');
-
 
     const ampAttribute =
       (await html.getAttribute('⚡')) ?? (await html.getAttribute('amp'));
