@@ -215,7 +215,7 @@ module.exports = {
         'http://localhost:5000/tags.html',
         'http://localhost:5000/accessibility.html',
         'http://localhost:5000/404.html',
-        'http://localhost:5000/testing-websockets-k6.html',
+        'http://localhost:5000/posts/2023/08/03/testing-websockets-k6.html',
       ],
     },
     upload: {
