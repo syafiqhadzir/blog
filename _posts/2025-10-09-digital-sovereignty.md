@@ -6,6 +6,10 @@ category: QA
 slug: digital-sovereignty
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['ethics']
+description:
+  '"My data is in the Cloud." Which cloud? Is it in a data centre in Virginia,
+  USA? Or Frankfurt, Germany? For a German citizen, this difference is legal
+  dynamite.'
 ---
 
 ## Table of Contents

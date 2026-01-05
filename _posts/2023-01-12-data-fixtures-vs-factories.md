@@ -6,6 +6,9 @@ category: QA
 slug: data-fixtures-vs-factories
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['data-engineering', 'data-testing', 'philosophy']
+description:
+  'Managing test data is like feeding a toddler: if you feed them rubbish, you
+  are going to have a messy situation later.'
 ---
 
 ## Table of Contents

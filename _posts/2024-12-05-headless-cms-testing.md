@@ -6,6 +6,9 @@ category: QA
 slug: headless-cms-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'A Headless CMS (Contentful, Sanity, Strapi) separates data from display. This
+  gives infinite power to the Editors. Use it wisely.'
 ---
 
 ## Table of Contents

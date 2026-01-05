@@ -6,6 +6,9 @@ category: QA
 slug: carbon-footprint-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['backend-testing']
+description:
+  'Your code runs on electricity. That electricity comes from burning dinosaur
+  bones (mostly) or splitting atoms.'
 ---
 
 ## Table of Contents

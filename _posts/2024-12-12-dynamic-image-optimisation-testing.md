@@ -6,6 +6,9 @@ category: QA
 slug: dynamic-image-optimisation-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['performance']
+description:
+  'Explore the nuances of Dynamic Image Optimisation Testing: Pixels are Heavy.
+  Images account for 60% of web content weight.'
 ---
 
 ## Table of Contents

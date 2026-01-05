@@ -6,6 +6,9 @@ category: QA
 slug: mobile-emulation-real-devices
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['mobile', 'hardware-testing', 'mobile-testing', 'philosophy']
+description:
+  'Chrome DevTools has a magical button. You click it, and your desktop browser
+  shrinks. It looks like an iPhone. It says "iPhone 12". It acts like an iPhone.'
 ---
 
 ## Table of Contents

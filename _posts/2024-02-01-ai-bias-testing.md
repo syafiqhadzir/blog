@@ -6,6 +6,7 @@ category: QA
 slug: ai-bias-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'ethics']
+description: 'AI models are like toddlers: they repeat whatever they hear.'
 ---
 
 ## Table of Contents

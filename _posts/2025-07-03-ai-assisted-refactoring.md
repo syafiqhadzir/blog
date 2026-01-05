@@ -6,6 +6,10 @@ category: QA
 slug: ai-assisted-refactoring
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence']
+description:
+  'Developers are using Copilot, Cursor, and ChatGPT to rewrite legacy code.
+  "Refactor this 500-line function into a class" they say. The AI does it in 5
+  seconds.'
 ---
 
 ## Table of Contents

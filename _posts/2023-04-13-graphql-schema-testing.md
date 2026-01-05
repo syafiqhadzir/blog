@@ -6,6 +6,9 @@ category: QA
 slug: graphql-schema-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['backend-testing']
+description:
+  'GraphQL is fantastic for frontend developers. "I want a user''s name, their
+  last 3 orders, and the GPS coordinates of their parrot." Boom, one request.'
 ---
 
 ## Table of Contents

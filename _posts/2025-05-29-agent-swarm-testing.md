@@ -6,6 +6,9 @@ category: QA
 slug: agent-swarm-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence']
+description:
+  'One AI Agent is a helper. One hundred AI Agents is a Swarm. They talk to each
+  other. They trade. They fight over resources.'
 ---
 
 ## Table of Contents

@@ -6,6 +6,9 @@ category: QA
 slug: data-warehouses-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['data-engineering', 'data-testing']
+description:
+  'Data Warehouses (Snowflake, BigQuery, Redshift) are where good data goes to
+  retire, and bad data goes to hide.'
 ---
 
 ## Table of Contents

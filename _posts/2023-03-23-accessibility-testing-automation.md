@@ -6,6 +6,10 @@ category: QA
 slug: accessibility-testing-automation
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['accessibility', 'automation', 'frontend-testing']
+description:
+  'Accessibility (a11y) is not an "optional feature" like Dark Mode or a generic
+  Avatar. It is a human right. In many jurisdictions, it is also a legal
+  requirement'
 ---
 
 ## Table of Contents

@@ -6,6 +6,10 @@ category: QA
 slug: mocking-external-dependencies
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'Relying on live external APIs (like Stripe, Twilio, or Google Maps) in your
+  test suite is a recipe for disaster. It introduces non-determinism
+  (flakiness), cost'
 ---
 
 ## Table of Contents

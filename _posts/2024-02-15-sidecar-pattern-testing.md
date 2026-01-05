@@ -6,6 +6,10 @@ category: QA
 slug: sidecar-pattern-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'containers', 'devops']
+description:
+  'In Kubernetes, a "Sidecar" is a container that sits inside the same Pod as
+  your application, sharing the same network namespace (localhost) but having a
+  separat'
 ---
 
 ## Table of Contents

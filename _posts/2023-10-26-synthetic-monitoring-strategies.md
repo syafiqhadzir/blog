@@ -7,6 +7,9 @@ category: QA
 slug: synthetic-monitoring-strategies
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['monitoring', 'devops']
+description:
+  'Explore the nuances of Synthetic Monitoring Strategies: The Bots Are Testing
+  (So You Dont Have To). It is 3 A.M. Do you know where your servers are?'
 ---
 
 ## Table of Contents

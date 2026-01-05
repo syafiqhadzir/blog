@@ -6,6 +6,10 @@ category: QA
 slug: blue-green-deployment-validation
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['devops']
+description:
+  'Deploying to production used to be an adrenaline sport. You would upload the
+  files, restart the server, and watch the error logs like a hawk whilst
+  thousands of'
 ---
 
 ## Table of Contents

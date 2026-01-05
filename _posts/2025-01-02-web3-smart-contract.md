@@ -7,6 +7,8 @@ slug: web3-smart-contract
 gpgkey: EBE8 BD81 6838 1BAF
 tags:
   ['blockchain', 'contract-testing', 'web3', 'automation', 'frontend-testing']
+description:
+  'In Web2, if you ship a bug, you deploy a hotfix 5 minutes later. No big deal.'
 ---
 
 ## Table of Contents

@@ -6,6 +6,9 @@ category: QA
 slug: js-memory-leak-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['performance', 'automation']
+description:
+  'JavaScript has a Garbage Collector (GC). Developers think this means they do
+  not have to manage memory. They are wrong.'
 ---
 
 ## Table of Contents

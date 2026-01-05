@@ -6,6 +6,7 @@ category: QA
 slug: root-cause-analysis
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description: '"The site is down." "Why?" "I don''t know, restart the server."'
 ---
 
 ## Table of Contents

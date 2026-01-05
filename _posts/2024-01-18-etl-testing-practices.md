@@ -6,6 +6,9 @@ category: QA
 slug: etl-testing-practices
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['data-engineering', 'data-testing']
+description:
+  'ETL (Extract, Transform, Load) pipelines are the "plumbing" of the data
+  world.'
 ---
 
 ## Table of Contents

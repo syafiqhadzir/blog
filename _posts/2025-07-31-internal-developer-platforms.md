@@ -6,6 +6,10 @@ category: QA
 slug: internal-developer-platforms
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'In 2015, DevOps meant "Every developer writes Terraform". It was chaos.
+  Nobody understood what anyone else had built. The infrastructure was a
+  snowflake factory'
 ---
 
 ## Table of Contents

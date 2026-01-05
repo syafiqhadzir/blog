@@ -6,6 +6,9 @@ category: QA
 slug: iot-device-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['edge-computing', 'hardware-testing', 'backend-testing']
+description:
+  'Internet of Things (IoT). It means your fridge has a Twitter account and your
+  doorbell has an IP address.'
 ---
 
 ## Table of Contents

@@ -1,11 +1,16 @@
 ---
 layout: post
 title: Yes, QA Engineers Must Code (and No, Git Push Doesn't Count)
+description:
+  'Challenge the stereotype that QA is non-technical by exploring why coding
+  proficiency is essential for modern quality assurance, automation, and
+  effective code reviews.'
 date: 2022-11-10
 category: QA
 slug: qa-engineers-must-code
 gpgkey: EBE8 BD81 6838 1BAF
-tags: ['automation']
+tags:
+  - automation
 ---
 
 ## Table of Contents

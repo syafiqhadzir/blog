@@ -13,6 +13,10 @@ tags:
     'security',
     'data-testing',
   ]
+description:
+  'GDPR (General Data Protection Regulation) is the reason we have cookie
+  banners on every website. It is also the reason why copying your production
+  database to s'
 ---
 
 ## Table of Contents

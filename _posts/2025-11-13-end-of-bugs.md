@@ -6,6 +6,7 @@ category: QA
 slug: end-of-bugs
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['philosophy']
+description: '"Software has bugs." This is accepted wisdom. It is also a lie.'
 ---
 
 ## Table of Contents

@@ -6,6 +6,9 @@ category: QA
 slug: service-virtualization
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'Imagine you are building a house, but the windows will not arrive for six
+  months. Do you stop building? No, you put up plastic sheets and keep working.'
 ---
 
 ## Table of Contents

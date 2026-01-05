@@ -6,6 +6,8 @@ category: QA
 slug: observability-driven-development
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['observability', 'devops']
+description:
+  'If a tree falls in the forest and no one logs it, did it make a sound?'
 ---
 
 ## Table of Contents

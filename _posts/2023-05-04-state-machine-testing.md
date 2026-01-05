@@ -6,6 +6,9 @@ category: QA
 slug: state-machine-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['backend-testing']
+description:
+  'Most application code is "Boolean Spaghetti". Flags like isLoading, isError,
+  isSuccess, and hasUserClickedThatButton are scattered everywhere.'
 ---
 
 ## Table of Contents

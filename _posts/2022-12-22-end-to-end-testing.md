@@ -6,6 +6,10 @@ category: QA
 slug: end-to-end-testing
 gpgkey: 4AEE 18F8 3AFD EB23
 tags: ['e2e-testing', 'automation', 'philosophy']
+description:
+  'End-to-end (E2E) testing is the ultimate reality check. Unit tests prove the
+  logic works; Integration tests prove the components talk to each other; E2E
+  tests p'
 ---
 
 ## Table of Contents

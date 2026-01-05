@@ -6,6 +6,9 @@ category: QA
 slug: css-in-js-regression
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['regression-testing', 'frontend-testing']
+description:
+  'CSS-in-JS (Styled-components, Emotion) allows developers to write CSS in
+  JavaScript files. It sounds like heresy, but it works.'
 ---
 
 ## Table of Contents

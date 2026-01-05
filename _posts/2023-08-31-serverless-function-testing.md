@@ -7,6 +7,9 @@ category: QA
 slug: serverless-function-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['serverless', 'backend-testing', 'devops']
+description:
+  'Serverless is amazing. You write a function, upload it to AWS Lambda, and
+  magically it scales to infinity.'
 ---
 
 ## Table of Contents

@@ -8,6 +8,9 @@ category: QA
 slug: machine-learning-model-validation
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence']
+description:
+  'Machine Learning (ML) is the only field of Engineering where "The code is
+  correct, but the answer is wrong" is a valid statement.'
 ---
 
 ## Table of Contents

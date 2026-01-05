@@ -6,6 +6,9 @@ category: QA
 slug: snapshot-testing-anti-patterns
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['visual-testing']
+description:
+  'Snapshot testing (popularised by Jest) is the "Get Rich Quick" scheme of
+  software testing.'
 ---
 
 ## Table of Contents

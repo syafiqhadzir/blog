@@ -6,6 +6,10 @@ category: QA
 slug: bio-integrated-web-interfaces
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['biotech']
+description:
+  'In 2024, "Wearables" meant an Apple Watch that told you to stand up. In 2025,
+  "Implantables" mean a neural link that tells your pacemaker to beat faster.
+  The We'
 ---
 
 ## Table of Contents

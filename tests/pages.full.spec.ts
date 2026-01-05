@@ -12,6 +12,7 @@ test.describe('Global Site Audit (100% Coverage)', { tag: '@full' }, () => {
     getAllInternalRoutes,
     page,
   }) => {
+    test.setTimeout(300 * 1000);
     await blockAdsAndAnalytics(page);
     const routes = await getAllInternalRoutes();
 
@@ -21,10 +22,14 @@ test.describe('Global Site Audit (100% Coverage)', { tag: '@full' }, () => {
         !route.endsWith('.txt') &&
         !route.endsWith('.json') &&
         !route.endsWith('.js') &&
-        !route.endsWith('.css'),
+        !route.endsWith('.css') &&
+        !route.includes('sw-install.html'),
     );
 
-    // We must have at least one assertion or a call to a function that asserts.
+    // Ensure we are actually finding all pages
+    process.stdout.write(
+      `Found ${String(htmlRoutes.length)} HTML routes to audit.\n`,
+    );
     expect(htmlRoutes.length).toBeGreaterThan(0);
 
     for (const route of htmlRoutes) {

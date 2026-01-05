@@ -6,6 +6,9 @@ category: QA
 slug: security-mindset-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'security', 'qa-strategy', 'philosophy']
+description:
+  'Security is often relegated to a separate department ("The SecOps Guys" who
+  reside in a dark basement). But the first line of defence is the QA engineer.'
 ---
 
 ## Table of Contents

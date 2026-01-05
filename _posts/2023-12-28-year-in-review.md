@@ -6,6 +6,9 @@ category: QA
 slug: year-in-review
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'As 2023 comes to a close, we must do what all Agile teams do: drag ourselves
+  into a meeting room, eat stale mince pies, and talk about "feelings".'
 ---
 
 ## Table of Contents

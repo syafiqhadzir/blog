@@ -6,6 +6,7 @@ category: QA
 slug: interactive-livestreams
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description: 'In typical telly, there is a 30-second delay. It does not matter.'
 ---
 
 ## Table of Contents

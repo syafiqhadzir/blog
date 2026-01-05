@@ -1,6 +1,8 @@
 ---
 layout: tags
 title: Tags
-description: Browse all blog posts by topic.
+description:
+  'Explore the full range of topics covered in this blog, from automated testing
+  and chaos engineering to software quality strategy.'
 permalink: /tags
 ---

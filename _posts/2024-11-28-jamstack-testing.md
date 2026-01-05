@@ -6,6 +6,9 @@ category: QA
 slug: jamstack-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'Explore the nuances of Jamstack Testing: Its Just Static Files... Until It
+  Isnt. Jamstack. JavaScript, APIs, and Markup.'
 ---
 
 ## Table of Contents

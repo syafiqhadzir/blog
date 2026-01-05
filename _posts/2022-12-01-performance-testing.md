@@ -6,6 +6,10 @@ category: QA
 slug: performance-testing
 gpgkey: 4AEE 18F8 3AFD EB23
 tags: ['performance', 'mobile-testing', 'philosophy']
+description:
+  'Performance testing is the gym workout of software engineering. Everyone
+  wants to be fit (fast), but nobody wants to do the heavy lifting (scripting)
+  until the'
 ---
 
 ## Table of Contents

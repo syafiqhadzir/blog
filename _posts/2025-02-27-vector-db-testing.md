@@ -6,6 +6,10 @@ category: QA
 slug: vector-db-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'data-testing', 'emerging-tech']
+description:
+  'Vector Databases (Pinecone, Chroma, Milvus, Weaviate) store "Meanings", not
+  just keywords. You search for "Dog", it finds "Puppy", "Canine", and "Good
+  Boy".'
 ---
 
 ## Table of Contents
@@ -57,8 +61,8 @@ LLMs pay attention to the start and end of the context window. They tend to
 ignore the middle.
 
 If your Vector DB returns 20 documents, and the answer is hidden in Document
-\#10, the LLM might miss it. Test different `top_k` values (e.g., 5 vs 10 vs 20).
-Sometimes, less context is better.
+\#10, the LLM might miss it. Test different `top_k` values (e.g., 5 vs 10 vs
+20). Sometimes, less context is better.
 
 ## Code Snippet: Precision vs Recall
 

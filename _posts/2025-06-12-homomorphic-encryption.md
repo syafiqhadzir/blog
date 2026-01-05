@@ -6,6 +6,10 @@ category: QA
 slug: homomorphic-encryption
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['encryption']
+description:
+  'Imagine you have a locked box containing a number. You cannot open it. You
+  send the box to a mathematician. The mathematician adds "5" to the box without
+  openin'
 ---
 
 ## Table of Contents

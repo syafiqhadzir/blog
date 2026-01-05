@@ -6,6 +6,9 @@ category: QA
 slug: service-worker-caching-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['progressive-web-apps']
+description:
+  'There are two hard problems in computer science: naming things, cache
+  invalidation, and off-by-one errors.'
 ---
 
 ## Table of Contents

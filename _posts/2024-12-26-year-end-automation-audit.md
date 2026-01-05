@@ -6,6 +6,7 @@ category: QA
 slug: year-end-automation-audit
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['automation']
+description: 'It is December. The code freeze is coming. The office is empty.'
 ---
 
 ## Table of Contents

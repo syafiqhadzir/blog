@@ -6,6 +6,10 @@ category: QA
 slug: cryptography-for-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['encryption', 'web3']
+description:
+  'Cryptography usually feels like maths homework that you accidentally
+  swallowed. But in the world of QA, specifically when dealing with GDPR, PII
+  (Personally Ide'
 ---
 
 ## Table of Contents

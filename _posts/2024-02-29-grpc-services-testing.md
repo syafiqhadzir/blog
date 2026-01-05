@@ -6,6 +6,7 @@ category: QA
 slug: grpc-services-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['real-time', 'backend-testing']
+description: 'gRPC is fast. It uses HTTP/2 and Protocol Buffers.'
 ---
 
 ## Table of Contents

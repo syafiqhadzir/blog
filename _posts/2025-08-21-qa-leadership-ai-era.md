@@ -6,6 +6,10 @@ category: QA
 slug: qa-leadership-ai-era
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'qa-strategy']
+description:
+  'Five years ago, my biggest headache was Dave from the backend team merging
+  code without running the unit tests. I managed a team of ten brilliant humans
+  who cli'
 ---
 
 ## Table of Contents

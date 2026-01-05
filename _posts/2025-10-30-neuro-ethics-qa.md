@@ -6,6 +6,9 @@ category: QA
 slug: neuro-ethics-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['ethics']
+description:
+  'In the 2010s, "Growth Hacking" was praised. "We increased ''Time on Site'' by
+  500%!" The champagne flowed.'
 ---
 
 ## Table of Contents

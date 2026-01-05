@@ -6,6 +6,9 @@ category: QA
 slug: webcodecs-api-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['automation', 'backend-testing']
+description:
+  'For 25 years, the web had <video src="movie.mp4">. It was a black box. You
+  feed it a URL, it plays. Magic.'
 ---
 
 ## Table of Contents

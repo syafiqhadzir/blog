@@ -6,6 +6,9 @@ category: QA
 slug: decentralised-storage
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['web3']
+description:
+  'In Web2, a link points to a Location (URL). google.com/cat.jpg. If Google
+  moves the file or goes bankrupt, 404 Error. The link rots.'
 ---
 
 ## Table of Contents

@@ -6,6 +6,9 @@ category: QA
 slug: database-migration-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['data-testing']
+description:
+  'Deploying application code is easy. If it breaks, you just revert the
+  specific docker container.'
 ---
 
 ## Table of Contents

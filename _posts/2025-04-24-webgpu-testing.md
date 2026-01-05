@@ -6,6 +6,9 @@ category: QA
 slug: webgpu-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['emerging-tech', 'frontend-testing']
+description:
+  'Explore the nuances of WebGPU Testing: The Browser is now a Supercomputer.
+  WebGL was cute. It let us draw triangles in 2011.'
 ---
 
 ## Table of Contents

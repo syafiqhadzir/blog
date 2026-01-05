@@ -7,6 +7,10 @@ category: QA
 slug: testing-legacy-code
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['automation']
+description:
+  'Legacy code. The phrase strikes fear into the hearts of developers. It brings
+  to mind spaghetti logic, variable names like temp2, and comments that say //
+  DO'
 ---
 
 ## Table of Contents

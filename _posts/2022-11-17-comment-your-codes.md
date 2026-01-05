@@ -6,6 +6,10 @@ category: QA
 slug: comment-your-codes
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['automation']
+description:
+  'Communication is the lubricant of the software engine. Without it, everything
+  grinds to a halt in a screeching mess of merge conflicts and
+  misunderstandings.'
 ---
 
 ## Table of Contents

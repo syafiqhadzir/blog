@@ -6,6 +6,9 @@ category: QA
 slug: performance-budgets-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['performance', 'qa-strategy', 'automation']
+description:
+  'Your developers want to import moment.js (60KB) to format one date. They want
+  lodash (70KB) to flatten one array. They are building a monster.'
 ---
 
 ## Table of Contents

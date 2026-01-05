@@ -6,6 +6,7 @@ category: QA
 slug: multi-modal-ai-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence']
+description: 'GPT-4V can see. Whisper can hear. Sora can create video.'
 ---
 
 ## Table of Contents

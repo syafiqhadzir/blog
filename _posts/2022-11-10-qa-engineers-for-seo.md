@@ -1,11 +1,16 @@
 ---
 layout: post
 title: 'QA Engineers for SEO: Guarding the Invisible Door'
+description:
+  'Discover how QA engineers safeguard technical SEO by ensuring website
+  quality, performance, and correctness, acting as the invisible gatekeepers for
+  search engine rankings.'
 date: 2022-11-10
 category: QA
 slug: qa-engineers-for-seo
 gpgkey: EBE8 BD81 6838 1BAF
-tags: ['qa-general']
+tags:
+  - qa-general
 ---
 
 ## Table of Contents

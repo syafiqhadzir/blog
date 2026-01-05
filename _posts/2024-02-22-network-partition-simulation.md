@@ -6,6 +6,8 @@ category: QA
 slug: network-partition-simulation
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence']
+description:
+  'Distributed systems are great until someone trips over a network cable.'
 ---
 
 ## Table of Contents

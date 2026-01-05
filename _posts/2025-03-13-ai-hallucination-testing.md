@@ -6,6 +6,9 @@ category: QA
 slug: ai-hallucination-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence']
+description:
+  'Explore the nuances of AI Hallucination Testing: When the Robot Lies. "Who
+  won the Super Bowl in 2028?"'
 ---
 
 ## Table of Contents

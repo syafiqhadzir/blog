@@ -6,6 +6,7 @@ category: QA
 slug: biotech-software-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['biotech', 'hardware-testing']
+description: 'In typical software: "Move Fast and Break Things."'
 ---
 
 ## Table of Contents

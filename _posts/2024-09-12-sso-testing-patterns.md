@@ -6,6 +6,9 @@ category: QA
 slug: sso-testing-patterns
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['authentication', 'security']
+description:
+  'Single Sign-On (SSO) is great. You log in to Google, and suddenly you are
+  logged in to Slack, Jira, Zoom, and the coffee machine.'
 ---
 
 ## Table of Contents

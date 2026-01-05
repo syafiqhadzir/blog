@@ -6,6 +6,9 @@ category: QA
 slug: micro-frontend-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['frontend', 'integration-testing', 'microservices', 'frontend-testing']
+description:
+  'Micro-services solved the backend monolith, but created "distributed
+  headaches". Micro-frontends (MFEs) export that headache to the browser.'
 ---
 
 ## Table of Contents

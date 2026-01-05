@@ -6,6 +6,10 @@ category: QA
 slug: distributed-tracing-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['tracing']
+description:
+  'In a Monolith, if a request is slow, you look at the slowquerylog and blame
+  the DBA. In Microservices, if a request is slow, you look at... nothing. You
+  sta'
 ---
 
 ## Table of Contents

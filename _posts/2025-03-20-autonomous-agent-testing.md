@@ -6,6 +6,9 @@ category: QA
 slug: autonomous-agent-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence']
+description:
+  'Autonomous Agents (like AutoGPT, BabyAGI) are cool. You say "Build me a
+  website", and it goes off and does it. Ideally.'
 ---
 
 ## Table of Contents

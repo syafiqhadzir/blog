@@ -6,6 +6,9 @@ category: QA
 slug: multi-cloud-failover
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'cloud', 'reliability']
+description:
+  'Explore the nuances of Multi-Cloud Failover: Surviving the Apocalypse. "AWS
+  is down."'
 ---
 
 ## Table of Contents

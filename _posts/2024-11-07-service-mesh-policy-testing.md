@@ -6,6 +6,9 @@ category: QA
 slug: service-mesh-policy-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['service-mesh']
+description:
+  "In the old days, Service A called Service B directly. Now, Service A calls a
+  local proxy (Sidecar), which calls Service B's proxy, which calls Service B."
 ---
 
 ## Table of Contents

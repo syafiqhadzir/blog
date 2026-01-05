@@ -6,6 +6,10 @@ category: QA
 slug: incident-post-mortems
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['debugging', 'backend-testing']
+description:
+  'So, Production is down. The CTO is pacing, the customers are tweeting, and
+  the coffee machine is broken. Eventually, you fix the bug (it was a missing
+  semicolon'
 ---
 
 ## Table of Contents

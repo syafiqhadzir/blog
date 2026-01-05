@@ -6,6 +6,9 @@ category: QA
 slug: webnn-api-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['emerging-tech', 'backend-testing']
+description:
+  'Training AI happens in the cloud (Nvidia H100s). Running AI (Inference) is
+  moving to the Edge... literally to your browser.'
 ---
 
 ## Table of Contents

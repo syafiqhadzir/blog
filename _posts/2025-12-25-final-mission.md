@@ -6,6 +6,9 @@ category: QA
 slug: final-mission
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'It is Christmas Day, 2025. This is the final post of the "Project Thursday"
+  series.'
 ---
 
 ## Table of Contents

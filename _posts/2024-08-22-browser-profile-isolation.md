@@ -6,6 +6,9 @@ category: QA
 slug: browser-profile-isolation
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['frontend-testing']
+description:
+  '"It works on my machine!" "That''s because you have a cookie from 2019 that
+  bypasses the login bug, Dave."'
 ---
 
 ## Table of Contents

@@ -6,6 +6,9 @@ category: QA
 slug: offline-first-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['progressive-web-apps']
+description:
+  'You are on a train. You just wrote a 500-word review of a restaurant. The
+  train goes into a tunnel. You hit "Submit".'
 ---
 
 ## Table of Contents

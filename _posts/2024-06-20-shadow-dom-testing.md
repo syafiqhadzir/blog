@@ -6,6 +6,9 @@ category: QA
 slug: shadow-dom-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'Web Components are cool. They let you hide your shame (and your CSS) inside a
+  Shadow Root. The Shadow DOM is a fortress.'
 ---
 
 ## Table of Contents

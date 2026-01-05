@@ -6,6 +6,10 @@ category: QA
 slug: scheduler-testing-patterns
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['philosophy']
+description:
+  'Schedulers (Cron jobs) are the alarm clocks of the server world. They wake
+  up, drink coffee (consume CPU), do a task (backup the DB), and go back to
+  sleep.'
 ---
 
 ## Table of Contents

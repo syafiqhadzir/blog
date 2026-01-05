@@ -6,6 +6,9 @@ category: QA
 slug: quantum-simulators
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['quantum', 'mobile-testing', 'emerging-tech']
+description:
+  'Classical computers deal with Bits (0 or 1). It is simple. It is binary. It
+  is safe.'
 ---
 
 ## Table of Contents

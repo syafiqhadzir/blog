@@ -6,6 +6,9 @@ category: QA
 slug: csp-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['security', 'frontend-testing']
+description:
+  'Content Security Policy (CSP) is a header that tells the browser: "Only load
+  scripts from mysite.com. Anything else is a virus."'
 ---
 
 ## Table of Contents

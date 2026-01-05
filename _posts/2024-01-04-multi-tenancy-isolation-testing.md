@@ -6,6 +6,10 @@ category: QA
 slug: multi-tenancy-isolation-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'If you are building a SaaS product, you are basically running a hotel.
+  Everyone gets a room (Tenant), but they all share the same plumbing
+  (Database).'
 ---
 
 ## Table of Contents

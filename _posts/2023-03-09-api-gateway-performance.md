@@ -6,6 +6,9 @@ category: QA
 slug: api-gateway-performance
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['performance', 'backend-testing']
+description:
+  'The API Gateway (Kong, Nginx, AWS API Gateway) is the bouncer of your
+  microservices club. It creates the first impression.'
 ---
 
 ## Table of Contents

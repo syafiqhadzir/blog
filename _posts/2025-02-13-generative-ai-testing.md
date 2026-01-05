@@ -6,6 +6,7 @@ category: QA
 slug: generative-ai-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence']
+description: 'Traditional QA: Input "2 + 2". Output must be "4".'
 ---
 
 ## Table of Contents

@@ -6,6 +6,10 @@ category: QA
 slug: contract-testing-microservices
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['contract-testing', 'microservices', 'backend-testing']
+description:
+  'In a microservices architecture, End-to-End (E2E) tests are the stuff of
+  nightmares. They are slow, brittle, and require the alignment of planets to
+  pass.'
 ---
 
 ## Table of Contents

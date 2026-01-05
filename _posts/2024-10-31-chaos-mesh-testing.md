@@ -6,6 +6,9 @@ category: QA
 slug: chaos-mesh-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'chaos-testing']
+description:
+  '"The network is reliable." "Latency is zero." "Bandwidth is infinite." "The
+  junior dev won''t delete the prod database."'
 ---
 
 ## Table of Contents

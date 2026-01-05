@@ -6,6 +6,8 @@ category: QA
 slug: webassembly-testing-strategies
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['emerging-tech', 'real-time', 'automation']
+description:
+  'JavaScript is great. It runs everywhere, it is flexible, and it is slow.'
 ---
 
 ## Table of Contents

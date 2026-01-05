@@ -6,6 +6,9 @@ category: QA
 slug: metaverse-integrity-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['metaverse', 'emerging-tech']
+description:
+  '"The Metaverse" is not one app. It is a messy network of 3D spaces glued
+  together by hope and JSON.'
 ---
 
 ## Table of Contents

@@ -6,6 +6,9 @@ category: QA
 slug: optimistic-locking-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'Imagine two people, Alice and Bob, open the same collaborative wiki page at
+  9:00 AM. Alice fixes a typo. Bob deletes the entire paragraph.'
 ---
 
 ## Table of Contents

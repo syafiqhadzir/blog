@@ -6,6 +6,9 @@ category: QA
 slug: websocket-scale-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['real-time', 'backend-testing']
+description:
+  'Explore the nuances of WebSocket Scale Testing: Melting the Server. "It works
+  on my machine!"'
 ---
 
 ## Table of Contents

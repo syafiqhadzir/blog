@@ -6,6 +6,8 @@ category: QA
 slug: webrtc-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'WebRTC allows browsers to talk directly to each other. No servers (mostly).'
 ---
 
 ## Table of Contents

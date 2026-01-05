@@ -6,6 +6,10 @@ category: QA
 slug: cross-browser-testing-realities
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['frontend-testing']
+description:
+  'In the mid-2000s, web development had one enemy: Internet Explorer 6. We
+  spent 50% of our time debugging why z-index was not working and why png
+  transpa'
 ---
 
 ## Table of Contents

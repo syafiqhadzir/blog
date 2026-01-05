@@ -6,6 +6,7 @@ category: QA
 slug: payment-gateway-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description: 'There is no bug more terrifying than a Payment Bug.'
 ---
 
 ## Table of Contents

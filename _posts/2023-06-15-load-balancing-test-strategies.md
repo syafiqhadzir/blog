@@ -6,6 +6,10 @@ category: QA
 slug: load-balancing-test-strategies
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['load-testing', 'performance']
+description:
+  'Imagine a nightclub with one bouncer. He is checking IDs, taking cover
+  charges, and flirting with patrons. The queue wraps around the block. This is
+  your single'
 ---
 
 ## Table of Contents

@@ -6,6 +6,9 @@ category: QA
 slug: realtime-data-stream-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['data-engineering', 'real-time', 'data-testing']
+description:
+  'Real-time data streams (WebSockets, SSE, Kafka) are like drinking from a
+  firehose. Traditional QA says: "Send request, wait for response."'
 ---
 
 ## Table of Contents

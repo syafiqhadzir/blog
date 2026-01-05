@@ -6,6 +6,9 @@ category: QA
 slug: qa-for-pwas
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['progressive-web-apps', 'mobile-testing']
+description:
+  'Progressive Web Apps (PWAs) are the "Gluten-Free" of software development.
+  They promise to be healthy, light, and good for everyone.'
 ---
 
 ## Table of Contents

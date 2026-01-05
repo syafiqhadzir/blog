@@ -6,6 +6,10 @@ category: QA
 slug: digital-immortality-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['data-testing']
+description:
+  'In the physical world, photos fade. In the digital world, hard drives rot,
+  servers are decommissioned, and startups go bankrupt taking your data with
+  them.'
 ---
 
 ## Table of Contents

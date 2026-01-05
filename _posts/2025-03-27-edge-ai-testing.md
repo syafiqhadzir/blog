@@ -6,6 +6,9 @@ category: QA
 slug: edge-ai-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'edge-computing', 'frontend-testing']
+description:
+  'Cloud AI is great, but it costs money, requires 5G, and sends user data to a
+  server (Privacy nightmare).'
 ---
 
 ## Table of Contents

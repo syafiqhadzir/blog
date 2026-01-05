@@ -6,6 +6,10 @@ category: QA
 slug: space-tech-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['emerging-tech']
+description:
+  'In web development, if a server crashes, we restart it. In space tech, if a
+  satellite crashes, it is a hundred-million- pound brick floating in orbit. You
+  canno'
 ---
 
 ## Table of Contents

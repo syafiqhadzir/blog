@@ -6,6 +6,10 @@ category: QA
 slug: cdc-testing-patterns
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['data-engineering', 'data-testing']
+description:
+  'Change Data Capture (CDC) tools like Debezium or AWS DMS read your database
+  logs (WAL or binlog) and emit events. "User Created" -> Kafka ->
+  Elasticsearch.'
 ---
 
 ## Table of Contents

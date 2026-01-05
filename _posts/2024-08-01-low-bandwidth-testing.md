@@ -6,6 +6,9 @@ category: QA
 slug: low-bandwidth-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['performance']
+description:
+  'We build apps on MacBook Pros connected to Gigabit Fibre. Our users use apps
+  on £50 Android phones connected to 3G in an underground tunnel.'
 ---
 
 ## Table of Contents

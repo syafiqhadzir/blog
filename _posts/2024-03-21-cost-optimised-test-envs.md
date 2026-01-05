@@ -6,6 +6,9 @@ category: QA
 slug: cost-optimised-test-envs
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-strategy']
+description:
+  'Your CFO hates you. Why? Because you left a c5.4xlarge Kubernetes cluster
+  running over the weekend to test "Hello World".'
 ---
 
 ## Table of Contents

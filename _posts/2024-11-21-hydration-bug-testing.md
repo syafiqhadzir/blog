@@ -6,6 +6,9 @@ category: QA
 slug: hydration-bug-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['philosophy']
+description:
+  'You built a beautiful Next.js app. You tested it on Localhost. It was
+  perfect.'
 ---
 
 ## Table of Contents

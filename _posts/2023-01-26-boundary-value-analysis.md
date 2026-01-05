@@ -6,6 +6,10 @@ category: QA
 slug: boundary-value-analysis
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['edge-computing']
+description:
+  'Humans are terrible at the edges. We are great at "average" and "normal", but
+  ask us to define exactly when a "child" becomes an "adult" (18? 21? When they
+  pay'
 ---
 
 ## Table of Contents

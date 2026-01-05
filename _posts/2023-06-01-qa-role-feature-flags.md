@@ -6,6 +6,9 @@ category: QA
 slug: qa-role-feature-flags
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-strategy']
+description:
+  'Back in the day, releases were terrifying events. We would deploy on Friday
+  at 5 PM (because we hate ourselves) and pray.'
 ---
 
 ## Table of Contents

@@ -6,6 +6,9 @@ category: QA
 slug: ethical-ai-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'ethics', 'philosophy']
+description:
+  'If a button on a website does not work, it is a bug. You fix it. Nobody
+  cries.'
 ---
 
 ## Table of Contents

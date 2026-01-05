@@ -6,6 +6,9 @@ category: QA
 slug: federated-learning
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'qa-strategy']
+description:
+  'In traditional AI, you collect all the user data into a massive central
+  server (Data Lake) and train a model.'
 ---
 
 ## Table of Contents

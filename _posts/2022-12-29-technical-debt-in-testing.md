@@ -6,6 +6,10 @@ category: QA
 slug: technical-debt-in-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'Technical debt in testing is like eating fast food for every meal. It feels
+  great (and cheap) in the moment, but six months later, you wake up and realise
+  you c'
 ---
 
 ## Table of Contents

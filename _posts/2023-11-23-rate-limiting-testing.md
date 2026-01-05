@@ -6,6 +6,9 @@ category: QA
 slug: rate-limiting-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['reliability']
+description:
+  'If you offer a free API, someone will abuse it. It is a law of nature, like
+  gravity or entropy.'
 ---
 
 ## Table of Contents

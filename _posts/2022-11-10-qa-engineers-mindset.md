@@ -1,11 +1,17 @@
 ---
 layout: post
 title: "The QA Engineer's Mindset: Professional Pessimism as a Service"
+description:
+  'Explore the core philosophy of a Quality Assurance engineer, where curiosity,
+  skepticism, and empathy combine to build resilient and user-centric software
+  systems.'
 date: 2022-11-10
 category: QA
 slug: qa-engineers-mindset
 gpgkey: EBE8 BD81 6838 1BAF
-tags: ['qa-strategy', 'philosophy']
+tags:
+  - qa-strategy
+  - philosophy
 ---
 
 ## Table of Contents

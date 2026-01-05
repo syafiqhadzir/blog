@@ -6,6 +6,9 @@ category: QA
 slug: smoke-testing-production
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['smoke-testing']
+description:
+  '"I don''t always test my code, but when I do, I do it in production." The old
+  meme is funny because it is terrifying.'
 ---
 
 ## Table of Contents

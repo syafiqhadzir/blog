@@ -6,6 +6,9 @@ category: QA
 slug: disaster-recovery-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['reliability', 'data-testing']
+description:
+  'Explore the nuances of Disaster Recovery Testing: The Datacentre is on Fire.
+  "AWS is down."'
 ---
 
 ## Table of Contents

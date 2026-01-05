@@ -6,6 +6,9 @@ category: QA
 slug: chaos-engineering-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['chaos-testing']
+description:
+  'Chaos Engineering is the discipline of experimenting on a system to build
+  confidence in its capability to withstand turbulent conditions.'
 ---
 
 ## Table of Contents

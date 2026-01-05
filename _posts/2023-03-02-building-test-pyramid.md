@@ -6,6 +6,10 @@ category: QA
 slug: building-test-pyramid
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['frontend-testing', 'philosophy']
+description:
+  'The Test Pyramid (coined by Mike Cohn) is the healthy food pyramid of
+  software. Be honest: your diet is mostly pizza (E2E tests) and very little
+  broccoli (Unit'
 ---
 
 ## Table of Contents

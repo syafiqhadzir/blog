@@ -6,6 +6,9 @@ category: QA
 slug: ar-vr-web-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['spatial-computing', 'emerging-tech']
+description:
+  'Explore the nuances of AR/VR Web Testing: Dont Throw Up. Virtual Reality on
+  the Web (WebXR) is here.'
 ---
 
 ## Table of Contents

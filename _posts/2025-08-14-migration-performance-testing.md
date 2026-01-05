@@ -6,6 +6,7 @@ category: QA
 slug: migration-performance-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['performance', 'data-testing', 'mobile-testing']
+description: '"We are moving from Ruby on Rails to Go. It will be 10x faster."'
 ---
 
 ## Table of Contents

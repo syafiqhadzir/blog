@@ -6,6 +6,9 @@ category: QA
 slug: protobuf-schema-validation
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'Protobuf files (.proto) are contracts. If you change a contract without
+  telling the other party, you get sued.'
 ---
 
 ## Table of Contents

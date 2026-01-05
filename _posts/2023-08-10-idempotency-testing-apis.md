@@ -6,6 +6,9 @@ category: QA
 slug: idempotency-testing-apis
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['backend-testing', 'philosophy']
+description:
+  'Explore the nuances of Idempotency Testing for APIs: The Art of Hitting Retry
+  Safely. Networks are flaky. Wifi drops. Servers timeout.'
 ---
 
 ## Table of Contents

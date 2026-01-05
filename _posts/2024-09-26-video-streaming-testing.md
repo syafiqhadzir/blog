@@ -6,6 +6,9 @@ category: QA
 slug: video-streaming-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['streaming']
+description:
+  'We live in the era of Netflix and TikTok. If your video takes 3 seconds to
+  load, the user scrolls away.'
 ---
 
 ## Table of Contents

@@ -6,6 +6,7 @@ category: QA
 slug: hardening-ci-cd-pipeline
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['devops']
+description: 'In 2021, the SolarWinds attack changed everything.'
 ---
 
 ## Table of Contents

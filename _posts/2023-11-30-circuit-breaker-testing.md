@@ -6,6 +6,9 @@ category: QA
 slug: circuit-breaker-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'reliability', 'frontend-testing']
+description:
+  'In your house, if you use your hairdryer and toaster at the same time, the
+  lights go out. A fuse blows.'
 ---
 
 ## Table of Contents

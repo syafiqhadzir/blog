@@ -6,6 +6,9 @@ category: QA
 slug: exploratory-testing-devops
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['devops', 'exploratory-testing']
+description:
+  'Automation is great at catching regressions—the bugs we already know about.
+  But automation is terrible at catching the "Unknown Unknowns".'
 ---
 
 ## Table of Contents

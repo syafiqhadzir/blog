@@ -6,6 +6,10 @@ category: QA
 slug: srs-frs-brs
 gpgkey: D25D D0AD 3FDB F7C6
 tags: ['methodology', 'frontend-testing']
+description:
+  'Welcome to the world of acronyms, where we turn simple concepts into
+  three-letter abbreviations to sound smarter in meetings. QA and testing
+  professionals must'
 ---
 
 ## Table of Contents

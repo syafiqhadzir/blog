@@ -6,6 +6,9 @@ category: QA
 slug: sustainable-software
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'automation']
+description:
+  'The Internet emits more carbon than the airline industry (approximately 3.7%
+  of global emissions).'
 ---
 
 ## Table of Contents

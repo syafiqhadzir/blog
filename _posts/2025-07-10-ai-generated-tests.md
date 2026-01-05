@@ -6,6 +6,9 @@ category: QA
 slug: ai-generated-tests
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence']
+description:
+  '"I told the AI to write unit tests for my API, and it gave me 100 tests! 100%
+  Coverage!"'
 ---
 
 ## Table of Contents

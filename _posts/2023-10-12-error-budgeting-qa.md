@@ -6,6 +6,10 @@ category: QA
 slug: error-budgeting-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-strategy', 'philosophy']
+description:
+  'In the old days, the goal of QA was "Zero Defects". This is a noble lie we
+  told ourselves, like "I''ll just watch one episode" or "I am only checking my
+  emails o'
 ---
 
 ## Table of Contents

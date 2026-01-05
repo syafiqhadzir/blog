@@ -6,6 +6,9 @@ category: QA
 slug: testing-websockets-k6
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['real-time', 'websockets', 'backend-testing']
+description:
+  'REST APIs are easy. You ask for data, the server gives data, and you both
+  walk away. No strings attached. It is a casual transaction.'
 ---
 
 ## Table of Contents

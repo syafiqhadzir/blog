@@ -6,6 +6,7 @@ category: QA
 slug: identity-federation-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description: '"Login with Your Work Account." "Login with Google."'
 ---
 
 ## Table of Contents

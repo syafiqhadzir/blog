@@ -6,6 +6,9 @@ category: QA
 slug: oauth2-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['authentication', 'security']
+description:
+  'Explore the nuances of OAuth2 Testing: The Dance of the Tokens. "Login with
+  Google". "Login with Facebook".'
 ---
 
 ## Table of Contents

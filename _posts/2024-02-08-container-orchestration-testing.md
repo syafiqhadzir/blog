@@ -8,6 +8,9 @@ category: QA
 slug: container-orchestration-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'containers', 'devops']
+description:
+  'Kubernetes (K8s) is Greek for "Helmsman". It is also Engineering-speak for "I
+  have 500 YAML files and I don''t know which one broke the website".'
 ---
 
 ## Table of Contents

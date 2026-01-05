@@ -6,6 +6,9 @@ category: QA
 slug: battery-drain-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'performance', 'hardware-testing']
+description:
+  'Users hate apps that drain battery. If your users'' phone gets hot enough to
+  fry an egg whilst browsing your "About Us" page, you have a problem.'
 ---
 
 ## Table of Contents

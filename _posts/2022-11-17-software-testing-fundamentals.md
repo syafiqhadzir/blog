@@ -6,6 +6,10 @@ category: QA
 slug: software-testing-fundamentals
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['methodology', 'automation', 'frontend-testing']
+description:
+  'Software testing is often treated like flossing: everyone says they do it,
+  but most people only do it furiously right before the dentist (or the Release
+  Manager'
 ---
 
 ## Table of Contents

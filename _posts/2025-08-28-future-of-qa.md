@@ -6,6 +6,7 @@ category: QA
 slug: future-of-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['emerging-tech']
+description: 'In Traditional QA, the workflow is painfully linear:'
 ---
 
 ## Table of Contents

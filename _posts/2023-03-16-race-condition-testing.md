@@ -6,6 +6,10 @@ category: QA
 slug: race-condition-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['devops', 'data-testing']
+description:
+  'Race conditions are the ghosts in the machine. In automated testing, they
+  manifest as random failures that "fix themselves" when you re-run the
+  pipeline.'
 ---
 
 ## Table of Contents

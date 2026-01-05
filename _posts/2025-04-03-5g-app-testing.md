@@ -6,6 +6,9 @@ category: QA
 slug: 5g-app-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['networking', 'performance', 'mobile-testing']
+description:
+  '5G is here. It promises "Zero Latency" and "Infinite Bandwidth". Marketing
+  teams love it. QA teams hate it.'
 ---
 
 ## Table of Contents

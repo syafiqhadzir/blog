@@ -6,6 +6,10 @@ category: QA
 slug: shift-left-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['methodology']
+description:
+  '"Shift-Left" is one of those corporate buzzwords that middle managers love to
+  chant during stand-ups. They say it with the same reverence as "synergy" or
+  "parad'
 ---
 
 ## Table of Contents

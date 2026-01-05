@@ -6,6 +6,9 @@ category: QA
 slug: ultra-low-latency-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['performance']
+description:
+  'In High-Frequency Trading (HFT) or Cloud Gaming (Stadia, GeForce Now), 50ms
+  is acceptable. 100ms is failure.'
 ---
 
 ## Table of Contents

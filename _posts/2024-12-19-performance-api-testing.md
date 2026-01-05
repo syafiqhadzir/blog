@@ -6,6 +6,7 @@ category: QA
 slug: performance-api-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['performance', 'backend-testing']
+description: '"The site feels slow." "How slow?" "Like, 3 seconds?"'
 ---
 
 ## Table of Contents

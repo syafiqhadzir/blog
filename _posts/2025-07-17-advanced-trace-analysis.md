@@ -6,6 +6,9 @@ category: QA
 slug: advanced-trace-analysis
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'You have Jaeger or Datadog installed. You have 10 million traces per day. Now
+  what?'
 ---
 
 ## Table of Contents

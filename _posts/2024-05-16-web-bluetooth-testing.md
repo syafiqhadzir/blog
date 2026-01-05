@@ -7,6 +7,9 @@ category: QA
 slug: web-bluetooth-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['hardware-testing']
+description:
+  'The web can now talk to your heart rate monitor, your drone, and your smart
+  lightbulb. The navigator.bluetooth API is amazing.'
 ---
 
 ## Table of Contents

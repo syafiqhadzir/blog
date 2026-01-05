@@ -6,6 +6,9 @@ category: QA
 slug: canary-release-quality-gates
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['devops', 'ethics']
+description:
+  '"I don''t always test my code, but when I do, I do it in Production." This
+  meme is funny because it is true.'
 ---
 
 ## Table of Contents

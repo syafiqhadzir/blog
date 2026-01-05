@@ -6,6 +6,8 @@ category: QA
 slug: circular-economy-apps
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['mobile-testing']
+description:
+  'The future of commerce is not "Buy New"; it is "Buy Used, Repair, Resell".'
 ---
 
 ## Table of Contents

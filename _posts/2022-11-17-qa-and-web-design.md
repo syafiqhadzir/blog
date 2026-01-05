@@ -6,6 +6,9 @@ category: QA
 slug: qa-and-web-design
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['philosophy']
+description:
+  'Bad design is like staring directly into the sun: impactful, sure, but mostly
+  just painful.'
 ---
 
 ## Table of Contents

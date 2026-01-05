@@ -8,6 +8,9 @@ category: QA
 slug: privacy-preserving-analytics
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['privacy', 'security', 'data-testing']
+description:
+  'Explore the nuances of Privacy-Preserving Analytics: I Know What You Did Last
+  Summer. Analytics are great. Spying is bad.'
 ---
 
 ## Table of Contents

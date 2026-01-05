@@ -6,6 +6,10 @@ category: QA
 slug: post-quantum-security-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['quantum', 'security', 'emerging-tech']
+description:
+  "RSA-2048 is secure today. In 2030, a quantum computer with four thousand
+  stable qubits will crack it in seconds via Shor's Algorithm. This is not
+  science fictio"
 ---
 
 ## Table of Contents

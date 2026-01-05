@@ -6,6 +6,9 @@ category: QA
 slug: pact-contract-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['contract-testing', 'backend-testing']
+description:
+  'In a monolithic world, if you changed a function signature, the compiler
+  would scream at you.'
 ---
 
 ## Table of Contents

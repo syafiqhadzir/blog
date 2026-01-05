@@ -6,6 +6,9 @@ category: QA
 slug: human-factor
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['artificial-intelligence', 'ethics', 'philosophy']
+description:
+  'AI can find the bugs. AI can fix the bugs. But AI cannot tell you if the
+  product is annoying.'
 ---
 
 ## Table of Contents

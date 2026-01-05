@@ -6,6 +6,10 @@ category: QA
 slug: background-job-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'In the world of web development, anything that takes longer than 500ms is a
+  "Background Job". Sending emails, resizing images, mining crypto on your
+  users'' CPUs'
 ---
 
 ## Table of Contents

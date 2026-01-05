@@ -6,6 +6,9 @@ category: QA
 slug: mocking-sse-events
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['real-time']
+description:
+  'Real-time data is everywhere. Stock tickers, chat apps, and that annoying
+  "User X is typing..." bubble that gives you anxiety.'
 ---
 
 ## Table of Contents

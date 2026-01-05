@@ -6,6 +6,10 @@ category: QA
 slug: web-vitals-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['performance', 'philosophy']
+description:
+  'Google''s Core Web Vitals (CWV) are not just "nice to have". If you fail
+  them, Google buries your site on Page 10 of the search results, right next to
+  the conspi'
 ---
 
 ## Table of Contents

@@ -6,6 +6,9 @@ category: QA
 slug: rtl-layout-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['localisation', 'frontend-testing']
+description:
+  'Arabic, Hebrew, Persian, and Urdu are read Right-to-Left (RTL). Most
+  developers build Left-to-Right (LTR) and assume ticking a box in CSS fixes it.'
 ---
 
 ## Table of Contents

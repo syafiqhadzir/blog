@@ -6,6 +6,9 @@ category: QA
 slug: zero-trust
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['zero-trust', 'security']
+description:
+  'Old School Security: "We have a castle wall (Firewall). Inside the wall,
+  everyone is trusted. Even the printer."'
 ---
 
 ## Table of Contents

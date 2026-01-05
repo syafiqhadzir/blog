@@ -6,6 +6,9 @@ category: QA
 slug: personalized-quality
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'QA traditionally defines a "Golden Path". "The user logs in, clicks Buy, and
+  sees the Thank You page." Simple. Clean. Entirely fictional.'
 ---
 
 ## Table of Contents

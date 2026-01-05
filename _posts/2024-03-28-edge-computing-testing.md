@@ -6,6 +6,10 @@ category: QA
 slug: edge-computing-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['edge-computing', 'performance']
+description:
+  '"Edge Computing" sounds fancy. It just means running your code on a server
+  that is geographically closer to the user (and usually less powerful than your
+  iPhone'
 ---
 
 ## Table of Contents

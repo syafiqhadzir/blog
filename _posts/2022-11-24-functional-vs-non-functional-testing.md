@@ -6,6 +6,9 @@ category: QA
 slug: functional-vs-non-functional-testing
 gpgkey: D25D D0AD 3FDB F7C6
 tags: ['philosophy']
+description:
+  'Taxonomy is boring, but essential. Software Testing is generally categorised
+  objectively into two main camps: Functional and Non-Functional.'
 ---
 
 ## Table of Contents

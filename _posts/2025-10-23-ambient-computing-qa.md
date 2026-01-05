@@ -6,6 +6,9 @@ category: QA
 slug: ambient-computing-qa
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'On the desktop, the user "clicks". On mobile, the user "taps". In Ambient
+  Computing, the user "exists".'
 ---
 
 ## Table of Contents

@@ -6,6 +6,9 @@ category: QA
 slug: shadow-traffic-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'What if I told you there is a way to test your new code with 100% real
+  production traffic without a single user knowing?'
 ---
 
 ## Table of Contents

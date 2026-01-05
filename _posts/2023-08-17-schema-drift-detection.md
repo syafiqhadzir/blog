@@ -6,6 +6,9 @@ category: QA
 slug: schema-drift-detection
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['backend-testing']
+description:
+  "Documentation is like a New Year's Resolution: It starts with good intentions
+  and is abandoned by February."
 ---
 
 ## Table of Contents

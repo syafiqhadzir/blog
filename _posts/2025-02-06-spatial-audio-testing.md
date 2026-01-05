@@ -6,6 +6,9 @@ category: QA
 slug: spatial-audio-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['spatial-computing', 'emerging-tech']
+description:
+  'In a 2D Zoom call, everyone sounds like they are inside your head. It is flat
+  (Mono/Stereo).'
 ---
 
 ## Table of Contents

@@ -6,6 +6,8 @@ category: QA
 slug: localization-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['mobile-testing', 'philosophy']
+description:
+  'Internationalisation (i18n) is technical. Localisation (l10n) is cultural.'
 ---
 
 ## Table of Contents

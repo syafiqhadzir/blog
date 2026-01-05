@@ -6,6 +6,9 @@ category: QA
 slug: ssr-testing-strategies
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-general']
+description:
+  'Server-Side Rendering (SSR) is back. We moved from PHP to JS (SPA), and now
+  back to JS-on-Server (Next.js/Nuxt).'
 ---
 
 ## Table of Contents

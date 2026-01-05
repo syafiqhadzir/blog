@@ -6,6 +6,9 @@ category: QA
 slug: user-persona-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-strategy']
+description:
+  'Most QA engineers test like... QA engineers. They know where the bugs are.
+  They click the buttons correctly.'
 ---
 
 ## Table of Contents

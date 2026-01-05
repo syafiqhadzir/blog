@@ -6,6 +6,10 @@ category: QA
 slug: event-driven-architecture-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['architecture', 'chaos-testing']
+description:
+  'In the old days (REST APIs), you sent a request, and the server replied "200
+  OK" or "500 ERROR". It was polite. It was synchronous. It was like a phone
+  call.'
 ---
 
 ## Table of Contents

@@ -6,6 +6,9 @@ category: QA
 slug: resilience-testing-kubeinvaders
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['reliability']
+description:
+  '"Chaos Engineering" sounds serious. It sounds like something men in lab coats
+  do whilst frowning at monitors.'
 ---
 
 ## Table of Contents

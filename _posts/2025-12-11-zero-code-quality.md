@@ -6,6 +6,9 @@ category: QA
 slug: zero-code-quality
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['qa-strategy', 'automation']
+description:
+  'In a "Zero-Code" world, Marketing Bob can build a CRM. HR Susan can build an
+  onboarding app. This is terrifying.'
 ---
 
 ## Table of Contents

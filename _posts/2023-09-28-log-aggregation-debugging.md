@@ -6,6 +6,9 @@ category: QA
 slug: log-aggregation-debugging
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['debugging']
+description:
+  'In the old days, if a server crashed, you would SSH into it, cd /var/log, and
+  run tail -f server.log.'
 ---
 
 ## Table of Contents

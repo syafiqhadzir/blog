@@ -6,6 +6,10 @@ category: QA
 slug: visual-regression-testing-mastery
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['regression-testing', 'visual-testing', 'frontend-testing']
+description:
+  'Functional tests verify logic. They check if 2 + 2 = 4. Visual regression
+  tests check if the 4 is drawn in Comic Sans or is invisible because it is
+  white te'
 ---
 
 ## Table of Contents

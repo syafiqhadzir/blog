@@ -6,6 +6,10 @@ category: QA
 slug: pci-compliance
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['compliance', 'security']
+description:
+  'PCI DSS (Payment Card Industry Data Security Standard) sounds boring. It is.
+  But it is the "boring" that keeps your company from being fined into
+  bankruptcy.'
 ---
 
 ## Table of Contents

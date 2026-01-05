@@ -6,6 +6,9 @@ category: QA
 slug: mutation-testing-patterns
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['mutation-testing']
+description:
+  'We have all been there. You proudly present your Pull Request. The dashboard
+  glows green: 100% Code Coverage. You feel like a god. You merge it.'
 ---
 
 ## Table of Contents

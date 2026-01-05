@@ -6,6 +6,9 @@ category: QA
 slug: differential-privacy-testing
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['privacy', 'security', 'philosophy']
+description:
+  "Q: How do you tell me the average salary of the team without telling me
+  anyone's specific salary?"
 ---
 
 ## Table of Contents

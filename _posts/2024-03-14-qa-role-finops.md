@@ -6,6 +6,9 @@ category: QA
 slug: qa-role-finops
 gpgkey: EBE8 BD81 6838 1BAF
 tags: ['finops', 'qa-strategy']
+description:
+  'FinOps (Financial Operations) is usually the job of someone in a suit who
+  yells about the AWS bill.'
 ---
 
 ## Table of Contents
