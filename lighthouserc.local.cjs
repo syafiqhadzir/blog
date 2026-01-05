@@ -22,6 +22,9 @@ module.exports = {
     },
     collect: {
       ...baseConfig.ci.collect,
+      // Chrome flags to prevent interstitial errors
+      chromeFlags:
+        '--no-sandbox --disable-setuid-sandbox --ignore-certificate-errors --allow-insecure-localhost --disable-dev-shm-usage',
       // Single run for speed in local development
       numberOfRuns: 1,
       settings: {
@@ -36,6 +39,8 @@ module.exports = {
           uploadThroughputKbps: 1350,
         },
       },
+      // Start the server
+      startServerCommand: 'npm run serve:site',
     },
     upload: {
       target: 'none',

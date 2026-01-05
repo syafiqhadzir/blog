@@ -9,6 +9,9 @@ import { readFile } from 'node:fs/promises';
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
+const SCORE_THRESHOLD = 0.9;
+const PERCENTAGE_FACTOR = 100;
+
 /**
  * Analyze Lighthouse report with AI
  * @param {string} reportPath - Path to Lighthouse JSON report
@@ -21,7 +24,7 @@ async function analyzeLighthouseReport(reportPath) {
   // Extract key issues
   const issues = [];
   for (const [auditId, audit] of Object.entries(report.audits)) {
-    if (audit.score !== null && audit.score < 0.9) {
+    if (audit.score !== null && audit.score < SCORE_THRESHOLD) {
       issues.push({
         description: audit.description,
         id: auditId,
@@ -43,7 +46,7 @@ async function analyzeLighthouseReport(reportPath) {
 3. Priority ranking by impact
 
 Issues:
-${JSON.stringify(issues, null, 2)}`;
+${JSON.stringify(issues, undefined, 2)}`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -85,7 +88,7 @@ function generateBasicAnalysis(issues) {
 
   for (const issue of issues) {
     analysis += `### ${issue.title}\n`;
-    analysis += `Score: ${Math.round(issue.score * 100)}%\n`;
+    analysis += `Score: ${Math.round(issue.score * PERCENTAGE_FACTOR)}%\n`;
     analysis += `${issue.description}\n\n`;
   }
 

@@ -193,7 +193,6 @@ module.exports = {
           'accessibility',
           'best-practices',
           'seo',
-          'pwa',
         ],
         // Skip audits that don't apply to AMP or are deprecated
         skipAudits: ['bf-cache'],

@@ -20,6 +20,9 @@ module.exports = {
     },
     collect: {
       ...baseConfig.ci.collect,
+      // Chrome flags to prevent interstitial errors in CI
+      chromeFlags:
+        '--no-sandbox --disable-setuid-sandbox --ignore-certificate-errors --allow-insecure-localhost --disable-dev-shm-usage',
       // More runs for better statistical accuracy in CI
       numberOfRuns: 5,
       settings: {
@@ -34,6 +37,8 @@ module.exports = {
           uploadThroughputKbps: 675,
         },
       },
+      // Start the server for CI
+      startServerCommand: 'npm run serve:site',
     },
     upload: {
       target: 'temporary-public-storage',

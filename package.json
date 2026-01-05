@@ -32,7 +32,7 @@
     "lighthouse:benchmark": "node lighthouse/benchmarks/competitors.js",
     "lighthouse:trends": "node lighthouse/dashboard/trends.js",
     "lighthouse:analyze": "node scripts/ai-lighthouse-analyzer.js",
-    "lighthouse:docs": "node scripts/generate-perf-docs.js",
+    "lighthouse:docs": "node scripts/generate-perf-documentation.js",
     "lhci:server": "docker-compose up -d",
     "lint": "npm run lint:ts && npm run lint:css && npm run lint:md && npm run lint:commit",
     "lint:ts": "eslint .",

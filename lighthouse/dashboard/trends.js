@@ -3,8 +3,6 @@
  * @license MIT
  */
 
- 
-
 import { readdir, readFile } from 'node:fs/promises';
 
 /**
@@ -13,7 +11,9 @@ import { readdir, readFile } from 'node:fs/promises';
  * @returns {object} Trend data
  */
 function calculateTrends(reports) {
-  const sorted = reports.sort(
+  const PERCENTAGE_FACTOR = 100;
+
+  const sorted = reports.toSorted(
     (a, b) => new Date(a.fetchTime) - new Date(b.fetchTime),
   );
 
@@ -28,15 +28,17 @@ function calculateTrends(reports) {
   for (const report of sorted) {
     trends.dates.push(new Date(report.fetchTime).toLocaleDateString());
     trends.performance.push(
-      Math.round(report.categories.performance.score * 100),
+      Math.round(report.categories.performance.score * PERCENTAGE_FACTOR),
     );
     trends.accessibility.push(
-      Math.round(report.categories.accessibility.score * 100),
+      Math.round(report.categories.accessibility.score * PERCENTAGE_FACTOR),
     );
     trends.bestPractices.push(
-      Math.round(report.categories['best-practices'].score * 100),
+      Math.round(report.categories['best-practices'].score * PERCENTAGE_FACTOR),
     );
-    trends.seo.push(Math.round(report.categories.seo.score * 100));
+    trends.seo.push(
+      Math.round(report.categories.seo.score * PERCENTAGE_FACTOR),
+    );
   }
 
   return trends;

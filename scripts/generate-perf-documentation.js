@@ -12,7 +12,15 @@ import { readFile, writeFile } from 'node:fs/promises';
  * @param {string} reportPath - Path to Lighthouse report
  * @returns {Promise<string>} Generated documentation
  */
-async function generatePerfDocs(reportPath) {
+const PERCENTAGE_FACTOR = 100;
+const SCORE_THRESHOLD = 0.9;
+
+/**
+ * Generate performance documentation from Lighthouse reports
+ * @param {string} reportPath - Path to Lighthouse report
+ * @returns {Promise<string>} Generated documentation
+ */
+async function generatePerfDocumentation(reportPath) {
   const reportContent = await readFile(reportPath, 'utf8');
   const report = JSON.parse(reportContent);
 
@@ -27,10 +35,10 @@ Generated: ${new Date().toISOString()}
 
 | Category | Score |
 |----------|-------|
-| Performance | ${Math.round(scores.performance.score * 100)}% |
-| Accessibility | ${Math.round(scores.accessibility.score * 100)}% |
-| Best Practices | ${Math.round(scores['best-practices'].score * 100)}% |
-| SEO | ${Math.round(scores.seo.score * 100)}% |
+| Performance | ${Math.round(scores.performance.score * PERCENTAGE_FACTOR)}% |
+| Accessibility | ${Math.round(scores.accessibility.score * PERCENTAGE_FACTOR)}% |
+| Best Practices | ${Math.round(scores['best-practices'].score * PERCENTAGE_FACTOR)}% |
+| SEO | ${Math.round(scores.seo.score * PERCENTAGE_FACTOR)}% |
 
 ## Core Web Vitals
 
@@ -44,8 +52,8 @@ Generated: ${new Date().toISOString()}
 `;
 
   // Add failing audits as recommendations
-  for (const [auditId, audit] of Object.entries(audits)) {
-    if (audit.score !== null && audit.score < 0.9) {
+  for (const audit of Object.values(audits)) {
+    if (audit.score !== null && audit.score < SCORE_THRESHOLD) {
       documentation += `### ${audit.title}\n`;
       documentation += `${audit.description}\n\n`;
     }
@@ -58,10 +66,12 @@ Generated: ${new Date().toISOString()}
  * Update performance documentation
  * @returns {Promise<void>}
  */
-async function updateDocs() {
-  const docs = await generatePerfDocs('.lighthouseci/lhr-0.json');
-  await writeFile('docs/PERFORMANCE.md', docs);
+async function updateDocumentation() {
+  const documentation = await generatePerfDocumentation(
+    '.lighthouseci/lhr-0.json',
+  );
+  await writeFile('docs/PERFORMANCE.md', documentation);
   console.log('✅ Performance documentation updated');
 }
 
-export { generatePerfDocs, updateDocs };
+export { generatePerfDocumentation, updateDocumentation };

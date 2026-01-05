@@ -46,7 +46,7 @@ async function runBenchmark() {
 
     await writeFile(
       './lighthouse/benchmarks/competitive-report.json',
-      JSON.stringify(report, null, 2),
+      JSON.stringify(report, undefined, 2),
     );
 
     console.log('🎉 Benchmark complete!');

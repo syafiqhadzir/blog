@@ -12,6 +12,8 @@ const WCAG_22_AAA_RULES = [
   'draggable-no-keyboard',
 ];
 
+const SCORE_THRESHOLD = 0.9;
+
 /**
  * Enhanced Accessibility Audit with axe-core
  */
@@ -30,10 +32,10 @@ class EnhancedAccessibilityAudit extends Audit {
   }
 
   /**
-   * @param {import('lighthouse').Artifacts} artifacts
+   * @param {import('lighthouse').Artifacts} _artifacts
    * @returns {Promise<import('lighthouse').Audit.Product>}
    */
-  static async audit(artifacts) {
+  static async audit() {
     const violations = [];
 
     // Check WCAG 2.2 AAA rules
@@ -47,7 +49,7 @@ class EnhancedAccessibilityAudit extends Audit {
       });
     }
 
-    const score = violations.length === 0 ? 1 : 0.9;
+    const score = violations.length === 0 ? 1 : SCORE_THRESHOLD;
 
     return {
       details: {

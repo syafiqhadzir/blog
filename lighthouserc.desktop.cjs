@@ -20,6 +20,9 @@ module.exports = {
     },
     collect: {
       ...baseConfig.ci.collect,
+      // Chrome flags to prevent interstitial errors
+      chromeFlags:
+        '--no-sandbox --disable-setuid-sandbox --ignore-certificate-errors --allow-insecure-localhost --disable-dev-shm-usage',
       settings: {
         ...baseConfig.ci.collect.settings,
         // Desktop form factor
@@ -40,6 +43,8 @@ module.exports = {
           uploadThroughputKbps: 5120,
         },
       },
+      // Start the server
+      startServerCommand: 'npm run serve:site',
     },
     upload: {
       target: 'temporary-public-storage',
