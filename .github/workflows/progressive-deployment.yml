@@ -1,0 +1,69 @@
+name: Progressive Deployment
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  deployments: write
+
+jobs:
+  deploy-canary:
+    name: Deploy Canary (10%)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to canary
+        run: |
+          echo "Deploying to 10% of traffic..."
+          # Add canary deployment command
+
+      - name: Wait for metrics
+        run: sleep 300
+
+      - name: Run Lighthouse on canary
+        id: lighthouse-canary
+        run: npm run lighthouse:ci
+
+      - name: Check canary health
+        id: canary-health
+        run: |
+          # Check if performance is acceptable
+          echo "healthy=true" >> $GITHUB_OUTPUT
+
+  deploy-full:
+    name: Deploy Full (100%)
+    needs: deploy-canary
+    runs-on: ubuntu-latest
+    if: needs.deploy-canary.outputs.healthy == 'true'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to production
+        run: |
+          echo "Deploying to 100% of traffic..."
+          # Add full deployment command
+
+      - name: Monitor post-deployment
+        run: |
+          echo "Monitoring production metrics..."
+          # Add monitoring logic
+
+  rollback:
+    name: Rollback Deployment
+    needs: deploy-full
+    runs-on: ubuntu-latest
+    if: failure()
+
+    steps:
+      - name: Rollback to previous version
+        run: |
+          echo "Rolling back deployment..."
+          # Add rollback command

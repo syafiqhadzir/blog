@@ -1,0 +1,27 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "lighthouse.logLevel": "verbose",
+  "lighthouse.performance.budget": {
+    "enabled": true,
+    "budgetPath": "${workspaceFolder}/budget.json"
+  },
+  "files.associations": {
+    "*.cjs": "javascript",
+    "lighthouserc*.cjs": "javascript"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.wordWrap": "on"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "DavidAnson.vscode-markdownlint",
+    "connor4312.esbuild-problem-matchers",
+    "ms-playwright.playwright",
+    "GoogleChrome.lighthouse"
+  ]
+}

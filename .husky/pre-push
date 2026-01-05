@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run Lighthouse locally before push
+echo "🔦 Running Lighthouse checks before push..."
+
+npm run lighthouse:local
+
+if [ $? -ne 0 ]; then
+  echo "❌ Lighthouse checks failed. Please fix performance issues before pushing."
+  echo "💡 Tip: Run 'npm run lighthouse:local' to see detailed results"
+  exit 1
+fi
+
+echo "✅ Lighthouse checks passed!"

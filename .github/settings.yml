@@ -1,0 +1,44 @@
+# Branch Protection Configuration
+
+repository:
+  name: blog
+
+  # Branch protection rules
+  branches:
+    - name: main
+      protection:
+        required_status_checks:
+          strict: true
+          contexts:
+            - 'Lighthouse CI / lighthouse'
+            - 'Jekyll Build'
+            - 'Playwright Tests'
+            - 'Linting'
+
+        required_pull_request_reviews:
+          required_approving_review_count: 1
+          dismiss_stale_reviews: true
+          require_code_owner_reviews: false
+
+        enforce_admins: false
+
+        restrictions: null
+
+        # Performance requirements
+        required_linear_history: true
+        allow_force_pushes: false
+        allow_deletions: false
+
+# Lighthouse CI Requirements
+lighthouse:
+  minimum_scores:
+    performance: 95
+    accessibility: 100
+    best-practices: 100
+    seo: 100
+
+  budget_enforcement: strict
+
+  failure_threshold:
+    performance_drop: 5 # Fail if performance drops >5%
+    budget_violations: 0 # Zero tolerance for budget violations
