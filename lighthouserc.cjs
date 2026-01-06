@@ -165,6 +165,30 @@ const categoryAssertions = {
 };
 
 // ============================================================================
+// SKIPPED AUDITS (Prevent auditRan failures)
+// ============================================================================
+const skippedAssertions = {
+  'bf-cache': 'off',
+  'cache-insight': 'off',
+  'cls-culprits-insight': 'off',
+  'document-latency-insight': 'off',
+  'dom-size-insight': 'off',
+  'duplicated-javascript-insight': 'off',
+  'font-display-insight': 'off',
+  'forced-reflow-insight': 'off',
+  'image-delivery-insight': 'off',
+  'interaction-to-next-paint-insight': 'off',
+  'lcp-discovery-insight': 'off',
+  'lcp-phases-insight': 'off',
+  'legacy-javascript-insight': 'off',
+  'modern-http-insight': 'off',
+  'network-dependency-tree-insight': 'off',
+  'render-blocking-insight': 'off',
+  'third-parties-insight': 'off',
+  'viewport-insight': 'off',
+};
+
+// ============================================================================
 // MAIN CONFIGURATION
 // ============================================================================
 module.exports = {

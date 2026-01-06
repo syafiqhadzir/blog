@@ -39,6 +39,7 @@ module.exports = {
       },
       // Start the server for CI
       startServerCommand: 'npm run serve:site',
+      startServerReadyPattern: 'Available on',
     },
     upload: {
       target: 'temporary-public-storage',
