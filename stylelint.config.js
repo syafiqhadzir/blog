@@ -11,7 +11,6 @@ export default {
     'alpha-value-notation': 'percentage',
     'at-rule-no-unknown': undefined,
     'at-rule-no-vendor-prefix': true,
-    'color-function-alias-notation': undefined,
     'color-function-notation': 'modern',
     'custom-property-pattern': [
       '^[a-z][a-z0-9]*(-[a-z0-9]+)*$',
