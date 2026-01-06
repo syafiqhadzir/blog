@@ -165,17 +165,12 @@ Features:
     </div>
 
     {%- comment -%} Empty State {%- endcomment -%}
-    {%- capture all_posts_searchable -%}
-        {%- for post in site.posts -%}
-            {{ post.title | downcase | replace: "'", "" | replace: '"', "" }} {{ post.tags | join: ' ' | downcase | replace: "'", "" | replace: '"', "" }}
-        {%- endfor -%}
-    {%- endcapture -%}
-    {%- assign all_searchable_clean = all_posts_searchable | strip_newlines | strip | replace: "'", "" | replace: '"', "" -%}
 
-    <amp-state id="searchData">
+
+    <section id="searchData">
         <script type="application/json">
         {
-            "all": {{ all_searchable_clean | jsonify }},
+
             "years": [
                 {%- for year in posts_by_year -%}
                     {%- capture year_search_str -%}
@@ -202,17 +197,9 @@ Features:
         }
         </script>
     </amp-state>
-
-    <div class="archive-empty"
-         id="no-results"
-         role="alert"
-         hidden
-         [hidden]="!archiveQuery || searchData.all.indexOf(archiveQuery) != -1">
-        <div class="empty-icon" aria-hidden="true">🔍</div>
-        <p>No articles found matching "<strong [text]="archiveQuery"></strong>"</p>
-        <p class="empty-hint">Try different keywords or <button type="button" class="clear-link" on="tap:AMP.setState({ archiveQuery: '' })">clear the search</button></p>
-    </div>
 </section>
+
+
 
 {%- comment -%} Search Analytics {%- endcomment -%}
 <amp-analytics type="gtag" data-credentials="include">
