@@ -14,18 +14,14 @@
 @use 'layout/post';
 
 // Components
+// Components that are page-specific (e.g. posts) are now loaded in styles.scss
+// to avoid unused CSS on other pages.
 @use 'components/buttons';
 @use 'components/navbar';
 @use 'components/search';
 @use 'components/progress-bar';
 @use 'components/back-to-top';
-@use 'components/social-share';
-@use 'components/syntax-highlighting';
-@use 'components/breadcrumbs';
-@use 'components/author-bio';
-@use 'components/related-posts';
 @use 'components/tags' as tags-component;
-@use 'components/post-navigation';
 @use 'components/reading-settings';
 
 // Pages
