@@ -27,7 +27,7 @@ Features:
   {%- assign top_tags = top_tags | push: tag[0] -%}
 {%- endfor -%}
 
-<section class="archive-page" aria-label="Post archive">
+<section class="archive-page">
     <header class="archive-header">
         <h1 id="archive-title">{{ page.title }}</h1>
         {%- if page.description -%}
@@ -65,7 +65,7 @@ Features:
                           filter-value="title"
                           class="autocomplete-wrapper">
             <span class="search-icon" aria-hidden="true">🔍</span>
-            <input type="search"
+            <input type="text"
                    name="q"
                    id="archive-search-input"
                    class="archive-search-input has-icon"

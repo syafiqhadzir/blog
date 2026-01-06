@@ -4,7 +4,13 @@ export default {
     'stylelint-config-standard-scss',
     'stylelint-config-recess-order',
   ],
-  ignoreFiles: ['_site/**', 'vendor/**', 'coverage/**', 'node_modules/**'],
+  ignoreFiles: [
+    '_site/**',
+    'vendor/**',
+    'coverage/**',
+    'node_modules/**',
+    '_includes/styles.scss',
+  ],
   plugins: ['stylelint-declaration-strict-value'],
   reportDescriptionlessDisables: true,
   rules: {

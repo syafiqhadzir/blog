@@ -1,1 +1,13 @@
 @use "main";
+
+{% if page.layout == 'archive' or page.url contains '/archive.html' %}
+  @use "pages/archive";
+{% endif %}
+
+{% if page.layout == 'tags' or page.url contains '/tags.html' %}
+  @use "pages/tags" as tags-page;
+{% endif %}
+
+{% if page.url contains '/404.html' %}
+  @use "pages/404" as error404;
+{% endif %}

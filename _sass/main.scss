@@ -29,9 +29,8 @@
 @use 'components/reading-settings';
 
 // Pages
-@use 'pages/tags' as tags-page;
-@use 'pages/archive';
-@use 'pages/404' as error404;
+// Styles for specific pages are now loaded conditionally in styles.scss
+// to reduce unused CSS on other pages.
 
 // Themes
 @use 'themes/dark';

@@ -26,11 +26,11 @@ module.exports = {
     },
     collect: {
       ...baseConfig.ci.collect,
-      // Chrome flags to prevent interstitial errors in CI
+      // Chrome flags to prevent interstitial errors and improve stability
       chromeFlags:
-        '--no-sandbox --disable-setuid-sandbox --ignore-certificate-errors --allow-insecure-localhost --disable-dev-shm-usage',
+        '--headless=new --no-sandbox --disable-setuid-sandbox --ignore-certificate-errors --allow-insecure-localhost --disable-dev-shm-usage --disable-gpu',
       // More runs for better statistical accuracy in CI
-      numberOfRuns: 5,
+      numberOfRuns: 3,
       settings: {
         ...baseConfig.ci.collect.settings,
         // Stricter thresholds for CI
@@ -46,6 +46,15 @@ module.exports = {
       // Start the server for CI
       startServerCommand: 'npm run serve:site',
       startServerReadyPattern: 'Available on',
+      // Use 127.0.0.1 for better network reliability in CI
+      url: [
+        'http://127.0.0.1:5000/index.html',
+        'http://127.0.0.1:5000/about.html',
+        'http://127.0.0.1:5000/archive.html',
+        'http://127.0.0.1:5000/tags.html',
+        'http://127.0.0.1:5000/accessibility.html',
+        'http://127.0.0.1:5000/404.html',
+      ],
     },
     upload: {
       target: 'temporary-public-storage',

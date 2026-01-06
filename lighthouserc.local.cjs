@@ -22,9 +22,9 @@ module.exports = {
     },
     collect: {
       ...baseConfig.ci.collect,
-      // Chrome flags to prevent interstitial errors
+      // Chrome flags to prevent interstitial errors and improve stability on Windows
       chromeFlags:
-        '--no-sandbox --disable-setuid-sandbox --ignore-certificate-errors --allow-insecure-localhost --disable-dev-shm-usage',
+        '--headless=new --no-sandbox --disable-setuid-sandbox --ignore-certificate-errors --allow-insecure-localhost --disable-dev-shm-usage --disable-gpu',
       // Single run for speed in local development
       numberOfRuns: 1,
       settings: {
@@ -41,6 +41,7 @@ module.exports = {
       },
       // Start the server
       startServerCommand: 'npm run serve:site',
+      startServerReadyPattern: 'Available on',
     },
     upload: {
       target: 'none',
