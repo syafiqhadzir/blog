@@ -106,7 +106,6 @@ exclude:
   - .prettierignore
   - .markdownlint.json
   - .rubocop.yml
-  - .rubocop_todo.yml
   - .nvmrc
   - sonar-project.properties
   - playwright-report
