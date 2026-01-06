@@ -1,6 +1,4 @@
 /* Breadcrumbs */
-
-/* Breadcrumbs */
 .breadcrumbs {
   padding: 0;
   margin: 1rem 0 2rem;
@@ -26,6 +24,7 @@
 .breadcrumbs li:not(:last-child)::after {
   margin: 0 0.5rem;
   color: var(--text-secondary);
+  content: '/';
   opacity: 50%;
 }
 
