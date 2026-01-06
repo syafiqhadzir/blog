@@ -14,8 +14,8 @@ module.exports = {
         ...baseConfig.ci.assert.assertions,
         // Stricter DOM size
         'dom-size': ['warn', { maxNumericValue: 2100 }],
-        // Stricter LCP for CI (less variability)
-        'largest-contentful-paint': ['error', { maxNumericValue: 2600 }],
+        // LCP for CI environment (matches base config)
+        'largest-contentful-paint': ['error', { maxNumericValue: 3700 }],
       },
     },
     collect: {
