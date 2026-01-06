@@ -172,14 +172,11 @@ jobs:
           name: site-build
           path: _site
 
-      - name: Install LHCI
-        run: npm install -g @lhci/cli
+      - name: Install Node dependencies
+        run: npm ci
 
-      - name: Run LHCI
-        run: |
-          lhci collect --staticDistDir=./_site
-          lhci assert --preset=lighthouse:recommended
-          lhci upload --target=temporary-public-storage || echo "Upload failed, but continuing..."
+      - name: Run Lighthouse CI
+        run: npm run lighthouse:ci
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
