@@ -359,7 +359,7 @@ details[open] .tag-chevron {
 }
 
 /* Responsive */
-@media (width <= 640px) {
+@media (max-width: 640px) {
   .tags-header h1 {
     font-size: 1.5rem;
   }

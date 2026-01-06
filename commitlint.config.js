@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 export default {
   extends: ['@commitlint/config-conventional'],
   rules: {

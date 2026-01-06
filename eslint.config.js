@@ -35,15 +35,18 @@ export default tseslint.config(
       },
     },
     rules: {
+      // Strict complexity limits (practical for production code)
       complexity: ['error', 8],
       'max-depth': ['error', 3],
       'max-lines': ['error', 200],
+      'max-lines-per-function': ['error', 60],
       'max-params': ['error', 3],
+      'max-statements': ['error', 20],
       'no-console': 'error',
       'no-magic-numbers': [
         'error',
         {
-          ignore: [0, 1, 2, 3, 5, 8, 10, 12, 15, 200, 400],
+          ignore: [0, 1, 2],
           ignoreArrayIndexes: true,
         },
       ],
@@ -131,9 +134,12 @@ export default tseslint.config(
     files: ['{e2e,tests}/**/*.{ts,js}'],
     ...playwright.configs['flat/recommended'],
     rules: {
-      complexity: ['error', 15],
+      // Test files have more relaxed limits for test suites
+      complexity: ['error', 12],
       'max-lines': ['error', 400],
+      'max-lines-per-function': 'off',
       'max-params': ['error', 5],
+      'max-statements': 'off',
       'no-magic-numbers': 'off',
       'playwright/expect-expect': 'error',
       'playwright/no-conditional-in-test': 'error',
@@ -156,6 +162,7 @@ export default tseslint.config(
       '*.config.js',
       '**/*.cjs',
       'scripts/*.js',
+      'lighthouse/**/*.js',
     ],
     languageOptions: {
       globals: {
@@ -164,6 +171,10 @@ export default tseslint.config(
     },
     rules: {
       'max-lines': 'off',
+      'max-lines-per-function': 'off',
+      'max-statements': 'off',
+      // Config and script files contain configuration values, not logic
+      'no-magic-numbers': 'off',
     },
   },
 
@@ -179,6 +190,9 @@ export default tseslint.config(
       },
     },
     rules: {
+      // Browser JS files have different complexity requirements
+      'max-lines-per-function': 'off',
+      'max-statements': 'off',
       'no-magic-numbers': 'off',
     },
   },

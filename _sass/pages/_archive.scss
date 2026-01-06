@@ -511,7 +511,7 @@ details[open] .year-chevron {
 }
 
 /* Responsive */
-@media (width <= 640px) {
+@media (max-width: 640px) {
   .archive-header h1 {
     font-size: 1.5rem;
   }

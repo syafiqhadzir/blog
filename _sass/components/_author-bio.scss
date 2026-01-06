@@ -41,7 +41,7 @@
   text-underline-offset: 4px;
 }
 
-@media (width <= 600px) {
+@media (max-width: 600px) {
   .author-bio {
     flex-direction: column;
     padding: 2rem;

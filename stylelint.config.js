@@ -18,6 +18,8 @@ export default {
     'at-rule-no-unknown': undefined,
     'at-rule-no-vendor-prefix': true,
     'color-function-notation': 'modern',
+    // Allow comments without preceding blank lines (common in refactored files)
+    'comment-empty-line-before': undefined,
     'custom-property-pattern': [
       '^[a-z][a-z0-9]*(-[a-z0-9]+)*$',
       {
@@ -33,13 +35,19 @@ export default {
       },
     ],
     'function-url-quotes': 'always',
+    // Strictest value rules
+    'length-zero-no-unit': true,
+    // Strictest selector rules
     'max-nesting-depth': [
       2,
       { ignoreAtRules: ['media', 'supports', 'include'] },
     ],
     'media-feature-name-no-vendor-prefix': true,
+    // Use 'prefix' notation (max-width) for AMP compatibility instead of 'context' (width <=)
+    'media-feature-range-notation': 'prefix',
     'no-empty-source': true,
     'no-unknown-animations': true,
+    'number-max-precision': 4,
     'scale-unlimited/declaration-strict-value': [
       ['/color/', 'font-size', 'font-family'],
       {
@@ -68,6 +76,8 @@ export default {
     'selector-no-qualifying-type': true,
     'selector-no-vendor-prefix': true,
     'shorthand-property-no-redundant-values': true,
+    // Print styles may use pt for font sizes
+    'unit-disallowed-list': ['cm', 'mm', 'in', 'pc'],
     'value-keyword-case': 'lower',
     'value-no-vendor-prefix': true,
   },

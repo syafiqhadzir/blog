@@ -1,8 +1,9 @@
-/* stylelint-disable selector-no-qualifying-type, declaration-no-important, scale-unlimited/declaration-strict-value -- Print styles require !important, qualifying types, and primitive colors for ink-saving paper optimization */
+/* Print styles - optimized for AMP compliance (no !important allowed) */
+/* Note: @media print rules have lower specificity conflicts in print context */
 
-/* Expert Print Stylesheet */
 @media print {
   /* Hide non-essential elements */
+  /* stylelint-disable selector-no-qualifying-type, scale-unlimited/declaration-strict-value -- Print styles require qualifying types and primitive colors */
   header[role='banner'],
   footer[role='contentinfo'],
   .skip-link,
@@ -13,7 +14,7 @@
   .back-to-top,
   amp-install-serviceworker,
   .progress-container {
-    display: none !important;
+    display: none;
   }
 
   /* Reset layout for paper */
@@ -21,11 +22,11 @@
   main,
   .wrapper,
   article {
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: visible !important;
-    box-shadow: none !important;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    box-shadow: none;
   }
 
   /* Typography optimization */
@@ -66,7 +67,8 @@
   /* Images */
   img,
   amp-img {
-    max-width: 100% !important;
+    max-width: 100%;
     break-inside: avoid;
   }
+  /* stylelint-enable selector-no-qualifying-type, scale-unlimited/declaration-strict-value */
 }
