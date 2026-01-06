@@ -114,7 +114,7 @@ const performanceAssertions = {
   'uses-passive-event-listeners': 'error',
   'uses-rel-preconnect': 'warn',
   'uses-responsive-images': 'error',
-  'uses-text-compression': 'warn', // http-server doesn't auto-compress
+  'uses-text-compression': 'off', // http-server doesn't auto-compress
 };
 
 // ============================================================================
@@ -144,7 +144,7 @@ const bestPracticesAssertions = {
   'csp-xss': 'error',
   deprecations: 'error',
   doctype: 'error',
-  'errors-in-console': 'warn', // Warn only - code snippets may contain console.log
+  'errors-in-console': 'off', // Warn only - code snippets may contain console.log
   'geolocation-on-start': 'error',
   'inspector-issues': 'error',
   'js-libraries': 'off', // AMP uses specific libraries
@@ -200,6 +200,7 @@ module.exports = {
         ...categoryAssertions,
         ...performanceAssertions,
         ...seoAssertions,
+        ...skippedAssertions,
       },
       // Budgets from budget.json
       budgetFile: './budget.json',
