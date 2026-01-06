@@ -128,8 +128,8 @@
     "tunnel-agent": "^0.6.0",
     "url-regex": "^5.0.0",
     "magic-string": "^0.30.0",
-    "source-map": "^0.7.4",
-    "html-encoding-sniffer": "^4.0.0"
+    "source-map": "0.7.4",
+    "html-encoding-sniffer": "^6.0.0"
   },
   "dependencies": {
     "fast-xml-parser": "^5.3.3"
