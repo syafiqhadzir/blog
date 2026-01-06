@@ -9,12 +9,12 @@ if (endpointInput) {
     const response = await fetch(endpointInput.value);
     const data = await response.json();
     searchData = data.items || [];
-  } catch (error) {
+  } catch {
     if (resultsContainer) {
       resultsContainer.innerHTML =
         '<div class="search-message">Error loading search data</div>';
     }
-    process.stderr.write(`Search data load failed: ${String(error)}\n`);
+    // Silently fail in browser context as per no-console rule
   }
 }
 searchInput.addEventListener('input', (event) => {
