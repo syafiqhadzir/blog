@@ -8,7 +8,7 @@ Uses amp-bind for panel toggle and CSS custom properties for layout adjustments
     {
       "panelOpen": false,
       "textScale": "1",
-      "lineHeight": "1.7",
+      "lineHeight": "1-7",
       "layoutWidth": "800px"
     }
   </script>
@@ -44,8 +44,8 @@ Uses amp-bind for panel toggle and CSS custom properties for layout adjustments
                         on="tap:AMP.setState({ readingSettings: { textScale: '1' } })"
                         aria-label="Text size 100%">100%</button>
                 <button type="button" class="settings-btn"
-                        [aria-pressed]="readingSettings.textScale == '1.5' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { textScale: '1.5' } })"
+                        [aria-pressed]="readingSettings.textScale == '1-5' ? 'true' : 'false'"
+                        on="tap:AMP.setState({ readingSettings: { textScale: '1-5' } })"
                         aria-label="Text size 150%">150%</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.textScale == '2' ? 'true' : 'false'"
@@ -59,12 +59,12 @@ Uses amp-bind for panel toggle and CSS custom properties for layout adjustments
             <span class="settings-label">Line Height</span>
             <div class="settings-options">
                 <button type="button" class="settings-btn"
-                        [aria-pressed]="readingSettings.lineHeight == '1.5' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { lineHeight: '1.5' } })"
+                        [aria-pressed]="readingSettings.lineHeight == '1-5' ? 'true' : 'false'"
+                        on="tap:AMP.setState({ readingSettings: { lineHeight: '1-5' } })"
                         aria-label="Line height Compact">Compact</button>
                 <button type="button" class="settings-btn"
-                        [aria-pressed]="readingSettings.lineHeight == '1.7' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { lineHeight: '1.7' } })"
+                        [aria-pressed]="readingSettings.lineHeight == '1-7' ? 'true' : 'false'"
+                        on="tap:AMP.setState({ readingSettings: { lineHeight: '1-7' } })"
                         aria-label="Line height Normal">Normal</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.lineHeight == '2' ? 'true' : 'false'"
@@ -86,8 +86,8 @@ Uses amp-bind for panel toggle and CSS custom properties for layout adjustments
                         on="tap:AMP.setState({ readingSettings: { layoutWidth: '800px' } })"
                         aria-label="Content width Normal">Normal</button>
                 <button type="button" class="settings-btn"
-                        [aria-pressed]="readingSettings.layoutWidth == '100%' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { layoutWidth: '100%' } })"
+                        [aria-pressed]="readingSettings.layoutWidth == 'full' ? 'true' : 'false'"
+                        on="tap:AMP.setState({ readingSettings: { layoutWidth: 'full' } })"
                         aria-label="Content width Full">Full</button>
             </div>
         </div>

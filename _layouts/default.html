@@ -49,7 +49,10 @@
     </header>
 
     <main class="wrapper" id="main-content" role="main">
-      {{ content }}
+      <div class="content-wrapper"
+           [class]="'content-wrapper text-scale-' + (readingSettings.textScale || '1') + ' line-height-' + (readingSettings.lineHeight || '1-7') + ' layout-width-' + (readingSettings.layoutWidth || '800px')">
+        {{ content }}
+      </div>
     </main>
 
     <footer role="contentinfo">
