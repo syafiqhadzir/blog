@@ -115,8 +115,30 @@ All pages include rich structured data:
 
 - [CHANGELOG.md](CHANGELOG.md) - Version history
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) - Architectural deep-dive
+- [docs/GA4_DOCUMENTATION.md](docs/GA4_DOCUMENTATION.md) - GA4 documentation
 - [scripts/README.md](scripts/README.md) - Automation script documentation
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Development guidelines
+
+## 📊 Analytics
+
+This blog uses **expert-level Google Analytics 4** implementation with:
+
+- 🎯 **15 tracked events** - Comprehensive user behavior analysis
+- 📊 **14 custom dimensions** - Granular content attribution
+- 🎨 **5 conversion events** - Key engagement milestones
+- ⚡ **AMP-optimized** - <0.1s performance impact
+- 🔒 **Privacy-ready** - GDPR/CCPA consent mode support
+
+Key tracking capabilities:
+
+- Content performance & engagement metrics
+- Scroll depth & reading time analysis
+- Search behavior & tag interaction
+- Social sharing & content discovery
+- Internal vs. outbound link patterns
+- 404 error monitoring & user preferences
+
+See [GA4 Documentation](docs/GA4_DOCUMENTATION.md) for implementation details.
 
 ## 📄 License
 

@@ -174,7 +174,9 @@ export default tseslint.config(
       'max-lines-per-function': 'off',
       'max-statements': 'off',
       // Config and script files contain configuration values, not logic
+      'no-console': 'off',
       'no-magic-numbers': 'off',
+      'unicorn/no-process-exit': 'off',
     },
   },
 

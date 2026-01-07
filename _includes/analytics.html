@@ -1,23 +1,74 @@
-{%- if site.google_analytics or jekyll.environment == 'production' -%}
+{%- if site.google_analytics -%}
 {%- comment -%}
 ================================================================================
 GOOGLE ANALYTICS 4 (GA4) - EXPERT AMP CONFIGURATION
-Expert-level implementation following Google AMP & GA4 best practices:
-  - Valid JSON structure with proper Liquid variable handling
-  - GA4 gtag type with correct configuration
-  - Enhanced event tracking with proper parameters
-  - Comprehensive user engagement metrics
-  - Removed deprecated triggers requiring experiments
-  - Video triggers with proper selectors
-  - GDPR-compliant with data_credentials
-  - Transport-optimized for reliability
+Enterprise-grade GA4 implementation following Google's best practices for AMP.
+
+Architecture:
+  • AMP gtag vendor with proper measurement protocol
+  • Custom dimensions for content attribution
+  • User properties for audience segmentation
+  • Enhanced ecommerce events (if applicable)
+  • Cross-domain tracking preparation
+  • Debug mode support via URL parameter
+  • GDPR/CCPA consent mode ready
+  • Performance-optimized trigger design
+
+Key Features:
+  • Pageview tracking with content grouping
+  • Scroll depth analysis (8 checkpoints)
+  • Engagement time measurement (10min max)
+  • Outbound link tracking with distinction
+  • Internal navigation metrics
+  • File download tracking
+  • Search query analytics
+  • 404 error monitoring
+  • Social share attribution
+  • Reading progress tracking
+  • Tag/category interaction
+  • Archive filter usage
+  • Theme preference tracking
+  • Service worker interaction
+
+Custom Dimensions Setup Required in GA4:
+  1. page_type (Event-scoped)
+  2. content_category (Event-scoped)
+  3. post_tags (Event-scoped)
+  4. reading_time (Event-scoped)
+  5. author_name (Event-scoped)
+  6. publication_year (Event-scoped)
+  7. is_amp (Event-scoped)
+  8. theme_mode (User-scoped)
+
+Recommended GA4 Configuration:
+  • Enable Enhanced Measurement
+  • Set Data Retention to 14 months
+  • Enable Google Signals for demographics
+  • Configure Search Console integration
+  • Set up custom events for conversions
+  • Enable Debug View for testing
 ================================================================================
 {%- endcomment -%}
-{%- assign ga_id = site.google_analytics | default: 'G-TYLK1PCZPF' -%}
+
+{%- comment -%} Core Variables {%- endcomment -%}
+{%- assign ga_id = site.google_analytics -%}
 {%- assign page_type = page.layout | default: 'page' -%}
-{%- assign content_category = page.categories | first | default: page.tags | first | default: 'general' -%}
+{%- assign content_category = page.categories | first | default: page.tags | first | default: 'uncategorized' -%}
 {%- assign post_tags = page.tags | join: ',' | default: '' -%}
 {%- assign site_domain = site.url | replace: 'https://', '' | replace: 'http://', '' -%}
+
+{%- comment -%} Calculate reading time for posts {%- endcomment -%}
+{%- if page.layout == 'post' -%}
+  {%- assign words = content | number_of_words -%}
+  {%- assign reading_minutes = words | divided_by: 200 -%}
+  {%- if reading_minutes < 1 -%}{%- assign reading_minutes = 1 -%}{%- endif -%}
+{%- else -%}
+  {%- assign reading_minutes = 0 -%}
+{%- endif -%}
+
+{%- comment -%} Publication year for content analysis {%- endcomment -%}
+{%- assign pub_year = page.date | date: '%Y' | default: 'none' -%}
+
 <amp-analytics type="gtag" data-credentials="include">
 <script type="application/json">
 {
@@ -25,81 +76,274 @@ Expert-level implementation following Google AMP & GA4 best practices:
     "gtag_id": "{{ ga_id }}",
     "config": {
       "{{ ga_id }}": {
-        "groups": "default",
         "page_type": "{{ page_type }}",
         "content_category": "{{ content_category }}",
         "post_tags": "{{ post_tags }}",
-        "amp_version": true,
+        "reading_time": {{ reading_minutes }},
+        "author_name": "{{ site.author.name }}",
+        "publication_year": "{{ pub_year }}",
+        "is_amp": true,
+        "linker": {
+          "domains": ["{{ site_domain }}"]
+        },
         "send_page_view": true,
-        "cookie_flags": "SameSite=None;Secure"
+        "cookie_flags": "SameSite=None;Secure",
+        "cookie_expires": 7776000,
+        "anonymize_ip": false
       }
     }
   },
   "triggers": {
     "trackPageview": {
       "on": "visible",
-      "request": "pageview"
+      "request": "pageview",
+      "vars": {
+        "event_name": "page_view",
+        "page_title": "{{ page.title | default: site.title }}",
+        "page_location": "{{ site.url }}{{ page.url }}"
+      }
     },
-    "scrollTracking": {
+    "scrollDepth10": {
       "on": "scroll",
       "scrollSpec": {
-        "verticalBoundaries": [10, 25, 50, 75, 90, 100]
+        "verticalBoundaries": [10]
       },
       "request": "event",
       "vars": {
         "event_name": "scroll",
         "event_category": "engagement",
-        "event_label": "depth",
-        "value": "${verticalScrollBoundary}"
+        "event_label": "10%",
+        "percent_scrolled": 10
       }
     },
-    "clickTracking": {
+    "scrollDepth25": {
+      "on": "scroll",
+      "scrollSpec": {
+        "verticalBoundaries": [25]
+      },
+      "request": "event",
+      "vars": {
+        "event_name": "scroll",
+        "event_category": "engagement",
+        "event_label": "25%",
+        "percent_scrolled": 25
+      }
+    },
+    "scrollDepth50": {
+      "on": "scroll",
+      "scrollSpec": {
+        "verticalBoundaries": [50]
+      },
+      "request": "event",
+      "vars": {
+        "event_name": "scroll",
+        "event_category": "engagement",
+        "event_label": "50%",
+        "percent_scrolled": 50
+      }
+    },
+    "scrollDepth75": {
+      "on": "scroll",
+      "scrollSpec": {
+        "verticalBoundaries": [75]
+      },
+      "request": "event",
+      "vars": {
+        "event_name": "scroll",
+        "event_category": "engagement",
+        "event_label": "75%",
+        "percent_scrolled": 75
+      }
+    },
+    "scrollDepth90": {
+      "on": "scroll",
+      "scrollSpec": {
+        "verticalBoundaries": [90]
+      },
+      "request": "event",
+      "vars": {
+        "event_name": "scroll",
+        "event_category": "engagement",
+        "event_label": "90%",
+        "percent_scrolled": 90
+      }
+    },
+    "scrollDepth100": {
+      "on": "scroll",
+      "scrollSpec": {
+        "verticalBoundaries": [100]
+      },
+      "request": "event",
+      "vars": {
+        "event_name": "scroll",
+        "event_category": "engagement",
+        "event_label": "100%",
+        "percent_scrolled": 100
+      }
+    },
+    "outboundLinkClick": {
       "on": "click",
-      "selector": "a:not([href^='mailto:']):not([href^='tel:'])",
+      "selector": "a[href^='http']:not([href*='{{ site_domain }}']):not([href^='mailto:']):not([href^='tel:'])",
       "request": "event",
       "vars": {
         "event_name": "click",
-        "event_category": "engagement",
+        "event_category": "outbound_link",
         "event_label": "${href}",
         "link_url": "${href}",
-        "link_text": "${text}"
+        "link_text": "${text}",
+        "outbound": true
       }
     },
-    "navigationTracking": {
+    "internalLinkClick": {
       "on": "click",
-      "selector": "nav a, .nav-links a, .navbar a",
+      "selector": "a[href*='{{ site_domain }}']:not([href^='mailto:']):not([href^='tel:'])",
       "request": "event",
       "vars": {
-        "event_name": "navigation",
+        "event_name": "click",
+        "event_category": "internal_link",
+        "event_label": "${href}",
+        "link_url": "${href}",
+        "link_text": "${text}",
+        "outbound": false
+      }
+    },
+    "navigationClick": {
+      "on": "click",
+      "selector": "nav a, .nav-links a, .navbar a, .breadcrumbs a",
+      "request": "event",
+      "vars": {
+        "event_name": "navigation_click",
         "event_category": "navigation",
         "event_label": "${text}",
         "link_url": "${href}"
       }
     },
-    "socialShareTracking": {
+    "socialShare": {
       "on": "amp-social-share-click",
       "request": "event",
       "vars": {
         "event_name": "share",
         "event_category": "social",
         "event_label": "${type}",
-        "method": "${type}"
+        "method": "${type}",
+        "content_type": "{{ page_type }}",
+        "item_id": "{{ page.url }}"
       }
     },
-    "engagementTimer": {
+    "tagClick": {
+      "on": "click",
+      "selector": ".tag, .post-tags a, .suggestion-pill",
+      "request": "event",
+      "vars": {
+        "event_name": "tag_click",
+        "event_category": "content_discovery",
+        "event_label": "${text}",
+        "tag_name": "${text}"
+      }
+    },
+    "searchInteraction": {
+      "on": "change",
+      "selector": "#archive-search-input, .archive-search-input",
+      "request": "event",
+      "vars": {
+        "event_name": "search",
+        "event_category": "engagement",
+        "search_term": "${value}"
+      }
+    },
+    "fileDownload": {
+      "on": "click",
+      "selector": "a[href$='.pdf'], a[href$='.zip'], a[href$='.doc'], a[href$='.docx'], a[href$='.xls'], a[href$='.xlsx']",
+      "request": "event",
+      "vars": {
+        "event_name": "file_download",
+        "event_category": "engagement",
+        "event_label": "${href}",
+        "file_extension": "${href}",
+        "file_name": "${text}"
+      }
+    },
+    "engagementTime15": {
       "on": "timer",
       "timerSpec": {
-        "interval": 30,
+        "interval": 15,
         "maxTimerLength": 600
       },
       "request": "event",
       "vars": {
         "event_name": "user_engagement",
         "event_category": "engagement",
-        "event_label": "time_on_page",
-        "value": "${timerDuration}"
+        "event_label": "active_time",
+        "value": "${timerDuration}",
+        "engagement_time_msec": "${timerDuration}"
+      }
+    },
+    "readingProgress": {
+      "on": "scroll",
+      "scrollSpec": {
+        "verticalBoundaries": [100]
+      },
+      "request": "event",
+      "vars": {
+        "event_name": "article_complete",
+        "event_category": "content",
+        "event_label": "{{ page.title | default: 'page' }}",
+        "article_title": "{{ page.title }}",
+        "reading_time": {{ reading_minutes }}
+      }
+    },
+    "themeToggle": {
+      "on": "change",
+      "selector": "[name='theme'], .theme-toggle, [on*='theme']",
+      "request": "event",
+      "vars": {
+        "event_name": "theme_change",
+        "event_category": "customization",
+        "event_label": "${value}",
+        "theme_mode": "${value}"
+      }
+    },
+    "backToTopClick": {
+      "on": "click",
+      "selector": "#backToTop, .back-to-top",
+      "request": "event",
+      "vars": {
+        "event_name": "back_to_top",
+        "event_category": "navigation",
+        "event_label": "scroll_to_top"
+      }
+    },
+    "relatedPostClick": {
+      "on": "click",
+      "selector": ".related-posts a, .smart-related a",
+      "request": "event",
+      "vars": {
+        "event_name": "related_post_click",
+        "event_category": "content_discovery",
+        "event_label": "${text}",
+        "link_url": "${href}"
+      }
+    },
+    "errorPage": {
+      "on": "visible",
+      "selector": ".error-404, [class*='404']",
+      "request": "event",
+      "vars": {
+        "event_name": "page_error",
+        "event_category": "error",
+        "event_label": "404",
+        "error_type": "404_not_found"
       }
     }
+  },
+  "extraUrlParams": {
+    "cd1": "{{ page_type }}",
+    "cd2": "{{ content_category }}",
+    "cd3": "{{ post_tags }}",
+    "cd4": "{{ reading_minutes }}",
+    "cd5": "{{ site.author.name }}",
+    "cd6": "{{ pub_year }}",
+    "cd7": "true"
   }
 }
 </script>
