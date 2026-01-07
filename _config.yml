@@ -3,6 +3,7 @@ author:
   name: Syafiq Hadzir # name of site's author
   url: https://syafiqhadzir.dev # URL of site's author
 email: syafiqhadzir@live.com.my # email of site's author
+google_analytics: G-TYLK1PCZPF # Google Analytics 4 measurement ID
 url: https://blog.syafiqhadzir.dev # root address of the site
 baseurl: '' # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)

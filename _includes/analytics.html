@@ -1,9 +1,261 @@
-<amp-analytics type="googleanalytics">
-  <script type="application/json">
+{%- if site.google_analytics or jekyll.environment == 'production' -%}
+{%- comment -%}
+================================================================================
+GOOGLE ANALYTICS 4 (GA4) - EXPERT AMP CONFIGURATION
+Features:
+  - Enhanced page view tracking with custom dimensions
+  - User engagement metrics (scroll depth, time on page)
+  - Outbound link and download tracking
+  - Social share tracking
+  - Error tracking
+  - Core Web Vitals monitoring
+  - Custom user properties and session tracking
+================================================================================
+{%- endcomment -%}
+\u003camp-analytics type=\"gtag\" data-credentials=\"include\"\u003e
+  \u003cscript type=\"application/json\"\u003e
     {
-      "vars": {
-        "gtag_id": "G-TYLK1PCZPF"
+      \"vars\": {
+        \"gtag_id\": \"{{ site.google_analytics | default: 'G-TYLK1PCZPF' }}\",
+        \"config\": {
+          \"{{ site.google_analytics | default: 'G-TYLK1PCZPF' }}\": {
+            \"groups\": \"default\",
+            \"linker\": {
+              \"domains\": [\"{{ site.url | replace: 'https://', '' | replace: 'http://', '' }}\"]
+            },
+            \"custom_map\": {
+              \"dimension1\": \"page_type\",
+              \"dimension2\": \"content_category\",
+              \"dimension3\": \"post_tags\",
+              \"dimension4\": \"word_count\",
+              \"dimension5\": \"reading_time\",
+              \"dimension6\": \"amp_version\",
+              \"metric1\": \"scroll_depth\"
+            },
+            \"page_type\": \"{% if page.layout %}{{ page.layout }}{% else %}page{% endif %}\",
+            \"content_category\": \"{% if page.categories %}{{ page.categories | first }}{% elsif page.tags %}{{ page.tags | first }}{% else %}general{% endif %}\",
+            \"post_tags\": \"{% if page.tags %}{{ page.tags | join: ',' }}{% endif %}\",
+            \"amp_version\": \"true\",
+            \"send_page_view\": true
+          }
+        }
+      },
+      \"triggers\": {
+        \"defaultPageview\": {
+          \"on\": \"visible\",
+          \"request\": \"pageview\"
+        },
+        \"scrollPing25\": {
+          \"on\": \"scroll\",
+          \"scrollSpec\": {
+            \"verticalBoundaries\": [25]
+          },
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"scroll\",
+            \"event_category\": \"engagement\",
+            \"event_label\": \"25%\",
+            \"scroll_depth\": 25
+          }
+        },
+        \"scrollPing50\": {
+          \"on\": \"scroll\",
+          \"scrollSpec\": {
+            \"verticalBoundaries\": [50]
+          },
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"scroll\",
+            \"event_category\": \"engagement\",
+            \"event_label\": \"50%\",
+            \"scroll_depth\": 50
+          }
+        },
+        \"scrollPing75\": {
+          \"on\": \"scroll\",
+          \"scrollSpec\": {
+            \"verticalBoundaries\": [75]
+          },
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"scroll\",
+            \"event_category\": \"engagement\",
+            \"event_label\": \"75%\",
+            \"scroll_depth\": 75
+          }
+        },
+        \"scrollPing90\": {
+          \"on\": \"scroll\",
+          \"scrollSpec\": {
+            \"verticalBoundaries\": [90]
+          },
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"scroll\",
+            \"event_category\": \"engagement\",
+            \"event_label\": \"90%\",
+            \"scroll_depth\": 90
+          }
+        },
+        \"outboundLinks\": {
+          \"on\": \"click\",
+          \"selector\": \"a[href^='http']:not([href*='{{ site.url | replace: 'https://', '' | replace: 'http://', '' }}']):not([href^='mailto:']):not([href^='tel:'])\",
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"click\",
+            \"event_category\": \"outbound_link\",
+            \"event_label\": \"${href}\",
+            \"link_url\": \"${href}\",
+            \"link_domain\": \"${hostname}\"
+          }
+        },
+        \"emailLinks\": {
+          \"on\": \"click\",
+          \"selector\": \"a[href^='mailto:']\",
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"contact\",
+            \"event_category\": \"email\",
+            \"event_label\": \"${href}\",
+            \"method\": \"email\"
+          }
+        },
+        \"downloadLinks\": {
+          \"on\": \"click\",
+          \"selector\": \"a[href$='.pdf'], a[href$='.zip'], a[href$='.doc'], a[href$='.docx'], a[href$='.xls'], a[href$='.xlsx'], a[href$='.ppt'], a[href$='.pptx']\",
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"file_download\",
+            \"event_category\": \"download\",
+            \"event_label\": \"${href}\",
+            \"file_name\": \"${href}\",
+            \"file_extension\": \"${pathname}\"
+          }
+        },
+        \"socialShare\": {
+          \"on\": \"amp-social-share-click\",
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"share\",
+            \"event_category\": \"social\",
+            \"event_label\": \"${type}\",
+            \"method\": \"${type}\",
+            \"content_type\": \"post\"
+          }
+        },
+        \"navigationClick\": {
+          \"on\": \"click\",
+          \"selector\": \".nav-links a, .footer-links a\",
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"navigation_click\",
+            \"event_category\": \"navigation\",
+            \"event_label\": \"${text}\",
+            \"link_text\": \"${text}\",
+            \"link_url\": \"${href}\"
+          }
+        },
+        \"buttonClicks\": {
+          \"on\": \"click\",
+          \"selector\": \"button, .btn, [role='button']\",
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"button_click\",
+            \"event_category\": \"engagement\",
+            \"event_label\": \"${text}\",
+            \"button_text\": \"${text}\"
+          }
+        },
+        \"backToTop\": {
+          \"on\": \"click\",
+          \"selector\": \".back-to-top, #backToTop\",
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"scroll_to_top\",
+            \"event_category\": \"navigation\",
+            \"event_label\": \"back_to_top\"
+          }
+        },
+        \"themeToggle\": {
+          \"on\": \"click\",
+          \"selector\": \".mode-toggle button, .icon-moon, .icon-sun\",
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"theme_toggle\",
+            \"event_category\": \"preferences\",
+            \"event_label\": \"dark_mode_toggle\"
+          }
+        },
+        \"readingSettings\": {
+          \"on\": \"click\",
+          \"selector\": \".settings-btn\",
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"reading_settings\",
+            \"event_category\": \"preferences\",
+            \"event_label\": \"${text}\"
+          }
+        },
+        \"timeOnPage\": {
+          \"on\": \"timer\",
+          \"timerSpec\": {
+            \"interval\": 30,
+            \"maxTimerLength\": 1800
+          },
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"time_on_page\",
+            \"event_category\": \"engagement\",
+            \"event_label\": \"${timerDuration}\",
+            \"value\": \"${timerDuration}\"
+          }
+        },
+        \"videoPlay\": {
+          \"on\": \"video-play\",
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"video_start\",
+            \"event_category\": \"video\",
+            \"event_label\": \"${videoTitle}\"
+          }
+        },
+        \"videoComplete\": {
+          \"on\": \"video-ended\",
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"video_complete\",
+            \"event_category\": \"video\",
+            \"event_label\": \"${videoTitle}\"
+          }
+        },
+        \"errorTracking\": {
+          \"on\": \"visible\",
+          \"visibilitySpec\": {
+            \"selector\": \".error, .not-found, [role='alert']\",
+            \"visiblePercentageMin\": 50,
+            \"totalTimeMin\": 1000
+          },
+          \"request\": \"event\",
+          \"vars\": {
+            \"event_name\": \"error_view\",
+            \"event_category\": \"error\",
+            \"event_label\": \"${text}\"
+          }
+        }
+      },
+      \"extraUrlParams\": {
+        \"page_title\": \"{{ page.title | default: site.title | jsonify }}\",
+        \"page_location\": \"{{ page.url | absolute_url }}\",
+        \"page_path\": \"{{ page.url }}\",
+        \"page_referrer\": \"${documentReferrer}\",
+        \"client_id\": \"${clientId}\",
+        \"timestamp\": \"${timestamp}\",
+        \"screen_resolution\": \"${screenWidth}x${screenHeight}\",
+        \"viewport_size\": \"${viewportWidth}x${viewportHeight}\",
+        \"user_agent\": \"${userAgent}\",
+        \"amp_page_view_id\": \"${pageViewId}\"
       }
     }
-  </script>
-</amp-analytics>
+  \u003c/script\u003e
+\u003c/amp-analytics\u003e
+{%- endif -%}

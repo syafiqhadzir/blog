@@ -166,8 +166,7 @@ Features:
 
     {%- comment -%} Empty State {%- endcomment -%}
 
-
-    <section id="searchData">
+    <amp-state id="searchData">
         <script type="application/json">
         {
 
@@ -197,7 +196,6 @@ Features:
         }
         </script>
     </amp-state>
-</section>
 
 
 
@@ -206,9 +204,9 @@ Features:
     <script type="application/json">
     {
         "vars": {
-            "gtag_id": "{{ site.google_analytics | default: 'UA-XXXXX-Y' }}",
+            "gtag_id": "{{ site.google_analytics | default: 'G-TYLK1PCZPF' }}",
             "config": {
-                "{{ site.google_analytics | default: 'UA-XXXXX-Y' }}": {
+                "{{ site.google_analytics | default: 'G-TYLK1PCZPF' }}": {
                     "groups": "default"
                 }
             }
