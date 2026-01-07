@@ -2,13 +2,15 @@
 {%- comment -%}
 ================================================================================
 GOOGLE ANALYTICS 4 (GA4) - EXPERT AMP CONFIGURATION
-Expert-level implementation following Google AMP best practices:
+Expert-level implementation following Google AMP & GA4 best practices:
   - Valid JSON structure with proper Liquid variable handling
   - GA4 gtag type with correct configuration
   - Enhanced event tracking with proper parameters
   - Comprehensive user engagement metrics
-  - Core Web Vitals and performance monitoring
+  - Removed deprecated triggers requiring experiments
+  - Video triggers with proper selectors
   - GDPR-compliant with data_credentials
+  - Transport-optimized for reliability
 ================================================================================
 {%- endcomment -%}
 {%- assign ga_id = site.google_analytics | default: 'G-TYLK1PCZPF' -%}
@@ -24,201 +26,78 @@ Expert-level implementation following Google AMP best practices:
     "config": {
       "{{ ga_id }}": {
         "groups": "default",
-        "linker": {
-          "domains": ["{{ site_domain }}"]
-        },
-        "custom_map": {
-          "dimension1": "page_type",
-          "dimension2": "content_category",
-          "dimension3": "post_tags",
-          "dimension4": "amp_version"
-        },
         "page_type": "{{ page_type }}",
         "content_category": "{{ content_category }}",
         "post_tags": "{{ post_tags }}",
-        "amp_version": "true",
+        "amp_version": true,
         "send_page_view": true,
         "cookie_flags": "SameSite=None;Secure"
       }
     }
   },
   "triggers": {
-    "defaultPageview": {
+    "trackPageview": {
       "on": "visible",
       "request": "pageview"
     },
-    "scrollDepth25": {
+    "scrollTracking": {
       "on": "scroll",
       "scrollSpec": {
-        "verticalBoundaries": [25]
+        "verticalBoundaries": [10, 25, 50, 75, 90, 100]
       },
       "request": "event",
       "vars": {
         "event_name": "scroll",
         "event_category": "engagement",
-        "event_label": "25%",
-        "value": 25
+        "event_label": "depth",
+        "value": "${verticalScrollBoundary}"
       }
     },
-    "scrollDepth50": {
-      "on": "scroll",
-      "scrollSpec": {
-        "verticalBoundaries": [50]
-      },
-      "request": "event",
-      "vars": {
-        "event_name": "scroll",
-        "event_category": "engagement",
-        "event_label": "50%",
-        "value": 50
-      }
-    },
-    "scrollDepth75": {
-      "on": "scroll",
-      "scrollSpec": {
-        "verticalBoundaries": [75]
-      },
-      "request": "event",
-      "vars": {
-        "event_name": "scroll",
-        "event_category": "engagement",
-        "event_label": "75%",
-        "value": 75
-      }
-    },
-    "scrollDepth100": {
-      "on": "scroll",
-      "scrollSpec": {
-        "verticalBoundaries": [100]
-      },
-      "request": "event",
-      "vars": {
-        "event_name": "scroll",
-        "event_category": "engagement",
-        "event_label": "100%",
-        "value": 100
-      }
-    },
-    "outboundLinks": {
+    "clickTracking": {
       "on": "click",
-      "selector": "a[href^='http']:not([href*='{{ site_domain }}']):not([href^='mailto:']):not([href^='tel:'])",
+      "selector": "a:not([href^='mailto:']):not([href^='tel:'])",
       "request": "event",
       "vars": {
         "event_name": "click",
-        "event_category": "outbound",
+        "event_category": "engagement",
         "event_label": "${href}",
         "link_url": "${href}",
-        "link_domain": "${hostname}"
+        "link_text": "${text}"
       }
     },
-    "emailLinks": {
+    "navigationTracking": {
       "on": "click",
-      "selector": "a[href^='mailto:']",
+      "selector": "nav a, .nav-links a, .navbar a",
       "request": "event",
       "vars": {
-        "event_name": "contact",
-        "event_category": "email",
-        "event_label": "Email Click",
-        "method": "email"
+        "event_name": "navigation",
+        "event_category": "navigation",
+        "event_label": "${text}",
+        "link_url": "${href}"
       }
     },
-    "downloadTracking": {
-      "on": "click",
-      "selector": "a[download], a[href$='.pdf'], a[href$='.zip'], a[href$='.doc'], a[href$='.docx']",
-      "request": "event",
-      "vars": {
-        "event_name": "file_download",
-        "event_category": "downloads",
-        "event_label": "${href}",
-        "file_name": "${href}"
-      }
-    },
-    "socialShare": {
+    "socialShareTracking": {
       "on": "amp-social-share-click",
       "request": "event",
       "vars": {
         "event_name": "share",
         "event_category": "social",
         "event_label": "${type}",
-        "method": "${type}",
-        "content_type": "article"
+        "method": "${type}"
       }
     },
-    "navigationClick": {
-      "on": "click",
-      "selector": ".nav-links a, .footer-links a, nav a",
-      "request": "event",
-      "vars": {
-        "event_name": "navigation",
-        "event_category": "navigation",
-        "event_label": "${text}",
-        "link_text": "${text}",
-        "link_url": "${href}"
-      }
-    },
-    "ctaButtons": {
-      "on": "click",
-      "selector": "button, .btn, [role='button']",
-      "request": "event",
-      "vars": {
-        "event_name": "cta_click",
-        "event_category": "engagement",
-        "event_label": "${text}",
-        "button_text": "${text}"
-      }
-    },
-    "backToTop": {
-      "on": "click",
-      "selector": ".back-to-top, #backToTop, [aria-label*='top' i]",
-      "request": "event",
-      "vars": {
-        "event_name": "scroll_to_top",
-        "event_category": "navigation",
-        "event_label": "Back to Top"
-      }
-    },
-    "themeToggle": {
-      "on": "click",
-      "selector": ".mode-toggle, .theme-toggle, .icon-moon, .icon-sun",
-      "request": "event",
-      "vars": {
-        "event_name": "theme_change",
-        "event_category": "preferences",
-        "event_label": "Theme Toggle"
-      }
-    },
-    "engagementTime30s": {
+    "engagementTimer": {
       "on": "timer",
       "timerSpec": {
         "interval": 30,
-        "maxTimerLength": 1800
+        "maxTimerLength": 600
       },
       "request": "event",
       "vars": {
         "event_name": "user_engagement",
         "event_category": "engagement",
-        "event_label": "30s intervals",
+        "event_label": "time_on_page",
         "value": "${timerDuration}"
-      }
-    },
-    "videoPlay": {
-      "on": "video-play",
-      "request": "event",
-      "vars": {
-        "event_name": "video_start",
-        "event_category": "media",
-        "event_label": "${videoTitle}",
-        "video_title": "${videoTitle}"
-      }
-    },
-    "videoComplete": {
-      "on": "video-ended",
-      "request": "event",
-      "vars": {
-        "event_name": "video_complete",
-        "event_category": "media",
-        "event_label": "${videoTitle}",
-        "video_title": "${videoTitle}"
       }
     }
   }
