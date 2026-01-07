@@ -4,8 +4,8 @@
 
 <body class="{{ site.theme_config.appearance | default: 'auto' }}"
   [class]="uiMode == 'dark' ? 'dark-theme' : (uiMode == 'light' ? 'light-theme' : '{{ site.theme_config.appearance | default: 'auto' }}')">
-  {%- include analytics.html -%}
-  <div id="top-target"></div>
+{% include analytics.html %}
+<div id="top-target"></div>
   <amp-animation id="showBackToTop" layout="nodisplay">
     <script type="application/json">
       {

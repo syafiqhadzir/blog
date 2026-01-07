@@ -200,31 +200,47 @@ Features:
 
 
 {%- comment -%} Search Analytics {%- endcomment -%}
+{%- assign ga_id = site.google_analytics | default: 'G-TYLK1PCZPF' -%}
 <amp-analytics type="gtag" data-credentials="include">
-    <script type="application/json">
-    {
-        "vars": {
-            "gtag_id": "{{ site.google_analytics | default: 'G-TYLK1PCZPF' }}",
-            "config": {
-                "{{ site.google_analytics | default: 'G-TYLK1PCZPF' }}": {
-                    "groups": "default"
-                }
-            }
-        },
-        "triggers": {
-            "searchEvent": {
-                "on": "amp-autocomplete-select",
-                "selector": "amp-autocomplete",
-                "request": "event",
-                "vars": {
-                    "event_name": "search",
-                    "search_term": "${value}"
-                }
-            }
-        }
+<script type="application/json">
+{
+  "vars": {
+    "gtag_id": "{{ ga_id }}",
+    "config": {
+      "{{ ga_id }}": {
+        "groups": "default",
+        "send_page_view": false
+      }
     }
-    </script>
+  },
+  "triggers": {
+    "searchPerformed": {
+      "on": "amp-autocomplete-select",
+      "selector": "amp-autocomplete",
+      "request": "event",
+      "vars": {
+        "event_name": "search",
+        "event_category": "engagement",
+        "event_label": "${value}",
+        "search_term": "${value}"
+      }
+    },
+    "searchInput": {
+      "on": "change",
+      "selector": "#archive-search-input",
+      "request": "event",
+      "vars": {
+        "event_name": "search_input",
+        "event_category": "engagement",
+        "event_label": "${value}",
+        "search_term": "${value}"
+      }
+    }
+  }
+}
+</script>
 </amp-analytics>
+
 
 {%- comment -%} Schema.org JSON-LD {%- endcomment -%}
 <script type="application/ld+json">
