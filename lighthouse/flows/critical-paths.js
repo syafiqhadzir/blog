@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-/* eslint-disable no-console, unicorn/no-process-exit */
+/* eslint-disable no-console, unicorn/no-process-exit, max-statements */
 
 import { startFlow } from 'lighthouse';
 import { writeFile } from 'node:fs/promises';

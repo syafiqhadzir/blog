@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import esbuild from 'esbuild';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -68,6 +67,6 @@ try {
   }
 } catch (error) {
   console.error('❌ Service Worker Build Failed:', error);
-  // eslint-disable-next-line unicorn/no-process-exit
+
   process.exit(1);
 }

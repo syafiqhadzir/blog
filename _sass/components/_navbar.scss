@@ -73,7 +73,11 @@
     left var(--transition-base) var(--ease-out-expo);
 }
 
-.nav-links a:hover::after,
+.nav-links a:hover::after {
+  left: 0;
+  width: 100%;
+}
+
 .nav-links .active::after {
   left: 0;
   width: 100%;
@@ -117,30 +121,30 @@
 }
 
 /* Dark Theme Override */
-.dark-theme .mode-toggle .icon-moon {
+.dark-theme .icon-moon {
   display: none;
 }
 
-.dark-theme .mode-toggle .icon-sun {
+.dark-theme .icon-sun {
   display: flex;
 }
 
 /* Light Theme Override (Explicit) */
-.light-theme .mode-toggle .icon-moon {
+.light-theme .icon-moon {
   display: flex;
 }
 
-.light-theme .mode-toggle .icon-sun {
+.light-theme .icon-sun {
   display: none;
 }
 
 /* System Dark Preference (Auto) */
 @media (prefers-color-scheme: dark) {
-  .auto .mode-toggle .icon-moon {
+  .auto .icon-moon {
     display: none;
   }
 
-  .auto .mode-toggle .icon-sun {
+  .auto .icon-sun {
     display: flex;
   }
 }

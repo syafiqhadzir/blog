@@ -24,7 +24,7 @@
   text-decoration: none;
   background: var(--bg-color);
   border: 2px solid var(--text-color);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+  box-shadow: 0 4px 12px color(srgb 0 0 0 / 15%);
 }
 
 /* Expert A11y: Visible focus indicators */
@@ -41,13 +41,6 @@ a:focus,
 button:focus,
 [tabindex]:focus {
   outline: none;
-}
-
-/* Undo default focus if :focus-visible is supported */
-a:focus:not(:focus-visible),
-button:focus:not(:focus-visible),
-[tabindex]:focus:not(:focus-visible) {
-  box-shadow: none;
 }
 
 /* Expert A11y: Screen reader only text */

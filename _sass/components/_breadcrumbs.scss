@@ -21,11 +21,15 @@
   color: var(--text-secondary);
 }
 
-.breadcrumbs li:not(:last-child)::after {
+.breadcrumbs-separator {
   margin: 0 0.5rem;
   color: var(--text-secondary);
   content: '/';
   opacity: 50%;
+}
+
+.breadcrumbs li:last-child .breadcrumbs-separator {
+  display: none;
 }
 
 .breadcrumbs a {

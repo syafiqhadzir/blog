@@ -32,9 +32,11 @@ async function extractLinksFromPage(
 
   const normalized: string[] = [];
   for (const href of hrefs) {
-    if (href) {
+    if (href != undefined) {
       const clean = normalizeUrl(href);
-      if (clean) normalized.push(clean);
+      if (clean != undefined && clean.length > 0) {
+        normalized.push(clean);
+      }
     }
   }
   return normalized;
@@ -131,7 +133,7 @@ test.describe('Internal Link Validation', { tag: ['@full', '@links'] }, () => {
     );
 
     // Validate all found links sequentially to avoid overwhelming server
-    const linkValidationResults: { link: string; status: number }[] = [];
+    const linkValidationResults: Array<{ link: string; status: number }> = [];
 
     for (const link of allFoundLinks) {
       const result = await validateLink(link, routeSet, page);

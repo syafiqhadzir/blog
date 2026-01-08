@@ -22,7 +22,6 @@ test.describe('SEO & Metadata', { tag: ['@full', '@seo'] }, () => {
 
     expect(postRoute, 'At least one post should exist').toBeDefined();
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     await page.goto(postRoute!);
     await expect(page.locator('meta[property="og:title"]')).toHaveCount(1);
     await expect(page.locator('meta[property="og:type"]')).toHaveAttribute(

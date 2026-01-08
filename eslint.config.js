@@ -65,12 +65,15 @@ export default tseslint.config(
       'no-var': 'error',
       'prefer-const': 'error',
 
+      // SonarJS bleeding-edge
+      'sonarjs/cognitive-complexity': ['error', 10],
       // Unicorn strict
       'unicorn/consistent-function-scoping': 'error',
       'unicorn/no-null': 'error',
       'unicorn/numeric-separators-style': 'error',
       'unicorn/prefer-module': 'error',
       'unicorn/prefer-ternary': 'error',
+      'unicorn/prefer-top-level-await': 'error',
       'unicorn/prevent-abbreviations': [
         'error',
         {
@@ -89,6 +92,7 @@ export default tseslint.config(
           },
         },
       ],
+
       'unicorn/switch-case-braces': 'error',
     },
   },
@@ -127,9 +131,11 @@ export default tseslint.config(
         },
       ],
       '@typescript-eslint/no-confusing-void-expression': 'error',
+      '@typescript-eslint/no-deprecated': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-floating-promises': 'error',
       '@typescript-eslint/no-for-in-array': 'error',
+      '@typescript-eslint/no-import-type-side-effects': 'error',
       '@typescript-eslint/no-misused-promises': 'error',
       '@typescript-eslint/no-unnecessary-type-assertion': 'error',
       '@typescript-eslint/no-unsafe-argument': 'error',
@@ -181,14 +187,7 @@ export default tseslint.config(
 
   // Config/Scripts
   {
-    files: [
-      'lighthouserc.js',
-      'lighthouserc.cjs',
-      '*.config.js',
-      '**/*.cjs',
-      'scripts/*.js',
-      'lighthouse/**/*.js',
-    ],
+    files: ['lighthouserc.js', '*.config.js', 'scripts/*.js'],
     languageOptions: {
       globals: globals.node,
     },
@@ -199,6 +198,24 @@ export default tseslint.config(
       'no-console': 'off',
       'no-magic-numbers': 'off',
       'unicorn/no-process-exit': 'off',
+    },
+  },
+
+  // CJS Files Only (strict CommonJS isolation)
+  {
+    files: ['**/*.cjs', 'lighthouserc.cjs'],
+    languageOptions: {
+      globals: globals.node,
+    },
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+      'max-lines': 'off',
+      'max-lines-per-function': 'off',
+      'max-statements': 'off',
+      'no-console': 'off',
+      'no-magic-numbers': 'off',
+      'unicorn/no-process-exit': 'off',
+      'unicorn/prefer-module': 'off',
     },
   },
 

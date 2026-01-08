@@ -42,6 +42,6 @@ try {
   await optimizeImages();
 } catch (error) {
   process.stderr.write(`Image optimization failed: ${String(error)}\n`);
-  // eslint-disable-next-line unicorn/no-process-exit
+
   process.exit(1);
 }

@@ -3,8 +3,6 @@
  * @license MIT
  */
 
-/* eslint-disable no-console */
-
 import { onCLS, onFCP, onFID, onINP, onLCP, onTTFB } from 'web-vitals';
 
 const ANALYTICS_ENDPOINT = process.env.ANALYTICS_ENDPOINT || '/api/vitals';

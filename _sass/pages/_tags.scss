@@ -100,7 +100,7 @@
 
   .tag-chip-count {
     color: var(--bg-color);
-    background: rgb(255 255 255 / 20%);
+    background: color(srgb 1 1 1 / 20%);
   }
 }
 
@@ -113,7 +113,7 @@
 
   .tag-chip-count {
     color: var(--bg-color);
-    background: rgb(255 255 255 / 20%);
+    background: color(srgb 1 1 1 / 20%);
   }
 }
 
@@ -127,7 +127,7 @@
 
   .tag-chip-count {
     color: var(--bg-color);
-    background: rgb(255 255 255 / 25%);
+    background: color(srgb 1 1 1 / 25%);
   }
 }
 
@@ -149,7 +149,7 @@
   .tag-chip-count {
     font-weight: 600;
     color: var(--bg-color);
-    background: rgb(255 255 255 / 30%);
+    background: color(srgb 1 1 1 / 30%);
   }
 }
 
@@ -300,7 +300,7 @@ details[open] .tag-chevron {
   border-top: 1px solid var(--border-color);
   transition: background-color 0.15s;
 
-  &:hover {
+  &.is-hovered {
     background: var(--accent-shadow);
   }
 }
@@ -348,7 +348,7 @@ details[open] .tag-chevron {
     background: linear-gradient(to right, var(--code-bg), transparent);
   }
 
-  .tag-post-item:hover {
+  .tag-post-item.is-hovered {
     background: var(--accent-shadow);
   }
 

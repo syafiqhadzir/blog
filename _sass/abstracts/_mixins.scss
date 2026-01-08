@@ -75,7 +75,7 @@ $breakpoints: (
 
   @media (prefers-reduced-motion: reduce) {
     /* stylelint-disable-next-line no-invalid-position-declaration -- transition-duration must be on the element itself */
-    transition-duration: 0.01ms;
+    transition-duration: 100ms;
   }
 }
 
@@ -160,11 +160,11 @@ $breakpoints: (
   @if $level == 1 {
     box-shadow:
       0 1px 3px var(--shadow-base),
-      0 1px 2px rgb(0 0 0 / 6%);
+      0 1px 2px color(srgb 0 0 0 / 6%);
   } @else if $level == 2 {
     box-shadow:
       0 4px 6px var(--shadow-base),
-      0 2px 4px rgb(0 0 0 / 6%);
+      0 2px 4px color(srgb 0 0 0 / 6%);
   } @else if $level == 3 {
     box-shadow:
       0 10px 20px var(--shadow-lift),

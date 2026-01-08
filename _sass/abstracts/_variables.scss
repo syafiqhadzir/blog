@@ -32,9 +32,9 @@
   --code-bg: #f5f5f5;
   --code-color: #24292e;
   --accent-color: #00509d; /* AAA compliant */
-  --accent-shadow: rgb(0 80 157 / 35%);
-  --shadow-base: rgb(0 0 0 / 10%);
-  --shadow-lift: rgb(0 0 0 / 15%);
+  --accent-shadow: color(srgb 0 0.314 0.616 / 35%);
+  --shadow-base: color(srgb 0 0 0 / 10%);
+  --shadow-lift: color(srgb 0 0 0 / 15%);
   --focus-ring: 0 0 0 3px var(--bg-color), 0 0 0 6px var(--accent-color);
 
   /* Gradient Accents */

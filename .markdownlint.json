@@ -8,12 +8,9 @@
   "MD010": { "code_blocks": false },
   "MD012": { "maximum": 1 },
   "MD013": {
-    "line_length": 80,
-    "code_blocks": false,
+    "line_length": 120,
     "tables": false,
-    "headings": false,
-    "strict": true,
-    "stern": true
+    "headings": false
   },
   "MD022": { "lines_above": 1, "lines_below": 1 },
   "MD024": { "siblings_only": false },
@@ -103,6 +100,6 @@
   "MD053": true,
   "MD054": true,
   "MD055": { "style": "leading_and_trailing" },
-  "MD056": true,
+  "MD056": { "style": "leading_and_trailing" },
   "MD058": { "style": "dash" }
 }

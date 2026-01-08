@@ -34,3 +34,6 @@ gem 'jekyll-minifier', '~> 0.2.2'
 platforms :windows do
   gem 'wdm', '>= 0.1.0'
 end
+
+gem 'rubocop-performance', '~> 1.26', group: :development
+gem 'rubocop-rake', '~> 0.7.1', group: :development

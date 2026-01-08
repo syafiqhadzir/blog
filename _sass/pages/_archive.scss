@@ -100,22 +100,18 @@
 }
 
 /* Autocomplete Dropdown */
-/* stylelint-disable selector-no-qualifying-type -- AMP component generates div[role] */
-amp-autocomplete {
-  > [role='listbox'] {
-    position: absolute;
-    z-index: 100;
-    width: 100%;
-    max-height: 300px;
-    margin-top: 4px;
-    overflow-y: auto;
-    background: var(--bg-color);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
-  }
+amp-autocomplete > .autocomplete-listbox {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  max-height: 300px;
+  margin-top: 4px;
+  overflow-y: auto;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px color(srgb 0 0 0 / 12%);
 }
-/* stylelint-enable selector-no-qualifying-type */
 
 .autocomplete-item {
   display: flex;
@@ -179,7 +175,7 @@ amp-autocomplete {
     border-color: var(--link-color);
     box-shadow:
       0 0 0 4px var(--accent-shadow),
-      0 4px 12px rgb(0 0 0 / 8%);
+      0 4px 12px color(srgb 0 0 0 / 8%);
     transform: translateY(-1px);
   }
 
@@ -194,7 +190,7 @@ amp-autocomplete {
 }
 
 /* Focus state for search icon */
-.archive-search-input:focus ~ .search-icon {
+.search-icon.is-focused {
   opacity: 100%;
 }
 
@@ -216,12 +212,11 @@ amp-autocomplete {
     background: var(--code-bg);
     border: 1px solid var(--border-color);
     border-radius: 4px;
-    box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+    box-shadow: 0 1px 2px color(srgb 0 0 0 / 5%);
   }
 }
 
-.archive-search-input:focus ~ .search-hint,
-.archive-search-input:not(:placeholder-shown) ~ .search-hint {
+.search-hint.is-hidden {
   opacity: 0%;
 }
 
@@ -362,8 +357,8 @@ details[open] .year-chevron {
     background-color 0.15s,
     border-left-color 0.15s;
 
-  &:hover {
-    background: rgb(0 102 204 / 3%);
+  &.is-hovered {
+    background: color(srgb 0 0.4 0.8 / 3%);
   }
 
   &[hidden] {
@@ -500,8 +495,8 @@ details[open] .year-chevron {
     border-color: var(--border-color);
   }
 
-  .archive-post-item:hover {
-    background: rgb(88 166 255 / 5%);
+  .archive-post-item.is-hovered {
+    background: color(srgb 0.345 0.651 1 / 5%);
   }
 
   .archive-tag {

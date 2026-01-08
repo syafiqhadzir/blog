@@ -75,10 +75,10 @@ RSpec.describe 'Post Front Matter' do
 
   describe 'Post uniqueness' do
     it 'has no duplicate titles' do
-      titles = post_files.map do |file|
+      titles = post_files.filter_map do |file|
         front_matter = parse_front_matter(file)
         front_matter['title']
-      end.compact
+      end
 
       duplicates = titles.group_by(&:itself).select { |_, v| v.size > 1 }.keys
 

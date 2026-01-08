@@ -15,10 +15,10 @@ test.describe('SEO Metadata', () => {
       'content',
       /.+/,
     );
-    await expect(page.locator('meta[name="author"]')).toHaveAttribute(
-      'content',
-      /.+/,
-    );
+    const authorContent = await page
+      .locator('meta[name="author"]')
+      .getAttribute('content');
+    expect(authorContent !== null && authorContent.length > 0).toBe(true);
 
     // Open Graph
     await expect(page.locator('meta[property="og:title"]')).toHaveCount(1);
@@ -55,6 +55,7 @@ test.describe('SEO Metadata', () => {
 
   test('should prevent duplicate JSON-LD schemas', async ({ page }) => {
     // Evaluate all script tags content in the browser context
+    /* eslint-disable max-nested-callbacks -- Playwright evaluateAll requires nested inline functions */
     const schemas = await page
       .locator('script[type="application/ld+json"]')
       .evaluateAll((scripts) => {
@@ -76,6 +77,7 @@ test.describe('SEO Metadata', () => {
               JSON.parse(script.textContent) as Record<string, unknown>,
           );
       });
+    /* eslint-enable max-nested-callbacks */
 
     const blogPostingSchemas = schemas.filter(
       (s) => s['@type'] === 'BlogPosting' || s['@type'] === 'Article',

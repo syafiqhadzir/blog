@@ -13,7 +13,7 @@ test.describe('PWA Functionality', { tag: ['@full', '@pwa'] }, () => {
       if ('serviceWorker' in navigator) {
         try {
           const registration = await navigator.serviceWorker.ready;
-          return !!registration;
+          return registration != undefined;
         } catch {
           return false;
         }
@@ -113,7 +113,7 @@ test.describe('PWA Functionality', { tag: ['@full', '@pwa'] }, () => {
     expect(response.ok(), 'Manifest should exist').toBe(true);
 
     const manifest = (await response.json()) as {
-      icons: { sizes: string; src: string; type: string }[];
+      icons: Array<{ sizes: string; src: string; type: string }>;
     };
 
     expect(manifest.icons).toBeDefined();

@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 import os from 'node:os';
 
 const PERF_MODE = process.env['PERF_MODE'] === 'true';
-const CI = !!process.env['CI'];
+const CI = process.env['CI'] != undefined && process.env['CI'].length > 0;
 
 // Helper to determine worker count
 function getWorkerCount(): number {
@@ -74,9 +74,11 @@ export default defineConfig({
 
   // Use webServer for reliable build-once-serve-static pattern
   webServer: {
-    command: process.env['SKIP_BUILD']
-      ? 'npx http-server _site -p 5000 -c-1 --silent'
-      : 'npm run build && npx http-server _site -p 5000 -c-1 --silent',
+    command:
+      process.env['SKIP_BUILD'] != undefined &&
+      process.env['SKIP_BUILD'].length > 0
+        ? 'npx http-server _site -p 5000 -c-1 --silent'
+        : 'npm run build && npx http-server _site -p 5000 -c-1 --silent',
     reuseExistingServer: !CI,
     stderr: 'pipe',
     stdout: 'pipe',

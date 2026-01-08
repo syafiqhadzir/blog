@@ -27,7 +27,7 @@ test.describe('Fast Smoke Suite', { tag: '@fast' }, () => {
       postRoute,
       'At least one post should exist for smoke test',
     ).toBeDefined();
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
     await page.goto(postRoute!, { waitUntil: 'domcontentloaded' });
     await expect(page.locator('article')).toBeVisible();
   });

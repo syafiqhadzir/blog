@@ -3,8 +3,6 @@
  * @license MIT
  */
 
-/* eslint-disable no-console */
-
 import { readFile } from 'node:fs/promises';
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
@@ -34,7 +32,7 @@ async function analyzeLighthouseReport(reportPath) {
     }
   }
 
-  if (!OPENAI_API_KEY) {
+  if (typeof OPENAI_API_KEY !== 'string' || OPENAI_API_KEY.length === 0) {
     console.warn('⚠️ OPENAI_API_KEY not set. Returning basic analysis.');
     return generateBasicAnalysis(issues);
   }

@@ -50,6 +50,36 @@ function calculateTrends(reports) {
  * @returns {string} HTML content
  */
 function generateDashboard(trends) {
+  const chartData = {
+    datasets: [
+      {
+        borderColor: 'rgb(255, 99, 132)',
+        data: trends.performance,
+        label: 'Performance',
+        tension: 0.1,
+      },
+      {
+        borderColor: 'rgb(54, 162, 235)',
+        data: trends.accessibility,
+        label: 'Accessibility',
+        tension: 0.1,
+      },
+      {
+        borderColor: 'rgb(255, 206, 86)',
+        data: trends.bestPractices,
+        label: 'Best Practices',
+        tension: 0.1,
+      },
+      {
+        borderColor: 'rgb(75, 192, 192)',
+        data: trends.seo,
+        label: 'SEO',
+        tension: 0.1,
+      },
+    ],
+    labels: trends.dates,
+  };
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,44 +102,8 @@ function generateDashboard(trends) {
     const ctx = document.getElementById('trendsChart').getContext('2d');
     new Chart(ctx, {
       type: 'line',
-      data: {
-        labels: ${JSON.stringify(trends.dates)},
-        datasets: [
-          {
-            label: 'Performance',
-            data: ${JSON.stringify(trends.performance)},
-            borderColor: 'rgb(255, 99, 132)',
-            tension: 0.1
-          },
-          {
-            label: 'Accessibility',
-            data: ${JSON.stringify(trends.accessibility)},
-            borderColor: 'rgb(54, 162, 235)',
-            tension: 0.1
-          },
-          {
-            label: 'Best Practices',
-            data: ${JSON.stringify(trends.bestPractices)},
-            borderColor: 'rgb(255, 206, 86)',
-            tension: 0.1
-          },
-          {
-            label: 'SEO',
-            data: ${JSON.stringify(trends.seo)},
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 100
-          }
-        }
-      }
+      data: ${JSON.stringify(chartData)},
+      options: { responsive: true, scales: { y: { beginAtZero: true, max: 100 } } }
     });
   </script>
 </body>

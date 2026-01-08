@@ -39,8 +39,10 @@ const normalizeRoute = (route: string): string => {
     .replace('http://blog.syafiqhadzir.dev', '')
     .split('#')[0];
 
-  if (clean?.endsWith('index.html')) clean = clean.replace('index.html', '');
-  if (!clean?.startsWith('/')) clean = '/' + (clean ?? '');
+  if (clean != undefined && clean.length > 0 && clean.endsWith('index.html'))
+    clean = clean.replace('index.html', '');
+  if (clean === undefined || !(clean.length > 0 && clean.startsWith('/')))
+    clean = '/' + (clean ?? '');
   return clean;
 };
 
@@ -67,7 +69,7 @@ async function parseFeedRoutes(
     for (const entry of entryList) {
       const entryObject = entry as { link?: { '@_href'?: string } };
       const link = entryObject.link?.['@_href'];
-      if (link) {
+      if (link != undefined && link.length > 0) {
         routes.add(normalizeRoute(link));
       }
     }
@@ -99,7 +101,7 @@ async function parseSitemapRoutes(
     for (const entry of urlList) {
       const entryObject = entry as { loc?: string };
       const location = entryObject.loc;
-      if (location) {
+      if (location != undefined && location.length > 0) {
         routes.add(normalizeRoute(location));
       }
     }
@@ -139,7 +141,7 @@ export const test = base.extend<BlogFixtures>({
   blockAdsAndAnalytics: async ({ page: _page }, use) => {
     await use(async (targetPage: Page) => {
       if (!PERF_MODE) return;
-      await targetPage.route('**/*', (route) => {
+      await targetPage.route('**/*', async (route) => {
         const url = route.request().url();
         const type = route.request().resourceType();
         // Block trackers, fonts, and heavy media in fast mode
@@ -219,9 +221,13 @@ export const test = base.extend<BlogFixtures>({
         .all();
 
       // Extract hrefs first to dedupe
-      const attributePromises = links.map((link) => link.getAttribute('href'));
+      const attributePromises = links.map(async (link) =>
+        link.getAttribute('href'),
+      );
       const attributes = await Promise.all(attributePromises);
-      const hrefs = attributes.filter((h): h is string => !!h);
+      const hrefs = attributes.filter(
+        (h): h is string => h != undefined && h.length > 0,
+      );
       const uniqueHrefs = [...new Set(hrefs)];
 
       for (const href of uniqueHrefs) {

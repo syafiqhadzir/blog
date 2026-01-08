@@ -26,7 +26,7 @@
   background: var(--bg-color);
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  box-shadow: 0 4px 12px color(srgb 0 0 0 / 10%);
 }
 
 .reading-settings-panel[aria-hidden='false'] {

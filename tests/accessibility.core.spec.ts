@@ -58,7 +58,6 @@ test.describe(
         'At least one post route should exist',
       ).toBeGreaterThan(0);
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       await page.goto(postRoutes[0]!);
 
       const accessibilityScanResults = await new AxeBuilder({ page })
