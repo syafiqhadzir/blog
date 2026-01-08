@@ -86,7 +86,6 @@ Recommended GA4 Configuration:
         "linker": {
           "domains": ["{{ site_domain }}"]
         },
-        "send_page_view": true,
         "cookie_flags": "SameSite=None;Secure",
         "cookie_expires": 7776000,
         "anonymize_ip": false
@@ -241,14 +240,14 @@ Recommended GA4 Configuration:
         "tag_name": "${text}"
       }
     },
-    "searchInteraction": {
-      "on": "change",
-      "selector": "#archive-search-input, .archive-search-input",
+    "searchSubmit": {
+      "on": "click",
+      "selector": ".archive-search-submit, [type='submit']",
       "request": "event",
       "vars": {
         "event_name": "search",
         "event_category": "engagement",
-        "search_term": "${value}"
+        "event_label": "search_submit"
       }
     },
     "fileDownload": {
@@ -293,14 +292,13 @@ Recommended GA4 Configuration:
       }
     },
     "themeToggle": {
-      "on": "change",
-      "selector": "[name='theme'], .theme-toggle, [on*='theme']",
+      "on": "click",
+      "selector": ".theme-toggle, #theme-toggle, [aria-label*='theme']",
       "request": "event",
       "vars": {
         "event_name": "theme_change",
         "event_category": "customization",
-        "event_label": "${value}",
-        "theme_mode": "${value}"
+        "event_label": "toggle"
       }
     },
     "backToTopClick": {
