@@ -22,7 +22,6 @@ Key Features:
   • Internal navigation metrics
   • File download tracking
   • Search query analytics
-  • 404 error monitoring
   • Social share attribution
   • Reading progress tracking
   • Tag/category interaction
@@ -320,17 +319,6 @@ Recommended GA4 Configuration:
         "event_category": "content_discovery",
         "event_label": "${text}",
         "link_url": "${href}"
-      }
-    },
-    "errorPage": {
-      "on": "visible",
-      "selector": ".error-404, [class*='404']",
-      "request": "event",
-      "vars": {
-        "event_name": "page_error",
-        "event_category": "error",
-        "event_label": "404",
-        "error_type": "404_not_found"
       }
     }
   },
