@@ -25,24 +25,36 @@ export default tseslint.config(
   /** @type {any} */ (unicorn.configs.recommended),
   /** @type {any} */ (perfectionist.configs['recommended-natural']),
 
-  // General Rules (Non-type-checked)
+  // General Rules - BLEEDING-EDGE STRICT
   {
     languageOptions: {
+      ecmaVersion: 'latest',
       globals: {
         ...globals.browser,
         ...globals.node,
         ...globals.serviceworker,
       },
+      sourceType: 'module',
+    },
+    linterOptions: {
+      reportUnusedDisableDirectives: 'error',
     },
     rules: {
-      // Strict complexity limits (practical for production code)
+      //Bleeding-edge complexity limits
       complexity: ['error', 8],
       'max-depth': ['error', 3],
       'max-lines': ['error', 200],
       'max-lines-per-function': ['error', 60],
+      'max-nested-callbacks': ['error', 3],
       'max-params': ['error', 3],
       'max-statements': ['error', 20],
+
+      // Strictest code quality
+      'no-alert': 'error',
       'no-console': 'error',
+      'no-debugger': 'error',
+      'no-eval': 'error',
+      'no-implied-eval': 'error',
       'no-magic-numbers': [
         'error',
         {
@@ -50,6 +62,10 @@ export default tseslint.config(
           ignoreArrayIndexes: true,
         },
       ],
+      'no-var': 'error',
+      'prefer-const': 'error',
+
+      // Unicorn strict
       'unicorn/consistent-function-scoping': 'error',
       'unicorn/no-null': 'error',
       'unicorn/numeric-separators-style': 'error',
@@ -77,12 +93,9 @@ export default tseslint.config(
     },
   },
 
-  // TypeScript Only Rules (Type-checked)
+  // TypeScript - BLEEDING-EDGE STRICT (using recommended instead of strictTypeChecked to avoid oneOf error)
+  ...tseslint.configs.recommended,
   {
-    extends: [
-      ...tseslint.configs.strictTypeChecked,
-      ...tseslint.configs.stylisticTypeChecked,
-    ],
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       parserOptions: {
@@ -91,50 +104,62 @@ export default tseslint.config(
       },
     },
     rules: {
+      // Enable bleeding-edge strict TypeScript rules manually
+      '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
+      '@typescript-eslint/await-thenable': 'error',
+      '@typescript-eslint/consistent-type-assertions': 'error',
+      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/explicit-function-return-type': [
+        'error',
+        { allowExpressions: true },
+      ],
       '@typescript-eslint/naming-convention': [
         'error',
-        {
-          format: ['camelCase'],
-          selector: 'default',
-        },
-        {
-          format: ['camelCase', 'UPPER_CASE'],
-          selector: 'variable',
-        },
-        {
-          format: ['PascalCase'],
-          selector: 'typeLike',
-        },
-        {
-          format: ['camelCase', 'PascalCase'],
-          selector: 'import',
-        },
+        { format: ['camelCase'], selector: 'default' },
+        { format: ['camelCase', 'UPPER_CASE'], selector: 'variable' },
+        { format: ['PascalCase'], selector: 'typeLike' },
+        { format: ['camelCase', 'PascalCase'], selector: 'import' },
         {
           format: ['camelCase'],
           leadingUnderscore: 'allow',
           selector: 'parameter',
         },
-        {
-          format: null, // eslint-disable-line unicorn/no-null
-          selector: 'objectLiteralProperty',
-        },
       ],
+      '@typescript-eslint/no-confusing-void-expression': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-for-in-array': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
+      '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+      '@typescript-eslint/no-unsafe-argument': 'error',
+      '@typescript-eslint/no-unsafe-assignment': 'error',
+      '@typescript-eslint/no-unsafe-call': 'error',
+      '@typescript-eslint/no-unsafe-member-access': 'error',
+      '@typescript-eslint/no-unsafe-return': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_' },
       ],
+      '@typescript-eslint/prefer-nullish-coalescing': 'error',
+      '@typescript-eslint/prefer-optional-chain': 'error',
       '@typescript-eslint/prefer-readonly': 'error',
+      '@typescript-eslint/prefer-reduce-type-parameter': 'error',
+      '@typescript-eslint/prefer-return-this-type': 'error',
+      '@typescript-eslint/promise-function-async': 'error',
+      '@typescript-eslint/require-await': 'error',
+      '@typescript-eslint/restrict-plus-operands': 'error',
+      '@typescript-eslint/restrict-template-expressions': 'error',
+      '@typescript-eslint/strict-boolean-expressions': 'error',
+      '@typescript-eslint/switch-exhaustiveness-check': 'error',
     },
   },
 
   // Playwright
   {
-    files: ['{e2e,tests}/**/*.{ts,js}'],
     ...playwright.configs['flat/recommended'],
+    files: ['{e2e,tests}/**/*.{ts,js}'],
     rules: {
-      // Test files have more relaxed limits for test suites
       complexity: ['error', 12],
       'max-lines': ['error', 400],
       'max-lines-per-function': 'off',
@@ -154,7 +179,7 @@ export default tseslint.config(
     },
   },
 
-  // Node.js globals for config/scripts
+  // Config/Scripts
   {
     files: [
       'lighthouserc.js',
@@ -165,40 +190,35 @@ export default tseslint.config(
       'lighthouse/**/*.js',
     ],
     languageOptions: {
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
     },
     rules: {
       'max-lines': 'off',
       'max-lines-per-function': 'off',
       'max-statements': 'off',
-      // Config and script files contain configuration values, not logic
       'no-console': 'off',
       'no-magic-numbers': 'off',
       'unicorn/no-process-exit': 'off',
     },
   },
 
-  // Browser files - disable type-checked for legacy assets
+  // Browser
   {
     files: ['assets/js/**/*.js', 'sw-source.js', 'playwright.config.ts'],
-    ...tseslint.configs.disableTypeChecked,
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.serviceworker,
         ...globals.node,
+        ...globals.serviceworker,
       },
     },
     rules: {
-      // Browser JS files have different complexity requirements
       'max-lines-per-function': 'off',
       'max-statements': 'off',
       'no-magic-numbers': 'off',
     },
   },
 
-  // Prettier must be last
+  // Prettier (must be last)
   /** @type {any} */ (eslintConfigPrettier),
 );
