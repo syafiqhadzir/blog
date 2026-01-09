@@ -52,7 +52,14 @@
 
     <main class="wrapper" id="main-content" role="main">
       <div class="content-wrapper"
-           [class]="'content-wrapper text-scale-' + (readingSettings.textScale || '1') + ' line-height-' + (readingSettings.lineHeight || '1-7') + ' layout-width-' + (readingSettings.layoutWidth || '800px')">
+           [class]="'content-wrapper' +
+                    ' text-scale-' + (readingSettings.textScale || '1') +
+                    ' line-height-' + (readingSettings.lineHeight || '1-7') +
+                    ' layout-width-' + (readingSettings.layoutWidth || '800px') +
+                    ' font-' + (readingSettings.fontFamily || 'system') +
+                    ' letter-spacing-' + (readingSettings.letterSpacing || 'normal') +
+                    ' word-spacing-' + (readingSettings.wordSpacing || 'normal') +
+                    ' contrast-' + (readingSettings.contrastTheme || 'default')">
         {{ content }}
       </div>
     </main>
