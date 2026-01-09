@@ -22,7 +22,7 @@ exclude_from_localization:
     'favicons',
     'icons',
     'img',
-    'logo.png',
+    'assets/img/logo.png',
     'robots.txt',
     'sitemap.xml',
   ]
@@ -30,7 +30,7 @@ parallel_localization: true # Enable parallel builds for better performance
 
 permalink: /posts/:year/:month/:day/:slug.html
 
-favicon: 'logo.png' # name+extension of favicon (which must be put on the root folder)
+favicon: 'assets/img/logo.png' # name+extension of favicon (which must be put on the root folder)
 
 # Theme: Klisé-inspired (AMP-compatible)
 
@@ -89,7 +89,7 @@ defaults:
       type: 'posts'
     values:
       layout: post
-      image: https://blog.syafiqhadzir.dev/logo.png
+      image: https://blog.syafiqhadzir.dev/assets/img/logo.png
       keywords: 'QA, software testing, quality assurance, automation'
   - scope:
       path: ''

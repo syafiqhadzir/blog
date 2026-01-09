@@ -27,8 +27,8 @@
       "logo": {
         "@type": "ImageObject",
         "@id": "{{ site.url }}{{ site.baseurl }}/#logo",
-        "url": "{{ '/logo.png' | absolute_url }}",
-        "contentUrl": "{{ '/logo.png' | absolute_url }}",
+        "url": "{{ '/assets/img/logo.png' | absolute_url }}",
+        "contentUrl": "{{ '/assets/img/logo.png' | absolute_url }}",
         "width": 512,
         "height": 512,
         "caption": "{{ site.title }}"
@@ -45,7 +45,7 @@
       "image": {
         "@type": "ImageObject",
         "@id": "{{ site.url }}{{ site.baseurl }}/#authorlogo",
-        "url": "{{ '/logo.png' | absolute_url }}",
+        "url": "{{ '/assets/img/logo.png' | absolute_url }}",
         "caption": "{{ site.author.name }}"
       },
       "sameAs": {{ same_as | jsonify }}
@@ -70,7 +70,7 @@
       "articleBody": {{ content | strip_html | normalize_whitespace | jsonify }},
       "image": {
         "@type": "ImageObject",
-        "url": "{{ page.image | default: site.social_image | default: '/logo.png' | absolute_url }}",
+        "url": "{{ page.image | default: site.social_image | default: '/assets/img/logo.png' | absolute_url }}",
         "width": 1200,
         "height": 630
       },
