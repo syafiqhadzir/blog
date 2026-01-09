@@ -34,6 +34,7 @@ try {
     globIgnores: ['sw.js', '**/*.map', 'assets/videos/**/*'],
     // Cache HTML, CSS, JS, Images, Fonts
     globPatterns: ['**/*.{html,css,js,png,jpg,jpeg,webp,svg,xml,txt,ico,json}'],
+    injectionPoint: 'globalThis.__WB_MANIFEST',
     swDest: TMP_SW,
     swSrc: SRC_SW,
   });
