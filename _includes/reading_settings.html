@@ -30,7 +30,7 @@ AMP pattern: Try localStorage first, fallback to hardcoded defaults
 Load saved preferences from localStorage on page load
 This updates the readingSettings state after initial render
 {%- endcomment -%}
-<amp-script script="reading-prefs-loader">
+<amp-script script="reading-prefs-loader" layout="fixed" height="1" width="1" style="position: absolute; top: -10px; left: -10px; opacity: 0; pointer-events: none;">
   <script type="text/plain" target="amp-script" id="reading-prefs-loader">
     // Load reading preferences from localStorage
     try {

@@ -2,8 +2,8 @@
 <html ⚡ lang="{{ site.lang }}">
 {%- include head.html -%}
 
-<body class="{{ site.theme_config.appearance | default: 'auto' }}"
-  [class]="uiMode == 'dark' ? 'dark-theme' : (uiMode == 'light' ? 'light-theme' : '{{ site.theme_config.appearance | default: 'auto' }}')">
+<body class="{{ site.theme_config.appearance | default: 'auto' }}{% if page.url == '/404' or page.layout == '404' %} error-page{% endif %}"
+  [class]="(uiMode == 'dark' ? 'dark-theme' : (uiMode == 'light' ? 'light-theme' : '{{ site.theme_config.appearance | default: 'auto' }}')) + ({% if page.url == '/404' or page.layout == '404' %}' error-page'{% else %}''{% endif %})">
 {% include analytics.html %}
 <div id="top-target"></div>
   <amp-animation id="showBackToTop" layout="nodisplay">

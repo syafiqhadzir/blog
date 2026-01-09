@@ -93,6 +93,11 @@ Recommended GA4 Configuration:
       }
     }
   },
+  "transport": {
+    "beacon": true,
+    "xhrpost": true,
+    "image": false
+  },
   "triggers": {
     "trackPageview": {
       "on": "visible",
@@ -322,7 +327,7 @@ Recommended GA4 Configuration:
         "event_label": "${text}",
         "link_url": "${href}"
       }
-    },
+    }{% if page.url == '/404' or page.layout == '404' %},
     "errorPage": {
       "on": "visible",
       "selector": "body.error-page",
@@ -333,7 +338,7 @@ Recommended GA4 Configuration:
         "event_label": "404_not_found",
         "error_type": "404"
       }
-    }
+    }{% endif %}
   },
   "extraUrlParams": {
     "cd1": "{{ page_type }}",
