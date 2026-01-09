@@ -85,18 +85,15 @@ This updates the readingSettings state after initial render
             <div class="settings-options">
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.textScale == '1' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { textScale: '1' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { textScale: '1' } })"
                         aria-label="Text size 100%">100%</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.textScale == '1-5' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { textScale: '1-5' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { textScale: '1-5' } })"
                         aria-label="Text size 150%">150%</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.textScale == '2' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { textScale: '2' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { textScale: '2' } })"
                         aria-label="Text size 200%">200%</button>
             </div>
         </div>
@@ -107,18 +104,15 @@ This updates the readingSettings state after initial render
             <div class="settings-options">
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.fontFamily == 'system' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { fontFamily: 'system' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { fontFamily: 'system' } })"
                         aria-label="Font family System">System</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.fontFamily == 'serif' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { fontFamily: 'serif' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { fontFamily: 'serif' } })"
                         aria-label="Font family Serif">Serif</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.fontFamily == 'dyslexic' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { fontFamily: 'dyslexic' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { fontFamily: 'dyslexic' } })"
                         aria-label="Font family Dyslexic-Friendly">Dyslexic</button>
             </div>
         </div>
@@ -129,18 +123,15 @@ This updates the readingSettings state after initial render
             <div class="settings-options">
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.lineHeight == '1-5' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { lineHeight: '1-5' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { lineHeight: '1-5' } })"
                         aria-label="Line height Compact">Compact</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.lineHeight == '1-7' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { lineHeight: '1-7' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { lineHeight: '1-7' } })"
                         aria-label="Line height Normal">Normal</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.lineHeight == '2' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { lineHeight: '2' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { lineHeight: '2' } })"
                         aria-label="Line height Relaxed">Relaxed</button>
             </div>
         </div>
@@ -151,18 +142,15 @@ This updates the readingSettings state after initial render
             <div class="settings-options">
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.layoutWidth == '600px' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { layoutWidth: '600px' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { layoutWidth: '600px' } })"
                         aria-label="Content width Narrow">Narrow</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.layoutWidth == '800px' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { layoutWidth: '800px' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { layoutWidth: '800px' } })"
                         aria-label="Content width Normal">Normal</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.layoutWidth == 'full' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { layoutWidth: 'full' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { layoutWidth: 'full' } })"
                         aria-label="Content width Full">Full</button>
             </div>
         </div>
@@ -173,18 +161,15 @@ This updates the readingSettings state after initial render
             <div class="settings-options">
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.letterSpacing == 'normal' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { letterSpacing: 'normal' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { letterSpacing: 'normal' } })"
                         aria-label="Letter spacing Normal">Normal</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.letterSpacing == 'relaxed' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { letterSpacing: 'relaxed' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { letterSpacing: 'relaxed' } })"
                         aria-label="Letter spacing Relaxed">Relaxed</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.letterSpacing == 'wide' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { letterSpacing: 'wide' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { letterSpacing: 'wide' } })"
                         aria-label="Letter spacing Wide">Wide</button>
             </div>
         </div>
@@ -195,18 +180,15 @@ This updates the readingSettings state after initial render
             <div class="settings-options">
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.wordSpacing == 'normal' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { wordSpacing: 'normal' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { wordSpacing: 'normal' } })"
                         aria-label="Word spacing Normal">Normal</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.wordSpacing == 'relaxed' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { wordSpacing: 'relaxed' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { wordSpacing: 'relaxed' } })"
                         aria-label="Word spacing Relaxed">Relaxed</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.wordSpacing == 'wide' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { wordSpacing: 'wide' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { wordSpacing: 'wide' } })"
                         aria-label="Word spacing Wide">Wide</button>
             </div>
         </div>
@@ -217,23 +199,19 @@ This updates the readingSettings state after initial render
             <div class="settings-options settings-grid">
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.contrastTheme == 'default' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { contrastTheme: 'default' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { contrastTheme: 'default' } })"
                         aria-label="Contrast theme Default">Default</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.contrastTheme == 'high' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { contrastTheme: 'high' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { contrastTheme: 'high' } })"
                         aria-label="Contrast theme High (black on white)">High</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.contrastTheme == 'yellow-black' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { contrastTheme: 'yellow-black' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { contrastTheme: 'yellow-black' } })"
                         aria-label="Contrast theme Yellow on Black">Y/B</button>
                 <button type="button" class="settings-btn"
                         [aria-pressed]="readingSettings.contrastTheme == 'black-yellow' ? 'true' : 'false'"
-                        on="tap:AMP.setState({ readingSettings: { contrastTheme: 'black-yellow' } }),
-                            reading-prefs-saver.execute"
+                        on="tap:AMP.setState({ readingSettings: { contrastTheme: 'black-yellow' } })"
                         aria-label="Contrast theme Black on Yellow">B/Y</button>
             </div>
         </div>
@@ -249,7 +227,7 @@ This updates the readingSettings state after initial render
                                 fontFamily: 'system', letterSpacing: 'normal', wordSpacing: 'normal',
                                 contrastTheme: 'default'
                             }
-                        }),reading-prefs-saver.execute"
+                        })"
                         aria-label="Apply Comfortable reading profile">
                     <span class="profile-icon">😊</span> Comfort
                 </button>
@@ -260,7 +238,7 @@ This updates the readingSettings state after initial render
                                 fontFamily: 'serif', letterSpacing: 'normal', wordSpacing: 'normal',
                                 contrastTheme: 'high'
                             }
-                        }),reading-prefs-saver.execute"
+                        })"
                         aria-label="Apply Large Print reading profile">
                     <span class="profile-icon">🔍</span> Large
                 </button>
@@ -271,7 +249,7 @@ This updates the readingSettings state after initial render
                                 fontFamily: 'dyslexic', letterSpacing: 'wide', wordSpacing: 'wide',
                                 contrastTheme: 'default'
                             }
-                        }),reading-prefs-saver.execute"
+                        })"
                         aria-label="Apply Dyslexic-Friendly reading profile">
                     <span class="profile-icon">📖</span> Dyslexic
                 </button>
@@ -282,7 +260,7 @@ This updates the readingSettings state after initial render
                                 fontFamily: 'system', letterSpacing: 'normal', wordSpacing: 'normal',
                                 contrastTheme: 'default'
                             }
-                        }),reading-prefs-saver.execute"
+                        })"
                         aria-label="Apply Speed Reader profile">
                     <span class="profile-icon">⚡</span> Speed
                 </button>
@@ -344,7 +322,7 @@ This updates the readingSettings state after initial render
                             wordSpacing: 'normal',
                             contrastTheme: 'default'
                         }
-                    }),reading-prefs-saver.execute"
+                    })"
                     aria-label="Reset all reading settings to defaults">
                 ↺ Reset All Settings
             </button>
@@ -353,27 +331,6 @@ This updates the readingSettings state after initial render
 </div>
 
 {%- comment -%}
-Save reading preferences to localStorage whenever settings change
-This amp-script is triggered by button taps via reading-prefs-saver.execute
+Auto-save is handled by the loader script above via setInterval state watching
+No separate saver script needed - saves happen automatically when state changes
 {%- endcomment -%}
-<amp-script layout="container" script="reading-prefs-saver" nodom id="reading-prefs-saver">
-  <script type="text/plain" target="amp-script" id="reading-prefs-saver">
-    // Save current reading preferences to localStorage
-    try {
-      const prefs = {
-        textScale: AMP.getState('readingSettings').textScale || '1',
-        lineHeight: AMP.getState('readingSettings').lineHeight || '1-7',
-        layoutWidth: AMP.getState('readingSettings').layoutWidth || '800px',
-        fontFamily: AMP.getState('readingSettings').fontFamily || 'system',
-        letterSpacing: AMP.getState('readingSettings').letterSpacing || 'normal',
-        wordSpacing: AMP.getState('readingSettings').wordSpacing || 'normal',
-        contrastTheme: AMP.getState('readingSettings').contrastTheme || 'default',
-        autoAdjust: AMP.getState('readingSettings').autoAdjust || false
-      };
-      localStorage.setItem('readingPrefs', JSON.stringify(prefs));
-    } catch (e) {
-      // Silently fail if localStorage unavailable
-      console.debug('Reading settings: Could not save to localStorage');
-    }
-  </script>
-</amp-script>
