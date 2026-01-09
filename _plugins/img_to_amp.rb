@@ -50,6 +50,8 @@ module Jekyll
 
       def parse_attributes(attr_str)
         attrs = {}
+        return attrs if attr_str.nil?
+
         attr_str.scan(ATTR_REGEX) do |k, v|
           attrs[k.downcase] = v
         end
@@ -58,6 +60,7 @@ module Jekyll
 
       def should_skip?(match, src)
         return true if match.include?('amp-img')
+        return true if src.nil?
 
         if src.start_with?('http')
           warn "Warning: Remote image found in #{@doc.path}: #{src}. " \
