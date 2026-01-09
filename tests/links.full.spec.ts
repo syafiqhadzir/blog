@@ -135,9 +135,16 @@ test.describe('Internal Link Validation', { tag: ['@full', '@links'] }, () => {
     // Validate all found links sequentially to avoid overwhelming server
     const linkValidationResults: Array<{ link: string; status: number }> = [];
 
-    for (const link of allFoundLinks) {
-      const result = await validateLink(link, routeSet, page);
-      linkValidationResults.push(result);
+    // Validate all found links in parallel batches
+    const linksToValidate = [...allFoundLinks];
+    const batchSize = 10;
+
+    for (let index = 0; index < linksToValidate.length; index += batchSize) {
+      const batch = linksToValidate.slice(index, index + batchSize);
+      const results = await Promise.all(
+        batch.map(async (link) => await validateLink(link, routeSet, page)),
+      );
+      linkValidationResults.push(...results);
     }
 
     const broken = linkValidationResults

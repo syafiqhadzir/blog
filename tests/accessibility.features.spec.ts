@@ -51,15 +51,17 @@ test.describe(
       await page.goto('/');
       const images = await page.locator('img').all();
 
-      for (const image of images) {
-        const alt = await image.getAttribute('alt');
-        const source = await image.getAttribute('src');
+      await Promise.all(
+        images.map(async (image) => {
+          const alt = await image.getAttribute('alt');
+          const source = await image.getAttribute('src');
 
-        expect(
-          alt,
-          `Image with src ${source ?? 'unknown'} is missing alt attribute`,
-        ).not.toBeNull();
-      }
+          expect(
+            alt,
+            `Image with src ${source ?? 'unknown'} is missing alt attribute`,
+          ).not.toBeNull();
+        }),
+      );
     });
 
     test('Form inputs have labels', async ({ page }) => {
@@ -68,17 +70,19 @@ test.describe(
         .locator('input[type="text"], input[type="email"], textarea')
         .all();
 
-      for (const input of inputs) {
-        const inputId = await input.getAttribute('id');
-        const safeInputId = String(inputId);
-        const labelSelector = `label[for="${safeInputId}"]`;
-        const labelCount = await page.locator(labelSelector).count();
-        const ariaLabel = await input.getAttribute('aria-label');
-        const hasLabel = labelCount > 0;
-        const hasAriaLabel = Boolean(ariaLabel);
-        const accessibilityCount = Number(hasLabel) + Number(hasAriaLabel);
-        expect(accessibilityCount).toBeGreaterThan(0);
-      }
+      await Promise.all(
+        inputs.map(async (input) => {
+          const inputId = await input.getAttribute('id');
+          const safeInputId = String(inputId);
+          const labelSelector = `label[for="${safeInputId}"]`;
+          const labelCount = await page.locator(labelSelector).count();
+          const ariaLabel = await input.getAttribute('aria-label');
+          const hasLabel = labelCount > 0;
+          const hasAriaLabel = Boolean(ariaLabel);
+          const accessibilityCount = Number(hasLabel) + Number(hasAriaLabel);
+          expect(accessibilityCount).toBeGreaterThan(0);
+        }),
+      );
     });
 
     test('Color contrast meets WCAG AAA', async ({ page }) => {
@@ -98,14 +102,16 @@ test.describe(
       const links = await page.locator('a[href]').all();
       const genericLinkTextSet = new Set(['click here', 'more', 'read more']);
 
-      for (const link of links) {
-        const content = await link.textContent();
-        const text = (content ?? '').trim().toLowerCase();
+      await Promise.all(
+        links.map(async (link) => {
+          const content = await link.textContent();
+          const text = (content ?? '').trim().toLowerCase();
 
-        expect(text.length).toBeGreaterThanOrEqual(0);
-        const isGeneric = genericLinkTextSet.has(text);
-        expect(isGeneric).toBe(false);
-      }
+          expect(text.length).toBeGreaterThanOrEqual(0);
+          const isGeneric = genericLinkTextSet.has(text);
+          expect(isGeneric).toBe(false);
+        }),
+      );
     });
 
     test('Focus order follows DOM order', async ({ page }) => {

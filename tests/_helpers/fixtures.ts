@@ -227,21 +227,34 @@ export const test = base.extend<BlogFixtures>({
       );
       const uniqueHrefs = [...new Set(hrefs)];
 
-      for (const href of uniqueHrefs) {
+      const validate = async (href: string): Promise<string | undefined> => {
         if (
           href.startsWith('#') ||
           href.startsWith('mailto:') ||
           href.startsWith('java' + 'script:')
         )
-          continue;
+          return undefined;
 
         try {
           const response = await targetPage.request.get(href);
           if (response.status() >= 400) {
-            brokenLinks.push(`${href} (Status: ${String(response.status())})`);
+            return `${href} (Status: ${String(response.status())})`;
           }
         } catch {
-          brokenLinks.push(`${href} (Network Error)`);
+          return `${href} (Network Error)`;
+        }
+        return undefined;
+      };
+
+      // Helper for batched parallel execution
+      const batchSize = 10;
+      for (let index = 0; index < uniqueHrefs.length; index += batchSize) {
+        const batch = uniqueHrefs.slice(index, index + batchSize);
+        const results = await Promise.all(
+          batch.map(async (href) => await validate(href)),
+        );
+        for (const result of results) {
+          if (result != undefined) brokenLinks.push(result);
         }
       }
 

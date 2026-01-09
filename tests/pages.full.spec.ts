@@ -39,9 +39,11 @@ test.describe('Global Site Audit (100% Coverage)', { tag: '@full' }, () => {
         });
 
         validateResponse(route, response);
-        await validateAccessibilityFeatures(route, page);
-        await validateAmp(route, page);
-        await validateSeo(route, page);
+        await Promise.all([
+          validateAccessibilityFeatures(route, page),
+          validateAmp(route, page),
+          validateSeo(route, page),
+        ]);
       });
     }
   });

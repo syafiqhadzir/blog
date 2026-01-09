@@ -7,12 +7,10 @@ const CI = process.env['CI'] != undefined && process.env['CI'].length > 0;
 // Helper to determine worker count
 function getWorkerCount(): number {
   const cpuCount = os.cpus().length;
-  if (!CI) {
-    return 1;
+  if (PERF_MODE) {
+    return Math.min(cpuCount, 8);
   }
-  return PERF_MODE
-    ? Math.min(cpuCount, 8)
-    : Math.max(1, Math.floor(cpuCount / 2));
+  return Math.max(1, Math.floor(cpuCount / 2));
 }
 
 export default defineConfig({
