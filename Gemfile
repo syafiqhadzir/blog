@@ -12,6 +12,7 @@ gem 'fiddle' # Future-proofing: will not be default gem in Ruby 3.5+
 gem 'jekyll'
 gem 'jekyll-feed'
 gem 'jekyll-github-metadata'
+gem 'jekyll-minifier', '~> 0.2.2'
 gem 'jekyll-seo-tag'
 gem 'jekyll-sitemap'
 gem 'kramdown-parser-gfm'
@@ -28,8 +29,6 @@ group :test do
   gem 'rubocop', '~> 1.69', require: false
   gem 'rubocop-rspec', '~> 3.2', require: false
 end
-
-gem 'jekyll-minifier', '~> 0.2.2'
 
 platforms :windows do
   gem 'wdm', '>= 0.1.0'

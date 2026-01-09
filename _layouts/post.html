@@ -26,12 +26,13 @@ layout: default
 <amp-position-observer on="scroll:progressAnim.seekTo(percent=event.percent)" layout="nodisplay">
 </amp-position-observer>
 
+{%- assign i18n = site.data.i18n[site.lang] -%}
 <article role="article" aria-labelledby="post-title">
   <header class="post-header">
-    <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <nav class="breadcrumbs" aria-label="{{ i18n.accessibility.breadcrumb }}">
       <ol>
-        <li><a href="{{ '/' | relative_url }}">Home</a></li>
-        <li><a href="{{ '/archive.html' | relative_url }}">Archive</a></li>
+        <li><a href="{{ '/' | relative_url }}">{{ i18n.breadcrumbs.home }}</a></li>
+        <li><a href="{{ '/archive.html' | relative_url }}">{{ i18n.breadcrumbs.archive }}</a></li>
         <li aria-current="page">{{ page.title }}</li>
       </ol>
     </nav>
@@ -55,7 +56,7 @@ layout: default
 
     {%- if page.summary or page.description -%}
       <div class="tldr-block" role="region" aria-label="Plain Language Summary">
-        <h2 class="tldr-title">TL;DR</h2>
+        <h2 class="tldr-title">{{ i18n.post.tldr }}</h2>
         <p>{{ page.summary | default: page.description }}</p>
       </div>
     {%- endif -%}
@@ -74,9 +75,9 @@ layout: default
   <section class="author-bio">
     <img src="{{ '/logo.png' | relative_url }}" alt="{{ site.author.name }}" class="author-img">
     <div class="author-info">
-      <h3>About {{ site.author.name }}</h3>
+      <h3>{{ i18n.post.author_about }} {{ site.author.name }}</h3>
       <p>{{ site.description }}</p>
-      <p><a href="https://syafiqhadzir.dev">View Portfolio</a></p>
+      <p><a href="https://syafiqhadzir.dev">{{ i18n.post.view_portfolio }}</a></p>
     </div>
   </section>
 </article>

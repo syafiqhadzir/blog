@@ -1,0 +1,73 @@
+# Bahasa Malaysia / Malay UI Translations
+# Pelaksanaan i18n AMP peringkat pakar
+# Mengikuti piawaian kebolehcapaian WCAG 2.2 Level AA
+
+nav:
+  home: 'Laman Utama'
+  archive: 'Arkib'
+  tags: 'Tag'
+  about: 'Tentang'
+  accessibility: 'Kebolehcapaian'
+
+post:
+  reading_time: 'minit bacaan'
+  published_on: 'Diterbitkan pada'
+  author_about: 'Tentang'
+  view_portfolio: 'Lihat Portfolio'
+  share: 'Kongsi artikel ini'
+  related: 'Artikel Berkaitan'
+  tldr: 'Ringkasan'
+  navigation:
+    previous: 'Terdahulu'
+    next: 'Seterusnya'
+
+breadcrumbs:
+  home: 'Laman Utama'
+  archive: 'Arkib'
+  current_page: 'Halaman Semasa'
+
+search:
+  placeholder: 'Cari artikel...'
+  submit: 'Cari'
+  no_results: 'Tiada artikel dijumpai'
+  results_count: 'artikel dijumpai'
+  results_count_plural: 'artikel dijumpai'
+
+tags:
+  title: 'Tag'
+  all_tags: 'Semua Tag'
+  posts_tagged: 'Artikel berkaitan dengan'
+
+footer:
+  copyright: '© 2017-2026 Syafiq Hadzir'
+  powered_by: 'Dikuasakan oleh'
+  last_update: 'Kemaskini Terakhir'
+  license: 'Kandungan dilesenkan di bawah CC0'
+
+accessibility:
+  skip_to_content: 'Langkau ke kandungan utama'
+  back_to_top: 'Kembali ke atas'
+  main_navigation: 'Navigasi utama'
+  breadcrumb: 'Breadcrumb'
+  open_menu: 'Buka menu'
+  close_menu: 'Tutup menu'
+  toggle_theme: 'Tukar tema'
+  language_switcher: 'Penukar bahasa'
+  switch_to: 'Tukar ke'
+
+language:
+  name: 'Bahasa Malaysia'
+  code: 'ms'
+  direction: 'ltr'
+  select: 'Pilih bahasa'
+
+dates:
+  format: '%d-%m-%Y'
+  format_long: '%d %B %Y'
+
+# String khusus AMP (pelaksanaan peringkat pakar)
+amp:
+  loading: 'Memuatkan...'
+  error: 'Ralat berlaku'
+  retry: 'Cuba lagi'
+  offline: 'Anda berada di luar talian'

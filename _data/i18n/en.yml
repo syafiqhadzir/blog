@@ -1,0 +1,73 @@
+# English UI Translations
+# Expert-level AMP i18n implementation
+# Following WCAG 2.2 Level AA accessibility standards
+
+nav:
+  home: 'Home'
+  archive: 'Archive'
+  tags: 'Tags'
+  about: 'About'
+  accessibility: 'Accessibility'
+
+post:
+  reading_time: 'minute read'
+  published_on: 'Published on'
+  author_about: 'About'
+  view_portfolio: 'View Portfolio'
+  share: 'Share this post'
+  related: 'Related Posts'
+  tldr: 'TL;DR'
+  navigation:
+    previous: 'Previous'
+    next: 'Next'
+
+breadcrumbs:
+  home: 'Home'
+  archive: 'Archive'
+  current_page: 'Current Page'
+
+search:
+  placeholder: 'Search posts...'
+  submit: 'Search'
+  no_results: 'No posts found'
+  results_count: 'post found'
+  results_count_plural: 'posts found'
+
+tags:
+  title: 'Tags'
+  all_tags: 'All Tags'
+  posts_tagged: 'Posts tagged with'
+
+footer:
+  copyright: '© 2017-2026 Syafiq Hadzir'
+  powered_by: 'Powered by'
+  last_update: 'Last Update'
+  license: 'Content licensed under CC0'
+
+accessibility:
+  skip_to_content: 'Skip to main content'
+  back_to_top: 'Back to top'
+  main_navigation: 'Main navigation'
+  breadcrumb: 'Breadcrumb'
+  open_menu: 'Open menu'
+  close_menu: 'Close menu'
+  toggle_theme: 'Toggle theme'
+  language_switcher: 'Language switcher'
+  switch_to: 'Switch to'
+
+language:
+  name: 'English'
+  code: 'en'
+  direction: 'ltr'
+  select: 'Select language'
+
+dates:
+  format: '%Y-%m-%d'
+  format_long: '%B %d, %Y'
+
+# AMP-specific strings (expert-level implementation)
+amp:
+  loading: 'Loading...'
+  error: 'An error occurred'
+  retry: 'Retry'
+  offline: 'You are offline'

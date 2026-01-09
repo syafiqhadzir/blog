@@ -78,7 +78,18 @@
 /* Content Wrapper - Base */
 .content-wrapper {
   margin: 0 auto;
-  transition: all 0.2s ease;
+  /* Smooth transitions for reading settings changes */
+  transition:
+    max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    font-size 0.2s ease-out,
+    line-height 0.2s ease-out;
+}
+
+/* Respect user's reduced motion preference (WCAG 2.2 AA) */
+@media (prefers-reduced-motion: reduce) {
+  .content-wrapper {
+    transition: none;
+  }
 }
 
 /* Text Scale Classes */
@@ -118,4 +129,44 @@
 
 .layout-width-full {
   max-width: 100%;
+}
+
+// Language Selection Styles (integrated into reading settings)
+.settings-btn.lang-active {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border-color: var(--accent-color);
+  font-weight: 700;
+  cursor: default;
+
+  &:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    transform: none;
+  }
+}
+
+.settings-btn.lang-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  position: relative;
+
+  &:hover {
+    background: var(--code-bg);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+    transform: none;
+  }
+}
+
+.lang-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.35rem;
+  margin-left: 0.35rem;
+  background: var(--text-secondary);
+  color: var(--bg-color);
+  border-radius: 4px;
+  font-weight: 600;
+  line-height: 1;
 }
