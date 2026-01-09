@@ -1,15 +1,13 @@
 .post-header {
   max-width: 680px;
-  margin-right: auto;
-  margin-bottom: 4rem;
-  margin-left: auto;
+  margin-block-end: 4rem;
+  margin-inline: auto;
   text-align: center;
 }
 
 .post-content {
   max-width: 680px;
-  margin-right: auto;
-  margin-left: auto;
+  margin-inline: auto;
   font-family: var(--font-serif);
   font-size: 1.15rem;
   line-height: 1.85;
@@ -17,7 +15,7 @@
 }
 
 .post-content p {
-  margin-bottom: 1.5rem;
+  margin-block-end: 1.5rem;
 }
 
 .post-meta {

@@ -1,7 +1,10 @@
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
-import * as workboxCore from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
-import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
+import {
+  cleanupOutdatedCaches,
+  matchPrecache,
+  precacheAndRoute,
+} from 'workbox-precaching';
 import { NavigationRoute, registerRoute } from 'workbox-routing';
 import {
   CacheFirst,
@@ -37,18 +40,12 @@ const navigationRoute = new NavigationRoute(
     try {
       return await navigationHandler.handle(parameters);
     } catch {
-      const cache = await caches.open(`${CACHE_PREFIX}-pages-${CACHE_VERSION}`);
-      // Try to find offline page in precache
-      const precacheName = workboxCore.cacheNames.precache;
-      const precache = await caches.open(precacheName);
-      // workbox-build generates cache keys with revision info, so plain URL match might fail
-      // unless we use match(url, {ignoreSearch: true}) or getCacheKeyForURL
-      // But inside SW, we don't have getCacheKeyForURL easily exposed unless imported from precaching
-      // However, OFFLINE_URL is precached.
-
-      const offlineResponse = await precache.match(OFFLINE_URL);
+      // Try to find offline page in precache (works with revisioning)
+      const offlineResponse = await matchPrecache(OFFLINE_URL);
       if (offlineResponse) return offlineResponse;
 
+      // Fallback to runtime cache if for some reason it's there
+      const cache = await caches.open(`${CACHE_PREFIX}-pages-${CACHE_VERSION}`);
       return await cache.match(OFFLINE_URL);
     }
   },

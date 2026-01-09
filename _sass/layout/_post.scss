@@ -3,15 +3,15 @@
 /* Post Content */
 .tldr-block {
   padding: 1.5rem;
-  margin: 2rem 0;
+  margin-block: 2rem;
+  margin-inline: 0;
   background: var(--code-bg);
-  border-left: 4px solid var(--accent-color);
+  border-inline-start: 4px solid var(--accent-color);
   border-radius: 4px;
 }
 
 .tldr-title {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-block: 0 0.5rem;
   font-size: 1.1rem;
   font-weight: 800;
   color: var(--accent-color);
@@ -20,7 +20,8 @@
 }
 
 .post-hero {
-  margin: 2rem 0;
+  margin-block: 2rem;
+  margin-inline: 0;
   text-align: center;
 
   img,
@@ -33,37 +34,36 @@
 }
 
 .post-content {
-  margin: 0 auto;
+  margin-inline: auto;
   font-family: var(--font-serif);
   font-size: 1.125rem;
   line-height: 1.8;
 
   p {
-    margin-bottom: 1.5rem;
+    margin-block-end: 1.5rem;
     text-align: left;
     hyphens: auto;
   }
 
   h2 {
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+    margin-block: 3rem 1rem;
     font-family: var(--font-heading);
   }
 
   h3 {
-    margin-top: 2.5rem;
-    margin-bottom: 0.75rem;
+    margin-block: 2.5rem 0.75rem;
     font-family: var(--font-heading);
   }
 
   ul,
   ol {
-    padding-left: 1.5rem;
-    margin: 1.5rem 0;
+    padding-inline-start: 1.5rem;
+    margin-block: 1.5rem;
+    margin-inline: 0;
   }
 
   li {
-    margin-bottom: 0.75rem;
+    margin-block-end: 0.75rem;
     line-height: 1.7;
   }
 
@@ -71,7 +71,8 @@
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 2rem auto;
+    margin-block: 2rem;
+    margin-inline: auto;
     border-radius: 8px;
   }
 
@@ -88,17 +89,20 @@
 /* Blockquotes: Visual Quote Marks */
 blockquote {
   position: relative;
-  padding: 1.5rem 2rem 1.5rem 3rem;
-  margin: 2rem 0;
+  padding-block: 1.5rem;
+  padding-inline: 3rem 2rem;
+  margin-block: 2rem;
+  margin-inline: 0;
   font-style: italic;
   background: var(--code-bg);
-  border-left: 4px solid var(--accent-color);
-  border-radius: 0 8px 8px 0;
+  border-inline-start: 4px solid var(--accent-color);
+  border-start-end-radius: 8px;
+  border-end-end-radius: 8px;
 
   &::before {
     position: absolute;
-    top: 0.5rem;
-    left: 0.75rem;
+    inset-block-start: 0.5rem;
+    inset-inline-start: 0.75rem;
     font-family: var(--font-serif);
     font-size: 3rem;
     line-height: 1;
@@ -113,7 +117,7 @@ blockquote {
 
   cite {
     display: block;
-    margin-top: 1rem;
+    margin-block-start: 1rem;
     font-size: 0.9rem;
     font-style: normal;
     color: var(--text-secondary);
@@ -122,7 +126,8 @@ blockquote {
 
 /* Figures & Captions */
 figure {
-  margin: 2.5rem 0;
+  margin-block: 2.5rem;
+  margin-inline: 0;
   text-align: center;
 
   img {
@@ -134,7 +139,7 @@ figure {
 }
 
 figcaption {
-  margin-top: 1rem;
+  margin-block-start: 1rem;
   font-size: 0.9rem;
   font-style: italic;
   line-height: 1.5;
@@ -154,14 +159,14 @@ figcaption {
     padding: 1rem 0;
     margin: 0;
     border-bottom: 1px solid var(--border-color);
-    transition: padding-left 0.2s ease;
+    transition: padding-inline-start 0.2s ease;
 
     &:last-child {
       border-bottom: none;
     }
 
     &:hover {
-      padding-left: 0.5rem;
+      padding-inline-start: 0.5rem;
     }
 
     &::before {
