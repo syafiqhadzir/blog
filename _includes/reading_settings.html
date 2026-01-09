@@ -30,7 +30,7 @@ AMP pattern: Try localStorage first, fallback to hardcoded defaults
 Load saved preferences from localStorage on page load
 This updates the readingSettings state after initial render
 {%- endcomment -%}
-<amp-script layout="container" script="reading-prefs-loader" nodom>
+<amp-script script="reading-prefs-loader">
   <script type="text/plain" target="amp-script" id="reading-prefs-loader">
     // Load reading preferences from localStorage
     try {
@@ -251,7 +251,7 @@ This updates the readingSettings state after initial render
                             }
                         }),reading-prefs-saver.execute"
                         aria-label="Apply Comfortable reading profile">
-                    <span class="profile-icon">😊</span> Comfortable
+                    <span class="profile-icon">😊</span> Comfort
                 </button>
                 <button type="button" class="settings-btn settings-profile"
                         on="tap:AMP.setState({
@@ -262,7 +262,7 @@ This updates the readingSettings state after initial render
                             }
                         }),reading-prefs-saver.execute"
                         aria-label="Apply Large Print reading profile">
-                    <span class="profile-icon">🔍</span> Large Print
+                    <span class="profile-icon">🔍</span> Large
                 </button>
                 <button type="button" class="settings-btn settings-profile"
                         on="tap:AMP.setState({
@@ -273,7 +273,7 @@ This updates the readingSettings state after initial render
                             }
                         }),reading-prefs-saver.execute"
                         aria-label="Apply Dyslexic-Friendly reading profile">
-                    <span class="profile-icon">📖</span> Dyslexic-Friendly
+                    <span class="profile-icon">📖</span> Dyslexic
                 </button>
                 <button type="button" class="settings-btn settings-profile"
                         on="tap:AMP.setState({
@@ -284,7 +284,7 @@ This updates the readingSettings state after initial render
                             }
                         }),reading-prefs-saver.execute"
                         aria-label="Apply Speed Reader profile">
-                    <span class="profile-icon">⚡</span> Speed Reader
+                    <span class="profile-icon">⚡</span> Speed
                 </button>
             </div>
         </div>
