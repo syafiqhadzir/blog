@@ -33,6 +33,11 @@ async function optimizeImages() {
 
         await pipeline.toFile(filepath + '.tmp');
         await fs.rename(filepath + '.tmp', filepath);
+
+        // Generate WebP version
+        await sharp(data)
+          .webp({ quality: QUALITY })
+          .toFile(filepath.replace(extension, '.webp'));
       }
     }),
   );

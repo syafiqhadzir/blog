@@ -75,8 +75,7 @@ test.describe(
         const labelCount = await page.locator(labelSelector).count();
         const ariaLabel = await input.getAttribute('aria-label');
         const hasLabel = labelCount > 0;
-        /* eslint-disable-next-line playwright/no-conditional-in-test -- Browser-side conditional is necessary for runtime check */
-        const hasAriaLabel = ariaLabel != undefined && ariaLabel.length > 0;
+        const hasAriaLabel = Boolean(ariaLabel);
         const accessibilityCount = Number(hasLabel) + Number(hasAriaLabel);
         expect(accessibilityCount).toBeGreaterThan(0);
       }
@@ -115,13 +114,17 @@ test.describe(
         const elements = [
           ...document.querySelectorAll('[tabindex]:not([tabindex="-1"])'),
         ];
-        /* eslint-disable max-nested-callbacks -- Browser evaluate requires nested callbacks */
-        return elements
-          .map((element) =>
-            Number.parseInt(element.getAttribute('tabindex') ?? '0', 10),
-          )
-          .filter((t) => t > 0);
-        /* eslint-enable max-nested-callbacks */
+        const invalidTabIndexes: number[] = [];
+        for (const element of elements) {
+          const tabIndex = Number.parseInt(
+            element.getAttribute('tabindex') ?? '0',
+            10,
+          );
+          if (tabIndex > 0) {
+            invalidTabIndexes.push(tabIndex);
+          }
+        }
+        return invalidTabIndexes;
       });
       expect(positiveTabIndexes).toEqual([]);
     });

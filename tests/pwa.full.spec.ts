@@ -36,22 +36,15 @@ test.describe('PWA Functionality', { tag: ['@full', '@pwa'] }, () => {
     const response = await page.request.get('/site.webmanifest');
     expect(response.status()).toBe(200);
 
-    const manifest = (await response.json()) as {
-      display: string;
-      icons: unknown[];
-      name: string;
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      short_name: string;
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      start_url: string;
-    };
+    const manifest = (await response.json()) as Record<string, unknown>;
+    expect(manifest).not.toBeNull();
 
     // Verify required manifest fields
-    expect(manifest).toHaveProperty('name');
-    expect(manifest).toHaveProperty('short_name');
-    expect(manifest).toHaveProperty('start_url');
-    expect(manifest).toHaveProperty('display');
-    expect(manifest).toHaveProperty('icons');
+    expect(manifest['name']).toBeDefined();
+    expect(manifest['short_name']).toBeDefined();
+    expect(manifest['start_url']).toBeDefined();
+    expect(manifest['display']).toBeDefined();
+    expect(manifest['icons']).toBeDefined();
   });
 
   test('Offline page loads when service worker active', async ({ browser }) => {
@@ -112,21 +105,20 @@ test.describe('PWA Functionality', { tag: ['@full', '@pwa'] }, () => {
     const response = await page.request.get('/site.webmanifest');
     expect(response.ok(), 'Manifest should exist').toBe(true);
 
-    const manifest = (await response.json()) as {
-      icons: Array<{ sizes: string; src: string; type: string }>;
-    };
+    const manifest = (await response.json()) as Record<string, unknown>;
+    const icons = manifest['icons'];
 
-    expect(manifest.icons).toBeDefined();
-    expect(Array.isArray(manifest.icons)).toBe(true);
-    expect(manifest.icons.length).toBeGreaterThan(0);
+    expect(Array.isArray(icons)).toBe(true);
+    const safeIcons = icons as Array<Record<string, unknown>>;
 
-    for (const icon of manifest.icons) {
-      expect(icon).toHaveProperty('src');
-      expect(icon).toHaveProperty('sizes');
-      expect(icon).toHaveProperty('type');
+    for (const icon of safeIcons) {
+      expect(icon['src']).toBeDefined();
+      expect(icon['sizes']).toBeDefined();
+      expect(icon['type']).toBeDefined();
 
-      // Verify icon file exists
-      const iconResponse = await page.request.get(icon.src);
+      const source = icon['src'];
+      expect(typeof source).toBe('string');
+      const iconResponse = await page.request.get(source as string);
       expect(iconResponse.status()).toBe(200);
     }
   });

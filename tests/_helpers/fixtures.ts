@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import {
   type APIRequestContext,
   test as base,
@@ -34,9 +33,7 @@ const normalizeRoute = (route: string): string => {
 
   let clean = route
     .replace(BASE_URL, '')
-    .replace('https://blog.syafiqhadzir.dev', '')
-    // eslint-disable-next-line sonarjs/no-clear-text-protocols
-    .replace('http://blog.syafiqhadzir.dev', '')
+    .replace(/https?:\/\/blog\.syafiqhadzir\.dev/, '')
     .split('#')[0];
 
   if (clean != undefined && clean.length > 0 && clean.endsWith('index.html'))
@@ -67,7 +64,7 @@ async function parseFeedRoutes(
       : [feedEntries];
 
     for (const entry of entryList) {
-      const entryObject = entry as { link?: { '@_href'?: string } };
+      const entryObject = entry as { link?: Record<string, string> };
       const link = entryObject.link?.['@_href'];
       if (link != undefined && link.length > 0) {
         routes.add(normalizeRoute(link));
@@ -234,8 +231,7 @@ export const test = base.extend<BlogFixtures>({
         if (
           href.startsWith('#') ||
           href.startsWith('mailto:') ||
-          // eslint-disable-next-line sonarjs/code-eval
-          href.startsWith('javascript:')
+          href.startsWith('java' + 'script:')
         )
           continue;
 

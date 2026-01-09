@@ -4,9 +4,8 @@
 
 @media print {
   /* Hide non-essential elements */
-  /* stylelint-disable selector-no-qualifying-type, scale-unlimited/declaration-strict-value -- Print styles require qualifying types and primitive colors */
-  header[role='banner'],
-  footer[role='contentinfo'],
+  .site-header,
+  .site-footer,
   .skip-link,
   .mode-toggle,
   .post-navigation,
@@ -32,36 +31,36 @@
 
   /* Typography optimization */
   body {
-    font-size: 12pt;
-    line-height: 1.5;
-    color: #000;
-    background: #fff;
+    font-size: var(--print-font-size-body);
+    line-height: var(--print-line-height);
+    color: var(--print-text);
+    background: var(--print-bg);
   }
 
   h1,
   h2,
   h3 {
-    color: #000;
+    color: var(--print-text);
     break-after: avoid;
   }
 
   /* Link expansion (optional, acceptable for tech blogs) */
-  a[href^='http']::after {
-    font-size: 0.8em;
-    color: #666;
+  [href^='http']::after {
+    font-size: var(--print-font-size-link);
+    color: var(--print-link);
     content: ' (' attr(href) ')';
   }
 
   /* Don't show link addresses for internal anchors or javascript */
-  a[href^='#']::after,
-  a[href^='javascript']::after {
+  [href^='#']::after,
+  [href^='javascript']::after {
     content: '';
   }
 
   /* Code blocks */
   pre,
   blockquote {
-    border: 1px solid #999;
+    border: 1px solid var(--print-border);
     break-inside: avoid;
   }
 
@@ -71,5 +70,4 @@
     max-width: 100%;
     break-inside: avoid;
   }
-  /* stylelint-enable selector-no-qualifying-type, scale-unlimited/declaration-strict-value */
 }

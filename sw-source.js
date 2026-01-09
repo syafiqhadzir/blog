@@ -15,8 +15,7 @@ const CACHE_VERSION = 'v4';
 const OFFLINE_URL = '/offline.html';
 
 // Precache core assets
-// eslint-disable-next-line unicorn/prefer-global-this
-precacheAndRoute(self.__WB_MANIFEST);
+precacheAndRoute(globalThis.__WB_MANIFEST);
 
 // Clean up old caches
 cleanupOutdatedCaches();
@@ -123,5 +122,26 @@ registerRoute(
 // Skip waiting on install
 globalThis.addEventListener('install', () => globalThis.skipWaiting());
 
-// Claim clients on activate
-globalThis.addEventListener('activate', () => globalThis.clients.claim());
+// Claim clients on activate and clean up old caches
+globalThis.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches
+      .keys()
+      .then((cacheNames) => {
+        return Promise.all(
+          cacheNames.map((cacheName) => {
+            // Delete old caches that start with our prefix but don't match current version
+            // We check for the prefix to avoid deleting other caches (like workbox-precache-v2-...)
+            // which are managed by cleanupOutdatedCaches()
+            if (
+              cacheName.startsWith(CACHE_PREFIX) &&
+              !cacheName.includes(CACHE_VERSION)
+            ) {
+              return caches.delete(cacheName);
+            }
+          }),
+        );
+      })
+      .then(() => globalThis.clients.claim()),
+  );
+});

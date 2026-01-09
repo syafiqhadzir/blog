@@ -9,7 +9,7 @@ tags: ['regression-testing', 'visual-testing', 'frontend-testing']
 description:
   'Functional tests verify logic. They check if 2 + 2 = 4. Visual regression
   tests check if the 4 is drawn in Comic Sans or is invisible because it is
-  white te'
+  white text on a white background.'
 ---
 
 ## Table of Contents

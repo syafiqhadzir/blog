@@ -19,6 +19,19 @@
   letter-spacing: 0.05em;
 }
 
+.post-hero {
+  margin: 2rem 0;
+  text-align: center;
+
+  img,
+  amp-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lift);
+  }
+}
+
 .post-content {
   margin: 0 auto;
   font-family: var(--font-serif);

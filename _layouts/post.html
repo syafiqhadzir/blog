@@ -54,6 +54,12 @@ layout: default
     <h1 id="post-title">{{ page.title }}</h1>
   </header>
 
+    {%- if page.image and page.image != site.theme_config.logo -%}
+    <div class="post-hero">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+    </div>
+    {%- endif -%}
+
     {%- if page.summary or page.description -%}
       <div class="tldr-block" role="region" aria-label="Plain Language Summary">
         <h2 class="tldr-title">{{ i18n.post.tldr }}</h2>

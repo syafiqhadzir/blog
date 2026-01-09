@@ -70,7 +70,7 @@
       "articleBody": {{ content | strip_html | normalize_whitespace | jsonify }},
       "image": {
         "@type": "ImageObject",
-        "url": "{{ page.image | default: site.theme_config.logo | absolute_url }}",
+        "url": "{{ page.image | default: site.social_image | default: '/logo.png' | absolute_url }}",
         "width": 1200,
         "height": 630
       },

@@ -3,9 +3,10 @@
   <link rel="preconnect" href="https://cdn.ampproject.org/" crossorigin>
   <link rel="dns-prefetch" href="https://cdn.ampproject.org/">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  {%- if page.image and page.image != site.theme_config.logo -%}
+  <link rel="preload" as="image" href="{{ page.image | relative_url }}">
+  {%- endif -%}
   {%- if site.google_analytics -%}
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>

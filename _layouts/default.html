@@ -46,12 +46,12 @@
   <a href="#main-content" class="skip-link">{{ i18n.accessibility.skip_to_content }}</a>
 
   <div class="wrapper">
-    <header role="banner">
+    <header class="site-header" role="banner">
       {%- include navbar.html -%}
     </header>
 
     <main class="wrapper" id="main-content" role="main">
-      <div class="content-wrapper"
+      <div class="content-wrapper text-scale-1 line-height-1-7 layout-width-800px font-system letter-spacing-normal word-spacing-normal contrast-default"
            [class]="'content-wrapper' +
                     ' text-scale-' + (readingSettings.textScale || '1') +
                     ' line-height-' + (readingSettings.lineHeight || '1-7') +
@@ -64,7 +64,7 @@
       </div>
     </main>
 
-    <footer role="contentinfo">
+    <footer class="site-footer" role="contentinfo">
       {%- include footer.html -%}
     </footer>
   </div>

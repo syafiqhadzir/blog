@@ -166,36 +166,7 @@ Features:
 
     {%- comment -%} Empty State {%- endcomment -%}
 
-    <amp-state id="searchData">
-        <script type="application/json">
-        {
-
-            "years": [
-                {%- for year in posts_by_year -%}
-                    {%- capture year_search_str -%}
-                        {%- for post in year.items -%}
-                            {{ post.title | downcase | replace: "'", "" | replace: '"', "" }} {{ post.tags | join: ' ' | downcase | replace: "'", "" | replace: '"', "" }}
-                        {%- endfor -%}
-                    {%- endcapture -%}
-                    {{ year_search_str | strip_newlines | strip | jsonify }}{% unless forloop.last %},{% endunless %}
-                {%- endfor -%}
-            ],
-            "posts": [
-                {%- assign json_first = true -%}
-                {%- for year in posts_by_year -%}
-                    {%- for post in year.items -%}
-                        {%- unless json_first -%},{%- endunless -%}
-                        {%- capture post_search_str -%}
-                            {{ post.title | downcase | replace: "'", "" | replace: '"', "" }} {{ post.tags | join: ' ' | downcase | replace: "'", "" | replace: '"', "" }}
-                        {%- endcapture -%}
-                        {{ post_search_str | strip_newlines | strip | jsonify }}
-                        {%- assign json_first = false -%}
-                    {%- endfor -%}
-                {%- endfor -%}
-            ]
-        }
-        </script>
-    </amp-state>
+    <amp-state id="searchData" src="/archive-data.json"></amp-state>
 
 
 

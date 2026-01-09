@@ -9,6 +9,18 @@
     ui-monospace, sfmono-regular, 'SF Mono', menlo, consolas, 'Liberation Mono',
     monospace;
   --font-serif: charter, 'Bitstream Charter', 'Sitka Text', cambria, serif;
+  --font-serif-reading: 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
+  --font-dyslexic:
+    'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', arial, sans-serif;
+
+  /* Print Variables */
+  --print-bg: #fff;
+  --print-text: #000;
+  --print-link: #666;
+  --print-border: #999;
+  --print-font-size-body: 12pt;
+  --print-font-size-link: 0.8em;
+  --print-line-height: 1.5;
 
   /* Z-Index Scale */
   --z-layer: 1;

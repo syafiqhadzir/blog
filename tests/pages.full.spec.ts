@@ -38,7 +38,7 @@ test.describe('Global Site Audit (100% Coverage)', { tag: '@full' }, () => {
           waitUntil: 'domcontentloaded',
         });
 
-        await validateResponse(route, response);
+        validateResponse(route, response);
         await validateAccessibilityFeatures(route, page);
         await validateAmp(route, page);
         await validateSeo(route, page);
@@ -84,11 +84,7 @@ async function validateAmp(route: string, page: Page): Promise<void> {
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/require-await
-async function validateResponse(
-  route: string,
-  response: null | Response,
-): Promise<void> {
+function validateResponse(route: string, response: null | Response): void {
   expect(response, `${route}: No response`).not.toBeNull();
   if (response) {
     const status = response.status();

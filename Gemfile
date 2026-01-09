@@ -36,3 +36,5 @@ end
 
 gem 'rubocop-performance', '~> 1.26', group: :development
 gem 'rubocop-rake', '~> 0.7.1', group: :development
+
+gem "fastimage", "~> 2.4"

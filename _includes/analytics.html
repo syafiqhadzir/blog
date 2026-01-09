@@ -241,7 +241,7 @@ Recommended GA4 Configuration:
         "tag_name": "${text}"
       }
     },
-    "searchSubmit": {
+    "searchInteraction": {
       "on": "click",
       "selector": ".archive-search-submit, [type='submit']",
       "request": "event",
@@ -263,10 +263,10 @@ Recommended GA4 Configuration:
         "file_name": "${text}"
       }
     },
-    "engagementTime15": {
+    "engagementTime30": {
       "on": "timer",
       "timerSpec": {
-        "interval": 15,
+        "interval": 30,
         "maxTimerLength": 600
       },
       "request": "event",
@@ -321,6 +321,17 @@ Recommended GA4 Configuration:
         "event_category": "content_discovery",
         "event_label": "${text}",
         "link_url": "${href}"
+      }
+    },
+    "errorPage": {
+      "on": "visible",
+      "selector": "body.error-page",
+      "request": "event",
+      "vars": {
+        "event_name": "page_error",
+        "event_category": "error",
+        "event_label": "404_not_found",
+        "error_type": "404"
       }
     }
   },

@@ -64,7 +64,7 @@ const REQUIRED_TRIGGERS = [
   'tagClick',
   'searchInteraction',
   'fileDownload',
-  'engagementTime15',
+  'engagementTime30',
   'readingProgress',
   'themeToggle',
   'backToTopClick',
