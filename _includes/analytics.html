@@ -13,6 +13,7 @@ Architecture:
   • Debug mode support via URL parameter
   • GDPR/CCPA consent mode ready
   • Performance-optimized trigger design
+  • Graceful transport error handling
 
 Key Features:
   • Pageview tracking with content grouping
@@ -28,6 +29,7 @@ Key Features:
   • Archive filter usage
   • Theme preference tracking
   • Service worker interaction
+  • Suppressed transport warnings (expected in some environments)
 
 Custom Dimensions Setup Required in GA4:
   1. page_type (Event-scoped)
@@ -46,6 +48,11 @@ Recommended GA4 Configuration:
   • Configure Search Console integration
   • Set up custom events for conversions
   • Enable Debug View for testing
+
+Note on Transport Warnings:
+  The image transport fallback may log warnings in the console when blocked
+  by ad blockers, privacy settings, or CORS policies. These are expected and
+  do not affect analytics functionality. The beacon method is preferred.
 ================================================================================
 {%- endcomment -%}
 
@@ -90,6 +97,11 @@ Recommended GA4 Configuration:
         "anonymize_ip": false
       }
     }
+  },
+  "transport": {
+    "beacon": true,
+    "xhrpost": true,
+    "image": false
   },
   "triggers": {
     "trackPageview": {
