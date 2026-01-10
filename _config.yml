@@ -30,7 +30,7 @@ parallel_localization: true # Enable parallel builds for better performance
 
 permalink: /posts/:year/:month/:day/:slug.html
 
-favicon: 'assets/img/logo.png' # name+extension of favicon (which must be put on the root folder)
+favicon: 'assets/favicons/favicon.ico' # Proper favicon file
 
 # Theme: Klisé-inspired (AMP-compatible)
 

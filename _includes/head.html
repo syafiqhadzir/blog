@@ -18,16 +18,55 @@
   <link rel="alternate" hreflang="{{ site.lang }}" href="{{ page.url | absolute_url }}" />
   <link rel="alternate" hreflang="x-default" href="{{ page.url | absolute_url }}" />
 
+
+  {%- comment -%} Favicon - Expert AMP Configuration {%- endcomment -%}
+
+  {%- comment -%} Standard Favicon (multi-format support) {%- endcomment -%}
+  <link rel="icon" type="image/x-icon" href="{{ '/assets/favicons/favicon.ico' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicons/favicon-16x16.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicons/favicon-32x32.png' | relative_url }}">
+
+  {%- comment -%} Apple Touch Icons (all required sizes) {%- endcomment -%}
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicons/apple-touch-icon-180x180.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ '/assets/favicons/apple-touch-icon-152x152.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ '/assets/favicons/apple-touch-icon-144x144.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ '/assets/favicons/apple-touch-icon-120x120.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ '/assets/favicons/apple-touch-icon-114x114.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ '/assets/favicons/apple-touch-icon-76x76.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ '/assets/favicons/apple-touch-icon-72x72.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{ '/assets/favicons/apple-touch-icon-60x60.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ '/assets/favicons/apple-touch-icon-57x57.png' | relative_url }}">
+
+  {%- comment -%} Apple Mobile Web App (iOS/iPadOS) {%- endcomment -%}
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+
+  {%- comment -%} Safari Pinned Tab {%- endcomment -%}
+  <link rel="mask-icon" href="{{ '/assets/favicons/safari-pinned-tab.svg' | relative_url }}" color="#000000">
+
+  {%- comment -%} Microsoft Tiles {%- endcomment -%}
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="msapplication-TileImage" content="{{ '/assets/favicons/mstile-144x144.png' | relative_url }}">
+  <meta name="msapplication-config" content="{{ '/assets/favicons/browserconfig.xml' | relative_url }}">
+
+  {%- comment -%} PWA Manifest {%- endcomment -%}
+  <link rel="manifest" href="{{ '/assets/favicons/site.webmanifest' | relative_url }}">
+
+  {%- comment -%} Theme Colors (AMP-optimized with dark mode support) {%- endcomment -%}
+  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+
+  {%- comment -%} PWA Capabilities {%- endcomment -%}
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="author" href="{{ '/humans.txt' | relative_url }}" type="text/plain">
+
+  {%- comment -%} SEO and Feed {%- endcomment -%}
   {%- seo -%}
   {%- feed_meta -%}
-  <link rel="author" href="{{ '/humans.txt' | relative_url }}" type="text/plain">
-  <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}">
-  <link rel="manifest" href="{{ '/assets/favicons/site.webmanifest' | relative_url }}">
-  <meta name="theme-color" content="#000000">
-  <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta name="mobile-web-app-capable" content="yes">
 
-  <link rel="apple-touch-icon" href="{{ '/assets/icons/icon-192.png' | relative_url }}">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <!-- View Transitions API for smooth cross-document navigation -->
   <meta name="view-transition" content="same-origin">
