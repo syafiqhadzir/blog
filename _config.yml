@@ -132,3 +132,12 @@ exclude:
   - playwright-report
   - test-results
   - lint_output.txt
+  - bin
+  - eslint_error.log
+  - stylelint_errors.txt
+  - sonar-report.xml
+  - stylelint-report.json
+  - eslint-report.json
+  - renovate.json
+  - docker-compose.yml
+  - sw-source.js
