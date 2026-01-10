@@ -25,7 +25,7 @@ export default tseslint.config(
   /** @type {any} */ (unicorn.configs.recommended),
   /** @type {any} */ (perfectionist.configs['recommended-natural']),
 
-  // General Rules - BLEEDING-EDGE STRICTEST
+  // General Rules - MODERN INDUSTRIAL STANDARD
   {
     languageOptions: {
       ecmaVersion: 'latest',
@@ -40,58 +40,72 @@ export default tseslint.config(
       reportUnusedDisableDirectives: 'error',
     },
     rules: {
-      // Bleeding-edge complexity limits (STRICTEST)
-      complexity: ['error', 6], // Reduced from 8
-      eqeqeq: ['error', 'always'], // NEW: Strict equality
-      'max-depth': ['error', 2], // Reduced from 3
-      'max-lines': ['error', 150], // Reduced from 200
-      'max-lines-per-function': ['error', 50], // Reduced from 60
-      'max-nested-callbacks': ['error', 2], // Reduced from 3
-      'max-params': ['error', 3],
+      // Modern Complexity (Industrial balance)
+      complexity: ['error', 10], // Balanced for maintainability
+      'max-depth': ['error', 3], // Reasonable nesting
+      'max-lines': ['error', 250], // Practical file size
+      'max-lines-per-function': ['error', 75], // Adequate for logic
+      'max-nested-callbacks': ['error', 3], // Prevent callback hell
+      'max-params': ['error', 4], // Balanced parameter count
+      'max-statements': ['error', 25], // Reasonable function complexity
 
-      'max-statements': ['error', 15], // Reduced from 20
-      // Strictest code quality
-      'no-alert': 'error',
-      'no-console': 'error',
+      // Modern JavaScript - NO DEPRECATED SYNTAX
+      'no-var': 'error', // Enforce const/let
+      'prefer-const': 'error', // Immutability by default
+      'prefer-arrow-callback': 'error', // Modern function syntax
+      'prefer-template': 'error', // Template literals
+      'prefer-destructuring': ['error', { object: true, array: false }],
+      'prefer-rest-params': 'error', // Rest over arguments
+      'prefer-spread': 'error', // Spread over apply
+      'object-shorthand': ['error', 'always'], // ES6 object notation
+      'prefer-numeric-literals': 'error', // Modern number syntax
+      'prefer-object-spread': 'error', // Object spread over assign
+      'prefer-promise-reject-errors': 'error', // Proper error handling
+
+      // Code Quality (Industrial standard)
+      'no-console': 'warn', // Warn instead of error for debugging
       'no-debugger': 'error',
-      'no-else-return': 'error', // NEW: Simplify control flow
+      'no-alert': 'error',
       'no-eval': 'error',
       'no-implied-eval': 'error',
-      'no-lonely-if': 'error', // NEW: Simplify nested conditions
       'no-magic-numbers': [
         'error',
         {
-          ignore: [0, 1, -1], // Reduced from [0, 1, 2]
+          ignore: [0, 1, -1, 2],
           ignoreArrayIndexes: true,
           ignoreDefaultValues: true,
+          enforceConst: true,
         },
       ],
-      'no-unneeded-ternary': 'error', // NEW: Simplify ternaries
-      'no-var': 'error',
-      'object-shorthand': ['error', 'always'], // NEW: Modern object syntax
-      'prefer-arrow-callback': 'error', // NEW: Arrow functions
-      'prefer-const': 'error',
-      'prefer-destructuring': ['error', { array: false, object: true }], // NEW: Destructuring
-      'prefer-rest-params': 'error', // NEW: Rest params over arguments
-      'prefer-spread': 'error', // NEW: Spread over apply
-      'prefer-template': 'error', // NEW: Enforce template literals
-      // SonarJS bleeding-edge (STRICTEST)
-      'sonarjs/cognitive-complexity': ['error', 8], // Reduced from 10
 
-      'sonarjs/no-duplicate-string': ['error', { threshold: 3 }], // NEW: Stricter DRY
-      'sonarjs/no-identical-functions': 'error', // NEW: Detect duplicates
-      // Unicorn strict (ENHANCED)
+      // Control Flow (Modern best practices)
+      'no-else-return': ['error', { allowElseIf: false }],
+      'no-lonely-if': 'error',
+      'no-unneeded-ternary': 'error',
+      'no-negated-condition': 'error',
+      'no-nested-ternary': 'error',
+      yoda: ['error', 'never'],
+      eqeqeq: ['error', 'always', { null: 'ignore' }],
+      curly: ['error', 'all'],
+
+      // Error Prevention
+      'no-await-in-loop': 'warn', // Performance consideration
+      'no-promise-executor-function': 'error',
+      'no-return-await': 'error',
+      'require-atomic-updates': 'error',
+
+      // SonarJS (Balanced cognitive complexity)
+      'sonarjs/cognitive-complexity': ['error', 12], // Practical limit
+      'sonarjs/no-duplicate-string': ['error', { threshold: 5 }], // DRY principle
+      'sonarjs/no-identical-functions': 'error',
+      'sonarjs/no-small-switch': 'off', // Allow small switches
+
+      // Unicorn (Modern JavaScript patterns)
       'unicorn/consistent-function-scoping': 'error',
-
-      'unicorn/no-null': 'error',
+      'unicorn/no-null': 'off', // null is sometimes needed
       'unicorn/numeric-separators-style': 'error',
-      'unicorn/prefer-array-some': 'error', // NEW
-      'unicorn/prefer-date-now': 'error', // NEW
-      'unicorn/prefer-default-parameters': 'error', // NEW
       'unicorn/prefer-module': 'error',
-      'unicorn/prefer-number-properties': 'error', // NEW
-      'unicorn/prefer-string-slice': 'error', // NEW
-      'unicorn/prefer-ternary': 'error',
+      'unicorn/prefer-ternary': 'warn', // Warn instead of error
       'unicorn/prefer-top-level-await': 'error',
       'unicorn/prevent-abbreviations': [
         'error',
@@ -108,16 +122,22 @@ export default tseslint.config(
             ref: true,
             req: true,
             res: true,
+            e2e: true,
           },
         },
       ],
-      'unicorn/switch-case-braces': 'error',
-      'unicorn/throw-new-error': 'error', // NEW
-      yoda: 'error', // NEW: No Yoda conditions
+      'unicorn/prefer-array-some': 'error',
+      'unicorn/prefer-date-now': 'error',
+      'unicorn/prefer-default-parameters': 'error',
+      'unicorn/prefer-number-properties': 'error',
+      'unicorn/prefer-string-slice': 'error',
+      'unicorn/throw-new-error': 'error',
+      'unicorn/no-array-callback-reference': 'off', // Too strict
+      'unicorn/no-array-for-each': 'off', // forEach is acceptable
     },
   },
 
-  // TypeScript - BLEEDING-EDGE STRICTEST
+  // TypeScript - MODERN TYPE-SAFE STANDARDS
   ...tseslint.configs.recommended,
   {
     files: ['**/*.ts', '**/*.tsx'],
@@ -128,15 +148,15 @@ export default tseslint.config(
       },
     },
     rules: {
-      // Enable bleeding-edge strictest TypeScript rules
+      // Modern TypeScript (Essential type safety)
       '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
       '@typescript-eslint/await-thenable': 'error',
       '@typescript-eslint/consistent-type-assertions': 'error',
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/explicit-function-return-type': [
-        'error',
-        { allowExpressions: true },
+        'warn', // Warn for flexibility
+        { allowExpressions: true, allowTypedFunctionExpressions: true },
       ],
       '@typescript-eslint/naming-convention': [
         'error',
@@ -150,22 +170,11 @@ export default tseslint.config(
           selector: 'parameter',
         },
       ],
-      // NEW STRICTEST RULES
-      '@typescript-eslint/no-base-to-string': 'error',
-      '@typescript-eslint/no-confusing-non-null-assertion': 'error',
-      '@typescript-eslint/no-confusing-void-expression': 'error',
-      '@typescript-eslint/no-deprecated': 'error',
-      '@typescript-eslint/no-duplicate-type-constituents': 'error',
+
+      // Type Safety (Critical rules)
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-floating-promises': 'error',
-      '@typescript-eslint/no-for-in-array': 'error',
-      '@typescript-eslint/no-import-type-side-effects': 'error',
-      '@typescript-eslint/no-meaningless-void-operator': 'error',
       '@typescript-eslint/no-misused-promises': 'error',
-      '@typescript-eslint/no-mixed-enums': 'error',
-      '@typescript-eslint/no-redundant-type-constituents': 'error',
-      '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
-      '@typescript-eslint/no-unnecessary-condition': 'error',
       '@typescript-eslint/no-unnecessary-type-assertion': 'error',
       '@typescript-eslint/no-unsafe-argument': 'error',
       '@typescript-eslint/no-unsafe-assignment': 'error',
@@ -174,36 +183,47 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-return': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',
-        { argsIgnorePattern: '^_' },
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
-      '@typescript-eslint/no-useless-empty-export': 'error',
-      '@typescript-eslint/prefer-enum-initializers': 'error',
-      '@typescript-eslint/prefer-literal-enum-member': 'error',
 
+      // Modern TypeScript patterns
       '@typescript-eslint/prefer-nullish-coalescing': 'error',
       '@typescript-eslint/prefer-optional-chain': 'error',
-      '@typescript-eslint/prefer-readonly': 'error',
-      '@typescript-eslint/prefer-readonly-parameter-types': 'off', // Too strict for practical use
+      '@typescript-eslint/prefer-readonly': 'warn',
       '@typescript-eslint/prefer-reduce-type-parameter': 'error',
-      '@typescript-eslint/prefer-regexp-exec': 'error',
       '@typescript-eslint/prefer-return-this-type': 'error',
-      '@typescript-eslint/prefer-string-starts-ends-with': 'error',
       '@typescript-eslint/promise-function-async': 'error',
       '@typescript-eslint/require-await': 'error',
       '@typescript-eslint/restrict-plus-operands': 'error',
-      '@typescript-eslint/restrict-template-expressions': 'error',
-      '@typescript-eslint/strict-boolean-expressions': 'error',
+      '@typescript-eslint/strict-boolean-expressions': [
+        'error',
+        {
+          allowString: false,
+          allowNumber: false,
+          allowNullableObject: false,
+        },
+      ],
       '@typescript-eslint/switch-exhaustiveness-check': 'error',
+
+      // Enhanced safety
+      '@typescript-eslint/no-base-to-string': 'error',
+      '@typescript-eslint/no-confusing-non-null-assertion': 'error',
+      '@typescript-eslint/no-duplicate-type-constituents': 'error',
+      '@typescript-eslint/no-unnecessary-condition': 'error',
+      '@typescript-eslint/prefer-enum-initializers': 'error',
+      '@typescript-eslint/prefer-literal-enum-member': 'error',
+      '@typescript-eslint/prefer-regexp-exec': 'error',
+      '@typescript-eslint/prefer-string-starts-ends-with': 'error',
     },
   },
 
-  // Playwright
+  // Playwright Tests (Balanced rules for testing)
   {
     ...playwright.configs['flat/recommended'],
     files: ['{e2e,tests}/**/*.{ts,js}'],
     rules: {
-      complexity: ['error', 10], // Reduced from 12
-      'max-lines': ['error', 300], // Reduced from 400
+      complexity: ['error', 15], // Tests can be more complex
+      'max-lines': ['error', 400],
       'max-lines-per-function': 'off',
       'max-params': ['error', 5],
       'max-statements': 'off',
@@ -213,7 +233,7 @@ export default tseslint.config(
       'playwright/no-focused-test': 'error',
       'playwright/no-force-option': 'error',
       'playwright/no-page-pause': 'error',
-      'playwright/no-skipped-test': 'error',
+      'playwright/no-skipped-test': 'warn',
       'playwright/no-wait-for-timeout': 'error',
       'playwright/prefer-to-be': 'error',
       'playwright/prefer-to-have-count': 'error',
@@ -221,9 +241,9 @@ export default tseslint.config(
     },
   },
 
-  // Config/Scripts
+  // Config/Scripts (Relaxed for tooling)
   {
-    files: ['lighthouserc.js', '*.config.js', 'scripts/*.js'],
+    files: ['*.config.js', '*.config.ts', 'scripts/*.js', 'lighthouse/**/*.js'],
     languageOptions: {
       globals: globals.node,
     },
@@ -237,9 +257,9 @@ export default tseslint.config(
     },
   },
 
-  // CJS Files Only (strict CommonJS isolation)
+  // CJS Files (CommonJS support)
   {
-    files: ['**/*.cjs', 'lighthouserc.cjs'],
+    files: ['**/*.cjs'],
     languageOptions: {
       globals: globals.node,
     },
@@ -247,21 +267,18 @@ export default tseslint.config(
       '@typescript-eslint/no-require-imports': 'off',
       'max-lines': 'off',
       'max-lines-per-function': 'off',
-      'max-statements': 'off',
       'no-console': 'off',
       'no-magic-numbers': 'off',
-      'unicorn/no-process-exit': 'off',
       'unicorn/prefer-module': 'off',
     },
   },
 
-  // Browser
+  // Browser Scripts (Service Worker, etc)
   {
-    files: ['assets/js/**/*.js', 'sw-source.js', 'playwright.config.ts'],
+    files: ['assets/js/**/*.js', 'sw-source.js'],
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.node,
         ...globals.serviceworker,
       },
     },

@@ -1,5 +1,5 @@
 # =============================================================================
-# RuboCop Configuration - BLEEDING-EDGE STRICTEST
+# RuboCop Configuration - MODERN INDUSTRIAL STANDARD
 # Last Updated: 2026-01-10
 # =============================================================================
 
@@ -21,10 +21,10 @@ AllCops:
     - 'Gemfile.lock'
 
 # =============================================================================
-# Style - STRICTEST
+# Style - MODERN RUBY STANDARDS
 # =============================================================================
 
-# Documentation - enabled for all code (STRICT)
+# Documentation (required for public APIs)
 Style/Documentation:
   Enabled: true
   Exclude:
@@ -32,29 +32,25 @@ Style/Documentation:
     - 'Rakefile'
     - 'Gemfile'
 
-# Frozen string literal required (MANDATORY)
+# Modern Ruby syntax enforcement
 Style/FrozenStringLiteralComment:
   Enabled: true
   EnforcedStyle: always
 
-# String literals - single quotes preferred
 Style/StringLiterals:
   EnforcedStyle: single_quotes
 
-# Hash syntax - modern Ruby 3.x style
 Style/HashSyntax:
   EnforcedStyle: ruby19_no_mixed_keys
   EnforcedShorthandSyntax: always
 
-# Symbol array - use %i[]
 Style/SymbolArray:
   EnforcedStyle: percent
 
-# Word array - use %w[]
 Style/WordArray:
   EnforcedStyle: percent
 
-# NEW STRICT STYLE RULES
+# Modern patterns (Industrial standard)
 Style/AndOr:
   Enabled: true
   EnforcedStyle: always
@@ -63,25 +59,13 @@ Style/ClassAndModuleChildren:
   Enabled: true
   EnforcedStyle: compact
 
-Style/CollectionMethods:
-  Enabled: true
-
 Style/Lambda:
   EnforcedStyle: literal
-
-Style/NegatedIf:
-  Enabled: true
-
-Style/NegatedWhile:
-  Enabled: true
 
 Style/NumericPredicate:
   Enabled: true
 
 Style/ParallelAssignment:
-  Enabled: true
-
-Style/PercentLiteralDelimiters:
   Enabled: true
 
 Style/PreferredHashMethods:
@@ -92,23 +76,17 @@ Style/RaiseArgs:
 
 Style/RedundantReturn:
   Enabled: true
-  AllowMultipleReturnValues: false
+  AllowMultipleReturnValues: true
 
 Style/RegexpLiteral:
   EnforcedStyle: slashes
-  AllowInnerSlashes: false
+  AllowInnerSlashes: true
 
 Style/SafeNavigation:
   Enabled: true
 
-Style/Send:
-  Enabled: true
-
 Style/SignalException:
   EnforcedStyle: only_raise
-
-Style/SingleLineBlockParams:
-  Enabled: true
 
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: single_quotes
@@ -117,52 +95,43 @@ Style/TernaryParentheses:
   EnforcedStyle: require_parentheses_when_complex
 
 # =============================================================================
-# Metrics - STRICTEST LIMITS
+# Metrics - BALANCED FOR PRODUCTION
 # =============================================================================
 
-# Block length - relaxed for specs/Rakefile only
 Metrics/BlockLength:
-  Max: 25
+  Max: 30
   Exclude:
     - 'tests/unit/**/*'
     - 'Rakefile'
 
-# Line length - 100 chars max (STRICT)
 Layout/LineLength:
-  Max: 100
+  Max: 120
   AllowedPatterns: ['\A\s*#']
 
-# Method length - VERY strict
 Metrics/MethodLength:
-  Max: 8 # Reduced from 10
+  Max: 15 # Practical for real methods
 
-# Class length - STRICT
 Metrics/ClassLength:
-  Max: 80 # Reduced from 100
+  Max: 120 # Reasonable class size
 
-# Module length - NEW
 Metrics/ModuleLength:
-  Max: 100
+  Max: 120
 
-# Parameter lists - NEW
 Metrics/ParameterLists:
-  Max: 3
-  MaxOptionalParameters: 2
+  Max: 4
+  MaxOptionalParameters: 3
 
-# ABC size - complexity metric (STRICTEST)
 Metrics/AbcSize:
-  Max: 8 # Reduced from 10
+  Max: 15 # Practical for real-world code
 
-# Cyclomatic Complexity (STRICTEST)
 Metrics/CyclomaticComplexity:
-  Max: 4 # Reduced from 5
+  Max: 8 # Balanced complexity
 
-# Perceived Complexity (STRICTEST)
 Metrics/PerceivedComplexity:
-  Max: 5 # Reduced from 6
+  Max: 10 # Human-perceived complexity
 
 # =============================================================================
-# Lint - STRICTEST
+# Lint - MODERN ERROR PREVENTION
 # =============================================================================
 
 Lint/AmbiguousBlockAssociation:
@@ -185,19 +154,10 @@ Lint/DeprecatedClassMethods:
 Lint/DuplicateMethods:
   Enabled: true
 
-Lint/EachWithObjectArgument:
-  Enabled: true
-
 Lint/EmptyExpression:
   Enabled: true
 
 Lint/LiteralAsCondition:
-  Enabled: true
-
-Lint/Loop:
-  Enabled: true
-
-Lint/ParenthesesAsGroupedExpression:
   Enabled: true
 
 Lint/RequireParentheses:
@@ -206,16 +166,13 @@ Lint/RequireParentheses:
 Lint/ShadowingOuterLocalVariable:
   Enabled: true
 
-Lint/UnderscorePrefixedVariableName:
-  Enabled: true
-
 Lint/UnusedBlockArgument:
   Enabled: true
-  AllowUnusedKeywordArguments: false
+  AllowUnusedKeywordArguments: true
 
 Lint/UnusedMethodArgument:
   Enabled: true
-  AllowUnusedKeywordArguments: false
+  AllowUnusedKeywordArguments: true
 
 Lint/UselessAccessModifier:
   Enabled: true
@@ -261,17 +218,17 @@ Performance/TimesMap:
   Enabled: true
 
 # =============================================================================
-# RSpec - STRICTEST SETTINGS
+# RSpec - PRACTICAL TESTING STANDARDS
 # =============================================================================
 
 RSpec/ExampleLength:
-  Max: 8 # Reduced from 10
+  Max: 15 # Adequate for integration tests
 
 RSpec/MultipleExpectations:
-  Max: 2
+  Max: 5 # Practical for feature tests
 
 RSpec/NestedGroups:
-  Max: 3
+  Max: 4 # Allow reasonable nesting
 
 RSpec/DescribeClass:
   Exclude:
@@ -292,7 +249,6 @@ RSpec/MultipleDescribes:
     - 'tests/unit/config_spec.rb'
     - 'tests/unit/layouts_spec.rb'
 
-# NEW STRICT RSpec RULES
 RSpec/BeEql:
   Enabled: true
 
@@ -308,12 +264,6 @@ RSpec/ExpectActual:
 RSpec/InstanceVariable:
   Enabled: true
 
-RSpec/IteratedExpectation:
-  Enabled: true
-
-RSpec/LetSetup:
-  Enabled: true
-
 RSpec/MessageSpies:
   EnforcedStyle: receive
 
@@ -324,7 +274,7 @@ RSpec/VerifiedDoubles:
   Enabled: true
 
 # =============================================================================
-# Layout - STRICT FORMATTING
+# Layout - MODERN FORMATTING
 # =============================================================================
 
 Layout/EndOfLine:

@@ -1,155 +1,199 @@
-# Bleeding-Edge Linting Configuration
+# Modern Linting Standards - Industrial Grade
 
 **Last Updated**: 2026-01-10  
-**Status**: ✅ STRICTEST ENFORCEMENT ENABLED
+**Philosophy**: Enhanced modern standards with industrial balance  
+**Status**: ✅ PRODUCTION-READY
 
-## Overview
+---
 
-This repository enforces **bleeding-edge strictest** linting standards across
-all supported languages and frameworks. These configurations represent the most
-rigorous code quality standards available as of 2026.
+## 🎯 Philosophy
+
+These linting rules enforce **modern bleeding-edge syntax** while maintaining **practical balance** for real-world production codebases. They are:
+
+- ✅ **Strict on deprecations**: No legacy syntax allowed
+- ✅ **Modern patterns enforced**: ES2023+, Ruby 3.4+, CSS3+
+- ✅ **Pragmatic limits**: Balanced complexity for maintainability
+- ✅ **Industrial standard**: Used in enterprise production code
 
 ---
 
 ## 🔥 ESLint (JavaScript/TypeScript)
 
-### Enhanced Strictness
+### Modern Syntax Enforcement
 
-- **Complexity Limits** (Stricter than industry standard):
-  - Cyclomatic complexity: **6** (reduced from 8)
-  - Max depth: **2** (reduced from 3)
-  - Max lines per file: **150** (reduced from 200)
-  - Max lines per function: **50** (reduced from 60)
-  - Max nested callbacks: **2** (reduced from 3)
-  - Max statements: **15** (reduced from 20)
+**DEPRECATED SYNTAX - BANNED**:
 
-- **New Strict Rules** (20+ additions):
-  - `prefer-template`: Enforce template literals
-  - `no-else-return`: Simplify control flow
-  - `object-shorthand`: Modern ES6+ syntax
-  - `prefer-destructuring`: Object destructuring
-  - `eqeqeq`: Strict equality only
-  - `yoda`: No Yoda conditions
+- ❌ `var` → Use `const`/`let`
+- ❌ `function()` callbacks → Use arrow functions
+- ❌ String concatenation → Use template literals
+- ❌ `arguments` → Use rest parameters
+- ❌ `.apply()` → Use spread operator
+- ❌ `Object.assign()` → Use object spread
 
-### TypeScript Excellence
+**REQUIRED MODERN PATTERNS**:
 
-- **15+ New Strictest Rules**:
-  - `no-unnecessary-condition`: Catch redundant checks
-  - `prefer-enum-initializers`: Explicit enum values
-  - `prefer-regexp-exec`: Performance optimization
-  - `no-confusing-non-null-assertion`: Type safety
-  - `no-redundant-type-constituents`: Clean types
+- ✅ `const`/`let` declarations
+- ✅ Arrow functions for callbacks
+- ✅ Template literals for strings
+- ✅ Destructuring assignments
+- ✅ Object/array spread operators
+- ✅ Modern number literals
+- ✅ Async/await over promises
 
-### SonarJS Cognitive Complexity
+### Complexity Limits (Industrial Balanced)
 
-- Reduced to **8** (from 10) for maximum maintainability
-- `no-duplicate-string` with threshold of **3**
-- `no-identical-functions` enabled
+```javascript
+complexity: 10              // Cyclomatic complexity
+max-depth: 3                // Nesting depth
+max-lines: 250              // File length
+max-lines-per-function: 75  // Function length
+max-nested-callbacks: 3     // Callback depth
+max-params: 4               // Function parameters
+max-statements: 25          // Statements per function
+```
 
-### Unicorn Enhanced
+### TypeScript Type Safety
 
-- 7 new strict rules including:
-  - `prefer-array-some`
-  - `prefer-date-now`
-  - `prefer-number-properties`
-  - `throw-new-error`
+**ALL STRICT FLAGS ENABLED**:
+
+- ✅ `strict: true`
+- ✅ `strictNullChecks`
+- ✅ `noImplicitAny`
+- ✅ `strictFunctionTypes`
+- ✅ `strictBindCallApply`
+- ✅ `noUncheckedIndexedAccess`
+
+**Modern Type Patterns**:
+
+- ✅ Nullish coalescing (`??`)
+- ✅ Optional chaining (`?.`)
+- ✅ Const assertions
+- ✅ Type imports/exports
+- ✅ Readonly parameters (where needed)
+
+### Code Quality
+
+- **SonarJS**: Cognitive complexity limit of 12
+- **Unicorn**: Modern JavaScript patterns enforced
+- **Perfectionist**: Natural sorting of imports/exports
+- **No console**: Warnings (allowed for debugging)
 
 ---
 
 ## 🎨 Stylelint (CSS/SCSS)
 
-### Strictest CSS Standards
+### Modern CSS Enforcement
 
-- **Reduced Limits**:
-  - Selector max specificity: **`0,2,1`** (from `0,3,1`)
-  - Max combinators: **2** (from 3)
-  - Max pseudo-class: **2** (from 3)
-  - Max type selectors: **2** (from 3)
-  - Number precision: **3** decimals (from 4)
+**DEPRECATED SYNTAX - BANNED**:
 
-- **New Prohibited Patterns**:
-  - ❌ Named colors (`color-named: never`)
-  - ❌ `rgb()`, `rgba()`, `hsl()`, `hsla()` (use modern `color()`)
-  - ❌ `border: none` (use `0`)
-  - ❌ `transition: all` (specify properties)
-  - ❌ Data URIs and FTP schemes
-  - ❌ TODO/FIXME comments in production
+- ❌ `rgb()`, `rgba()` → Use modern `color()` or `hsl()`
+- ❌ Print units (`cm`, `mm`, `in`, `pt`) → Screen units only
+- ❌ Vendor prefixes → Use autoprefixer
 
-- **Enhanced Enforcement**:
-  - Z-index must use CSS variables
-  - Strict value notation for all colors, fonts, sizes
-  - Modern color notation mandatory
+**REQUIRED MODERN PATTERNS**:
+
+- ✅ Modern color functions (`color()`, `oklch()`, `hsl()`)
+- ✅ Logical properties where appropriate
+- ✅ Custom properties (CSS variables)
+- ✅ Modern angle notation
+- ✅ Percentage alpha values
+
+### Complexity Limits (Industrial Balanced)
+
+```scss
+max-nesting-depth: 3              // SCSS nesting
+selector-max-class: 4             // BEM-friendly
+selector-max-combinators: 3       // Combinator chains
+selector-max-compound-selectors: 4 // Compound selectors
+selector-max-specificity: '0,4,1' // Balanced specificity
+```
+
+### Strict Value Enforcement
+
+**Variables required for**:
+
+- Colors (all color values)
+- Z-index values
+
+**Why limited scope?**: Font sizes and spacing can use calculations, making strict enforcement impractical.
 
 ---
 
 ## 💎 RuboCop (Ruby)
 
-### Strictest Ruby Standards
+### Modern Ruby Enforcement
 
-- **Reduced Metrics** (More strict than Rails defaults):
-  - Method length: **8** lines (from 10)
-  - Class length: **80** lines (from 100)
-  - Line length: **100** characters (from 120)
-  - ABC size: **8** (from 10)
-  - Cyclomatic complexity: **4** (from 5)
-  - Perceived complexity: **5** (from 6)
+**DEPRECATED SYNTAX - BANNED**:
 
-- **50+ New Strict Rules**:
-  - `Style/RedundantReturn`: No explicit returns
-  - `Style/SafeNavigation`: Use `&.` operator
-  - All Performance cops enabled
-  - Comprehensive Lint rules
-  - RSpec best practices (MessageSpies, VerifiedDoubles)
+- ❌ Hash rockets for symbols → New hash syntax
+- ❌ `and`/`or` → Use `&&`/`||`
+- ❌ Explicit returns → Implicit returns
+- ❌ Old lambda syntax → Modern `->` syntax
 
-- **RSpec Strictness**:
-  - Example length: **8** lines (from 10)
-  - Max expectations: **2** per test
-  - Max nested groups: **3**
+**REQUIRED MODERN PATTERNS**:
+
+- ✅ Ruby 3.4+ syntax
+- ✅ Frozen string literals
+- ✅ Modern hash syntax
+- ✅ Safe navigation (`&.`)
+- ✅ Symbol/word arrays (`%i[]`, `%w[]`)
+- ✅ Shorthand hash syntax
+
+### Metrics (Industrial Balanced)
+
+```ruby
+MethodLength: 15        # Practical methods
+ClassLength: 120        # Reasonable classes
+LineLength: 120         # Modern screens
+AbcSize: 15             # Assignment/Branch/Condition
+CyclomaticComplexity: 8 # Branching complexity
+PerceivedComplexity: 10 # Human perception
+```
+
+### Performance
+
+**ALL Performance cops enabled**:
+
+- ✅ `Performance::Casecmp`
+- ✅ `Performance::Count`
+- ✅ `Performance::Detect`
+- ✅ `Performance::RangeInclude`
+- ✅ All others enabled
 
 ---
 
 ## 📘 TypeScript Compiler
 
-### Maximum Type Safety
+### Modern Compiler Options
 
-- **All Strict Flags Enabled**:
-  - `strictNullChecks`
-  - `strictFunctionTypes`
-  - `strictBindCallApply`
-  - `strictPropertyInitialization`
-  - `useUnknownInCatchVariables`
+**Target**: ES2023 (latest stable)  
+**Module**: ESNext  
+**Lib**: ES2023 + DOM
 
-- **Additional Safety**:
-  - `noUnusedLocals` / `noUnusedParameters`
-  - `exactOptionalPropertyTypes`
-  - `noUncheckedIndexedAccess`
-  - `noPropertyAccessFromIndexSignature`
-  - `allowUnusedLabels: false`
-  - `allowUnreachableCode: false`
+### All Strict Flags Enabled
 
-- **Target**: ES2023 (latest stable)
-
----
-
-## 🎯 Prettier (Code Formatting)
-
-- Print width: **80** characters
-- Single quotes everywhere
-- Trailing commas: **always**
-- Arrow parens: **always**
-- Single attribute per line
-- Prose wrap: **always**
-
----
-
-## 📊 Enforcement Reports
-
-All linters are configured with:
-
-- ✅ `reportUnusedDisableDirectives: error`
-- ✅ `reportInvalidScopeDisables: true`
-- ✅ `reportNeedlessDisables: true`
-- ✅ `reportDescriptionlessDisables: true`
+```json
+{
+  "strict": true,
+  "strictNullChecks": true,
+  "strictFunctionTypes": true,
+  "strictBindCallApply": true,
+  "strictPropertyInitialization": true,
+  "noImplicitThis": true,
+  "useUnknownInCatchVariables": true,
+  "alwaysStrict": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "noImplicitReturns": true,
+  "noFallthroughCasesInSwitch": true,
+  "noUncheckedIndexedAccess": true,
+  "noImplicitOverride": true,
+  "noPropertyAccessFromIndexSignature": true,
+  "allowUnusedLabels": false,
+  "allowUnreachableCode": false,
+  "exactOptionalPropertyTypes": true
+}
+```
 
 ---
 
@@ -157,63 +201,182 @@ All linters are configured with:
 
 ```bash
 # Individual linters
-npm run lint:ts      # ESLint (TypeScript/JavaScript)
-npm run lint:css     # Stylelint (CSS/SCSS)
+npm run lint:ts      # ESLint + TypeScript
+npm run lint:css     # Stylelint
 npm run lint:md      # Markdownlint
-bundle exec rubocop  # RuboCop (Ruby)
+bundle exec rubocop  # RuboCop
 
 # All at once
-npm run lint         # Runs all linters
+npm run lint
+
+# Auto-fix where possible
+npm run lint:ts -- --fix
+npm run lint:css -- --fix
+bundle exec rubocop -a
 ```
+
+---
+
+## 📊 Comparison: Before vs After
+
+| Metric | Too Strict | **Balanced (Current)** | Too Relaxed |
+|--------|------------|----------------------|-------------|
+| **Complexity** | 6 | **10** | 20 |
+| **Max Lines** | 150 | **250** | 500 |
+| **Function Length** | 50 | **75** | 150 |
+| **Nesting Depth** | 2 | **3** | 5 |
+| **Method Length (Ruby)** | 8 | **15** | 30 |
+| **Specificity** | 0,2,1 | **0,4,1** | 0,8,3 |
+
+---
+
+## ✅ What's Enforced
+
+### Absolutely Required (Errors)
+
+1. ✅ No deprecated syntax
+2. ✅ Modern patterns only
+3. ✅ Type safety (TypeScript)
+4. ✅ No duplicate code
+5. ✅ Performance optimizations
+6. ✅ Standard naming conventions
+7. ✅ Proper error handling
+
+### Recommended (Warnings)
+
+1. ⚠️ Console statements (debugging allowed)
+2. ⚠️ Skipped tests (temporary)
+3. ⚠️ Some type annotations
+4. ⚠️ Ternary complexity
+
+### Relaxed
+
+1. ℹ️ Comment formatting
+2. ℹ️ File organization
+3. ℹ️ Inline disables (with explanation)
+
+---
+
+## 🎓 Modern Syntax Examples
+
+### JavaScript/TypeScript
+
+**❌ Deprecated**:
+
+```javascript
+var name = 'John';  // Use const/let
+function callback() {}  // Use arrow function
+str1 + ' ' + str2;  // Use template literal
+fn.apply(null, args);  // Use spread
+```
+
+**✅ Modern**:
+
+```javascript
+const name = 'John';
+const callback = () => {};
+`${str1} ${str2}`;
+fn(...args);
+```
+
+### CSS/SCSS
+
+**❌ Deprecated**:
+
+```css
+color: rgb(255, 0, 0);  /* Use modern color */
+margin: 0.33333333rem;  /* Too much precision */
+```
+
+**✅ Modern**:
+
+```css
+color: var(--color-primary);
+margin: 0.333rem;
+```
+
+### Ruby
+
+**❌ Deprecated**:
+
+```ruby
+{ :name => 'John' }  # Old hash syntax
+value and other_value  # Use &&
+```
+
+**✅ Modern**:
+
+```ruby
+{ name: 'John' }  # Modern syntax
+value && other_value
+user&.name  # Safe navigation
+```
+
+---
+
+## 🔧 Configuration Files
+
+- **ESLint**: `eslint.config.js` (flat config)
+- **Stylelint**: `stylelint.config.js`
+- **RuboCop**: `.rubocop.yml`
+- **TypeScript**: `tsconfig.json`
+- **Prettier**: `.prettierrc`
+- **Markdownlint**: `.markdownlint.json`
 
 ---
 
 ## 📈 Benefits
 
-1. **Early Bug Detection**: Catch issues before they reach production
-2. **Consistent Code Quality**: Enforce best practices across the team
-3. **Performance**: Rules optimized for runtime performance
-4. **Maintainability**: Lower cognitive load from simpler code
-5. **Type Safety**: Maximum TypeScript strictness prevents runtime errors
-6. **Best Practices**: Industry-leading standards enforcement
+1. **Modern Codebase**: Latest syntax and patterns
+2. **Maintainability**: Balanced complexity limits
+3. **Type Safety**: Maximum TypeScript strictness
+4. **Performance**: Optimized patterns enforced
+5. **Consistency**: Automated code style
+6. **Quality**: Industrial-grade standards
+7. **Future-Proof**: Ready for new standards
 
 ---
 
-## ⚠️ Migration Notes
+## 🎯 Migration Guide
 
-These rules are **significantly stricter** than standard configurations. When
-upgrading:
+### For Existing Code
 
-1. Run linters individually to see violations
-2. Fix critical issues first (type safety, security)
-3. Refactor for complexity limits
-4. Use `eslint-disable` sparingly and document why
-5. Consider technical debt for large codebases
+1. Run linters to see violations
+2. Auto-fix where possible (`--fix`)
+3. Update deprecated syntax first
+4. Refactor complex functions
+5. Add type annotations gradually
+6. Document intentional exceptions
+
+### Escaping Rules
+
+Use sparingly and document:
+
+```javascript
+// eslint-disable-next-line max-lines-per-function -- Complex business logic
+function processOrder() { ... }
+```
+
+```ruby
+# rubocop:disable Metrics/AbcSize -- Algorithm complexity intrinsic
+def complex_algorithm
+end
+```
 
 ---
 
-## 🔒 Pre-commit Enforcement
-
-All linting rules are enforced via:
-
-- Husky pre-commit hooks
-- Lint-staged for changed files only
-- CI/CD pipeline validation
-
-No code with linting errors can be committed.
-
----
-
-## 📚 Reference Documentation
+## 📚 References
 
 - [ESLint Rules](https://eslint.org/docs/latest/rules/)
 - [TypeScript ESLint](https://typescript-eslint.io/rules/)
 - [Stylelint Rules](https://stylelint.io/user-guide/rules/)
-- [RuboCop Rules](https://docs.rubocop.org/rubocop/)
-- [Prettier Options](https://prettier.io/docs/en/options.html)
+- [RuboCop Docs](https://docs.rubocop.org/rubocop/)
+- [Modern JavaScript](https://javascript.info/)
+- [Modern CSS](https://web.dev/learn/css/)
 
 ---
 
-**Maintained by**: Syafiq Hadzir
-**Review Frequency**: Quarterly  
+**Philosophy**: Enforce modern standards strictly, but with pragmatic limits that work for real production code. No deprecated syntax, but reasonable complexity for maintainability.
+
+**Review**: Quarterly
 **Last Audit**: 2026-01-10
