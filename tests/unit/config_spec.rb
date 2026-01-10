@@ -11,7 +11,7 @@ ESSENTIAL_FILES = [
   'CNAME'
 ].freeze
 
-RSpec.describe 'Site Integrity' do # rubocop:disable RSpec/DescribeClass
+RSpec.describe 'Site Integrity' do
   let(:config_file) { File.join(Dir.pwd, '_config.yml') }
   let(:config) { load_yaml(config_file) }
 
@@ -47,7 +47,7 @@ RSpec.describe 'Site Integrity' do # rubocop:disable RSpec/DescribeClass
 
     describe 'site URL' do
       it 'is a valid URL format' do
-        expect(config['url']).to match(%r{^https?://}),
+        expect(config['url']).to match(/^https?:\/\//),
                                  'url must start with http:// or https://'
       end
     end
