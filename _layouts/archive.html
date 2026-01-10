@@ -27,8 +27,10 @@ Features:
   {%- assign top_tags = top_tags | push: tag[0] -%}
 {%- endfor -%}
 
+{%- assign i18n = site.data.i18n[site.lang] -%}
 <section class="archive-page">
     <header class="archive-header">
+
         <h1 id="archive-title">{{ page.title }}</h1>
         {%- if page.description -%}
         <p class="archive-description">{{ page.description }}</p>
@@ -58,7 +60,7 @@ Features:
 
         <amp-autocomplete filter="fuzzy"
                           min-characters="2"
-                          src="/search-index.json"
+                          src="/assets/data/search-index.json"
                           query="archiveQuery"
                           on="select:AMP.setState({ archiveQuery: event.value.toLowerCase() })"
                           items="items"
@@ -166,7 +168,7 @@ Features:
 
     {%- comment -%} Empty State {%- endcomment -%}
 
-    <amp-state id="searchData" src="/archive-data.json"></amp-state>
+    <amp-state id="searchData" src="/assets/data/archive-data.json"></amp-state>
 
 
 

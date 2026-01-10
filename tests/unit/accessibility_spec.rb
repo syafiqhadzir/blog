@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../spec_helper'
+require_relative 'spec_helper'
 
 # rubocop:disable RSpec/DescribeClass
 RSpec.describe 'Accessibility (A11y)' do

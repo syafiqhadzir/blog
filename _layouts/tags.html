@@ -34,8 +34,10 @@ Features:
   {%- endif -%}
 {%- endfor -%}
 
+{%- assign i18n = site.data.i18n[site.lang] -%}
 <section class="tags-page" aria-label="Tags">
   <header class="tags-header">
+
     <h1 id="tags-title">{{ page.title | default: "Explore by Topic" }}</h1>
     {% if page.description %}
     <p class="tags-description">{{ page.description }}</p>

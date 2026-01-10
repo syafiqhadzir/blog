@@ -4,6 +4,38 @@
 
 <body class="{{ site.theme_config.appearance | default: 'auto' }}{% if page.url == '/404' or page.layout == '404' %} error-page{% endif %}"
   [class]="(uiMode == 'dark' ? 'dark-theme' : (uiMode == 'light' ? 'light-theme' : '{{ site.theme_config.appearance | default: 'auto' }}')) + ({% if page.url == '/404' or page.layout == '404' %}' error-page'{% else %}''{% endif %})">
+
+<amp-state id="uiMode">
+  <script type="application/json">
+    "{{ site.theme_config.appearance | default: 'auto' }}"
+  </script>
+</amp-state>
+
+<amp-script script="ui-mode-persistence" layout="fixed" height="1" width="1" style="position: absolute; top: -10px; left: -10px; opacity: 0; pointer-events: none;">
+  <script type="text/plain" target="amp-script" id="ui-mode-persistence">
+    // Load and Save UI Mode
+    try {
+      const savedMode = localStorage.getItem('uiMode');
+      if (savedMode) {
+        AMP.setState({ uiMode: savedMode });
+      }
+
+      // Watch for state changes
+      setInterval(() => {
+        AMP.getState('uiMode').then(currentMode => {
+          if (currentMode && currentMode !== localStorage.getItem('uiMode')) {
+             localStorage.setItem('uiMode', currentMode);
+          }
+        });
+      }, 1000);
+    } catch (e) {
+      console.debug('UI Mode persistence failed');
+    }
+  </script>
+</amp-script>
+
+{% include consent.html %}
+{% include sidebar.html %}
 {% include analytics.html %}
 <div id="top-target"></div>
   <amp-animation id="showBackToTop" layout="nodisplay">
@@ -76,7 +108,7 @@
     </svg>
   </a>
 
-  <amp-install-serviceworker src="{{ 'sw.js' | relative_url }}" data-iframe-src="{{ 'assets/sw-install.html' | relative_url }}"
+  <amp-install-serviceworker src="{{ '/sw.js' | relative_url }}"
     layout="nodisplay">
   </amp-install-serviceworker>
 </body>

@@ -1,0 +1,170 @@
+/* About Page - Klisé Design System (Minimalist Edition) */
+
+.about-hero {
+  padding-bottom: 3rem;
+  margin-bottom: 5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+
+  .profile-image-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.5rem;
+
+    img,
+    amp-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 2px solid var(--bg-color); /* Seamless blend */
+      border-radius: 50%;
+      box-shadow: var(--shadow-base);
+    }
+  }
+
+  h1 {
+    margin-bottom: 0.75rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .highlight-name {
+    position: relative;
+    color: var(
+      --text-color
+    ); /* Keep it monochrome/bold for minimalism, or subtle accent */
+
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 2px;
+      left: 0;
+      z-index: -1;
+      height: 6px;
+      content: '';
+      background: var(--accent-color);
+      opacity: 20%;
+      transform: skewX(-10deg);
+    }
+  }
+
+  .lead-text {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+}
+
+.about-section {
+  max-width: 720px;
+  margin-right: auto;
+  margin-bottom: 5rem;
+  margin-left: auto;
+
+  h2 {
+    padding-bottom: 0.75rem;
+    margin-bottom: 2.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: left;
+    letter-spacing: -0.01em;
+    border-bottom: 1px dashed var(--border-color);
+  }
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem 2rem;
+}
+
+.focus-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  .focus-header {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .focus-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-color);
+  }
+
+  p {
+    padding-left: calc(
+      20px + 0.75rem
+    ); /* Align text with title, respecting icon width */
+
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+}
+
+.philosophy-block {
+  padding: 1.5rem 0;
+  margin: 4rem 0;
+  text-align: left;
+
+  p {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 1.5rem; /* Larger, statement text */
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-color);
+    letter-spacing: -0.02em;
+  }
+}
+
+.bio-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--text-color);
+  }
+}
+
+@media (max-width: 600px) {
+  .focus-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .focus-item p {
+    padding-left: 0;
+  }
+}

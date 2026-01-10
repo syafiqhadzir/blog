@@ -8,9 +8,12 @@ nav:
   tags: 'Tags'
   about: 'About'
   accessibility: 'Accessibility'
+  sitemap: 'Sitemap'
 
 post:
   reading_time: 'minute read'
+  word_count: 'words'
+  category: 'Category'
   published_on: 'Published on'
   author_about: 'About'
   view_portfolio: 'View Portfolio'
@@ -24,6 +27,7 @@ post:
 breadcrumbs:
   home: 'Home'
   archive: 'Archive'
+  sitemap: 'Sitemap'
   current_page: 'Current Page'
 
 search:

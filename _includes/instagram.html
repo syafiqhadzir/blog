@@ -1,0 +1,15 @@
+{%- comment -%}
+Instagram Embed Component
+Usage: {% include instagram.html shortcode="SHORTCODE" %}
+{%- endcomment -%}
+
+{%- assign shortcode = include.shortcode -%}
+{%- assign captioned = include.captioned | default: true -%}
+
+<amp-instagram
+  data-shortcode="{{ shortcode }}"
+  {% if captioned %}data-captioned{% endif %}
+  width="1"
+  height="1"
+  layout="responsive">
+</amp-instagram>

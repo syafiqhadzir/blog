@@ -1,0 +1,175 @@
+/*
+   Sitemap Polish - Klisé Design System
+   Visual hierarchy, interactive cards, and responsive grid layouts.
+*/
+
+.sitemap-container {
+  padding: 1rem 0 4rem;
+  animation: fade-in 0.8s var(--ease-out-expo);
+}
+
+.sitemap-section {
+  margin-bottom: 4rem;
+}
+
+.sitemap-section .section-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sitemap-section .section-header svg {
+  color: var(--accent-color);
+  opacity: 90%;
+}
+
+.sitemap-section .section-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-color);
+  text-transform: capitalize;
+  letter-spacing: -0.02em;
+}
+
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tag-item {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  background: var(--code-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  transition: all var(--transition-fast);
+}
+
+.tag-item:hover {
+  color: var(--white);
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 15px
+    color-mix(in srgb, var(--accent-color), transparent 70%);
+  transform: translateY(-2px);
+}
+
+.sitemap-footer-cta {
+  padding: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+  border: 1px dashed color-mix(in srgb, var(--accent-color), transparent 80%);
+  border-radius: 20px;
+}
+
+.sitemap-footer-cta a {
+  font-weight: 700;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.sitemap-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.sitemap-list li {
+  position: relative;
+  padding: 1.25rem;
+  overflow: hidden;
+  background: var(--code-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition: all var(--transition-base);
+}
+
+.sitemap-list li::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  content: '';
+  background: var(--accent-color);
+  opacity: 0%;
+  transition: opacity var(--transition-fast);
+}
+
+.sitemap-list li a {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.sitemap-footer-cta a:hover {
+  text-decoration: underline;
+}
+
+.sitemap-list .sitemap-meta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 80%;
+}
+
+.sitemap-list .sitemap-meta svg {
+  opacity: 60%;
+}
+
+.sitemap-list li:hover {
+  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+  box-shadow: 0 12px 40px color(srgb 0 0 0 / 8%);
+  transform: translateY(-4px);
+}
+
+.sitemap-list li:hover::before {
+  opacity: 100%;
+}
+
+.sitemap-list li:hover a {
+  color: var(--accent-color);
+}
+
+/* Transitions */
+@keyframes fade-in {
+  from {
+    opacity: 0%;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sitemap-list {
+    grid-template-columns: 1fr;
+  }
+
+  .sitemap-section h2 {
+    font-size: 1.2rem;
+  }
+}

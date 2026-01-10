@@ -1,0 +1,144 @@
+{%- comment -%}
+================================================================================
+AMP SIDEBAR - Mobile Navigation Drawer
+Expert-level mobile navigation following Google AMP best practices.
+
+Features:
+  • Slide-out navigation drawer for mobile
+  • Accessible keyboard navigation
+  • Smooth animations
+  • Reading settings integration
+  • Quick links and site navigation
+================================================================================
+{%- endcomment -%}
+
+{%- assign i18n = site.data.i18n[site.lang] -%}
+
+<amp-sidebar id="sidebar" layout="nodisplay" side="left">
+  <div class="sidebar-header">
+    <button on="tap:sidebar.close" class="sidebar-close" aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <h2>{{ site.title }}</h2>
+  </div>
+
+  <nav class="sidebar-nav" aria-label="Main navigation">
+    <ul>
+      <li>
+        <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}" aria-current="{% if page.url == '/' or page.url == '/index.html' %}page{% else %}false{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          </svg>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="{{ '/archive' | relative_url }}" class="{% if page.url contains '/archive' %}active{% endif %}" aria-current="{% if page.url contains '/archive' %}page{% else %}false{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+            <line x1="9" y1="22" x2="9" y2="10"></line>
+            <line x1="15" y1="22" x2="15" y2="10"></line>
+          </svg>
+          Archive
+        </a>
+      </li>
+      <li>
+        <a href="{{ '/tags' | relative_url }}" class="{% if page.url contains '/tags' %}active{% endif %}" aria-current="{% if page.url contains '/tags' %}page{% else %}false{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+          </svg>
+          Tags
+        </a>
+      </li>
+      <li>
+        <a href="{{ '/about' | relative_url }}" class="{% if page.url contains '/about' %}active{% endif %}" aria-current="{% if page.url contains '/about' %}page{% else %}false{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+          </svg>
+          About
+        </a>
+      </li>
+      <li>
+        <a href="{{ '/accessibility' | relative_url }}" class="{% if page.url contains '/accessibility' %}active{% endif %}" aria-current="{% if page.url contains '/accessibility' %}page{% else %}false{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+            <path d="M2 12h20"></path>
+          </svg>
+          Accessibility
+        </a>
+      </li>
+      <li>
+        <a href="{{ '/glossary' | relative_url }}" class="{% if page.url contains '/glossary' %}active{% endif %}" aria-current="{% if page.url contains '/glossary' %}page{% else %}false{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Glossary
+        </a>
+      </li>
+      <li>
+        <a href="{{ '/sitemap' | relative_url }}" class="{% if page.url contains '/sitemap' %}active{% endif %}" aria-current="{% if page.url contains '/sitemap' %}page{% else %}false{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          Sitemap
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-section">
+    <h3>Appearance</h3>
+    <div class="theme-switcher">
+      <button on="tap:AMP.setState({ uiMode: 'light' })" class="theme-btn" aria-label="Light mode"
+        [aria-selected]="uiMode == 'light'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        Light
+      </button>
+      <button on="tap:AMP.setState({ uiMode: 'dark' })" class="theme-btn" aria-label="Dark mode"
+        [aria-selected]="uiMode == 'dark'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        Dark
+      </button>
+      <button on="tap:AMP.setState({ uiMode: 'auto' })" class="theme-btn" aria-label="Auto mode"
+        [aria-selected]="uiMode == 'auto' || !uiMode">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 2v20"></path>
+        </svg>
+        Auto
+      </button>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ site.author.name }}</p>
+    <div class="sidebar-links">
+      <a href="{{ '/privacy' | relative_url }}">Privacy</a>
+      <a href="{{ '/cookies' | relative_url }}">Cookies</a>
+      <a href="{{ site.social.links[0] | default: '#' }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
+</amp-sidebar>

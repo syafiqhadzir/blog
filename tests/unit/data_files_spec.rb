@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../spec_helper'
+require_relative 'spec_helper'
 
+# rubocop:disable RSpec/DescribeClass
 RSpec.describe 'Data Files' do
   describe '_data/menu.yml' do
     let(:menu_file) { File.join(data_dir, 'menu.yml') }
@@ -37,7 +38,7 @@ RSpec.describe 'Data Files' do
           next unless post_list['limit']
 
           expect(post_list['limit']).to be_a(Integer)
-          expect(post_list['limit']).to be > 0
+          expect(post_list['limit']).to be_positive
         end
       end
 
@@ -63,3 +64,4 @@ RSpec.describe 'Data Files' do
     end
   end
 end
+# rubocop:enable RSpec/DescribeClass

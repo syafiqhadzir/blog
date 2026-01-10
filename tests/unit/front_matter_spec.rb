@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
-require_relative '../spec_helper'
+require_relative 'spec_helper'
 
+# Required front matter keys for all posts (date optional since Jekyll infers from filename)
+REQUIRED_KEYS = %w[title layout].freeze
+
+# Valid layouts for posts
+VALID_LAYOUTS = %w[post default page].freeze
+
+# rubocop:disable RSpec/DescribeClass
 RSpec.describe 'Post Front Matter' do
-  # Required front matter keys for all posts (date optional since Jekyll infers from filename)
-  REQUIRED_KEYS = %w[title layout].freeze
-
-  # Valid layouts for posts
-  VALID_LAYOUTS = %w[post default page].freeze
-
   describe 'All posts' do
     it 'exist in the _posts directory' do
       expect(post_files).not_to be_empty,
@@ -87,3 +88,4 @@ RSpec.describe 'Post Front Matter' do
     end
   end
 end
+# rubocop:enable RSpec/DescribeClass

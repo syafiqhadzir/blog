@@ -1,0 +1,15 @@
+{%- comment -%}
+Twitter Embed Component
+Usage: {% include twitter.html id="TWEET_ID" %}
+{%- endcomment -%}
+
+{%- assign tweet_id = include.id -%}
+
+<amp-twitter
+  width="375"
+  height="472"
+  layout="responsive"
+  data-tweetid="{{ tweet_id }}"
+  {% if include.cards %}data-cards="{{ include.cards }}"{% endif %}
+  {% if include.conversation %}data-conversation="{{ include.conversation }}"{% endif %}>
+</amp-twitter>

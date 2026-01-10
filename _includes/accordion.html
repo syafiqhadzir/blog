@@ -1,0 +1,41 @@
+{%- comment -%}
+================================================================================
+AMP ACCORDION - Collapsible Content Sections
+Reusable accordion component for FAQs, TOC, and collapsible content.
+
+Usage:
+  {% include accordion.html
+     id="unique-id"
+     items=accordion_items
+     expand_single=true
+  %}
+
+Items format:
+  - title: "Section Title"
+    content: "Section content..."
+    expanded: true/false (optional)
+================================================================================
+{%- endcomment -%}
+
+{%- assign accordion_id = include.id | default: 'accordion' -%}
+{%- assign expand_single = include.expand_single | default: false -%}
+{%- assign items = include.items -%}
+
+<amp-accordion id="{{ accordion_id }}"
+               class="accordion"
+               {% if expand_single %}expand-single-section{% endif %}
+               animate>
+  {% for item in items %}
+  <section {% if item.expanded %}expanded{% endif %}>
+    <h3 class="accordion-header">
+      {{ item.title }}
+      <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </h3>
+    <div class="accordion-content">
+      {{ item.content }}
+    </div>
+  </section>
+  {% endfor %}
+</amp-accordion>

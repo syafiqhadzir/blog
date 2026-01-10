@@ -1,0 +1,178 @@
+---
+layout: page
+title: Sitemap
+permalink: /sitemap.html
+---
+
+<div class="sitemap-container">
+  <!-- Section: Core Pages -->
+  <section class="sitemap-section">
+    <div class="section-header">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="20"
+           height="20"
+           viewBox="0 0 24 24"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <h2>Core Navigation</h2>
+    </div>
+    <ul class="sitemap-list">
+      <li>
+        <a href="{{ '/' | relative_url }}">{{ i18n.nav.home | default: "Home" }}</a>
+        <span class="sitemap-meta">Homepage and recent highlights</span>
+      </li>
+      <li>
+        <a href="{{ '/about.html' | relative_url }}">{{ i18n.nav.about | default: "About" }}</a>
+        <span class="sitemap-meta">Mission statement and author bio</span>
+      </li>
+      <li>
+        <a href="{{ '/archive.html' | relative_url }}">{{ i18n.nav.archive | default: "Archive" }}</a>
+        <span class="sitemap-meta">Chronological index of all articles</span>
+      </li>
+      <li>
+        <a href="{{ '/tags.html' | relative_url }}">{{ i18n.nav.tags | default: "Tags" }}</a>
+        <span class="sitemap-meta">Content grouped by technical topics</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Section: All Pages (Dynamic) -->
+  <section class="sitemap-section">
+    <div class="section-header">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="20"
+           height="20"
+           viewBox="0 0 24 24"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7"></rect>
+        <rect x="14" y="3" width="7" height="7"></rect>
+        <rect x="14" y="14" width="7" height="7"></rect>
+        <rect x="3" y="14" width="7" height="7"></rect>
+      </svg>
+      <h2>Utility Pages</h2>
+    </div>
+    <ul class="sitemap-list">
+      {% assign system_files = "/404.html,/offline.html,/sw-install.html,/assets/,/sitemap.html,/index.html,/archive.html,/tags.html,/about.html" | split: "," %}
+      {% for p in site.pages %}
+        {% assign is_system = false %}
+        {% for sys in system_files %}
+          {% if p.url contains sys or p.url == "/" %}{% assign is_system = true %}{% endif %}
+        {% endfor %}
+
+        {% if p.title and is_system == false and p.url contains ".html" %}
+        <li>
+          <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+          <span class="sitemap-meta">
+            {% if p.description %}{{ p.description | truncate: 60 }}{% else %}Utility page{% endif %}
+          </span>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <!-- Section: Articles by Year -->
+  <section class="sitemap-section">
+    <div class="section-header">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="20"
+           height="20"
+           viewBox="0 0 24 24"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+      </svg>
+      <h2>All Publications</h2>
+    </div>
+
+    {% assign postsByYear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    <div class="sitemap-archives">
+      {% for year in postsByYear %}
+      <div class="year-block" style="margin-bottom: 2rem;">
+        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--accent-color);">{{ year.name }}</h3>
+        <ul class="sitemap-list">
+          {% for post in year.items %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <span class="sitemap-meta">
+              {{ post.date | date: "%b %d" }}
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Section: Tags -->
+  <section class="sitemap-section">
+    <div class="section-header">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="20"
+           height="20"
+           viewBox="0 0 24 24"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+      </svg>
+      <h2>Browse by Topic</h2>
+    </div>
+    <div class="tags-cloud">
+      {% assign tags = site.tags | sort %}
+      {% for tag in tags %}
+      <a href="{{ '/tags.html' | relative_url }}#{{ tag[0] | slugify }}" class="tag-item">
+        #{{ tag[0] }} <span style="opacity: 0.6; font-size: 0.8em; margin-left: 2px;">({{ tag[1].size }})</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Section: Feeds -->
+  <section class="sitemap-section">
+    <div class="section-header">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="20"
+           height="20"
+           viewBox="0 0 24 24"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"></circle>
+        <!-- markdownlint-disable-next-line MD013 -->
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+      </svg>
+      <h2>Feeds</h2>
+    </div>
+    <ul class="sitemap-list">
+      <li>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a>
+        <span class="sitemap-meta">XML-based syndicated content</span>
+      </li>
+      <li>
+        <a href="{{ '/sitemap.xml' | relative_url }}">XML Sitemap</a>
+        <span class="sitemap-meta">Machine-readable index for bots</span>
+      </li>
+    </ul>
+  </section>
+</div>

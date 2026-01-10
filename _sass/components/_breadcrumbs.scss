@@ -1,15 +1,21 @@
-/* Breadcrumbs */
+/* Breadcrumbs Polish - Klisé Design System */
+
 .breadcrumbs {
   padding: 0;
-  margin: 1rem 0 2rem;
-  font-size: 0.9rem;
+  margin: 0 0 1rem;
+  font-family: var(--font-mono); /* Technical aesthetic */
+  font-size: 0.8rem; /* Smaller sizing for 'eyebrow' look */
   color: var(--text-secondary);
+  text-transform: uppercase; /* Eyebrow style */
+  letter-spacing: 0.05em;
 }
 
 .breadcrumbs ol {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.5rem;
   align-items: center;
+  justify-content: center;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -17,43 +23,64 @@
 
 .breadcrumbs li {
   display: inline-flex;
+  gap: 0.5rem; /* Gap between item and separator */
   align-items: center;
   color: var(--text-secondary);
 }
 
 .breadcrumbs-separator {
-  margin: 0 0.5rem;
-  color: var(--text-secondary);
-  content: '/';
+  margin: 0;
+  font-weight: 300;
+  color: var(--border-color);
   opacity: 50%;
 }
 
+.breadcrumbs a {
+  position: relative;
+  padding: 0; /* Remove padding for cleaner look */
+  color: var(--text-secondary);
+  text-decoration: none;
+  background: transparent;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--accent-color);
+    text-underline-offset: 4px;
+    background: transparent; /* Remove background, just text color change */
+  }
+}
+
+/* Current Page Item */
+.breadcrumbs [aria-current='page'] {
+  padding: 0;
+  font-weight: 600;
+  color: var(--text-color);
+
+  /* Ensure it doesn't look like a link */
+  cursor: default;
+  opacity: 100%;
+}
+
+/* Hide separator on last item */
 .breadcrumbs li:last-child .breadcrumbs-separator {
   display: none;
 }
 
-.breadcrumbs a {
-  color: var(--text-secondary);
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  transition:
-    text-decoration-color 0.2s ease,
-    color 0.2s ease;
-}
+/* Mobile Adjustment */
+@media (max-width: 600px) {
+  .breadcrumbs {
+    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+  }
 
-.breadcrumbs a:hover {
-  color: var(--link-color);
-  text-decoration-color: var(--link-color);
-}
+  .breadcrumbs ol {
+    gap: 0.3rem;
+  }
 
-/* stylelint-disable-next-line selector-no-qualifying-type -- semantic span required for ARIA hidden element */
-.breadcrumbs span[aria-hidden='true'] {
-  margin: 0 0.5rem;
-  opacity: 50%;
-}
-
-/* stylelint-disable-next-line selector-no-qualifying-type -- semantic span required for current page indicator */
-.breadcrumbs span[aria-current='page'] {
-  font-weight: 500;
-  color: var(--text-color);
+  .breadcrumbs li {
+    gap: 0.3rem;
+  }
 }

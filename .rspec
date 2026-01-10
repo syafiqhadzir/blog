@@ -1,4 +1,4 @@
---require spec_helper
+--require ./tests/unit/spec_helper
 --format documentation
 --color
 --order random

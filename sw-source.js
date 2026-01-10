@@ -127,9 +127,6 @@ globalThis.addEventListener('activate', (event) => {
       .then((cacheNames) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
-            // Delete old caches that start with our prefix but don't match current version
-            // We check for the prefix to avoid deleting other caches (like workbox-precache-v2-...)
-            // which are managed by cleanupOutdatedCaches()
             if (
               cacheName.startsWith(CACHE_PREFIX) &&
               !cacheName.includes(CACHE_VERSION)

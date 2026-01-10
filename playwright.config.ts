@@ -53,7 +53,7 @@ export default defineConfig({
     : 'list',
 
   retries: CI ? 2 : 0, // Increased retries for CI flakiness
-  testDir: './tests',
+  testDir: './tests/e2e',
 
   // Increased timeout for better stability in CI
   timeout: 30_000,

@@ -8,9 +8,12 @@ nav:
   tags: 'Tag'
   about: 'Tentang'
   accessibility: 'Kebolehcapaian'
+  sitemap: 'Peta Laman'
 
 post:
   reading_time: 'minit bacaan'
+  word_count: 'perkataan'
+  category: 'Kategori'
   published_on: 'Diterbitkan pada'
   author_about: 'Tentang'
   view_portfolio: 'Lihat Portfolio'
@@ -24,6 +27,7 @@ post:
 breadcrumbs:
   home: 'Laman Utama'
   archive: 'Arkib'
+  sitemap: 'Peta Laman'
   current_page: 'Halaman Semasa'
 
 search:

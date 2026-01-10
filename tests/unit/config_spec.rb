@@ -1,9 +1,17 @@
 # frozen_string_literal: true
 
 require 'json'
-require_relative '../spec_helper'
+require_relative 'spec_helper'
 
-RSpec.describe 'Site Configuration' do
+ESSENTIAL_FILES = [
+  'robots.txt',
+  'assets/favicons/site.webmanifest',
+  '404.md',
+  'offline.html',
+  'CNAME'
+].freeze
+
+RSpec.describe 'Site Integrity' do # rubocop:disable RSpec/DescribeClass
   let(:config_file) { File.join(Dir.pwd, '_config.yml') }
   let(:config) { load_yaml(config_file) }
 
@@ -73,49 +81,41 @@ RSpec.describe 'Site Configuration' do
       end
     end
   end
-end
 
-RSpec.describe 'Essential Files' do
-  ESSENTIAL_FILES = [
-    'robots.txt',
-    'site.webmanifest',
-    '404.md',
-    'offline.html',
-    'CNAME'
-  ].freeze
-
-  ESSENTIAL_FILES.each do |file|
-    it "has #{file}" do
-      expect(File.exist?(File.join(Dir.pwd, file))).to be(true),
-                                                       "Essential file '#{file}' not found"
-    end
-  end
-
-  describe 'robots.txt' do
-    let(:content) { File.read(File.join(Dir.pwd, 'robots.txt')) }
-
-    it 'has User-agent directive' do
-      expect(content).to include('User-agent'),
-                         'robots.txt should have User-agent directive'
-    end
-  end
-
-  describe 'site.webmanifest' do
-    let(:content) { File.read(File.join(Dir.pwd, 'site.webmanifest')) }
-    let(:manifest) { JSON.parse(content) }
-
-    it 'has valid JSON' do
-      expect { JSON.parse(content) }.not_to raise_error
+  describe 'Essential Files' do
+    ESSENTIAL_FILES.each do |file|
+      it "has #{file}" do
+        expect(File.exist?(File.join(Dir.pwd, file))).to be(true),
+                                                         "Essential file '#{file}' not found"
+      end
     end
 
-    it 'has name' do
-      expect(manifest).to have_key('name'),
-                          'webmanifest should have name'
+    describe 'robots.txt' do
+      let(:content) { File.read(File.join(Dir.pwd, 'robots.txt')) }
+
+      it 'has User-agent directive' do
+        expect(content).to include('User-agent'),
+                           'robots.txt should have User-agent directive'
+      end
     end
 
-    it 'has icons' do
-      expect(manifest).to have_key('icons'),
-                          'webmanifest should have icons'
+    describe 'site.webmanifest' do
+      let(:content) { File.read(File.join(Dir.pwd, 'assets/favicons/site.webmanifest')) }
+      let(:manifest) { JSON.parse(content) }
+
+      it 'has valid JSON' do
+        expect { JSON.parse(content) }.not_to raise_error
+      end
+
+      it 'has name' do
+        expect(manifest).to have_key('name'),
+                            'webmanifest should have name'
+      end
+
+      it 'has icons' do
+        expect(manifest).to have_key('icons'),
+                            'webmanifest should have icons'
+      end
     end
   end
 end

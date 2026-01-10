@@ -1,0 +1,24 @@
+{%- comment -%}
+YouTube Embed Component
+Usage: {% include youtube.html id="VIDEO_ID" title="Video Title" %}
+{%- endcomment -%}
+
+{%- assign video_id = include.id -%}
+{%- assign video_title = include.title | default: "YouTube video" -%}
+{%- assign width = include.width | default: 16 -%}
+{%- assign height = include.height | default: 9 -%}
+
+<amp-youtube
+  data-videoid="{{ video_id }}"
+  layout="responsive"
+  width="{{ width }}"
+  height="{{ height }}"
+  {% if include.autoplay %}autoplay{% endif %}
+  {% if include.params %}data-param-{{ include.params }}{% endif %}>
+  <amp-img
+    src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg"
+    placeholder
+    layout="fill">
+  </amp-img>
+</amp-youtube>
+<p class="media-caption">{{ video_title }}</p>

@@ -1,4 +1,4 @@
-title: Syafiq Hadzir # name of the site
+title: SH Blog # stands for Syafiq Hadzir's Blog
 author:
   name: Syafiq Hadzir # name of site's author
   url: https://syafiqhadzir.dev # URL of site's author
@@ -104,7 +104,7 @@ exclude:
   - Rakefile
   - scripts
   - vendor
-  - spec
+  - tests
   - node_modules
   - .bundle
   - .git
@@ -114,14 +114,15 @@ exclude:
   - SECURITY.md
   - CONTRIBUTING.md
   - docs
-  - e2e
+  - lighthouse
   - playwright.config.ts
   - package.json
   - package-lock.json
   - tsconfig.json
   - eslint.config.js
   - stylelint.config.js
-  - lighthouserc.cjs
+  - commitlint.config.js
+  - knip.config.ts
   - .prettierrc
   - .prettierignore
   - .markdownlint.json
@@ -130,3 +131,4 @@ exclude:
   - sonar-project.properties
   - playwright-report
   - test-results
+  - lint_output.txt

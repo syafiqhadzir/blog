@@ -30,7 +30,16 @@
     <span>Cloudflare</span>
   </div>
 
-  <!-- Row 3: Last Update -->
+  <!-- Row 3: Links -->
+  <div class="footer-row footer-links">
+    <a href="{{ '/privacy' | relative_url }}">Privacy Policy</a>
+    <span class="separator">·</span>
+    <a href="{{ '/cookies' | relative_url }}">Cookie Policy</a>
+    <span class="separator">·</span>
+    <a href="{{ '/sitemap.html' | relative_url }}">Sitemap</a>
+  </div>
+
+  <!-- Row 4: Last Update -->
   <div class="footer-row">
     <span>Last Update: {{ site.time | date: "%d %B %Y" }}</span>
   </div>

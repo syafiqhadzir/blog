@@ -1,12 +1,42 @@
 ---
 layout: default
 ---
-
+{%- assign i18n = site.data.i18n[site.lang] -%}
 <article role="article" aria-labelledby="page-title">
-    <h1 id="page-title">{{ page.title }}</h1>
+    <header class="page-header">
+
+        <h1 id="page-title">{{ page.title }}</h1>
+    </header>
     <div class="page-content">
         {{ content }}
     </div>
 </article>
+
+{%- comment -%} Schema.org JSON-LD for Breadcrumbs {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ page.title | escape }}",
+  "description": "{{ page.description | default: site.description | escape }}",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "{{ i18n.breadcrumbs.home | escape }}",
+        "item": "{{ '/' | absolute_url }}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ page.title | escape }}",
+        "item": "{{ page.url | absolute_url }}"
+      }
+    ]
+  }
+}
+</script>
 
 

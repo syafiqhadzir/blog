@@ -1,0 +1,41 @@
+{%- comment -%}
+================================================================================
+AMP FIT-TEXT - Responsive Typography Component
+Automatically scales text to fit within its container.
+Works with reading settings via CSS classes on parent elements.
+
+Usage:
+  {% include fit_text.html
+     text="Your text here"
+     min_font_size=14
+     max_font_size=72
+     height=80
+  %}
+
+Parameters:
+  - text: The text content to display
+  - min_font_size: Minimum font size in pixels (default: 14)
+  - max_font_size: Maximum font size in pixels (default: 72)
+  - height: Container height in pixels (default: 80)
+  - class: Additional CSS classes
+
+Note: Reading settings integration is handled via CSS inheritance from
+the parent content-wrapper element which applies text-scale-* classes.
+================================================================================
+{%- endcomment -%}
+
+{%- assign text = include.text -%}
+{%- assign min_font = include.min_font_size | default: 14 -%}
+{%- assign max_font = include.max_font_size | default: 72 -%}
+{%- assign height = include.height | default: 80 -%}
+{%- assign extra_class = include.class | default: "" -%}
+
+<amp-fit-text
+  layout="responsive"
+  width="300"
+  height="{{ height }}"
+  min-font-size="{{ min_font }}"
+  max-font-size="{{ max_font }}"
+  class="fit-text {{ extra_class }}">
+  {{ text }}
+</amp-fit-text>

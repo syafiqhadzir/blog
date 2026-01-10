@@ -8,6 +8,7 @@
   @use "components/author-bio";
   @use "components/related-posts";
   @use "components/post-navigation";
+  @use "components/accordion";
 {% endif %}
 
 {% if page.layout == 'archive' or page.url contains '/archive.html' %}
@@ -20,4 +21,17 @@
 
 {% if page.url contains '/404.html' %}
   @use "pages/404" as error404;
+{% endif %}
+
+{% if page.url contains '/sitemap.html' %}
+  @use "components/sitemap";
+  @use "components/tags" as tags-component;
+{% endif %}
+
+{% if page.url contains '/accessibility.html' or page.url contains '/glossary.html' or page.url contains '/cookies.html' or page.url contains '/privacy.html' %}
+  @use "components/sitemap";
+{% endif %}
+
+{% if page.url contains 'glossary' %}
+  @use "components/glossary";
 {% endif %}
