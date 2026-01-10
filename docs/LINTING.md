@@ -99,7 +99,7 @@ max-statements: 25          // Statements per function
 - ✅ Modern angle notation
 - ✅ Percentage alpha values
 
-### Complexity Limits (Industrial Balanced)
+### CSS Complexity Limits
 
 ```scss
 max-nesting-depth: 3              // SCSS nesting
