@@ -1,4 +1,7 @@
-# inherit_from: .rubocop_todo.yml
+# =============================================================================
+# RuboCop Configuration - BLEEDING-EDGE STRICTEST
+# Last Updated: 2026-01-10
+# =============================================================================
 
 plugins:
   - rubocop-rspec
@@ -17,16 +20,19 @@ AllCops:
     - 'bin/bootstrap'
     - 'Gemfile.lock'
 
-# Documentation - enabled for non-specs
+# =============================================================================
+# Style - STRICTEST
+# =============================================================================
+
+# Documentation - enabled for all code (STRICT)
 Style/Documentation:
   Enabled: true
   Exclude:
-    - 'spec/**/*'
+    - 'tests/unit/**/*'
     - 'Rakefile'
     - 'Gemfile'
-    - 'scripts/*.js'
 
-# Frozen string literal required
+# Frozen string literal required (MANDATORY)
 Style/FrozenStringLiteralComment:
   Enabled: true
   EnforcedStyle: always
@@ -48,39 +54,218 @@ Style/SymbolArray:
 Style/WordArray:
   EnforcedStyle: percent
 
-# Block length - relaxed for specs/Rakefile
+# NEW STRICT STYLE RULES
+Style/AndOr:
+  Enabled: true
+  EnforcedStyle: always
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+  EnforcedStyle: compact
+
+Style/CollectionMethods:
+  Enabled: true
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/NegatedIf:
+  Enabled: true
+
+Style/NegatedWhile:
+  Enabled: true
+
+Style/NumericPredicate:
+  Enabled: true
+
+Style/ParallelAssignment:
+  Enabled: true
+
+Style/PercentLiteralDelimiters:
+  Enabled: true
+
+Style/PreferredHashMethods:
+  EnforcedStyle: short
+
+Style/RaiseArgs:
+  EnforcedStyle: compact
+
+Style/RedundantReturn:
+  Enabled: true
+  AllowMultipleReturnValues: false
+
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+  AllowInnerSlashes: false
+
+Style/SafeNavigation:
+  Enabled: true
+
+Style/Send:
+  Enabled: true
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+Style/SingleLineBlockParams:
+  Enabled: true
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
+
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
+
+# =============================================================================
+# Metrics - STRICTEST LIMITS
+# =============================================================================
+
+# Block length - relaxed for specs/Rakefile only
 Metrics/BlockLength:
+  Max: 25
   Exclude:
-    - 'spec/**/*'
+    - 'tests/unit/**/*'
     - 'Rakefile'
 
-# Line length - 120 chars max
+# Line length - 100 chars max (STRICT)
 Layout/LineLength:
-  Max: 120
+  Max: 100
+  AllowedPatterns: ['\A\s*#']
 
-# Method length - strict but reasonable
+# Method length - VERY strict
 Metrics/MethodLength:
-  Max: 10
+  Max: 8 # Reduced from 10
 
-# Class length
+# Class length - STRICT
 Metrics/ClassLength:
+  Max: 80 # Reduced from 100
+
+# Module length - NEW
+Metrics/ModuleLength:
   Max: 100
 
-# ABC size - complexity metric
+# Parameter lists - NEW
+Metrics/ParameterLists:
+  Max: 3
+  MaxOptionalParameters: 2
+
+# ABC size - complexity metric (STRICTEST)
 Metrics/AbcSize:
-  Max: 10
+  Max: 8 # Reduced from 10
 
-# Cyclomatic Complexity
+# Cyclomatic Complexity (STRICTEST)
 Metrics/CyclomaticComplexity:
-  Max: 5
+  Max: 4 # Reduced from 5
 
-# Perceived Complexity
+# Perceived Complexity (STRICTEST)
 Metrics/PerceivedComplexity:
-  Max: 6
+  Max: 5 # Reduced from 6
 
-# RSpec - stricter settings
+# =============================================================================
+# Lint - STRICTEST
+# =============================================================================
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: true
+
+Lint/AmbiguousOperator:
+  Enabled: true
+
+Lint/AssignmentInCondition:
+  Enabled: true
+
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - 'tests/unit/config_spec.rb'
+    - 'tests/unit/front_matter_spec.rb'
+
+Lint/DeprecatedClassMethods:
+  Enabled: true
+
+Lint/DuplicateMethods:
+  Enabled: true
+
+Lint/EachWithObjectArgument:
+  Enabled: true
+
+Lint/EmptyExpression:
+  Enabled: true
+
+Lint/LiteralAsCondition:
+  Enabled: true
+
+Lint/Loop:
+  Enabled: true
+
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: true
+
+Lint/RequireParentheses:
+  Enabled: true
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: true
+
+Lint/UnderscorePrefixedVariableName:
+  Enabled: true
+
+Lint/UnusedBlockArgument:
+  Enabled: true
+  AllowUnusedKeywordArguments: false
+
+Lint/UnusedMethodArgument:
+  Enabled: true
+  AllowUnusedKeywordArguments: false
+
+Lint/UselessAccessModifier:
+  Enabled: true
+
+Lint/UselessAssignment:
+  Enabled: true
+
+Lint/Void:
+  Enabled: true
+
+# =============================================================================
+# Performance - ALL ENABLED
+# =============================================================================
+
+Performance/Casecmp:
+  Enabled: true
+
+Performance/Count:
+  Enabled: true
+
+Performance/Detect:
+  Enabled: true
+
+Performance/RangeInclude:
+  Enabled: true
+
+Performance/RedundantMerge:
+  Enabled: true
+
+Performance/RegexpMatch:
+  Enabled: true
+
+Performance/ReverseEach:
+  Enabled: true
+
+Performance/Size:
+  Enabled: true
+
+Performance/StringReplacement:
+  Enabled: true
+
+Performance/TimesMap:
+  Enabled: true
+
+# =============================================================================
+# RSpec - STRICTEST SETTINGS
+# =============================================================================
+
 RSpec/ExampleLength:
-  Max: 10
+  Max: 8 # Reduced from 10
 
 RSpec/MultipleExpectations:
   Max: 2
@@ -90,27 +275,78 @@ RSpec/NestedGroups:
 
 RSpec/DescribeClass:
   Exclude:
-    - 'spec/unit/config_spec.rb'
-    - 'spec/unit/data_files_spec.rb'
-    - 'spec/unit/front_matter_spec.rb'
-    - 'spec/unit/security_spec.rb'
-
-# Lint - stricter
-Lint/ConstantDefinitionInBlock:
-  Exclude:
-    - 'spec/unit/config_spec.rb'
-    - 'spec/unit/front_matter_spec.rb'
+    - 'tests/unit/config_spec.rb'
+    - 'tests/unit/data_files_spec.rb'
+    - 'tests/unit/front_matter_spec.rb'
+    - 'tests/unit/security_spec.rb'
+    - 'tests/unit/layouts_spec.rb'
+    - 'tests/unit/accessibility_spec.rb'
 
 RSpec/LeakyConstantDeclaration:
   Exclude:
-    - 'spec/unit/config_spec.rb'
-    - 'spec/unit/front_matter_spec.rb'
+    - 'tests/unit/config_spec.rb'
+    - 'tests/unit/front_matter_spec.rb'
 
 RSpec/MultipleDescribes:
   Exclude:
-    - 'spec/unit/config_spec.rb'
-    - 'spec/unit/layouts_spec.rb'
+    - 'tests/unit/config_spec.rb'
+    - 'tests/unit/layouts_spec.rb'
 
-# Line endings - ignore for Windows compatibility
+# NEW STRICT RSpec RULES
+RSpec/BeEql:
+  Enabled: true
+
+RSpec/DescribedClass:
+  Enabled: true
+
+RSpec/EmptyExampleGroup:
+  Enabled: true
+
+RSpec/ExpectActual:
+  Enabled: true
+
+RSpec/InstanceVariable:
+  Enabled: true
+
+RSpec/IteratedExpectation:
+  Enabled: true
+
+RSpec/LetSetup:
+  Enabled: true
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/PredicateMatcher:
+  Enabled: true
+
+RSpec/VerifiedDoubles:
+  Enabled: true
+
+# =============================================================================
+# Layout - STRICT FORMATTING
+# =============================================================================
+
 Layout/EndOfLine:
-  Enabled: false
+  Enabled: false # Windows compatibility
+
+Layout/EmptyLines:
+  Enabled: true
+
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: true
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: true
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: true
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: true
+
+Layout/TrailingEmptyLines:
+  Enabled: true
+
+Layout/TrailingWhitespace:
+  Enabled: true
