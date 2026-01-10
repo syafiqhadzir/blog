@@ -15,10 +15,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: 'npm'
           node-version: '24'
@@ -54,7 +54,7 @@ jobs:
 
       - name: Create optimization PR
         if: steps.analyze.outputs.suggestions != ''
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const suggestions = `${{ steps.analyze.outputs.suggestions }}`;
