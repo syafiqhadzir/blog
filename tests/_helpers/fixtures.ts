@@ -7,6 +7,8 @@ import { XMLParser } from 'fast-xml-parser';
 import * as fs from 'node:fs';
 import path from 'node:path';
 
+import { ArchivePage, HomePage } from './pages';
+
 // --- Configuration & Constants ---
 const BASE_URL = process.env['BASE_URL'] ?? 'http://127.0.0.1:5000';
 const PERF_MODE = process.env['PERF_MODE'] === 'true';
@@ -15,15 +17,19 @@ const PERF_MODE = process.env['PERF_MODE'] === 'true';
 export interface PerfMetrics {
   domContentLoaded: number;
   duration: number;
+  fcp: number | null;
+  lcp: number | null;
   loaded: number;
   resources: number;
   url: string;
 }
 
 interface BlogFixtures {
+  archivePage: ArchivePage;
   blockAdsAndAnalytics: (page: Page) => Promise<void>;
   collectPerfMetrics: (page: Page) => Promise<PerfMetrics>;
   getAllInternalRoutes: () => Promise<string[]>;
+  homePage: HomePage;
   validateInternalLinks: (page: Page) => Promise<string[]>;
 }
 
@@ -36,7 +42,7 @@ const normalizeRoute = (route: string): string => {
     .replace(/https?:\/\/blog\.syafiqhadzir\.dev/, '')
     .split('#')[0];
 
-  if (clean != undefined && clean.length > 0 && clean.endsWith('index.html'))
+  if (clean !== undefined && clean.length > 0 && clean.endsWith('index.html'))
     clean = clean.replace('index.html', '');
   if (clean === undefined || !(clean.length > 0 && clean.startsWith('/')))
     clean = '/' + (clean ?? '');
@@ -66,7 +72,7 @@ async function parseFeedRoutes(
     for (const entry of entryList) {
       const entryObject = entry as { link?: Record<string, string> };
       const link = entryObject.link?.['@_href'];
-      if (link != undefined && link.length > 0) {
+      if (link !== undefined && link.length > 0) {
         routes.add(normalizeRoute(link));
       }
     }
@@ -98,7 +104,7 @@ async function parseSitemapRoutes(
     for (const entry of urlList) {
       const entryObject = entry as { loc?: string };
       const location = entryObject.loc;
-      if (location != undefined && location.length > 0) {
+      if (location !== undefined && location.length > 0) {
         routes.add(normalizeRoute(location));
       }
     }
@@ -135,6 +141,11 @@ function walkFilesystem(siteDirectory: string, routes: Set<string>): void {
 
 // --- Fixtures Implementation ---
 export const test = base.extend<BlogFixtures>({
+  // Page Object fixtures - Automatic instantiation
+  archivePage: async ({ page }, use) => {
+    await use(new ArchivePage(page));
+  },
+
   blockAdsAndAnalytics: async ({ page: _page }, use) => {
     await use(async (targetPage: Page) => {
       if (!PERF_MODE) return;
@@ -173,18 +184,30 @@ export const test = base.extend<BlogFixtures>({
   collectPerfMetrics: async ({ page: _page }, use) => {
     await use(async (targetPage: Page) => {
       const timing = await targetPage.evaluate(() => {
-        const nav = performance.getEntriesByType(
+        const navigation = performance.getEntriesByType(
           'navigation',
         )[0] as PerformanceNavigationTiming;
+
+        // Get paint timing
+        const paintEntries = performance.getEntriesByType('paint');
+        const fcp = paintEntries.find(
+          (entry) => entry.name === 'first-contentful-paint',
+        );
+
         return {
-          domContentLoaded: nav.domContentLoadedEventEnd - nav.startTime,
-          duration: nav.duration,
-          loaded: nav.loadEventEnd - nav.startTime,
+          domContentLoaded:
+            navigation.domContentLoadedEventEnd - navigation.startTime,
+          duration: navigation.duration,
+          fcp: fcp?.startTime ?? null,
+          lcp: navigation.loadEventEnd - navigation.startTime, // Approximation
+          loaded: navigation.loadEventEnd - navigation.startTime,
         };
       });
       return {
         domContentLoaded: timing.domContentLoaded || 0,
         duration: timing.duration || 0,
+        fcp: timing.fcp,
+        lcp: timing.lcp,
         loaded: timing.loaded || 0,
         resources: 0, // Placeholder
         url: targetPage.url(),
@@ -210,6 +233,10 @@ export const test = base.extend<BlogFixtures>({
     });
   },
 
+  homePage: async ({ page }, use) => {
+    await use(new HomePage(page));
+  },
+
   validateInternalLinks: async ({ page: _page }, use) => {
     await use(async (targetPage: Page) => {
       const brokenLinks: string[] = [];
@@ -223,7 +250,7 @@ export const test = base.extend<BlogFixtures>({
       );
       const attributes = await Promise.all(attributePromises);
       const hrefs = attributes.filter(
-        (h): h is string => h != undefined && h.length > 0,
+        (h): h is string => h !== undefined && h.length > 0,
       );
       const uniqueHrefs = [...new Set(hrefs)];
 
@@ -246,15 +273,15 @@ export const test = base.extend<BlogFixtures>({
         return undefined;
       };
 
-      // Helper for batched parallel execution
-      const batchSize = 10;
+      // Optimized: Smaller batch size for better parallelization
+      const batchSize = 5;
       for (let index = 0; index < uniqueHrefs.length; index += batchSize) {
         const batch = uniqueHrefs.slice(index, index + batchSize);
         const results = await Promise.all(
           batch.map(async (href) => await validate(href)),
         );
         for (const result of results) {
-          if (result != undefined) brokenLinks.push(result);
+          if (result !== undefined) brokenLinks.push(result);
         }
       }
 
