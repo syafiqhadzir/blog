@@ -7,7 +7,8 @@
 
 ## 🎯 Philosophy
 
-These Playwright tests implement **bleeding-edge industrial best practices** for maximum reliability, maintainability, and performance:
+These Playwright tests implement **bleeding-edge industrial best practices** for
+maximum reliability, maintainability, and performance:
 
 - ✅ **Page Object Model (POM)**: Reusable, maintainable page representations
 - ✅ **Test Steps**: Clear reporting with `test.step()`
@@ -22,7 +23,7 @@ These Playwright tests implement **bleeding-edge industrial best practices** for
 
 ### **Directory Structure**
 
-```
+```text
 tests/
 ├── _helpers/
 │   ├── pages/              # Page Object Models
@@ -130,7 +131,7 @@ test('example', async ({ homePage, archivePage }) => {
 test('performance', async ({ collectPerfMetrics, page }) => {
   await page.goto('/');
   const metrics = await collectPerfMetrics(page);
-  
+
   expect(metrics.fcp).toBeLessThan(1800); // Good FCP
   expect(metrics.lcp).toBeLessThan(2500); // Good LCP
 });
@@ -142,7 +143,7 @@ test('performance', async ({ collectPerfMetrics, page }) => {
 test('validation', async ({ validateInternalLinks, page }) => {
   await page.goto('/');
   const brokenLinks = await validateInternalLinks(page);
-  
+
   expect(brokenLinks).toEqual([]);
 });
 ```
@@ -208,10 +209,16 @@ Tests run in parallel for maximum speed:
 ```typescript
 test.describe('My Suite', () => {
   test.describe.configure({ mode: 'parallel' });
-  
-  test('test 1', async () => { /* ... */ });
-  test('test 2', async () => { /* ... */ });
-  test('test 3', async () => { /* ... */ });
+
+  test('test 1', async () => {
+    /* ... */
+  });
+  test('test 2', async () => {
+    /* ... */
+  });
+  test('test 3', async () => {
+    /* ... */
+  });
 });
 ```
 
@@ -261,7 +268,7 @@ npx playwright test --grep-invert @slow
 Enforce performance standards:
 
 ```typescript
-test('homepage performance', async ({  collectPerfMetrics, page }) => {
+test('homepage performance', async ({ collectPerfMetrics, page }) => {
   await page.goto('/');
   const metrics = await collectPerfMetrics(page);
 
@@ -282,7 +289,7 @@ Smart retries for network-dependent tests:
 ```typescript
 test.describe('External Links', () => {
   test.describe.configure({ retries: 2 });
-  
+
   test('check external resources', async ({ page }) => {
     // Will retry up to 2 times on failure
   });
@@ -429,7 +436,9 @@ npx playwright show-report
 
 ---
 
-**Philosophy**: Write tests that are **fast**, **reliable**, **maintainable**, and **readable**. Use bleeding-edge Playwright features to achieve maximum productivity and confidence in your test suite.
+**Philosophy**: Write tests that are **fast**, **reliable**, **maintainable**,
+and **readable**. Use bleeding-edge Playwright features to achieve maximum
+productivity and confidence in your test suite.
 
 **Review**: Monthly  
 **Last Optimization**: 2026-01-10
