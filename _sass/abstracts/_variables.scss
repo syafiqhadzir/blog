@@ -20,14 +20,16 @@
   --print-text: #000;
   --print-link: #666;
   --print-border: #999;
-  --print-font-size-body: 12pt;
+  --print-font-size-body: 0.75rem; /* 12pt equivalent */
   --print-font-size-link: 0.8em;
   --print-line-height: 1.5;
 
   /* Z-Index Scale */
+  --z-behind: -1;
   --z-layer: 1;
   --z-back-to-top: 90;
   --z-progress: 100;
+  --z-modal: 100; /* For dialogs/modals */
   --z-overlay: 1000;
   --z-skip-link: 9999;
   --z-skip-link-focus: 10000;

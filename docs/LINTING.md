@@ -8,7 +8,8 @@
 
 ## 🎯 Philosophy
 
-These linting rules enforce **modern bleeding-edge syntax** while maintaining **practical balance** for real-world production codebases. They are:
+These linting rules enforce **modern bleeding-edge syntax** while maintaining
+**practical balance** for real-world production codebases. They are:
 
 - ✅ **Strict on deprecations**: No legacy syntax allowed
 - ✅ **Modern patterns enforced**: ES2023+, Ruby 3.4+, CSS3+
@@ -115,7 +116,8 @@ selector-max-specificity: '0,4,1' // Balanced specificity
 - Colors (all color values)
 - Z-index values
 
-**Why limited scope?**: Font sizes and spacing can use calculations, making strict enforcement impractical.
+**Why limited scope?**: Font sizes and spacing can use calculations, making
+strict enforcement impractical.
 
 ---
 
@@ -219,14 +221,14 @@ bundle exec rubocop -a
 
 ## 📊 Comparison: Before vs After
 
-| Metric | Too Strict | **Balanced (Current)** | Too Relaxed |
-|--------|------------|----------------------|-------------|
-| **Complexity** | 6 | **10** | 20 |
-| **Max Lines** | 150 | **250** | 500 |
-| **Function Length** | 50 | **75** | 150 |
-| **Nesting Depth** | 2 | **3** | 5 |
-| **Method Length (Ruby)** | 8 | **15** | 30 |
-| **Specificity** | 0,2,1 | **0,4,1** | 0,8,3 |
+| Metric                   | Too Strict | **Balanced (Current)** | Too Relaxed |
+| ------------------------ | ---------- | ---------------------- | ----------- |
+| **Complexity**           | 6          | **10**                 | 20          |
+| **Max Lines**            | 150        | **250**                | 500         |
+| **Function Length**      | 50         | **75**                 | 150         |
+| **Nesting Depth**        | 2          | **3**                  | 5           |
+| **Method Length (Ruby)** | 8          | **15**                 | 30          |
+| **Specificity**          | 0,2,1      | **0,4,1**              | 0,8,3       |
 
 ---
 
@@ -264,10 +266,10 @@ bundle exec rubocop -a
 **❌ Deprecated**:
 
 ```javascript
-var name = 'John';  // Use const/let
-function callback() {}  // Use arrow function
-str1 + ' ' + str2;  // Use template literal
-fn.apply(null, args);  // Use spread
+var name = 'John'; // Use const/let
+function callback() {} // Use arrow function
+str1 + ' ' + str2; // Use template literal
+fn.apply(null, args); // Use spread
 ```
 
 **✅ Modern**:
@@ -284,8 +286,8 @@ fn(...args);
 **❌ Deprecated**:
 
 ```css
-color: rgb(255, 0, 0);  /* Use modern color */
-margin: 0.33333333rem;  /* Too much precision */
+color: rgb(255, 0, 0); /* Use modern color */
+margin: 0.33333333rem; /* Too much precision */
 ```
 
 **✅ Modern**:
@@ -376,7 +378,8 @@ end
 
 ---
 
-**Philosophy**: Enforce modern standards strictly, but with pragmatic limits that work for real production code. No deprecated syntax, but reasonable complexity for maintainability.
+**Philosophy**: Enforce modern standards strictly, but with pragmatic limits
+that work for real production code. No deprecated syntax, but reasonable
+complexity for maintainability.
 
-**Review**: Quarterly
-**Last Audit**: 2026-01-10
+**Review**: Quarterly **Last Audit**: 2026-01-10
