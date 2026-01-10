@@ -1,6 +1,7 @@
 # =============================================================================
-# .gitignore - Expert-Level Repository Hygiene
+# .gitignore
 # Project: Jekyll + Ruby + Node.js + Playwright
+# Last Updated: 2026-01-10
 # =============================================================================
 
 # -----------------------------------------------------------------------------
@@ -36,6 +37,7 @@ pnpm-debug.log*
 .nuxt/
 .output/
 
+# -----------------------------------------------------------------------------
 # Testing & Coverage
 # -----------------------------------------------------------------------------
 coverage/
@@ -44,7 +46,7 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
-e2e/snapshots/*-snapshots/
+tests/e2e/snapshots/*-snapshots/
 .lighthouseci/
 *-report.json
 *-report.xml
@@ -58,6 +60,13 @@ rspec_result.json
 stylelint-report.json
 eslint-report.json
 lighthouse_*.log
+lint_css_output.txt
+
+# Ruby Test Artifacts
+spec/.rspec_status
+tests/unit/.rspec_status
+tests/unit/test_results.json
+_posts_test/
 
 # -----------------------------------------------------------------------------
 # Ruby Development Tools
@@ -67,6 +76,7 @@ lighthouse_*.log
 .sorbet/
 .rbenv-vars
 Gemfile.lock.bak
+.mypy_cache/
 
 # -----------------------------------------------------------------------------
 # Environment & Secrets (CRITICAL SECURITY)
@@ -162,7 +172,12 @@ temp/
 *.zip
 *.webp.meta # Metadata from image optimizers
 
-# Generated Data
 # -----------------------------------------------------------------------------
-# archive-data.json # Kept source for now
+# Generated Data & Build Artifacts
+# -----------------------------------------------------------------------------
 search-index.json
+
+# Legacy/Deprecated Directories (Now Reorganized)
+# -----------------------------------------------------------------------------
+spec/
+e2e/
