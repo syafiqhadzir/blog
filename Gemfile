@@ -23,10 +23,10 @@ gem 'webrick'
 
 # Testing gems for pyramid testing
 group :test do
-  gem 'html-proofer', '~> 5.0'
+  gem 'html-proofer', '~> 5.2'
   gem 'rspec', '~> 3.13'
   gem 'rspec_junit_formatter', '~> 0.6', require: false
-  gem 'rubocop', '~> 1.69', require: false
+  gem 'rubocop', '~> 1.86', require: false
   gem 'rubocop-rspec', '~> 3.2', require: false
 end
 
